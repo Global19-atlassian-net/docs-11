@@ -1,11 +1,10 @@
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Straight line Hough transform &mdash; skimage v0.10dev docs</title>
+        <title>Straight line Hough transform &mdash; skimage v0.11dev docs</title>
     
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.10dev',
+        VERSION:     '0.11dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +26,7 @@
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <link rel="top" title="skimage v0.10dev docs" href="../index.html" />
+        <link rel="top" title="skimage v0.11dev docs" href="../index.html" />
         <link rel="up" title="General examples" href="index.html" />
         <link rel="next" title="Local Binary Pattern for texture classification" href="plot_local_binary_pattern.html" />
         <link rel="prev" title="Label image regions" href="plot_label.html" />
@@ -64,18 +63,18 @@ then use the Hough transform to explore a parameter space for straight lines
 that may run through the image.</p>
 <div class="section" id="algorithm-overview">
 <h2>Algorithm overview<a class="headerlink" href="#algorithm-overview" title="Permalink to this headline">¶</a></h2>
-<p>Usually, lines are parameterised as <img class="math" src="../_images/math/c730c668a5b794ff433e133334c5770dcb90a767.png" alt="y = mx + c"/>, with a gradient
-<img class="math" src="../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m"/> and y-intercept <cite>c</cite>. However, this would mean that <img class="math" src="../_images/math/f5047d1e0cbb50ec208923a22cd517c55100fa7b.png" alt="m"/> goes to
+<p>Usually, lines are parameterised as <img class="math" src="../_images/math/73b227b1abbfbeb3b8556b0d678ca91adcc89218.png" alt="y = mx + c"/>, with a gradient
+<img class="math" src="../_images/math/c4bb40dd65eae6c11b325989b14e0b8d35e4e3ef.png" alt="m"/> and y-intercept <cite>c</cite>. However, this would mean that <img class="math" src="../_images/math/c4bb40dd65eae6c11b325989b14e0b8d35e4e3ef.png" alt="m"/> goes to
 infinity for vertical lines. Instead, we therefore construct a segment
 perpendicular to the line, leading to the origin. The line is represented by the
-length of that segment, <img class="math" src="../_images/math/b55ca7a0aa88ab7d58f4fc035317fdac39b17861.png" alt="r"/>, and the angle it makes with the x-axis,
-<img class="math" src="../_images/math/52e8ed7a3ba22130ad3984eb2cd413406475a689.png" alt="\theta"/>.</p>
+length of that segment, <img class="math" src="../_images/math/2ede365ad144ab396916ec60458da03860803078.png" alt="r"/>, and the angle it makes with the x-axis,
+<img class="math" src="../_images/math/a9cfbeb8ebee1f365919e147a79e242dcb67ee5d.png" alt="\theta"/>.</p>
 <p>The Hough transform constructs a histogram array representing the parameter
-space (i.e., an <img class="math" src="../_images/math/c974ce563a0da50b16b3b28b389de6ccd4aceb8a.png" alt="M \times N"/> matrix, for <img class="math" src="../_images/math/5d1e4485dc90c450e8c76826516c1b2ccb8fce16.png" alt="M"/> different values of the
-radius and <img class="math" src="../_images/math/fc97ef67268cd4e91bacdf12b8901d7036c9a056.png" alt="N"/> different values of <img class="math" src="../_images/math/52e8ed7a3ba22130ad3984eb2cd413406475a689.png" alt="\theta"/>).  For each parameter
-combination, <img class="math" src="../_images/math/b55ca7a0aa88ab7d58f4fc035317fdac39b17861.png" alt="r"/> and <img class="math" src="../_images/math/52e8ed7a3ba22130ad3984eb2cd413406475a689.png" alt="\theta"/>, we then find the number of non-zero
+space (i.e., an <img class="math" src="../_images/math/079287797417e8d6eaa8727e42778ca8ccb4ed98.png" alt="M \times N"/> matrix, for <img class="math" src="../_images/math/2de38926392ba23abeac75effc66c37a5f5be5fd.png" alt="M"/> different values of the
+radius and <img class="math" src="../_images/math/75e27f04188974063be3230dca208cd495b77ce1.png" alt="N"/> different values of <img class="math" src="../_images/math/a9cfbeb8ebee1f365919e147a79e242dcb67ee5d.png" alt="\theta"/>).  For each parameter
+combination, <img class="math" src="../_images/math/2ede365ad144ab396916ec60458da03860803078.png" alt="r"/> and <img class="math" src="../_images/math/a9cfbeb8ebee1f365919e147a79e242dcb67ee5d.png" alt="\theta"/>, we then find the number of non-zero
 pixels in the input image that would fall close to the corresponding line, and
-increment the array at position <img class="math" src="../_images/math/e31f416f2b44eebe61679d8344cf8bf35feb1f73.png" alt="(r, \theta)"/> appropriately.</p>
+increment the array at position <img class="math" src="../_images/math/eafbf2c4b76110db258f9b3993554c072026644a.png" alt="(r, \theta)"/> appropriately.</p>
 <p>We can think of each non-zero pixel &#8220;voting&#8221; for potential line candidates. The
 local maxima in the resulting histogram indicates the parameters of the most
 probably lines. In our example, the maxima occur at 45 and 135 degrees,
@@ -184,9 +183,9 @@ pp. 11-15 (January, 1972)</td></tr>
 </pre></div>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_line_hough_transform.py"><tt class="xref download docutils literal"><span class="pre">download</span></tt></a>
-(generated using <tt class="docutils literal"><span class="pre">skimage</span></tt> 0.10dev)</p>
+(generated using <tt class="docutils literal"><span class="pre">skimage</span></tt> 0.11dev)</p>
 <p><strong>IPython Notebook:</strong> <tt class="xref download docutils literal"><span class="pre">download</span></tt>
-(generated using <tt class="docutils literal"><span class="pre">skimage</span></tt> 0.10dev)</p>
+(generated using <tt class="docutils literal"><span class="pre">skimage</span></tt> 0.11dev)</p>
 </div>
 </div>
 

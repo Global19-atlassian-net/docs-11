@@ -1,11 +1,10 @@
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Pre-built installation &mdash; skimage v0.10dev docs</title>
+        <title>Pre-built installation &mdash; skimage v0.11dev docs</title>
     
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,8 +16,8 @@
     <script src="_static/js/bootstrap.min.js"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.10dev',
+        URL_ROOT:    './',
+        VERSION:     '0.11dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +26,7 @@
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <link rel="top" title="skimage v0.10dev docs" href="index.html" />
+        <link rel="top" title="skimage v0.11dev docs" href="index.html" />
         <link rel="next" title="User Guide" href="user_guide.html" />
         <link rel="prev" title="Version 0.10" href="api_changes.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
@@ -59,8 +58,9 @@
 <h1>Pre-built installation<a class="headerlink" href="#pre-built-installation" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#scikits.image">Windows binaries</a>
 are kindly provided by Christoph Gohlke.</p>
-<p>The latest stable release is also included as part of the <a class="reference external" href="http://enthought.com/products/epd.php">Enthought Python
-Distribution (EPD)</a>, <a class="reference external" href="http://code.google.com/p/pythonxy/wiki/Welcome">Python(x,y)</a> and
+<p>The latest stable release is also included as part of
+<a class="reference external" href="https://www.enthought.com/products/canopy/">Enthought Canopy</a>,
+<a class="reference external" href="http://code.google.com/p/pythonxy/wiki/Welcome">Python(x,y)</a> and
 <a class="reference external" href="https://store.continuum.io/cshop/anaconda/">Anaconda</a>.</p>
 <p>On Debian and Ubuntu, a Debian package <tt class="docutils literal"><span class="pre">python-skimage</span></tt> can be found in
 <a class="reference external" href="http://neuro.debian.net">the Neurodebian repository</a>. Follow <a class="reference external" href="http://neuro.debian.net/#how-to-use-this-repository">the
@@ -69,31 +69,37 @@ add Neurodebian to your system package manager, then look for
 <tt class="docutils literal"><span class="pre">python-skimage</span></tt> in the package manager.</p>
 <p>On systems that support setuptools, the package can be installed from the
 <a class="reference external" href="http://pypi.python.org/pypi/scikit-image">Python packaging index</a> using</p>
-<div class="highlight-python"><pre>easy_install -U scikit-image</pre>
+<div class="highlight-python"><div class="highlight"><pre>easy_install -U scikit-image
+</pre></div>
 </div>
 <p>or</p>
-<div class="highlight-python"><pre>pip install -U scikit-image</pre>
+<div class="highlight-python"><div class="highlight"><pre>pip install -U scikit-image
+</pre></div>
 </div>
 </div>
 <div class="section" id="installation-from-source">
 <h1>Installation from source<a class="headerlink" href="#installation-from-source" title="Permalink to this headline">¶</a></h1>
 <p>Obtain the source from the git-repository at
 <a class="reference external" href="http://github.com/scikit-image/scikit-image">http://github.com/scikit-image/scikit-image</a> by running:</p>
-<div class="highlight-python"><pre>git clone http://github.com/scikit-image/scikit-image.git</pre>
+<div class="highlight-python"><div class="highlight"><pre>git clone http://github.com/scikit-image/scikit-image.git
+</pre></div>
 </div>
 <p>in a terminal (you will need to have git installed on your machine).</p>
 <p>If you do not have git installed, you can also download a zipball from
 <a class="reference external" href="https://github.com/scikit-image/scikit-image/zipball/master">https://github.com/scikit-image/scikit-image/zipball/master</a>.</p>
 <p>The SciKit can be installed globally using:</p>
-<div class="highlight-python"><pre>python setup.py install</pre>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py install
+</pre></div>
 </div>
 <p>or locally using:</p>
-<div class="highlight-python"><pre>python setup.py install --prefix=${HOME}</pre>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py install --prefix=${HOME}
+</pre></div>
 </div>
 <p>If you prefer, you can use it without installing, by simply adding
 this path to your <tt class="docutils literal"><span class="pre">PYTHONPATH</span></tt> variable and compiling extensions
 in-place:</p>
-<div class="highlight-python"><pre>python setup.py build_ext -i</pre>
+<div class="highlight-python"><div class="highlight"><pre>python setup.py build_ext -i
+</pre></div>
 </div>
 </div>
 <div class="section" id="building-with-bento">
@@ -102,12 +108,14 @@ in-place:</p>
 <p>Follow the <a class="reference external" href="http://cournape.github.io/Bento/html/install.html">Bento installation instructions</a> and <a class="reference external" href="http://code.google.com/p/waf/downloads/list">download the WAF
 source</a>.</p>
 <p>Tell Bento where to find WAF by setting the <tt class="docutils literal"><span class="pre">WAFDIR</span></tt> environment variable:</p>
-<div class="highlight-python"><pre>export WAFDIR=&lt;path/to/waf&gt;</pre>
+<div class="highlight-python"><div class="highlight"><pre>export WAFDIR=&lt;path/to/waf&gt;
+</pre></div>
 </div>
 <p>From the <tt class="docutils literal"><span class="pre">scikit-image</span></tt> source directory:</p>
-<div class="highlight-python"><pre>bentomaker configure
+<div class="highlight-python"><div class="highlight"><pre>bentomaker configure
 bentomaker build -j     # (add -i for in-place build)
-bentomaker install      # (when not builing in-place)</pre>
+bentomaker install      # (when not builing in-place)
+</pre></div>
 </div>
 <p>Depending on file permissions, the install commands may need to be run as sudo.</p>
 </div>
@@ -121,7 +129,8 @@ bentomaker install      # (when not builing in-place)</pre>
 <p><a class="reference external" href="http://matplotlib.sf.net">Matplotlib &gt;= 1.0</a> is needed to generate the
 examples in the documentation.</p>
 <p>You can use pip to automatically install the base dependencies as follows:</p>
-<div class="highlight-python"><pre>$ pip install -r requirements.txt</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install -r requirements.txt
+</pre></div>
 </div>
 </div>
 <div class="section" id="runtime-requirements">
@@ -178,6 +187,8 @@ walker segmentation.</p>
 The <tt class="docutils literal"><span class="pre">Pillow</span></tt> library (or equivalently <tt class="docutils literal"><span class="pre">PIL</span></tt>) is used for Input/Output.</p>
 </dd>
 </dl>
+</li>
+<li><p class="first"><a class="reference external" href="http://www.astropy.org">Astropy</a> is required to use the FITS io plug-in.</p>
 </li>
 </ul>
 </div>

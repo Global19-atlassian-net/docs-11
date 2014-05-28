@@ -1,11 +1,10 @@
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Module: transform &mdash; skimage v0.10dev docs</title>
+        <title>Module: transform &mdash; skimage v0.11dev docs</title>
     
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.10dev',
+        VERSION:     '0.11dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +26,7 @@
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <link rel="top" title="skimage v0.10dev docs" href="../index.html" />
+        <link rel="top" title="skimage v0.11dev docs" href="../index.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../_static/favicon.ico">
 </head>
@@ -62,23 +61,25 @@
 <em class="property">class </em><tt class="descclassname">skimage.transform.</tt><tt class="descname">AffineTransform</tt><big>(</big><em>matrix=None</em>, <em>scale=None</em>, <em>rotation=None</em>, <em>shear=None</em>, <em>translation=None</em><big>)</big><a class="headerlink" href="#skimage.transform.AffineTransform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">skimage.transform._geometric.ProjectiveTransform</span></tt></p>
 <p>2D affine transformation of the form:</p>
-<div class="highlight-python"><pre>X = a0*x + a1*y + a2 =
+<div class="highlight-python"><div class="highlight"><pre>X = a0*x + a1*y + a2 =
   = sx*x*cos(rotation) - sy*y*sin(rotation + shear) + a2
 
 Y = b0*x + b1*y + b2 =
-  = sx*x*sin(rotation) + sy*y*cos(rotation + shear) + b2</pre>
+  = sx*x*sin(rotation) + sy*y*cos(rotation + shear) + b2
+</pre></div>
 </div>
 <p>where <tt class="docutils literal"><span class="pre">sx</span></tt> and <tt class="docutils literal"><span class="pre">sy</span></tt> are zoom factors in the x and y directions,
 and the homogeneous transformation matrix is:</p>
-<div class="highlight-python"><pre>[[a0  a1  a2]
+<div class="highlight-python"><div class="highlight"><pre>[[a0  a1  a2]
  [b0  b1  b2]
- [0   0    1]]</pre>
+ [0   0    1]]
+</pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>matrix</strong> : (3, 3) array, optional</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>matrix</strong> : (3, 3) array, optional</p>
 <blockquote>
 <div><p>Homogeneous transformation matrix.</p>
 </div></blockquote>
@@ -186,7 +187,7 @@ used to find a local affine transform.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>src</strong> : (N, 2) array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>src</strong> : (N, 2) array</p>
 <blockquote>
 <div><p>Source coordinates.</p>
 </div></blockquote>
@@ -209,13 +210,13 @@ used to find a local affine transform.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
 <blockquote>
 <div><p>Source coordinates.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
 <blockquote class="last">
 <div><p>Transformed coordinates.</p>
 </div></blockquote>
@@ -235,14 +236,15 @@ used to find a local affine transform.</p>
 <em class="property">class </em><tt class="descclassname">skimage.transform.</tt><tt class="descname">PolynomialTransform</tt><big>(</big><em>params=None</em><big>)</big><a class="headerlink" href="#skimage.transform.PolynomialTransform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">skimage.transform._geometric.GeometricTransform</span></tt></p>
 <p>2D transformation of the form:</p>
-<div class="highlight-python"><pre>X = sum[j=0:order]( sum[i=0:j]( a_ji * x**(j - i) * y**i ))
-Y = sum[j=0:order]( sum[i=0:j]( b_ji * x**(j - i) * y**i ))</pre>
+<div class="highlight-python"><div class="highlight"><pre>X = sum[j=0:order]( sum[i=0:j]( a_ji * x**(j - i) * y**i ))
+Y = sum[j=0:order]( sum[i=0:j]( b_ji * x**(j - i) * y**i ))
+</pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>params</strong> : (2, N) array, optional</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>params</strong> : (2, N) array, optional</p>
 <blockquote class="last">
 <div><p>Polynomial coefficients where <cite>N * 2 = (order + 1) * (order + 2)</cite>. So,
 a_ji is defined in <cite>params[0, :]</cite> and b_ji in <cite>params[1, :]</cite>.</p>
@@ -266,23 +268,26 @@ parameters.</p>
 with the total least-squares method.</p>
 <p>Number of source and destination coordinates must match.</p>
 <p>The transformation is defined as:</p>
-<div class="highlight-python"><pre>X = sum[j=0:order]( sum[i=0:j]( a_ji * x**(j - i) * y**i ))
-Y = sum[j=0:order]( sum[i=0:j]( b_ji * x**(j - i) * y**i ))</pre>
+<div class="highlight-python"><div class="highlight"><pre>X = sum[j=0:order]( sum[i=0:j]( a_ji * x**(j - i) * y**i ))
+Y = sum[j=0:order]( sum[i=0:j]( b_ji * x**(j - i) * y**i ))
+</pre></div>
 </div>
 <p>These equations can be transformed to the following form:</p>
-<div class="highlight-python"><pre>0 = sum[j=0:order]( sum[i=0:j]( a_ji * x**(j - i) * y**i )) - X
-0 = sum[j=0:order]( sum[i=0:j]( b_ji * x**(j - i) * y**i )) - Y</pre>
+<div class="highlight-python"><div class="highlight"><pre>0 = sum[j=0:order]( sum[i=0:j]( a_ji * x**(j - i) * y**i )) - X
+0 = sum[j=0:order]( sum[i=0:j]( b_ji * x**(j - i) * y**i )) - Y
+</pre></div>
 </div>
 <p>which exist for each set of corresponding points, so we have a set of
 N * 2 equations. The coefficients appear linearly so we can write
 A x = 0, where:</p>
-<div class="highlight-python"><pre>A   = [[1 x y x**2 x*y y**2 ... 0 ...             0 -X]
+<div class="highlight-python"><div class="highlight"><pre>A   = [[1 x y x**2 x*y y**2 ... 0 ...             0 -X]
        [0 ...                 0 1 x y x**2 x*y y**2 -Y]
         ...
         ...
       ]
 x.T = [a00 a10 a11 a20 a21 a22 ... ann
-       b00 b10 b11 b20 b21 b22 ... bnn c3]</pre>
+       b00 b10 b11 b20 b21 b22 ... bnn c3]
+</pre></div>
 </div>
 <p>In case of total least-squares the solution of this homogeneous system
 of equations is the right singular vector of A which corresponds to the
@@ -291,7 +296,7 @@ smallest singular value normed by the coefficient c3.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>src</strong> : (N, 2) array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>src</strong> : (N, 2) array</p>
 <blockquote>
 <div><p>Source coordinates.</p>
 </div></blockquote>
@@ -325,28 +330,31 @@ smallest singular value normed by the coefficient c3.</p>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">skimage.transform._geometric.GeometricTransform</span></tt></p>
 <p>Matrix transformation.</p>
 <p>Apply a projective transformation (homography) on coordinates.</p>
-<p>For each homogeneous coordinate <img class="math" src="../_images/math/8800e6ed331cf15ba182031609babfac06216a77.png" alt="\mathbf{x} = [x, y, 1]^T"/>, its
+<p>For each homogeneous coordinate <img class="math" src="../_images/math/e17eed3b373034f601fd8282af816ad9a5a2c3ae.png" alt="\mathbf{x} = [x, y, 1]^T"/>, its
 target position is calculated by multiplying with the given matrix,
-<img class="math" src="../_images/math/b1902d279ba37d60bdce4e0e987b7cd19d48974e.png" alt="H"/>, to give <img class="math" src="../_images/math/42a03cd1c073037bd9cd9e953d4ab607bb70d4c5.png" alt="H \mathbf{x}"/>:</p>
-<div class="highlight-python"><pre>[[a0 a1 a2]
+<img class="math" src="../_images/math/48f75e0b463f2fdb7fca9566cffdc439cae6967f.png" alt="H"/>, to give <img class="math" src="../_images/math/f9ed235ba4b6a90483667ccc43734ff051fc323b.png" alt="H \mathbf{x}"/>:</p>
+<div class="highlight-python"><div class="highlight"><pre>[[a0 a1 a2]
  [b0 b1 b2]
- [c0 c1 1 ]].</pre>
+ [c0 c1 1 ]].
+</pre></div>
 </div>
 <p>E.g., to rotate by theta degrees clockwise, the matrix should be:</p>
-<div class="highlight-python"><pre>[[cos(theta) -sin(theta) 0]
+<div class="highlight-python"><div class="highlight"><pre>[[cos(theta) -sin(theta) 0]
  [sin(theta)  cos(theta) 0]
- [0            0         1]]</pre>
+ [0            0         1]]
+</pre></div>
 </div>
 <p>or, to translate x by 10 and y by 20:</p>
-<div class="highlight-python"><pre>[[1 0 10]
+<div class="highlight-python"><div class="highlight"><pre>[[1 0 10]
  [0 1 20]
- [0 0 1 ]].</pre>
+ [0 0 1 ]].
+</pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>matrix</strong> : (3, 3) array, optional</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>matrix</strong> : (3, 3) array, optional</p>
 <blockquote class="last">
 <div><p>Homogeneous transformation matrix.</p>
 </div></blockquote>
@@ -394,30 +402,32 @@ with the total least-squares method.</p>
 <p>which exist for each set of corresponding points, so we have a set of
 N * 2 equations. The coefficients appear linearly so we can write
 A x = 0, where:</p>
-<div class="highlight-python"><pre>A   = [[x y 1 0 0 0 -x*X -y*X -X]
+<div class="highlight-python"><div class="highlight"><pre>A   = [[x y 1 0 0 0 -x*X -y*X -X]
        [0 0 0 x y 1 -x*Y -y*Y -Y]
         ...
         ...
       ]
-x.T = [a0 a1 a2 b0 b1 b2 c0 c1 c3]</pre>
+x.T = [a0 a1 a2 b0 b1 b2 c0 c1 c3]
+</pre></div>
 </div>
 <p>In case of total least-squares the solution of this homogeneous system
 of equations is the right singular vector of A which corresponds to the
 smallest singular value normed by the coefficient c3.</p>
 <p>In case of the affine transformation the coefficients c0 and c1 are 0.
 Thus the system of equations is:</p>
-<div class="highlight-python"><pre>A   = [[x y 1 0 0 0 -X]
+<div class="highlight-python"><div class="highlight"><pre>A   = [[x y 1 0 0 0 -X]
        [0 0 0 x y 1 -Y]
         ...
         ...
       ]
-x.T = [a0 a1 a2 b0 b1 b2 c3]</pre>
+x.T = [a0 a1 a2 b0 b1 b2 c3]
+</pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>src</strong> : (N, 2) array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>src</strong> : (N, 2) array</p>
 <blockquote>
 <div><p>Source coordinates.</p>
 </div></blockquote>
@@ -439,13 +449,13 @@ x.T = [a0 a1 a2 b0 b1 b2 c3]</pre>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
 <blockquote>
 <div><p>Source coordinates.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
 <blockquote class="last">
 <div><p>Transformed coordinates.</p>
 </div></blockquote>
@@ -465,22 +475,24 @@ x.T = [a0 a1 a2 b0 b1 b2 c3]</pre>
 <em class="property">class </em><tt class="descclassname">skimage.transform.</tt><tt class="descname">SimilarityTransform</tt><big>(</big><em>matrix=None</em>, <em>scale=None</em>, <em>rotation=None</em>, <em>translation=None</em><big>)</big><a class="headerlink" href="#skimage.transform.SimilarityTransform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">skimage.transform._geometric.ProjectiveTransform</span></tt></p>
 <p>2D similarity transformation of the form:</p>
-<div class="highlight-python"><pre>X = a0 * x - b0 * y + a1 =
+<div class="highlight-python"><div class="highlight"><pre>X = a0 * x - b0 * y + a1 =
   = m * x * cos(rotation) - m * y * sin(rotation) + a1
 
 Y = b0 * x + a0 * y + b1 =
-  = m * x * sin(rotation) + m * y * cos(rotation) + b1</pre>
+  = m * x * sin(rotation) + m * y * cos(rotation) + b1
+</pre></div>
 </div>
 <p>where <tt class="docutils literal"><span class="pre">m</span></tt> is a zoom factor and the homogeneous transformation matrix is:</p>
-<div class="highlight-python"><pre>[[a0  b0  a1]
+<div class="highlight-python"><div class="highlight"><pre>[[a0  b0  a1]
  [b0  a0  b1]
- [0   0    1]]</pre>
+ [0   0    1]]
+</pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>matrix</strong> : (3, 3) array, optional</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>matrix</strong> : (3, 3) array, optional</p>
 <blockquote>
 <div><p>Homogeneous transformation matrix.</p>
 </div></blockquote>
@@ -539,12 +551,13 @@ with the total least-squares method.</p>
 <p>which exist for each set of corresponding points, so we have a set of
 N * 2 equations. The coefficients appear linearly so we can write
 A x = 0, where:</p>
-<div class="highlight-python"><pre>A   = [[x 1 -y 0 -X]
+<div class="highlight-python"><div class="highlight"><pre>A   = [[x 1 -y 0 -X]
        [y 0  x 1 -Y]
         ...
         ...
       ]
-x.T = [a0 a1 b0 b1 c3]</pre>
+x.T = [a0 a1 b0 b1 c3]
+</pre></div>
 </div>
 <p>In case of total least-squares the solution of this homogeneous system
 of equations is the right singular vector of A which corresponds to the
@@ -553,7 +566,7 @@ smallest singular value normed by the coefficient c3.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>src</strong> : (N, 2) array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>src</strong> : (N, 2) array</p>
 <blockquote>
 <div><p>Source coordinates.</p>
 </div></blockquote>
@@ -597,7 +610,7 @@ smallest singular value normed by the coefficient c3.</p>
 <td>Estimate 2D geometric transformation parameters.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.frt2" title="skimage.transform.frt2"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.frt2</span></tt></a>(a)</td>
-<td>Compute the 2-dimensional finite radon transform (FRT) for an n x n</td>
+<td>Compute the 2-dimensional finite radon transform (FRT) for an n x n integer array.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.transform.hough_circle" title="skimage.transform.hough_circle"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.hough_circle</span></tt></a>(image,&nbsp;radius)</td>
 <td>Perform a circular Hough transform.</td>
@@ -612,7 +625,7 @@ smallest singular value normed by the coefficient c3.</p>
 <td>Return peaks in hough transform.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.transform.ifrt2" title="skimage.transform.ifrt2"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.ifrt2</span></tt></a>(a)</td>
-<td>Compute the 2-dimensional inverse finite radon transform (iFRT) for</td>
+<td>Compute the 2-dimensional inverse finite radon transform (iFRT) for an (n+1) x n integer array.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.integral_image" title="skimage.transform.integral_image"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.integral_image</span></tt></a>(x)</td>
 <td>Integral image / summed area table.</td>
@@ -684,7 +697,7 @@ images and calculates the local mean of elements in each block of size
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
 <blockquote>
 <div><p>N-dimensional input image.</p>
 </div></blockquote>
@@ -699,7 +712,7 @@ integer factors.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
 <blockquote class="last">
 <div><p>Down-sampled image with same number of dimensions as input image.</p>
 </div></blockquote>
@@ -734,26 +747,27 @@ with the total least-squares method.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>ttype</strong> : {&#8216;similarity&#8217;, &#8216;affine&#8217;, &#8216;piecewise-affine&#8217;, &#8216;projective&#8217;,              &#8216;polynomial&#8217;}</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ttype</strong> : {&#8216;similarity&#8217;, &#8216;affine&#8217;, &#8216;piecewise-affine&#8217;, &#8216;projective&#8217;,              &#8216;polynomial&#8217;}</p>
 <blockquote>
 <div><p>Type of transform.</p>
 </div></blockquote>
 <p><strong>kwargs</strong> : array or int</p>
 <blockquote>
 <div><p>Function parameters (src, dst, n, angle):</p>
-<div class="highlight-python"><pre>NAME / TTYPE        FUNCTION PARAMETERS
-'similarity'        `src, `dst`
-'affine'            `src, `dst`
-'piecewise-affine'  `src, `dst`
-'projective'        `src, `dst`
-'polynomial'        `src, `dst`, `order` (polynomial order,
-                                          default order is 2)</pre>
+<div class="highlight-python"><div class="highlight"><pre>NAME / TTYPE        FUNCTION PARAMETERS
+&#39;similarity&#39;        `src, `dst`
+&#39;affine&#39;            `src, `dst`
+&#39;piecewise-affine&#39;  `src, `dst`
+&#39;projective&#39;        `src, `dst`
+&#39;polynomial&#39;        `src, `dst`, `order` (polynomial order,
+                                          default order is 2)
+</pre></div>
 </div>
 <p>Also see examples below.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>tform</strong> : <tt class="xref py py-class docutils literal"><span class="pre">GeometricTransform</span></tt></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>tform</strong> : <tt class="xref py py-class docutils literal"><span class="pre">GeometricTransform</span></tt></p>
 <blockquote class="last">
 <div><p>Transform object containing the transformation parameters and providing
 access to forward and inverse transformation functions.</p>
@@ -812,13 +826,13 @@ integer array.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>a</strong> : array_like</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>a</strong> : array_like</p>
 <blockquote>
 <div><p>A 2-D square n x n integer array.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>FRT</strong> : 2-D ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>FRT</strong> : 2-D ndarray</p>
 <blockquote class="last">
 <div><p>Finite Radon Transform array of (n+1) x n integer coefficients.</p>
 </div></blockquote>
@@ -826,7 +840,7 @@ integer array.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
 <dt><a class="reference internal" href="#skimage.transform.ifrt2" title="skimage.transform.ifrt2"><tt class="xref py py-obj docutils literal"><span class="pre">ifrt2</span></tt></a></dt>
@@ -869,7 +883,7 @@ Use a prime number for the array dimensions</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>image</strong> : (M, N) ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : (M, N) ndarray</p>
 <blockquote>
 <div><p>Input image with nonzero values representing edges.</p>
 </div></blockquote>
@@ -890,7 +904,7 @@ input picture.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>H</strong> : 3D ndarray (radius index, (M + 2R, N + 2R) ndarray)</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>H</strong> : 3D ndarray (radius index, (M + 2R, N + 2R) ndarray)</p>
 <blockquote class="last">
 <div><p>Hough transform accumulator for each radius.
 R designates the larger radius if full_output is True.
@@ -913,7 +927,7 @@ Otherwise, R = 0.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>img</strong> : (M, N) ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : (M, N) ndarray</p>
 <blockquote>
 <div><p>Input image with nonzero values representing edges.</p>
 </div></blockquote>
@@ -937,7 +951,7 @@ image dimension.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>result</strong> : ndarray with fields [(accumulator, y0, x0, a, b, orientation)]</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>result</strong> : ndarray with fields [(accumulator, y0, x0, a, b, orientation)]</p>
 <blockquote class="last">
 <div><p>Where <tt class="docutils literal"><span class="pre">(yc,</span> <span class="pre">xc)</span></tt> is the center, <tt class="docutils literal"><span class="pre">(a,</span> <span class="pre">b)</span></tt> the major and minor
 axes, respectively. The <cite>orientation</cite> value follows
@@ -981,7 +995,7 @@ Conference on. Vol. 2. IEEE, 2002</td></tr>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>img</strong> : (M, N) ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : (M, N) ndarray</p>
 <blockquote>
 <div><p>Input image with nonzero values representing edges.</p>
 </div></blockquote>
@@ -992,7 +1006,7 @@ Defaults to -pi/2 .. pi/2</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>H</strong> : 2-D ndarray of uint64</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>H</strong> : 2-D ndarray of uint64</p>
 <blockquote>
 <div><p>Hough transform accumulator.</p>
 </div></blockquote>
@@ -1082,7 +1096,7 @@ of the hough space to identify peaks.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>hspace</strong> : (N, M) array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>hspace</strong> : (N, M) array</p>
 <blockquote>
 <div><p>Hough space returned by the <cite>hough_line</cite> function.</p>
 </div></blockquote>
@@ -1116,7 +1130,7 @@ return <cite>num_peaks</cite> coordinates based on peak intensity.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>hspace, angles, dists</strong> : tuple of array</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>hspace, angles, dists</strong> : tuple of array</p>
 <blockquote class="last">
 <div><p>Peak values in hough space, angles and distances.</p>
 </div></blockquote>
@@ -1152,13 +1166,13 @@ an (n+1) x n integer array.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>a</strong> : array_like</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>a</strong> : array_like</p>
 <blockquote>
 <div><p>A 2-D (n+1) row x n column integer array.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>iFRT</strong> : 2-D n x n ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>iFRT</strong> : 2-D n x n ndarray</p>
 <blockquote class="last">
 <div><p>Inverse Finite Radon Transform array of n x n integer coefficients.</p>
 </div></blockquote>
@@ -1166,7 +1180,7 @@ an (n+1) x n integer array.</p>
 </tr>
 </tbody>
 </table>
-<div class="admonition-see-also admonition seealso">
+<div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
 <dt><a class="reference internal" href="#skimage.transform.frt2" title="skimage.transform.frt2"><tt class="xref py py-obj docutils literal"><span class="pre">frt2</span></tt></a></dt>
@@ -1175,7 +1189,7 @@ an (n+1) x n integer array.</p>
 </div>
 <p class="rubric">Notes</p>
 <p>The FRT has a unique inverse iff n is prime.
-See <a class="reference internal" href="#r314">[R314]</a> for an overview.
+See <a class="reference internal" href="#r314" id="id3">[R314]</a> for an overview.
 The idea for this algorithm is due to Vlad Negnevitski.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r314" rules="none">
@@ -1215,18 +1229,18 @@ and Electron Physics, 139 (2006)</td></tr>
 <p>The integral image contains the sum of all elements above and to the
 left of it, i.e.:</p>
 <div class="math">
-<p><img src="../_images/math/60eb18acdabe921f0fcbc69cf1dfc9fe4934bb1d.png" alt="S[m, n] = \sum_{i \leq m} \sum_{j \leq n} X[i, j]"/></p>
+<p><img src="../_images/math/2042fb2f31cb75a62c3b7a25687987efcd3f5302.png" alt="S[m, n] = \sum_{i \leq m} \sum_{j \leq n} X[i, j]"/></p>
 </div><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>x</strong> : ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : ndarray</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>S</strong> : ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>S</strong> : ndarray</p>
 <blockquote class="last">
 <div><p>Integral image / summed area table.</p>
 </div></blockquote>
@@ -1255,7 +1269,7 @@ ACM SIGGRAPH Computer Graphics, vol. 18, 1984, pp. 207-212.</td></tr>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>ii</strong> : ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ii</strong> : ndarray</p>
 <blockquote>
 <div><p>Integral image.</p>
 </div></blockquote>
@@ -1269,7 +1283,7 @@ ACM SIGGRAPH Computer Graphics, vol. 18, 1984, pp. 207-212.</td></tr>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>S</strong> : scalar or ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>S</strong> : scalar or ndarray</p>
 <blockquote class="last">
 <div><p>Integral (sum) over the given window(s).</p>
 </div></blockquote>
@@ -1292,7 +1306,7 @@ back projection algorithm.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>radon_image</strong> : array_like, dtype=float</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>radon_image</strong> : array_like, dtype=float</p>
 <blockquote>
 <div><p>Image containing radon transform (sinogram). Each column of
 the image corresponds to a projection along a different angle. The
@@ -1328,7 +1342,7 @@ Also changes the default output_size to match the behaviour of
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>reconstructed</strong> : ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>reconstructed</strong> : ndarray</p>
 <blockquote class="last">
 <div><p>Reconstructed image. The rotation axis will be located in the pixel
 with indices
@@ -1357,7 +1371,7 @@ the Simultaneous Algebraic Reconstruction Technique (SART) algorithm.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>radon_image</strong> : 2D array, dtype=float</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>radon_image</strong> : 2D array, dtype=float</p>
 <blockquote>
 <div><p>Image containing radon transform (sinogram). Each column of
 the image corresponds to a projection along a different angle. The
@@ -1395,7 +1409,7 @@ Values close to or higher than 1 are not recommended.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>reconstructed</strong> : ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>reconstructed</strong> : ndarray</p>
 <blockquote class="last">
 <div><p>Reconstructed image. The rotation axis will be located in the pixel
 with indices
@@ -1469,7 +1483,7 @@ Symposium Conference Record, 2004 IEEE. Vol. 6. IEEE, 2004.</td></tr>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
 <blockquote>
 <div><p>x, y coordinates to transform</p>
 </div></blockquote>
@@ -1479,7 +1493,7 @@ Symposium Conference Record, 2004 IEEE. Vol. 6. IEEE, 2004.</td></tr>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
 <blockquote class="last">
 <div><p>Transformed coordinates.</p>
 </div></blockquote>
@@ -1500,7 +1514,7 @@ Symposium Conference Record, 2004 IEEE. Vol. 6. IEEE, 2004.</td></tr>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>img</strong> : (M, N) ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : (M, N) ndarray</p>
 <blockquote>
 <div><p>Input image with nonzero values representing edges.</p>
 </div></blockquote>
@@ -1524,7 +1538,7 @@ Increase the parameter to merge broken lines more aggresively.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>lines</strong> : list</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>lines</strong> : list</p>
 <blockquote class="last">
 <div><p>List of lines identified, lines in format ((x0, y0), (x1, y0)),
 indicating line start and end.</p>
@@ -1555,7 +1569,7 @@ Conference on Computer Vision and Pattern Recognition, 1999.</td></tr>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>image</strong> : array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : array</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
@@ -1585,7 +1599,7 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>out</strong> : array</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : array</p>
 <blockquote class="last">
 <div><p>Upsampled and smoothed float image.</p>
 </div></blockquote>
@@ -1619,7 +1633,7 @@ the reduction does not change its shape.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>image</strong> : array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : array</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
@@ -1654,7 +1668,7 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>pyramid</strong> : generator</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pyramid</strong> : generator</p>
 <blockquote class="last">
 <div><p>Generator yielding pyramid layers as float images.</p>
 </div></blockquote>
@@ -1692,7 +1706,7 @@ change its shape.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>image</strong> : array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : array</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
@@ -1727,7 +1741,7 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>pyramid</strong> : generator</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pyramid</strong> : generator</p>
 <blockquote class="last">
 <div><p>Generator yielding pyramid layers as float images.</p>
 </div></blockquote>
@@ -1761,7 +1775,7 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>image</strong> : array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : array</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
@@ -1791,7 +1805,7 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>out</strong> : array</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : array</p>
 <blockquote class="last">
 <div><p>Smoothed and downsampled float image.</p>
 </div></blockquote>
@@ -1820,7 +1834,7 @@ projection angles.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>image</strong> : array_like, dtype=float</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : array_like, dtype=float</p>
 <blockquote>
 <div><p>Input image. The rotation axis will be located in the pixel with
 indices <tt class="docutils literal"><span class="pre">(image.shape[0]</span> <span class="pre">//</span> <span class="pre">2,</span> <span class="pre">image.shape[1]</span> <span class="pre">//</span> <span class="pre">2)</span></tt>.</p>
@@ -1837,7 +1851,7 @@ equal to <tt class="docutils literal"><span class="pre">min(image.shape)</span><
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>radon_image</strong> : ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>radon_image</strong> : ndarray</p>
 <blockquote>
 <div><p>Radon transform (sinogram).  The tomography rotation axis will lie
 at the pixel index <tt class="docutils literal"><span class="pre">radon_image.shape[0]</span> <span class="pre">//</span> <span class="pre">2</span></tt> along the 0th
@@ -1845,7 +1859,7 @@ dimension of <tt class="docutils literal"><span class="pre">radon_image</span></
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises :</th><td class="field-body"><p class="first"><strong>ValueError</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong> :</p>
 <blockquote class="last">
 <div><p>If called with <tt class="docutils literal"><span class="pre">circle=True</span></tt> and <tt class="docutils literal"><span class="pre">image</span> <span class="pre">!=</span> <span class="pre">0</span></tt> outside the inscribed
 circle</p>
@@ -1871,7 +1885,7 @@ mean, see <cite>skimage.measure.local_sum</cite> and
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
@@ -1882,7 +1896,7 @@ mean, see <cite>skimage.measure.local_sum</cite> and
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>scaled</strong> : ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>scaled</strong> : ndarray</p>
 <blockquote>
 <div><p>Scaled version of the input.</p>
 </div></blockquote>
@@ -1935,7 +1949,7 @@ respectively.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
@@ -1948,7 +1962,7 @@ of input channels does not equal the number of output channels a
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>resized</strong> : ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>resized</strong> : ndarray</p>
 <blockquote>
 <div><p>Resized version of the input.</p>
 </div></blockquote>
@@ -1995,7 +2009,7 @@ the image boundaries.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
@@ -2011,7 +2025,7 @@ False.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>rotated</strong> : ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rotated</strong> : ndarray</p>
 <blockquote>
 <div><p>Rotated version of the input.</p>
 </div></blockquote>
@@ -2062,7 +2076,7 @@ the image boundaries.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
@@ -2085,7 +2099,7 @@ rapidly beyond <cite>radius</cite>.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>swirled</strong> : ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>swirled</strong> : ndarray</p>
 <blockquote>
 <div><p>Swirled version of the input.</p>
 </div></blockquote>
@@ -2129,7 +2143,7 @@ the image boundaries.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>image</strong> : 2-D or 3-D array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : 2-D or 3-D array</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
@@ -2147,7 +2161,8 @@ inverse). See example section for usage.</p>
 <p><strong>output_shape</strong> : tuple (rows, cols), optional</p>
 <blockquote>
 <div><p>Shape of the output image generated. By default the shape of the input
-image is preserved.</p>
+image is preserved.  Note that, even for multi-band images, only rows
+and columns need to be specified.</p>
 </div></blockquote>
 <p><strong>order</strong> : int, optional</p>
 <blockquote>
@@ -2223,7 +2238,7 @@ execution time. The image is shifted to the bottom.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters :</th><td class="field-body"><p class="first"><strong>coord_map</strong> : callable like GeometricTransform.inverse</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>coord_map</strong> : callable like GeometricTransform.inverse</p>
 <blockquote>
 <div><p>Return input coordinates for given output coordinates.
 Coordinates are in the shape (P, 2), where P is the number
@@ -2239,7 +2254,7 @@ of coordinates and each element is a <tt class="docutils literal"><span class="p
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns :</th><td class="field-body"><p class="first"><strong>coords</strong> : (ndim, rows, cols[, bands]) array of dtype <cite>dtype</cite></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>coords</strong> : (ndim, rows, cols[, bands]) array of dtype <cite>dtype</cite></p>
 <blockquote class="last">
 <div><p>Coordinates for <cite>scipy.ndimage.map_coordinates</cite>, that will yield
 an image of shape (orows, ocols, bands) by drawing from source

@@ -1,11 +1,10 @@
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Image Viewer &mdash; skimage v0.10dev docs</title>
+        <title>Image Viewer &mdash; skimage v0.11dev docs</title>
     
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.10dev',
+        VERSION:     '0.11dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +26,7 @@
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <link rel="top" title="skimage v0.10dev docs" href="../index.html" />
+        <link rel="top" title="skimage v0.11dev docs" href="../index.html" />
         <link rel="up" title="User Guide" href="../user_guide.html" />
         <link rel="next" title="How to contribute to skimage" href="../contribute.html" />
         <link rel="prev" title="Getting help on using skimage" href="getting_help.html" />
@@ -81,9 +80,18 @@ let&#8217;s see an example of how a pre-defined plugin is added to the viewer:</
 
 <span class="n">viewer</span> <span class="o">=</span> <span class="n">ImageViewer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="n">viewer</span> <span class="o">+=</span> <span class="n">LineProfile</span><span class="p">(</span><span class="n">viewer</span><span class="p">)</span>
-<span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">overlay</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>The viewer&#8217;s <tt class="docutils literal"><span class="pre">show()</span></tt> method returns a list of tuples, one for each attached
+plugin. Each tuple contains two elements: an overlay of the same shape as the
+input image, and a data field (which may be <tt class="docutils literal"><span class="pre">None</span></tt>). A plugin class documents
+its return value in its <tt class="docutils literal"><span class="pre">output</span></tt> method.</p>
+<p>In this example, only one plugin is attached, so the list returned by <tt class="docutils literal"><span class="pre">show</span></tt>
+will have length 1. We extract the single tuple and bind its <tt class="docutils literal"><span class="pre">overlay</span></tt> and
+<tt class="docutils literal"><span class="pre">data</span></tt> elements to individual variables. Here, <tt class="docutils literal"><span class="pre">overlay</span></tt> contains an image
+of the line drawn on the viewer, and <tt class="docutils literal"><span class="pre">data</span></tt> contains the 1-dimensional
+intensity profile along that line.</p>
 <p>At the moment, there are not many plugins pre-defined, but there is a really
 simple interface for creating your own plugin. First, let us create a plugin to
 call the total-variation denoising function, <tt class="docutils literal"><span class="pre">denoise_tv_bregman</span></tt>:</p>
@@ -116,9 +124,11 @@ image stack (see <tt class="docutils literal"><span class="pre">skimage.io.push<
 <p>All that&#8217;s left is to create an image viewer and add the plugin to that viewer.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">viewer</span> <span class="o">=</span> <span class="n">ImageViewer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="n">viewer</span> <span class="o">+=</span> <span class="n">denoise_plugin</span>
-<span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">denoised</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>Here, we access only the overlay returned by the plugin, which contains the
+filtered image for the last used setting of <tt class="docutils literal"><span class="pre">weight</span></tt>.</p>
 <img alt="../_images/denoise_viewer_window.png" src="../_images/denoise_viewer_window.png" />
 <img alt="../_images/denoise_plugin_window.png" src="../_images/denoise_plugin_window.png" />
 </div>

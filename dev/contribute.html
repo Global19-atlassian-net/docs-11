@@ -1,11 +1,10 @@
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>How to contribute to skimage &mdash; skimage v0.10dev docs</title>
+        <title>How to contribute to skimage &mdash; skimage v0.11dev docs</title>
     
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -17,8 +16,8 @@
     <script src="_static/js/bootstrap.min.js"></script>
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '',
-        VERSION:     '0.10dev',
+        URL_ROOT:    './',
+        VERSION:     '0.11dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,7 +26,7 @@
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
-        <link rel="top" title="skimage v0.10dev docs" href="index.html" />
+        <link rel="top" title="skimage v0.11dev docs" href="index.html" />
         <link rel="next" title="Working with scikit-image source code" href="gitwash/index.html" />
         <link rel="prev" title="Image Viewer" href="user_guide/viewer.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
@@ -91,11 +90,13 @@ Refer to the <a class="reference internal" href="gitwash/index.html"><em>gitwash
 &#8220;fork&#8221; button to create your own copy of the project.</p>
 </li>
 <li><p class="first">Clone the project to your local computer:</p>
-<div class="highlight-python"><pre>git clone git@github.com:your-username/scikit-image.git</pre>
+<div class="highlight-python"><div class="highlight"><pre>git clone git@github.com:your-username/scikit-image.git
+</pre></div>
 </div>
 </li>
 <li><p class="first">Add the upstream repository:</p>
-<div class="highlight-python"><pre>git remote add upstream git@github.com:scikit-image/scikit-image.git</pre>
+<div class="highlight-python"><div class="highlight"><pre>git remote add upstream git@github.com:scikit-image/scikit-image.git
+</pre></div>
 </div>
 </li>
 <li><p class="first">Now, you have remote repositories named:</p>
@@ -111,14 +112,16 @@ Refer to the <a class="reference internal" href="gitwash/index.html"><em>gitwash
 <li><p class="first">Develop your contribution:</p>
 <ul>
 <li><p class="first">Pull the latest changes from upstream:</p>
-<div class="highlight-python"><pre>git checkout master
-git pull upstream master</pre>
+<div class="highlight-python"><div class="highlight"><pre>git checkout master
+git pull upstream master
+</pre></div>
 </div>
 </li>
 <li><p class="first">Create a branch for the feature you want to work on. Since the
 branch name will appear in the merge message, use a sensible name
 such as &#8216;transform-speedups&#8217;:</p>
-<div class="highlight-python"><pre>git checkout -b transform-speedups</pre>
+<div class="highlight-python"><div class="highlight"><pre>git checkout -b transform-speedups
+</pre></div>
 </div>
 </li>
 <li><p class="first">Commit locally as you progress (<tt class="docutils literal"><span class="pre">git</span> <span class="pre">add</span></tt> and <tt class="docutils literal"><span class="pre">git</span> <span class="pre">commit</span></tt>)</p>
@@ -128,7 +131,8 @@ such as &#8216;transform-speedups&#8217;:</p>
 <li><p class="first">To submit your contribution:</p>
 <ul>
 <li><p class="first">Push your changes back to your fork on GitHub:</p>
-<div class="highlight-python"><pre>git push origin transform-speedups</pre>
+<div class="highlight-python"><div class="highlight"><pre>git push origin transform-speedups
+</pre></div>
 </div>
 </li>
 <li><p class="first">Go to GitHub. The new branch will show up with a green Pull Request
@@ -179,19 +183,22 @@ where 123 is the issue number.</p>
 <p>Do <em>not</em> ever merge the main branch into yours. If GitHub indicates that the
 branch of your Pull Request can no longer be merged automatically, rebase
 onto master:</p>
-<div class="highlight-python"><pre>git checkout master
+<div class="highlight-python"><div class="highlight"><pre>git checkout master
 git pull upstream master
 git checkout transform-speedups
-git rebase master</pre>
+git rebase master
+</pre></div>
 </div>
 <p>If any conflicts occur, fix the according files and continue:</p>
-<div class="highlight-python"><pre>git add conflict-file1 conflict-file2
-git rebase --continue</pre>
+<div class="highlight-python"><div class="highlight"><pre>git add conflict-file1 conflict-file2
+git rebase --continue
+</pre></div>
 </div>
 <p>However, you should only rebase your own branches and must generally not
 rebase any branch which you collaborate on with someone else.</p>
 <p>Finally, you must push your rebased branch:</p>
-<div class="highlight-python"><pre>git push --force origin transform-speedups</pre>
+<div class="highlight-python"><div class="highlight"><pre>git push --force origin transform-speedups
+</pre></div>
 </div>
 <p>(If you are curious, here&#8217;s a further discussion on the
 <a class="reference external" href="http://tinyurl.com/lll385">dangers of rebasing</a>.
@@ -223,10 +230,11 @@ you get no response to your pull request.
 <tt class="docutils literal"><span class="pre">&quot;uint8&quot;</span></tt>).</p>
 </li>
 <li><p class="first">Use the following import conventions:</p>
-<div class="highlight-python"><pre>import numpy as np
+<div class="highlight-python"><div class="highlight"><pre>import numpy as np
 import matplotlib.pyplot as plt
 
-cimport numpy as cnp # in Cython code</pre>
+cimport numpy as cnp # in Cython code
+</pre></div>
 </div>
 </li>
 <li><p class="first">When documenting array parameters, use <tt class="docutils literal"><span class="pre">image</span> <span class="pre">:</span> <span class="pre">(M,</span> <span class="pre">N)</span> <span class="pre">ndarray</span></tt>
@@ -252,15 +260,17 @@ i.e., statement coverage should be at 100%.</p>
 <p>To measure the test coverage, install
 <a class="reference external" href="http://nedbatchelder.com/code/coverage/">coverage.py</a>
 (using <tt class="docutils literal"><span class="pre">easy_install</span> <span class="pre">coverage</span></tt>) and then run:</p>
-<div class="highlight-python"><pre>$ make coverage</pre>
+<div class="highlight-python"><div class="highlight"><pre>$ make coverage
+</pre></div>
 </div>
 <p>This will print a report with one line for each file in <cite>skimage</cite>,
 detailing the test coverage:</p>
-<div class="highlight-python"><pre>Name                                             Stmts   Exec  Cover   Missing
+<div class="highlight-python"><div class="highlight"><pre>Name                                             Stmts   Exec  Cover   Missing
 ------------------------------------------------------------------------------
 skimage/color/colorconv                             77     77   100%
 skimage/filter/__init__                              1      1   100%
-...</pre>
+...
+</pre></div>
 </div>
 </div>
 <div class="section" id="activate-travis-ci-for-your-fork-optional">
