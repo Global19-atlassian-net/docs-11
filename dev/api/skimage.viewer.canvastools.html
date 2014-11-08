@@ -40,7 +40,12 @@
 <li><a href="/download.html">Download</a></li>
 <li><a href="/docs/dev/auto_examples">Gallery</a></li>
 <li><a href="/docs/dev">Documentation</a></li>
-<li><a href="https://github.com/scikit-image/scikit-image">Source</a></li>
+<li><a href="https://github.com/scikit-image/scikit-image">
+    <img src="_static/GitHub-Mark-32px.png" style="height: 15px; width: 15px;
+                                                   display: inline; float: none;
+                                                   padding-bottom: 3px;">
+    Source</a>
+</li>
             </ul>
             <form class="navbar-form pull-right" action="../search.html" method="get">
                 <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
@@ -58,16 +63,16 @@
 <h2><a class="reference internal" href="#skimage.viewer.canvastools.LineTool" title="skimage.viewer.canvastools.LineTool"><tt class="xref py py-class docutils literal"><span class="pre">LineTool</span></tt></a><a class="headerlink" href="#linetool" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.viewer.canvastools.LineTool">
-<em class="property">class </em><tt class="descclassname">skimage.viewer.canvastools.</tt><tt class="descname">LineTool</tt><big>(</big><em>ax</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>maxdist=10</em>, <em>line_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.LineTool" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">skimage.viewer.canvastools.</tt><tt class="descname">LineTool</tt><big>(</big><em>viewer</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>maxdist=10</em>, <em>line_props=None</em>, <em>handle_props=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.LineTool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">skimage.viewer.canvastools.base.CanvasToolBase</span></tt></p>
 <p>Widget for line selection in a plot.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ax</strong> : <tt class="xref py py-class docutils literal"><span class="pre">matplotlib.axes.Axes</span></tt></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>viewer</strong> : <tt class="xref py py-class docutils literal"><span class="pre">skimage.viewer.Viewer</span></tt></p>
 <blockquote>
-<div><p>Matplotlib axes where tool is displayed.</p>
+<div><p>Skimage viewer object.</p>
 </div></blockquote>
 <p><strong>on_move</strong> : function</p>
 <blockquote>
@@ -87,8 +92,13 @@ This function must accept the end points of line as the only argument.</p>
 <div><p>Maximum pixel distance allowed when selecting control handle.</p>
 </div></blockquote>
 <p><strong>line_props</strong> : dict</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Properties for <tt class="xref py py-class docutils literal"><span class="pre">matplotlib.lines.Line2D</span></tt>.</p>
+</div></blockquote>
+<p><strong>handle_props</strong> : dict</p>
+<blockquote class="last">
+<div><p>Marker properties for the handles (also see
+<tt class="xref py py-class docutils literal"><span class="pre">matplotlib.lines.Line2D</span></tt>).</p>
 </div></blockquote>
 </td>
 </tr>
@@ -108,7 +118,7 @@ This function must accept the end points of line as the only argument.</p>
 </table>
 <dl class="method">
 <dt id="skimage.viewer.canvastools.LineTool.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>ax</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>maxdist=10</em>, <em>line_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.LineTool.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>viewer</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>maxdist=10</em>, <em>line_props=None</em>, <em>handle_props=None</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.LineTool.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -119,6 +129,11 @@ This function must accept the end points of line as the only argument.</p>
 <dl class="attribute">
 <dt id="skimage.viewer.canvastools.LineTool.geometry">
 <tt class="descname">geometry</tt><a class="headerlink" href="#skimage.viewer.canvastools.LineTool.geometry" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="skimage.viewer.canvastools.LineTool.hit_test">
+<tt class="descname">hit_test</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.LineTool.hit_test" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -148,16 +163,16 @@ This function must accept the end points of line as the only argument.</p>
 <h2><a class="reference internal" href="#skimage.viewer.canvastools.PaintTool" title="skimage.viewer.canvastools.PaintTool"><tt class="xref py py-class docutils literal"><span class="pre">PaintTool</span></tt></a><a class="headerlink" href="#painttool" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.viewer.canvastools.PaintTool">
-<em class="property">class </em><tt class="descclassname">skimage.viewer.canvastools.</tt><tt class="descname">PaintTool</tt><big>(</big><em>ax</em>, <em>overlay_shape</em>, <em>radius=5</em>, <em>alpha=0.3</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>rect_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">skimage.viewer.canvastools.</tt><tt class="descname">PaintTool</tt><big>(</big><em>viewer</em>, <em>overlay_shape</em>, <em>radius=5</em>, <em>alpha=0.3</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>rect_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">skimage.viewer.canvastools.base.CanvasToolBase</span></tt></p>
 <p>Widget for painting on top of a plot.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ax</strong> : <tt class="xref py py-class docutils literal"><span class="pre">matplotlib.axes.Axes</span></tt></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>viewer</strong> : <tt class="xref py py-class docutils literal"><span class="pre">skimage.viewer.Viewer</span></tt></p>
 <blockquote>
-<div><p>Matplotlib axes where tool is displayed.</p>
+<div><p>Skimage viewer object.</p>
 </div></blockquote>
 <p><strong>overlay_shape</strong> : shape tuple</p>
 <blockquote>
@@ -206,7 +221,7 @@ redefines defaults in <tt class="xref py py-class docutils literal"><span class=
 </table>
 <dl class="method">
 <dt id="skimage.viewer.canvastools.PaintTool.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>ax</em>, <em>overlay_shape</em>, <em>radius=5</em>, <em>alpha=0.3</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>rect_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>viewer</em>, <em>overlay_shape</em>, <em>radius=5</em>, <em>alpha=0.3</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>rect_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -217,6 +232,11 @@ redefines defaults in <tt class="xref py py-class docutils literal"><span class=
 <dl class="attribute">
 <dt id="skimage.viewer.canvastools.PaintTool.label">
 <tt class="descname">label</tt><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.label" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="skimage.viewer.canvastools.PaintTool.on_key_press">
+<tt class="descname">on_key_press</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.on_key_press" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -266,7 +286,7 @@ redefines defaults in <tt class="xref py py-class docutils literal"><span class=
 <h2><a class="reference internal" href="#skimage.viewer.canvastools.RectangleTool" title="skimage.viewer.canvastools.RectangleTool"><tt class="xref py py-class docutils literal"><span class="pre">RectangleTool</span></tt></a><a class="headerlink" href="#rectangletool" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.viewer.canvastools.RectangleTool">
-<em class="property">class </em><tt class="descclassname">skimage.viewer.canvastools.</tt><tt class="descname">RectangleTool</tt><big>(</big><em>ax</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>maxdist=10</em>, <em>rect_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.RectangleTool" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">skimage.viewer.canvastools.</tt><tt class="descname">RectangleTool</tt><big>(</big><em>viewer</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>maxdist=10</em>, <em>rect_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.RectangleTool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">skimage.viewer.canvastools.base.CanvasToolBase</span></tt>, <tt class="xref py py-class docutils literal"><span class="pre">matplotlib.widgets.RectangleSelector</span></tt></p>
 <p>Widget for selecting a rectangular region in a plot.</p>
 <p>After making the desired selection, press &#8220;Enter&#8221; to accept the selection
@@ -275,9 +295,9 @@ and call the <cite>on_enter</cite> callback function.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ax</strong> : <tt class="xref py py-class docutils literal"><span class="pre">matplotlib.axes.Axes</span></tt></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>viewer</strong> : <tt class="xref py py-class docutils literal"><span class="pre">skimage.viewer.Viewer</span></tt></p>
 <blockquote>
-<div><p>Matplotlib axes where tool is displayed.</p>
+<div><p>Skimage viewer object.</p>
 </div></blockquote>
 <p><strong>on_move</strong> : function</p>
 <blockquote>
@@ -319,7 +339,7 @@ redefines defaults in <tt class="xref py py-class docutils literal"><span class=
 </table>
 <dl class="method">
 <dt id="skimage.viewer.canvastools.RectangleTool.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>ax</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>maxdist=10</em>, <em>rect_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.RectangleTool.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>viewer</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>maxdist=10</em>, <em>rect_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.RectangleTool.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -346,18 +366,18 @@ redefines defaults in <tt class="xref py py-class docutils literal"><span class=
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="skimage.viewer.canvastools.RectangleTool.onmove">
-<tt class="descname">onmove</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.RectangleTool.onmove" title="Permalink to this definition">¶</a></dt>
+<dt id="skimage.viewer.canvastools.RectangleTool.on_mouse_press">
+<tt class="descname">on_mouse_press</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.RectangleTool.on_mouse_press" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="skimage.viewer.canvastools.RectangleTool.press">
-<tt class="descname">press</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.RectangleTool.press" title="Permalink to this definition">¶</a></dt>
+<dt id="skimage.viewer.canvastools.RectangleTool.on_mouse_release">
+<tt class="descname">on_mouse_release</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.RectangleTool.on_mouse_release" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="skimage.viewer.canvastools.RectangleTool.release">
-<tt class="descname">release</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.RectangleTool.release" title="Permalink to this definition">¶</a></dt>
+<dt id="skimage.viewer.canvastools.RectangleTool.on_move">
+<tt class="descname">on_move</tt><big>(</big><em>event</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.RectangleTool.on_move" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -367,7 +387,7 @@ redefines defaults in <tt class="xref py py-class docutils literal"><span class=
 <h2><a class="reference internal" href="#skimage.viewer.canvastools.ThickLineTool" title="skimage.viewer.canvastools.ThickLineTool"><tt class="xref py py-class docutils literal"><span class="pre">ThickLineTool</span></tt></a><a class="headerlink" href="#thicklinetool" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.viewer.canvastools.ThickLineTool">
-<em class="property">class </em><tt class="descclassname">skimage.viewer.canvastools.</tt><tt class="descname">ThickLineTool</tt><big>(</big><em>ax</em>, <em>on_move=None</em>, <em>on_enter=None</em>, <em>on_release=None</em>, <em>on_change=None</em>, <em>maxdist=10</em>, <em>line_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.ThickLineTool" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><tt class="descclassname">skimage.viewer.canvastools.</tt><tt class="descname">ThickLineTool</tt><big>(</big><em>viewer</em>, <em>on_move=None</em>, <em>on_enter=None</em>, <em>on_release=None</em>, <em>on_change=None</em>, <em>maxdist=10</em>, <em>line_props=None</em>, <em>handle_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.ThickLineTool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">skimage.viewer.canvastools.linetool.LineTool</span></tt></p>
 <p>Widget for line selection in a plot.</p>
 <p>The thickness of the line can be varied using the mouse scroll wheel, or
@@ -376,9 +396,9 @@ with the &#8216;+&#8217; and &#8216;-&#8216; keys.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ax</strong> : <tt class="xref py py-class docutils literal"><span class="pre">matplotlib.axes.Axes</span></tt></p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>viewer</strong> : <tt class="xref py py-class docutils literal"><span class="pre">skimage.viewer.Viewer</span></tt></p>
 <blockquote>
-<div><p>Matplotlib axes where tool is displayed.</p>
+<div><p>Skimage viewer object.</p>
 </div></blockquote>
 <p><strong>on_move</strong> : function</p>
 <blockquote>
@@ -402,8 +422,13 @@ This function must accept the end points of line as the only argument.</p>
 <div><p>Maximum pixel distance allowed when selecting control handle.</p>
 </div></blockquote>
 <p><strong>line_props</strong> : dict</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Properties for <tt class="xref py py-class docutils literal"><span class="pre">matplotlib.lines.Line2D</span></tt>.</p>
+</div></blockquote>
+<p><strong>handle_props</strong> : dict</p>
+<blockquote class="last">
+<div><p>Marker properties for the handles (also see
+<tt class="xref py py-class docutils literal"><span class="pre">matplotlib.lines.Line2D</span></tt>).</p>
 </div></blockquote>
 </td>
 </tr>
@@ -423,7 +448,7 @@ This function must accept the end points of line as the only argument.</p>
 </table>
 <dl class="method">
 <dt id="skimage.viewer.canvastools.ThickLineTool.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>ax</em>, <em>on_move=None</em>, <em>on_enter=None</em>, <em>on_release=None</em>, <em>on_change=None</em>, <em>maxdist=10</em>, <em>line_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.ThickLineTool.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>viewer</em>, <em>on_move=None</em>, <em>on_enter=None</em>, <em>on_release=None</em>, <em>on_change=None</em>, <em>maxdist=10</em>, <em>line_props=None</em>, <em>handle_props=None</em><big>)</big><a class="headerlink" href="#skimage.viewer.canvastools.ThickLineTool.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

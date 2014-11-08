@@ -40,7 +40,12 @@
 <li><a href="/download.html">Download</a></li>
 <li><a href="/docs/dev/auto_examples">Gallery</a></li>
 <li><a href="/docs/dev">Documentation</a></li>
-<li><a href="https://github.com/scikit-image/scikit-image">Source</a></li>
+<li><a href="https://github.com/scikit-image/scikit-image">
+    <img src="_static/GitHub-Mark-32px.png" style="height: 15px; width: 15px;
+                                                   display: inline; float: none;
+                                                   padding-bottom: 3px;">
+    Source</a>
+</li>
             </ul>
             <form class="navbar-form pull-right" action="../search.html" method="get">
                 <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
@@ -242,30 +247,38 @@ Descriptors in the Context of Robot Navigation&#8221;
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <span class="n">lena</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <span class="n">astronaut</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2gray</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">CENSURE</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">lena</span><span class="p">()[</span><span class="mi">100</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">:</span><span class="mi">300</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">astronaut</span><span class="p">()[</span><span class="mi">100</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span> <span class="mi">100</span><span class="p">:</span><span class="mi">300</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">censure</span> <span class="o">=</span> <span class="n">CENSURE</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">censure</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">censure</span><span class="o">.</span><span class="n">keypoints</span>
-<span class="go">array([[ 71, 148],</span>
-<span class="go">       [ 77, 186],</span>
-<span class="go">       [ 78, 189],</span>
-<span class="go">       [ 89, 174],</span>
-<span class="go">       [127, 134],</span>
-<span class="go">       [131, 133],</span>
-<span class="go">       [134, 125],</span>
-<span class="go">       [137, 125],</span>
-<span class="go">       [149,  36],</span>
-<span class="go">       [162, 165],</span>
-<span class="go">       [168, 167],</span>
-<span class="go">       [170,   5],</span>
-<span class="go">       [171,  29],</span>
-<span class="go">       [179,  20],</span>
-<span class="go">       [194,  65]])</span>
+<span class="go">array([[  4, 148],</span>
+<span class="go">       [ 12,  73],</span>
+<span class="go">       [ 21, 176],</span>
+<span class="go">       [ 91,  22],</span>
+<span class="go">       [ 93,  56],</span>
+<span class="go">       [ 94,  22],</span>
+<span class="go">       [ 95,  54],</span>
+<span class="go">       [100,  51],</span>
+<span class="go">       [103,  51],</span>
+<span class="go">       [106,  67],</span>
+<span class="go">       [108,  15],</span>
+<span class="go">       [117,  20],</span>
+<span class="go">       [122,  60],</span>
+<span class="go">       [125,  37],</span>
+<span class="go">       [129,  37],</span>
+<span class="go">       [133,  76],</span>
+<span class="go">       [145,  44],</span>
+<span class="go">       [146,  94],</span>
+<span class="go">       [150, 114],</span>
+<span class="go">       [153,  33],</span>
+<span class="go">       [154, 156],</span>
+<span class="go">       [155, 151],</span>
+<span class="go">       [184,  63]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">censure</span><span class="o">.</span><span class="n">scales</span>
-<span class="go">array([2, 4, 2, 3, 4, 2, 2, 3, 4, 6, 3, 2, 3, 4, 2])</span>
+<span class="go">array([2, 6, 6, 2, 4, 3, 2, 3, 2, 6, 3, 2, 2, 3, 2, 2, 2, 3, 2, 2, 4, 2, 2])</span>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
@@ -506,73 +519,76 @@ keypoints and descriptors you should use the faster
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.blob_log" title="skimage.feature.blob_log"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.blob_log</span></tt></a>(image[,&nbsp;min_sigma,&nbsp;...])</td>
 <td>Finds blobs in the given grayscale image.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.corner_fast" title="skimage.feature.corner_fast"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_fast</span></tt></a>(image[,&nbsp;n,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.canny" title="skimage.feature.canny"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.canny</span></tt></a>(image[,&nbsp;sigma,&nbsp;...])</td>
+<td>Edge filter an image using the Canny algorithm.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.corner_fast" title="skimage.feature.corner_fast"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_fast</span></tt></a>(image[,&nbsp;n,&nbsp;...])</td>
 <td>Extract FAST corners for a given image.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.corner_foerstner" title="skimage.feature.corner_foerstner"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_foerstner</span></tt></a>(image[,&nbsp;sigma])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.corner_foerstner" title="skimage.feature.corner_foerstner"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_foerstner</span></tt></a>(image[,&nbsp;sigma])</td>
 <td>Compute Foerstner corner measure response image.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.corner_harris" title="skimage.feature.corner_harris"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_harris</span></tt></a>(image[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.corner_harris" title="skimage.feature.corner_harris"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_harris</span></tt></a>(image[,&nbsp;...])</td>
 <td>Compute Harris corner measure response image.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.corner_kitchen_rosenfeld" title="skimage.feature.corner_kitchen_rosenfeld"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_kitchen_rosenfeld</span></tt></a>(image)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.corner_kitchen_rosenfeld" title="skimage.feature.corner_kitchen_rosenfeld"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_kitchen_rosenfeld</span></tt></a>(image)</td>
 <td>Compute Kitchen and Rosenfeld corner measure response image.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.corner_moravec" title="skimage.feature.corner_moravec"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_moravec</span></tt></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.corner_moravec" title="skimage.feature.corner_moravec"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_moravec</span></tt></a></td>
 <td>Compute Moravec corner measure response image.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.corner_orientations" title="skimage.feature.corner_orientations"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_orientations</span></tt></a></td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.corner_orientations" title="skimage.feature.corner_orientations"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_orientations</span></tt></a></td>
 <td>Compute the orientation of corners.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.corner_peaks" title="skimage.feature.corner_peaks"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_peaks</span></tt></a>(image[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.corner_peaks" title="skimage.feature.corner_peaks"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_peaks</span></tt></a>(image[,&nbsp;...])</td>
 <td>Find corners in corner measure response image.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.corner_shi_tomasi" title="skimage.feature.corner_shi_tomasi"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_shi_tomasi</span></tt></a>(image[,&nbsp;sigma])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.corner_shi_tomasi" title="skimage.feature.corner_shi_tomasi"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_shi_tomasi</span></tt></a>(image[,&nbsp;sigma])</td>
 <td>Compute Shi-Tomasi (Kanade-Tomasi) corner measure response image.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.corner_subpix" title="skimage.feature.corner_subpix"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_subpix</span></tt></a>(image,&nbsp;corners)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.corner_subpix" title="skimage.feature.corner_subpix"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.corner_subpix</span></tt></a>(image,&nbsp;corners)</td>
 <td>Determine subpixel position of corners.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.daisy" title="skimage.feature.daisy"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.daisy</span></tt></a>(img[,&nbsp;step,&nbsp;radius,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.daisy" title="skimage.feature.daisy"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.daisy</span></tt></a>(img[,&nbsp;step,&nbsp;radius,&nbsp;...])</td>
 <td>Extract DAISY feature descriptors densely for the given image.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.greycomatrix" title="skimage.feature.greycomatrix"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.greycomatrix</span></tt></a>(image,&nbsp;...[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.greycomatrix" title="skimage.feature.greycomatrix"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.greycomatrix</span></tt></a>(image,&nbsp;...[,&nbsp;...])</td>
 <td>Calculate the grey-level co-occurrence matrix.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.greycoprops" title="skimage.feature.greycoprops"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.greycoprops</span></tt></a>(P[,&nbsp;prop])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.greycoprops" title="skimage.feature.greycoprops"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.greycoprops</span></tt></a>(P[,&nbsp;prop])</td>
 <td>Calculate texture properties of a GLCM.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.hessian_matrix" title="skimage.feature.hessian_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.hessian_matrix</span></tt></a>(image[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.hessian_matrix" title="skimage.feature.hessian_matrix"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.hessian_matrix</span></tt></a>(image[,&nbsp;...])</td>
 <td>Compute Hessian matrix.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.hessian_matrix_det" title="skimage.feature.hessian_matrix_det"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.hessian_matrix_det</span></tt></a>(image,&nbsp;sigma)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.hessian_matrix_det" title="skimage.feature.hessian_matrix_det"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.hessian_matrix_det</span></tt></a>(image,&nbsp;sigma)</td>
 <td>Computes the approximate Hessian Determinant over an image.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.hessian_matrix_eigvals" title="skimage.feature.hessian_matrix_eigvals"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.hessian_matrix_eigvals</span></tt></a>(Hxx,&nbsp;...)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.hessian_matrix_eigvals" title="skimage.feature.hessian_matrix_eigvals"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.hessian_matrix_eigvals</span></tt></a>(Hxx,&nbsp;...)</td>
 <td>Compute Eigen values of Hessian matrix.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.hog" title="skimage.feature.hog"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.hog</span></tt></a>(image[,&nbsp;orientations,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.hog" title="skimage.feature.hog"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.hog</span></tt></a>(image[,&nbsp;orientations,&nbsp;...])</td>
 <td>Extract Histogram of Oriented Gradients (HOG) for a given image.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.local_binary_pattern" title="skimage.feature.local_binary_pattern"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.local_binary_pattern</span></tt></a>(image,&nbsp;P,&nbsp;R)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.local_binary_pattern" title="skimage.feature.local_binary_pattern"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.local_binary_pattern</span></tt></a>(image,&nbsp;P,&nbsp;R)</td>
 <td>Gray scale and rotation invariant LBP (Local Binary Patterns).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.match_descriptors" title="skimage.feature.match_descriptors"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.match_descriptors</span></tt></a>(...[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.match_descriptors" title="skimage.feature.match_descriptors"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.match_descriptors</span></tt></a>(...[,&nbsp;...])</td>
 <td>Brute-force matching of descriptors.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.match_template" title="skimage.feature.match_template"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.match_template</span></tt></a>(image,&nbsp;template)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.match_template" title="skimage.feature.match_template"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.match_template</span></tt></a>(image,&nbsp;template)</td>
 <td>Match a template to a 2-D or 3-D image using normalized correlation.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.peak_local_max" title="skimage.feature.peak_local_max"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.peak_local_max</span></tt></a>(image[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.peak_local_max" title="skimage.feature.peak_local_max"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.peak_local_max</span></tt></a>(image[,&nbsp;...])</td>
 <td>Find peaks in an image, and return them as coordinates or a boolean array.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.plot_matches" title="skimage.feature.plot_matches"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.plot_matches</span></tt></a>(ax,&nbsp;image1,&nbsp;...)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.plot_matches" title="skimage.feature.plot_matches"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.plot_matches</span></tt></a>(ax,&nbsp;image1,&nbsp;...)</td>
 <td>Plot matched features.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.structure_tensor" title="skimage.feature.structure_tensor"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.structure_tensor</span></tt></a>(image[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.structure_tensor" title="skimage.feature.structure_tensor"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.structure_tensor</span></tt></a>(image[,&nbsp;...])</td>
 <td>Compute structure tensor using sum of squared differences.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.structure_tensor_eigvals" title="skimage.feature.structure_tensor_eigvals"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.structure_tensor_eigvals</span></tt></a>(...)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.structure_tensor_eigvals" title="skimage.feature.structure_tensor_eigvals"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.structure_tensor_eigvals</span></tt></a>(...)</td>
 <td>Compute Eigen values of structure tensor.</td>
 </tr>
 </tbody>
@@ -879,6 +895,90 @@ standard deviation of the Gaussian kernel which detected the blob.</p>
 <span class="go">       [263, 244,  17],</span>
 <span class="go">       [263, 302,  17],</span>
 <span class="go">       [266, 115,  11]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="canny">
+<h2>canny<a class="headerlink" href="#canny" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.feature.canny">
+<tt class="descclassname">skimage.feature.</tt><tt class="descname">canny</tt><big>(</big><em>image</em>, <em>sigma=1.0</em>, <em>low_threshold=None</em>, <em>high_threshold=None</em>, <em>mask=None</em><big>)</big><a class="headerlink" href="#skimage.feature.canny" title="Permalink to this definition">¶</a></dt>
+<dd><p>Edge filter an image using the Canny algorithm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : 2D array</p>
+<blockquote>
+<div><p>Greyscale input image to detect edges on; can be of any dtype.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float</p>
+<blockquote>
+<div><p>Standard deviation of the Gaussian filter.</p>
+</div></blockquote>
+<p><strong>low_threshold</strong> : float</p>
+<blockquote>
+<div><p>Lower bound for hysteresis thresholding (linking edges).
+If None, low_threshold is set to 10% of dtype&#8217;s max.</p>
+</div></blockquote>
+<p><strong>high_threshold</strong> : float</p>
+<blockquote>
+<div><p>Upper bound for hysteresis thresholding (linking edges).
+If None, high_threshold is set to 20% of dtype&#8217;s max.</p>
+</div></blockquote>
+<p><strong>mask</strong> : array, dtype=bool, optional</p>
+<blockquote>
+<div><p>Mask to limit the application of Canny to a certain area.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>output</strong> : 2D array (image)</p>
+<blockquote class="last">
+<div><p>The binary edge map.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.sobel</span></tt></p>
+</div>
+<p class="rubric">Notes</p>
+<p>The steps of the algorithm are as follows:</p>
+<ul class="simple">
+<li>Smooth the image using a Gaussian with <tt class="docutils literal"><span class="pre">sigma</span></tt> width.</li>
+<li>Apply the horizontal and vertical Sobel operators to get the gradients
+within the image. The edge strength is the norm of the gradient.</li>
+<li>Thin potential edges to 1-pixel wide curves. First, find the normal
+to the edge at each point. This is done by looking at the
+signs and the relative magnitude of the X-Sobel and Y-Sobel
+to sort the points into 4 categories: horizontal, vertical,
+diagonal and antidiagonal. Then look in the normal and reverse
+directions to see if the values in either of those directions are
+greater than the point in question. Use interpolation to get a mix of
+points instead of picking the one that&#8217;s the closest to the normal.</li>
+<li>Perform a hysteresis thresholding: first label all points above the
+high threshold as edges. Then recursively label any point above the
+low threshold that is 8-connected to a labeled point as an edge.</li>
+</ul>
+<p class="rubric">References</p>
+<p>Canny, J., A Computational Approach To Edge Detection, IEEE Trans.
+Pattern Analysis and Machine Intelligence, 8:679-714, 1986</p>
+<p>William Green&#8217;s Canny tutorial
+<a class="reference external" href="http://dasl.mem.drexel.edu/alumni/bGreen/www.pages.drexel.edu/_weg22/can_tut.html">http://dasl.mem.drexel.edu/alumni/bGreen/www.pages.drexel.edu/_weg22/can_tut.html</a></p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="nb">filter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Generate noisy image of a square</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="p">[</span><span class="mi">64</span><span class="p">:</span><span class="o">-</span><span class="mi">64</span><span class="p">,</span> <span class="mi">64</span><span class="p">:</span><span class="o">-</span><span class="mi">64</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">+=</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">im</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># First trial with the Canny filter, with the default smoothing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">edges1</span> <span class="o">=</span> <span class="nb">filter</span><span class="o">.</span><span class="n">canny</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Increase the smoothing for better results</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">edges2</span> <span class="o">=</span> <span class="nb">filter</span><span class="o">.</span><span class="n">canny</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2191,7 +2291,7 @@ rotation invariant.</p>
 <tr><td class="label"><a class="fn-backref" href="#id37">[R146]</a></td><td>Multiresolution Gray-Scale and Rotation Invariant Texture
 Classification with Local Binary Patterns.
 Timo Ojala, Matti Pietikainen, Topi Maenpaa.
-<a class="reference external" href="http://www.rafbis.it/biplab15/images/stories/docenti/Danielriccio/">http://www.rafbis.it/biplab15/images/stories/docenti/Danielriccio/</a>           Articoliriferimento/LBP.pdf, 2002.</td></tr>
+<a class="reference external" href="http://www.rafbis.it/biplab15/images/stories/docenti/Danielriccio/Articoliriferimento/LBP.pdf">http://www.rafbis.it/biplab15/images/stories/docenti/Danielriccio/Articoliriferimento/LBP.pdf</a>, 2002.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r147" rules="none">
@@ -2677,6 +2777,7 @@ the image boundaries.</p>
 <li><a class="reference internal" href="#blob-dog">blob_dog</a></li>
 <li><a class="reference internal" href="#blob-doh">blob_doh</a></li>
 <li><a class="reference internal" href="#blob-log">blob_log</a></li>
+<li><a class="reference internal" href="#canny">canny</a></li>
 <li><a class="reference internal" href="#corner-fast">corner_fast</a></li>
 <li><a class="reference internal" href="#corner-foerstner">corner_foerstner</a></li>
 <li><a class="reference internal" href="#corner-harris">corner_harris</a></li>

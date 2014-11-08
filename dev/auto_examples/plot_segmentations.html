@@ -29,7 +29,7 @@
         <link rel="top" title="skimage v0.11dev docs" href="../index.html" />
         <link rel="up" title="General examples" href="index.html" />
         <link rel="next" title="Shapes" href="plot_shapes.html" />
-        <link rel="prev" title="Deconvolution of Lena" href="plot_restoration.html" />
+        <link rel="prev" title="Image Deconvolution" href="plot_restoration.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../_static/favicon.ico">
 </head>
@@ -43,7 +43,12 @@
 <li><a href="/download.html">Download</a></li>
 <li><a href="/docs/dev/auto_examples">Gallery</a></li>
 <li><a href="/docs/dev">Documentation</a></li>
-<li><a href="https://github.com/scikit-image/scikit-image">Source</a></li>
+<li><a href="https://github.com/scikit-image/scikit-image">
+    <img src="_static/GitHub-Mark-32px.png" style="height: 15px; width: 15px;
+                                                   display: inline; float: none;
+                                                   padding-bottom: 3px;">
+    Source</a>
+</li>
             </ul>
             <form class="navbar-form pull-right" action="../search.html" method="get">
                 <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
@@ -122,12 +127,12 @@ State-of-the-art Superpixel Methods, TPAMI, May 2012.</td></tr>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <span class="n">lena</span>
+<span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <span class="n">astronaut</span>
 <span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <span class="n">felzenszwalb</span><span class="p">,</span> <span class="n">slic</span><span class="p">,</span> <span class="n">quickshift</span>
 <span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <span class="n">mark_boundaries</span>
 <span class="kn">from</span> <span class="nn">skimage.util</span> <span class="kn">import</span> <span class="n">img_as_float</span>
 
-<span class="n">img</span> <span class="o">=</span> <span class="n">img_as_float</span><span class="p">(</span><span class="n">lena</span><span class="p">()[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">img_as_float</span><span class="p">(</span><span class="n">astronaut</span><span class="p">()[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">segments_fz</span> <span class="o">=</span> <span class="n">felzenszwalb</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">segments_slic</span> <span class="o">=</span> <span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">n_segments</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">compactness</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">segments_quick</span> <span class="o">=</span> <span class="n">quickshift</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_dist</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">ratio</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -170,7 +175,7 @@ State-of-the-art Superpixel Methods, TPAMI, May 2012.</td></tr>
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="plot_restoration.html" title="previous chapter">Deconvolution of Lena</a></li>
+            <li><a href="plot_restoration.html" title="previous chapter">Image Deconvolution</a></li>
         </ul>
     </div>
     <h4 class="sidebar-box-heading">Next topic</h4>

@@ -28,7 +28,7 @@
         <script type="text/javascript" src="_static/doctools.js"></script>
         <link rel="top" title="skimage v0.11dev docs" href="index.html" />
         <link rel="next" title="User Guide" href="user_guide.html" />
-        <link rel="prev" title="Version 0.10" href="api_changes.html" />
+        <link rel="prev" title="Version 0.11" href="api_changes.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="_static/favicon.ico">
 </head>
@@ -42,7 +42,12 @@
 <li><a href="/download.html">Download</a></li>
 <li><a href="/docs/dev/auto_examples">Gallery</a></li>
 <li><a href="/docs/dev">Documentation</a></li>
-<li><a href="https://github.com/scikit-image/scikit-image">Source</a></li>
+<li><a href="https://github.com/scikit-image/scikit-image">
+    <img src="_static/GitHub-Mark-32px.png" style="height: 15px; width: 15px;
+                                                   display: inline; float: none;
+                                                   padding-bottom: 3px;">
+    Source</a>
+</li>
             </ul>
             <form class="navbar-form pull-right" action="search.html" method="get">
                 <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
@@ -56,8 +61,9 @@
             
   <div class="section" id="pre-built-installation">
 <h1>Pre-built installation<a class="headerlink" href="#pre-built-installation" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#scikits.image">Windows binaries</a>
-are kindly provided by Christoph Gohlke.</p>
+<p><a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#scikit-image">Windows binaries</a>
+are kindly provided by Christoph Gohlke (note that, when upgrading,
+you should first uninstall any older versions).</p>
 <p>The latest stable release is also included as part of
 <a class="reference external" href="https://www.enthought.com/products/canopy/">Enthought Canopy</a>,
 <a class="reference external" href="http://code.google.com/p/pythonxy/wiki/Welcome">Python(x,y)</a> and
@@ -122,12 +128,11 @@ bentomaker install      # (when not builing in-place)
 <div class="section" id="build-requirements">
 <h1>Build Requirements<a class="headerlink" href="#build-requirements" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
-<li><a class="reference external" href="http://python.org">Python &gt;= 2.5</a></li>
+<li><a class="reference external" href="http://python.org">Python &gt;= 2.6</a></li>
 <li><a class="reference external" href="http://numpy.scipy.org/">Numpy &gt;= 1.6</a></li>
-<li><a class="reference external" href="http://www.cython.org/">Cython &gt;= 0.17</a></li>
+<li><a class="reference external" href="http://www.cython.org/">Cython &gt;= 0.19.2</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/six">Six &gt;=1.3</a></li>
 </ul>
-<p><a class="reference external" href="http://matplotlib.sf.net">Matplotlib &gt;= 1.0</a> is needed to generate the
-examples in the documentation.</p>
 <p>You can use pip to automatically install the base dependencies as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre>$ pip install -r requirements.txt
 </pre></div>
@@ -135,8 +140,19 @@ examples in the documentation.</p>
 </div>
 <div class="section" id="runtime-requirements">
 <h1>Runtime requirements<a class="headerlink" href="#runtime-requirements" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference external" href="http://scipy.org">SciPy &gt;= 0.10</a></li>
+<ul>
+<li><p class="first"><a class="reference external" href="http://scipy.org">SciPy</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="http://matplotlib.sf.net">Matplotlib</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://networkx.github.io">NetworkX</a></p>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://pypi.python.org/pypi/Pillow">Pillow</a></dt>
+<dd><p class="first last">(or <a class="reference external" href="http://www.pythonware.com/products/pil/">PIL</a>)</p>
+</dd>
+</dl>
+</li>
 </ul>
 </div>
 <div class="section" id="known-build-errors">
@@ -149,12 +165,6 @@ example at <tt class="docutils literal"><span class="pre">C:\Python26\Lib\distut
 <span class="n">compiler</span><span class="o">=</span><span class="n">mingw32</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="usage-requirements">
-<h1>Usage Requirements<a class="headerlink" href="#usage-requirements" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference external" href="http://www.scipy.org/">Scipy</a></li>
-</ul>
 </div>
 <div class="section" id="optional-requirements">
 <h1>Optional Requirements<a class="headerlink" href="#optional-requirements" title="Permalink to this headline">¶</a></h1>
@@ -181,16 +191,16 @@ walker segmentation.</p>
 </dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt><a class="reference external" href="https://pypi.python.org/pypi/Pillow">Pillow</a></dt>
-<dd><p class="first last">(or &lt;<a href="#id1"><span class="problematic" id="id2">`PIL http://www.pythonware.com/products/pil/&gt;`__</span></a>)
-The <tt class="docutils literal"><span class="pre">Pillow</span></tt> library (or equivalently <tt class="docutils literal"><span class="pre">PIL</span></tt>) is used for Input/Output.</p>
-</dd>
-</dl>
-</li>
-<li><p class="first"><a class="reference external" href="http://www.astropy.org">Astropy</a> is required to use the FITS io plug-in.</p>
+<li><p class="first"><a class="reference external" href="http://www.astropy.org">Astropy</a> provides FITS io capability.</p>
 </li>
 </ul>
+<dl class="docutils">
+<dt><a href="#id1"><span class="problematic" id="id2">*</span></a><cite>SimpleITK &lt;http://www.simpleitk.org/&gt;</cite></dt>
+<dd>Optional io plugin providing a wide variety of <a class="reference external" href="http://www.itk.org/Wiki/ITK_File_Formats">formats</a>.
+including specialized formats using in medical imaging.</dd>
+<dt><a href="#id3"><span class="problematic" id="id4">*</span></a><cite>imread &lt;http://pythonhosted.org/imread/&gt;</cite></dt>
+<dd>Optional io plugin providing most standard <a class="reference external" href="http://pythonhosted.org//imread/formats.html">formats</a>.</dd>
+</dl>
 </div>
 <div class="section" id="testing-requirements">
 <h1>Testing requirements<a class="headerlink" href="#testing-requirements" title="Permalink to this headline">¶</a></h1>
@@ -221,7 +231,7 @@ The <tt class="docutils literal"><span class="pre">Pillow</span></tt> library (o
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="api_changes.html" title="previous chapter">Version 0.10</a></li>
+            <li><a href="api_changes.html" title="previous chapter">Version 0.11</a></li>
         </ul>
     </div>
     <h4 class="sidebar-box-heading">Next topic</h4>
@@ -239,7 +249,6 @@ The <tt class="docutils literal"><span class="pre">Pillow</span></tt> library (o
 <li><a class="reference internal" href="#build-requirements">Build Requirements</a></li>
 <li><a class="reference internal" href="#runtime-requirements">Runtime requirements</a></li>
 <li><a class="reference internal" href="#known-build-errors">Known build errors</a></li>
-<li><a class="reference internal" href="#usage-requirements">Usage Requirements</a></li>
 <li><a class="reference internal" href="#optional-requirements">Optional Requirements</a></li>
 <li><a class="reference internal" href="#testing-requirements">Testing requirements</a></li>
 </ul>

@@ -40,7 +40,12 @@
 <li><a href="/download.html">Download</a></li>
 <li><a href="/docs/dev/auto_examples">Gallery</a></li>
 <li><a href="/docs/dev">Documentation</a></li>
-<li><a href="https://github.com/scikit-image/scikit-image">Source</a></li>
+<li><a href="https://github.com/scikit-image/scikit-image">
+    <img src="_static/GitHub-Mark-32px.png" style="height: 15px; width: 15px;
+                                                   display: inline; float: none;
+                                                   padding-bottom: 3px;">
+    Source</a>
+</li>
             </ul>
             <form class="navbar-form pull-right" action="../search.html" method="get">
                 <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
@@ -61,7 +66,7 @@
 <dl class="class">
 <dt id="skimage.io.Image">
 <em class="property">class </em><tt class="descclassname">skimage.io.</tt><tt class="descname">Image</tt><a class="headerlink" href="#skimage.io.Image" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.8)"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt></a></p>
+<dd><p>Bases: <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.9)"><tt class="xref py py-class docutils literal"><span class="pre">numpy.ndarray</span></tt></a></p>
 <p>Class representing Image data.</p>
 <p>These objects have tags for image metadata and IPython display protocol
 methods for image display.</p>
@@ -108,8 +113,8 @@ methods for image display.</p>
 <h2><a class="reference internal" href="#skimage.io.ImageCollection" title="skimage.io.ImageCollection"><tt class="xref py py-class docutils literal"><span class="pre">ImageCollection</span></tt></a><a class="headerlink" href="#imagecollection" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.io.ImageCollection">
-<em class="property">class </em><tt class="descclassname">skimage.io.</tt><tt class="descname">ImageCollection</tt><big>(</big><em>load_pattern</em>, <em>conserve_memory=True</em>, <em>load_func=None</em><big>)</big><a class="headerlink" href="#skimage.io.ImageCollection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<em class="property">class </em><tt class="descclassname">skimage.io.</tt><tt class="descname">ImageCollection</tt><big>(</big><em>load_pattern</em>, <em>conserve_memory=True</em>, <em>load_func=None</em>, <em>**load_func_kwargs</em><big>)</big><a class="headerlink" href="#skimage.io.ImageCollection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#object" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></a></p>
 <p>Load and manage a collection of image files.</p>
 <p>Note that files are always stored in alphabetical order. Also note that
 slicing returns a new ImageCollection, <em>not</em> a view into the data.</p>
@@ -168,6 +173,8 @@ frame from a video file:</p>
 <span class="n">ic</span> <span class="o">=</span> <span class="n">ImageCollection</span><span class="p">(</span><span class="s">&#39;/tmp/*.png&#39;</span><span class="p">,</span> <span class="n">load_func</span><span class="o">=</span><span class="n">imread_convert</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>For files with multiple images, the images will be flattened into a list
+and added to the list of available images.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="kn">as</span> <span class="nn">io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data_dir</span>
@@ -197,7 +204,7 @@ frame from a video file:</p>
 </table>
 <dl class="method">
 <dt id="skimage.io.ImageCollection.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>load_pattern</em>, <em>conserve_memory=True</em>, <em>load_func=None</em><big>)</big><a class="headerlink" href="#skimage.io.ImageCollection.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>load_pattern</em>, <em>conserve_memory=True</em>, <em>load_func=None</em>, <em>**load_func_kwargs</em><big>)</big><a class="headerlink" href="#skimage.io.ImageCollection.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load and manage a collection of images.</p>
 </dd></dl>
 
@@ -265,8 +272,8 @@ entire cache is erased.</p>
 <h2><a class="reference internal" href="#skimage.io.MultiImage" title="skimage.io.MultiImage"><tt class="xref py py-class docutils literal"><span class="pre">MultiImage</span></tt></a><a class="headerlink" href="#multiimage" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.io.MultiImage">
-<em class="property">class </em><tt class="descclassname">skimage.io.</tt><tt class="descname">MultiImage</tt><big>(</big><em>filename</em>, <em>conserve_memory=True</em>, <em>dtype=None</em><big>)</big><a class="headerlink" href="#skimage.io.MultiImage" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">object</span></tt></p>
+<em class="property">class </em><tt class="descclassname">skimage.io.</tt><tt class="descname">MultiImage</tt><big>(</big><em>filename</em>, <em>conserve_memory=True</em>, <em>dtype=None</em>, <em>**imread_kwargs</em><big>)</big><a class="headerlink" href="#skimage.io.MultiImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">skimage.io.collection.ImageCollection</span></tt></p>
 <p>A class containing a single multi-frame image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -291,7 +298,8 @@ the performance can be affected because frames have to be read from file
 more often.</p>
 <p>The last accessed frame is cached, all other frames will have to be read
 from file.</p>
-<p>The current implementation makes use of PIL.</p>
+<p>The current implementation makes use of <tt class="docutils literal"><span class="pre">tifffile</span></tt> for Tiff files and
+PIL otherwise.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data_dir</span>
 </pre></div>
@@ -307,42 +315,9 @@ from file.</p>
 </div>
 <dl class="method">
 <dt id="skimage.io.MultiImage.__init__">
-<tt class="descname">__init__</tt><big>(</big><em>filename</em>, <em>conserve_memory=True</em>, <em>dtype=None</em><big>)</big><a class="headerlink" href="#skimage.io.MultiImage.__init__" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">__init__</tt><big>(</big><em>filename</em>, <em>conserve_memory=True</em>, <em>dtype=None</em>, <em>**imread_kwargs</em><big>)</big><a class="headerlink" href="#skimage.io.MultiImage.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a multi-img.</p>
 </dd></dl>
-
-<dl class="method">
-<dt id="skimage.io.MultiImage.concatenate">
-<tt class="descname">concatenate</tt><big>(</big><big>)</big><a class="headerlink" href="#skimage.io.MultiImage.concatenate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Concatenate all images in the multi-image into an array.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ar</strong> : np.ndarray</p>
-<blockquote>
-<div><p>An array having one more dimension than the images in <cite>self</cite>.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong> :</p>
-<blockquote class="last">
-<div><p>If images in the <cite>MultiImage</cite> don&#8217;t have identical shapes.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#skimage.io.concatenate_images" title="skimage.io.concatenate_images"><tt class="xref py py-obj docutils literal"><span class="pre">concatenate_images</span></tt></a></p>
-</div>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="skimage.io.MultiImage.conserve_memory">
-<tt class="descname">conserve_memory</tt><a class="headerlink" href="#skimage.io.MultiImage.conserve_memory" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="skimage.io.MultiImage.filename">
@@ -473,7 +448,7 @@ matching plugin is used.</p>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="#skimage.io.ImageCollection.concatenate" title="skimage.io.ImageCollection.concatenate"><tt class="xref py py-obj docutils literal"><span class="pre">ImageCollection.concatenate</span></tt></a>, <a class="reference internal" href="#skimage.io.MultiImage.concatenate" title="skimage.io.MultiImage.concatenate"><tt class="xref py py-obj docutils literal"><span class="pre">MultiImage.concatenate</span></tt></a></p>
+<p class="last"><a class="reference internal" href="#skimage.io.ImageCollection.concatenate" title="skimage.io.ImageCollection.concatenate"><tt class="xref py py-obj docutils literal"><span class="pre">ImageCollection.concatenate</span></tt></a>, <tt class="xref py py-obj docutils literal"><span class="pre">MultiImage.concatenate</span></tt></p>
 </div>
 </dd></dl>
 
@@ -908,7 +883,7 @@ have been closed.</p>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)))</span>
+<span class="gp">... </span>    <span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </pre></div>
 </div>

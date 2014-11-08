@@ -28,7 +28,7 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <link rel="top" title="skimage v0.11dev docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
-        <link rel="prev" title="Watershed segmentation" href="../plot_watershed.html" />
+        <link rel="prev" title="Sliding window histogram" href="../plot_windowed_histogram.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../../_static/favicon.ico">
 </head>
@@ -42,7 +42,12 @@
 <li><a href="/download.html">Download</a></li>
 <li><a href="/docs/dev/auto_examples">Gallery</a></li>
 <li><a href="/docs/dev">Documentation</a></li>
-<li><a href="https://github.com/scikit-image/scikit-image">Source</a></li>
+<li><a href="https://github.com/scikit-image/scikit-image">
+    <img src="_static/GitHub-Mark-32px.png" style="height: 15px; width: 15px;
+                                                   display: inline; float: none;
+                                                   padding-bottom: 3px;">
+    Source</a>
+</li>
             </ul>
             <form class="navbar-form pull-right" action="../../search.html" method="get">
                 <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
@@ -99,7 +104,7 @@ background with the coins:</p>
 <p>Next, we try to delineate the contours of the coins using edge-based
 segmentation. To do this, we first get the edges of features using the Canny
 edge-detector.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">skimage.filter</span> <span class="kn">import</span> <span class="n">canny</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">canny</span>
 <span class="n">edges</span> <span class="o">=</span> <span class="n">canny</span><span class="p">(</span><span class="n">coins</span><span class="o">/</span><span class="mf">255.</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
@@ -215,7 +220,7 @@ individually.</p>
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="../plot_watershed.html" title="previous chapter">Watershed segmentation</a></li>
+            <li><a href="../plot_windowed_histogram.html" title="previous chapter">Sliding window histogram</a></li>
         </ul>
     </div>
         <h4 class="sidebar-box-heading">Contents</h4>

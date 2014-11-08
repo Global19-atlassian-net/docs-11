@@ -40,7 +40,12 @@
 <li><a href="/download.html">Download</a></li>
 <li><a href="/docs/dev/auto_examples">Gallery</a></li>
 <li><a href="/docs/dev">Documentation</a></li>
-<li><a href="https://github.com/scikit-image/scikit-image">Source</a></li>
+<li><a href="https://github.com/scikit-image/scikit-image">
+    <img src="_static/GitHub-Mark-32px.png" style="height: 15px; width: 15px;
+                                                   display: inline; float: none;
+                                                   padding-bottom: 3px;">
+    Source</a>
+</li>
             </ul>
             <form class="navbar-form pull-right" action="../search.html" method="get">
                 <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
@@ -96,7 +101,7 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.color.lab2rgb" title="skimage.color.lab2rgb"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.lab2rgb</span></tt></a>(lab)</td>
 <td>Lab to RGB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.lab2xyz" title="skimage.color.lab2xyz"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.lab2xyz</span></tt></a>(lab)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.lab2xyz" title="skimage.color.lab2xyz"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.lab2xyz</span></tt></a>(lab[,&nbsp;illuminant,&nbsp;...])</td>
 <td>CIE-LAB to XYZcolor space conversion.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.color.label2rgb" title="skimage.color.label2rgb"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.label2rgb</span></tt></a>(label[,&nbsp;image,&nbsp;...])</td>
@@ -108,7 +113,7 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.color.luv2rgb" title="skimage.color.luv2rgb"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.luv2rgb</span></tt></a>(luv)</td>
 <td>Luv to RGB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.luv2xyz" title="skimage.color.luv2xyz"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.luv2xyz</span></tt></a>(luv)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.luv2xyz" title="skimage.color.luv2xyz"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.luv2xyz</span></tt></a>(luv[,&nbsp;illuminant,&nbsp;...])</td>
 <td>CIE-Luv to XYZ color space conversion.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgb2gray" title="skimage.color.rgb2gray"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.rgb2gray</span></tt></a>(rgb)</td>
@@ -141,10 +146,10 @@
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.color.separate_stains" title="skimage.color.separate_stains"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.separate_stains</span></tt></a>(rgb,&nbsp;conv_matrix)</td>
 <td>RGB to stain color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.xyz2lab" title="skimage.color.xyz2lab"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.xyz2lab</span></tt></a>(xyz)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.xyz2lab" title="skimage.color.xyz2lab"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.xyz2lab</span></tt></a>(xyz[,&nbsp;illuminant,&nbsp;...])</td>
 <td>XYZ to CIE-LAB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.xyz2luv" title="skimage.color.xyz2luv"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.xyz2luv</span></tt></a>(xyz)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.xyz2luv" title="skimage.color.xyz2luv"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.xyz2luv</span></tt></a>(xyz[,&nbsp;illuminant,&nbsp;...])</td>
 <td>XYZ to CIE-Luv color space conversion.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.color.xyz2rgb" title="skimage.color.xyz2rgb"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.color.xyz2rgb</span></tt></a>(xyz)</td>
@@ -164,7 +169,8 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>stains</strong> : array_like</p>
 <blockquote>
-<div><p>The image in stain color space, in a 3-D array of shape <tt class="docutils literal"><span class="pre">(..,</span> <span class="pre">..,</span> <span class="pre">3)</span></tt>.</p>
+<div><p>The image in stain color space, in a 3-D array of shape
+<tt class="docutils literal"><span class="pre">(..,</span> <span class="pre">..,</span> <span class="pre">3)</span></tt>.</p>
 </div></blockquote>
 <p><strong>conv_matrix: ndarray</strong> :</p>
 <blockquote>
@@ -259,11 +265,12 @@ lower case.</p>
 </table>
 <p class="rubric">Notes</p>
 <p>Conversion occurs through the &#8220;central&#8221; RGB color space, i.e. conversion
-from XYZ to HSV is implemented as <tt class="docutils literal"><span class="pre">XYZ</span> <span class="pre">-&gt;</span> <span class="pre">RGB</span> <span class="pre">-&gt;</span> <span class="pre">HSV</span></tt> instead of directly.</p>
+from XYZ to HSV is implemented as <tt class="docutils literal"><span class="pre">XYZ</span> <span class="pre">-&gt;</span> <span class="pre">RGB</span> <span class="pre">-&gt;</span> <span class="pre">HSV</span></tt> instead of
+directly.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_hsv</span> <span class="o">=</span> <span class="n">convert_colorspace</span><span class="p">(</span><span class="n">lena</span><span class="p">,</span> <span class="s">&#39;RGB&#39;</span><span class="p">,</span> <span class="s">&#39;HSV&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_hsv</span> <span class="o">=</span> <span class="n">convert_colorspace</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="s">&#39;RGB&#39;</span><span class="p">,</span> <span class="s">&#39;HSV&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -628,7 +635,8 @@ is <tt class="docutils literal"><span class="pre">None</span></tt>.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>hed</strong> : array_like</p>
 <blockquote>
-<div><p>The image in the HED color space, in a 3-D array of shape <tt class="docutils literal"><span class="pre">(..,</span> <span class="pre">..,</span> <span class="pre">3)</span></tt>.</p>
+<div><p>The image in the HED color space, in a 3-D array of shape
+<tt class="docutils literal"><span class="pre">(..,</span> <span class="pre">..,</span> <span class="pre">3)</span></tt>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -711,9 +719,9 @@ precision, due to integer arithmetic and rounding <a class="reference internal" 
 </table>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_hsv</span> <span class="o">=</span> <span class="n">rgb2hsv</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_rgb</span> <span class="o">=</span> <span class="n">hsv2rgb</span><span class="p">(</span><span class="n">lena_hsv</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_hsv</span> <span class="o">=</span> <span class="n">rgb2hsv</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_rgb</span> <span class="o">=</span> <span class="n">hsv2rgb</span><span class="p">(</span><span class="n">img_hsv</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -757,9 +765,9 @@ color channels.  Subsequent elements are copied.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2lab</span><span class="p">,</span> <span class="n">lab2lch</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_lab</span> <span class="o">=</span> <span class="n">rgb2lab</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_lch</span> <span class="o">=</span> <span class="n">lab2lch</span><span class="p">(</span><span class="n">lena_lab</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_lab</span> <span class="o">=</span> <span class="n">rgb2lab</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_lch</span> <span class="o">=</span> <span class="n">lab2lch</span><span class="p">(</span><span class="n">img_lab</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -804,7 +812,7 @@ color channels.  Subsequent elements are copied.</p>
 <h2>lab2xyz<a class="headerlink" href="#lab2xyz" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.color.lab2xyz">
-<tt class="descclassname">skimage.color.</tt><tt class="descname">lab2xyz</tt><big>(</big><em>lab</em><big>)</big><a class="headerlink" href="#skimage.color.lab2xyz" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">skimage.color.</tt><tt class="descname">lab2xyz</tt><big>(</big><em>lab</em>, <em>illuminant='D65'</em>, <em>observer='2'</em><big>)</big><a class="headerlink" href="#skimage.color.lab2xyz" title="Permalink to this definition">¶</a></dt>
 <dd><p>CIE-LAB to XYZcolor space conversion.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -813,6 +821,14 @@ color channels.  Subsequent elements are copied.</p>
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>lab</strong> : array_like</p>
 <blockquote>
 <div><p>The image in lab format, in a 3-D array of shape <tt class="docutils literal"><span class="pre">(..,</span> <span class="pre">..,</span> <span class="pre">3)</span></tt>.</p>
+</div></blockquote>
+<p><strong>illuminant</strong> : {&#8220;A&#8221;, &#8220;D50&#8221;, &#8220;D55&#8221;, &#8220;D65&#8221;, &#8220;D75&#8221;, &#8220;E&#8221;}, optional</p>
+<blockquote>
+<div><p>The name of the illuminant (the function is NOT case sensitive).</p>
+</div></blockquote>
+<p><strong>observer</strong> : {&#8220;2&#8221;, &#8220;10&#8221;}, optional</p>
+<blockquote>
+<div><p>The aperture angle of the observer.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -823,16 +839,22 @@ color channels.  Subsequent elements are copied.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If <cite>lab</cite> is not a 3-D array of shape <tt class="docutils literal"><span class="pre">(..,</span> <span class="pre">..,</span> <span class="pre">3)</span></tt>.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>If either the illuminant or the observer angle are not supported or
+unknown.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Observer = 2A, Illuminant = D65
-CIE XYZ tristimulus values x_ref = 95.047, y_ref = 100., z_ref = 108.883</p>
+<p>By default Observer= 2A, Illuminant= D65. CIE XYZ tristimulus values x_ref
+= 95.047, y_ref = 100., z_ref = 108.883. See function &#8216;get_xyz_coords&#8217; for
+a list of supported illuminants.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r44" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -853,42 +875,56 @@ CIE XYZ tristimulus values x_ref = 95.047, y_ref = 100., z_ref = 108.883</p>
 <h2>label2rgb<a class="headerlink" href="#label2rgb" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.color.label2rgb">
-<tt class="descclassname">skimage.color.</tt><tt class="descname">label2rgb</tt><big>(</big><em>label</em>, <em>image=None</em>, <em>colors=None</em>, <em>alpha=0.3</em>, <em>bg_label=-1</em>, <em>bg_color=None</em>, <em>image_alpha=1</em><big>)</big><a class="headerlink" href="#skimage.color.label2rgb" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">skimage.color.</tt><tt class="descname">label2rgb</tt><big>(</big><em>label</em>, <em>image=None</em>, <em>colors=None</em>, <em>alpha=0.3</em>, <em>bg_label=-1</em>, <em>bg_color=None</em>, <em>image_alpha=1</em>, <em>kind='overlay'</em><big>)</big><a class="headerlink" href="#skimage.color.label2rgb" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an RGB image where color-coded labels are painted over the image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>label</strong> : array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>label</strong> : array, shape (M, N)</p>
 <blockquote>
 <div><p>Integer array of labels with the same shape as <cite>image</cite>.</p>
 </div></blockquote>
-<p><strong>image</strong> : array</p>
+<p><strong>image</strong> : array, shape (M, N, 3), optional</p>
 <blockquote>
 <div><p>Image used as underlay for labels. If the input is an RGB image, it&#8217;s
 converted to grayscale before coloring.</p>
 </div></blockquote>
-<p><strong>colors</strong> : list</p>
+<p><strong>colors</strong> : list, optional</p>
 <blockquote>
 <div><p>List of colors. If the number of labels exceeds the number of colors,
 then the colors are cycled.</p>
 </div></blockquote>
-<p><strong>alpha</strong> : float [0, 1]</p>
+<p><strong>alpha</strong> : float [0, 1], optional</p>
 <blockquote>
 <div><p>Opacity of colorized labels. Ignored if image is <cite>None</cite>.</p>
 </div></blockquote>
-<p><strong>bg_label</strong> : int</p>
+<p><strong>bg_label</strong> : int, optional</p>
 <blockquote>
 <div><p>Label that&#8217;s treated as the background.</p>
 </div></blockquote>
-<p><strong>bg_color</strong> : str or array</p>
+<p><strong>bg_color</strong> : str or array, optional</p>
 <blockquote>
 <div><p>Background color. Must be a name in <cite>color_dict</cite> or RGB float values
 between [0, 1].</p>
 </div></blockquote>
-<p><strong>image_alpha</strong> : float [0, 1]</p>
-<blockquote class="last">
+<p><strong>image_alpha</strong> : float [0, 1], optional</p>
+<blockquote>
 <div><p>Opacity of the image.</p>
+</div></blockquote>
+<p><strong>kind</strong> : string, one of {&#8216;overlay&#8217;, &#8216;avg&#8217;}</p>
+<blockquote>
+<div><p>The kind of color image desired. &#8216;overlay&#8217; cycles over defined colors
+and overlays the colored labels over the original image. &#8216;avg&#8217; replaces
+each labeled segment with its average color, for a stained-class or
+pastel painting appearance.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>result</strong> : array of float, shape (M, N, 3)</p>
+<blockquote class="last">
+<div><p>The result of blending a cycling colormap (<cite>colors</cite>) for each distinct
+value in <cite>label</cite> with the image, at a certain alpha value.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -933,10 +969,10 @@ color channels.  Subsequent elements are copied.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2lab</span><span class="p">,</span> <span class="n">lch2lab</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_lab</span> <span class="o">=</span> <span class="n">rgb2lab</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_lch</span> <span class="o">=</span> <span class="n">lab2lch</span><span class="p">(</span><span class="n">lena_lab</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_lab2</span> <span class="o">=</span> <span class="n">lch2lab</span><span class="p">(</span><span class="n">lena_lch</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_lab</span> <span class="o">=</span> <span class="n">rgb2lab</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_lch</span> <span class="o">=</span> <span class="n">lab2lch</span><span class="p">(</span><span class="n">img_lab</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_lab2</span> <span class="o">=</span> <span class="n">lch2lab</span><span class="p">(</span><span class="n">img_lch</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -982,7 +1018,7 @@ channels.</p>
 <h2>luv2xyz<a class="headerlink" href="#luv2xyz" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.color.luv2xyz">
-<tt class="descclassname">skimage.color.</tt><tt class="descname">luv2xyz</tt><big>(</big><em>luv</em><big>)</big><a class="headerlink" href="#skimage.color.luv2xyz" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">skimage.color.</tt><tt class="descname">luv2xyz</tt><big>(</big><em>luv</em>, <em>illuminant='D65'</em>, <em>observer='2'</em><big>)</big><a class="headerlink" href="#skimage.color.luv2xyz" title="Permalink to this definition">¶</a></dt>
 <dd><p>CIE-Luv to XYZ color space conversion.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -993,6 +1029,14 @@ channels.</p>
 <div><p>The 3 or 4 dimensional image in CIE-Luv format. Final dimension denotes
 channels.</p>
 </div></blockquote>
+<p><strong>illuminant</strong> : {&#8220;A&#8221;, &#8220;D50&#8221;, &#8220;D55&#8221;, &#8220;D65&#8221;, &#8220;D75&#8221;, &#8220;E&#8221;}, optional</p>
+<blockquote>
+<div><p>The name of the illuminant (the function is NOT case sensitive).</p>
+</div></blockquote>
+<p><strong>observer</strong> : {&#8220;2&#8221;, &#8220;10&#8221;}, optional</p>
+<blockquote>
+<div><p>The aperture angle of the observer.</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : (M, N, [P,] 3) ndarray</p>
@@ -1002,16 +1046,22 @@ channels.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If <cite>luv</cite> is not a 3-D or 4-D array of shape <tt class="docutils literal"><span class="pre">(M,</span> <span class="pre">N,</span> <span class="pre">[P,]</span> <span class="pre">3)</span></tt>.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>If either the illuminant or the observer angle are not supported or
+unknown.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>XYZ conversion weights use Observer = 2A. Reference whitepoint for D65
-Illuminant, with XYZ tristimulus values of <tt class="docutils literal"><span class="pre">(95.047,</span> <span class="pre">100.,</span> <span class="pre">108.883)</span></tt>.</p>
+<p>XYZ conversion weights use observer=2A. Reference whitepoint for D65
+Illuminant, with XYZ tristimulus values of <tt class="docutils literal"><span class="pre">(95.047,</span> <span class="pre">100.,</span> <span class="pre">108.883)</span></tt>. See
+function &#8216;get_xyz_coords&#8217; for a list of supported illuminants.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r46" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -1077,8 +1127,8 @@ CRT phosphors:</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2gray</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_gray</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_gray</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1133,8 +1183,8 @@ CRT phosphors:</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2gray</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_gray</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_gray</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1235,8 +1285,8 @@ precision, due to integer arithmetic and rounding <a class="reference internal" 
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">color</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_hsv</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">rgb2hsv</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_hsv</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">rgb2hsv</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1355,8 +1405,8 @@ channels.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2rgbcie</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_rgbcie</span> <span class="o">=</span> <span class="n">rgb2rgbcie</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_rgbcie</span> <span class="o">=</span> <span class="n">rgb2rgbcie</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1406,8 +1456,8 @@ however that this function converts from sRGB.</p>
 </table>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_xyz</span> <span class="o">=</span> <span class="n">rgb2xyz</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_xyz</span> <span class="o">=</span> <span class="n">rgb2xyz</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1453,9 +1503,9 @@ however that this function converts from sRGB.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2rgbcie</span><span class="p">,</span> <span class="n">rgbcie2rgb</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_rgbcie</span> <span class="o">=</span> <span class="n">rgb2rgbcie</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_rgb</span> <span class="o">=</span> <span class="n">rgbcie2rgb</span><span class="p">(</span><span class="n">lena_rgbcie</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_rgbcie</span> <span class="o">=</span> <span class="n">rgb2rgbcie</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_rgb</span> <span class="o">=</span> <span class="n">rgbcie2rgb</span><span class="p">(</span><span class="n">img_rgbcie</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1483,7 +1533,8 @@ however that this function converts from sRGB.</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
 <blockquote>
-<div><p>The image in stain color space, in a 3-D array of shape <tt class="docutils literal"><span class="pre">(..,</span> <span class="pre">..,</span> <span class="pre">3)</span></tt>.</p>
+<div><p>The image in stain color space, in a 3-D array of shape
+<tt class="docutils literal"><span class="pre">(..,</span> <span class="pre">..,</span> <span class="pre">3)</span></tt>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1532,7 +1583,7 @@ respective colorspace:</p>
 <h2>xyz2lab<a class="headerlink" href="#xyz2lab" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.color.xyz2lab">
-<tt class="descclassname">skimage.color.</tt><tt class="descname">xyz2lab</tt><big>(</big><em>xyz</em><big>)</big><a class="headerlink" href="#skimage.color.xyz2lab" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">skimage.color.</tt><tt class="descname">xyz2lab</tt><big>(</big><em>xyz</em>, <em>illuminant='D65'</em>, <em>observer='2'</em><big>)</big><a class="headerlink" href="#skimage.color.xyz2lab" title="Permalink to this definition">¶</a></dt>
 <dd><p>XYZ to CIE-LAB color space conversion.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1542,6 +1593,14 @@ respective colorspace:</p>
 <blockquote>
 <div><p>The image in XYZ format, in a 3- or 4-D array of shape
 <tt class="docutils literal"><span class="pre">(..,</span> <span class="pre">..,[</span> <span class="pre">..,]</span> <span class="pre">3)</span></tt>.</p>
+</div></blockquote>
+<p><strong>illuminant</strong> : {&#8220;A&#8221;, &#8220;D50&#8221;, &#8220;D55&#8221;, &#8220;D65&#8221;, &#8220;D75&#8221;, &#8220;E&#8221;}, optional</p>
+<blockquote>
+<div><p>The name of the illuminant (the function is NOT case sensitive).</p>
+</div></blockquote>
+<p><strong>observer</strong> : {&#8220;2&#8221;, &#8220;10&#8221;}, optional</p>
+<blockquote>
+<div><p>The aperture angle of the observer.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1553,16 +1612,22 @@ respective colorspace:</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If <cite>xyz</cite> is not a 3-D array of shape <tt class="docutils literal"><span class="pre">(..,</span> <span class="pre">..,[</span> <span class="pre">..,]</span> <span class="pre">3)</span></tt>.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>If either the illuminant or the observer angle is unsupported or
+unknown.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Observer= 2A, Illuminant= D65
-CIE XYZ tristimulus values x_ref = 95.047, y_ref = 100., z_ref = 108.883</p>
+<p>By default Observer= 2A, Illuminant= D65. CIE XYZ tristimulus values
+x_ref=95.047, y_ref=100., z_ref=108.883. See function <cite>get_xyz_coords</cite> for
+a list of supported illuminants.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r56" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -1579,9 +1644,9 @@ CIE XYZ tristimulus values x_ref = 95.047, y_ref = 100., z_ref = 108.883</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2xyz</span><span class="p">,</span> <span class="n">xyz2lab</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_xyz</span> <span class="o">=</span> <span class="n">rgb2xyz</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_lab</span> <span class="o">=</span> <span class="n">xyz2lab</span><span class="p">(</span><span class="n">lena_xyz</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_xyz</span> <span class="o">=</span> <span class="n">rgb2xyz</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_lab</span> <span class="o">=</span> <span class="n">xyz2lab</span><span class="p">(</span><span class="n">img_xyz</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1591,7 +1656,7 @@ CIE XYZ tristimulus values x_ref = 95.047, y_ref = 100., z_ref = 108.883</p>
 <h2>xyz2luv<a class="headerlink" href="#xyz2luv" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.color.xyz2luv">
-<tt class="descclassname">skimage.color.</tt><tt class="descname">xyz2luv</tt><big>(</big><em>xyz</em><big>)</big><a class="headerlink" href="#skimage.color.xyz2luv" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">skimage.color.</tt><tt class="descname">xyz2luv</tt><big>(</big><em>xyz</em>, <em>illuminant='D65'</em>, <em>observer='2'</em><big>)</big><a class="headerlink" href="#skimage.color.xyz2luv" title="Permalink to this definition">¶</a></dt>
 <dd><p>XYZ to CIE-Luv color space conversion.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1602,6 +1667,14 @@ CIE XYZ tristimulus values x_ref = 95.047, y_ref = 100., z_ref = 108.883</p>
 <div><p>The 3 or 4 dimensional image in XYZ format. Final dimension denotes
 channels.</p>
 </div></blockquote>
+<p><strong>illuminant</strong> : {&#8220;A&#8221;, &#8220;D50&#8221;, &#8220;D55&#8221;, &#8220;D65&#8221;, &#8220;D75&#8221;, &#8220;E&#8221;}, optional</p>
+<blockquote>
+<div><p>The name of the illuminant (the function is NOT case sensitive).</p>
+</div></blockquote>
+<p><strong>observer</strong> : {&#8220;2&#8221;, &#8220;10&#8221;}, optional</p>
+<blockquote>
+<div><p>The aperture angle of the observer.</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : (M, N, [P,] 3) ndarray</p>
@@ -1611,16 +1684,23 @@ channels.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong> :</p>
-<blockquote class="last">
+<blockquote>
 <div><p>If <cite>xyz</cite> is not a 3-D or 4-D array of shape <tt class="docutils literal"><span class="pre">(M,</span> <span class="pre">N,</span> <span class="pre">[P,]</span> <span class="pre">3)</span></tt>.</p>
+</div></blockquote>
+<p><strong>ValueError</strong> :</p>
+<blockquote class="last">
+<div><p>If either the illuminant or the observer angle are not supported or
+unknown.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>XYZ conversion weights use Observer = 2A. Reference whitepoint for D65
-Illuminant, with XYZ tristimulus values of <tt class="docutils literal"><span class="pre">(95.047,</span> <span class="pre">100.,</span> <span class="pre">108.883)</span></tt>.</p>
+<p>By default XYZ conversion weights use observer=2A. Reference whitepoint
+for D65 Illuminant, with XYZ tristimulus values of <tt class="docutils literal"><span class="pre">(95.047,</span> <span class="pre">100.,</span>
+<span class="pre">108.883)</span></tt>. See function &#8216;get_xyz_coords&#8217; for a list of supported
+illuminants.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r58" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -1637,9 +1717,9 @@ Illuminant, with XYZ tristimulus values of <tt class="docutils literal"><span cl
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2xyz</span><span class="p">,</span> <span class="n">xyz2luv</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_xyz</span> <span class="o">=</span> <span class="n">rgb2xyz</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_luv</span> <span class="o">=</span> <span class="n">xyz2luv</span><span class="p">(</span><span class="n">lena_xyz</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_xyz</span> <span class="o">=</span> <span class="n">rgb2xyz</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_luv</span> <span class="o">=</span> <span class="n">xyz2luv</span><span class="p">(</span><span class="n">img_xyz</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1688,9 +1768,9 @@ however that this function converts to sRGB.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2xyz</span><span class="p">,</span> <span class="n">xyz2rgb</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_xyz</span> <span class="o">=</span> <span class="n">rgb2xyz</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">lena_rgb</span> <span class="o">=</span> <span class="n">xyz2rgb</span><span class="p">(</span><span class="n">lena_xyz</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_xyz</span> <span class="o">=</span> <span class="n">rgb2xyz</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_rgb</span> <span class="o">=</span> <span class="n">xyz2rgb</span><span class="p">(</span><span class="n">img_xyz</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
