@@ -28,8 +28,8 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <link rel="top" title="skimage v0.11dev docs" href="../index.html" />
         <link rel="up" title="User Guide" href="../user_guide.html" />
-        <link rel="next" title="I/O Plugin Infrastructure" href="plugins.html" />
-        <link rel="prev" title="User Guide" href="../user_guide.html" />
+        <link rel="next" title="Image adjustment: transforming image content" href="transforming_image_data.html" />
+        <link rel="prev" title="A crash course on NumPy for images" href="numpy_images.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../_static/favicon.ico">
 </head>
@@ -44,9 +44,10 @@
 <li><a href="/docs/dev/auto_examples">Gallery</a></li>
 <li><a href="/docs/dev">Documentation</a></li>
 <li><a href="https://github.com/scikit-image/scikit-image">
-    <img src="_static/GitHub-Mark-32px.png" style="height: 15px; width: 15px;
-                                                   display: inline; float: none;
-                                                   padding-bottom: 3px;">
+    <img src="../_static/GitHub-Mark-32px.png"
+        style="height: 15px; width: 15px;
+               display: inline; float: none;
+               padding-bottom: 3px;">
     Source</a>
 </li>
             </ul>
@@ -61,7 +62,7 @@
         <div class="span9">
             
   <div class="section" id="image-data-types-and-what-they-mean">
-<h1>Image data types and what they mean<a class="headerlink" href="#image-data-types-and-what-they-mean" title="Permalink to this headline">¶</a></h1>
+<span id="data-types"></span><h1>Image data types and what they mean<a class="headerlink" href="#image-data-types-and-what-they-mean" title="Permalink to this headline">¶</a></h1>
 <p>In <tt class="docutils literal"><span class="pre">skimage</span></tt>, images are simply <a class="reference external" href="http://docs.scipy.org/doc/numpy/user/">numpy</a> arrays, which support a variety of
 data types <a class="footnote-reference" href="#id2" id="id1">[1]</a>, <em>i.e.</em> &#8220;dtypes&#8221;. To avoid distorting image intensities (see
 <a class="reference internal" href="#rescaling-intensity-values">Rescaling intensity values</a>), we assume that images use the following dtype
@@ -87,7 +88,7 @@ ranges:</p>
 <td>0 to 2<sup>32</sup></td>
 </tr>
 <tr class="row-odd"><td>float</td>
-<td>-1 to 1</td>
+<td>-1 to 1 or 0 to 1</td>
 </tr>
 <tr class="row-even"><td>int8</td>
 <td>-128 to 127</td>
@@ -100,10 +101,10 @@ ranges:</p>
 </tr>
 </tbody>
 </table>
-<p>Note that float images are restricted to the range -1 to 1 even though the data
-type itself can exceed this range; all integer dtypes, on the other hand, have
-pixel intensities that can span the entire data type range. Currently, <em>64-bit
-(u)int images are not supported</em>.</p>
+<p>Note that float images should be restricted to the range -1 to 1 even though
+the data type itself can exceed this range; all integer dtypes, on the other
+hand, have pixel intensities that can span the entire data type range. With a
+few exceptions, <em>64-bit (u)int images are not supported</em>.</p>
 <p>Functions in <tt class="docutils literal"><span class="pre">skimage</span></tt> are designed so that they accept any of these dtypes,
 but, for efficiency, <em>may return an image of a different dtype</em> (see <a class="reference internal" href="#output-types">Output
 types</a>). If you need a particular dtype, <tt class="docutils literal"><span class="pre">skimage</span></tt> provides utility
@@ -120,9 +121,10 @@ violates these assumptions about the dtype range:</p>
 </div>
 <div class="section" id="input-types">
 <h2>Input types<a class="headerlink" href="#input-types" title="Permalink to this headline">¶</a></h2>
-<p>Functions may choose to support only a subset of these data-types. In such
+<p>Although we aim to preserve the data range and type of input images, functions
+may support only a subset of these data-types. In such
 a case, the input will be converted to the required type (if possible), and
-a warning message is printed to the log if a memory copy is needed. Type
+a warning message printed to the log if a memory copy is needed. Type
 requirements should be noted in the docstrings.</p>
 <p>The following utility functions in the main package are available to developers
 and users:</p>
@@ -160,6 +162,31 @@ issued:</p>
 <span class="go">WARNING:dtype_converter:Possible precision loss when converting from</span>
 <span class="go">float64 to uint8</span>
 <span class="go">array([  0, 128, 255], dtype=uint8)</span>
+</pre></div>
+</div>
+<p>Additionally, some functions take a <tt class="docutils literal"><span class="pre">preserve_range</span></tt> argument where a range
+conversion is convenient but not necessary. For example, interpolation in
+<tt class="docutils literal"><span class="pre">transform.warp</span></tt> requires an image of type float, which should have a range
+in [0, 1]. So, by default, input images will be rescaled to this range.
+However, in some cases, the image values represent physical measurements, such
+as temperature or rainfall values, that the user does not want rescaled.
+With <tt class="docutils literal"><span class="pre">preserve_range=True</span></tt>, the original range of the data will be
+preserved, even though the output is a float image. Users must then ensure
+this non-standard image is properly processed by downstream functions, which
+may expect an image in [0, 1].</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">rescale</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">coins</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">image</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(dtype(&#39;uint8&#39;), 1, 252, (303, 384))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rescaled</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">rescaled</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">rescaled</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mi">4</span><span class="p">),</span>
+<span class="gp">... </span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">rescaled</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">4</span><span class="p">),</span> <span class="n">rescaled</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(dtype(&#39;float64&#39;), 0.0147, 0.9456, (152, 192))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rescaled</span> <span class="o">=</span> <span class="n">rescale</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">preserve_range</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">rescaled</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">rescaled</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span>
+<span class="gp">... </span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">rescaled</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="n">rescaled</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(dtype(&#39;float64&#39;), 4.0, 241.0, (152, 192))</span>
 </pre></div>
 </div>
 </div>
@@ -265,13 +292,13 @@ just the positive range of a signed dtype.</p>
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="../user_guide.html" title="previous chapter">User Guide</a></li>
+            <li><a href="numpy_images.html" title="previous chapter">A crash course on NumPy for images</a></li>
         </ul>
     </div>
     <h4 class="sidebar-box-heading">Next topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="plugins.html" title="next chapter">I/O Plugin Infrastructure</a></li>
+            <li><a href="transforming_image_data.html" title="next chapter">Image adjustment: transforming image content</a></li>
         </ul>
     </div>
         <h4 class="sidebar-box-heading">Contents</h4>
@@ -304,7 +331,7 @@ just the positive range of a signed dtype.</p>
     <div class="well footer">
         <small>
             &copy; Copyright the scikit-image development team.
-            Created using <a href="http://twitter.github.com/bootstrap/">Bootstrap</a> and <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+            Created using <a href="http://getbootstrap.com/">Bootstrap</a> and <a href="http://sphinx-doc.org/">Sphinx</a>.
         </small>
     </div>
 </body>
