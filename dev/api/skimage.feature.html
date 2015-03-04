@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Module: feature &mdash; skimage v0.11dev docs</title>
+        <title>Module: feature &mdash; skimage v0.12dev docs</title>
     
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.11dev',
+        VERSION:     '0.12dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <link rel="top" title="skimage v0.11dev docs" href="../index.html" />
+        <link rel="top" title="skimage v0.12dev docs" href="../index.html" />
         <link rel="up" title="API Reference" href="api.html" />
         <link rel="next" title="Module: filters" href="skimage.filters.html" />
         <link rel="prev" title="Module: external.tifffile" href="skimage.external.tifffile.html" />
@@ -138,19 +138,22 @@
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.plot_matches" title="skimage.feature.plot_matches"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.plot_matches</span></tt></a>(ax,&nbsp;image1,&nbsp;...)</td>
 <td>Plot matched features.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.structure_tensor" title="skimage.feature.structure_tensor"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.structure_tensor</span></tt></a>(image[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.register_translation" title="skimage.feature.register_translation"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.register_translation</span></tt></a>(...[,&nbsp;...])</td>
+<td>Efficient subpixel image translation registration by cross-correlation.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.structure_tensor" title="skimage.feature.structure_tensor"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.structure_tensor</span></tt></a>(image[,&nbsp;...])</td>
 <td>Compute structure tensor using sum of squared differences.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.structure_tensor_eigvals" title="skimage.feature.structure_tensor_eigvals"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.structure_tensor_eigvals</span></tt></a>(...)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.structure_tensor_eigvals" title="skimage.feature.structure_tensor_eigvals"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.structure_tensor_eigvals</span></tt></a>(...)</td>
 <td>Compute Eigen values of structure tensor.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.BRIEF" title="skimage.feature.BRIEF"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.BRIEF</span></tt></a>([descriptor_size,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.BRIEF" title="skimage.feature.BRIEF"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.BRIEF</span></tt></a>([descriptor_size,&nbsp;...])</td>
 <td>BRIEF binary descriptor extractor.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.CENSURE" title="skimage.feature.CENSURE"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.CENSURE</span></tt></a>([min_scale,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.CENSURE" title="skimage.feature.CENSURE"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.CENSURE</span></tt></a>([min_scale,&nbsp;...])</td>
 <td>CENSURE keypoint detector.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.ORB" title="skimage.feature.ORB"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.ORB</span></tt></a>([downscale,&nbsp;n_scales,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.ORB" title="skimage.feature.ORB"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.feature.ORB</span></tt></a>([downscale,&nbsp;n_scales,&nbsp;...])</td>
 <td>Oriented FAST and rotated BRIEF feature detector and binary descriptor extractor.</td>
 </tr>
 </tbody>
@@ -161,7 +164,7 @@
 <dt id="skimage.feature.blob_dog">
 <tt class="descclassname">skimage.feature.</tt><tt class="descname">blob_dog</tt><big>(</big><em>image</em>, <em>min_sigma=1</em>, <em>max_sigma=50</em>, <em>sigma_ratio=1.6</em>, <em>threshold=2.0</em>, <em>overlap=0.5</em><big>)</big><a class="headerlink" href="#skimage.feature.blob_dog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds blobs in the given grayscale image.</p>
-<p>Blobs are found using the Difference of Gaussian (DoG) method <a class="reference internal" href="#r105" id="id1">[R105]</a>.
+<p>Blobs are found using the Difference of Gaussian (DoG) method <a class="reference internal" href="#r106" id="id1">[R106]</a>.
 For each blob found, the method returns its coordinates and the standard
 deviation of the Gaussian kernel that detected the blob.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -214,10 +217,10 @@ standard deviation of the Gaussian kernel which detected the blob.</p>
 <p class="rubric">Notes</p>
 <p>The radius of each blob is approximately <img class="math" src="../_images/math/6872b86c6f1d197ae13916fd96a25c67f3ef07e8.png" alt="\sqrt{2}sigma"/>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r105" rules="none">
+<table class="docutils citation" frame="void" id="r106" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R105]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Blob_detection#The_difference_of_Gaussians_approach">http://en.wikipedia.org/wiki/Blob_detection#The_difference_of_Gaussians_approach</a></td></tr>
+<tr><td class="label">[R106]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Blob_detection#The_difference_of_Gaussians_approach">http://en.wikipedia.org/wiki/Blob_detection#The_difference_of_Gaussians_approach</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -258,10 +261,10 @@ standard deviation of the Gaussian kernel which detected the blob.</p>
 <dt id="skimage.feature.blob_doh">
 <tt class="descclassname">skimage.feature.</tt><tt class="descname">blob_doh</tt><big>(</big><em>image</em>, <em>min_sigma=1</em>, <em>max_sigma=30</em>, <em>num_sigma=10</em>, <em>threshold=0.01</em>, <em>overlap=0.5</em>, <em>log_scale=False</em><big>)</big><a class="headerlink" href="#skimage.feature.blob_doh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds blobs in the given grayscale image.</p>
-<p>Blobs are found using the Determinant of Hessian method <a class="reference internal" href="#r106" id="id3">[R106]</a>. For each blob
+<p>Blobs are found using the Determinant of Hessian method <a class="reference internal" href="#r107" id="id3">[R107]</a>. For each blob
 found, the method returns its coordinates and the standard deviation
 of the Gaussian Kernel used for the Hessian matrix whose determinant
-detected the blob. Determinant of Hessians is approximated using <a class="reference internal" href="#r107" id="id4">[R107]</a>.</p>
+detected the blob. Determinant of Hessians is approximated using <a class="reference internal" href="#r108" id="id4">[R108]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -323,16 +326,16 @@ of Gaussians for larger <cite>sigma</cite> takes more time. The downside is that
 this method can&#8217;t be used for detecting blobs of radius less than <cite>3px</cite>
 due to the box filters used in the approximation of Hessian Determinant.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r106" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[R106]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Blob_detection#The_determinant_of_the_Hessian">http://en.wikipedia.org/wiki/Blob_detection#The_determinant_of_the_Hessian</a></td></tr>
-</tbody>
-</table>
 <table class="docutils citation" frame="void" id="r107" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R107]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> Herbert Bay, Andreas Ess, Tinne Tuytelaars, Luc Van Gool,
+<tr><td class="label">[R107]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Blob_detection#The_determinant_of_the_Hessian">http://en.wikipedia.org/wiki/Blob_detection#The_determinant_of_the_Hessian</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r108" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R108]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> Herbert Bay, Andreas Ess, Tinne Tuytelaars, Luc Van Gool,
 &#8220;SURF: Speeded Up Robust Features&#8221;
 <a class="reference external" href="ftp://ftp.vision.ee.ethz.ch/publications/articles/eth_biwi_00517.pdf">ftp://ftp.vision.ee.ethz.ch/publications/articles/eth_biwi_00517.pdf</a></td></tr>
 </tbody>
@@ -369,7 +372,7 @@ due to the box filters used in the approximation of Hessian Determinant.</p>
 <dt id="skimage.feature.blob_log">
 <tt class="descclassname">skimage.feature.</tt><tt class="descname">blob_log</tt><big>(</big><em>image</em>, <em>min_sigma=1</em>, <em>max_sigma=50</em>, <em>num_sigma=10</em>, <em>threshold=0.2</em>, <em>overlap=0.5</em>, <em>log_scale=False</em><big>)</big><a class="headerlink" href="#skimage.feature.blob_log" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds blobs in the given grayscale image.</p>
-<p>Blobs are found using the Laplacian of Gaussian (LoG) method <a class="reference internal" href="#r108" id="id7">[R108]</a>.
+<p>Blobs are found using the Laplacian of Gaussian (LoG) method <a class="reference internal" href="#r109" id="id7">[R109]</a>.
 For each blob found, the method returns its coordinates and the standard
 deviation of the Gaussian kernel that detected the blob.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -428,10 +431,10 @@ standard deviation of the Gaussian kernel which detected the blob.</p>
 <p class="rubric">Notes</p>
 <p>The radius of each blob is approximately <img class="math" src="../_images/math/6872b86c6f1d197ae13916fd96a25c67f3ef07e8.png" alt="\sqrt{2}sigma"/>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r108" rules="none">
+<table class="docutils citation" frame="void" id="r109" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R108]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id8">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Blob_detection#The_Laplacian_of_Gaussian">http://en.wikipedia.org/wiki/Blob_detection#The_Laplacian_of_Gaussian</a></td></tr>
+<tr><td class="label">[R109]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id8">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Blob_detection#The_Laplacian_of_Gaussian">http://en.wikipedia.org/wiki/Blob_detection#The_Laplacian_of_Gaussian</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -584,18 +587,18 @@ threshold when more corners are desired and vice-versa.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r109" rules="none">
+<table class="docutils citation" frame="void" id="r110" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id9">[R109]</a></td><td>Edward Rosten and Tom Drummond
+<tr><td class="label"><a class="fn-backref" href="#id9">[R110]</a></td><td>Edward Rosten and Tom Drummond
 &#8220;Machine Learning for high-speed corner detection&#8221;,
 <a class="reference external" href="http://www.edwardrosten.com/work/rosten_2006_machine.pdf">http://www.edwardrosten.com/work/rosten_2006_machine.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r110" rules="none">
+<table class="docutils citation" frame="void" id="r111" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[R110]</a></td><td>Wikipedia, &#8220;Features from accelerated segment test&#8221;,
+<tr><td class="label"><a class="fn-backref" href="#id10">[R111]</a></td><td>Wikipedia, &#8220;Features from accelerated segment test&#8221;,
 <a class="reference external" href="https://en.wikipedia.org/wiki/Features_from_accelerated_segment_test">https://en.wikipedia.org/wiki/Features_from_accelerated_segment_test</a></td></tr>
 </tbody>
 </table>
@@ -671,16 +674,16 @@ weighting function for the auto-correlation matrix.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r111" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[R111]</a></td><td><a class="reference external" href="http://www.ipb.uni-bonn.de/uploads/tx_ikgpublication/foerstner87.fast.pdf">http://www.ipb.uni-bonn.de/uploads/tx_ikgpublication/foerstner87.fast.pdf</a></td></tr>
-</tbody>
-</table>
 <table class="docutils citation" frame="void" id="r112" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id12">[R112]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Corner_detection">http://en.wikipedia.org/wiki/Corner_detection</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id11">[R112]</a></td><td><a class="reference external" href="http://www.ipb.uni-bonn.de/uploads/tx_ikgpublication/foerstner87.fast.pdf">http://www.ipb.uni-bonn.de/uploads/tx_ikgpublication/foerstner87.fast.pdf</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r113" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id12">[R113]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Corner_detection">http://en.wikipedia.org/wiki/Corner_detection</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -769,16 +772,16 @@ weighting function for the auto-correlation matrix.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r113" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id13">[R113]</a></td><td><a class="reference external" href="http://kiwi.cs.dal.ca/~dparks/CornerDetection/harris.htm">http://kiwi.cs.dal.ca/~dparks/CornerDetection/harris.htm</a></td></tr>
-</tbody>
-</table>
 <table class="docutils citation" frame="void" id="r114" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id14">[R114]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Corner_detection">http://en.wikipedia.org/wiki/Corner_detection</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id13">[R114]</a></td><td><a class="reference external" href="http://kiwi.cs.dal.ca/~dparks/CornerDetection/harris.htm">http://kiwi.cs.dal.ca/~dparks/CornerDetection/harris.htm</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r115" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id14">[R115]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Corner_detection">http://en.wikipedia.org/wiki/Corner_detection</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -936,16 +939,16 @@ weighting function for the auto-correlation matrix.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r115" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id15">[R115]</a></td><td><a class="reference external" href="http://kiwi.cs.dal.ca/~dparks/CornerDetection/harris.htm">http://kiwi.cs.dal.ca/~dparks/CornerDetection/harris.htm</a></td></tr>
-</tbody>
-</table>
 <table class="docutils citation" frame="void" id="r116" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id16">[R116]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Corner_detection">http://en.wikipedia.org/wiki/Corner_detection</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id15">[R116]</a></td><td><a class="reference external" href="http://kiwi.cs.dal.ca/~dparks/CornerDetection/harris.htm">http://kiwi.cs.dal.ca/~dparks/CornerDetection/harris.htm</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r117" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id16">[R117]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Corner_detection">http://en.wikipedia.org/wiki/Corner_detection</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1016,16 +1019,16 @@ the output subpixel position is set to NaN.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r117" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id17">[R117]</a></td><td><a class="reference external" href="http://www.ipb.uni-bonn.de/uploads/tx_ikgpublication/">http://www.ipb.uni-bonn.de/uploads/tx_ikgpublication/</a>           foerstner87.fast.pdf</td></tr>
-</tbody>
-</table>
 <table class="docutils citation" frame="void" id="r118" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id18">[R118]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Corner_detection">http://en.wikipedia.org/wiki/Corner_detection</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id17">[R118]</a></td><td><a class="reference external" href="http://www.ipb.uni-bonn.de/uploads/tx_ikgpublication/">http://www.ipb.uni-bonn.de/uploads/tx_ikgpublication/</a>           foerstner87.fast.pdf</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r119" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id18">[R119]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Corner_detection">http://en.wikipedia.org/wiki/Corner_detection</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1062,16 +1065,16 @@ the output subpixel position is set to NaN.</p>
 <p>DAISY is a feature descriptor similar to SIFT formulated in a way that
 allows for fast dense extraction. Typically, this is practical for
 bag-of-features image representations.</p>
-<p>The implementation follows Tola et al. <a class="reference internal" href="#r119" id="id19">[R119]</a> but deviate on the following
+<p>The implementation follows Tola et al. <a class="reference internal" href="#r120" id="id19">[R120]</a> but deviate on the following
 points:</p>
 <blockquote>
 <div><ul class="simple">
 <li>Histogram bin contribution are smoothed with a circular Gaussian
 window over the tonal range (the angular range).</li>
 <li>The sigma values of the spatial Gaussian smoothing in this code do not
-match the sigma values in the original code by Tola et al. <a class="reference internal" href="#r120" id="id20">[R120]</a>. In
+match the sigma values in the original code by Tola et al. <a class="reference internal" href="#r121" id="id20">[R121]</a>. In
 their code, spatial smoothing is applied to both the input image and
-the center histogram. However, this smoothing is not documented in <a class="reference internal" href="#r119" id="id21">[R119]</a>
+the center histogram. However, this smoothing is not documented in <a class="reference internal" href="#r120" id="id21">[R120]</a>
 and, therefore, it is omitted.</li>
 </ul>
 </div></blockquote>
@@ -1167,18 +1170,18 @@ dimensionality  (P, Q, R) where</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r119" rules="none">
+<table class="docutils citation" frame="void" id="r120" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R119]</td><td><em>(<a class="fn-backref" href="#id19">1</a>, <a class="fn-backref" href="#id21">2</a>, <a class="fn-backref" href="#id22">3</a>)</em> Tola et al. &#8220;Daisy: An efficient dense descriptor applied to wide-
+<tr><td class="label">[R120]</td><td><em>(<a class="fn-backref" href="#id19">1</a>, <a class="fn-backref" href="#id21">2</a>, <a class="fn-backref" href="#id22">3</a>)</em> Tola et al. &#8220;Daisy: An efficient dense descriptor applied to wide-
 baseline stereo.&#8221; Pattern Analysis and Machine Intelligence, IEEE
 Transactions on 32.5 (2010): 815-830.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r120" rules="none">
+<table class="docutils citation" frame="void" id="r121" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R120]</td><td><em>(<a class="fn-backref" href="#id20">1</a>, <a class="fn-backref" href="#id23">2</a>)</em> <a class="reference external" href="http://cvlab.epfl.ch/alumni/tola/daisy.html">http://cvlab.epfl.ch/alumni/tola/daisy.html</a></td></tr>
+<tr><td class="label">[R121]</td><td><em>(<a class="fn-backref" href="#id20">1</a>, <a class="fn-backref" href="#id23">2</a>)</em> <a class="reference external" href="http://cvlab.epfl.ch/alumni/tola/daisy.html">http://cvlab.epfl.ch/alumni/tola/daisy.html</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1245,24 +1248,24 @@ type uint32, otherwise it is float64.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r121" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id24">[R121]</a></td><td>The GLCM Tutorial Home Page,
-<a class="reference external" href="http://www.fp.ucalgary.ca/mhallbey/tutorial.htm">http://www.fp.ucalgary.ca/mhallbey/tutorial.htm</a></td></tr>
-</tbody>
-</table>
 <table class="docutils citation" frame="void" id="r122" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id25">[R122]</a></td><td>Pattern Recognition Engineering, Morton Nadler &amp; Eric P.
-Smith</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id24">[R122]</a></td><td>The GLCM Tutorial Home Page,
+<a class="reference external" href="http://www.fp.ucalgary.ca/mhallbey/tutorial.htm">http://www.fp.ucalgary.ca/mhallbey/tutorial.htm</a></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r123" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id26">[R123]</a></td><td>Wikipedia, <a class="reference external" href="http://en.wikipedia.org/wiki/Co-occurrence_matrix">http://en.wikipedia.org/wiki/Co-occurrence_matrix</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id25">[R123]</a></td><td>Pattern Recognition Engineering, Morton Nadler &amp; Eric P.
+Smith</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r124" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id26">[R124]</a></td><td>Wikipedia, <a class="reference external" href="http://en.wikipedia.org/wiki/Co-occurrence_matrix">http://en.wikipedia.org/wiki/Co-occurrence_matrix</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1355,10 +1358,10 @@ the d&#8217;th distance and the a&#8217;th angle.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r124" rules="none">
+<table class="docutils citation" frame="void" id="r125" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id27">[R124]</a></td><td>The GLCM Tutorial Home Page,
+<tr><td class="label"><a class="fn-backref" href="#id27">[R125]</a></td><td>The GLCM Tutorial Home Page,
 <a class="reference external" href="http://www.fp.ucalgary.ca/mhallbey/tutorial.htm">http://www.fp.ucalgary.ca/mhallbey/tutorial.htm</a></td></tr>
 </tbody>
 </table>
@@ -1456,7 +1459,7 @@ the image boundaries.</p>
 <tt class="descclassname">skimage.feature.</tt><tt class="descname">hessian_matrix_det</tt><big>(</big><em>image</em>, <em>sigma</em><big>)</big><a class="headerlink" href="#skimage.feature.hessian_matrix_det" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the approximate Hessian Determinant over an image.</p>
 <p>This method uses box filters over integral images to compute the
-approximate Hessian Determinant as described in <a class="reference internal" href="#r125" id="id28">[R125]</a>.</p>
+approximate Hessian Determinant as described in <a class="reference internal" href="#r126" id="id28">[R126]</a>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1487,10 +1490,10 @@ result for <cite>sigma</cite> less than <cite>3</cite> is not accurate, i.e., no
 the result obtained if someone computed the Hessian and took it&#8217;s
 determinant.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r125" rules="none">
+<table class="docutils citation" frame="void" id="r126" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R125]</td><td><em>(<a class="fn-backref" href="#id28">1</a>, <a class="fn-backref" href="#id29">2</a>)</em> Herbert Bay, Andreas Ess, Tinne Tuytelaars, Luc Van Gool,
+<tr><td class="label">[R126]</td><td><em>(<a class="fn-backref" href="#id28">1</a>, <a class="fn-backref" href="#id29">2</a>)</em> Herbert Bay, Andreas Ess, Tinne Tuytelaars, Luc Van Gool,
 &#8220;SURF: Speeded Up Robust Features&#8221;
 <a class="reference external" href="ftp://ftp.vision.ee.ethz.ch/publications/articles/eth_biwi_00517.pdf">ftp://ftp.vision.ee.ethz.ch/publications/articles/eth_biwi_00517.pdf</a></td></tr>
 </tbody>
@@ -1668,7 +1671,7 @@ rotation invariant.</p>
 </li>
 <li><dl class="first docutils">
 <dt>&#8216;nri_uniform&#8217;: non rotation-invariant uniform patterns variant</dt>
-<dd><p class="first last">which is only gray scale invariant <a class="reference internal" href="#r127" id="id30">[R127]</a>.</p>
+<dd><p class="first last">which is only gray scale invariant <a class="reference internal" href="#r128" id="id30">[R128]</a>.</p>
 </dd>
 </dl>
 </li>
@@ -1691,19 +1694,19 @@ rotation invariant.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r126" rules="none">
+<table class="docutils citation" frame="void" id="r127" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id31">[R126]</a></td><td>Multiresolution Gray-Scale and Rotation Invariant Texture
+<tr><td class="label"><a class="fn-backref" href="#id31">[R127]</a></td><td>Multiresolution Gray-Scale and Rotation Invariant Texture
 Classification with Local Binary Patterns.
 Timo Ojala, Matti Pietikainen, Topi Maenpaa.
 <a class="reference external" href="http://www.rafbis.it/biplab15/images/stories/docenti/Danielriccio/Articoliriferimento/LBP.pdf">http://www.rafbis.it/biplab15/images/stories/docenti/Danielriccio/Articoliriferimento/LBP.pdf</a>, 2002.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r127" rules="none">
+<table class="docutils citation" frame="void" id="r128" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R127]</td><td><em>(<a class="fn-backref" href="#id30">1</a>, <a class="fn-backref" href="#id32">2</a>)</em> Face recognition with local binary patterns.
+<tr><td class="label">[R128]</td><td><em>(<a class="fn-backref" href="#id30">1</a>, <a class="fn-backref" href="#id32">2</a>)</em> Face recognition with local binary patterns.
 Timo Ahonen, Abdenour Hadid, Matti Pietikainen,
 <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.214.6851">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.214.6851</a>,
 2004.</td></tr>
@@ -1823,17 +1826,17 @@ and an <cite>(m, n)</cite> template, and matches correspond to origin
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r128" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id33">[R128]</a></td><td>Briechle and Hanebeck, &#8220;Template Matching using Fast Normalized
-Cross Correlation&#8221;, Proceedings of the SPIE (2001).</td></tr>
-</tbody>
-</table>
 <table class="docutils citation" frame="void" id="r129" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id34">[R129]</a></td><td>J. P. Lewis, &#8220;Fast Normalized Cross-Correlation&#8221;, Industrial Light
+<tr><td class="label"><a class="fn-backref" href="#id33">[R129]</a></td><td>Briechle and Hanebeck, &#8220;Template Matching using Fast Normalized
+Cross Correlation&#8221;, Proceedings of the SPIE (2001).</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r130" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id34">[R130]</a></td><td>J. P. Lewis, &#8220;Fast Normalized Cross-Correlation&#8221;, Industrial Light
 and Magic.</td></tr>
 </tbody>
 </table>
@@ -2037,6 +2040,75 @@ color is chosen randomly.</p>
 </div></blockquote>
 </td>
 </tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="register-translation">
+<h2>register_translation<a class="headerlink" href="#register-translation" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.feature.register_translation">
+<tt class="descclassname">skimage.feature.</tt><tt class="descname">register_translation</tt><big>(</big><em>src_image</em>, <em>target_image</em>, <em>upsample_factor=1</em>, <em>space='real'</em><big>)</big><a class="headerlink" href="#skimage.feature.register_translation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Efficient subpixel image translation registration by cross-correlation.</p>
+<p>This code gives the same precision as the FFT upsampled cross-correlation
+in a fraction of the computation time and with reduced memory requirements.
+It obtains an initial estimate of the cross-correlation peak by an FFT and
+then refines the shift estimation by upsampling the DFT only in a small
+neighborhood of that estimate by means of a matrix-multiply DFT.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>src_image</strong> : ndarray</p>
+<blockquote>
+<div><p>Reference image.</p>
+</div></blockquote>
+<p><strong>target_image</strong> : ndarray</p>
+<blockquote>
+<div><p>Image to register.  Must be same dimensionality as <tt class="docutils literal"><span class="pre">src_image</span></tt>.</p>
+</div></blockquote>
+<p><strong>upsample_factor</strong> : int, optional</p>
+<blockquote>
+<div><p>Upsampling factor. Images will be registered to within
+<tt class="docutils literal"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">upsample_factor</span></tt> of a pixel. For example
+<tt class="docutils literal"><span class="pre">upsample_factor</span> <span class="pre">==</span> <span class="pre">20</span></tt> means the images will be registered
+within 1/20th of a pixel.  Default is 1 (no upsampling)</p>
+</div></blockquote>
+<p><strong>space</strong> : string, one of &#8220;real&#8221; or &#8220;fourier&#8221;</p>
+<blockquote>
+<div><p>Defines how the algorithm interprets input data.  &#8220;real&#8221; means data
+will be FFT&#8217;d to compute the correlation, while &#8220;fourier&#8221; data will
+bypass FFT of input data.  Case insensitive.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>shifts</strong> : ndarray</p>
+<blockquote>
+<div><p>Shift vector (in pixels) required to register <tt class="docutils literal"><span class="pre">target_image</span></tt> with
+<tt class="docutils literal"><span class="pre">src_image</span></tt>.  Axis ordering is consistent with numpy (e.g. Z, Y, X)</p>
+</div></blockquote>
+<p><strong>error</strong> : float</p>
+<blockquote>
+<div><p>Translation invariant normalized RMS error between <tt class="docutils literal"><span class="pre">src_image</span></tt> and
+<tt class="docutils literal"><span class="pre">target_image</span></tt>.</p>
+</div></blockquote>
+<p><strong>phasediff</strong> : float</p>
+<blockquote class="last">
+<div><p>Global phase difference between the two images (should be
+zero if images are non-negative).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r131" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id35">[R131]</a></td><td>Manuel Guizar-Sicairos, Samuel T. Thurman, and James R. Fienup,
+&#8220;Efficient subpixel image registration algorithms,&#8221;
+Optics Letters 33, 156-158 (2008).</td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -2346,19 +2418,19 @@ magnitude response obtained after Non-Maximal Suppression.</dd>
 curvatures greater than this value.</dd>
 </dl>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r130" rules="none">
+<table class="docutils citation" frame="void" id="r132" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id35">[R130]</a></td><td>Motilal Agrawal, Kurt Konolige and Morten Rufus Blas
+<tr><td class="label"><a class="fn-backref" href="#id36">[R132]</a></td><td>Motilal Agrawal, Kurt Konolige and Morten Rufus Blas
 &#8220;CENSURE: Center Surround Extremas for Realtime Feature
 Detection and Matching&#8221;,
 <a class="reference external" href="http://link.springer.com/content/pdf/10.1007%2F978-3-540-88693-8_8.pdf">http://link.springer.com/content/pdf/10.1007%2F978-3-540-88693-8_8.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r131" rules="none">
+<table class="docutils citation" frame="void" id="r133" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id36">[R131]</a></td><td>Adam Schmidt, Marek Kraft, Michal Fularz and Zuzanna Domagala
+<tr><td class="label"><a class="fn-backref" href="#id37">[R133]</a></td><td>Adam Schmidt, Marek Kraft, Michal Fularz and Zuzanna Domagala
 &#8220;Comparative Assessment of Point Feature Detectors and
 Descriptors in the Context of Robot Navigation&#8221;
 <a class="reference external" href="http://www.jamris.org/01_2013/saveas.php?QUEST=JAMRIS_No01_2013_P_11-20.pdf">http://www.jamris.org/01_2013/saveas.php?QUEST=JAMRIS_No01_2013_P_11-20.pdf</a></td></tr>
@@ -2497,10 +2569,10 @@ extract the features from.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r132" rules="none">
+<table class="docutils citation" frame="void" id="r134" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id37">[R132]</a></td><td>Ethan Rublee, Vincent Rabaud, Kurt Konolige and Gary Bradski
+<tr><td class="label"><a class="fn-backref" href="#id38">[R134]</a></td><td>Ethan Rublee, Vincent Rabaud, Kurt Konolige and Gary Bradski
 &#8220;ORB: An efficient alternative to SIFT and SURF&#8221;
 <a class="reference external" href="http://www.vision.cs.chubu.ac.jp/CV-R/pdf/Rublee_iccv2011.pdf">http://www.vision.cs.chubu.ac.jp/CV-R/pdf/Rublee_iccv2011.pdf</a></td></tr>
 </tbody>
@@ -2692,6 +2764,7 @@ keypoints and descriptors you should use the faster
 <li><a class="reference internal" href="#match-template">match_template</a></li>
 <li><a class="reference internal" href="#peak-local-max">peak_local_max</a></li>
 <li><a class="reference internal" href="#plot-matches">plot_matches</a></li>
+<li><a class="reference internal" href="#register-translation">register_translation</a></li>
 <li><a class="reference internal" href="#structure-tensor">structure_tensor</a></li>
 <li><a class="reference internal" href="#structure-tensor-eigvals">structure_tensor_eigvals</a></li>
 <li><a class="reference internal" href="#brief"><tt class="docutils literal"><span class="pre">BRIEF</span></tt></a></li>
