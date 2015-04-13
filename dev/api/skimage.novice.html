@@ -82,43 +82,61 @@ instead of row, column.</p>
 </div>
 <div class="section" id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<p>We can create a Picture object open opening an image file
-&gt;&gt;&gt; from skimage import novice
-&gt;&gt;&gt; from skimage import data
-&gt;&gt;&gt; picture = novice.open(data.data_dir + &#8216;/chelsea.png&#8217;)</p>
-<p>Pictures know their format
-&gt;&gt;&gt; picture.format
-&#8216;png&#8217;</p>
-<p>... and where they came from
-&gt;&gt;&gt; picture.path.endswith(&#8216;chelsea.png&#8217;)
-True</p>
-<p>... and their size
-&gt;&gt;&gt; picture.size
-(451, 300)
-&gt;&gt;&gt; picture.width
-451</p>
-<p>Changing <cite>size</cite> resizes the picture.
-&gt;&gt;&gt; picture.size = (45, 30)</p>
+<p>We can create a Picture object open opening an image file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">novice</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span> <span class="o">=</span> <span class="n">novice</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s">&#39;/chelsea.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Pictures know their format:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">format</span>
+<span class="go">&#39;png&#39;</span>
+</pre></div>
+</div>
+<p>... and where they came from:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;chelsea.png&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>... and their size:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">size</span>
+<span class="go">(451, 300)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">width</span>
+<span class="go">451</span>
+</pre></div>
+</div>
+<p>Changing <cite>size</cite> resizes the picture.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>You can iterate over pixels, which have RGB values between 0 and 255,
-and know their location in the picture.
-&gt;&gt;&gt; for pixel in picture:
-...     if (pixel.red &gt; 128) and (pixel.x &lt; picture.width):
-...         pixel.red /= 2</p>
-<p>Pictures know if they&#8217;ve been modified from the original file
-&gt;&gt;&gt; picture.modified
-True
-&gt;&gt;&gt; print(picture.path)
-None</p>
-<p>Pictures can be indexed like arrays
-&gt;&gt;&gt; picture[0:20, 0:20] = (0, 0, 0)</p>
-<p>Saving the picture updates the path attribute, format, and modified state.
-&gt;&gt;&gt; picture.save(&#8216;save-demo.jpg&#8217;)
-&gt;&gt;&gt; picture.path.endswith(&#8216;save-demo.jpg&#8217;)
-True
-&gt;&gt;&gt; picture.format
-&#8216;jpeg&#8217;
-&gt;&gt;&gt; picture.modified
-False</p>
+and know their location in the picture.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">pixel</span> <span class="ow">in</span> <span class="n">picture</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="p">(</span><span class="n">pixel</span><span class="o">.</span><span class="n">red</span> <span class="o">&gt;</span> <span class="mi">128</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">pixel</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">picture</span><span class="o">.</span><span class="n">width</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">pixel</span><span class="o">.</span><span class="n">red</span> <span class="o">/=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Pictures know if they&#8217;ve been modified from the original file</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">modified</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">picture</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+<span class="go">None</span>
+</pre></div>
+</div>
+<p>Pictures can be indexed like arrays</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Saving the picture updates the path attribute, format, and modified state.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s">&#39;save-demo.jpg&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s">&#39;save-demo.jpg&#39;</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">format</span>
+<span class="go">&#39;jpeg&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">modified</span>
+<span class="go">False</span>
+</pre></div>
+</div>
 </div>
 </div>
 <table border="1" class="longtable docutils">
@@ -152,29 +170,46 @@ False</p>
 <dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
 <p>A 2-D picture made up of pixels.</p>
 <p class="rubric">Examples</p>
-<p>Load an image from a file
-&gt;&gt;&gt; from skimage import novice
-&gt;&gt;&gt; from skimage import data
-&gt;&gt;&gt; picture = novice.open(data.data_dir + &#8216;/chelsea.png&#8217;)</p>
-<p>Load an image from a URL. URL must start with http(s):// or ftp(s)://
-&gt;&gt;&gt; picture = novice.open(&#8216;<a class="reference external" href="http://scikit-image.org/_static/img/logo.png">http://scikit-image.org/_static/img/logo.png</a>&#8216;)</p>
-<p>Create a blank 100 pixel wide, 200 pixel tall white image
-&gt;&gt;&gt; pic = Picture.from_size((100, 200), color=(255, 255, 255))</p>
-<p>Use numpy to make an RGB byte array (shape is height x width x 3)
-&gt;&gt;&gt; import numpy as np
-&gt;&gt;&gt; data = np.zeros(shape=(200, 100, 3), dtype=np.uint8)
-&gt;&gt;&gt; data[:, :, 0] = 255  # Set red component to maximum
-&gt;&gt;&gt; pic = Picture(array=data)</p>
-<p>Get the bottom-left pixel
-&gt;&gt;&gt; pic[0, 0]
-Pixel(red=255, green=0, blue=0, alpha=255)</p>
-<p>Get the top row of the picture
-&gt;&gt;&gt; pic[:, pic.height-1]
-Picture(100 x 1)</p>
-<p>Set the bottom-left pixel to black
-&gt;&gt;&gt; pic[0, 0] = (0, 0, 0)</p>
-<p>Set the top row to red
-&gt;&gt;&gt; pic[:, pic.height-1] = (255, 0, 0)</p>
+<p>Load an image from a file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">novice</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span> <span class="o">=</span> <span class="n">novice</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s">&#39;/chelsea.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Load an image from a URL (the URL must start with <tt class="docutils literal"><span class="pre">http(s)://</span></tt> or
+<tt class="docutils literal"><span class="pre">ftp(s)://</span></tt>):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span> <span class="o">=</span> <span class="n">novice</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;http://scikit-image.org/_static/img/logo.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create a blank 100 pixel wide, 200 pixel tall white image:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pic</span> <span class="o">=</span> <span class="n">Picture</span><span class="o">.</span><span class="n">from_size</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Use numpy to make an RGB byte array (shape is height x width x 3):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>  <span class="c"># Set red component to maximum</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pic</span> <span class="o">=</span> <span class="n">Picture</span><span class="p">(</span><span class="n">array</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Get the bottom-left pixel:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pic</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="go">Pixel(red=255, green=0, blue=0, alpha=255)</span>
+</pre></div>
+</div>
+<p>Get the top row of the picture:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pic</span><span class="p">[:,</span> <span class="n">pic</span><span class="o">.</span><span class="n">height</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">Picture(100 x 1)</span>
+</pre></div>
+</div>
+<p>Set the bottom-left pixel to black:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pic</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Set the top row to red:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">pic</span><span class="p">[:,</span> <span class="n">pic</span><span class="o">.</span><span class="n">height</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
 <p class="rubric">Attributes</p>
 <table border="1" class="longtable docutils">
 <colgroup>

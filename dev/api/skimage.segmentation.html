@@ -84,16 +84,19 @@
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.mark_boundaries" title="skimage.segmentation.mark_boundaries"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.mark_boundaries</span></tt></a>(image,&nbsp;...)</td>
 <td>Return image with boundaries between labeled regions highlighted.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.random_walker" title="skimage.segmentation.random_walker"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.random_walker</span></tt></a>(data,&nbsp;labels)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.quickshift" title="skimage.segmentation.quickshift"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.quickshift</span></tt></a></td>
+<td>Segments image using quickshift clustering in Color-(x,y) space.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.random_walker" title="skimage.segmentation.random_walker"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.random_walker</span></tt></a>(data,&nbsp;labels)</td>
 <td>Random walker algorithm for segmentation from markers.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.relabel_from_one" title="skimage.segmentation.relabel_from_one"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.relabel_from_one</span></tt></a>(...)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.relabel_from_one" title="skimage.segmentation.relabel_from_one"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.relabel_from_one</span></tt></a>(...)</td>
 <td><strong>Deprecated function</strong>. Use <tt class="docutils literal"><span class="pre">relabel_sequential</span></tt> instead.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.relabel_sequential" title="skimage.segmentation.relabel_sequential"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.relabel_sequential</span></tt></a>(...)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.relabel_sequential" title="skimage.segmentation.relabel_sequential"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.relabel_sequential</span></tt></a>(...)</td>
 <td>Relabel arbitrary labels to {<cite>offset</cite>, ...</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.slic" title="skimage.segmentation.slic"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.slic</span></tt></a>(image[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.slic" title="skimage.segmentation.slic"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.slic</span></tt></a>(image[,&nbsp;...])</td>
 <td>Segments image using k-means clustering in Color-(x,y,z) space.</td>
 </tr>
 </tbody>
@@ -200,10 +203,10 @@ intersection of the separate segmentations on the color channels.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r311" rules="none">
+<table class="docutils citation" frame="void" id="r334" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R311]</a></td><td>Efficient graph-based image segmentation, Felzenszwalb, P.F. and
+<tr><td class="label"><a class="fn-backref" href="#id1">[R334]</a></td><td>Efficient graph-based image segmentation, Felzenszwalb, P.F. and
 Huttenlocher, D.P.  International Journal of Computer Vision, 2004</td></tr>
 </tbody>
 </table>
@@ -425,6 +428,80 @@ superimposed on the original image.</p>
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="#skimage.segmentation.find_boundaries" title="skimage.segmentation.find_boundaries"><tt class="xref py py-obj docutils literal"><span class="pre">find_boundaries</span></tt></a></p>
 </div>
+</dd></dl>
+
+</div>
+<div class="section" id="quickshift">
+<h2>quickshift<a class="headerlink" href="#quickshift" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.segmentation.quickshift">
+<tt class="descclassname">skimage.segmentation.</tt><tt class="descname">quickshift</tt><big>(</big><big>)</big><a class="headerlink" href="#skimage.segmentation.quickshift" title="Permalink to this definition">¶</a></dt>
+<dd><p>Segments image using quickshift clustering in Color-(x,y) space.</p>
+<p>Produces an oversegmentation of the image using the quickshift mode-seeking
+algorithm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : (width, height, channels) ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>ratio</strong> : float, optional, between 0 and 1 (default 1).</p>
+<blockquote>
+<div><p>Balances color-space proximity and image-space proximity.
+Higher values give more weight to color-space.</p>
+</div></blockquote>
+<p><strong>kernel_size</strong> : float, optional (default 5)</p>
+<blockquote>
+<div><p>Width of Gaussian kernel used in smoothing the
+sample density. Higher means fewer clusters.</p>
+</div></blockquote>
+<p><strong>max_dist</strong> : float, optional (default 10)</p>
+<blockquote>
+<div><p>Cut-off point for data distances.
+Higher means fewer clusters.</p>
+</div></blockquote>
+<p><strong>return_tree</strong> : bool, optional (default False)</p>
+<blockquote>
+<div><p>Whether to return the full segmentation hierarchy tree and distances.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float, optional (default 0)</p>
+<blockquote>
+<div><p>Width for Gaussian smoothing as preprocessing. Zero means no smoothing.</p>
+</div></blockquote>
+<p><strong>convert2lab</strong> : bool, optional (default True)</p>
+<blockquote>
+<div><p>Whether the input should be converted to Lab colorspace prior to
+segmentation. For this purpose, the input is assumed to be RGB.</p>
+</div></blockquote>
+<p><strong>random_seed</strong> : None (default) or int, optional</p>
+<blockquote>
+<div><p>Random seed used for breaking ties.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>segment_mask</strong> : (width, height) ndarray</p>
+<blockquote class="last">
+<div><p>Integer mask indicating segment labels.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The authors advocate to convert the image to Lab color space prior to
+segmentation, though this is not strictly necessary. For this to work, the
+image must be given in RGB format.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r335" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[R335]</a></td><td>Quick shift and kernel methods for mode seeking,
+Vedaldi, A. and Soatto, S.
+European Conference on Computer Vision, 2008</td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -761,7 +838,7 @@ in most of the cases.</p>
 </div></blockquote>
 <p><strong>slic_zero: bool, optional</strong></p>
 <blockquote>
-<div><p>Run SLIC-zero, the zero-parameter mode of SLIC. <a class="reference internal" href="#r313" id="id2">[R313]</a></p>
+<div><p>Run SLIC-zero, the zero-parameter mode of SLIC. <a class="reference internal" href="#r337" id="id3">[R337]</a></p>
 </div></blockquote>
 </td>
 </tr>
@@ -794,18 +871,18 @@ interpret them as 3D with the last dimension having length 3, use
 <cite>multichannel=False</cite>.</li>
 </ul>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r312" rules="none">
+<table class="docutils citation" frame="void" id="r336" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R312]</a></td><td>Radhakrishna Achanta, Appu Shaji, Kevin Smith, Aurelien Lucchi,
+<tr><td class="label"><a class="fn-backref" href="#id4">[R336]</a></td><td>Radhakrishna Achanta, Appu Shaji, Kevin Smith, Aurelien Lucchi,
 Pascal Fua, and Sabine Süsstrunk, SLIC Superpixels Compared to
 State-of-the-art Superpixel Methods, TPAMI, May 2012.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r313" rules="none">
+<table class="docutils citation" frame="void" id="r337" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R313]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> <a class="reference external" href="http://ivrg.epfl.ch/research/superpixels#SLICO">http://ivrg.epfl.ch/research/superpixels#SLICO</a></td></tr>
+<tr><td class="label">[R337]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> <a class="reference external" href="http://ivrg.epfl.ch/research/superpixels#SLICO">http://ivrg.epfl.ch/research/superpixels#SLICO</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -853,6 +930,7 @@ State-of-the-art Superpixel Methods, TPAMI, May 2012.</td></tr>
 <li><a class="reference internal" href="#find-boundaries">find_boundaries</a></li>
 <li><a class="reference internal" href="#join-segmentations">join_segmentations</a></li>
 <li><a class="reference internal" href="#mark-boundaries">mark_boundaries</a></li>
+<li><a class="reference internal" href="#quickshift">quickshift</a></li>
 <li><a class="reference internal" href="#random-walker">random_walker</a></li>
 <li><a class="reference internal" href="#relabel-from-one">relabel_from_one</a></li>
 <li><a class="reference internal" href="#relabel-sequential">relabel_sequential</a></li>
