@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Module: measure &mdash; skimage v0.11.0 docs</title>
+        <title>Module: measure &mdash; skimage v0.11.3 docs</title>
     
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.11.0',
+        VERSION:     '0.11.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <link rel="top" title="skimage v0.11.0 docs" href="../index.html" />
+        <link rel="top" title="skimage v0.11.3 docs" href="../index.html" />
         <link rel="up" title="API Reference" href="api.html" />
         <link rel="next" title="Module: morphology" href="skimage.morphology.html" />
         <link rel="prev" title="Module: io" href="skimage.io.html" />
@@ -81,6 +81,12 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.measure.find_contours" title="skimage.measure.find_contours"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.find_contours</span></tt></a>(array,&nbsp;level)</td>
 <td>Find iso-valued contours in a 2D array for a given level value.</td>
 </tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.measure.grid_points_in_poly" title="skimage.measure.grid_points_in_poly"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.grid_points_in_poly</span></tt></a></td>
+<td>Test whether points on a specified grid are inside a polygon.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.measure.label" title="skimage.measure.label"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.label</span></tt></a>(input[,&nbsp;neighbors,&nbsp;...])</td>
+<td>Label connected regions of an integer array.</td>
+</tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.measure.marching_cubes" title="skimage.measure.marching_cubes"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.marching_cubes</span></tt></a>(volume,&nbsp;level)</td>
 <td>Marching cubes algorithm to find iso-valued surfaces in 3d volumetric data</td>
 </tr>
@@ -102,28 +108,31 @@
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.measure.perimeter" title="skimage.measure.perimeter"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.perimeter</span></tt></a>(image[,&nbsp;neighbourhood])</td>
 <td>Calculate total perimeter of all objects in binary image.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.measure.profile_line" title="skimage.measure.profile_line"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.profile_line</span></tt></a>(img,&nbsp;src,&nbsp;dst)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.measure.points_in_poly" title="skimage.measure.points_in_poly"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.points_in_poly</span></tt></a></td>
+<td>Test whether points lie inside a polygon.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.measure.profile_line" title="skimage.measure.profile_line"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.profile_line</span></tt></a>(img,&nbsp;src,&nbsp;dst)</td>
 <td>Return the intensity profile of an image measured along a scan line.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.measure.ransac" title="skimage.measure.ransac"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.ransac</span></tt></a>(data,&nbsp;model_class,&nbsp;...)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.measure.ransac" title="skimage.measure.ransac"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.ransac</span></tt></a>(data,&nbsp;model_class,&nbsp;...)</td>
 <td>Fit a model to data with the RANSAC (random sample consensus) algorithm.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.measure.regionprops" title="skimage.measure.regionprops"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.regionprops</span></tt></a>(label_image[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.measure.regionprops" title="skimage.measure.regionprops"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.regionprops</span></tt></a>(label_image[,&nbsp;...])</td>
 <td>Measure properties of labeled image regions.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.measure.structural_similarity" title="skimage.measure.structural_similarity"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.structural_similarity</span></tt></a>(X,&nbsp;Y)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.measure.structural_similarity" title="skimage.measure.structural_similarity"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.structural_similarity</span></tt></a>(X,&nbsp;Y)</td>
 <td>Compute the mean structural similarity index between two images.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.measure.subdivide_polygon" title="skimage.measure.subdivide_polygon"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.subdivide_polygon</span></tt></a>(coords[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.measure.subdivide_polygon" title="skimage.measure.subdivide_polygon"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.subdivide_polygon</span></tt></a>(coords[,&nbsp;...])</td>
 <td>Subdivision of polygonal curves using B-Splines.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.measure.CircleModel" title="skimage.measure.CircleModel"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.CircleModel</span></tt></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.measure.CircleModel" title="skimage.measure.CircleModel"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.CircleModel</span></tt></a>()</td>
 <td>Total least squares estimator for 2D circles.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.measure.EllipseModel" title="skimage.measure.EllipseModel"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.EllipseModel</span></tt></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.measure.EllipseModel" title="skimage.measure.EllipseModel"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.EllipseModel</span></tt></a>()</td>
 <td>Total least squares estimator for 2D ellipses.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.measure.LineModel" title="skimage.measure.LineModel"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.LineModel</span></tt></a>()</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.measure.LineModel" title="skimage.measure.LineModel"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.LineModel</span></tt></a>()</td>
 <td>Total least squares estimator for 2D lines.</td>
 </tr>
 </tbody>
@@ -162,10 +171,10 @@ is returned.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r235" rules="none">
+<table class="docutils citation" frame="void" id="r257" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R235]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm">http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[R257]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm">http://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -175,7 +184,7 @@ is returned.</p>
 <h2>block_reduce<a class="headerlink" href="#block-reduce" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.block_reduce">
-<tt class="descclassname">skimage.measure.</tt><tt class="descname">block_reduce</tt><big>(</big><em>image</em>, <em>block_size</em>, <em>func=&lt;function sum at 0x7f92bd8260d0&gt;</em>, <em>cval=0</em><big>)</big><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
+<tt class="descclassname">skimage.measure.</tt><tt class="descname">block_reduce</tt><big>(</big><em>image</em>, <em>block_size</em>, <em>func=&lt;function sum at 0x7fd855741158&gt;</em>, <em>cval=0</em><big>)</big><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Down-sample image by applying function to local blocks.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -358,7 +367,7 @@ consisting of n <tt class="docutils literal"><span class="pre">(row,</span> <spa
 </table>
 <p class="rubric">Notes</p>
 <p>The marching squares algorithm is a special case of the marching cubes
-algorithm <a class="reference internal" href="#r236" id="id2">[R236]</a>.  A simple explanation is available here:</p>
+algorithm <a class="reference internal" href="#r258" id="id2">[R258]</a>.  A simple explanation is available here:</p>
 <div class="highlight-python"><div class="highlight"><pre>http://www.essi.fr/~lingrand/MarchingCubes/algo.html
 </pre></div>
 </div>
@@ -403,10 +412,10 @@ high value of the array. This will often yield degenerate contours,
 especially around structures that are a single array element wide. Instead
 choose a middle value, as above.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r236" rules="none">
+<table class="docutils citation" frame="void" id="r258" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R236]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Lorensen, William and Harvey E. Cline. Marching Cubes: A High
+<tr><td class="label">[R258]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> Lorensen, William and Harvey E. Cline. Marching Cubes: A High
 Resolution 3D Surface Construction Algorithm. Computer Graphics
 (SIGGRAPH 87 Proceedings) 21(4) July 1987, p. 163-170).</td></tr>
 </tbody>
@@ -421,6 +430,145 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 <span class="gp">&gt;&gt;&gt; </span><span class="n">find_contours</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
 <span class="go">[array([[ 0. ,  0.5],</span>
 <span class="go">       [ 0.5,  0. ]])]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="grid-points-in-poly">
+<h2>grid_points_in_poly<a class="headerlink" href="#grid-points-in-poly" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.measure.grid_points_in_poly">
+<tt class="descclassname">skimage.measure.</tt><tt class="descname">grid_points_in_poly</tt><big>(</big><big>)</big><a class="headerlink" href="#skimage.measure.grid_points_in_poly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test whether points on a specified grid are inside a polygon.</p>
+<p>For each <tt class="docutils literal"><span class="pre">(r,</span> <span class="pre">c)</span></tt> coordinate on a grid, i.e. <tt class="docutils literal"><span class="pre">(0,</span> <span class="pre">0)</span></tt>, <tt class="docutils literal"><span class="pre">(0,</span> <span class="pre">1)</span></tt> etc.,
+test whether that point lies inside a polygon.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>shape</strong> : tuple (M, N)</p>
+<blockquote>
+<div><p>Shape of the grid.</p>
+</div></blockquote>
+<p><strong>verts</strong> : (V, 2) array</p>
+<blockquote>
+<div><p>Specify the V vertices of the polygon, sorted either clockwise
+or anti-clockwise.  The first point may (but does not need to be)
+duplicated.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask</strong> : (M, N) ndarray of bool</p>
+<blockquote class="last">
+<div><p>True where the grid falls inside the polygon.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#skimage.measure.points_in_poly" title="skimage.measure.points_in_poly"><tt class="xref py py-obj docutils literal"><span class="pre">points_in_poly</span></tt></a></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="label">
+<h2>label<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.measure.label">
+<tt class="descclassname">skimage.measure.</tt><tt class="descname">label</tt><big>(</big><em>input</em>, <em>neighbors=None</em>, <em>background=None</em>, <em>return_num=False</em>, <em>connectivity=None</em><big>)</big><a class="headerlink" href="#skimage.measure.label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Label connected regions of an integer array.</p>
+<p>Two pixels are connected when they are neighbors and have the same value.
+In 2D, they can be neighbors either in a 1- or 2-connected sense.
+The value refers to the maximum number of orthogonal hops to consider a
+pixel/voxel a neighbor:</p>
+<div class="highlight-python"><div class="highlight"><pre>1-connectivity      2-connectivity     diagonal connection close-up
+
+     [ ]           [ ]  [ ]  [ ]         [ ]
+      |               \  |  /             |  &lt;- hop 2
+[ ]--[x]--[ ]      [ ]--[x]--[ ]    [x]--[ ]
+      |               /  |  \         hop 1
+     [ ]           [ ]  [ ]  [ ]
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>input</strong> : ndarray of dtype int</p>
+<blockquote>
+<div><p>Image to label.</p>
+</div></blockquote>
+<p><strong>neighbors</strong> : {4, 8}, int, optional</p>
+<blockquote>
+<div><p>Whether to use 4- or 8-&#8220;connectivity&#8221;.
+In 3D, 4-&#8220;connectivity&#8221; means connected pixels have to share face,
+whereas with 8-&#8220;connectivity&#8221;, they have to share only edge or vertex.
+<strong>Deprecated, use ``connectivity`` instead.</strong></p>
+</div></blockquote>
+<p><strong>background</strong> : int, optional</p>
+<blockquote>
+<div><p>Consider all pixels with this value as background pixels, and label
+them as -1. (Note: background pixels will be labeled as 0 starting with
+version 0.12).</p>
+</div></blockquote>
+<p><strong>return_num</strong> : bool, optional</p>
+<blockquote>
+<div><p>Whether to return the number of assigned labels.</p>
+</div></blockquote>
+<p><strong>connectivity</strong> : int, optional</p>
+<blockquote>
+<div><p>Maximum number of orthogonal hops to consider a pixel/voxel
+as a neighbor.
+Accepted values are ranging from  1 to input.ndim.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray of dtype int</p>
+<blockquote>
+<div><p>Labeled array, where all connected regions are assigned the
+same integer value.</p>
+</div></blockquote>
+<p><strong>num</strong> : int, optional</p>
+<blockquote class="last">
+<div><p>Number of labels, which equals the maximum label index and is only
+returned if return_num is <cite>True</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">[[1 0 0]</span>
+<span class="go"> [0 1 0]</span>
+<span class="go"> [0 0 1]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <span class="n">label</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span> 
+<span class="go">[[0 1 1]</span>
+<span class="go"> [2 3 1]</span>
+<span class="go"> [2 2 4]]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">[[0 1 1]</span>
+<span class="go"> [1 0 1]</span>
+<span class="go"> [1 1 0]]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="go">[[ 0 -1 -1]</span>
+<span class="go"> [ 0  0  1]</span>
+<span class="go"> [-1 -1 -1]]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -471,13 +619,13 @@ exactly three indices.</p>
 <p class="last"><a class="reference internal" href="#skimage.measure.correct_mesh_orientation" title="skimage.measure.correct_mesh_orientation"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.correct_mesh_orientation</span></tt></a>, <a class="reference internal" href="#skimage.measure.mesh_surface_area" title="skimage.measure.mesh_surface_area"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.measure.mesh_surface_area</span></tt></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The marching cubes algorithm is implemented as described in <a class="reference internal" href="#r237" id="id4">[R237]</a>.
+<p>The marching cubes algorithm is implemented as described in <a class="reference internal" href="#r259" id="id4">[R259]</a>.
 A simple explanation is available here:</p>
 <div class="highlight-python"><div class="highlight"><pre>http://www.essi.fr/~lingrand/MarchingCubes/algo.html
 </pre></div>
 </div>
 <p>There are several known ambiguous cases in the marching cubes algorithm.
-Using point labeling as in <a class="reference internal" href="#r237" id="id5">[R237]</a>, Figure 4, as shown:</p>
+Using point labeling as in <a class="reference internal" href="#r259" id="id5">[R259]</a>, Figure 4, as shown:</p>
 <div class="highlight-python"><div class="highlight"><pre>    v8 ------ v7
    / |       / |        y
   /  |      /  |        ^  z
@@ -494,7 +642,7 @@ algorithm, separating v4 and v8 from v2 and v6. An equally valid
 interpretation would be a single connected thin surface enclosing all
 four points. This is the best known ambiguity, though there are others.</p>
 <p>This algorithm does not attempt to resolve such ambiguities; it is a naive
-implementation of marching cubes as in <a class="reference internal" href="#r237" id="id6">[R237]</a>, but may be a good beginning
+implementation of marching cubes as in <a class="reference internal" href="#r259" id="id6">[R259]</a>, but may be a good beginning
 for work with more recent techniques (Dual Marching Cubes, Extended
 Marching Cubes, Cubic Marching Squares, etc.).</p>
 <p>Because of interactions between neighboring cubes, the isosurface(s)
@@ -526,10 +674,10 @@ is recommended. To contour a volume named <cite>myvolume</cite> about the level 
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r237" rules="none">
+<table class="docutils citation" frame="void" id="r259" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R237]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id6">3</a>, <a class="fn-backref" href="#id7">4</a>)</em> Lorensen, William and Harvey E. Cline. Marching Cubes: A High
+<tr><td class="label">[R259]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id6">3</a>, <a class="fn-backref" href="#id7">4</a>)</em> Lorensen, William and Harvey E. Cline. Marching Cubes: A High
 Resolution 3D Surface Construction Algorithm. Computer Graphics
 (SIGGRAPH 87 Proceedings) 21(4) July 1987, p. 163-170).</td></tr>
 </tbody>
@@ -618,32 +766,32 @@ invariant.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r238" rules="none">
+<table class="docutils citation" frame="void" id="r260" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id8">[R238]</a></td><td>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
+<tr><td class="label"><a class="fn-backref" href="#id8">[R260]</a></td><td>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
 Core Algorithms. Springer-Verlag, London, 2009.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r239" rules="none">
+<table class="docutils citation" frame="void" id="r261" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id9">[R239]</a></td><td>B. Jähne. Digital Image Processing. Springer-Verlag,
+<tr><td class="label"><a class="fn-backref" href="#id9">[R261]</a></td><td>B. Jähne. Digital Image Processing. Springer-Verlag,
 Berlin-Heidelberg, 6. edition, 2005.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r240" rules="none">
+<table class="docutils citation" frame="void" id="r262" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[R240]</a></td><td>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
+<tr><td class="label"><a class="fn-backref" href="#id10">[R262]</a></td><td>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
 Features, from Lecture notes in computer science, p. 676. Springer,
 Berlin, 1993.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r241" rules="none">
+<table class="docutils citation" frame="void" id="r263" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[R241]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Image_moment">http://en.wikipedia.org/wiki/Image_moment</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id11">[R263]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Image_moment">http://en.wikipedia.org/wiki/Image_moment</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -688,32 +836,32 @@ rotation invariant.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r242" rules="none">
+<table class="docutils citation" frame="void" id="r264" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id12">[R242]</a></td><td>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
+<tr><td class="label"><a class="fn-backref" href="#id12">[R264]</a></td><td>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
 Core Algorithms. Springer-Verlag, London, 2009.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r243" rules="none">
+<table class="docutils citation" frame="void" id="r265" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id13">[R243]</a></td><td>B. Jähne. Digital Image Processing. Springer-Verlag,
+<tr><td class="label"><a class="fn-backref" href="#id13">[R265]</a></td><td>B. Jähne. Digital Image Processing. Springer-Verlag,
 Berlin-Heidelberg, 6. edition, 2005.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r244" rules="none">
+<table class="docutils citation" frame="void" id="r266" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id14">[R244]</a></td><td>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
+<tr><td class="label"><a class="fn-backref" href="#id14">[R266]</a></td><td>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
 Features, from Lecture notes in computer science, p. 676. Springer,
 Berlin, 1993.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r245" rules="none">
+<table class="docutils citation" frame="void" id="r267" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id15">[R245]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Image_moment">http://en.wikipedia.org/wiki/Image_moment</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id15">[R267]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Image_moment">http://en.wikipedia.org/wiki/Image_moment</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -746,39 +894,39 @@ rotation invariant.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r246" rules="none">
+<table class="docutils citation" frame="void" id="r268" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id16">[R246]</a></td><td>M. K. Hu, &#8220;Visual Pattern Recognition by Moment Invariants&#8221;,
+<tr><td class="label"><a class="fn-backref" href="#id16">[R268]</a></td><td>M. K. Hu, &#8220;Visual Pattern Recognition by Moment Invariants&#8221;,
 IRE Trans. Info. Theory, vol. IT-8, pp. 179-187, 1962</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r247" rules="none">
+<table class="docutils citation" frame="void" id="r269" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id17">[R247]</a></td><td>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
+<tr><td class="label"><a class="fn-backref" href="#id17">[R269]</a></td><td>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
 Core Algorithms. Springer-Verlag, London, 2009.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r248" rules="none">
+<table class="docutils citation" frame="void" id="r270" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id18">[R248]</a></td><td>B. Jähne. Digital Image Processing. Springer-Verlag,
+<tr><td class="label"><a class="fn-backref" href="#id18">[R270]</a></td><td>B. Jähne. Digital Image Processing. Springer-Verlag,
 Berlin-Heidelberg, 6. edition, 2005.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r249" rules="none">
+<table class="docutils citation" frame="void" id="r271" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id19">[R249]</a></td><td>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
+<tr><td class="label"><a class="fn-backref" href="#id19">[R271]</a></td><td>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
 Features, from Lecture notes in computer science, p. 676. Springer,
 Berlin, 1993.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r250" rules="none">
+<table class="docutils citation" frame="void" id="r272" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id20">[R250]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Image_moment">http://en.wikipedia.org/wiki/Image_moment</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id20">[R272]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Image_moment">http://en.wikipedia.org/wiki/Image_moment</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -815,32 +963,32 @@ but not rotation invariant.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r251" rules="none">
+<table class="docutils citation" frame="void" id="r273" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id21">[R251]</a></td><td>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
+<tr><td class="label"><a class="fn-backref" href="#id21">[R273]</a></td><td>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
 Core Algorithms. Springer-Verlag, London, 2009.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r252" rules="none">
+<table class="docutils citation" frame="void" id="r274" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id22">[R252]</a></td><td>B. Jähne. Digital Image Processing. Springer-Verlag,
+<tr><td class="label"><a class="fn-backref" href="#id22">[R274]</a></td><td>B. Jähne. Digital Image Processing. Springer-Verlag,
 Berlin-Heidelberg, 6. edition, 2005.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r253" rules="none">
+<table class="docutils citation" frame="void" id="r275" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id23">[R253]</a></td><td>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
+<tr><td class="label"><a class="fn-backref" href="#id23">[R275]</a></td><td>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
 Features, from Lecture notes in computer science, p. 676. Springer,
 Berlin, 1993.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r254" rules="none">
+<table class="docutils citation" frame="void" id="r276" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id24">[R254]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Image_moment">http://en.wikipedia.org/wiki/Image_moment</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id24">[R276]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Image_moment">http://en.wikipedia.org/wiki/Image_moment</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -875,14 +1023,50 @@ Berlin, 1993.</td></tr>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r255" rules="none">
+<table class="docutils citation" frame="void" id="r277" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id25">[R255]</a></td><td>K. Benkrid, D. Crookes. Design and FPGA Implementation of
+<tr><td class="label"><a class="fn-backref" href="#id25">[R277]</a></td><td>K. Benkrid, D. Crookes. Design and FPGA Implementation of
 a Perimeter Estimator. The Queen&#8217;s University of Belfast.
 <a class="reference external" href="http://www.cs.qub.ac.uk/~d.crookes/webpubs/papers/perimeter.doc">http://www.cs.qub.ac.uk/~d.crookes/webpubs/papers/perimeter.doc</a></td></tr>
 </tbody>
 </table>
+</dd></dl>
+
+</div>
+<div class="section" id="points-in-poly">
+<h2>points_in_poly<a class="headerlink" href="#points-in-poly" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.measure.points_in_poly">
+<tt class="descclassname">skimage.measure.</tt><tt class="descname">points_in_poly</tt><big>(</big><big>)</big><a class="headerlink" href="#skimage.measure.points_in_poly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test whether points lie inside a polygon.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>points</strong> : (N, 2) array</p>
+<blockquote>
+<div><p>Input points, <tt class="docutils literal"><span class="pre">(x,</span> <span class="pre">y)</span></tt>.</p>
+</div></blockquote>
+<p><strong>verts</strong> : (M, 2) array</p>
+<blockquote>
+<div><p>Vertices of the polygon, sorted either clockwise or anti-clockwise.
+The first point may (but does not need to be) duplicated.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mask</strong> : (N,) array of bool</p>
+<blockquote class="last">
+<div><p>True if corresponding point is inside the polygon.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#skimage.measure.grid_points_in_poly" title="skimage.measure.grid_points_in_poly"><tt class="xref py py-obj docutils literal"><span class="pre">grid_points_in_poly</span></tt></a></p>
+</div>
 </dd></dl>
 
 </div>
@@ -1005,10 +1189,12 @@ separate arguments.</p>
 <div><p>Object with the following object methods:</p>
 <blockquote>
 <div><ul class="simple">
-<li><tt class="docutils literal"><span class="pre">estimate(*data)</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">success</span> <span class="pre">=</span> <span class="pre">estimate(*data)</span></tt></li>
 <li><tt class="docutils literal"><span class="pre">residuals(*data)</span></tt></li>
 </ul>
 </div></blockquote>
+<p>where <cite>success</cite> indicates whether the model estimation succeeded
+(<cite>True</cite> or <cite>None</cite> for success, <cite>False</cite> for failure).</p>
 </div></blockquote>
 <p><strong>min_samples</strong> : int</p>
 <blockquote>
@@ -1069,10 +1255,10 @@ total number of samples.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r256" rules="none">
+<table class="docutils citation" frame="void" id="r278" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id26">[R256]</a></td><td>&#8220;RANSAC&#8221;, Wikipedia, <a class="reference external" href="http://en.wikipedia.org/wiki/RANSAC">http://en.wikipedia.org/wiki/RANSAC</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id26">[R278]</a></td><td>&#8220;RANSAC&#8221;, Wikipedia, <a class="reference external" href="http://en.wikipedia.org/wiki/RANSAC">http://en.wikipedia.org/wiki/RANSAC</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1099,6 +1285,7 @@ total number of samples.</p>
 <p>Estimate ellipse model using all available data:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">EllipseModel</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">params</span> 
 <span class="go">array([ -3.30354146e+03,  -2.87791160e+03,   5.59062118e+03,</span>
 <span class="go">         7.84365066e+00,   7.19203152e-01])</span>
@@ -1292,32 +1479,32 @@ image up to 3rd order:</p>
 </dd>
 </dl>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r257" rules="none">
+<table class="docutils citation" frame="void" id="r279" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id27">[R257]</a></td><td>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
+<tr><td class="label"><a class="fn-backref" href="#id27">[R279]</a></td><td>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
 Core Algorithms. Springer-Verlag, London, 2009.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r258" rules="none">
+<table class="docutils citation" frame="void" id="r280" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id28">[R258]</a></td><td>B. Jähne. Digital Image Processing. Springer-Verlag,
+<tr><td class="label"><a class="fn-backref" href="#id28">[R280]</a></td><td>B. Jähne. Digital Image Processing. Springer-Verlag,
 Berlin-Heidelberg, 6. edition, 2005.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r259" rules="none">
+<table class="docutils citation" frame="void" id="r281" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id29">[R259]</a></td><td>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
+<tr><td class="label"><a class="fn-backref" href="#id29">[R281]</a></td><td>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
 Features, from Lecture notes in computer science, p. 676. Springer,
 Berlin, 1993.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r260" rules="none">
+<table class="docutils citation" frame="void" id="r282" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id30">[R260]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Image_moment">http://en.wikipedia.org/wiki/Image_moment</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id30">[R282]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Image_moment">http://en.wikipedia.org/wiki/Image_moment</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1382,10 +1569,10 @@ This is only returned if <cite>gradient</cite> is set to True.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r261" rules="none">
+<table class="docutils citation" frame="void" id="r283" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id31">[R261]</a></td><td>Wang, Z., Bovik, A. C., Sheikh, H. R., &amp; Simoncelli, E. P.
+<tr><td class="label"><a class="fn-backref" href="#id31">[R283]</a></td><td>Wang, Z., Bovik, A. C., Sheikh, H. R., &amp; Simoncelli, E. P.
 (2004). Image quality assessment: From error visibility to
 structural similarity. IEEE Transactions on Image Processing,
 13, 600-612.</td></tr>
@@ -1430,10 +1617,10 @@ False.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r262" rules="none">
+<table class="docutils citation" frame="void" id="r284" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id32">[R262]</a></td><td><a class="reference external" href="http://mrl.nyu.edu/publications/subdiv-course2000/coursenotes00.pdf">http://mrl.nyu.edu/publications/subdiv-course2000/coursenotes00.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id32">[R284]</a></td><td><a class="reference external" href="http://mrl.nyu.edu/publications/subdiv-course2000/coursenotes00.pdf">http://mrl.nyu.edu/publications/subdiv-course2000/coursenotes00.pdf</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1482,8 +1669,14 @@ circle:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : (N, 2) array</p>
-<blockquote class="last">
+<blockquote>
 <div><p>N points with <tt class="docutils literal"><span class="pre">(x,</span> <span class="pre">y)</span></tt> coordinates, respectively.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>success</strong> : bool</p>
+<blockquote class="last">
+<div><p>True, if model estimation succeeds.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1601,8 +1794,14 @@ xc, yc, a, b, theta), which gives you an effective redundancy of <tt class="docu
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : (N, 2) array</p>
-<blockquote class="last">
+<blockquote>
 <div><p>N points with <tt class="docutils literal"><span class="pre">(x,</span> <span class="pre">y)</span></tt> coordinates, respectively.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>success</strong> : bool</p>
+<blockquote class="last">
+<div><p>True, if model estimation succeeds.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1712,8 +1911,14 @@ line:</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : (N, 2) array</p>
-<blockquote class="last">
+<blockquote>
 <div><p>N points with <tt class="docutils literal"><span class="pre">(x,</span> <span class="pre">y)</span></tt> coordinates, respectively.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>success</strong> : bool</p>
+<blockquote class="last">
+<div><p>True, if model estimation succeeds.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1835,6 +2040,8 @@ line:</p>
 <li><a class="reference internal" href="#block-reduce">block_reduce</a></li>
 <li><a class="reference internal" href="#correct-mesh-orientation">correct_mesh_orientation</a></li>
 <li><a class="reference internal" href="#find-contours">find_contours</a></li>
+<li><a class="reference internal" href="#grid-points-in-poly">grid_points_in_poly</a></li>
+<li><a class="reference internal" href="#label">label</a></li>
 <li><a class="reference internal" href="#marching-cubes">marching_cubes</a></li>
 <li><a class="reference internal" href="#mesh-surface-area">mesh_surface_area</a></li>
 <li><a class="reference internal" href="#moments">moments</a></li>
@@ -1842,6 +2049,7 @@ line:</p>
 <li><a class="reference internal" href="#moments-hu">moments_hu</a></li>
 <li><a class="reference internal" href="#moments-normalized">moments_normalized</a></li>
 <li><a class="reference internal" href="#perimeter">perimeter</a></li>
+<li><a class="reference internal" href="#points-in-poly">points_in_poly</a></li>
 <li><a class="reference internal" href="#profile-line">profile_line</a></li>
 <li><a class="reference internal" href="#ransac">ransac</a></li>
 <li><a class="reference internal" href="#regionprops">regionprops</a></li>

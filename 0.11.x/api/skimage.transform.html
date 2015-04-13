@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Module: transform &mdash; skimage v0.11.0 docs</title>
+        <title>Module: transform &mdash; skimage v0.11.3 docs</title>
     
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.11.0',
+        VERSION:     '0.11.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <link rel="top" title="skimage v0.11.0 docs" href="../index.html" />
+        <link rel="top" title="skimage v0.11.3 docs" href="../index.html" />
         <link rel="up" title="API Reference" href="api.html" />
         <link rel="next" title="Module: util" href="skimage.util.html" />
         <link rel="prev" title="Module: segmentation" href="skimage.segmentation.html" />
@@ -81,6 +81,12 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.transform.hough_circle" title="skimage.transform.hough_circle"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.hough_circle</span></tt></a>(image,&nbsp;radius)</td>
 <td>Perform a circular Hough transform.</td>
 </tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.hough_ellipse" title="skimage.transform.hough_ellipse"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.hough_ellipse</span></tt></a></td>
+<td>Perform an elliptical Hough transform.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.hough_line" title="skimage.transform.hough_line"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.hough_line</span></tt></a></td>
+<td>Perform a straight line Hough transform.</td>
+</tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.hough_line_peaks" title="skimage.transform.hough_line_peaks"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.hough_line_peaks</span></tt></a>(hspace,&nbsp;...)</td>
 <td>Return peaks in hough transform.</td>
 </tr>
@@ -102,52 +108,55 @@
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.matrix_transform" title="skimage.transform.matrix_transform"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.matrix_transform</span></tt></a>(coords,&nbsp;...)</td>
 <td>Apply 2D matrix transform.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.pyramid_expand" title="skimage.transform.pyramid_expand"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.pyramid_expand</span></tt></a>(image[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.probabilistic_hough_line" title="skimage.transform.probabilistic_hough_line"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.probabilistic_hough_line</span></tt></a></td>
+<td>Return lines from a progressive probabilistic line Hough transform.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.pyramid_expand" title="skimage.transform.pyramid_expand"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.pyramid_expand</span></tt></a>(image[,&nbsp;...])</td>
 <td>Upsample and then smooth image.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.pyramid_gaussian" title="skimage.transform.pyramid_gaussian"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.pyramid_gaussian</span></tt></a>(image[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.pyramid_gaussian" title="skimage.transform.pyramid_gaussian"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.pyramid_gaussian</span></tt></a>(image[,&nbsp;...])</td>
 <td>Yield images of the Gaussian pyramid formed by the input image.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.pyramid_laplacian" title="skimage.transform.pyramid_laplacian"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.pyramid_laplacian</span></tt></a>(image[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.pyramid_laplacian" title="skimage.transform.pyramid_laplacian"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.pyramid_laplacian</span></tt></a>(image[,&nbsp;...])</td>
 <td>Yield images of the laplacian pyramid formed by the input image.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.pyramid_reduce" title="skimage.transform.pyramid_reduce"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.pyramid_reduce</span></tt></a>(image[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.pyramid_reduce" title="skimage.transform.pyramid_reduce"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.pyramid_reduce</span></tt></a>(image[,&nbsp;...])</td>
 <td>Smooth and then downsample image.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.radon" title="skimage.transform.radon"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.radon</span></tt></a>(image[,&nbsp;theta,&nbsp;circle])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.radon" title="skimage.transform.radon"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.radon</span></tt></a>(image[,&nbsp;theta,&nbsp;circle])</td>
 <td>Calculates the radon transform of an image given specified projection angles.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.rescale" title="skimage.transform.rescale"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.rescale</span></tt></a>(image,&nbsp;scale[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.rescale" title="skimage.transform.rescale"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.rescale</span></tt></a>(image,&nbsp;scale[,&nbsp;...])</td>
 <td>Scale image by a certain factor.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.resize" title="skimage.transform.resize"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.resize</span></tt></a>(image,&nbsp;output_shape)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.resize" title="skimage.transform.resize"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.resize</span></tt></a>(image,&nbsp;output_shape)</td>
 <td>Resize image to match a certain size.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.rotate" title="skimage.transform.rotate"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.rotate</span></tt></a>(image,&nbsp;angle[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.rotate" title="skimage.transform.rotate"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.rotate</span></tt></a>(image,&nbsp;angle[,&nbsp;...])</td>
 <td>Rotate image by a certain angle around its center.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.swirl" title="skimage.transform.swirl"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.swirl</span></tt></a>(image[,&nbsp;center,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.swirl" title="skimage.transform.swirl"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.swirl</span></tt></a>(image[,&nbsp;center,&nbsp;...])</td>
 <td>Perform a swirl transformation.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.warp" title="skimage.transform.warp"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.warp</span></tt></a>(image[,&nbsp;inverse_map,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.warp" title="skimage.transform.warp"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.warp</span></tt></a>(image[,&nbsp;inverse_map,&nbsp;...])</td>
 <td>Warp an image according to a given coordinate transformation.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.warp_coords" title="skimage.transform.warp_coords"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.warp_coords</span></tt></a>(coord_map,&nbsp;shape)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.warp_coords" title="skimage.transform.warp_coords"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.warp_coords</span></tt></a>(coord_map,&nbsp;shape)</td>
 <td>Build the source coordinates for the output of a 2-D image warp.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.AffineTransform" title="skimage.transform.AffineTransform"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.AffineTransform</span></tt></a>([matrix,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.AffineTransform" title="skimage.transform.AffineTransform"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.AffineTransform</span></tt></a>([matrix,&nbsp;...])</td>
 <td>2D affine transformation of the form:</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.PiecewiseAffineTransform" title="skimage.transform.PiecewiseAffineTransform"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.PiecewiseAffineTransform</span></tt></a>()</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.PiecewiseAffineTransform" title="skimage.transform.PiecewiseAffineTransform"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.PiecewiseAffineTransform</span></tt></a>()</td>
 <td>2D piecewise affine transformation.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.PolynomialTransform" title="skimage.transform.PolynomialTransform"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.PolynomialTransform</span></tt></a>([params])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.PolynomialTransform" title="skimage.transform.PolynomialTransform"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.PolynomialTransform</span></tt></a>([params])</td>
 <td>2D transformation of the form:</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.ProjectiveTransform" title="skimage.transform.ProjectiveTransform"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.ProjectiveTransform</span></tt></a>([matrix])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.ProjectiveTransform" title="skimage.transform.ProjectiveTransform"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.ProjectiveTransform</span></tt></a>([matrix])</td>
 <td>Matrix transformation.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.SimilarityTransform" title="skimage.transform.SimilarityTransform"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.SimilarityTransform</span></tt></a>([...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.SimilarityTransform" title="skimage.transform.SimilarityTransform"><tt class="xref py py-obj docutils literal"><span class="pre">skimage.transform.SimilarityTransform</span></tt></a>([...])</td>
 <td>2D similarity transformation of the form:</td>
 </tr>
 </tbody>
@@ -388,6 +397,171 @@ Otherwise, R = 0.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="hough-ellipse">
+<h2>hough_ellipse<a class="headerlink" href="#hough-ellipse" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.transform.hough_ellipse">
+<tt class="descclassname">skimage.transform.</tt><tt class="descname">hough_ellipse</tt><big>(</big><big>)</big><a class="headerlink" href="#skimage.transform.hough_ellipse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform an elliptical Hough transform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : (M, N) ndarray</p>
+<blockquote>
+<div><p>Input image with nonzero values representing edges.</p>
+</div></blockquote>
+<p><strong>threshold: int, optional (default 4)</strong></p>
+<blockquote>
+<div><p>Accumulator threshold value.</p>
+</div></blockquote>
+<p><strong>accuracy</strong> : double, optional (default 1)</p>
+<blockquote>
+<div><p>Bin size on the minor axis used in the accumulator.</p>
+</div></blockquote>
+<p><strong>min_size</strong> : int, optional (default 4)</p>
+<blockquote>
+<div><p>Minimal major axis length.</p>
+</div></blockquote>
+<p><strong>max_size</strong> : int, optional</p>
+<blockquote>
+<div><p>Maximal minor axis length. (default None)
+If None, the value is set to the half of the smaller
+image dimension.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>result</strong> : ndarray with fields [(accumulator, y0, x0, a, b, orientation)]</p>
+<blockquote class="last">
+<div><p>Where <tt class="docutils literal"><span class="pre">(yc,</span> <span class="pre">xc)</span></tt> is the center, <tt class="docutils literal"><span class="pre">(a,</span> <span class="pre">b)</span></tt> the major and minor
+axes, respectively. The <cite>orientation</cite> value follows
+<cite>skimage.draw.ellipse_perimeter</cite> convention.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The accuracy must be chosen to produce a peak in the accumulator
+distribution. In other words, a flat accumulator distribution with low
+values may be caused by a too low bin size.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r352" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[R352]</a></td><td>Xie, Yonghong, and Qiang Ji. &#8220;A new efficient ellipse detection
+method.&#8221; Pattern Recognition, 2002. Proceedings. 16th International
+Conference on. Vol. 2. IEEE, 2002</td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">ellipse_perimeter</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="n">cc</span><span class="p">,</span> <span class="n">rr</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">hough_ellipse</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="go">[(10, 10.0, 8.0, 6.0, 0.0, 10.0)]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="hough-line">
+<h2>hough_line<a class="headerlink" href="#hough-line" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.transform.hough_line">
+<tt class="descclassname">skimage.transform.</tt><tt class="descname">hough_line</tt><big>(</big><big>)</big><a class="headerlink" href="#skimage.transform.hough_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a straight line Hough transform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : (M, N) ndarray</p>
+<blockquote>
+<div><p>Input image with nonzero values representing edges.</p>
+</div></blockquote>
+<p><strong>theta</strong> : 1D ndarray of double</p>
+<blockquote>
+<div><p>Angles at which to compute the transform, in radians.
+Defaults to -pi/2 .. pi/2</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>H</strong> : 2-D ndarray of uint64</p>
+<blockquote>
+<div><p>Hough transform accumulator.</p>
+</div></blockquote>
+<p><strong>theta</strong> : ndarray</p>
+<blockquote>
+<div><p>Angles at which the transform was computed, in radians.</p>
+</div></blockquote>
+<p><strong>distances</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>Distance values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The origin is the top left corner of the original image.
+X and Y axis are horizontal and vertical edges respectively.
+The distance is the minimal algebraic distance from the origin
+to the detected line.</p>
+<p class="rubric">Examples</p>
+<p>Generate a test image:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[:,</span> <span class="mi">65</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="mi">35</span><span class="p">:</span><span class="mi">45</span><span class="p">,</span> <span class="mi">35</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">90</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">img</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.95</span>
+</pre></div>
+</div>
+<p>Apply the Hough transform:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">hough_line</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_line</span>
+<span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <span class="n">line</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<span class="n">img</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">img</span><span class="p">[:,</span> <span class="mi">65</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">img</span><span class="p">[</span><span class="mi">35</span><span class="p">:</span><span class="mi">45</span><span class="p">,</span> <span class="mi">35</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">line</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">img</span><span class="p">[</span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">img</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.95</span>
+
+<span class="n">out</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">hough_line</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Input image&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">bone</span><span class="p">,</span>
+           <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">angles</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                   <span class="n">d</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Hough transform&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Angle (degree)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Distance (pixel)&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="../plots/hough_tf.py">Source code</a>, <a class="reference external" href="../plots/hough_tf.png">png</a>, <a class="reference external" href="../plots/hough_tf.pdf">pdf</a>)</p>
+<div class="figure">
+<img alt="../_images/hough_tf.png" src="../_images/hough_tf.png" />
+</div>
+</dd></dl>
+
+</div>
 <div class="section" id="hough-line-peaks">
 <h2>hough_line_peaks<a class="headerlink" href="#hough-line-peaks" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -495,13 +669,13 @@ an (n+1) x n integer array.</p>
 </div>
 <p class="rubric">Notes</p>
 <p>The FRT has a unique inverse if and only if n is prime.
-See <a class="reference internal" href="#r326" id="id2">[R326]</a> for an overview.
+See <a class="reference internal" href="#r353" id="id3">[R353]</a> for an overview.
 The idea for this algorithm is due to Vlad Negnevitski.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r326" rules="none">
+<table class="docutils citation" frame="void" id="r353" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R326]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> A. Kingston and I. Svalbe, &#8220;Projective transforms on periodic
+<tr><td class="label">[R353]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> A. Kingston and I. Svalbe, &#8220;Projective transforms on periodic
 discrete image arrays,&#8221; in P. Hawkes (Ed), Advances in Imaging
 and Electron Physics, 139 (2006)</td></tr>
 </tbody>
@@ -555,10 +729,10 @@ left of it, i.e.:</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r327" rules="none">
+<table class="docutils citation" frame="void" id="r354" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[R327]</a></td><td>F.C. Crow, &#8220;Summed-area tables for texture mapping,&#8221;
+<tr><td class="label"><a class="fn-backref" href="#id5">[R354]</a></td><td>F.C. Crow, &#8220;Summed-area tables for texture mapping,&#8221;
 ACM SIGGRAPH Computer Graphics, vol. 18, 1984, pp. 207-212.</td></tr>
 </tbody>
 </table>
@@ -738,41 +912,41 @@ a slightly modified Kaczmarz method.</p>
 reconstruction. Further iterations will tend to enhance high-frequency
 information, but will also often increase the noise.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r328" rules="none">
+<table class="docutils citation" frame="void" id="r355" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[R328]</a></td><td>AC Kak, M Slaney, &#8220;Principles of Computerized Tomographic
+<tr><td class="label"><a class="fn-backref" href="#id6">[R355]</a></td><td>AC Kak, M Slaney, &#8220;Principles of Computerized Tomographic
 Imaging&#8221;, IEEE Press 1988.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r329" rules="none">
+<table class="docutils citation" frame="void" id="r356" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[R329]</a></td><td>AH Andersen, AC Kak, &#8220;Simultaneous algebraic reconstruction
+<tr><td class="label"><a class="fn-backref" href="#id7">[R356]</a></td><td>AH Andersen, AC Kak, &#8220;Simultaneous algebraic reconstruction
 technique (SART): a superior implementation of the ART algorithm&#8221;,
 Ultrasonic Imaging 6 pp 81&#8211;94 (1984)</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r330" rules="none">
+<table class="docutils citation" frame="void" id="r357" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[R330]</a></td><td>S Kaczmarz, &#8220;Angenäherte auflösung von systemen linearer
+<tr><td class="label"><a class="fn-backref" href="#id8">[R357]</a></td><td>S Kaczmarz, &#8220;Angenäherte auflösung von systemen linearer
 gleichungen&#8221;, Bulletin International de l’Academie Polonaise des
 Sciences et des Lettres 35 pp 355&#8211;357 (1937)</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r331" rules="none">
+<table class="docutils citation" frame="void" id="r358" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id8">[R331]</a></td><td>Kohler, T. &#8220;A projection access scheme for iterative
+<tr><td class="label"><a class="fn-backref" href="#id9">[R358]</a></td><td>Kohler, T. &#8220;A projection access scheme for iterative
 reconstruction based on the golden section.&#8221; Nuclear Science
 Symposium Conference Record, 2004 IEEE. Vol. 6. IEEE, 2004.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r332" rules="none">
+<table class="docutils citation" frame="void" id="r359" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id9">[R332]</a></td><td>Kaczmarz&#8217; method, Wikipedia,
+<tr><td class="label"><a class="fn-backref" href="#id10">[R359]</a></td><td>Kaczmarz&#8217; method, Wikipedia,
 <a class="reference external" href="http://en.wikipedia.org/wiki/Kaczmarz_method">http://en.wikipedia.org/wiki/Kaczmarz_method</a></td></tr>
 </tbody>
 </table>
@@ -805,6 +979,61 @@ Symposium Conference Record, 2004 IEEE. Vol. 6. IEEE, 2004.</td></tr>
 </div></blockquote>
 </td>
 </tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="probabilistic-hough-line">
+<h2>probabilistic_hough_line<a class="headerlink" href="#probabilistic-hough-line" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.transform.probabilistic_hough_line">
+<tt class="descclassname">skimage.transform.</tt><tt class="descname">probabilistic_hough_line</tt><big>(</big><big>)</big><a class="headerlink" href="#skimage.transform.probabilistic_hough_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return lines from a progressive probabilistic line Hough transform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : (M, N) ndarray</p>
+<blockquote>
+<div><p>Input image with nonzero values representing edges.</p>
+</div></blockquote>
+<p><strong>threshold</strong> : int, optional (default 10)</p>
+<blockquote>
+<div><p>Threshold</p>
+</div></blockquote>
+<p><strong>line_length</strong> : int, optional (default 50)</p>
+<blockquote>
+<div><p>Minimum accepted length of detected lines.
+Increase the parameter to extract longer lines.</p>
+</div></blockquote>
+<p><strong>line_gap</strong> : int, optional, (default 10)</p>
+<blockquote>
+<div><p>Maximum gap between pixels to still form a line.
+Increase the parameter to merge broken lines more aggresively.</p>
+</div></blockquote>
+<p><strong>theta</strong> : 1D ndarray, dtype=double, optional, default (-pi/2 .. pi/2)</p>
+<blockquote>
+<div><p>Angles at which to compute the transform, in radians.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>lines</strong> : list</p>
+<blockquote class="last">
+<div><p>List of lines identified, lines in format ((x0, y0), (x1, y0)),
+indicating line start and end.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r360" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id11">[R360]</a></td><td>C. Galamhos, J. Matas and J. Kittler, &#8220;Progressive probabilistic
+Hough transform for line detection&#8221;, in IEEE Computer Society
+Conference on Computer Vision and Pattern Recognition, 1999.</td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -859,10 +1088,10 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r333" rules="none">
+<table class="docutils citation" frame="void" id="r361" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[R333]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id12">[R361]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -928,10 +1157,10 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r334" rules="none">
+<table class="docutils citation" frame="void" id="r362" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[R334]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id13">[R362]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1001,16 +1230,16 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r335" rules="none">
+<table class="docutils citation" frame="void" id="r363" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id12">[R335]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id14">[R363]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r336" rules="none">
+<table class="docutils citation" frame="void" id="r364" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id13">[R336]</a></td><td><a class="reference external" href="http://sepwww.stanford.edu/~morgan/texturematch/paper_html/node3.html">http://sepwww.stanford.edu/~morgan/texturematch/paper_html/node3.html</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id15">[R364]</a></td><td><a class="reference external" href="http://sepwww.stanford.edu/~morgan/texturematch/paper_html/node3.html">http://sepwww.stanford.edu/~morgan/texturematch/paper_html/node3.html</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1065,10 +1294,10 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r337" rules="none">
+<table class="docutils citation" frame="void" id="r365" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id14">[R337]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id16">[R365]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1797,8 +2026,14 @@ used to find a local affine transform.</p>
 <div><p>Source coordinates.</p>
 </div></blockquote>
 <p><strong>dst</strong> : (N, 2) array</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Destination coordinates.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>success</strong> : bool</p>
+<blockquote class="last">
+<div><p>True, if model estimation succeeds.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1921,8 +2156,14 @@ smallest singular value normed by the coefficient c3.</p>
 <div><p>Destination coordinates.</p>
 </div></blockquote>
 <p><strong>order</strong> : int, optional</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Polynomial order (number of coefficients is order + 1).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>success</strong> : bool</p>
+<blockquote class="last">
+<div><p>True, if model estimation succeeds.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2046,8 +2287,14 @@ x.T = [a0 a1 a2 b0 b1 b2 c3]
 <div><p>Source coordinates.</p>
 </div></blockquote>
 <p><strong>dst</strong> : (N, 2) array</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Destination coordinates.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>success</strong> : bool</p>
+<blockquote class="last">
+<div><p>True, if model estimation succeeds.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2185,8 +2432,14 @@ smallest singular value normed by the coefficient c3.</p>
 <div><p>Source coordinates.</p>
 </div></blockquote>
 <p><strong>dst</strong> : (N, 2) array</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Destination coordinates.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>success</strong> : bool</p>
+<blockquote class="last">
+<div><p>True, if model estimation succeeds.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2242,6 +2495,8 @@ smallest singular value normed by the coefficient c3.</p>
 <li><a class="reference internal" href="#estimate-transform">estimate_transform</a></li>
 <li><a class="reference internal" href="#frt2">frt2</a></li>
 <li><a class="reference internal" href="#hough-circle">hough_circle</a></li>
+<li><a class="reference internal" href="#hough-ellipse">hough_ellipse</a></li>
+<li><a class="reference internal" href="#hough-line">hough_line</a></li>
 <li><a class="reference internal" href="#hough-line-peaks">hough_line_peaks</a></li>
 <li><a class="reference internal" href="#ifrt2">ifrt2</a></li>
 <li><a class="reference internal" href="#integral-image">integral_image</a></li>
@@ -2249,6 +2504,7 @@ smallest singular value normed by the coefficient c3.</p>
 <li><a class="reference internal" href="#iradon">iradon</a></li>
 <li><a class="reference internal" href="#iradon-sart">iradon_sart</a></li>
 <li><a class="reference internal" href="#matrix-transform">matrix_transform</a></li>
+<li><a class="reference internal" href="#probabilistic-hough-line">probabilistic_hough_line</a></li>
 <li><a class="reference internal" href="#pyramid-expand">pyramid_expand</a></li>
 <li><a class="reference internal" href="#pyramid-gaussian">pyramid_gaussian</a></li>
 <li><a class="reference internal" href="#pyramid-laplacian">pyramid_laplacian</a></li>

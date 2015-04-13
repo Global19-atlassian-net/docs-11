@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Module: viewer.widgets &mdash; skimage v0.11.0 docs</title>
+        <title>Module: viewer.widgets &mdash; skimage v0.11.3 docs</title>
     
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -17,7 +17,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.11.0',
+        VERSION:     '0.11.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -26,7 +26,7 @@
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <link rel="top" title="skimage v0.11.0 docs" href="../index.html" />
+        <link rel="top" title="skimage v0.11.3 docs" href="../index.html" />
         <link rel="up" title="API Reference" href="api.html" />
         <link rel="next" title="Version 0.11" href="../api_changes.html" />
         <link rel="prev" title="Module: viewer.viewers" href="skimage.viewer.viewers.html" />
@@ -63,6 +63,20 @@
             
   <div class="section" id="module-skimage.viewer.widgets">
 <span id="module-viewer-widgets"></span><h1>Module: <tt class="xref py py-mod docutils literal"><span class="pre">viewer.widgets</span></tt><a class="headerlink" href="#module-skimage.viewer.widgets" title="Permalink to this headline">¶</a></h1>
+<p>Widgets for interacting with ImageViewer.</p>
+<p>These widgets should be added to a Plugin subclass using its <cite>add_widget</cite>
+method or calling:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">plugin</span> <span class="o">+=</span> <span class="n">Widget</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>on a Plugin instance. The Plugin will delegate action based on the widget&#8217;s
+parameter type specified by its <cite>ptype</cite> attribute, which can be:</p>
+<div class="highlight-python"><div class="highlight"><pre>&#39;arg&#39; : positional argument passed to Plugin&#39;s `filter_image` method.
+&#39;kwarg&#39; : keyword argument passed to Plugin&#39;s `filter_image` method.
+&#39;plugin&#39; : attribute of Plugin. You&#39;ll probably need to add a class
+    property of the same name that updates the display.
+</pre></div>
+</div>
 <table border="1" class="longtable docutils">
 <colgroup>
 <col width="10%" />
@@ -110,7 +124,7 @@
 
 <dl class="attribute">
 <dt id="skimage.viewer.widgets.BaseWidget.staticMetaObject">
-<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7f92983f2088&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.BaseWidget.staticMetaObject" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7fd839e75908&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.BaseWidget.staticMetaObject" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -168,7 +182,7 @@ added to a plugin.</p>
 
 <dl class="attribute">
 <dt id="skimage.viewer.widgets.CheckBox.staticMetaObject">
-<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7f92983f2c48&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.CheckBox.staticMetaObject" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7fd839e77a08&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.CheckBox.staticMetaObject" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -227,7 +241,7 @@ added to a plugin.</p>
 
 <dl class="attribute">
 <dt id="skimage.viewer.widgets.ComboBox.staticMetaObject">
-<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7f92983f2c08&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.ComboBox.staticMetaObject" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7fd839e779c8&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.ComboBox.staticMetaObject" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -259,7 +273,7 @@ Cancel will just close the plugin.</p>
 
 <dl class="attribute">
 <dt id="skimage.viewer.widgets.OKCancelButtons.staticMetaObject">
-<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7f92983f7288&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.OKCancelButtons.staticMetaObject" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7fd839e7f248&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.OKCancelButtons.staticMetaObject" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -294,7 +308,7 @@ Cancel will just close the plugin.</p>
 
 <dl class="attribute">
 <dt id="skimage.viewer.widgets.SaveButtons.staticMetaObject">
-<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7f92983f72c8&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.SaveButtons.staticMetaObject" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7fd839e7f288&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.SaveButtons.staticMetaObject" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -359,7 +373,7 @@ added to a plugin.</p>
 
 <dl class="attribute">
 <dt id="skimage.viewer.widgets.Slider.staticMetaObject">
-<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7f92983f2bc8&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.Slider.staticMetaObject" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7fd839e77988&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.Slider.staticMetaObject" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -383,7 +397,7 @@ added to a plugin.</p>
 
 <dl class="attribute">
 <dt id="skimage.viewer.widgets.Text.staticMetaObject">
-<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7f92983f2b88&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.Text.staticMetaObject" title="Permalink to this definition">¶</a></dt>
+<tt class="descname">staticMetaObject</tt><em class="property"> = &lt;PySide.QtCore.QMetaObject object at 0x7fd839e77948&gt;</em><a class="headerlink" href="#skimage.viewer.widgets.Text.staticMetaObject" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
