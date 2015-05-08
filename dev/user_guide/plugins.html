@@ -63,15 +63,15 @@
             
   <div class="section" id="i-o-plugin-infrastructure">
 <h1>I/O Plugin Infrastructure<a class="headerlink" href="#i-o-plugin-infrastructure" title="Permalink to this headline">¶</a></h1>
-<p>A plugin consists of two files, the source and the descriptor <tt class="docutils literal"><span class="pre">.ini</span></tt>.  Let&#8217;s
-say we&#8217;d like to provide a plugin for <tt class="docutils literal"><span class="pre">imshow</span></tt> using <tt class="docutils literal"><span class="pre">matplotlib</span></tt>.  We&#8217;ll
-call our plugin <tt class="docutils literal"><span class="pre">mpl</span></tt>:</p>
+<p>A plugin consists of two files, the source and the descriptor <code class="docutils literal"><span class="pre">.ini</span></code>.  Let&#8217;s
+say we&#8217;d like to provide a plugin for <code class="docutils literal"><span class="pre">imshow</span></code> using <code class="docutils literal"><span class="pre">matplotlib</span></code>.  We&#8217;ll
+call our plugin <code class="docutils literal"><span class="pre">mpl</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">skimage</span><span class="o">/</span><span class="n">io</span><span class="o">/</span><span class="n">_plugins</span><span class="o">/</span><span class="n">mpl</span><span class="o">.</span><span class="n">py</span>
 <span class="n">skimage</span><span class="o">/</span><span class="n">io</span><span class="o">/</span><span class="n">_plugins</span><span class="o">/</span><span class="n">mpl</span><span class="o">.</span><span class="n">ini</span>
 </pre></div>
 </div>
-<p>The name of the <tt class="docutils literal"><span class="pre">.py</span></tt> and <tt class="docutils literal"><span class="pre">.ini</span></tt> files must correspond.  Inside the
-<tt class="docutils literal"><span class="pre">.ini</span></tt> file, we give the plugin meta-data:</p>
+<p>The name of the <code class="docutils literal"><span class="pre">.py</span></code> and <code class="docutils literal"><span class="pre">.ini</span></code> files must correspond.  Inside the
+<code class="docutils literal"><span class="pre">.ini</span></code> file, we give the plugin meta-data:</p>
 <div class="highlight-python"><div class="highlight"><pre>[mpl] &lt;-- name of the plugin, may be anything
 description = Matplotlib image I/O plugin
 provides = imshow &lt;-- a comma-separated list, one or more of
@@ -79,7 +79,7 @@ provides = imshow &lt;-- a comma-separated list, one or more of
 </pre></div>
 </div>
 <p>The &#8220;provides&#8221;-line lists all the functions provided by the plugin.  Since our
-plugin provides <tt class="docutils literal"><span class="pre">imshow</span></tt>, we have to define it inside <tt class="docutils literal"><span class="pre">mpl.py</span></tt>:</p>
+plugin provides <code class="docutils literal"><span class="pre">imshow</span></code>, we have to define it inside <code class="docutils literal"><span class="pre">mpl.py</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># This is mpl.py</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -88,8 +88,8 @@ plugin provides <tt class="docutils literal"><span class="pre">imshow</span></tt
     <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Note that, by default, <tt class="docutils literal"><span class="pre">imshow</span></tt> is non-blocking, so a special function
-<tt class="docutils literal"><span class="pre">_app_show</span></tt> must be provided to block the GUI.  We can modify our plugin to
+<p>Note that, by default, <code class="docutils literal"><span class="pre">imshow</span></code> is non-blocking, so a special function
+<code class="docutils literal"><span class="pre">_app_show</span></code> must be provided to block the GUI.  We can modify our plugin to
 provide it as follows:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">mpl</span><span class="p">]</span>
 <span class="n">provides</span> <span class="o">=</span> <span class="n">imshow</span><span class="p">,</span> <span class="n">_app_show</span>
@@ -106,8 +106,8 @@ provide it as follows:</p>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Any plugin in the <tt class="docutils literal"><span class="pre">_plugins</span></tt> directory is automatically examined by
-<tt class="docutils literal"><span class="pre">skimage.io</span></tt> upon import.  You may list all the plugins on your
+<p>Any plugin in the <code class="docutils literal"><span class="pre">_plugins</span></code> directory is automatically examined by
+<code class="docutils literal"><span class="pre">skimage.io</span></code> upon import.  You may list all the plugins on your
 system:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="kn">as</span> <span class="nn">io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">plugins</span><span class="p">()</span>
@@ -123,7 +123,7 @@ system:</p>
 <span class="go">{&#39;pil&#39;: [&#39;imread&#39;]}</span>
 </pre></div>
 </div>
-<p>A plugin is loaded using the <tt class="docutils literal"><span class="pre">use_plugin</span></tt> command:</p>
+<p>A plugin is loaded using the <code class="docutils literal"><span class="pre">use_plugin</span></code> command:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="kn">as</span> <span class="nn">io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">use_plugin</span><span class="p">(</span><span class="s">&#39;pil&#39;</span><span class="p">)</span> <span class="c"># Use all capabilities provided by PIL</span>
 </pre></div>
@@ -134,7 +134,7 @@ system:</p>
 </div>
 <p>Note that, if more than one plugin provides certain functionality, the
 last plugin loaded is used.</p>
-<p>To query a plugin&#8217;s capabilities, use <tt class="docutils literal"><span class="pre">plugin_info</span></tt>:</p>
+<p>To query a plugin&#8217;s capabilities, use <code class="docutils literal"><span class="pre">plugin_info</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">plugin_info</span><span class="p">(</span><span class="s">&#39;pil&#39;</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="go">{&#39;description&#39;: &#39;Image reading via the Python Imaging Library&#39;,</span>

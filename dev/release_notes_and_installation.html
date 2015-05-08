@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Pre-built installation &mdash; skimage v0.12dev docs</title>
+        <title>Release notes &mdash; skimage v0.12dev docs</title>
     
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -27,8 +27,7 @@
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
         <link rel="top" title="skimage v0.12dev docs" href="index.html" />
-        <link rel="next" title="User Guide" href="user_guide.html" />
-        <link rel="prev" title="Version 0.11" href="api_changes.html" />
+        <link rel="prev" title="Rank filters" href="auto_examples/applications/plot_rank_filters.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="_static/favicon.ico">
 </head>
@@ -60,8 +59,129 @@
     <div class="row">
         <div class="span9">
             
-  <div class="section" id="pre-built-installation">
-<h1>Pre-built installation<a class="headerlink" href="#pre-built-installation" title="Permalink to this headline">¶</a></h1>
+  <div class="contents topic" id="nbsp">
+<p class="topic-title first">&nbsp;</p>
+<ul class="simple">
+<li><a class="reference internal" href="#release-notes" id="id1">Release notes</a><ul>
+<li><a class="reference internal" href="#highlights" id="id2">Highlights</a></li>
+<li><a class="reference internal" href="#api-changes" id="id3">API Changes</a></li>
+<li><a class="reference internal" href="#contributors-to-this-release" id="id4">Contributors to this release</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation" id="id5">Installation</a><ul>
+<li><a class="reference internal" href="#pre-built-installation" id="id6">Pre-built installation</a></li>
+<li><a class="reference internal" href="#installation-from-source" id="id7">Installation from source</a></li>
+<li><a class="reference internal" href="#building-with-bento" id="id8">Building with bento</a></li>
+<li><a class="reference internal" href="#build-requirements" id="id9">Build Requirements</a></li>
+<li><a class="reference internal" href="#runtime-requirements" id="id10">Runtime requirements</a></li>
+<li><a class="reference internal" href="#known-build-errors" id="id11">Known build errors</a></li>
+<li><a class="reference internal" href="#optional-requirements" id="id12">Optional Requirements</a></li>
+<li><a class="reference internal" href="#testing-requirements" id="id13">Testing requirements</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="release-notes">
+<h1><a class="toc-backref" href="#id1">Release notes</a><a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<p>We&#8217;re happy to announce the release of scikit-image v0.11.0!</p>
+<p>scikit-image is an image processing toolbox for SciPy that includes algorithms
+for segmentation, geometric transformations, color space manipulation,
+analysis, filtering, morphology, feature detection, and more.</p>
+<p>For more information, examples, and documentation, please visit our website:</p>
+<p><a class="reference external" href="http://scikit-image.org">http://scikit-image.org</a></p>
+<div class="section" id="highlights">
+<h2><a class="toc-backref" href="#id2">Highlights</a><a class="headerlink" href="#highlights" title="Permalink to this headline">¶</a></h2>
+<p>For this release, we merged over 200 pull requests with bug fixes,
+cleanups, improved documentation and new features.  Highlights
+include:</p>
+<ul class="simple">
+<li>Region Adjacency Graphs
+- Color distance RAGs (#1031)
+- Threshold Cut on RAGs (#1031)
+- Similarity RAGs (#1080)
+- Normalized Cut on RAGs (#1080)
+- RAG drawing (#1087)
+- Hierarchical merging (#1100)</li>
+<li>Sub-pixel shift registration (#1066)</li>
+<li>Non-local means denoising (#874)</li>
+<li>Sliding window histogram (#1127)</li>
+<li>More illuminants in color conversion (#1130)</li>
+<li>Handling of CMYK images (#1360)</li>
+<li><cite>stop_probability</cite> for RANSAC (#1176)</li>
+<li>Li thresholding (#1376)</li>
+<li>Signed edge operators (#1240)</li>
+<li>Full ndarray support for <cite>peak_local_max</cite> (#1355)</li>
+<li>Improve conditioning of geometric transformations (#1319)</li>
+<li>Standardize handling of multi-image files (#1200)</li>
+<li>Ellipse structuring element (#1298)</li>
+<li>Multi-line drawing tool (#1065), line handle style (#1179)</li>
+<li>Point in polygon testing (#1123)</li>
+<li>Rotation around a specified center (#1168)</li>
+<li>Add <cite>shape</cite> option to drawing functions (#1222)</li>
+<li>Faster regionprops (#1351)</li>
+<li><cite>skimage.future</cite> package (#1365)</li>
+<li>More robust I/O module (#1189)</li>
+</ul>
+</div>
+<div class="section" id="api-changes">
+<h2><a class="toc-backref" href="#id3">API Changes</a><a class="headerlink" href="#api-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">skimage.filter</span></code> subpackage has been renamed to <code class="docutils literal"><span class="pre">skimage.filters</span></code>.</li>
+<li>Some edge detectors returned values greater than 1&#8211;their results are now
+appropriately scaled with a factor of <code class="docutils literal"><span class="pre">sqrt(2)</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="contributors-to-this-release">
+<h2><a class="toc-backref" href="#id4">Contributors to this release</a><a class="headerlink" href="#contributors-to-this-release" title="Permalink to this headline">¶</a></h2>
+<p>(Listed alphabetically by last name)</p>
+<ul class="simple">
+<li>Fedor Baart</li>
+<li>Vighnesh Birodkar</li>
+<li>François Boulogne</li>
+<li>Nelson Brown</li>
+<li>Alexey Buzmakov</li>
+<li>Julien Coste</li>
+<li>Phil Elson</li>
+<li>Adam Feuer</li>
+<li>Jim Fienup</li>
+<li>Geoffrey French</li>
+<li>Emmanuelle Gouillart</li>
+<li>Charles Harris</li>
+<li>Jonathan Helmus</li>
+<li>Alexander Iacchetta</li>
+<li>Ivana Kajić</li>
+<li>Kevin Keraudren</li>
+<li>Almar Klein</li>
+<li>Gregory R. Lee</li>
+<li>Jeremy Metz</li>
+<li>Stuart Mumford</li>
+<li>Damian Nadales</li>
+<li>Pablo Márquez Neila</li>
+<li>Juan Nunez-Iglesias</li>
+<li>Rebecca Roisin</li>
+<li>Jasper St. Pierre</li>
+<li>Jacopo Sabbatini</li>
+<li>Michael Sarahan</li>
+<li>Salvatore Scaramuzzino</li>
+<li>Phil Schaf</li>
+<li>Johannes Schönberger</li>
+<li>Tim Seifert</li>
+<li>Arve Seljebu</li>
+<li>Steven Silvester</li>
+<li>Julian Taylor</li>
+<li>Matěj Týč</li>
+<li>Alexey Umnov</li>
+<li>Pratap Vardhan</li>
+<li>Stefan van der Walt</li>
+<li>Joshua Warner</li>
+<li>Tony S Yu</li>
+</ul>
+</div>
+</div>
+<div class="section" id="installation">
+<h1><a class="toc-backref" href="#id5">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pre-built-installation">
+<h2><a class="toc-backref" href="#id6">Pre-built installation</a><a class="headerlink" href="#pre-built-installation" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#scikit-image">Windows binaries</a>
 are kindly provided by Christoph Gohlke (note that, when upgrading,
 you should first uninstall any older versions).</p>
@@ -81,7 +201,7 @@ add Neurodebian to your system package manager, then look for
 </div>
 </div>
 <div class="section" id="installation-from-source">
-<h1>Installation from source<a class="headerlink" href="#installation-from-source" title="Permalink to this headline">¶</a></h1>
+<h2><a class="toc-backref" href="#id7">Installation from source</a><a class="headerlink" href="#installation-from-source" title="Permalink to this headline">¶</a></h2>
 <p>Obtain the source from the git-repository at
 <a class="reference external" href="http://github.com/scikit-image/scikit-image">http://github.com/scikit-image/scikit-image</a> by running:</p>
 <div class="highlight-python"><div class="highlight"><pre>git clone http://github.com/scikit-image/scikit-image.git
@@ -102,7 +222,7 @@ in-place:</p>
 </div>
 </div>
 <div class="section" id="building-with-bento">
-<h1>Building with bento<a class="headerlink" href="#building-with-bento" title="Permalink to this headline">¶</a></h1>
+<h2><a class="toc-backref" href="#id8">Building with bento</a><a class="headerlink" href="#building-with-bento" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">scikit-image</span></code> can also be built using <a class="reference external" href="http://cournape.github.io/Bento/">bento</a>.  Bento depends on <a class="reference external" href="https://code.google.com/p/waf/">WAF</a> for compilation.</p>
 <p>Follow the <a class="reference external" href="http://cournape.github.io/Bento/html/install.html">Bento installation instructions</a> and <a class="reference external" href="http://code.google.com/p/waf/downloads/list">download the WAF
 source</a>.</p>
@@ -120,7 +240,7 @@ bentomaker install      # (when not builing in-place)
 sudo.</p>
 </div>
 <div class="section" id="build-requirements">
-<h1>Build Requirements<a class="headerlink" href="#build-requirements" title="Permalink to this headline">¶</a></h1>
+<h2><a class="toc-backref" href="#id9">Build Requirements</a><a class="headerlink" href="#build-requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://python.org">Python &gt;= 2.6</a></li>
 <li><a class="reference external" href="http://numpy.scipy.org/">Numpy &gt;= 1.6</a></li>
@@ -133,7 +253,7 @@ sudo.</p>
 </div>
 </div>
 <div class="section" id="runtime-requirements">
-<h1>Runtime requirements<a class="headerlink" href="#runtime-requirements" title="Permalink to this headline">¶</a></h1>
+<h2><a class="toc-backref" href="#id10">Runtime requirements</a><a class="headerlink" href="#runtime-requirements" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first"><a class="reference external" href="http://scipy.org">SciPy</a></p>
 </li>
@@ -150,7 +270,7 @@ sudo.</p>
 </ul>
 </div>
 <div class="section" id="known-build-errors">
-<h1>Known build errors<a class="headerlink" href="#known-build-errors" title="Permalink to this headline">¶</a></h1>
+<h2><a class="toc-backref" href="#id11">Known build errors</a><a class="headerlink" href="#known-build-errors" title="Permalink to this headline">¶</a></h2>
 <p>On Windows, the error <code class="docutils literal"><span class="pre">Error:unable</span> <span class="pre">to</span> <span class="pre">find</span> <span class="pre">vcvarsall.bat</span></code> means that
 distutils is not correctly configured to use the C compiler. Modify (or create,
 if not existing) the configuration file <code class="docutils literal"><span class="pre">distutils.cfg</span></code> (located for
@@ -161,7 +281,7 @@ example at <code class="docutils literal"><span class="pre">C:\Python26\Lib\dist
 </div>
 </div>
 <div class="section" id="optional-requirements">
-<h1>Optional Requirements<a class="headerlink" href="#optional-requirements" title="Permalink to this headline">¶</a></h1>
+<h2><a class="toc-backref" href="#id12">Optional Requirements</a><a class="headerlink" href="#optional-requirements" title="Permalink to this headline">¶</a></h2>
 <p>You can use this scikit with the basic requirements listed above, but some
 functionality is only available with the following installed:</p>
 <ul>
@@ -197,7 +317,7 @@ Optional io plugin providing most standard <a class="reference external" href="h
 </ul>
 </div>
 <div class="section" id="testing-requirements">
-<h1>Testing requirements<a class="headerlink" href="#testing-requirements" title="Permalink to this headline">¶</a></h1>
+<h2><a class="toc-backref" href="#id13">Testing requirements</a><a class="headerlink" href="#testing-requirements" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><dl class="first docutils">
 <dt><a class="reference external" href="https://nose.readthedocs.org/en/latest/">Nose</a></dt>
@@ -213,6 +333,7 @@ Optional io plugin providing most standard <a class="reference external" href="h
 </li>
 </ul>
 </div>
+</div>
 
 
         </div>
@@ -225,19 +346,20 @@ Optional io plugin providing most standard <a class="reference external" href="h
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="api_changes.html" title="previous chapter">Version 0.11</a></li>
-        </ul>
-    </div>
-    <h4 class="sidebar-box-heading">Next topic</h4>
-    <div class="well sidebar-box">
-        <ul class="nav nav-list">
-            <li><a href="user_guide.html" title="next chapter">User Guide</a></li>
+            <li><a href="auto_examples/applications/plot_rank_filters.html" title="previous chapter">Rank filters</a></li>
         </ul>
     </div>
         <h4 class="sidebar-box-heading">Contents</h4>
         <div class="well sidebar-box toc">
             <ul class="nav nav-list">
-<li><a class="reference internal" href="#">Pre-built installation</a></li>
+<li><a class="reference internal" href="#">Release notes</a><ul class="nav nav-list">
+<li><a class="reference internal" href="#highlights">Highlights</a></li>
+<li><a class="reference internal" href="#api-changes">API Changes</a></li>
+<li><a class="reference internal" href="#contributors-to-this-release">Contributors to this release</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation">Installation</a><ul class="nav nav-list">
+<li><a class="reference internal" href="#pre-built-installation">Pre-built installation</a></li>
 <li><a class="reference internal" href="#installation-from-source">Installation from source</a></li>
 <li><a class="reference internal" href="#building-with-bento">Building with bento</a></li>
 <li><a class="reference internal" href="#build-requirements">Build Requirements</a></li>
@@ -245,6 +367,8 @@ Optional io plugin providing most standard <a class="reference external" href="h
 <li><a class="reference internal" href="#known-build-errors">Known build errors</a></li>
 <li><a class="reference internal" href="#optional-requirements">Optional Requirements</a></li>
 <li><a class="reference internal" href="#testing-requirements">Testing requirements</a></li>
+</ul>
+</li>
 </ul>
 
         </div>

@@ -65,7 +65,7 @@
 <h1>Image Viewer<a class="headerlink" href="#image-viewer" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h2>
-<p><tt class="docutils literal"><span class="pre">skimage.viewer</span></tt> provides a <a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a>-based canvas for displaying images and
+<p><code class="docutils literal"><span class="pre">skimage.viewer</span></code> provides a <a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a>-based canvas for displaying images and
 a Qt-based GUI-toolkit, with the goal of making it easy to create interactive
 image editors. You can simply use it to display an image:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
@@ -76,9 +76,9 @@ image editors. You can simply use it to display an image:</p>
 <span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Of course, you could just as easily use <tt class="docutils literal"><span class="pre">imshow</span></tt> from <a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a> (or
-alternatively, <tt class="docutils literal"><span class="pre">skimage.io.imshow</span></tt> which adds support for multiple
-io-plugins) to display images. The advantage of <tt class="docutils literal"><span class="pre">ImageViewer</span></tt> is that you can
+<p>Of course, you could just as easily use <code class="docutils literal"><span class="pre">imshow</span></code> from <a class="reference external" href="http://matplotlib.sourceforge.net/">matplotlib</a> (or
+alternatively, <code class="docutils literal"><span class="pre">skimage.io.imshow</span></code> which adds support for multiple
+io-plugins) to display images. The advantage of <code class="docutils literal"><span class="pre">ImageViewer</span></code> is that you can
 easily add plugins for manipulating images. Currently, only a few plugins are
 implemented, but it is easy to write your own. Before going into the details,
 let&#8217;s see an example of how a pre-defined plugin is added to the viewer:</p>
@@ -89,18 +89,18 @@ let&#8217;s see an example of how a pre-defined plugin is added to the viewer:</
 <span class="n">overlay</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>The viewer&#8217;s <tt class="docutils literal"><span class="pre">show()</span></tt> method returns a list of tuples, one for each attached
+<p>The viewer&#8217;s <code class="docutils literal"><span class="pre">show()</span></code> method returns a list of tuples, one for each attached
 plugin. Each tuple contains two elements: an overlay of the same shape as the
-input image, and a data field (which may be <tt class="docutils literal"><span class="pre">None</span></tt>). A plugin class documents
-its return value in its <tt class="docutils literal"><span class="pre">output</span></tt> method.</p>
-<p>In this example, only one plugin is attached, so the list returned by <tt class="docutils literal"><span class="pre">show</span></tt>
-will have length 1. We extract the single tuple and bind its <tt class="docutils literal"><span class="pre">overlay</span></tt> and
-<tt class="docutils literal"><span class="pre">data</span></tt> elements to individual variables. Here, <tt class="docutils literal"><span class="pre">overlay</span></tt> contains an image
-of the line drawn on the viewer, and <tt class="docutils literal"><span class="pre">data</span></tt> contains the 1-dimensional
+input image, and a data field (which may be <code class="docutils literal"><span class="pre">None</span></code>). A plugin class documents
+its return value in its <code class="docutils literal"><span class="pre">output</span></code> method.</p>
+<p>In this example, only one plugin is attached, so the list returned by <code class="docutils literal"><span class="pre">show</span></code>
+will have length 1. We extract the single tuple and bind its <code class="docutils literal"><span class="pre">overlay</span></code> and
+<code class="docutils literal"><span class="pre">data</span></code> elements to individual variables. Here, <code class="docutils literal"><span class="pre">overlay</span></code> contains an image
+of the line drawn on the viewer, and <code class="docutils literal"><span class="pre">data</span></code> contains the 1-dimensional
 intensity profile along that line.</p>
 <p>At the moment, there are not many plugins pre-defined, but there is a really
 simple interface for creating your own plugin. First, let us create a plugin to
-call the total-variation denoising function, <tt class="docutils literal"><span class="pre">denoise_tv_bregman</span></tt>:</p>
+call the total-variation denoising function, <code class="docutils literal"><span class="pre">denoise_tv_bregman</span></code>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <span class="n">denoise_tv_bregman</span>
 <span class="kn">from</span> <span class="nn">skimage.viewer.plugins.base</span> <span class="kn">import</span> <span class="n">Plugin</span>
 
@@ -109,7 +109,7 @@ call the total-variation denoising function, <tt class="docutils literal"><span 
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <tt class="docutils literal"><span class="pre">Plugin</span></tt> assumes the first argument given to the image filter is the
+<p class="last">The <code class="docutils literal"><span class="pre">Plugin</span></code> assumes the first argument given to the image filter is the
 image from the image viewer. In the future, this should be changed so you
 can pass the image to a different argument of the filter function.</p>
 </div>
@@ -125,8 +125,8 @@ slider:</p>
 </pre></div>
 </div>
 <p>Here, we connect a slider widget to the filter&#8217;s &#8216;weight&#8217; argument.  We also
-added some buttons for saving the image to file or to the <tt class="docutils literal"><span class="pre">scikit-image</span></tt>
-image stack (see <tt class="docutils literal"><span class="pre">skimage.io.push</span></tt> and <tt class="docutils literal"><span class="pre">skimage.io.pop</span></tt>).</p>
+added some buttons for saving the image to file or to the <code class="docutils literal"><span class="pre">scikit-image</span></code>
+image stack (see <code class="docutils literal"><span class="pre">skimage.io.push</span></code> and <code class="docutils literal"><span class="pre">skimage.io.pop</span></code>).</p>
 <p>All that&#8217;s left is to create an image viewer and add the plugin to that viewer.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">viewer</span> <span class="o">=</span> <span class="n">ImageViewer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="n">viewer</span> <span class="o">+=</span> <span class="n">denoise_plugin</span>
@@ -134,7 +134,7 @@ image stack (see <tt class="docutils literal"><span class="pre">skimage.io.push<
 </pre></div>
 </div>
 <p>Here, we access only the overlay returned by the plugin, which contains the
-filtered image for the last used setting of <tt class="docutils literal"><span class="pre">weight</span></tt>.</p>
+filtered image for the last used setting of <code class="docutils literal"><span class="pre">weight</span></code>.</p>
 <img alt="../_images/denoise_viewer_window.png" src="../_images/denoise_viewer_window.png" />
 <img alt="../_images/denoise_plugin_window.png" src="../_images/denoise_plugin_window.png" />
 </div>
@@ -151,7 +151,7 @@ filtered image for the last used setting of <tt class="docutils literal"><span c
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="getting_help.html" title="previous chapter">Getting help on using <tt class="docutils literal"><span class="pre">skimage</span></tt></a></li>
+            <li><a href="getting_help.html" title="previous chapter">Getting help on using <code class="docutils literal"><span class="pre">skimage</span></code></a></li>
         </ul>
     </div>
     <h4 class="sidebar-box-heading">Next topic</h4>

@@ -63,7 +63,7 @@
             
   <div class="section" id="image-data-types-and-what-they-mean">
 <span id="data-types"></span><h1>Image data types and what they mean<a class="headerlink" href="#image-data-types-and-what-they-mean" title="Permalink to this headline">¶</a></h1>
-<p>In <tt class="docutils literal"><span class="pre">skimage</span></tt>, images are simply <a class="reference external" href="http://docs.scipy.org/doc/numpy/user/">numpy</a> arrays, which support a variety of
+<p>In <code class="docutils literal"><span class="pre">skimage</span></code>, images are simply <a class="reference external" href="http://docs.scipy.org/doc/numpy/user/">numpy</a> arrays, which support a variety of
 data types <a class="footnote-reference" href="#id2" id="id1">[1]</a>, <em>i.e.</em> &#8220;dtypes&#8221;. To avoid distorting image intensities (see
 <a class="reference internal" href="#rescaling-intensity-values">Rescaling intensity values</a>), we assume that images use the following dtype
 ranges:</p>
@@ -105,11 +105,11 @@ ranges:</p>
 the data type itself can exceed this range; all integer dtypes, on the other
 hand, have pixel intensities that can span the entire data type range. With a
 few exceptions, <em>64-bit (u)int images are not supported</em>.</p>
-<p>Functions in <tt class="docutils literal"><span class="pre">skimage</span></tt> are designed so that they accept any of these dtypes,
+<p>Functions in <code class="docutils literal"><span class="pre">skimage</span></code> are designed so that they accept any of these dtypes,
 but, for efficiency, <em>may return an image of a different dtype</em> (see <a class="reference internal" href="#output-types">Output
-types</a>). If you need a particular dtype, <tt class="docutils literal"><span class="pre">skimage</span></tt> provides utility
+types</a>). If you need a particular dtype, <code class="docutils literal"><span class="pre">skimage</span></code> provides utility
 functions that convert dtypes and properly rescale image intensities (see
-<a class="reference internal" href="#input-types">Input types</a>). You should <strong>never use</strong> <tt class="docutils literal"><span class="pre">astype</span></tt> on an image, because it
+<a class="reference internal" href="#input-types">Input types</a>). You should <strong>never use</strong> <code class="docutils literal"><span class="pre">astype</span></code> on an image, because it
 violates these assumptions about the dtype range:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">img_as_float</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
@@ -164,13 +164,13 @@ issued:</p>
 <span class="go">array([  0, 128, 255], dtype=uint8)</span>
 </pre></div>
 </div>
-<p>Additionally, some functions take a <tt class="docutils literal"><span class="pre">preserve_range</span></tt> argument where a range
+<p>Additionally, some functions take a <code class="docutils literal"><span class="pre">preserve_range</span></code> argument where a range
 conversion is convenient but not necessary. For example, interpolation in
-<tt class="docutils literal"><span class="pre">transform.warp</span></tt> requires an image of type float, which should have a range
+<code class="docutils literal"><span class="pre">transform.warp</span></code> requires an image of type float, which should have a range
 in [0, 1]. So, by default, input images will be rescaled to this range.
 However, in some cases, the image values represent physical measurements, such
 as temperature or rainfall values, that the user does not want rescaled.
-With <tt class="docutils literal"><span class="pre">preserve_range=True</span></tt>, the original range of the data will be
+With <code class="docutils literal"><span class="pre">preserve_range=True</span></code>, the original range of the data will be
 preserved, even though the output is a float image. Users must then ensure
 this non-standard image is properly processed by downstream functions, which
 may expect an image in [0, 1].</p>
@@ -206,10 +206,10 @@ may write:</p>
 </div>
 <div class="section" id="image-processing-pipeline">
 <h2>Image processing pipeline<a class="headerlink" href="#image-processing-pipeline" title="Permalink to this headline">¶</a></h2>
-<p>This dtype behavior allows you to string together any <tt class="docutils literal"><span class="pre">skimage</span></tt> function
+<p>This dtype behavior allows you to string together any <code class="docutils literal"><span class="pre">skimage</span></code> function
 without worrying about the image dtype.  On the other hand, if you want to use
 a custom function that requires a particular dtype, you should call one of the
-dtype conversion functions (here, <tt class="docutils literal"><span class="pre">func1</span></tt> and <tt class="docutils literal"><span class="pre">func2</span></tt> are <tt class="docutils literal"><span class="pre">skimage</span></tt>
+dtype conversion functions (here, <code class="docutils literal"><span class="pre">func1</span></code> and <code class="docutils literal"><span class="pre">func2</span></code> are <code class="docutils literal"><span class="pre">skimage</span></code>
 functions):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">img_as_float</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">img_as_float</span><span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">func2</span><span class="p">(</span><span class="n">image</span><span class="p">)))</span>
@@ -239,16 +239,16 @@ range but do not. For example, some cameras store images with 10-, 12-, or
 14-bit depth per pixel. If these images are stored in an array with dtype
 uint16, then the image won&#8217;t extend over the full intensity range, and thus,
 would appear dimmer than it should. To correct for this, you can use the
-<tt class="docutils literal"><span class="pre">rescale_intensity</span></tt> function to rescale the image so that it uses the full
+<code class="docutils literal"><span class="pre">rescale_intensity</span></code> function to rescale the image so that it uses the full
 dtype range:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">exposure</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">img10bit</span><span class="p">,</span> <span class="n">in_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">10</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>Here, the <tt class="docutils literal"><span class="pre">in_range</span></tt> argument is set to the maximum range for a 10-bit image.
-By default, <tt class="docutils literal"><span class="pre">rescale_intensity</span></tt> stretches the values of <tt class="docutils literal"><span class="pre">in_range</span></tt> to match
-the range of the dtype. <tt class="docutils literal"><span class="pre">rescale_intensity</span></tt> also accepts strings as inputs
-to <tt class="docutils literal"><span class="pre">in_range</span></tt> and <tt class="docutils literal"><span class="pre">out_range</span></tt>, so the example above could also be written
+<p>Here, the <code class="docutils literal"><span class="pre">in_range</span></code> argument is set to the maximum range for a 10-bit image.
+By default, <code class="docutils literal"><span class="pre">rescale_intensity</span></code> stretches the values of <code class="docutils literal"><span class="pre">in_range</span></code> to match
+the range of the dtype. <code class="docutils literal"><span class="pre">rescale_intensity</span></code> also accepts strings as inputs
+to <code class="docutils literal"><span class="pre">in_range</span></code> and <code class="docutils literal"><span class="pre">out_range</span></code>, so the example above could also be written
 as:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">img10bit</span><span class="p">,</span> <span class="n">in_range</span><span class="o">=</span><span class="s">&#39;uint10&#39;</span><span class="p">)</span>
 </pre></div>

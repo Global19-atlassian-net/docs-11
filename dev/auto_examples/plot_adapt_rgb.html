@@ -65,20 +65,20 @@
 <span id="example-plot-adapt-rgb-py"></span><h1>Adapting gray-scale filters to RGB images<a class="headerlink" href="#adapting-gray-scale-filters-to-rgb-images" title="Permalink to this headline">¶</a></h1>
 <p>There are many filters that are designed work with gray-scale images but not
 color images. To simplify the process of creating functions that can adapt to
-RGB images, scikit-image provides the <tt class="docutils literal"><span class="pre">adapt_rgb</span></tt> decorator.</p>
-<p>To actually use the <tt class="docutils literal"><span class="pre">adapt_rgb</span></tt> decorator, you have to decide how you want to
+RGB images, scikit-image provides the <code class="docutils literal"><span class="pre">adapt_rgb</span></code> decorator.</p>
+<p>To actually use the <code class="docutils literal"><span class="pre">adapt_rgb</span></code> decorator, you have to decide how you want to
 adapt the RGB image for use with the gray-scale filter. There are two
 pre-defined handlers:</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">each_channel</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">each_channel</span></code></dt>
 <dd>Pass each of the RGB channels to the filter one-by-one, and stitch the
 results back into an RGB image.</dd>
-<dt><tt class="docutils literal"><span class="pre">hsv_value</span></tt></dt>
+<dt><code class="docutils literal"><span class="pre">hsv_value</span></code></dt>
 <dd>Convert the RGB image to HSV and pass the value channel to the filter.
 The filtered result is inserted back into the HSV image and converted
 back to RGB.</dd>
 </dl>
-<p>Below, we demonstrate the use of <tt class="docutils literal"><span class="pre">adapt_rgb</span></tt> on a couple of gray-scale
+<p>Below, we demonstrate the use of <code class="docutils literal"><span class="pre">adapt_rgb</span></code> on a couple of gray-scale
 filters:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">skimage.color.adapt_rgb</span> <span class="kn">import</span> <span class="n">adapt_rgb</span><span class="p">,</span> <span class="n">each_channel</span><span class="p">,</span> <span class="n">hsv_value</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">filters</span>
@@ -112,7 +112,7 @@ image:</p>
 original image, but channel filtered image combines in a more surprising way.
 In other common cases, smoothing for example, the channel filtered image will
 produce a better result than the value-filtered image.</p>
-<p>You can also create your own handler functions for <tt class="docutils literal"><span class="pre">adapt_rgb</span></tt>. To do so,
+<p>You can also create your own handler functions for <code class="docutils literal"><span class="pre">adapt_rgb</span></code>. To do so,
 just create a function with the following signature:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">image_filter</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="c"># Manipulate RGB image here...</span>
@@ -121,7 +121,7 @@ just create a function with the following signature:</p>
     <span class="k">return</span> <span class="n">image</span>
 </pre></div>
 </div>
-<p>Note that <tt class="docutils literal"><span class="pre">adapt_rgb</span></tt> handlers are written for filters where the image is the
+<p>Note that <code class="docutils literal"><span class="pre">adapt_rgb</span></code> handlers are written for filters where the image is the
 first argument.</p>
 <p>As a very simple example, we can just convert any RGB image to grayscale and
 then return the filtered result:</p>
@@ -133,10 +133,10 @@ then return the filtered result:</p>
     <span class="k">return</span> <span class="n">image_filter</span><span class="p">(</span><span class="n">gray_image</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>It&#8217;s important to create a signature that uses <tt class="docutils literal"><span class="pre">*args</span></tt> and <tt class="docutils literal"><span class="pre">**kwargs</span></tt> to
+<p>It&#8217;s important to create a signature that uses <code class="docutils literal"><span class="pre">*args</span></code> and <code class="docutils literal"><span class="pre">**kwargs</span></code> to
 pass arguments along to the filter so that the decorated function is allowed to
 have any number of positional and keyword arguments.</p>
-<p>Finally, we can use this handler with <tt class="docutils literal"><span class="pre">adapt_rgb</span></tt> just as before:</p>
+<p>Finally, we can use this handler with <code class="docutils literal"><span class="pre">adapt_rgb</span></code> just as before:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="nd">@adapt_rgb</span><span class="p">(</span><span class="n">as_gray</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">sobel_gray</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">filters</span><span class="o">.</span><span class="n">sobel</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
@@ -151,13 +151,13 @@ have any number of positional and keyword arguments.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">A very simple check of the array shape is used for detecting RGB images, so
-<tt class="docutils literal"><span class="pre">adapt_rgb</span></tt> is not recommended for functions that support 3D volumes or
+<code class="docutils literal"><span class="pre">adapt_rgb</span></code> is not recommended for functions that support 3D volumes or
 color images in non-RGB spaces.</p>
 </div>
-<p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_adapt_rgb.py"><tt class="xref download docutils literal"><span class="pre">download</span></tt></a>
-(generated using <tt class="docutils literal"><span class="pre">skimage</span></tt> 0.12dev)</p>
-<p><strong>IPython Notebook:</strong> <a class="reference download internal" href="../_downloads/plot_adapt_rgb.ipynb"><tt class="xref download docutils literal"><span class="pre">download</span></tt></a>
-(generated using <tt class="docutils literal"><span class="pre">skimage</span></tt> 0.12dev)</p>
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../_downloads/plot_adapt_rgb.py"><code class="xref download docutils literal"><span class="pre">download</span></code></a>
+(generated using <code class="docutils literal"><span class="pre">skimage</span></code> 0.12dev)</p>
+<p><strong>IPython Notebook:</strong> <a class="reference download internal" href="../_downloads/plot_adapt_rgb.ipynb"><code class="xref download docutils literal"><span class="pre">download</span></code></a>
+(generated using <code class="docutils literal"><span class="pre">skimage</span></code> 0.12dev)</p>
 </div>
 
 

@@ -63,7 +63,7 @@
             
   <div class="section" id="a-crash-course-on-numpy-for-images">
 <h1>A crash course on NumPy for images<a class="headerlink" href="#a-crash-course-on-numpy-for-images" title="Permalink to this headline">¶</a></h1>
-<p>Images manipulated by <tt class="docutils literal"><span class="pre">scikit-image</span></tt> are simply NumPy arrays. Hence, a
+<p>Images manipulated by <code class="docutils literal"><span class="pre">scikit-image</span></code> are simply NumPy arrays. Hence, a
 large fraction of operations on images will just consist in using NumPy:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
@@ -86,7 +86,7 @@ large fraction of operations on images will just consist in using NumPy:</p>
 </pre></div>
 </div>
 <p>NumPy arrays representing images can be of different integer of float
-numerical types. See <a class="reference internal" href="data_types.html#data-types"><em>Image data types and what they mean</em></a> for more information about these
+numerical types. See <a class="reference internal" href="data_types.html#data-types"><span>Image data types and what they mean</span></a> for more information about these
 types and how scikit-image treats them.</p>
 </div>
 <div class="section" id="numpy-indexing">
@@ -100,9 +100,9 @@ modify pixel values:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
-<p>Be careful: in NumPy indexing, the first dimension (<tt class="docutils literal"><span class="pre">camera.shape[0]</span></tt>)
-corresponds to rows, while the second (<tt class="docutils literal"><span class="pre">camera.shape[1]</span></tt>) corresponds
-to columns, with the origin (<tt class="docutils literal"><span class="pre">camera[0,</span> <span class="pre">0]</span></tt>) on the top-left corner.
+<p>Be careful: in NumPy indexing, the first dimension (<code class="docutils literal"><span class="pre">camera.shape[0]</span></code>)
+corresponds to rows, while the second (<code class="docutils literal"><span class="pre">camera.shape[1]</span></code>) corresponds
+to columns, with the origin (<code class="docutils literal"><span class="pre">camera[0,</span> <span class="pre">0]</span></code>) on the top-left corner.
 This matches matrix/linear algebra notation, but is in contrast to
 Cartesian (x, y) coordinates. See <a class="reference internal" href="#coordinate-conventions">Coordinate conventions</a> below for
 more details.</p>
@@ -159,7 +159,7 @@ NumPy array, with an additional trailing dimension for the channels:</p>
 <span class="go">(300, 451, 3)</span>
 </pre></div>
 </div>
-<p>This shows that <tt class="docutils literal"><span class="pre">cat</span></tt> is a 300-by-451 pixel image with three
+<p>This shows that <code class="docutils literal"><span class="pre">cat</span></code> is a 300-by-451 pixel image with three
 channels (red, green, and blue).
 As before, we can get and set pixel values:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cat</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
@@ -190,21 +190,21 @@ the grayscale image above:</p>
 <p>Because we represent images with numpy arrays, our coordinates must
 match accordingly. Two-dimensional (2D) grayscale images (such as
 <cite>camera</cite> above) are indexed by row and columns (abbreviated to either
-<tt class="docutils literal"><span class="pre">row,</span> <span class="pre">col</span></tt> or <tt class="docutils literal"><span class="pre">r,</span> <span class="pre">c</span></tt>), with the lowest element (0, 0) at the top-
+<code class="docutils literal"><span class="pre">row,</span> <span class="pre">col</span></code> or <code class="docutils literal"><span class="pre">r,</span> <span class="pre">c</span></code>), with the lowest element (0, 0) at the top-
 -left corner. In various parts of the library, you will
-also see <tt class="docutils literal"><span class="pre">rr</span></tt> and <tt class="docutils literal"><span class="pre">cc</span></tt> refer to lists of row and column
+also see <code class="docutils literal"><span class="pre">rr</span></code> and <code class="docutils literal"><span class="pre">cc</span></code> refer to lists of row and column
 coordinates. We distinguish this from (x, y), which commonly denote
 standard Cartesian coordinates, where x is the horizontal coordinate,
 y the vertical, and the origin is on the bottom right. (Matplotlib, for
 example, uses this convention.)</p>
 <p>In the case of color (or multichannel) images, the last dimension
-contains the color information and is denoted <tt class="docutils literal"><span class="pre">channel</span></tt> or <tt class="docutils literal"><span class="pre">ch</span></tt>.</p>
+contains the color information and is denoted <code class="docutils literal"><span class="pre">channel</span></code> or <code class="docutils literal"><span class="pre">ch</span></code>.</p>
 <p>Finally, for 3D images, such as videos, magnetic resonance imaging
 (MRI) scans, or confocal microscopy, we refer to the leading dimension
-as <tt class="docutils literal"><span class="pre">plane</span></tt>, abbreviated as <tt class="docutils literal"><span class="pre">pln</span></tt> or <tt class="docutils literal"><span class="pre">p</span></tt>.</p>
+as <code class="docutils literal"><span class="pre">plane</span></code>, abbreviated as <code class="docutils literal"><span class="pre">pln</span></code> or <code class="docutils literal"><span class="pre">p</span></code>.</p>
 <p>These conventions are summarized below:</p>
-<table border="1" class="docutils">
-<caption>Dimension name and order conventions in scikit-image</caption>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">Dimension name and order conventions in scikit-image</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="38%" />
 <col width="62%" />
@@ -239,7 +239,7 @@ as <tt class="docutils literal"><span class="pre">plane</span></tt>, abbreviated
 </div>
 <p>In many cases,
 the third imaging dimension has lower resolution than the other two.
-Some scikit-image functions provide a <tt class="docutils literal"><span class="pre">spacing</span></tt> keyword argument
+Some scikit-image functions provide a <code class="docutils literal"><span class="pre">spacing</span></code> keyword argument
 to process these images:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">segmentation</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">slics</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span><span class="p">(</span><span class="n">im3d</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">multichannel</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
@@ -306,8 +306,8 @@ shape (t, pln, row, col, ch):</p>
 </pre></div>
 </div>
 <p>We can then supplement the above table as follows:</p>
-<table border="1" class="docutils">
-<caption>Addendum to dimension names and orders in scikit-image</caption>
+<table border="1" class="docutils" id="id2">
+<caption><span class="caption-text">Addendum to dimension names and orders in scikit-image</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="38%" />
 <col width="63%" />
