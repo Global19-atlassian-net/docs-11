@@ -62,27 +62,37 @@
   <div class="contents topic" id="nbsp">
 <p class="topic-title first">&nbsp;</p>
 <ul class="simple">
-<li><a class="reference internal" href="#release-notes" id="id1">Release notes</a><ul>
-<li><a class="reference internal" href="#highlights" id="id2">Highlights</a></li>
-<li><a class="reference internal" href="#api-changes" id="id3">API Changes</a></li>
-<li><a class="reference internal" href="#contributors-to-this-release" id="id4">Contributors to this release</a></li>
+<li><a class="reference internal" href="#release-notes" id="id3">Release notes</a><ul>
+<li><a class="reference internal" href="#highlights" id="id4">Highlights</a></li>
+<li><a class="reference internal" href="#api-changes" id="id5">API Changes</a></li>
+<li><a class="reference internal" href="#contributors-to-this-release" id="id6">Contributors to this release</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#installation" id="id5">Installation</a><ul>
-<li><a class="reference internal" href="#pre-built-installation" id="id6">Pre-built installation</a></li>
-<li><a class="reference internal" href="#installation-from-source" id="id7">Installation from source</a></li>
-<li><a class="reference internal" href="#building-with-bento" id="id8">Building with bento</a></li>
-<li><a class="reference internal" href="#build-requirements" id="id9">Build Requirements</a></li>
-<li><a class="reference internal" href="#runtime-requirements" id="id10">Runtime requirements</a></li>
-<li><a class="reference internal" href="#known-build-errors" id="id11">Known build errors</a></li>
-<li><a class="reference internal" href="#optional-requirements" id="id12">Optional Requirements</a></li>
-<li><a class="reference internal" href="#testing-requirements" id="id13">Testing requirements</a></li>
+<li><a class="reference internal" href="#installation" id="id7">Installation</a></li>
+<li><a class="reference internal" href="#installing-scikit-image" id="id8">Installing scikit-image</a><ul>
+<li><a class="reference internal" href="#standard-python-installation" id="id9">Standard Python installation</a></li>
+<li><a class="reference internal" href="#conda-based-distributions-anaconda-miniconda" id="id10">Conda-based distributions (Anaconda, Miniconda)</a></li>
+<li><a class="reference internal" href="#windows" id="id11">Windows</a></li>
+<li><a class="reference internal" href="#debian-and-ubuntu" id="id12">Debian and Ubuntu</a></li>
+<li><a class="reference internal" href="#building-from-source" id="id13">Building from source</a><ul>
+<li><a class="reference internal" href="#id1" id="id14">Windows</a></li>
+<li><a class="reference internal" href="#id2" id="id15">Debian and Ubuntu</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-the-development-version" id="id16">Running the development version</a><ul>
+<li><a class="reference internal" href="#building-with-bento" id="id17">Building with bento</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#build-requirements" id="id18">Build Requirements</a></li>
+<li><a class="reference internal" href="#runtime-requirements" id="id19">Runtime requirements</a></li>
+<li><a class="reference internal" href="#optional-requirements" id="id20">Optional Requirements</a></li>
+<li><a class="reference internal" href="#testing-requirements" id="id21">Testing requirements</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="release-notes">
-<h1><a class="toc-backref" href="#id1">Release notes</a><a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id3">Release notes</a><a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
 <p>We&#8217;re happy to announce the release of scikit-image v0.11.0!</p>
 <p>scikit-image is an image processing toolbox for SciPy that includes algorithms
 for segmentation, geometric transformations, color space manipulation,
@@ -90,7 +100,7 @@ analysis, filtering, morphology, feature detection, and more.</p>
 <p>For more information, examples, and documentation, please visit our website:</p>
 <p><a class="reference external" href="http://scikit-image.org">http://scikit-image.org</a></p>
 <div class="section" id="highlights">
-<h2><a class="toc-backref" href="#id2">Highlights</a><a class="headerlink" href="#highlights" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Highlights</a><a class="headerlink" href="#highlights" title="Permalink to this headline">¶</a></h2>
 <p>For this release, we merged over 200 pull requests with bug fixes,
 cleanups, improved documentation and new features.  Highlights
 include:</p>
@@ -124,7 +134,7 @@ include:</p>
 </ul>
 </div>
 <div class="section" id="api-changes">
-<h2><a class="toc-backref" href="#id3">API Changes</a><a class="headerlink" href="#api-changes" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">API Changes</a><a class="headerlink" href="#api-changes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>The <code class="docutils literal"><span class="pre">skimage.filter</span></code> subpackage has been renamed to <code class="docutils literal"><span class="pre">skimage.filters</span></code>.</li>
 <li>Some edge detectors returned values greater than 1&#8211;their results are now
@@ -132,7 +142,7 @@ appropriately scaled with a factor of <code class="docutils literal"><span class
 </ul>
 </div>
 <div class="section" id="contributors-to-this-release">
-<h2><a class="toc-backref" href="#id4">Contributors to this release</a><a class="headerlink" href="#contributors-to-this-release" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">Contributors to this release</a><a class="headerlink" href="#contributors-to-this-release" title="Permalink to this headline">¶</a></h2>
 <p>(Listed alphabetically by last name)</p>
 <ul class="simple">
 <li>Fedor Baart</li>
@@ -179,51 +189,94 @@ appropriately scaled with a factor of <code class="docutils literal"><span class
 </div>
 </div>
 <div class="section" id="installation">
-<h1><a class="toc-backref" href="#id5">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="pre-built-installation">
-<h2><a class="toc-backref" href="#id6">Pre-built installation</a><a class="headerlink" href="#pre-built-installation" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#scikit-image">Windows binaries</a>
-are kindly provided by Christoph Gohlke (note that, when upgrading,
-you should first uninstall any older versions).</p>
-<p>The latest stable release is also included as part of
-<a class="reference external" href="https://www.enthought.com/products/canopy/">Enthought Canopy</a>,
-<a class="reference external" href="http://code.google.com/p/pythonxy/wiki/Welcome">Python(x,y)</a> and
-<a class="reference external" href="https://store.continuum.io/cshop/anaconda/">Anaconda</a>.</p>
-<p>On Debian and Ubuntu, a Debian package <code class="docutils literal"><span class="pre">python-skimage</span></code> can be found in
-<a class="reference external" href="http://neuro.debian.net">the Neurodebian repository</a>. Follow <a class="reference external" href="http://neuro.debian.net/#how-to-use-this-repository">the
-instructions</a> to
-add Neurodebian to your system package manager, then look for
-<code class="docutils literal"><span class="pre">python-skimage</span></code> in the package manager.</p>
-<p>On systems that support setuptools, the package can be installed from the
-<a class="reference external" href="http://pypi.python.org/pypi/scikit-image">Python packaging index</a> using</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install -U scikit-image
+<h1><a class="toc-backref" href="#id7">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="installing-scikit-image">
+<h1><a class="toc-backref" href="#id8">Installing scikit-image</a><a class="headerlink" href="#installing-scikit-image" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="standard-python-installation">
+<h2><a class="toc-backref" href="#id9">Standard Python installation</a><a class="headerlink" href="#standard-python-installation" title="Permalink to this headline">¶</a></h2>
+<p>From the shell, execute:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install scikit-image
 </pre></div>
 </div>
 </div>
-<div class="section" id="installation-from-source">
-<h2><a class="toc-backref" href="#id7">Installation from source</a><a class="headerlink" href="#installation-from-source" title="Permalink to this headline">¶</a></h2>
-<p>Obtain the source from the git-repository at
-<a class="reference external" href="http://github.com/scikit-image/scikit-image">http://github.com/scikit-image/scikit-image</a> by running:</p>
-<div class="highlight-python"><div class="highlight"><pre>git clone http://github.com/scikit-image/scikit-image.git
+<div class="section" id="conda-based-distributions-anaconda-miniconda">
+<h2><a class="toc-backref" href="#id10">Conda-based distributions (Anaconda, Miniconda)</a><a class="headerlink" href="#conda-based-distributions-anaconda-miniconda" title="Permalink to this headline">¶</a></h2>
+<p>From the shell/command prompt, execute:</p>
+<div class="highlight-python"><div class="highlight"><pre>conda install scikit-image
 </pre></div>
 </div>
-<p>in a terminal (you will need to have git installed on your machine).</p>
-<p>If you do not have git installed, you can also download a zipball from
-<a class="reference external" href="https://github.com/scikit-image/scikit-image/zipball/master">https://github.com/scikit-image/scikit-image/zipball/master</a>.</p>
-<p>The scikit can be installed using:</p>
-<div class="highlight-python"><div class="highlight"><pre>pip install .
+</div>
+<div class="section" id="windows">
+<h2><a class="toc-backref" href="#id11">Windows</a><a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">scikit-image</span></code> comes pre-installed with several Python
+distributions, including <a class="reference external" href="https://store.continuum.io/cshop/anaconda/">Anaconda</a>, <a class="reference external" href="https://www.enthought.com/products/canopy/">Enthought Canopy</a>,
+<a class="reference external" href="http://code.google.com/p/pythonxy/wiki/Welcome">Python(x,y)</a> and <cite>WinPython</cite>.</p>
+<p>If you are using the distribution from <a class="reference external" href="http://python.org/">python.org</a>, you&#8217;ll need to
+manually download a few packages: numpy, scipy and scikit-image from
+<a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/">Christoph Gohlke&#8217;s</a> website. Python wheels are installed using:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install SomePackage-1.0-py2.py3-none-any.whl
 </pre></div>
 </div>
-<p>If you prefer, you can use it without installing, by simply adding
-this path to your <code class="docutils literal"><span class="pre">PYTHONPATH</span></code> variable and compiling extensions
-in-place:</p>
-<div class="highlight-python"><div class="highlight"><pre>python setup.py build_ext -i
+</div>
+<div class="section" id="debian-and-ubuntu">
+<h2><a class="toc-backref" href="#id12">Debian and Ubuntu</a><a class="headerlink" href="#debian-and-ubuntu" title="Permalink to this headline">¶</a></h2>
+<p>On Debian and Ubuntu install scikit-image with:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install python-skimage
 </pre></div>
 </div>
+</div>
+<div class="section" id="building-from-source">
+<h2><a class="toc-backref" href="#id13">Building from source</a><a class="headerlink" href="#building-from-source" title="Permalink to this headline">¶</a></h2>
+<p>Execute the following command from the shell:</p>
+<div class="highlight-python"><div class="highlight"><pre>pip install scikit-image
+</pre></div>
+</div>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id14">Windows</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>If you experience the error <code class="docutils literal"><span class="pre">Error:unable</span> <span class="pre">to</span> <span class="pre">find</span> <span class="pre">vcvarsall.bat</span></code> it means that
+distutils is not correctly configured to use the C compiler. Modify (or create,
+if not existing) the configuration file <code class="docutils literal"><span class="pre">distutils.cfg</span></code> (located for
+example at <code class="docutils literal"><span class="pre">C:\Python26\Lib\distutils\distutils.cfg</span></code>) to contain:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">build</span><span class="p">]</span>
+<span class="n">compiler</span><span class="o">=</span><span class="n">mingw32</span>
+</pre></div>
+</div>
+<p>For more details on compiling in Windows, there is a lot of knowledge iterated
+into the <a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/appveyor.yml">setup of appveyor</a> (a continuous integration service).</p>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id15">Debian and Ubuntu</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>If your distribution ships an outdated version, you may recompile from
+source.  First install the dependencies:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install python-matplotlib python-numpy python-pil python-scipy
+</pre></div>
+</div>
+<p>Get compilers:</p>
+<div class="highlight-python"><div class="highlight"><pre>sudo apt-get install build-essential cython
+</pre></div>
+</div>
+<p>Then run the pip installation command.</p>
+</div>
+</div>
+<div class="section" id="running-the-development-version">
+<h2><a class="toc-backref" href="#id16">Running the development version</a><a class="headerlink" href="#running-the-development-version" title="Permalink to this headline">¶</a></h2>
+<p>Obtain the source from the git repository at
+<code class="docutils literal"><span class="pre">http://github.com/scikit-image/scikit-image</span></code> by running:</p>
+<div class="highlight-python"><div class="highlight"><pre>git clone https://github.com/scikit-image/scikit-image.git
+</pre></div>
+</div>
+<p>After unpacking, change into the source directory and execute:</p>
+<blockquote>
+<div>pip install -e .</div></blockquote>
+<p>To update:</p>
+<div class="highlight-python"><div class="highlight"><pre>git pull  # Grab latest source
+python setup.py build_ext -i  # Compile any modified extensions
+</pre></div>
 </div>
 <div class="section" id="building-with-bento">
-<h2><a class="toc-backref" href="#id8">Building with bento</a><a class="headerlink" href="#building-with-bento" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal"><span class="pre">scikit-image</span></code> can also be built using <a class="reference external" href="http://cournape.github.io/Bento/">bento</a>.  Bento depends on <a class="reference external" href="https://code.google.com/p/waf/">WAF</a> for compilation.</p>
+<h3><a class="toc-backref" href="#id17">Building with bento</a><a class="headerlink" href="#building-with-bento" title="Permalink to this headline">¶</a></h3>
+<p>Alternatively, <code class="docutils literal"><span class="pre">scikit-image</span></code> can also be built using <a class="reference external" href="http://cournape.github.io/Bento/">bento</a>.  Bento depends on <a class="reference external" href="https://code.google.com/p/waf/">WAF</a> for compilation.</p>
 <p>Follow the <a class="reference external" href="http://cournape.github.io/Bento/html/install.html">Bento installation instructions</a> and <a class="reference external" href="http://code.google.com/p/waf/downloads/list">download the WAF
 source</a>.</p>
 <p>Tell Bento where to find WAF by setting the <code class="docutils literal"><span class="pre">WAFDIR</span></code> environment variable:</p>
@@ -233,55 +286,54 @@ source</a>.</p>
 <p>From the <code class="docutils literal"><span class="pre">scikit-image</span></code> source directory:</p>
 <div class="highlight-python"><div class="highlight"><pre>bentomaker configure
 bentomaker build -j     # (add -i for in-place build)
-bentomaker install      # (when not builing in-place)
+bentomaker install      # (when not building in-place)
 </pre></div>
 </div>
 <p>Depending on file permissions, the install commands may need to be run as
 sudo.</p>
 </div>
+</div>
 <div class="section" id="build-requirements">
-<h2><a class="toc-backref" href="#id9">Build Requirements</a><a class="headerlink" href="#build-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">Build Requirements</a><a class="headerlink" href="#build-requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://python.org">Python &gt;= 2.6</a></li>
-<li><a class="reference external" href="http://numpy.scipy.org/">Numpy &gt;= 1.6</a></li>
+<li><a class="reference external" href="http://numpy.scipy.org/">Numpy &gt;= 1.6.1</a></li>
 <li><a class="reference external" href="http://www.cython.org/">Cython &gt;= 0.21</a></li>
-<li><a class="reference external" href="https://pypi.python.org/pypi/six">Six &gt;=1.3</a></li>
+<li><a class="reference external" href="https://pypi.python.org/pypi/six">Six &gt;=1.4</a></li>
+<li><a class="reference external" href="http://scipy.org">SciPy &gt;=0.9</a></li>
 </ul>
-<p>You can use pip to automatically install the base dependencies as follows:</p>
-<div class="highlight-python"><div class="highlight"><pre>$ pip install -r requirements.txt
-</pre></div>
-</div>
 </div>
 <div class="section" id="runtime-requirements">
-<h2><a class="toc-backref" href="#id10">Runtime requirements</a><a class="headerlink" href="#runtime-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id19">Runtime requirements</a><a class="headerlink" href="#runtime-requirements" title="Permalink to this headline">¶</a></h2>
 <ul>
-<li><p class="first"><a class="reference external" href="http://scipy.org">SciPy</a></p>
+<li><p class="first"><a class="reference external" href="http://python.org">Python &gt;= 2.6</a></p>
 </li>
-<li><p class="first"><a class="reference external" href="http://matplotlib.sf.net">Matplotlib</a></p>
+<li><p class="first"><a class="reference external" href="http://numpy.scipy.org/">Numpy &gt;= 1.6.1</a></p>
 </li>
-<li><p class="first"><a class="reference external" href="https://networkx.github.io">NetworkX</a></p>
+<li><p class="first"><a class="reference external" href="http://scipy.org">SciPy &gt;= 0.9</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="http://matplotlib.sf.net">Matplotlib &gt;= 1.1.0</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://networkx.github.io">NetworkX &gt;= 1.8</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://pypi.python.org/pypi/six">Six &gt;=1.4</a></p>
 </li>
 <li><dl class="first docutils">
-<dt><a class="reference external" href="https://pypi.python.org/pypi/Pillow">Pillow</a></dt>
+<dt><a class="reference external" href="https://pypi.python.org/pypi/Pillow">Pillow &gt;= 1.7.8</a></dt>
 <dd><p class="first last">(or <a class="reference external" href="http://www.pythonware.com/products/pil/">PIL</a>)</p>
 </dd>
 </dl>
 </li>
+<li><p class="first"><a class="reference external" href="http://dask.pydata.org/en/latest/">dask[array] &gt;= 0.5.0</a></p>
+</li>
 </ul>
-</div>
-<div class="section" id="known-build-errors">
-<h2><a class="toc-backref" href="#id11">Known build errors</a><a class="headerlink" href="#known-build-errors" title="Permalink to this headline">¶</a></h2>
-<p>On Windows, the error <code class="docutils literal"><span class="pre">Error:unable</span> <span class="pre">to</span> <span class="pre">find</span> <span class="pre">vcvarsall.bat</span></code> means that
-distutils is not correctly configured to use the C compiler. Modify (or create,
-if not existing) the configuration file <code class="docutils literal"><span class="pre">distutils.cfg</span></code> (located for
-example at <code class="docutils literal"><span class="pre">C:\Python26\Lib\distutils\distutils.cfg</span></code>) to contain:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="n">build</span><span class="p">]</span>
-<span class="n">compiler</span><span class="o">=</span><span class="n">mingw32</span>
+<p>You can use pip to automatically install the runtime dependencies as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ pip install -r requirements.txt
 </pre></div>
 </div>
 </div>
 <div class="section" id="optional-requirements">
-<h2><a class="toc-backref" href="#id12">Optional Requirements</a><a class="headerlink" href="#optional-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">Optional Requirements</a><a class="headerlink" href="#optional-requirements" title="Permalink to this headline">¶</a></h2>
 <p>You can use this scikit with the basic requirements listed above, but some
 functionality is only available with the following installed:</p>
 <ul>
@@ -317,7 +369,7 @@ Optional io plugin providing most standard <a class="reference external" href="h
 </ul>
 </div>
 <div class="section" id="testing-requirements">
-<h2><a class="toc-backref" href="#id13">Testing requirements</a><a class="headerlink" href="#testing-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id21">Testing requirements</a><a class="headerlink" href="#testing-requirements" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><dl class="first docutils">
 <dt><a class="reference external" href="https://nose.readthedocs.org/en/latest/">Nose</a></dt>
@@ -358,13 +410,23 @@ Optional io plugin providing most standard <a class="reference external" href="h
 <li><a class="reference internal" href="#contributors-to-this-release">Contributors to this release</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#installation">Installation</a><ul class="nav nav-list">
-<li><a class="reference internal" href="#pre-built-installation">Pre-built installation</a></li>
-<li><a class="reference internal" href="#installation-from-source">Installation from source</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#installing-scikit-image">Installing scikit-image</a><ul class="nav nav-list">
+<li><a class="reference internal" href="#standard-python-installation">Standard Python installation</a></li>
+<li><a class="reference internal" href="#conda-based-distributions-anaconda-miniconda">Conda-based distributions (Anaconda, Miniconda)</a></li>
+<li><a class="reference internal" href="#windows">Windows</a></li>
+<li><a class="reference internal" href="#debian-and-ubuntu">Debian and Ubuntu</a></li>
+<li><a class="reference internal" href="#building-from-source">Building from source</a><ul class="nav nav-list">
+<li><a class="reference internal" href="#id1">Windows</a></li>
+<li><a class="reference internal" href="#id2">Debian and Ubuntu</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-the-development-version">Running the development version</a><ul class="nav nav-list">
 <li><a class="reference internal" href="#building-with-bento">Building with bento</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#build-requirements">Build Requirements</a></li>
 <li><a class="reference internal" href="#runtime-requirements">Runtime requirements</a></li>
-<li><a class="reference internal" href="#known-build-errors">Known build errors</a></li>
 <li><a class="reference internal" href="#optional-requirements">Optional Requirements</a></li>
 <li><a class="reference internal" href="#testing-requirements">Testing requirements</a></li>
 </ul>

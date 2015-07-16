@@ -68,7 +68,7 @@ is, for separating different objects in an image.</p>
 <p>Here a marker image is build from the region of low gradient inside the image.</p>
 <p>See <a class="reference external" href="http://en.wikipedia.org/wiki/Watershed_(image_processing)">Wikipedia</a> for more details on the algorithm.</p>
 <img alt="../_images/plot_marked_watershed_1.png" class="align-center" src="../_images/plot_marked_watershed_1.png" />
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">watershed</span><span class="p">,</span> <span class="n">disk</span>
@@ -84,7 +84,7 @@ is, for separating different objects in an image.</p>
 
 <span class="c"># find continuous region (low gradient) --&gt; markers</span>
 <span class="n">markers</span> <span class="o">=</span> <span class="n">rank</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">denoised</span><span class="p">,</span> <span class="n">disk</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">10</span>
-<span class="n">markers</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">markers</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">markers</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">markers</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c">#local gradient</span>
 <span class="n">gradient</span> <span class="o">=</span> <span class="n">rank</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">denoised</span><span class="p">,</span> <span class="n">disk</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>

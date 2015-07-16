@@ -70,7 +70,7 @@ the same segment if and only if it is in the same segment in _both_
 segmentations.</p>
 <img alt="../_images/plot_join_segmentations_1.png" class="align-center" src="../_images/plot_join_segmentations_1.png" />
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">nd</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <span class="n">sobel</span>
@@ -89,7 +89,7 @@ segmentations.</p>
 <span class="n">markers</span><span class="p">[</span><span class="n">coins</span> <span class="o">&gt;</span> <span class="mf">150.0</span> <span class="o">/</span> <span class="mi">255</span><span class="p">]</span> <span class="o">=</span> <span class="n">foreground</span>
 
 <span class="n">ws</span> <span class="o">=</span> <span class="n">watershed</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">markers</span><span class="p">)</span>
-<span class="n">seg1</span> <span class="o">=</span> <span class="n">nd</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">ws</span> <span class="o">==</span> <span class="n">foreground</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">seg1</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">ws</span> <span class="o">==</span> <span class="n">foreground</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="c"># make segmentation using SLIC superpixels</span>
 <span class="n">seg2</span> <span class="o">=</span> <span class="n">slic</span><span class="p">(</span><span class="n">coins</span><span class="p">,</span> <span class="n">n_segments</span><span class="o">=</span><span class="mi">117</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">160</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">compactness</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span>

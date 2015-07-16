@@ -28,7 +28,7 @@
         <script type="text/javascript" src="_static/doctools.js"></script>
         <link rel="top" title="skimage v0.12dev docs" href="index.html" />
         <link rel="next" title="Working with scikit-image source code" href="gitwash/index.html" />
-        <link rel="prev" title="Image Segmentation" href="user_guide/tutorial_segmentation.html" />
+        <link rel="prev" title="Image Viewer" href="user_guide/viewer.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="_static/favicon.ico">
 </head>
@@ -172,16 +172,17 @@ cross) and inspecting the build and test log.</li>
 </ul>
 </li>
 <li><p class="first">Document changes</p>
-<p>Before merging your commits, you must add a description of your changes
-to the release notes of the upcoming version in
-<code class="docutils literal"><span class="pre">doc/release/release_dev.txt</span></code>.</p>
+<p>If your change introduces any API modifications, please update
+<code class="docutils literal"><span class="pre">doc/source/api_changes.txt</span></code>.</p>
+<p>If your change introduces a deprecation, add a reminder to <code class="docutils literal"><span class="pre">TODO.txt</span></code>
+for the team to remove the deprecated functionality in the future.</p>
 </li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">To reviewers: if it is not obvious, add a short explanation of what a branch
-did to the merge message and, if closing a bug, also add &#8220;Closes #123&#8221;
-where 123 is the issue number.</p>
+<p class="last">To reviewers: if it is not obvious from the PR description, add a short
+explanation of what a branch did to the merge message and, if closing a
+bug, also add &#8220;Closes #123&#8221; where 123 is the issue number.</p>
 </div>
 </div>
 <div class="section" id="divergence-between-upstream-master-and-your-feature-branch">
@@ -216,8 +217,7 @@ Also see this <a class="reference external" href="http://tinyurl.com/nqcbkj">LWN
 <li>All code should have tests (see <a class="reference internal" href="#test-coverage">test coverage</a> below for more details).</li>
 <li>All code should be documented, to the same
 <a class="reference external" href="://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt#docstring-standard">standard</a> as NumPy and SciPy.</li>
-<li>For new functionality, always add an example to the
-gallery.</li>
+<li>For new functionality, always add an example to the gallery.</li>
 <li>No changes are ever committed without review.  Ask on the
 <a class="reference external" href="http://groups.google.com/group/scikit-image">mailing list</a> if
 you get no response to your pull request.
@@ -236,13 +236,18 @@ you get no response to your pull request.
 <li><p class="first">Use the following import conventions:</p>
 <div class="highlight-python"><div class="highlight"><pre>import numpy as np
 import matplotlib.pyplot as plt
+from scipy import ndimage as ndi
 
-cimport numpy as cnp # in Cython code
+cimport numpy as cnp  # in Cython code
 </pre></div>
 </div>
 </li>
 <li><p class="first">When documenting array parameters, use <code class="docutils literal"><span class="pre">image</span> <span class="pre">:</span> <span class="pre">(M,</span> <span class="pre">N)</span> <span class="pre">ndarray</span></code>
 and then refer to <code class="docutils literal"><span class="pre">M</span></code> and <code class="docutils literal"><span class="pre">N</span></code> in the docstring, if necessary.</p>
+</li>
+<li><p class="first">Refer to array dimensions as (plane), row, column, not as x, y, z. See
+<a class="reference internal" href="user_guide/numpy_images.html#numpy-images-coordinate-conventions"><span>Coordinate conventions</span></a>
+in the user guide for more information.</p>
 </li>
 <li><p class="first">Functions should support all input image dtypes.  Use utility functions such
 as <code class="docutils literal"><span class="pre">img_as_float</span></code> to help convert to an appropriate type.  The output
@@ -254,6 +259,16 @@ several functions into a pipeline, e.g.:</p>
 </li>
 <li><p class="first">Use <code class="docutils literal"><span class="pre">Py_ssize_t</span></code> as data type for all indexing, shape and size variables
 in C/C++ and Cython code.</p>
+</li>
+<li><p class="first">Use relative module imports, i.e. <code class="docutils literal"><span class="pre">from</span> <span class="pre">.._shared</span> <span class="pre">import</span> <span class="pre">xyz</span></code> rather than
+<code class="docutils literal"><span class="pre">from</span> <span class="pre">skimage._shared</span> <span class="pre">import</span> <span class="pre">xyz</span></code>.</p>
+</li>
+<li><p class="first">Wrap Cython code in a pure Python function, which defines the API. This
+improves compatibility with code introspection tools, which are often not
+aware of Cython code.</p>
+</li>
+<li><p class="first">For Cython functions, release the GIL whenever possible, using
+<code class="docutils literal"><span class="pre">with</span> <span class="pre">nogil:</span></code>.</p>
 </li>
 </ul>
 </div>
@@ -312,7 +327,7 @@ and you will receive an email notification when the process is done.</p>
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="user_guide/tutorial_segmentation.html" title="previous chapter">Image Segmentation</a></li>
+            <li><a href="user_guide/viewer.html" title="previous chapter">Image Viewer</a></li>
         </ul>
     </div>
     <h4 class="sidebar-box-heading">Next topic</h4>

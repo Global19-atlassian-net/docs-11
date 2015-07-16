@@ -88,6 +88,10 @@ instead of row, column.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span> <span class="o">=</span> <span class="n">novice</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s">&#39;/chelsea.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>We can display pictures (after running this command, close the window to access the prompt again):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  
+</pre></div>
+</div>
 <p>Pictures know their format:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">format</span>
 <span class="go">&#39;png&#39;</span>
@@ -105,15 +109,23 @@ instead of row, column.</p>
 <span class="go">451</span>
 </pre></div>
 </div>
+<p>As a reminder, we can preview the picture with our earlier command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  
+</pre></div>
+</div>
 <p>Changing <cite>size</cite> resizes the picture.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="p">(</span><span class="mi">45</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can preview the changes we made to the picture with our earlier command:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">picture</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  
 </pre></div>
 </div>
 <p>You can iterate over pixels, which have RGB values between 0 and 255,
 and know their location in the picture.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">pixel</span> <span class="ow">in</span> <span class="n">picture</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">if</span> <span class="p">(</span><span class="n">pixel</span><span class="o">.</span><span class="n">red</span> <span class="o">&gt;</span> <span class="mi">128</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">pixel</span><span class="o">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">picture</span><span class="o">.</span><span class="n">width</span><span class="p">):</span>
-<span class="gp">... </span>        <span class="n">pixel</span><span class="o">.</span><span class="n">red</span> <span class="o">/=</span> <span class="mi">2</span>
+<span class="gp">... </span>        <span class="n">pixel</span><span class="o">.</span><span class="n">red</span> <span class="o">=</span> <span class="n">pixel</span><span class="o">.</span><span class="n">red</span> <span class="o">/</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>Pictures know if they&#8217;ve been modified from the original file</p>

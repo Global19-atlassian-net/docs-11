@@ -27,9 +27,9 @@
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <link rel="top" title="skimage v0.12dev docs" href="../index.html" />
-        <link rel="up" title="User Guide" href="../user_guide.html" />
-        <link rel="next" title="How to contribute to skimage" href="../contribute.html" />
-        <link rel="prev" title="How to parallelize loops" href="tutorial_parallelization.html" />
+        <link rel="up" title="Tutorials" href="tutorials.html" />
+        <link rel="next" title="How to parallelize loops" href="tutorial_parallelization.html" />
+        <link rel="prev" title="Tutorials" href="tutorials.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../_static/favicon.ico">
 </head>
@@ -94,20 +94,20 @@ detection, we use the <a class="reference external" href="http://en.wikipedia.or
 </div>
 <p>As the background is very smooth, almost all edges are found at the
 boundary of the coins, or inside the coins.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fill_coins</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_fill_holes</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fill_coins</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">binary_fill_holes</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference external image-reference" href="../auto_examples/applications/plot_coins_segmentation.html"><img alt="../_images/plot_coins_segmentation_31.png" class="align-center" src="../_images/plot_coins_segmentation_31.png" /></a>
 <p>Now that we have contours that delineate the outer boundary of the coins,
 we fill the inner part of the coins using the
-<code class="docutils literal"><span class="pre">ndimage.binary_fill_holes</span></code> function, which uses mathematical morphology
+<code class="docutils literal"><span class="pre">ndi.binary_fill_holes</span></code> function, which uses mathematical morphology
 to fill the holes.</p>
 <a class="reference external image-reference" href="../auto_examples/applications/plot_coins_segmentation.html"><img alt="../_images/plot_coins_segmentation_41.png" class="align-center" src="../_images/plot_coins_segmentation_41.png" /></a>
 <p>Most coins are well segmented out of the background. Small objects from
-the background can be easily removed using the <code class="docutils literal"><span class="pre">ndimage.label</span></code>
+the background can be easily removed using the <code class="docutils literal"><span class="pre">ndi.label</span></code>
 function to remove objects smaller than a small threshold.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">label_objects</span><span class="p">,</span> <span class="n">nb_labels</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">fill_coins</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">label_objects</span><span class="p">,</span> <span class="n">nb_labels</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">fill_coins</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">bincount</span><span class="p">(</span><span class="n">label_objects</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mask_sizes</span> <span class="o">=</span> <span class="n">sizes</span> <span class="o">&gt;</span> <span class="mi">20</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mask_sizes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
@@ -171,11 +171,11 @@ markers for the background were not well distributed, the barriers in the
 elevation map were high enough for these markers to flood the entire
 background.</p>
 <p>We remove a few small holes with mathematical morphology:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">segmentation</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">binary_fill_holes</span><span class="p">(</span><span class="n">segmentation</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">segmentation</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">binary_fill_holes</span><span class="p">(</span><span class="n">segmentation</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We can now label all the coins one by one using <code class="docutils literal"><span class="pre">ndimage.label</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">labeled_coins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">segmentation</span><span class="p">)</span>
+<p>We can now label all the coins one by one using <code class="docutils literal"><span class="pre">ndi.label</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">labeled_coins</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">segmentation</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference external image-reference" href="../auto_examples/applications/plot_coins_segmentation.html"><img alt="../_images/plot_coins_segmentation_91.png" class="align-center" src="../_images/plot_coins_segmentation_91.png" /></a>
@@ -193,13 +193,13 @@ background.</p>
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="tutorial_parallelization.html" title="previous chapter">How to parallelize loops</a></li>
+            <li><a href="tutorials.html" title="previous chapter">Tutorials</a></li>
         </ul>
     </div>
     <h4 class="sidebar-box-heading">Next topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="../contribute.html" title="next chapter">How to contribute to <code class="docutils literal"><span class="pre">skimage</span></code></a></li>
+            <li><a href="tutorial_parallelization.html" title="next chapter">How to parallelize loops</a></li>
         </ul>
     </div>
         <h4 class="sidebar-box-heading">Contents</h4>

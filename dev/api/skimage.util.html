@@ -71,6 +71,62 @@
 <tbody valign="top">
 </tbody>
 </table>
+<div class="section" id="apply-parallel">
+<h2>apply_parallel<a class="headerlink" href="#apply-parallel" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.util.apply_parallel">
+<code class="descclassname">skimage.util.</code><code class="descname">apply_parallel</code><span class="sig-paren">(</span><em>function</em>, <em>array</em>, <em>chunks=None</em>, <em>depth=0</em>, <em>mode=None</em>, <em>extra_arguments=()</em>, <em>extra_keywords={}</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.apply_parallel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map a function in parallel across an array.</p>
+<p>Split an array into possibly overlapping chunks of a given depth and
+boundary type, call the given function in parallel on the chunks, combine
+the chunks and return the resulting array.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>function</strong> : function</p>
+<blockquote>
+<div><p>Function to be mapped which takes an array as an argument.</p>
+</div></blockquote>
+<p><strong>array</strong> : numpy array</p>
+<blockquote>
+<div><p>Array which the function will be applied to.</p>
+</div></blockquote>
+<p><strong>chunks</strong> : int, tuple, or tuple of tuples, optional</p>
+<blockquote>
+<div><p>A single integer is interpreted as the length of one side of a square
+chunk that should be tiled across the array.  One tuple of length
+<code class="docutils literal"><span class="pre">array.ndim</span></code> represents the shape of a chunk, and it is tiled across
+the array.  A list of tuples of length <code class="docutils literal"><span class="pre">ndim</span></code>, where each sub-tuple
+is a sequence of chunk sizes along the corresponding dimension. If
+None, the array is broken up into chunks based on the number of
+available cpus. More information about chunks is in the documentation
+<a class="reference external" href="https://dask.pydata.org/en/latest/array-design.html">here</a>.</p>
+</div></blockquote>
+<p><strong>depth</strong> : int, optional</p>
+<blockquote>
+<div><p>Integer equal to the depth of the added boundary cells. Defaults to
+zero.</p>
+</div></blockquote>
+<p><strong>mode</strong> : &#8216;reflect&#8217;, &#8216;periodic&#8217;, &#8216;wrap&#8217;, &#8216;nearest&#8217;, optional</p>
+<blockquote>
+<div><p>type of external boundary padding</p>
+</div></blockquote>
+<p><strong>extra_arguments</strong> : tuple, optional</p>
+<blockquote>
+<div><p>Tuple of arguments to be passed to the function.</p>
+</div></blockquote>
+<p><strong>extra_keywords</strong> : dictionary, optional</p>
+<blockquote class="last">
+<div><p>Dictionary of keyword arguments to be passed to the function.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 <div class="section" id="crop">
 <h2>crop<a class="headerlink" href="#crop" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -874,16 +930,17 @@ shifted by a single row or column (or an index of a higher dimension).</p>
 <blockquote>
 <div><p>N-d input array.</p>
 </div></blockquote>
-<p><strong>window_shape</strong> : tuple</p>
+<p><strong>window_shape</strong> : integer or tuple of length arr_in.ndim</p>
 <blockquote>
 <div><p>Defines the shape of the elementary n-dimensional orthotope
-(better know as hyperrectangle <a class="reference internal" href="#r185" id="id1">[R185]</a>) of the rolling window view.</p>
+(better know as hyperrectangle <a class="reference internal" href="#r189" id="id1">[R189]</a>) of the rolling window view.
+If an integer is given, the shape will be a hypercube of
+sidelength given by its value.</p>
 </div></blockquote>
-<p><strong>step</strong> : int, optional</p>
+<p><strong>step</strong> : integer or tuple of length arr_in.ndim</p>
 <blockquote>
-<div><p>Number of elements to skip when moving the window forward (by
-default, move forward by one). The value must be equal or larger
-than one.</p>
+<div><p>Indicates step size at which extraction shall be performed.
+If integer is given, then the step is uniform in all dimensions.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -910,10 +967,10 @@ the rolling view (if one was to reshape the view for example) would
 be 8*(100-3+1)**3*3**3 which is about 203 MB! The scaling becomes
 even worse as the dimension of the input array becomes larger.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r185" rules="none">
+<table class="docutils citation" frame="void" id="r189" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R185]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Hyperrectangle">http://en.wikipedia.org/wiki/Hyperrectangle</a></td></tr>
+<tr><td class="label">[R189]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Hyperrectangle">http://en.wikipedia.org/wiki/Hyperrectangle</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1012,6 +1069,7 @@ even worse as the dimension of the input array becomes larger.</p>
         <div class="well sidebar-box toc">
             <ul class="nav nav-list">
 <li><a class="reference internal" href="#">Module: <code class="docutils literal"><span class="pre">util</span></code></a><ul class="nav nav-list">
+<li><a class="reference internal" href="#apply-parallel">apply_parallel</a></li>
 <li><a class="reference internal" href="#crop">crop</a></li>
 <li><a class="reference internal" href="#dtype-limits">dtype_limits</a></li>
 <li><a class="reference internal" href="#img-as-bool">img_as_bool</a></li>

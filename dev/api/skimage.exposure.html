@@ -301,7 +301,7 @@ Enhancement Functions&#8221;,
 <h2>equalize_adapthist<a class="headerlink" href="#equalize-adapthist" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.exposure.equalize_adapthist">
-<code class="descclassname">skimage.exposure.</code><code class="descname">equalize_adapthist</code><span class="sig-paren">(</span><em>image</em>, <em>ntiles_x=8</em>, <em>ntiles_y=8</em>, <em>clip_limit=0.01</em>, <em>nbins=256</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.exposure.equalize_adapthist" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.exposure.</code><code class="descname">equalize_adapthist</code><span class="sig-paren">(</span><em>image</em>, <em>ntiles_x=8</em>, <em>ntiles_y=8</em>, <em>clip_limit=0.01</em>, <em>nbins=256</em>, <em>kernel_size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.exposure.equalize_adapthist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contrast Limited Adaptive Histogram Equalization (CLAHE).</p>
 <p>An algorithm for local contrast enhancement, that uses histograms computed
 over different tile regions of the image. Local details can therefore be
@@ -314,13 +314,19 @@ enhanced even in regions that are darker or lighter than most of the image.</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
-<p><strong>ntiles_x</strong> : int, optional</p>
+<p><strong>kernel_size: integer or 2-tuple</strong></p>
 <blockquote>
-<div><p>Number of tile regions in the X direction.  Ranges between 1 and 16.</p>
+<div><p>Defines the shape of contextual regions used in the algorithm.
+If an integer is given, the shape will be a square of
+sidelength given by this value.</p>
 </div></blockquote>
-<p><strong>ntiles_y</strong> : int, optional</p>
+<p><strong>ntiles_x</strong> : int, optional (deprecated in favor of <code class="docutils literal"><span class="pre">kernel_size</span></code>)</p>
 <blockquote>
-<div><p>Number of tile regions in the Y direction.  Ranges between 1 and 16.</p>
+<div><p>Number of tile regions in the X direction (horizontal).</p>
+</div></blockquote>
+<p><strong>ntiles_y</strong> : int, optional (deprecated in favor of <code class="docutils literal"><span class="pre">kernel_size</span></code>)</p>
+<blockquote>
+<div><p>Number of tile regions in the Y direction (vertical).</p>
 </div></blockquote>
 <p><strong>clip_limit</strong> : float: optional</p>
 <blockquote>
@@ -358,11 +364,6 @@ contrast).</p>
 </dl>
 </li>
 <li><p class="first">For RGBA images, the original alpha channel is removed.</p>
-</li>
-<li><p class="first">The CLAHE algorithm relies on image blocks of equal size.  This may
-result in extra border pixels that would not be handled.  In that case,
-we pad the image with a repeat of the border pixels, apply the
-algorithm, and then trim the image to original size.</p>
 </li>
 </ul>
 <p class="rubric">References</p>
@@ -603,7 +604,7 @@ as the input image.</p>
 </table>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">intensity_range</span></code>, <a class="reference internal" href="#skimage.exposure.equalize_hist" title="skimage.exposure.equalize_hist"><code class="xref py py-obj docutils literal"><span class="pre">equalize_hist</span></code></a></p>
+<p class="last"><a class="reference internal" href="#skimage.exposure.equalize_hist" title="skimage.exposure.equalize_hist"><code class="xref py py-obj docutils literal"><span class="pre">equalize_hist</span></code></a></p>
 </div>
 <p class="rubric">Examples</p>
 <p>By default, the min/max intensities of the input image are stretched to
