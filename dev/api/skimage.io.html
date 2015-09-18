@@ -62,7 +62,7 @@
         <div class="span9">
             
   <div class="section" id="module-skimage.io">
-<span id="module-io"></span><h1>Module: <a class="reference external" href="http://docs.python.org/2.7/library/io.html#module-io" title="(in Python v2.7)"><code class="xref py py-mod docutils literal"><span class="pre">io</span></code></a><a class="headerlink" href="#module-skimage.io" title="Permalink to this headline">¶</a></h1>
+<span id="module-io"></span><h1>Module: <a class="reference external" href="http://docs.python.org/3.4/library/io.html#module-io" title="(in Python v3.4)"><code class="xref py py-mod docutils literal"><span class="pre">io</span></code></a><a class="headerlink" href="#module-skimage.io" title="Permalink to this headline">¶</a></h1>
 <p>Utilities to read and write images in various formats.</p>
 <p>The following plug-ins are available:</p>
 <table border="1" class="docutils">
@@ -74,35 +74,38 @@
 <tr class="row-odd"><td>Plugin</td>
 <td>Description</td>
 </tr>
-<tr class="row-even"><td>simpleitk</td>
-<td>Image reading and writing via SimpleITK</td>
-</tr>
-<tr class="row-odd"><td>gtk</td>
+<tr class="row-even"><td>gtk</td>
 <td>Fast image display using the GTK library</td>
 </tr>
-<tr class="row-even"><td>matplotlib</td>
+<tr class="row-odd"><td>matplotlib</td>
 <td>Display or save images using Matplotlib</td>
+</tr>
+<tr class="row-even"><td>freeimage</td>
+<td>Load images using the FreeImage library</td>
+</tr>
+<tr class="row-odd"><td>fits</td>
+<td>FITS image reading via PyFITS</td>
+</tr>
+<tr class="row-even"><td>simpleitk</td>
+<td>Image reading and writing via SimpleITK</td>
 </tr>
 <tr class="row-odd"><td>imread</td>
 <td>Image reading and writing via imread</td>
 </tr>
-<tr class="row-even"><td>fits</td>
-<td>FITS image reading via PyFITS</td>
-</tr>
-<tr class="row-odd"><td>qt</td>
-<td>Fast image display using the Qt library</td>
-</tr>
 <tr class="row-even"><td>tifffile</td>
 <td>Load and save TIFF and TIFF-based images using tifffile.py</td>
 </tr>
-<tr class="row-odd"><td>freeimage</td>
-<td>Load images using the FreeImage library</td>
+<tr class="row-odd"><td>gdal</td>
+<td>Image reading via the GDAL Library (www.gdal.org)</td>
+</tr>
+<tr class="row-even"><td>qt</td>
+<td>Fast image display using the Qt library</td>
+</tr>
+<tr class="row-odd"><td>imageio</td>
+<td>Image reading via the ImageIO Library</td>
 </tr>
 <tr class="row-even"><td>pil</td>
 <td>Image reading via the Python Imaging Library</td>
-</tr>
-<tr class="row-odd"><td>gdal</td>
-<td>Image reading via the GDAL Library (www.gdal.org)</td>
 </tr>
 </tbody>
 </table>
@@ -118,7 +121,7 @@
 <h2>call_plugin<a class="headerlink" href="#call-plugin" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.call_plugin">
-<code class="descclassname">skimage.io.</code><code class="descname">call_plugin</code><span class="sig-paren">(</span><em>kind</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.call_plugin" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">call_plugin</code><span class="sig-paren">(</span><em>kind</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/manage_plugins.py#L172"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.call_plugin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the appropriate plugin of &#8216;kind&#8217; and execute it.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -148,7 +151,7 @@ matching plugin is used.</p>
 <h2>concatenate_images<a class="headerlink" href="#concatenate-images" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.concatenate_images">
-<code class="descclassname">skimage.io.</code><code class="descname">concatenate_images</code><span class="sig-paren">(</span><em>ic</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.concatenate_images" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">concatenate_images</code><span class="sig-paren">(</span><em>ic</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.concatenate_images" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate all images in the image collection into an array.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -185,7 +188,7 @@ matching plugin is used.</p>
 <h2>find_available_plugins<a class="headerlink" href="#find-available-plugins" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.find_available_plugins">
-<code class="descclassname">skimage.io.</code><code class="descname">find_available_plugins</code><span class="sig-paren">(</span><em>loaded=False</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.find_available_plugins" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">find_available_plugins</code><span class="sig-paren">(</span><em>loaded=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/manage_plugins.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.find_available_plugins" title="Permalink to this definition">¶</a></dt>
 <dd><p>List available plugins.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -214,7 +217,7 @@ values.</p>
 <h2>imread<a class="headerlink" href="#imread" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.imread">
-<code class="descclassname">skimage.io.</code><code class="descname">imread</code><span class="sig-paren">(</span><em>fname</em>, <em>as_grey=False</em>, <em>plugin=None</em>, <em>flatten=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.imread" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">imread</code><span class="sig-paren">(</span><em>fname</em>, <em>as_grey=False</em>, <em>plugin=None</em>, <em>flatten=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L17"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imread" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load an image from file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -259,7 +262,7 @@ RGB-image MxNx3 and an RGBA-image MxNx4.</p>
 <h2>imread_collection<a class="headerlink" href="#imread-collection" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.imread_collection">
-<code class="descclassname">skimage.io.</code><code class="descname">imread_collection</code><span class="sig-paren">(</span><em>load_pattern</em>, <em>conserve_memory=True</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.imread_collection" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">imread_collection</code><span class="sig-paren">(</span><em>load_pattern</em>, <em>conserve_memory=True</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imread_collection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a collection of images.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -300,7 +303,7 @@ time.  Otherwise, images will be cached once they are loaded.</p>
 <h2>imread_collection_wrapper<a class="headerlink" href="#imread-collection-wrapper" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.imread_collection_wrapper">
-<code class="descclassname">skimage.io.</code><code class="descname">imread_collection_wrapper</code><span class="sig-paren">(</span><em>imread</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.imread_collection_wrapper" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">imread_collection_wrapper</code><span class="sig-paren">(</span><em>imread</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L348"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imread_collection_wrapper" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -308,7 +311,7 @@ time.  Otherwise, images will be cached once they are loaded.</p>
 <h2>imsave<a class="headerlink" href="#imsave" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.imsave">
-<code class="descclassname">skimage.io.</code><code class="descname">imsave</code><span class="sig-paren">(</span><em>fname</em>, <em>arr</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.imsave" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">imsave</code><span class="sig-paren">(</span><em>fname</em>, <em>arr</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imsave" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save an image to file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -346,7 +349,7 @@ candidate is found.</p>
 <h2>imshow<a class="headerlink" href="#imshow" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.imshow">
-<code class="descclassname">skimage.io.</code><code class="descname">imshow</code><span class="sig-paren">(</span><em>arr</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.imshow" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">imshow</code><span class="sig-paren">(</span><em>arr</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L125"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imshow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display an image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -380,7 +383,7 @@ candidate is found.</p>
 <h2>load_sift<a class="headerlink" href="#load-sift" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.load_sift">
-<code class="descclassname">skimage.io.</code><code class="descname">load_sift</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.load_sift" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">load_sift</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/sift.py#L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.load_sift" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read SIFT or SURF features from a file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -440,7 +443,7 @@ candidate is found.</p>
 <h2>load_surf<a class="headerlink" href="#load-surf" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.load_surf">
-<code class="descclassname">skimage.io.</code><code class="descname">load_surf</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.load_surf" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">load_surf</code><span class="sig-paren">(</span><em>f</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/sift.py#L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.load_surf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read SIFT or SURF features from a file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -500,7 +503,7 @@ candidate is found.</p>
 <h2>plugin_info<a class="headerlink" href="#plugin-info" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.plugin_info">
-<code class="descclassname">skimage.io.</code><code class="descname">plugin_info</code><span class="sig-paren">(</span><em>plugin</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.plugin_info" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">plugin_info</code><span class="sig-paren">(</span><em>plugin</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/manage_plugins.py#L313"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.plugin_info" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return plugin meta-data.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -527,7 +530,7 @@ candidate is found.</p>
 <h2>plugin_order<a class="headerlink" href="#plugin-order" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.plugin_order">
-<code class="descclassname">skimage.io.</code><code class="descname">plugin_order</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.plugin_order" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">plugin_order</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/manage_plugins.py#L333"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.plugin_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the currently preferred plugin order.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -549,7 +552,7 @@ plugins (in order of preference) as value.</p>
 <h2>pop<a class="headerlink" href="#pop" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.pop">
-<code class="descclassname">skimage.io.</code><code class="descname">pop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.pop" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">pop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_image_stack.py#L26"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.pop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pop an image from the shared image stack.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -570,7 +573,7 @@ plugins (in order of preference) as value.</p>
 <h2>push<a class="headerlink" href="#push" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.push">
-<code class="descclassname">skimage.io.</code><code class="descname">push</code><span class="sig-paren">(</span><em>img</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.push" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">push</code><span class="sig-paren">(</span><em>img</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_image_stack.py#L11"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.push" title="Permalink to this definition">¶</a></dt>
 <dd><p>Push an image onto the shared image stack.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -591,7 +594,7 @@ plugins (in order of preference) as value.</p>
 <h2>reset_plugins<a class="headerlink" href="#reset-plugins" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.reset_plugins">
-<code class="descclassname">skimage.io.</code><code class="descname">reset_plugins</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.reset_plugins" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">reset_plugins</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/manage_plugins.py#L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.reset_plugins" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -599,7 +602,7 @@ plugins (in order of preference) as value.</p>
 <h2>show<a class="headerlink" href="#show" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.show">
-<code class="descclassname">skimage.io.</code><code class="descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.show" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.show" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display pending images.</p>
 <p>Launch the event loop of the current gui plugin, and display all
 pending images, queued via <cite>imshow</cite>. This is required when using
@@ -622,7 +625,7 @@ have been closed.</p>
 <h2>use_plugin<a class="headerlink" href="#use-plugin" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.use_plugin">
-<code class="descclassname">skimage.io.</code><code class="descname">use_plugin</code><span class="sig-paren">(</span><em>name</em>, <em>kind=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.use_plugin" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">use_plugin</code><span class="sig-paren">(</span><em>name</em>, <em>kind=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/manage_plugins.py#L211"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.use_plugin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the default plugin for a specified operation.  The plugin
 will be loaded if it hasn&#8217;t been already.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -665,8 +668,8 @@ if your system does not have the required libraries installed.</p>
 <h2><a class="reference internal" href="#skimage.io.ImageCollection" title="skimage.io.ImageCollection"><code class="xref py py-class docutils literal"><span class="pre">ImageCollection</span></code></a><a class="headerlink" href="#imagecollection" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.io.ImageCollection">
-<em class="property">class </em><code class="descclassname">skimage.io.</code><code class="descname">ImageCollection</code><span class="sig-paren">(</span><em>load_pattern</em>, <em>conserve_memory=True</em>, <em>load_func=None</em>, <em>**load_func_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.ImageCollection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<em class="property">class </em><code class="descclassname">skimage.io.</code><code class="descname">ImageCollection</code><span class="sig-paren">(</span><em>load_pattern</em>, <em>conserve_memory=True</em>, <em>load_func=None</em>, <em>**load_func_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L77"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.ImageCollection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/3.4/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
 <p>Load and manage a collection of image files.</p>
 <p>Note that files are always stored in alphabetical order. Also note that
 slicing returns a new ImageCollection, <em>not</em> a view into the data.</p>
@@ -757,13 +760,13 @@ should accept the keyword argument <code class="docutils literal"><span class="p
 </table>
 <dl class="method">
 <dt id="skimage.io.ImageCollection.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>load_pattern</em>, <em>conserve_memory=True</em>, <em>load_func=None</em>, <em>**load_func_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.ImageCollection.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>load_pattern</em>, <em>conserve_memory=True</em>, <em>load_func=None</em>, <em>**load_func_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.ImageCollection.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load and manage a collection of images.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.io.ImageCollection.concatenate">
-<code class="descname">concatenate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.ImageCollection.concatenate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">concatenate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L328"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.ImageCollection.concatenate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate all images in the collection into an array.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -801,7 +804,7 @@ should accept the keyword argument <code class="docutils literal"><span class="p
 
 <dl class="method">
 <dt id="skimage.io.ImageCollection.reload">
-<code class="descname">reload</code><span class="sig-paren">(</span><em>n=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.ImageCollection.reload" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reload</code><span class="sig-paren">(</span><em>n=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.ImageCollection.reload" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clear the image cache.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -825,7 +828,7 @@ entire cache is erased.</p>
 <h2><a class="reference internal" href="#skimage.io.MultiImage" title="skimage.io.MultiImage"><code class="xref py py-class docutils literal"><span class="pre">MultiImage</span></code></a><a class="headerlink" href="#multiimage" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.io.MultiImage">
-<em class="property">class </em><code class="descclassname">skimage.io.</code><code class="descname">MultiImage</code><span class="sig-paren">(</span><em>filename</em>, <em>conserve_memory=True</em>, <em>dtype=None</em>, <em>**imread_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.MultiImage" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">skimage.io.</code><code class="descname">MultiImage</code><span class="sig-paren">(</span><em>filename</em>, <em>conserve_memory=True</em>, <em>dtype=None</em>, <em>**imread_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L374"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.MultiImage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">skimage.io.collection.ImageCollection</span></code></p>
 <p>A class containing a single multi-frame image.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -868,7 +871,7 @@ PIL otherwise.</p>
 </div>
 <dl class="method">
 <dt id="skimage.io.MultiImage.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>filename</em>, <em>conserve_memory=True</em>, <em>dtype=None</em>, <em>**imread_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.io.MultiImage.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>filename</em>, <em>conserve_memory=True</em>, <em>dtype=None</em>, <em>**imread_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L412"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.MultiImage.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a multi-img.</p>
 </dd></dl>
 

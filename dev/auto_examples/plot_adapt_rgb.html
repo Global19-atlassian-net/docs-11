@@ -63,9 +63,9 @@
             
   <div class="section" id="adapting-gray-scale-filters-to-rgb-images">
 <span id="example-plot-adapt-rgb-py"></span><h1>Adapting gray-scale filters to RGB images<a class="headerlink" href="#adapting-gray-scale-filters-to-rgb-images" title="Permalink to this headline">¶</a></h1>
-<p>There are many filters that are designed work with gray-scale images but not
-color images. To simplify the process of creating functions that can adapt to
-RGB images, scikit-image provides the <code class="docutils literal"><span class="pre">adapt_rgb</span></code> decorator.</p>
+<p>There are many filters that are designed to work with gray-scale images but not
+with color images. To simplify the process of creating functions that can adapt
+to RGB images, scikit-image provides the <code class="docutils literal"><span class="pre">adapt_rgb</span></code> decorator.</p>
 <p>To actually use the <code class="docutils literal"><span class="pre">adapt_rgb</span></code> decorator, you have to decide how you want to
 adapt the RGB image for use with the gray-scale filter. There are two
 pre-defined handlers:</p>
@@ -98,13 +98,25 @@ filters:</p>
 with both gray-scale and color images. Let&#8217;s plot the results with a color
 image:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="kn">import</span> <span class="n">rescale_intensity</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
-<span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax_each</span><span class="p">,</span> <span class="n">ax_hsv</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ax_each</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sobel_each</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
-<span class="n">ax_hsv</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sobel_hsv</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax_each</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">ax_hsv</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+
+<span class="c"># We use 1 - sobel_each(image)</span>
+<span class="c"># but this will not work if image is not normalized</span>
+<span class="n">ax_each</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rescale_intensity</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sobel_each</span><span class="p">(</span><span class="n">image</span><span class="p">)))</span>
+<span class="n">ax_each</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]),</span> <span class="n">ax_each</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax_each</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Sobel filter computed</span><span class="se">\n</span><span class="s"> on individual RGB channels&quot;</span><span class="p">)</span>
+
+<span class="c"># We use 1 - sobel_hsv(image) but this will not work if image is not normalized</span>
+<span class="n">ax_hsv</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rescale_intensity</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sobel_hsv</span><span class="p">(</span><span class="n">image</span><span class="p">)))</span>
+<span class="n">ax_hsv</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]),</span> <span class="n">ax_hsv</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax_hsv</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Sobel filter computed</span><span class="se">\n</span><span class="s"> on (V)alue converted image (HSV)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="../_images/plot_adapt_rgb_1.png" src="../_images/plot_adapt_rgb_1.png" />
@@ -141,8 +153,14 @@ have any number of positional and keyword arguments.</p>
 <span class="k">def</span> <span class="nf">sobel_gray</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">filters</span><span class="o">.</span><span class="n">sobel</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sobel_gray</span><span class="p">(</span><span class="n">image</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+<span class="c"># We use 1 - sobel_gray(image)</span>
+<span class="c"># but this will not work if image is not normalized</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rescale_intensity</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sobel_gray</span><span class="p">(</span><span class="n">image</span><span class="p">)),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]),</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Sobel filter computed</span><span class="se">\n</span><span class="s"> on the converted grayscale image&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>

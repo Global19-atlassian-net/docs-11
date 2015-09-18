@@ -65,7 +65,11 @@
 <span id="example-plot-marked-watershed-py"></span><h1>Markers for watershed transform<a class="headerlink" href="#markers-for-watershed-transform" title="Permalink to this headline">¶</a></h1>
 <p>The watershed is a classical algorithm used for <strong>segmentation</strong>, that
 is, for separating different objects in an image.</p>
-<p>Here a marker image is build from the region of low gradient inside the image.</p>
+<p>Here a marker image is built from the region of low gradient inside the image.
+In a gradient image, the areas of high values provide barriers that help to
+segment the image.
+Using markers on the lower values will ensure that the segmented objects are
+found.</p>
 <p>See <a class="reference external" href="http://en.wikipedia.org/wiki/Watershed_(image_processing)">Wikipedia</a> for more details on the algorithm.</p>
 <img alt="../_images/plot_marked_watershed_1.png" class="align-center" src="../_images/plot_marked_watershed_1.png" />
 <div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
@@ -82,11 +86,13 @@ is, for separating different objects in an image.</p>
 <span class="c"># denoise image</span>
 <span class="n">denoised</span> <span class="o">=</span> <span class="n">rank</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">disk</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 
-<span class="c"># find continuous region (low gradient) --&gt; markers</span>
+<span class="c"># find continuous region (low gradient -</span>
+<span class="c"># where less than 10 for this image) --&gt; markers</span>
+<span class="c"># disk(5) is used here to get a more smooth image</span>
 <span class="n">markers</span> <span class="o">=</span> <span class="n">rank</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">denoised</span><span class="p">,</span> <span class="n">disk</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">10</span>
 <span class="n">markers</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">markers</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="c">#local gradient</span>
+<span class="c"># local gradient (disk(2) is used to keep edges thin)</span>
 <span class="n">gradient</span> <span class="o">=</span> <span class="n">rank</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">denoised</span><span class="p">,</span> <span class="n">disk</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 
 <span class="c"># process the watershed</span>
@@ -97,15 +103,20 @@ is, for separating different objects in an image.</p>
 <span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">axes</span>
 
 <span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Original&quot;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">gradient</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Local Gradient&quot;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">markers</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Markers&quot;</span><span class="p">)</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">)</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">spectral</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&quot;Segmented&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axes</span><span class="p">:</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                    <span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>

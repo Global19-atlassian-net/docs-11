@@ -72,15 +72,15 @@ that may run through the image.</p>
 <p>Usually, lines are parameterised as <img class="math" src="../_images/math/73b227b1abbfbeb3b8556b0d678ca91adcc89218.png" alt="y = mx + c"/>, with a gradient
 <img class="math" src="../_images/math/c4bb40dd65eae6c11b325989b14e0b8d35e4e3ef.png" alt="m"/> and y-intercept <cite>c</cite>. However, this would mean that <img class="math" src="../_images/math/c4bb40dd65eae6c11b325989b14e0b8d35e4e3ef.png" alt="m"/> goes to
 infinity for vertical lines. Instead, we therefore construct a segment
-perpendicular to the line, leading to the origin. The line is represented by the
-length of that segment, <img class="math" src="../_images/math/2ede365ad144ab396916ec60458da03860803078.png" alt="r"/>, and the angle it makes with the x-axis,
+perpendicular to the line, leading to the origin. The line is represented by
+the length of that segment, <img class="math" src="../_images/math/2ede365ad144ab396916ec60458da03860803078.png" alt="r"/>, and the angle it makes with the x-axis,
 <img class="math" src="../_images/math/a9cfbeb8ebee1f365919e147a79e242dcb67ee5d.png" alt="\theta"/>.</p>
 <p>The Hough transform constructs a histogram array representing the parameter
-space (i.e., an <img class="math" src="../_images/math/079287797417e8d6eaa8727e42778ca8ccb4ed98.png" alt="M \times N"/> matrix, for <img class="math" src="../_images/math/2de38926392ba23abeac75effc66c37a5f5be5fd.png" alt="M"/> different values of the
-radius and <img class="math" src="../_images/math/75e27f04188974063be3230dca208cd495b77ce1.png" alt="N"/> different values of <img class="math" src="../_images/math/a9cfbeb8ebee1f365919e147a79e242dcb67ee5d.png" alt="\theta"/>).  For each parameter
-combination, <img class="math" src="../_images/math/2ede365ad144ab396916ec60458da03860803078.png" alt="r"/> and <img class="math" src="../_images/math/a9cfbeb8ebee1f365919e147a79e242dcb67ee5d.png" alt="\theta"/>, we then find the number of non-zero
-pixels in the input image that would fall close to the corresponding line, and
-increment the array at position <img class="math" src="../_images/math/eafbf2c4b76110db258f9b3993554c072026644a.png" alt="(r, \theta)"/> appropriately.</p>
+space (i.e., an <img class="math" src="../_images/math/079287797417e8d6eaa8727e42778ca8ccb4ed98.png" alt="M \times N"/> matrix, for <img class="math" src="../_images/math/2de38926392ba23abeac75effc66c37a5f5be5fd.png" alt="M"/> different values of
+the radius and <img class="math" src="../_images/math/75e27f04188974063be3230dca208cd495b77ce1.png" alt="N"/> different values of <img class="math" src="../_images/math/a9cfbeb8ebee1f365919e147a79e242dcb67ee5d.png" alt="\theta"/>).  For each
+parameter combination, <img class="math" src="../_images/math/2ede365ad144ab396916ec60458da03860803078.png" alt="r"/> and <img class="math" src="../_images/math/a9cfbeb8ebee1f365919e147a79e242dcb67ee5d.png" alt="\theta"/>, we then find the number of
+non-zero pixels in the input image that would fall close to the corresponding
+line, and increment the array at position <img class="math" src="../_images/math/eafbf2c4b76110db258f9b3993554c072026644a.png" alt="(r, \theta)"/> appropriately.</p>
 <p>We can think of each non-zero pixel &#8220;voting&#8221; for potential line candidates. The
 local maxima in the resulting histogram indicates the parameters of the most
 probably lines. In our example, the maxima occur at 45 and 135 degrees,
@@ -88,12 +88,12 @@ corresponding to the normal vector angles of each line.</p>
 <p>Another approach is the Progressive Probabilistic Hough Transform <a class="footnote-reference" href="#id2" id="id1">[1]</a>. It is
 based on the assumption that using a random subset of voting points give a good
 approximation to the actual result, and that lines can be extracted during the
-voting process by walking along connected components. This returns the beginning
-and end of each line segment, which is useful.</p>
+voting process by walking along connected components. This returns the
+beginning and end of each line segment, which is useful.</p>
 <p>The function <cite>probabilistic_hough</cite> has three parameters: a general threshold
-that is applied to the Hough accumulator, a minimum line length and the line gap
-that influences line merging. In the example below, we find lines longer than 10
-with a gap less than 3 pixels.</p>
+that is applied to the Hough accumulator, a minimum line length and the line
+gap that influences line merging. In the example below, we find lines longer
+than 10 with a gap less than 3 pixels.</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
@@ -143,9 +143,9 @@ pp. 11-15 (January, 1972)</td></tr>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;image&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">h</span><span class="p">),</span>
-           <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-                   <span class="n">d</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
-           <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mf">1.5</span><span class="p">)</span>
+             <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                     <span class="n">d</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
+             <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mf">1.5</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Hough transform&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Angles (degrees)&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Distance (pixels)&#39;</span><span class="p">)</span>
@@ -165,7 +165,8 @@ pp. 11-15 (January, 1972)</td></tr>
 
 <span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 <span class="n">edges</span> <span class="o">=</span> <span class="n">canny</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="n">probabilistic_hough_line</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">line_length</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">line_gap</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">probabilistic_hough_line</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">line_length</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                                 <span class="n">line_gap</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="n">fig2</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 

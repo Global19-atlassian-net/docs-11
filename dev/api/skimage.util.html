@@ -75,7 +75,7 @@
 <h2>apply_parallel<a class="headerlink" href="#apply-parallel" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.apply_parallel">
-<code class="descclassname">skimage.util.</code><code class="descname">apply_parallel</code><span class="sig-paren">(</span><em>function</em>, <em>array</em>, <em>chunks=None</em>, <em>depth=0</em>, <em>mode=None</em>, <em>extra_arguments=()</em>, <em>extra_keywords={}</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.apply_parallel" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">apply_parallel</code><span class="sig-paren">(</span><em>function</em>, <em>array</em>, <em>chunks=None</em>, <em>depth=0</em>, <em>mode=None</em>, <em>extra_arguments=()</em>, <em>extra_keywords={}</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/apply_parallel.py#L46"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.apply_parallel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Map a function in parallel across an array.</p>
 <p>Split an array into possibly overlapping chunks of a given depth and
 boundary type, call the given function in parallel on the chunks, combine
@@ -108,9 +108,9 @@ available cpus. More information about chunks is in the documentation
 <div><p>Integer equal to the depth of the added boundary cells. Defaults to
 zero.</p>
 </div></blockquote>
-<p><strong>mode</strong> : &#8216;reflect&#8217;, &#8216;periodic&#8217;, &#8216;wrap&#8217;, &#8216;nearest&#8217;, optional</p>
+<p><strong>mode</strong> : {&#8216;reflect&#8217;, &#8216;symmetric&#8217;, &#8216;periodic&#8217;, &#8216;wrap&#8217;, &#8216;nearest&#8217;, &#8216;edge&#8217;}, optional</p>
 <blockquote>
-<div><p>type of external boundary padding</p>
+<div><p>type of external boundary padding.</p>
 </div></blockquote>
 <p><strong>extra_arguments</strong> : tuple, optional</p>
 <blockquote>
@@ -124,6 +124,10 @@ zero.</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>Numpy edge modes &#8216;symmetric&#8217;, &#8216;wrap&#8217;, and &#8216;edge&#8217; are converted to the
+equivalent <cite>dask</cite> boundary modes &#8216;reflect&#8217;, &#8216;periodic&#8217; and &#8216;nearest&#8217;,
+respectively.</p>
 </dd></dl>
 
 </div>
@@ -131,7 +135,7 @@ zero.</p>
 <h2>crop<a class="headerlink" href="#crop" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.crop">
-<code class="descclassname">skimage.util.</code><code class="descname">crop</code><span class="sig-paren">(</span><em>ar</em>, <em>crop_width</em>, <em>copy=False</em>, <em>order='K'</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.crop" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">crop</code><span class="sig-paren">(</span><em>ar</em>, <em>crop_width</em>, <em>copy=False</em>, <em>order='K'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/arraypad.py#L1501"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.crop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Crop array <cite>ar</cite> by <cite>crop_width</cite> along each dimension.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -181,7 +185,7 @@ view of the input array.</p>
 <h2>dtype_limits<a class="headerlink" href="#dtype-limits" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.dtype_limits">
-<code class="descclassname">skimage.util.</code><code class="descname">dtype_limits</code><span class="sig-paren">(</span><em>image</em>, <em>clip_negative=True</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.dtype_limits" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">dtype_limits</code><span class="sig-paren">(</span><em>image</em>, <em>clip_negative=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/dtype.py#L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.dtype_limits" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return intensity limits, i.e. (min, max) tuple, of the image&#8217;s dtype.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -207,7 +211,7 @@ even if the image dtype allows negative values.</p>
 <h2>img_as_bool<a class="headerlink" href="#img-as-bool" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.img_as_bool">
-<code class="descclassname">skimage.util.</code><code class="descname">img_as_bool</code><span class="sig-paren">(</span><em>image</em>, <em>force_copy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.img_as_bool" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">img_as_bool</code><span class="sig-paren">(</span><em>image</em>, <em>force_copy=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/dtype.py#L367"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.img_as_bool" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert an image to boolean format.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -241,7 +245,7 @@ half is False. All negative values (if present) are False.</p>
 <h2>img_as_float<a class="headerlink" href="#img-as-float" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.img_as_float">
-<code class="descclassname">skimage.util.</code><code class="descname">img_as_float</code><span class="sig-paren">(</span><em>image</em>, <em>force_copy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.img_as_float" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">img_as_float</code><span class="sig-paren">(</span><em>image</em>, <em>force_copy=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/dtype.py#L270"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.img_as_float" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert an image to double-precision floating point format.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -275,7 +279,7 @@ converting from unsigned or signed datatypes, respectively.</p>
 <h2>img_as_int<a class="headerlink" href="#img-as-int" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.img_as_int">
-<code class="descclassname">skimage.util.</code><code class="descname">img_as_int</code><span class="sig-paren">(</span><em>image</em>, <em>force_copy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.img_as_int" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">img_as_int</code><span class="sig-paren">(</span><em>image</em>, <em>force_copy=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/dtype.py#L318"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.img_as_int" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert an image to 16-bit signed integer format.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -310,7 +314,7 @@ the output image will still only have positive values.</p>
 <h2>img_as_ubyte<a class="headerlink" href="#img-as-ubyte" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.img_as_ubyte">
-<code class="descclassname">skimage.util.</code><code class="descname">img_as_ubyte</code><span class="sig-paren">(</span><em>image</em>, <em>force_copy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.img_as_ubyte" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">img_as_ubyte</code><span class="sig-paren">(</span><em>image</em>, <em>force_copy=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/dtype.py#L343"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.img_as_ubyte" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert an image to 8-bit unsigned integer format.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -344,7 +348,7 @@ Positive values are scaled between 0 and 255.</p>
 <h2>img_as_uint<a class="headerlink" href="#img-as-uint" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.img_as_uint">
-<code class="descclassname">skimage.util.</code><code class="descname">img_as_uint</code><span class="sig-paren">(</span><em>image</em>, <em>force_copy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.img_as_uint" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">img_as_uint</code><span class="sig-paren">(</span><em>image</em>, <em>force_copy=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/dtype.py#L294"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.img_as_uint" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert an image to 16-bit unsigned integer format.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -378,7 +382,7 @@ Positive values are scaled between 0 and 65535.</p>
 <h2>pad<a class="headerlink" href="#pad" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.pad">
-<code class="descclassname">skimage.util.</code><code class="descname">pad</code><span class="sig-paren">(</span><em>array</em>, <em>pad_width</em>, <em>mode=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.pad" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">pad</code><span class="sig-paren">(</span><em>array</em>, <em>pad_width</em>, <em>mode=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/arraypad.py#L1117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.pad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pads an array.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -616,7 +620,7 @@ the end of vector.</dd>
 <h2>random_noise<a class="headerlink" href="#random-noise" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.random_noise">
-<code class="descclassname">skimage.util.</code><code class="descname">random_noise</code><span class="sig-paren">(</span><em>image</em>, <em>mode='gaussian'</em>, <em>seed=None</em>, <em>clip=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.random_noise" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">random_noise</code><span class="sig-paren">(</span><em>image</em>, <em>mode='gaussian'</em>, <em>seed=None</em>, <em>clip=True</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/noise.py#L8"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.random_noise" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function to add random noise of various types to a floating-point image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -729,7 +733,7 @@ Poisson noise is generated, then it is returned to the original range.</p>
 <h2>regular_grid<a class="headerlink" href="#regular-grid" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.regular_grid">
-<code class="descclassname">skimage.util.</code><code class="descname">regular_grid</code><span class="sig-paren">(</span><em>ar_shape</em>, <em>n_points</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.regular_grid" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">regular_grid</code><span class="sig-paren">(</span><em>ar_shape</em>, <em>n_points</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/_regular_grid.py#L4"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.regular_grid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find <cite>n_points</cite> regularly spaced along <cite>ar_shape</cite>.</p>
 <p>The returned points (as slices) should be as close to cubically-spaced as
 possible. Essentially, the points are spaced by the Nth root of the input
@@ -791,7 +795,7 @@ of all the slices give the coordinates of regularly spaced points.</p>
 <h2>unique_rows<a class="headerlink" href="#unique-rows" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.unique_rows">
-<code class="descclassname">skimage.util.</code><code class="descname">unique_rows</code><span class="sig-paren">(</span><em>ar</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.unique_rows" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">unique_rows</code><span class="sig-paren">(</span><em>ar</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/unique.py#L4"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.unique_rows" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove repeated rows from a 2D array.</p>
 <p>In particular, if given an array of coordinates of shape
 (Npoints, Ndim), it will remove repeated points.</p>
@@ -836,7 +840,7 @@ input arrays.</p>
 <h2>view_as_blocks<a class="headerlink" href="#view-as-blocks" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.view_as_blocks">
-<code class="descclassname">skimage.util.</code><code class="descname">view_as_blocks</code><span class="sig-paren">(</span><em>arr_in</em>, <em>block_shape</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.view_as_blocks" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">view_as_blocks</code><span class="sig-paren">(</span><em>arr_in</em>, <em>block_shape</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/shape.py#L10"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.view_as_blocks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Block view of the input n-dimensional array (using re-striding).</p>
 <p>Blocks are non-overlapping views of the input array.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -918,7 +922,7 @@ is made.</p>
 <h2>view_as_windows<a class="headerlink" href="#view-as-windows" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.view_as_windows">
-<code class="descclassname">skimage.util.</code><code class="descname">view_as_windows</code><span class="sig-paren">(</span><em>arr_in</em>, <em>window_shape</em>, <em>step=1</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.util.view_as_windows" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">view_as_windows</code><span class="sig-paren">(</span><em>arr_in</em>, <em>window_shape</em>, <em>step=1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/shape.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.view_as_windows" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rolling window view of the input n-dimensional array.</p>
 <p>Windows are overlapping views of the input array, with adjacent windows
 shifted by a single row or column (or an index of a higher dimension).</p>
@@ -933,7 +937,7 @@ shifted by a single row or column (or an index of a higher dimension).</p>
 <p><strong>window_shape</strong> : integer or tuple of length arr_in.ndim</p>
 <blockquote>
 <div><p>Defines the shape of the elementary n-dimensional orthotope
-(better know as hyperrectangle <a class="reference internal" href="#r189" id="id1">[R189]</a>) of the rolling window view.
+(better know as hyperrectangle <a class="reference internal" href="#r191" id="id1">[R191]</a>) of the rolling window view.
 If an integer is given, the shape will be a hypercube of
 sidelength given by its value.</p>
 </div></blockquote>
@@ -967,10 +971,10 @@ the rolling view (if one was to reshape the view for example) would
 be 8*(100-3+1)**3*3**3 which is about 203 MB! The scaling becomes
 even worse as the dimension of the input array becomes larger.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r189" rules="none">
+<table class="docutils citation" frame="void" id="r191" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R189]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Hyperrectangle">http://en.wikipedia.org/wiki/Hyperrectangle</a></td></tr>
+<tr><td class="label">[R191]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Hyperrectangle">http://en.wikipedia.org/wiki/Hyperrectangle</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
