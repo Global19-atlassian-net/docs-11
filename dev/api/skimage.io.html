@@ -74,38 +74,38 @@
 <tr class="row-odd"><td>Plugin</td>
 <td>Description</td>
 </tr>
-<tr class="row-even"><td>fits</td>
-<td>FITS image reading via PyFITS</td>
+<tr class="row-even"><td>imread</td>
+<td>Image reading and writing via imread</td>
+</tr>
+<tr class="row-odd"><td>pil</td>
+<td>Image reading via the Python Imaging Library</td>
+</tr>
+<tr class="row-even"><td>imageio</td>
+<td>Image reading via the ImageIO Library</td>
+</tr>
+<tr class="row-odd"><td>freeimage</td>
+<td>Load images using the FreeImage library</td>
+</tr>
+<tr class="row-even"><td>matplotlib</td>
+<td>Display or save images using Matplotlib</td>
 </tr>
 <tr class="row-odd"><td>tifffile</td>
 <td>Load and save TIFF and TIFF-based images using tifffile.py</td>
 </tr>
-<tr class="row-even"><td>freeimage</td>
-<td>Load images using the FreeImage library</td>
+<tr class="row-even"><td>qt</td>
+<td>Fast image display using the Qt library</td>
 </tr>
 <tr class="row-odd"><td>gtk</td>
 <td>Fast image display using the GTK library</td>
 </tr>
-<tr class="row-even"><td>qt</td>
-<td>Fast image display using the Qt library</td>
-</tr>
-<tr class="row-odd"><td>gdal</td>
+<tr class="row-even"><td>gdal</td>
 <td>Image reading via the GDAL Library (www.gdal.org)</td>
 </tr>
-<tr class="row-even"><td>pil</td>
-<td>Image reading via the Python Imaging Library</td>
-</tr>
-<tr class="row-odd"><td>matplotlib</td>
-<td>Display or save images using Matplotlib</td>
+<tr class="row-odd"><td>fits</td>
+<td>FITS image reading via PyFITS</td>
 </tr>
 <tr class="row-even"><td>simpleitk</td>
 <td>Image reading and writing via SimpleITK</td>
-</tr>
-<tr class="row-odd"><td>imread</td>
-<td>Image reading and writing via imread</td>
-</tr>
-<tr class="row-even"><td>imageio</td>
-<td>Image reading via the ImageIO Library</td>
 </tr>
 </tbody>
 </table>
@@ -234,7 +234,10 @@ Images that are already in grey-scale format are not converted.</p>
 </div></blockquote>
 <p><strong>plugin</strong> : str</p>
 <blockquote>
-<div><p>Name of plugin to use (Python Imaging Library by default).</p>
+<div><p>Name of plugin to use.  By default, the different plugins are
+tried (starting with the Python Imaging Library) until a suitable
+candidate is found.  If not given and fname is a tiff file, the
+tifffile plugin will be used.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -262,7 +265,7 @@ RGB-image MxNx3 and an RGBA-image MxNx4.</p>
 <h2>imread_collection<a class="headerlink" href="#imread-collection" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.imread_collection">
-<code class="descclassname">skimage.io.</code><code class="descname">imread_collection</code><span class="sig-paren">(</span><em>load_pattern</em>, <em>conserve_memory=True</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imread_collection" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">imread_collection</code><span class="sig-paren">(</span><em>load_pattern</em>, <em>conserve_memory=True</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L77"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imread_collection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a collection of images.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -311,7 +314,7 @@ time.  Otherwise, images will be cached once they are loaded.</p>
 <h2>imsave<a class="headerlink" href="#imsave" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.imsave">
-<code class="descclassname">skimage.io.</code><code class="descname">imsave</code><span class="sig-paren">(</span><em>fname</em>, <em>arr</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L100"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imsave" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">imsave</code><span class="sig-paren">(</span><em>fname</em>, <em>arr</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imsave" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save an image to file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -329,7 +332,8 @@ time.  Otherwise, images will be cached once they are loaded.</p>
 <blockquote>
 <div><p>Name of plugin to use.  By default, the different plugins are
 tried (starting with the Python Imaging Library) until a suitable
-candidate is found.</p>
+candidate is found.  If not given and fname is a tiff file, the
+tifffile plugin will be used.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -349,7 +353,7 @@ candidate is found.</p>
 <h2>imshow<a class="headerlink" href="#imshow" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.imshow">
-<code class="descclassname">skimage.io.</code><code class="descname">imshow</code><span class="sig-paren">(</span><em>arr</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L125"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imshow" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">imshow</code><span class="sig-paren">(</span><em>arr</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L136"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imshow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display an image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -602,7 +606,7 @@ plugins (in order of preference) as value.</p>
 <h2>show<a class="headerlink" href="#show" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.show">
-<code class="descclassname">skimage.io.</code><code class="descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.show" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.show" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display pending images.</p>
 <p>Launch the event loop of the current gui plugin, and display all
 pending images, queued via <cite>imshow</cite>. This is required when using
