@@ -83,6 +83,31 @@
 </dd></dl>
 
 </div>
+<div class="section" id="copy-func">
+<h2>copy_func<a class="headerlink" href="#copy-func" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.filters.copy_func">
+<code class="descclassname">skimage.filters.</code><code class="descname">copy_func</code><span class="sig-paren">(</span><em>f</em>, <em>name=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/_shared/utils.py#L180"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.copy_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a copy of a function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>f</strong> : function</p>
+<blockquote>
+<div><p>Function to copy.</p>
+</div></blockquote>
+<p><strong>name</strong> : str, optional</p>
+<blockquote class="last">
+<div><p>Name of new function.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 <div class="section" id="denoise-bilateral">
 <h2>denoise_bilateral<a class="headerlink" href="#denoise-bilateral" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -331,11 +356,11 @@ Springer, 2004, 20, 89-97.</td></tr>
 </dd></dl>
 
 </div>
-<div class="section" id="gabor-filter">
-<h2>gabor_filter<a class="headerlink" href="#gabor-filter" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gabor">
+<h2>gabor<a class="headerlink" href="#gabor" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="skimage.filters.gabor_filter">
-<code class="descclassname">skimage.filters.</code><code class="descname">gabor_filter</code><span class="sig-paren">(</span><em>image</em>, <em>frequency</em>, <em>theta=0</em>, <em>bandwidth=1</em>, <em>sigma_x=None</em>, <em>sigma_y=None</em>, <em>n_stds=3</em>, <em>offset=0</em>, <em>mode='reflect'</em>, <em>cval=0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_gabor.py#L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gabor_filter" title="Permalink to this definition">¶</a></dt>
+<dt id="skimage.filters.gabor">
+<code class="descclassname">skimage.filters.</code><code class="descname">gabor</code><span class="sig-paren">(</span><em>image</em>, <em>frequency</em>, <em>theta=0</em>, <em>bandwidth=1</em>, <em>sigma_x=None</em>, <em>sigma_y=None</em>, <em>n_stds=3</em>, <em>offset=0</em>, <em>mode='reflect'</em>, <em>cval=0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_gabor.py#L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gabor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return real and imaginary responses to Gabor filter.</p>
 <p>The real and imaginary parts of the Gabor filter kernel are applied to the
 image and the response is returned as a pair of arrays.</p>
@@ -416,21 +441,130 @@ kernel. Images are of the same dimensions as the input one.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.filter</span> <span class="kn">import</span> <span class="n">gabor_filter</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.filter</span> <span class="kn">import</span> <span class="n">gabor</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>  
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">coins</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># detecting edges in a coin image</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">filt_real</span><span class="p">,</span> <span class="n">filt_imag</span> <span class="o">=</span> <span class="n">gabor_filter</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filt_real</span><span class="p">,</span> <span class="n">filt_imag</span> <span class="o">=</span> <span class="n">gabor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>            
 <span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">filt_real</span><span class="p">)</span>    
 <span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>               
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># less sensitivity to finer details with the lower frequency kernel</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">filt_real</span><span class="p">,</span> <span class="n">filt_imag</span> <span class="o">=</span> <span class="n">gabor_filter</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filt_real</span><span class="p">,</span> <span class="n">filt_imag</span> <span class="o">=</span> <span class="n">gabor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>            
+<span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">filt_real</span><span class="p">)</span>    
+<span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>               
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="gabor-filter">
+<h2>gabor_filter<a class="headerlink" href="#gabor-filter" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.filters.gabor_filter">
+<code class="descclassname">skimage.filters.</code><code class="descname">gabor_filter</code><span class="sig-paren">(</span><em>image</em>, <em>frequency</em>, <em>theta=0</em>, <em>bandwidth=1</em>, <em>sigma_x=None</em>, <em>sigma_y=None</em>, <em>n_stds=3</em>, <em>offset=0</em>, <em>mode='reflect'</em>, <em>cval=0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/_shared/utils.py#L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gabor_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Deprecated function</strong>. Use <code class="docutils literal"><span class="pre">skimage.filters.gabor</span></code> instead.</p>
+<p>Return real and imaginary responses to Gabor filter.</p>
+<p>The real and imaginary parts of the Gabor filter kernel are applied to the
+image and the response is returned as a pair of arrays.</p>
+<p>Gabor filter is a linear filter with a Gaussian kernel which is modulated
+by a sinusoidal plane wave. Frequency and orientation representations of
+the Gabor filter are similar to those of the human visual system.
+Gabor filter banks are commonly used in computer vision and image
+processing. They are especially suitable for edge detection and texture
+classification.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : 2-D array</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>frequency</strong> : float</p>
+<blockquote>
+<div><p>Spatial frequency of the harmonic function. Specified in pixels.</p>
+</div></blockquote>
+<p><strong>theta</strong> : float, optional</p>
+<blockquote>
+<div><p>Orientation in radians. If 0, the harmonic is in the x-direction.</p>
+</div></blockquote>
+<p><strong>bandwidth</strong> : float, optional</p>
+<blockquote>
+<div><p>The bandwidth captured by the filter. For fixed bandwidth, <cite>sigma_x</cite>
+and <cite>sigma_y</cite> will decrease with increasing frequency. This value is
+ignored if <cite>sigma_x</cite> and <cite>sigma_y</cite> are set by the user.</p>
+</div></blockquote>
+<p><strong>sigma_x, sigma_y</strong> : float, optional</p>
+<blockquote>
+<div><p>Standard deviation in x- and y-directions. These directions apply to
+the kernel <em>before</em> rotation. If <cite>theta = pi/2</cite>, then the kernel is
+rotated 90 degrees so that <cite>sigma_x</cite> controls the <em>vertical</em> direction.</p>
+</div></blockquote>
+<p><strong>n_stds</strong> : scalar, optional</p>
+<blockquote>
+<div><p>The linear size of the kernel is n_stds (3 by default) standard
+deviations.</p>
+</div></blockquote>
+<p><strong>offset</strong> : float, optional</p>
+<blockquote>
+<div><p>Phase offset of harmonic function in radians.</p>
+</div></blockquote>
+<p><strong>mode</strong> : {&#8216;constant&#8217;, &#8216;nearest&#8217;, &#8216;reflect&#8217;, &#8216;mirror&#8217;, &#8216;wrap&#8217;}, optional</p>
+<blockquote>
+<div><p>Mode used to convolve image with a kernel, passed to <cite>ndi.convolve</cite></p>
+</div></blockquote>
+<p><strong>cval</strong> : scalar, optional</p>
+<blockquote>
+<div><p>Value to fill past edges of input if <cite>mode</cite> of convolution is
+&#8216;constant&#8217;. The parameter is passed to <cite>ndi.convolve</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>real, imag</strong> : arrays</p>
+<blockquote class="last">
+<div><p>Filtered images using the real and imaginary parts of the Gabor filter
+kernel. Images are of the same dimensions as the input one.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r89" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id10">[R89]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Gabor_filter">http://en.wikipedia.org/wiki/Gabor_filter</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r90" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id11">[R90]</a></td><td><a class="reference external" href="http://mplab.ucsd.edu/tutorials/gabor.pdf">http://mplab.ucsd.edu/tutorials/gabor.pdf</a></td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.filter</span> <span class="kn">import</span> <span class="n">gabor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">io</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>  
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">coins</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># detecting edges in a coin image</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filt_real</span><span class="p">,</span> <span class="n">filt_imag</span> <span class="o">=</span> <span class="n">gabor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>            
+<span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">filt_real</span><span class="p">)</span>    
+<span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>               
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># less sensitivity to finer details with the lower frequency kernel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filt_real</span><span class="p">,</span> <span class="n">filt_imag</span> <span class="o">=</span> <span class="n">gabor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>            
 <span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">filt_real</span><span class="p">)</span>    
 <span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>               
@@ -495,16 +629,16 @@ deviations</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r89" rules="none">
+<table class="docutils citation" frame="void" id="r91" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[R89]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Gabor_filter">http://en.wikipedia.org/wiki/Gabor_filter</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id12">[R91]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Gabor_filter">http://en.wikipedia.org/wiki/Gabor_filter</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r90" rules="none">
+<table class="docutils citation" frame="void" id="r92" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[R90]</a></td><td><a class="reference external" href="http://mplab.ucsd.edu/tutorials/gabor.pdf">http://mplab.ucsd.edu/tutorials/gabor.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id13">[R92]</a></td><td><a class="reference external" href="http://mplab.ucsd.edu/tutorials/gabor.pdf">http://mplab.ucsd.edu/tutorials/gabor.pdf</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -530,11 +664,11 @@ deviations</p>
 </dd></dl>
 
 </div>
-<div class="section" id="gaussian-filter">
-<h2>gaussian_filter<a class="headerlink" href="#gaussian-filter" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gaussian">
+<h2>gaussian<a class="headerlink" href="#gaussian" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="skimage.filters.gaussian_filter">
-<code class="descclassname">skimage.filters.</code><code class="descname">gaussian_filter</code><span class="sig-paren">(</span><em>image</em>, <em>sigma</em>, <em>output=None</em>, <em>mode='nearest'</em>, <em>cval=0</em>, <em>multichannel=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_gaussian.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gaussian_filter" title="Permalink to this definition">¶</a></dt>
+<dt id="skimage.filters.gaussian">
+<code class="descclassname">skimage.filters.</code><code class="descname">gaussian</code><span class="sig-paren">(</span><em>image</em>, <em>sigma</em>, <em>output=None</em>, <em>mode='nearest'</em>, <em>cval=0</em>, <em>multichannel=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_gaussian.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gaussian" title="Permalink to this definition">¶</a></dt>
 <dd><p>Multi-dimensional Gaussian filter</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -601,23 +735,117 @@ precision.</p>
 <span class="go">array([[ 0.,  0.,  0.],</span>
 <span class="go">       [ 0.,  1.,  0.],</span>
 <span class="go">       [ 0.,  0.,  0.]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>  <span class="c"># mild smoothing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gaussian</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>  <span class="c"># mild smoothing</span>
 <span class="go">array([[ 0.00163116,  0.03712502,  0.00163116],</span>
 <span class="go">       [ 0.03712502,  0.84496158,  0.03712502],</span>
 <span class="go">       [ 0.00163116,  0.03712502,  0.00163116]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># more smooting</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gaussian</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># more smooting</span>
 <span class="go">array([[ 0.05855018,  0.09653293,  0.05855018],</span>
 <span class="go">       [ 0.09653293,  0.15915589,  0.09653293],</span>
 <span class="go">       [ 0.05855018,  0.09653293,  0.05855018]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># Several modes are possible for handling boundaries</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gaussian_filter</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;reflect&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gaussian</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;reflect&#39;</span><span class="p">)</span>
 <span class="go">array([[ 0.08767308,  0.12075024,  0.08767308],</span>
 <span class="go">       [ 0.12075024,  0.16630671,  0.12075024],</span>
 <span class="go">       [ 0.08767308,  0.12075024,  0.08767308]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c"># For RGB images, each is filtered separately</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <span class="n">astronaut</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">astronaut</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">filtered_img</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">multichannel</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filtered_img</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">multichannel</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="gaussian-filter">
+<h2>gaussian_filter<a class="headerlink" href="#gaussian-filter" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.filters.gaussian_filter">
+<code class="descclassname">skimage.filters.</code><code class="descname">gaussian_filter</code><span class="sig-paren">(</span><em>image</em>, <em>sigma</em>, <em>output=None</em>, <em>mode='nearest'</em>, <em>cval=0</em>, <em>multichannel=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/_shared/utils.py#L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gaussian_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Deprecated function</strong>. Use <code class="docutils literal"><span class="pre">skimage.filters.gaussian</span></code> instead.</p>
+<p>Multi-dimensional Gaussian filter</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : array-like</p>
+<blockquote>
+<div><p>input image (grayscale or color) to filter.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : scalar or sequence of scalars</p>
+<blockquote>
+<div><p>standard deviation for Gaussian kernel. The standard
+deviations of the Gaussian filter are given for each axis as a
+sequence, or as a single number, in which case it is equal for
+all axes.</p>
+</div></blockquote>
+<p><strong>output</strong> : array, optional</p>
+<blockquote>
+<div><p>The <code class="docutils literal"><span class="pre">output</span></code> parameter passes an array in which to store the
+filter output.</p>
+</div></blockquote>
+<p><strong>mode</strong> : {&#8216;reflect&#8217;, &#8216;constant&#8217;, &#8216;nearest&#8217;, &#8216;mirror&#8217;, &#8216;wrap&#8217;}, optional</p>
+<blockquote>
+<div><p>The <cite>mode</cite> parameter determines how the array borders are
+handled, where <cite>cval</cite> is the value when mode is equal to
+&#8216;constant&#8217;. Default is &#8216;nearest&#8217;.</p>
+</div></blockquote>
+<p><strong>cval</strong> : scalar, optional</p>
+<blockquote>
+<div><p>Value to fill past edges of input if <cite>mode</cite> is &#8216;constant&#8217;. Default
+is 0.0</p>
+</div></blockquote>
+<p><strong>multichannel</strong> : bool, optional (default: None)</p>
+<blockquote>
+<div><p>Whether the last axis of the image is to be interpreted as multiple
+channels. If True, each channel is filtered separately (channels are
+not mixed together). Only 3 channels are supported. If <cite>None</cite>,
+the function will attempt to guess this, and raise a warning if
+ambiguous, when the array has shape (M, N, 3).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>filtered_image</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>the filtered array</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This function is a wrapper around <code class="xref py py-func docutils literal"><span class="pre">scipy.ndi.gaussian_filter()</span></code>.</p>
+<p>Integer arrays are converted to float.</p>
+<p>The multi-dimensional filter is implemented as a sequence of
+one-dimensional convolution filters. The intermediate arrays are
+stored in the same data type as the output. Therefore, for output
+types with a limited precision, the results may be imprecise
+because intermediate results may be stored with insufficient
+precision.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
+<span class="go">array([[ 0.,  0.,  0.],</span>
+<span class="go">       [ 0.,  1.,  0.],</span>
+<span class="go">       [ 0.,  0.,  0.]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gaussian</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>  <span class="c"># mild smoothing</span>
+<span class="go">array([[ 0.00163116,  0.03712502,  0.00163116],</span>
+<span class="go">       [ 0.03712502,  0.84496158,  0.03712502],</span>
+<span class="go">       [ 0.00163116,  0.03712502,  0.00163116]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gaussian</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c"># more smooting</span>
+<span class="go">array([[ 0.05855018,  0.09653293,  0.05855018],</span>
+<span class="go">       [ 0.09653293,  0.15915589,  0.09653293],</span>
+<span class="go">       [ 0.05855018,  0.09653293,  0.05855018]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># Several modes are possible for handling boundaries</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gaussian</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">&#39;reflect&#39;</span><span class="p">)</span>
+<span class="go">array([[ 0.08767308,  0.12075024,  0.08767308],</span>
+<span class="go">       [ 0.12075024,  0.16630671,  0.12075024],</span>
+<span class="go">       [ 0.08767308,  0.12075024,  0.08767308]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c"># For RGB images, each is filtered separately</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <span class="n">astronaut</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">filtered_img</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">multichannel</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -705,10 +933,10 @@ result at each point:</p>
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r91" rules="none">
+<table class="docutils citation" frame="void" id="r93" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id12">[R91]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
+<tr><td class="label"><a class="fn-backref" href="#id14">[R93]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
 Optimization of Kernel Based Image Derivatives.</td></tr>
 </tbody>
 </table>
@@ -1286,17 +1514,17 @@ vertical Scharrs to get a magnitude that is somewhat insensitive to
 direction. The Scharr operator has a better rotation invariance than
 other edge filters such as the Sobel or the Prewitt operators.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r92" rules="none">
+<table class="docutils citation" frame="void" id="r94" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id13">[R92]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
+<tr><td class="label"><a class="fn-backref" href="#id15">[R94]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
 Optimization of Kernel Based Image Derivatives.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r93" rules="none">
+<table class="docutils citation" frame="void" id="r95" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id14">[R93]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Sobel_operator#Alternative_operators">http://en.wikipedia.org/wiki/Sobel_operator#Alternative_operators</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id16">[R95]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Sobel_operator#Alternative_operators">http://en.wikipedia.org/wiki/Sobel_operator#Alternative_operators</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1347,10 +1575,10 @@ prevent masked regions from affecting the result.</p>
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r94" rules="none">
+<table class="docutils citation" frame="void" id="r96" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id15">[R94]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
+<tr><td class="label"><a class="fn-backref" href="#id17">[R96]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
 Optimization of Kernel Based Image Derivatives.</td></tr>
 </tbody>
 </table>
@@ -1395,10 +1623,10 @@ prevent masked regions from affecting the result.</p>
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r95" rules="none">
+<table class="docutils citation" frame="void" id="r97" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id16">[R95]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
+<tr><td class="label"><a class="fn-backref" href="#id18">[R97]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
 Optimization of Kernel Based Image Derivatives.</td></tr>
 </tbody>
 </table>
@@ -1605,10 +1833,10 @@ threshold for the centre pixel.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r96" rules="none">
+<table class="docutils citation" frame="void" id="r98" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id17">[R96]</a></td><td><a class="reference external" href="http://docs.opencv.org/modules/imgproc/doc/miscellaneous_transformations.html?highlight=threshold#adaptivethreshold">http://docs.opencv.org/modules/imgproc/doc/miscellaneous_transformations.html?highlight=threshold#adaptivethreshold</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id19">[R98]</a></td><td><a class="reference external" href="http://docs.opencv.org/modules/imgproc/doc/miscellaneous_transformations.html?highlight=threshold#adaptivethreshold">http://docs.opencv.org/modules/imgproc/doc/miscellaneous_transformations.html?highlight=threshold#adaptivethreshold</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1668,33 +1896,33 @@ the above equality. If True, return all valid thresholds.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r97" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id18">[R97]</a></td><td>Ridler, TW &amp; Calvard, S (1978), &#8220;Picture thresholding using an
-iterative selection method&#8221;</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r98" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id19">[R98]</a></td><td>IEEE Transactions on Systems, Man and Cybernetics 8: 630-632,
-<a class="reference external" href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4310039">http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4310039</a></td></tr>
-</tbody>
-</table>
 <table class="docutils citation" frame="void" id="r99" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id20">[R99]</a></td><td>Sezgin M. and Sankur B. (2004) &#8220;Survey over Image Thresholding
-Techniques and Quantitative Performance Evaluation&#8221; Journal of
-Electronic Imaging, 13(1): 146-165,
-<a class="reference external" href="http://www.busim.ee.boun.edu.tr/~sankur/SankurFolder/Threshold_survey.pdf">http://www.busim.ee.boun.edu.tr/~sankur/SankurFolder/Threshold_survey.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id20">[R99]</a></td><td>Ridler, TW &amp; Calvard, S (1978), &#8220;Picture thresholding using an
+iterative selection method&#8221;</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r100" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id21">[R100]</a></td><td>ImageJ AutoThresholder code,
+<tr><td class="label"><a class="fn-backref" href="#id21">[R100]</a></td><td>IEEE Transactions on Systems, Man and Cybernetics 8: 630-632,
+<a class="reference external" href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4310039">http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4310039</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r101" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id22">[R101]</a></td><td>Sezgin M. and Sankur B. (2004) &#8220;Survey over Image Thresholding
+Techniques and Quantitative Performance Evaluation&#8221; Journal of
+Electronic Imaging, 13(1): 146-165,
+<a class="reference external" href="http://www.busim.ee.boun.edu.tr/~sankur/SankurFolder/Threshold_survey.pdf">http://www.busim.ee.boun.edu.tr/~sankur/SankurFolder/Threshold_survey.pdf</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r102" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id23">[R102]</a></td><td>ImageJ AutoThresholder code,
 <a class="reference external" href="http://fiji.sc/wiki/index.php/Auto_Threshold">http://fiji.sc/wiki/index.php/Auto_Threshold</a></td></tr>
 </tbody>
 </table>
@@ -1734,33 +1962,33 @@ this value are assumed to be foreground.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r101" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id22">[R101]</a></td><td>Li C.H. and Lee C.K. (1993) &#8220;Minimum Cross Entropy Thresholding&#8221;
-Pattern Recognition, 26(4): 617-625</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="r102" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id23">[R102]</a></td><td>Li C.H. and Tam P.K.S. (1998) &#8220;An Iterative Algorithm for Minimum
-Cross Entropy Thresholding&#8221; Pattern Recognition Letters, 18(8): 771-776</td></tr>
-</tbody>
-</table>
 <table class="docutils citation" frame="void" id="r103" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id24">[R103]</a></td><td>Sezgin M. and Sankur B. (2004) &#8220;Survey over Image Thresholding
-Techniques and Quantitative Performance Evaluation&#8221; Journal of
-Electronic Imaging, 13(1): 146-165
-<a class="reference external" href="http://citeseer.ist.psu.edu/sezgin04survey.html">http://citeseer.ist.psu.edu/sezgin04survey.html</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id24">[R103]</a></td><td>Li C.H. and Lee C.K. (1993) &#8220;Minimum Cross Entropy Thresholding&#8221;
+Pattern Recognition, 26(4): 617-625</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r104" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id25">[R104]</a></td><td>ImageJ AutoThresholder code, <a class="reference external" href="http://fiji.sc/wiki/index.php/Auto_Threshold">http://fiji.sc/wiki/index.php/Auto_Threshold</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id25">[R104]</a></td><td>Li C.H. and Tam P.K.S. (1998) &#8220;An Iterative Algorithm for Minimum
+Cross Entropy Thresholding&#8221; Pattern Recognition Letters, 18(8): 771-776</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r105" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id26">[R105]</a></td><td>Sezgin M. and Sankur B. (2004) &#8220;Survey over Image Thresholding
+Techniques and Quantitative Performance Evaluation&#8221; Journal of
+Electronic Imaging, 13(1): 146-165
+<a class="reference external" href="http://citeseer.ist.psu.edu/sezgin04survey.html">http://citeseer.ist.psu.edu/sezgin04survey.html</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r106" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id27">[R106]</a></td><td>ImageJ AutoThresholder code, <a class="reference external" href="http://fiji.sc/wiki/index.php/Auto_Threshold">http://fiji.sc/wiki/index.php/Auto_Threshold</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1804,10 +2032,10 @@ this value assumed as foreground.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r105" rules="none">
+<table class="docutils citation" frame="void" id="r107" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id26">[R105]</a></td><td>Wikipedia, <a class="reference external" href="http://en.wikipedia.org/wiki/Otsu's_Method">http://en.wikipedia.org/wiki/Otsu&#8217;s_Method</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id28">[R107]</a></td><td>Wikipedia, <a class="reference external" href="http://en.wikipedia.org/wiki/Otsu's_Method">http://en.wikipedia.org/wiki/Otsu&#8217;s_Method</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1851,27 +2079,27 @@ this value assumed as foreground.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r106" rules="none">
+<table class="docutils citation" frame="void" id="r108" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id27">[R106]</a></td><td>Yen J.C., Chang F.J., and Chang S. (1995) &#8220;A New Criterion
+<tr><td class="label"><a class="fn-backref" href="#id29">[R108]</a></td><td>Yen J.C., Chang F.J., and Chang S. (1995) &#8220;A New Criterion
 for Automatic Multilevel Thresholding&#8221; IEEE Trans. on Image
 Processing, 4(3): 370-378</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r107" rules="none">
+<table class="docutils citation" frame="void" id="r109" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id28">[R107]</a></td><td>Sezgin M. and Sankur B. (2004) &#8220;Survey over Image Thresholding
+<tr><td class="label"><a class="fn-backref" href="#id30">[R109]</a></td><td>Sezgin M. and Sankur B. (2004) &#8220;Survey over Image Thresholding
 Techniques and Quantitative Performance Evaluation&#8221; Journal of
 Electronic Imaging, 13(1): 146-165,
 <a class="reference external" href="http://www.busim.ee.boun.edu.tr/~sankur/SankurFolder/Threshold_survey.pdf">http://www.busim.ee.boun.edu.tr/~sankur/SankurFolder/Threshold_survey.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r108" rules="none">
+<table class="docutils citation" frame="void" id="r110" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id29">[R108]</a></td><td>ImageJ AutoThresholder code, <a class="reference external" href="http://fiji.sc/wiki/index.php/Auto_Threshold">http://fiji.sc/wiki/index.php/Auto_Threshold</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id31">[R110]</a></td><td>ImageJ AutoThresholder code, <a class="reference external" href="http://fiji.sc/wiki/index.php/Auto_Threshold">http://fiji.sc/wiki/index.php/Auto_Threshold</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1966,10 +2194,10 @@ result at each point:</p>
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r109" rules="none">
+<table class="docutils citation" frame="void" id="r111" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id30">[R109]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
+<tr><td class="label"><a class="fn-backref" href="#id32">[R111]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
 Optimization of Kernel Based Image Derivatives.</td></tr>
 </tbody>
 </table>
@@ -2168,11 +2396,14 @@ function is deprecated; &#8216;raise&#8217; = raise error.</p>
             <ul class="nav nav-list">
 <li><a class="reference internal" href="#">Module: <code class="docutils literal"><span class="pre">filters</span></code></a><ul class="nav nav-list">
 <li><a class="reference internal" href="#canny">canny</a></li>
+<li><a class="reference internal" href="#copy-func">copy_func</a></li>
 <li><a class="reference internal" href="#denoise-bilateral">denoise_bilateral</a></li>
 <li><a class="reference internal" href="#denoise-tv-bregman">denoise_tv_bregman</a></li>
 <li><a class="reference internal" href="#denoise-tv-chambolle">denoise_tv_chambolle</a></li>
+<li><a class="reference internal" href="#gabor">gabor</a></li>
 <li><a class="reference internal" href="#gabor-filter">gabor_filter</a></li>
 <li><a class="reference internal" href="#gabor-kernel">gabor_kernel</a></li>
+<li><a class="reference internal" href="#gaussian">gaussian</a></li>
 <li><a class="reference internal" href="#gaussian-filter">gaussian_filter</a></li>
 <li><a class="reference internal" href="#hprewitt">hprewitt</a></li>
 <li><a class="reference internal" href="#hscharr">hscharr</a></li>
