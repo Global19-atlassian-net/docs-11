@@ -1216,11 +1216,89 @@ pixel belongs to the neighborhood.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="remove-small-holes">
+<h2>remove_small_holes<a class="headerlink" href="#remove-small-holes" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.morphology.remove_small_holes">
+<code class="descclassname">skimage.morphology.</code><code class="descname">remove_small_holes</code><span class="sig-paren">(</span><em>ar</em>, <em>min_size=64</em>, <em>connectivity=1</em>, <em>in_place=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/misc.py#L131"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.remove_small_holes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove continguous holes smaller than the specified size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ar</strong> : ndarray (arbitrary shape, int or bool type)</p>
+<blockquote>
+<div><p>The array containing the connected components of interest.</p>
+</div></blockquote>
+<p><strong>min_size</strong> : int, optional (default: 64)</p>
+<blockquote>
+<div><p>The hole component size.</p>
+</div></blockquote>
+<p><strong>connectivity</strong> : int, {1, 2, ..., ar.ndim}, optional (default: 1)</p>
+<blockquote>
+<div><p>The connectivity defining the neighborhood of a pixel.</p>
+</div></blockquote>
+<p><strong>in_place</strong> : bool, optional (default: False)</p>
+<blockquote>
+<div><p>If <cite>True</cite>, remove the connected components in the input array itself.
+Otherwise, make a copy.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray, same shape and type as input <cite>ar</cite></p>
+<blockquote>
+<div><p>The input array with small holes within connected components removed.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>TypeError</strong></p>
+<blockquote>
+<div><p>If the input array is of an invalid type, such as float or string.</p>
+</div></blockquote>
+<p><strong>ValueError</strong></p>
+<blockquote class="last">
+<div><p>If the input array contains negative values.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>If the array type is int, it is assumed that it contains already-labeled 
+objects. The labels are not kept in the output image (this function always 
+outputs a bool image). It is suggested that labeling is completed after 
+using this function.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">morphology</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="nb">bool</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">remove_small_holes</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span>
+<span class="go">array([[ True,  True,  True,  True,  True, False],</span>
+<span class="go">       [ True,  True,  True,  True,  True, False],</span>
+<span class="go">       [ True, False, False,  True,  True, False],</span>
+<span class="go">       [ True,  True,  True,  True,  True, False]], dtype=bool)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">remove_small_holes</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span>
+<span class="go">array([[ True,  True,  True,  True,  True, False],</span>
+<span class="go">       [ True,  True,  True, False,  True, False],</span>
+<span class="go">       [ True, False, False,  True,  True, False],</span>
+<span class="go">       [ True,  True,  True,  True,  True, False]], dtype=bool)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">remove_small_holes</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">in_place</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="ow">is</span> <span class="n">a</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
 <div class="section" id="remove-small-objects">
 <h2>remove_small_objects<a class="headerlink" href="#remove-small-objects" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.remove_small_objects">
-<code class="descclassname">skimage.morphology.</code><code class="descname">remove_small_objects</code><span class="sig-paren">(</span><em>ar</em>, <em>min_size=64</em>, <em>connectivity=1</em>, <em>in_place=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/misc.py#L42"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.remove_small_objects" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.morphology.</code><code class="descname">remove_small_objects</code><span class="sig-paren">(</span><em>ar</em>, <em>min_size=64</em>, <em>connectivity=1</em>, <em>in_place=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/misc.py#L47"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.remove_small_objects" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove connected components smaller than the specified size.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1661,6 +1739,7 @@ is passed, a new array will be allocated.</p>
 <li><a class="reference internal" href="#opening">opening</a></li>
 <li><a class="reference internal" href="#reconstruction">reconstruction</a></li>
 <li><a class="reference internal" href="#rectangle">rectangle</a></li>
+<li><a class="reference internal" href="#remove-small-holes">remove_small_holes</a></li>
 <li><a class="reference internal" href="#remove-small-objects">remove_small_objects</a></li>
 <li><a class="reference internal" href="#skeletonize">skeletonize</a></li>
 <li><a class="reference internal" href="#square">square</a></li>
