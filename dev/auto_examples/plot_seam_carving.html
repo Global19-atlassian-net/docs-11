@@ -103,19 +103,19 @@ importance of each pixel.</p>
 <img alt="../_images/plot_seam_carving_2.png" src="../_images/plot_seam_carving_2.png" />
 <div class="highlight-python"><div class="highlight"><pre><span class="n">out</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">seam_carve</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">eimg</span><span class="p">,</span> <span class="s">&#39;vertical&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Resized using Seam-Carving&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">&#39;Resized using Seam Carving&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="../_images/plot_seam_carving_3.png" src="../_images/plot_seam_carving_3.png" />
-<p>As you can see, resizing as distorted the rocket and the objects around,
-whereas seam carving has reszied by removing the empty spaces in between.</p>
+<p>Resizing distorts the rocket and surrounding objects, whereas seam carving
+removes empty spaces and preserves object proportions.</p>
 <div class="section" id="object-removal">
 <h2>Object Removal<a class="headerlink" href="#object-removal" title="Permalink to this headline">¶</a></h2>
-<p>Seam Carving can also be used to remove atrifacts from images. To do that, we
-have to ensure that pixels to be removes get less importance. In the following
-code I approximately mark the rocket with a mask, and then decrease the
-importance of those pixels</p>
+<p>Seam carving can also be used to remove artifacts from images.
+This requires weighting the artifact with low values. Recall lower weights are
+preferentially removed in seam carving. The following code masks the rocket&#8217;s
+region with low weights, indicating it should be removed.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">masked_img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
 <span class="n">poly</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">404</span><span class="p">,</span> <span class="mi">281</span><span class="p">),</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="mi">360</span><span class="p">),</span> <span class="p">(</span><span class="mi">359</span><span class="p">,</span> <span class="mi">364</span><span class="p">),</span> <span class="p">(</span><span class="mi">338</span><span class="p">,</span> <span class="mi">337</span><span class="p">),</span> <span class="p">(</span><span class="mi">145</span><span class="p">,</span> <span class="mi">337</span><span class="p">),</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">322</span><span class="p">),</span>
