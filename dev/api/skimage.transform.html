@@ -93,10 +93,10 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.transform.ifrt2" title="skimage.transform.ifrt2"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.ifrt2</span></code></a>(a)</td>
 <td>Compute the 2-dimensional inverse finite radon transform (iFRT) for an (n+1) x n integer array.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.integral_image" title="skimage.transform.integral_image"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.integral_image</span></code></a>(x)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.integral_image" title="skimage.transform.integral_image"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.integral_image</span></code></a>(img)</td>
 <td>Integral image / summed area table.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.integrate" title="skimage.transform.integrate"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.integrate</span></code></a>(ii,&nbsp;r0,&nbsp;c0,&nbsp;r1,&nbsp;c1)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.integrate" title="skimage.transform.integrate"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.integrate</span></code></a>(ii,&nbsp;start,&nbsp;end,&nbsp;...)</td>
 <td>Use an integral image to integrate over a given window.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.iradon" title="skimage.transform.iradon"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.iradon</span></code></a>(radon_image[,&nbsp;...])</td>
@@ -724,7 +724,7 @@ and Electron Physics, 139 (2006)</td></tr>
 <h2>integral_image<a class="headerlink" href="#integral-image" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.integral_image">
-<code class="descclassname">skimage.transform.</code><code class="descname">integral_image</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/integral.py#L4"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.integral_image" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">integral_image</code><span class="sig-paren">(</span><em>img</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/integral.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.integral_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Integral image / summed area table.</p>
 <p>The integral image contains the sum of all elements above and to the
 left of it, i.e.:</p>
@@ -734,7 +734,7 @@ left of it, i.e.:</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : ndarray</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
@@ -742,7 +742,7 @@ left of it, i.e.:</p>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>S</strong> : ndarray</p>
 <blockquote class="last">
-<div><p>Integral image / summed area table.</p>
+<div><p>Integral image/summed area table of same shape as input image.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -763,7 +763,7 @@ ACM SIGGRAPH Computer Graphics, vol. 18, 1984, pp. 207-212.</td></tr>
 <h2>integrate<a class="headerlink" href="#integrate" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.integrate">
-<code class="descclassname">skimage.transform.</code><code class="descname">integrate</code><span class="sig-paren">(</span><em>ii</em>, <em>r0</em>, <em>c0</em>, <em>r1</em>, <em>c1</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/integral.py#L33"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.integrate" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">integrate</code><span class="sig-paren">(</span><em>ii</em>, <em>start</em>, <em>end</em>, <em>*args</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/integral.py#L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.integrate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use an integral image to integrate over a given window.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -773,13 +773,24 @@ ACM SIGGRAPH Computer Graphics, vol. 18, 1984, pp. 207-212.</td></tr>
 <blockquote>
 <div><p>Integral image.</p>
 </div></blockquote>
-<p><strong>r0, c0</strong> : int or ndarray</p>
+<p><strong>start</strong> : List of tuples, each tuple of length equal to dimension of <cite>ii</cite></p>
 <blockquote>
-<div><p>Top-left corner(s) of block to be summed.</p>
+<div><p>Coordinates of top left corner of window(s).
+Each tuple in the list contains the starting row, col, ... index
+i.e <cite>[(row_win1, col_win1, ...), (row_win2, col_win2,...), ...]</cite>.</p>
 </div></blockquote>
-<p><strong>r1, c1</strong> : int or ndarray</p>
+<p><strong>end</strong> : List of tuples, each tuple of length equal to dimension of <cite>ii</cite></p>
 <blockquote>
-<div><p>Bottom-right corner(s) of block to be summed.</p>
+<div><p>Coordinates of bottom right corner of window(s).
+Each tuple in the list containing the end row, col, ... index i.e
+<cite>[(row_win1, col_win1, ...), (row_win2, col_win2, ...), ...]</cite>.</p>
+</div></blockquote>
+<p><strong>args: optional</strong></p>
+<blockquote>
+<div><p>For backward compatibility with versions prior to 0.11.
+The earlier function signature was <cite>integrate(ii, r0, c0, r1, c1)</cite>,
+where <cite>r0</cite>, <cite>c0</cite> are int(lists) specifying start coordinates
+of window(s) to be integrated and <cite>r1</cite>, <cite>c1</cite> the end coordinates.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -791,6 +802,17 @@ ACM SIGGRAPH Computer Graphics, vol. 18, 1984, pp. 207-212.</td></tr>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ii</span> <span class="o">=</span> <span class="n">integral_image</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">integrate</span><span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>  <span class="c"># sum from (1,0) -&gt; (1,2)</span>
+<span class="go">array([ 3.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">integrate</span><span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="p">[(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span> <span class="p">[(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>  <span class="c"># sum form (3,3) -&gt; (4,5)</span>
+<span class="go">array([ 6.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">integrate</span><span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)],</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)])</span>  <span class="c"># sum from (1,0) -&gt; (1,2) and (3,3) -&gt; (4,5)</span>
+<span class="go">array([ 3.,  6.])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
