@@ -1044,7 +1044,7 @@ Berlin, 1993.</td></tr>
 <h2>perimeter<a class="headerlink" href="#perimeter" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.perimeter">
-<code class="descclassname">skimage.measure.</code><code class="descname">perimeter</code><span class="sig-paren">(</span><em>image</em>, <em>neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L537"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">perimeter</code><span class="sig-paren">(</span><em>image</em>, <em>neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L496"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate total perimeter of all objects in binary image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1377,7 +1377,7 @@ total number of samples.</p>
 <h2>regionprops<a class="headerlink" href="#regionprops" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.regionprops">
-<code class="descclassname">skimage.measure.</code><code class="descname">regionprops</code><span class="sig-paren">(</span><em>label_image</em>, <em>intensity_image=None</em>, <em>cache=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L347"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">regionprops</code><span class="sig-paren">(</span><em>label_image</em>, <em>intensity_image=None</em>, <em>cache=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L297"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
 <dd><p>Measure properties of labeled image regions.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1389,7 +1389,8 @@ total number of samples.</p>
 </div></blockquote>
 <p><strong>intensity_image</strong> : (N, M) ndarray, optional</p>
 <blockquote>
-<div><p>Intensity image with same size as labeled image. Default is None.</p>
+<div><p>Intensity (i.e., input) image with same size as labeled image.
+Default is None.</p>
 </div></blockquote>
 <p><strong>cache</strong> : bool, optional</p>
 <blockquote>
@@ -1448,8 +1449,13 @@ bounding box.</dd>
 <dd>Inertia tensor of the region for the rotation around its mass.</dd>
 <dt><strong>inertia_tensor_eigvals</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
 <dd>The two eigen values of the inertia tensor in decreasing order.</dd>
+<dt><strong>intensity_image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>Image inside region bounding box.</dd>
 <dt><strong>label</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
 <dd>The label in the labeled input image.</dd>
+<dt><strong>local_centroid</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd>Centroid coordinate tuple <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code>, relative to region bounding
+box.</dd>
 <dt><strong>major_axis_length</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
 <dd>The length of the major axis of the ellipse that has the same
 normalized second central moments as the region.</dd>
@@ -1498,6 +1504,9 @@ through the centers of border pixels using a 4-connectivity.</dd>
 <dt><strong>weighted_centroid</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
 <dd>Centroid coordinate tuple <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code> weighted with intensity
 image.</dd>
+<dt><strong>weighted_local_centroid</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
+<dd>Centroid coordinate tuple <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code>, relative to region bounding
+box, weighted with intensity image.</dd>
 <dt><strong>weighted_moments</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(3, 3) ndarray</span></dt>
 <dd><p class="first">Spatial moments of intensity image up to 3rd order:</p>
 <div class="highlight-python"><div class="highlight"><pre>wm_ji = sum{ array(x, y) * x^j * y^i }
