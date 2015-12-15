@@ -821,7 +821,7 @@ of window(s) to be integrated and <cite>r1</cite>, <cite>c1</cite> the end coord
 <h2>iradon<a class="headerlink" href="#iradon" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.iradon">
-<code class="descclassname">skimage.transform.</code><code class="descname">iradon</code><span class="sig-paren">(</span><em>radon_image</em>, <em>theta=None</em>, <em>output_size=None</em>, <em>filter='ramp'</em>, <em>interpolation='linear'</em>, <em>circle=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L128"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.iradon" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">iradon</code><span class="sig-paren">(</span><em>radon_image</em>, <em>theta=None</em>, <em>output_size=None</em>, <em>filter='ramp'</em>, <em>interpolation='linear'</em>, <em>circle=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.iradon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse radon transform.</p>
 <p>Reconstruct an image from the radon transform, using the filtered
 back projection algorithm.</p>
@@ -886,7 +886,7 @@ projection data. This algorithm is called filtered back projection.</p>
 <h2>iradon_sart<a class="headerlink" href="#iradon-sart" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.iradon_sart">
-<code class="descclassname">skimage.transform.</code><code class="descname">iradon_sart</code><span class="sig-paren">(</span><em>radon_image</em>, <em>theta=None</em>, <em>image=None</em>, <em>projection_shifts=None</em>, <em>clip=None</em>, <em>relaxation=0.15</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.iradon_sart" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">iradon_sart</code><span class="sig-paren">(</span><em>radon_image</em>, <em>theta=None</em>, <em>image=None</em>, <em>projection_shifts=None</em>, <em>clip=None</em>, <em>relaxation=0.15</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L313"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.iradon_sart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse radon transform</p>
 <p>Reconstruct an image from the radon transform, using a single iteration of
 the Simultaneous Algebraic Reconstruction Technique (SART) algorithm.</p>
@@ -1350,7 +1350,7 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 <h2>radon<a class="headerlink" href="#radon" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.radon">
-<code class="descclassname">skimage.transform.</code><code class="descname">radon</code><span class="sig-paren">(</span><em>image</em>, <em>theta=None</em>, <em>circle=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L28"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.radon" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">radon</code><span class="sig-paren">(</span><em>image</em>, <em>theta=None</em>, <em>circle=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.radon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the radon transform of an image given specified
 projection angles.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1375,17 +1375,10 @@ equal to <code class="docutils literal"><span class="pre">min(image.shape)</span
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>radon_image</strong> : ndarray</p>
-<blockquote>
+<blockquote class="last">
 <div><p>Radon transform (sinogram).  The tomography rotation axis will lie
 at the pixel index <code class="docutils literal"><span class="pre">radon_image.shape[0]</span> <span class="pre">//</span> <span class="pre">2</span></code> along the 0th
 dimension of <code class="docutils literal"><span class="pre">radon_image</span></code>.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong></p>
-<blockquote class="last">
-<div><p>If called with <code class="docutils literal"><span class="pre">circle=True</span></code> and <code class="docutils literal"><span class="pre">image</span> <span class="pre">!=</span> <span class="pre">0</span></code> outside the inscribed
-circle</p>
 </div></blockquote>
 </td>
 </tr>
