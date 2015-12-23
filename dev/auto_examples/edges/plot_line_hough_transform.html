@@ -64,7 +64,7 @@
   <div class="section" id="straight-line-hough-transform">
 <span id="example-edges-plot-line-hough-transform-py"></span><h1>Straight line Hough transform<a class="headerlink" href="#straight-line-hough-transform" title="Permalink to this headline">¶</a></h1>
 <p>The Hough transform in its simplest form is a <a class="reference external" href="http://en.wikipedia.org/wiki/Hough_transform">method to detect straight lines</a>.</p>
-<p>In the following example, we construct an image with a line intersection.  We
+<p>In the following example, we construct an image with a line intersection. We
 then use the Hough transform to explore a parameter space for straight lines
 that may run through the image.</p>
 <div class="section" id="algorithm-overview">
@@ -74,13 +74,13 @@ that may run through the image.</p>
 infinity for vertical lines. Instead, we therefore construct a segment
 perpendicular to the line, leading to the origin. The line is represented by
 the length of that segment, <img class="math" src="../../_images/math/2ede365ad144ab396916ec60458da03860803078.png" alt="r"/>, and the angle it makes with the x-axis,
-<img class="math" src="../../_images/math/a9cfbeb8ebee1f365919e147a79e242dcb67ee5d.png" alt="\theta"/>.</p>
+:math:` heta`.</p>
 <p>The Hough transform constructs a histogram array representing the parameter
-space (i.e., an <img class="math" src="../../_images/math/079287797417e8d6eaa8727e42778ca8ccb4ed98.png" alt="M \times N"/> matrix, for <img class="math" src="../../_images/math/2de38926392ba23abeac75effc66c37a5f5be5fd.png" alt="M"/> different values of
-the radius and <img class="math" src="../../_images/math/75e27f04188974063be3230dca208cd495b77ce1.png" alt="N"/> different values of <img class="math" src="../../_images/math/a9cfbeb8ebee1f365919e147a79e242dcb67ee5d.png" alt="\theta"/>).  For each
-parameter combination, <img class="math" src="../../_images/math/2ede365ad144ab396916ec60458da03860803078.png" alt="r"/> and <img class="math" src="../../_images/math/a9cfbeb8ebee1f365919e147a79e242dcb67ee5d.png" alt="\theta"/>, we then find the number of
+space (i.e., an <img class="math" src="../../_images/math/99e41c8859d58f499ceaa05ae5e8a914b3b2e84a.png" alt="M        imes N"/> matrix, for <img class="math" src="../../_images/math/2de38926392ba23abeac75effc66c37a5f5be5fd.png" alt="M"/> different values of
+the radius and <img class="math" src="../../_images/math/75e27f04188974063be3230dca208cd495b77ce1.png" alt="N"/> different values of :math:`    heta`).  For each
+parameter combination, <img class="math" src="../../_images/math/2ede365ad144ab396916ec60458da03860803078.png" alt="r"/> and :math:`    heta`, we then find the number of
 non-zero pixels in the input image that would fall close to the corresponding
-line, and increment the array at position <img class="math" src="../../_images/math/eafbf2c4b76110db258f9b3993554c072026644a.png" alt="(r, \theta)"/> appropriately.</p>
+line, and increment the array at position <img class="math" src="../../_images/math/d2ec13e6f86e91f932687d6d67be7a82ed9828aa.png" alt="(r,    heta)"/> appropriately.</p>
 <p>We can think of each non-zero pixel &#8220;voting&#8221; for potential line candidates. The
 local maxima in the resulting histogram indicates the parameters of the most
 probably lines. In our example, the maxima occur at 45 and 135 degrees,
@@ -116,6 +116,7 @@ pp. 11-15 (January, 1972)</td></tr>
 <img alt="../../_images/plot_line_hough_transform_1.png" class="align-center" src="../../_images/plot_line_hough_transform_1.png" />
 <img alt="../../_images/plot_line_hough_transform_2.png" class="align-center" src="../../_images/plot_line_hough_transform_2.png" />
 <div class="highlight-python"><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
 <span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="p">(</span><span class="n">hough_line</span><span class="p">,</span> <span class="n">hough_line_peaks</span><span class="p">,</span>
                                <span class="n">probabilistic_hough_line</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">canny</span>
@@ -124,72 +125,73 @@ pp. 11-15 (January, 1972)</td></tr>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
-<span class="c"># Construct test image</span>
-
+<span class="c"># Constructing test image.</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
-
-
-<span class="c"># Classic straight-line Hough transform</span>
-
 <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
 <span class="n">image</span><span class="p">[</span><span class="n">idx</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
 <span class="n">image</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
 
+<span class="c"># Classic straight-line Hough transform.</span>
 <span class="n">h</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">hough_line</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="c"># Generating figure 1.</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
-<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Input image&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Input image&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 
-<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">h</span><span class="p">),</span>
-             <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-                     <span class="n">d</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span>
-             <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mf">1.5</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Hough transform&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Angles (degrees)&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Distance (pixels)&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;image&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">h</span><span class="p">),</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+           <span class="n">d</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Hough transform&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;Angles (degrees)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;Distance (pixels)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;image&#39;</span><span class="p">)</span>
 
-<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
-<span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">row1</span><span class="p">,</span> <span class="n">col1</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
 <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">angle</span><span class="p">,</span> <span class="n">dist</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">hough_line_peaks</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">d</span><span class="p">)):</span>
     <span class="n">y0</span> <span class="o">=</span> <span class="p">(</span><span class="n">dist</span> <span class="o">-</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
-    <span class="n">y1</span> <span class="o">=</span> <span class="p">(</span><span class="n">dist</span> <span class="o">-</span> <span class="n">cols</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
-    <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">cols</span><span class="p">),</span> <span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="s">&#39;-r&#39;</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">axis</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">rows</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Detected lines&#39;</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="p">(</span><span class="n">dist</span> <span class="o">-</span> <span class="n">col1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">col1</span><span class="p">),</span> <span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="s">&#39;-r&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">col1</span><span class="p">,</span> <span class="n">row1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Detected lines&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 
-<span class="c"># Line finding, using the Probabilistic Hough Transform</span>
-
+<span class="c"># Line finding using the Probabilistic Hough Transform.</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 <span class="n">edges</span> <span class="o">=</span> <span class="n">canny</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
 <span class="n">lines</span> <span class="o">=</span> <span class="n">probabilistic_hough_line</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">line_length</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
                                  <span class="n">line_gap</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="c"># Generating figure 2.</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                    <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
-<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Input image&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Input image&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_adjustable</span><span class="p">(</span><span class="s">&#39;box-forced&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Canny edges&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_adjustable</span><span class="p">(</span><span class="s">&#39;box-forced&#39;</span><span class="p">)</span>
 
-<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Canny edges&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">edges</span> <span class="o">*</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+    <span class="n">p0</span><span class="p">,</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">line</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">p0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="n">p0</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">row2</span><span class="p">,</span> <span class="n">col2</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">col2</span><span class="p">,</span> <span class="n">row2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Probabilistic Hough&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_adjustable</span><span class="p">(</span><span class="s">&#39;box-forced&#39;</span><span class="p">)</span>
 
-<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">edges</span> <span class="o">*</span> <span class="mi">0</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-    <span class="n">p0</span><span class="p">,</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">line</span>
-    <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">p0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p1</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="n">p0</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">p1</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Probabilistic Hough&#39;</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_adjustable</span><span class="p">(</span><span class="s">&#39;box-forced&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>

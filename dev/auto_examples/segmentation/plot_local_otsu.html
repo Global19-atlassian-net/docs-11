@@ -75,18 +75,16 @@ structuring element.</p>
 </tbody>
 </table>
 <img alt="../../_images/plot_local_otsu_1.png" class="align-center" src="../../_images/plot_local_otsu_1.png" />
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-
+<div class="highlight-python"><div class="highlight"><pre>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">disk</span>
 <span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <span class="n">threshold_otsu</span><span class="p">,</span> <span class="n">rank</span>
 <span class="kn">from</span> <span class="nn">skimage.util</span> <span class="kn">import</span> <span class="n">img_as_ubyte</span>
 
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
-
-
 <span class="n">img</span> <span class="o">=</span> <span class="n">img_as_ubyte</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">page</span><span class="p">())</span>
 
 <span class="n">radius</span> <span class="o">=</span> <span class="mi">15</span>
@@ -96,27 +94,27 @@ structuring element.</p>
 <span class="n">threshold_global_otsu</span> <span class="o">=</span> <span class="n">threshold_otsu</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 <span class="n">global_otsu</span> <span class="o">=</span> <span class="n">img</span> <span class="o">&gt;=</span> <span class="n">threshold_global_otsu</span>
 
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                       <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;adjustable&#39;</span><span class="p">:</span> <span class="s">&#39;box-forced&#39;</span><span class="p">})</span>
+<span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;adjustable&#39;</span><span class="p">:</span><span class="s">&#39;box-forced&#39;</span><span class="p">})</span>
-<span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span> <span class="n">ax4</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">),</span>
+             <span class="n">ax</span><span class="o">=</span><span class="n">ax0</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s">&#39;horizontal&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">ax0</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">),</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">local_otsu</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">),</span>
              <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s">&#39;horizontal&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Local Otsu (radius=</span><span class="si">%d</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="n">radius</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">local_otsu</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">),</span>
-             <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s">&#39;horizontal&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Local Otsu (radius=</span><span class="si">%d</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="n">radius</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span> <span class="o">&gt;=</span> <span class="n">local_otsu</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Original &gt;= Local Otsu&#39;</span> <span class="o">%</span> <span class="n">threshold_global_otsu</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
 
-<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span> <span class="o">&gt;=</span> <span class="n">local_otsu</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Original &gt;= Local Otsu&#39;</span> <span class="o">%</span> <span class="n">threshold_global_otsu</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">global_otsu</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Global Otsu (threshold = </span><span class="si">%d</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="n">threshold_global_otsu</span><span class="p">)</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
-
-<span class="n">ax4</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">global_otsu</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
-<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">&#39;Global Otsu (threshold = </span><span class="si">%d</span><span class="s">)&#39;</span> <span class="o">%</span> <span class="n">threshold_global_otsu</span><span class="p">)</span>
-<span class="n">ax4</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">&#39;off&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>

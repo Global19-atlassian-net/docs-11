@@ -95,16 +95,18 @@ bright blobs are detected. The downside is that small blobs (&lt;3px) are not
 detected accurately. See <a class="reference internal" href="../../api/skimage.feature.html#skimage.feature.blob_doh" title="skimage.feature.blob_doh"><code class="xref py py-meth docutils literal"><span class="pre">skimage.feature.blob_doh()</span></code></a> for usage.</p>
 <img alt="../../_images/plot_blob_1.png" class="align-center" src="../../_images/plot_blob_1.png" />
 <div class="highlight-python"><div class="highlight"><pre>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">blob_dog</span><span class="p">,</span> <span class="n">blob_log</span><span class="p">,</span> <span class="n">blob_doh</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
 <span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2gray</span>
 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+
 <span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">hubble_deep_field</span><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">500</span><span class="p">]</span>
 <span class="n">image_gray</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 
 <span class="n">blobs_log</span> <span class="o">=</span> <span class="n">blob_log</span><span class="p">(</span><span class="n">image_gray</span><span class="p">,</span> <span class="n">max_sigma</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">num_sigma</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=.</span><span class="mi">1</span><span class="p">)</span>
+
 <span class="c"># Compute radii in the 3rd column.</span>
 <span class="n">blobs_log</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">blobs_log</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
@@ -119,14 +121,17 @@ detected accurately. See <a class="reference internal" href="../../api/skimage.f
           <span class="s">&#39;Determinant of Hessian&#39;</span><span class="p">]</span>
 <span class="n">sequence</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">blobs_list</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">titles</span><span class="p">)</span>
 
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                         <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;adjustable&#39;</span><span class="p">:</span> <span class="s">&#39;box-forced&#39;</span><span class="p">})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
-<span class="n">fig</span><span class="p">,</span><span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;adjustable&#39;</span><span class="p">:</span><span class="s">&#39;box-forced&#39;</span><span class="p">})</span>
 <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">blobs</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
     <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s">&#39;nearest&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">blob</span> <span class="ow">in</span> <span class="n">blobs</span><span class="p">:</span>
         <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">blob</span>
         <span class="n">c</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
