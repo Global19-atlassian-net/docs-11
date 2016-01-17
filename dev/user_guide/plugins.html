@@ -80,7 +80,7 @@ provides = imshow &lt;-- a comma-separated list, one or more of
 </div>
 <p>The &#8220;provides&#8221;-line lists all the functions provided by the plugin.  Since our
 plugin provides <code class="docutils literal"><span class="pre">imshow</span></code>, we have to define it inside <code class="docutils literal"><span class="pre">mpl.py</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># This is mpl.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># This is mpl.py</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
@@ -95,7 +95,7 @@ provide it as follows:</p>
 <span class="n">provides</span> <span class="o">=</span> <span class="n">imshow</span><span class="p">,</span> <span class="n">_app_show</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># This is mpl.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c1"># This is mpl.py</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
@@ -125,17 +125,17 @@ system:</p>
 </div>
 <p>A plugin is loaded using the <code class="docutils literal"><span class="pre">use_plugin</span></code> command:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="kn">as</span> <span class="nn">io</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">use_plugin</span><span class="p">(</span><span class="s">&#39;pil&#39;</span><span class="p">)</span> <span class="c"># Use all capabilities provided by PIL</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">use_plugin</span><span class="p">(</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span> <span class="c1"># Use all capabilities provided by PIL</span>
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">use_plugin</span><span class="p">(</span><span class="s">&#39;pil&#39;</span><span class="p">,</span> <span class="s">&#39;imread&#39;</span><span class="p">)</span> <span class="c"># Use only the imread capability of PIL</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">use_plugin</span><span class="p">(</span><span class="s1">&#39;pil&#39;</span><span class="p">,</span> <span class="s1">&#39;imread&#39;</span><span class="p">)</span> <span class="c1"># Use only the imread capability of PIL</span>
 </pre></div>
 </div>
 <p>Note that, if more than one plugin provides certain functionality, the
 last plugin loaded is used.</p>
 <p>To query a plugin&#8217;s capabilities, use <code class="docutils literal"><span class="pre">plugin_info</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">plugin_info</span><span class="p">(</span><span class="s">&#39;pil&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">plugin_info</span><span class="p">(</span><span class="s1">&#39;pil&#39;</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="go">{&#39;description&#39;: &#39;Image reading via the Python Imaging Library&#39;,</span>
 <span class="go"> &#39;provides&#39;: &#39;imread&#39;}</span>

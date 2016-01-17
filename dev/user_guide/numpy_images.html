@@ -93,10 +93,10 @@ types and how scikit-image treats them.</p>
 <h1>NumPy indexing<a class="headerlink" href="#numpy-indexing" title="Permalink to this headline">¶</a></h1>
 <p>NumPy indexing can be used both for looking at pixel values, and to
 modify pixel values:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Get the value of the pixel on the 10th row and 20th column</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the value of the pixel on the 10th row and 20th column</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
 <span class="go">153</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c"># Set to black the pixel on the 3rd row and 10th column</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set to black the pixel on the 3rd row and 10th column</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
@@ -110,13 +110,13 @@ more details.</p>
 whole sets of pixels, using the different indexing possibilities of
 NumPy.</p>
 <p>Slicing:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c"># Set to black the ten first lines</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set to black the ten first lines</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 <p>Masking (indexing with masks of booleans):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">camera</span> <span class="o">&lt;</span> <span class="mi">87</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c"># Set to &quot;white&quot; (255) pixels where mask is True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set to &quot;white&quot; (255) pixels where mask is True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
 </pre></div>
 </div>
@@ -164,10 +164,10 @@ channels (red, green, and blue).
 As before, we can get and set pixel values:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cat</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
 <span class="go">array([151, 129, 115], dtype=uint8)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c"># set the pixel at row 50, column 60 to black</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># set the pixel at row 50, column 60 to black</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cat</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c"># set the pixel at row 50, column 61 to green</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cat</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">61</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="c"># [red, green, blue]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># set the pixel at row 50, column 61 to green</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cat</span><span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">61</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># [red, green, blue]</span>
 </pre></div>
 </div>
 <p>We can also use 2D boolean masks for a 2D color image, as we did with
@@ -250,7 +250,7 @@ leading dimension, we can use the following syntax:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">filters</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">im3d</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">pln</span><span class="p">,</span> <span class="n">image</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">im3d</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="c"># iterate over the leading dimension (planes)</span>
+<span class="gp">... </span>    <span class="c1"># iterate over the leading dimension (planes)</span>
 <span class="gp">... </span>    <span class="n">edges</span><span class="p">[</span><span class="n">pln</span><span class="p">]</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">sobel</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -275,15 +275,15 @@ in a different order, even if the number of operations is the same:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im3d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1024</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span> <span class="n">x</span> <span class="o">=</span> <span class="n">in_order_multiply</span><span class="p">(</span><span class="n">im3d</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.2f</span><span class="s"> seconds&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2"> seconds&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">))</span>  
 <span class="go">0.14 seconds</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">im3d_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">im3d</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c"># place &quot;planes&quot; dimension at end</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">im3d_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">im3d</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># place &quot;planes&quot; dimension at end</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im3d_t</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(1024, 1024, 100)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span> <span class="n">x</span> <span class="o">=</span> <span class="n">out_of_order_multiply</span><span class="p">(</span><span class="n">im3d</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span> <span class="n">s1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%.2f</span><span class="s"> seconds&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s1</span> <span class="o">-</span> <span class="n">s0</span><span class="p">))</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%.2f</span><span class="s2"> seconds&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">s1</span> <span class="o">-</span> <span class="n">s0</span><span class="p">))</span>  
 <span class="go">1.18 seconds</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s">&quot;Speedup: </span><span class="si">%.1f</span><span class="s">x&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">s1</span> <span class="o">-</span> <span class="n">s0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)))</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="s2">&quot;Speedup: </span><span class="si">%.1f</span><span class="s2">x&quot;</span> <span class="o">%</span> <span class="p">((</span><span class="n">s1</span> <span class="o">-</span> <span class="n">s0</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)))</span>  
 <span class="go">Speedup: 8.6x</span>
 </pre></div>
 </div>
@@ -301,7 +301,7 @@ work specifically with time-varying 3D data, our compatibility with
 numpy arrays allows us to work quite naturally with a 5D array of the
 shape (t, pln, row, col, ch):</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">timepoint</span> <span class="ow">in</span> <span class="n">image5d</span><span class="p">:</span>  
-<span class="gp">... </span>    <span class="c"># each timepoint is a 3D multichannel image</span>
+<span class="gp">... </span>    <span class="c1"># each timepoint is a 3D multichannel image</span>
 <span class="gp">... </span>    <span class="n">do_something_with</span><span class="p">(</span><span class="n">timepoint</span><span class="p">)</span>
 </pre></div>
 </div>
