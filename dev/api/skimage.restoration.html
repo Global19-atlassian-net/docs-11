@@ -109,7 +109,7 @@ Electroacoustics, vol. au-19, no. 4, pp. 285-288, dec. 1971</td></tr>
 <td>Perform total-variation denoising using split-Bregman optimization.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.restoration.denoise_tv_chambolle" title="skimage.restoration.denoise_tv_chambolle"><code class="xref py py-obj docutils literal"><span class="pre">skimage.restoration.denoise_tv_chambolle</span></code></a>(im)</td>
-<td>Perform total-variation denoising on 2D and 3D images.</td>
+<td>Perform total-variation denoising on n-dimensional images.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.restoration.nl_means_denoising" title="skimage.restoration.nl_means_denoising"><code class="xref py py-obj docutils literal"><span class="pre">skimage.restoration.nl_means_denoising</span></code></a>(image)</td>
 <td><strong>Deprecated function</strong>. Use <code class="docutils literal"><span class="pre">skimage.restoration.denoise_nl_means</span></code> instead.</td>
@@ -407,13 +407,13 @@ using Split Bregman&#8221; in Image Processing On Line on 2012–05–19,
 <h2>denoise_tv_chambolle<a class="headerlink" href="#denoise-tv-chambolle" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.restoration.denoise_tv_chambolle">
-<code class="descclassname">skimage.restoration.</code><code class="descname">denoise_tv_chambolle</code><span class="sig-paren">(</span><em>im</em>, <em>weight=0.2</em>, <em>eps=0.0002</em>, <em>n_iter_max=200</em>, <em>multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L268"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_tv_chambolle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Perform total-variation denoising on 2D and 3D images.</p>
+<code class="descclassname">skimage.restoration.</code><code class="descname">denoise_tv_chambolle</code><span class="sig-paren">(</span><em>im</em>, <em>weight=0.1</em>, <em>eps=0.0002</em>, <em>n_iter_max=200</em>, <em>multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_tv_chambolle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform total-variation denoising on n-dimensional images.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>im</strong> : ndarray (2d or 3d) of ints, uints or floats</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>im</strong> : ndarray of ints, uints or floats</p>
 <blockquote>
 <div><p>Input data to be denoised. <cite>im</cite> can be of any numeric type,
 but it is cast into an ndarray of floats for the computation
@@ -440,7 +440,7 @@ determines the stop criterion. The algorithm stops when:</p>
 <blockquote>
 <div><p>Apply total-variation denoising separately for each channel. This
 option should be true for color images, otherwise the denoising is
-also applied in the 3rd dimension.</p>
+also applied in the channels dimension.</p>
 </div></blockquote>
 </td>
 </tr>
