@@ -145,7 +145,7 @@
 <td>Multi-block local binary pattern (MB-LBP).</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.feature.peak_local_max" title="skimage.feature.peak_local_max"><code class="xref py py-obj docutils literal"><span class="pre">skimage.feature.peak_local_max</span></code></a>(image[,&nbsp;...])</td>
-<td>Find peaks in an image, and return them as coordinates or a boolean array.</td>
+<td>Find peaks in an image as coordinate list or boolean mask.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.plot_matches" title="skimage.feature.plot_matches"><code class="xref py py-obj docutils literal"><span class="pre">skimage.feature.plot_matches</span></code></a>(ax,&nbsp;image1,&nbsp;...)</td>
 <td>Plot matched features.</td>
@@ -637,7 +637,7 @@ threshold when more corners are desired and vice-versa.</p>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_fast</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_fast</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">threshold_rel</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="go">array([[3, 3],</span>
 <span class="go">       [3, 8],</span>
 <span class="go">       [8, 3],</span>
@@ -1029,7 +1029,7 @@ calculation of the central moment.</p>
 <h2>corner_peaks<a class="headerlink" href="#corner-peaks" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_peaks">
-<code class="descclassname">skimage.feature.</code><code class="descname">corner_peaks</code><span class="sig-paren">(</span><em>image</em>, <em>min_distance=10</em>, <em>threshold_abs=0</em>, <em>threshold_rel=0.1</em>, <em>exclude_border=True</em>, <em>indices=True</em>, <em>num_peaks=inf</em>, <em>footprint=None</em>, <em>labels=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L802"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_peaks" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">corner_peaks</code><span class="sig-paren">(</span><em>image</em>, <em>min_distance=1</em>, <em>threshold_abs=None</em>, <em>threshold_rel=None</em>, <em>exclude_border=True</em>, <em>indices=True</em>, <em>num_peaks=inf</em>, <em>footprint=None</em>, <em>labels=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L802"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_peaks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find corners in corner measure response image.</p>
 <p>This differs from <cite>skimage.feature.peak_local_max</cite> in that it suppresses
 multiple connected peaks with the same accumulator value.</p>
@@ -1055,18 +1055,13 @@ multiple connected peaks with the same accumulator value.</p>
 <span class="go">       [ 0.,  0.,  1.,  1.,  0.],</span>
 <span class="go">       [ 0.,  0.,  1.,  1.,  0.],</span>
 <span class="go">       [ 0.,  0.,  0.,  0.,  0.]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">peak_local_max</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">exclude_border</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">peak_local_max</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 <span class="go">array([[2, 2],</span>
 <span class="go">       [2, 3],</span>
 <span class="go">       [3, 2],</span>
 <span class="go">       [3, 3]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">exclude_border</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 <span class="go">array([[2, 2]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">exclude_border</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="go">array([[2, 2],</span>
-<span class="go">       [2, 3],</span>
-<span class="go">       [3, 2],</span>
-<span class="go">       [3, 3]])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2202,21 +2197,23 @@ Stan Z. Li
 <h2>peak_local_max<a class="headerlink" href="#peak-local-max" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.peak_local_max">
-<code class="descclassname">skimage.feature.</code><code class="descname">peak_local_max</code><span class="sig-paren">(</span><em>image</em>, <em>min_distance=10</em>, <em>threshold_abs=0</em>, <em>threshold_rel=0.1</em>, <em>exclude_border=True</em>, <em>indices=True</em>, <em>num_peaks=inf</em>, <em>footprint=None</em>, <em>labels=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/peak.py#L6"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.peak_local_max" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find peaks in an image, and return them as coordinates or a boolean array.</p>
+<code class="descclassname">skimage.feature.</code><code class="descname">peak_local_max</code><span class="sig-paren">(</span><em>image</em>, <em>min_distance=1</em>, <em>threshold_abs=None</em>, <em>threshold_rel=None</em>, <em>exclude_border=True</em>, <em>indices=True</em>, <em>num_peaks=inf</em>, <em>footprint=None</em>, <em>labels=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/peak.py#L6"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.peak_local_max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find peaks in an image as coordinate list or boolean mask.</p>
 <p>Peaks are the local maxima in a region of <cite>2 * min_distance + 1</cite>
 (i.e. peaks are separated by at least <cite>min_distance</cite>).</p>
-<p>NOTE: If peaks are flat (i.e. multiple adjacent pixels have identical
+<p>If peaks are flat (i.e. multiple adjacent pixels have identical
 intensities), the coordinates of all such pixels are returned.</p>
+<p>If both <cite>threshold_abs</cite> and <cite>threshold_rel</cite> are provided, the maximum
+of the two is chosen as the minimum intensity threshold of peaks.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray of floats</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
-<p><strong>min_distance</strong> : int</p>
+<p><strong>min_distance</strong> : int, optional</p>
 <blockquote>
 <div><p>Minimum number of pixels separating peaks in a region of <cite>2 *
 min_distance + 1</cite> (i.e. peaks are separated by at least
@@ -2224,26 +2221,27 @@ min_distance + 1</cite> (i.e. peaks are separated by at least
 a border <cite>min_distance</cite> from the image boundary.
 To find the maximum number of peaks, use <cite>min_distance=1</cite>.</p>
 </div></blockquote>
-<p><strong>threshold_abs</strong> : float</p>
+<p><strong>threshold_abs</strong> : float, optional</p>
 <blockquote>
-<div><p>Minimum intensity of peaks.</p>
+<div><p>Minimum intensity of peaks. By default, the absolute threshold is
+the minimum intensity of the image.</p>
 </div></blockquote>
-<p><strong>threshold_rel</strong> : float</p>
+<p><strong>threshold_rel</strong> : float, optional</p>
 <blockquote>
-<div><p>Minimum intensity of peaks calculated as <cite>max(image) * threshold_rel</cite>.</p>
+<div><p>Minimum intensity of peaks, calculated as <cite>max(image) * threshold_rel</cite>.</p>
 </div></blockquote>
-<p><strong>exclude_border</strong> : bool</p>
+<p><strong>exclude_border</strong> : bool, optional</p>
 <blockquote>
 <div><p>If True, <cite>min_distance</cite> excludes peaks from the border of the image as
 well as from each other.</p>
 </div></blockquote>
-<p><strong>indices</strong> : bool</p>
+<p><strong>indices</strong> : bool, optional</p>
 <blockquote>
-<div><p>If True, the output will be an array representing peak coordinates.
-If False, the output will be a boolean array shaped as <cite>image.shape</cite>
-with peaks present at True elements.</p>
+<div><p>If True, the output will be an array representing peak
+coordinates.  If False, the output will be a boolean array shaped as
+<cite>image.shape</cite> with peaks present at True elements.</p>
 </div></blockquote>
-<p><strong>num_peaks</strong> : int</p>
+<p><strong>num_peaks</strong> : int, optional</p>
 <blockquote>
 <div><p>Maximum number of peaks. When the number of peaks exceeds <cite>num_peaks</cite>,
 return <cite>num_peaks</cite> peaks based on highest peak intensity.</p>
@@ -2252,7 +2250,7 @@ return <cite>num_peaks</cite> peaks based on highest peak intensity.</p>
 <blockquote>
 <div><p>If provided, <cite>footprint == 1</cite> represents the local region within which
 to search for peaks at every point in <cite>image</cite>.  Overrides
-<cite>min_distance</cite>, except for border exclusion if <cite>exclude_border=True</cite>.</p>
+<cite>min_distance</cite> (also for <cite>exclude_border</cite>).</p>
 </div></blockquote>
 <p><strong>labels</strong> : ndarray of ints, optional</p>
 <blockquote>
@@ -2275,10 +2273,10 @@ represented by True values.</li>
 </table>
 <p class="rubric">Notes</p>
 <p>The peak local maximum function returns the coordinates of local peaks
-(maxima) in a image. A maximum filter is used for finding local maxima.
-This operation dilates the original image. After comparison between
-dilated and original image, peak_local_max function returns the
-coordinates of peaks where dilated image = original.</p>
+(maxima) in an image. A maximum filter is used for finding local maxima.
+This operation dilates the original image. After comparison of the dilated
+and original image, this function returns the coordinates or a mask of the
+peaks where the dilated image equals the original image.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
