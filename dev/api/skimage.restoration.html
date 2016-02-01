@@ -200,6 +200,15 @@ the image boundaries.</p>
 <tr><td class="label"><a class="fn-backref" href="#id1">[R336]</a></td><td><a class="reference external" href="http://users.soe.ucsc.edu/~manduchi/Papers/ICCV98.pdf">http://users.soe.ucsc.edu/~manduchi/Papers/ICCV98.pdf</a></td></tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">img_as_float</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">astro</span> <span class="o">=</span> <span class="n">img_as_float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">astro</span> <span class="o">=</span> <span class="n">astro</span><span class="p">[</span><span class="mi">220</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span> <span class="mi">220</span><span class="p">:</span><span class="mi">320</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">noisy</span> <span class="o">=</span> <span class="n">astro</span> <span class="o">+</span> <span class="mf">0.6</span> <span class="o">*</span> <span class="n">astro</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">astro</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">noisy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">noisy</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">denoised</span> <span class="o">=</span> <span class="n">denoise_bilateral</span><span class="p">(</span><span class="n">noisy</span><span class="p">,</span> <span class="n">sigma_range</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">sigma_spatial</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
