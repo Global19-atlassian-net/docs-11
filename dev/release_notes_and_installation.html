@@ -63,153 +63,209 @@
 <p class="topic-title first">&nbsp;</p>
 <ul class="simple">
 <li><a class="reference internal" href="#release-notes" id="id3">Release notes</a><ul>
-<li><a class="reference internal" href="#highlights" id="id4">Highlights</a></li>
+<li><a class="reference internal" href="#highlights-and-new-features" id="id4">Highlights and new features</a></li>
 <li><a class="reference internal" href="#api-changes" id="id5">API Changes</a></li>
-<li><a class="reference internal" href="#contributors-to-this-release" id="id6">Contributors to this release</a></li>
+<li><a class="reference internal" href="#deprecations" id="id6">Deprecations</a></li>
+<li><a class="reference internal" href="#contributors-to-this-release" id="id7">Contributors to this release</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#installation" id="id7">Installation</a></li>
-<li><a class="reference internal" href="#installing-scikit-image" id="id8">Installing scikit-image</a><ul>
-<li><a class="reference internal" href="#standard-python-installation" id="id9">Standard Python installation</a></li>
-<li><a class="reference internal" href="#conda-based-distributions-anaconda-miniconda" id="id10">Conda-based distributions (Anaconda, Miniconda)</a></li>
-<li><a class="reference internal" href="#windows" id="id11">Windows</a></li>
-<li><a class="reference internal" href="#debian-and-ubuntu" id="id12">Debian and Ubuntu</a></li>
-<li><a class="reference internal" href="#building-from-source" id="id13">Building from source</a><ul>
-<li><a class="reference internal" href="#id1" id="id14">Windows</a></li>
-<li><a class="reference internal" href="#id2" id="id15">Debian and Ubuntu</a></li>
+<li><a class="reference internal" href="#installation" id="id8">Installation</a></li>
+<li><a class="reference internal" href="#installing-scikit-image" id="id9">Installing scikit-image</a><ul>
+<li><a class="reference internal" href="#standard-python-installation" id="id10">Standard Python installation</a></li>
+<li><a class="reference internal" href="#conda-based-distributions-anaconda-miniconda" id="id11">Conda-based distributions (Anaconda, Miniconda)</a></li>
+<li><a class="reference internal" href="#windows" id="id12">Windows</a></li>
+<li><a class="reference internal" href="#debian-and-ubuntu" id="id13">Debian and Ubuntu</a></li>
+<li><a class="reference internal" href="#building-from-source" id="id14">Building from source</a><ul>
+<li><a class="reference internal" href="#id1" id="id15">Windows</a></li>
+<li><a class="reference internal" href="#id2" id="id16">Debian and Ubuntu</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#running-the-development-version" id="id16">Running the development version</a><ul>
-<li><a class="reference internal" href="#building-with-bento" id="id17">Building with bento</a></li>
+<li><a class="reference internal" href="#running-the-development-version" id="id17">Running the development version</a><ul>
+<li><a class="reference internal" href="#building-with-bento" id="id18">Building with bento</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#build-requirements" id="id18">Build Requirements</a></li>
-<li><a class="reference internal" href="#runtime-requirements" id="id19">Runtime requirements</a></li>
-<li><a class="reference internal" href="#optional-requirements" id="id20">Optional Requirements</a></li>
-<li><a class="reference internal" href="#testing-requirements" id="id21">Testing requirements</a></li>
-<li><a class="reference internal" href="#documentation-requirements" id="id22">Documentation requirements</a></li>
+<li><a class="reference internal" href="#build-requirements" id="id19">Build Requirements</a></li>
+<li><a class="reference internal" href="#runtime-requirements" id="id20">Runtime requirements</a></li>
+<li><a class="reference internal" href="#optional-requirements" id="id21">Optional Requirements</a></li>
+<li><a class="reference internal" href="#testing-requirements" id="id22">Testing requirements</a></li>
+<li><a class="reference internal" href="#documentation-requirements" id="id23">Documentation requirements</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="release-notes">
 <h1><a class="toc-backref" href="#id3">Release notes</a><a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
-<p>We&#8217;re happy to announce the release of scikit-image v0.11.0!</p>
+<p>We&#8217;re happy to announce the release of scikit-image v0.12.0!</p>
 <p>scikit-image is an image processing toolbox for SciPy that includes algorithms
 for segmentation, geometric transformations, color space manipulation,
 analysis, filtering, morphology, feature detection, and more.</p>
 <p>For more information, examples, and documentation, please visit our website:</p>
 <p><a class="reference external" href="http://scikit-image.org">http://scikit-image.org</a></p>
-<div class="section" id="highlights">
-<h2><a class="toc-backref" href="#id4">Highlights</a><a class="headerlink" href="#highlights" title="Permalink to this headline">¶</a></h2>
+<p>and our gallery of examples</p>
+<p><a class="reference external" href="http://scikit-image.org/docs/dev/auto_examples/">http://scikit-image.org/docs/dev/auto_examples/</a></p>
+<div class="section" id="highlights-and-new-features">
+<h2><a class="toc-backref" href="#id4">Highlights and new features</a><a class="headerlink" href="#highlights-and-new-features" title="Permalink to this headline">¶</a></h2>
 <p>For this release, we merged over 200 pull requests with bug fixes,
 cleanups, improved documentation and new features.  Highlights
 include:</p>
 <ul class="simple">
-<li>Region Adjacency Graphs
-- Color distance RAGs (#1031)
-- Threshold Cut on RAGs (#1031)
-- Similarity RAGs (#1080)
-- Normalized Cut on RAGs (#1080)
-- RAG drawing (#1087)
-- Hierarchical merging (#1100)</li>
-<li>Sub-pixel shift registration (#1066)</li>
-<li>Non-local means denoising (#874)</li>
-<li>Sliding window histogram (#1127)</li>
-<li>More illuminants in color conversion (#1130)</li>
-<li>Handling of CMYK images (#1360)</li>
-<li><cite>stop_probability</cite> for RANSAC (#1176)</li>
-<li>Li thresholding (#1376)</li>
-<li>Signed edge operators (#1240)</li>
-<li>Full ndarray support for <cite>peak_local_max</cite> (#1355)</li>
-<li>Improve conditioning of geometric transformations (#1319)</li>
-<li>Standardize handling of multi-image files (#1200)</li>
-<li>Ellipse structuring element (#1298)</li>
-<li>Multi-line drawing tool (#1065), line handle style (#1179)</li>
-<li>Point in polygon testing (#1123)</li>
-<li>Rotation around a specified center (#1168)</li>
-<li>Add <cite>shape</cite> option to drawing functions (#1222)</li>
-<li>Faster regionprops (#1351)</li>
-<li><cite>skimage.future</cite> package (#1365)</li>
-<li>More robust I/O module (#1189)</li>
+<li>Parallelization framework using <code class="docutils literal"><span class="pre">dask</span></code>:<code class="docutils literal"><span class="pre">skimage.util.apply_parallel</span></code>
+(#1493)</li>
+<li>Laplacian operator <code class="docutils literal"><span class="pre">filters.laplace</span></code> (#1763)</li>
+<li>Synthetic 2-D and 3-D binary data with rounded blobs (#1485)</li>
+<li>Plugin for <code class="docutils literal"><span class="pre">imageio</span></code> library (#1575)</li>
+<li>Inpainting algorithm (#1804)</li>
+<li>Partial support of 3-D images for <code class="docutils literal"><span class="pre">skimage.measure.regionprops</span></code>
+(#1505)</li>
+<li>Multi-block local binary patterns (MB-LBP) for texture classification (#1536)</li>
+<li>Seam Carving (resizing without distortion) (#1459)</li>
+<li>Simple image comparison metrics (PSNR, NRMSE) (#1897)</li>
+<li>Region boundary based region adjacency graphs (RAG) (#1495)</li>
+<li>Construction of RAG from label images (#1826)</li>
+<li><code class="docutils literal"><span class="pre">morphology.remove_small_holes</span></code> now complements
+<code class="docutils literal"><span class="pre">morphology.remove_small_objects</span></code> (#1689)</li>
+<li>Faster cython implementation of <code class="docutils literal"><span class="pre">morphology.skeletonize</span></code></li>
+<li>More appropriate default weights in
+<code class="docutils literal"><span class="pre">restoration.denoise_tv_chambolle</span></code> and <code class="docutils literal"><span class="pre">feature.peak_local_max</span></code></li>
+<li>Correction of bug in the computation of the Euler characteristic in
+<code class="docutils literal"><span class="pre">measure.regionprops</span></code>.</li>
+<li>Replace jet by viridis as default colormap</li>
+<li>Alpha layer support for <code class="docutils literal"><span class="pre">color.gray2rgb</span></code></li>
+<li>The measure of structural similarity (<code class="docutils literal"><span class="pre">measure.compare_ssim</span></code>) is now
+n-dimensional and supports color channels as well.</li>
+<li>We fixed an issue related to incorrect propagation in plateaus in
+<code class="docutils literal"><span class="pre">segmentation.watershed</span></code></li>
+</ul>
+<p>Documentation:</p>
+<ul class="simple">
+<li>New organization of gallery of examples in sections</li>
+<li>More frequent update of online documentation</li>
 </ul>
 </div>
 <div class="section" id="api-changes">
 <h2><a class="toc-backref" href="#id5">API Changes</a><a class="headerlink" href="#api-changes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>The <code class="docutils literal"><span class="pre">skimage.filter</span></code> subpackage has been renamed to <code class="docutils literal"><span class="pre">skimage.filters</span></code>.</li>
-<li>Some edge detectors returned values greater than 1&#8211;their results are now
-appropriately scaled with a factor of <code class="docutils literal"><span class="pre">sqrt(2)</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">equalize_adapthist</span></code> now takes a <code class="docutils literal"><span class="pre">kernel_size</span></code> keyword argument,
+replacing  the <code class="docutils literal"><span class="pre">ntiles_*</span></code> arguments.</li>
+<li>The functions <code class="docutils literal"><span class="pre">blob_dog</span></code>, <code class="docutils literal"><span class="pre">blob_log</span></code> and <code class="docutils literal"><span class="pre">blob_doh</span></code> now return
+float  arrays instead of integer arrays.</li>
+<li><code class="docutils literal"><span class="pre">transform.integrate</span></code> now takes lists of tuples instead of integers
+to define the window over which to integrate.</li>
+</ul>
+</div>
+<div class="section" id="deprecations">
+<h2><a class="toc-backref" href="#id6">Deprecations</a><a class="headerlink" href="#deprecations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">filters.gaussian_filter</span></code> has been renamed <code class="docutils literal"><span class="pre">filters.gaussian</span></code></li>
+<li><code class="docutils literal"><span class="pre">filters.gabor_filter</span></code> has been renamed <code class="docutils literal"><span class="pre">filters.gabor</span></code></li>
+<li><code class="docutils literal"><span class="pre">restoration.nl_means_denoising</span></code> has been renamed
+<code class="docutils literal"><span class="pre">restoration.denoise_nl_means</span></code></li>
+<li><code class="docutils literal"><span class="pre">measure.LineModel</span></code> was deprecated in favor of <code class="docutils literal"><span class="pre">measure.LineModelND</span></code></li>
+<li><code class="docutils literal"><span class="pre">measure.structural_similarity</span></code> has been renamed
+<code class="docutils literal"><span class="pre">measure.compare_ssim</span></code></li>
+<li><code class="docutils literal"><span class="pre">data.lena</span></code> has been deprecated, and gallery examples use instead the
+<code class="docutils literal"><span class="pre">data.astronaut()</span></code> picture.</li>
 </ul>
 </div>
 <div class="section" id="contributors-to-this-release">
-<h2><a class="toc-backref" href="#id6">Contributors to this release</a><a class="headerlink" href="#contributors-to-this-release" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">Contributors to this release</a><a class="headerlink" href="#contributors-to-this-release" title="Permalink to this headline">¶</a></h2>
 <p>(Listed alphabetically by last name)</p>
 <ul class="simple">
-<li>Fedor Baart</li>
+<li>K.-Michael Aye</li>
+<li>Connelly Barnes</li>
+<li>Sumit Binnani</li>
 <li>Vighnesh Birodkar</li>
 <li>François Boulogne</li>
-<li>Nelson Brown</li>
-<li>Alexey Buzmakov</li>
-<li>Julien Coste</li>
-<li>Phil Elson</li>
-<li>Adam Feuer</li>
-<li>Jim Fienup</li>
-<li>Geoffrey French</li>
+<li>Matthew Brett</li>
+<li>Steven Brown</li>
+<li>Arnaud De Bruecker</li>
+<li>Olivier Debeir</li>
+<li>Charles Deledalle</li>
+<li>endolith</li>
+<li>Eric Lubeck</li>
+<li>Victor Escorcia</li>
+<li>Ivo Flipse</li>
+<li>Joel Frederico</li>
+<li>Cédric Gilon</li>
+<li>Christoph Gohlke</li>
+<li>Korijn van Golen</li>
 <li>Emmanuelle Gouillart</li>
-<li>Charles Harris</li>
+<li><ol class="first upperalpha" start="10">
+<li>Goutin</li>
+</ol>
+</li>
+<li>Blake Griffith</li>
+<li><ol class="first upperalpha" start="13">
+<li>Hawker</li>
+</ol>
+</li>
 <li>Jonathan Helmus</li>
-<li>Alexander Iacchetta</li>
-<li>Ivana Kajić</li>
+<li>Dhruv Jawali</li>
+<li>Lee Kamentsky</li>
 <li>Kevin Keraudren</li>
-<li>Almar Klein</li>
+<li>Julius Bier Kirkegaard</li>
+<li>David Koeller</li>
+<li>Gustav Larsson</li>
 <li>Gregory R. Lee</li>
-<li>Jeremy Metz</li>
-<li>Stuart Mumford</li>
-<li>Damian Nadales</li>
-<li>Pablo Márquez Neila</li>
+<li>Guillaume Lemaitre</li>
+<li>Benny Lichtner</li>
+<li>Himanshu Mishra</li>
 <li>Juan Nunez-Iglesias</li>
-<li>Rebecca Roisin</li>
-<li>Jasper St. Pierre</li>
-<li>Jacopo Sabbatini</li>
-<li>Michael Sarahan</li>
-<li>Salvatore Scaramuzzino</li>
-<li>Phil Schaf</li>
+<li>Ömer Özak</li>
+<li>Leena P.</li>
+<li>Michael Pacer</li>
+<li>Daniil Pakhomov</li>
+<li>David Perez-Suarez</li>
+<li>Egor Panfilov</li>
+<li>David PS</li>
+<li>Sergio Pascual</li>
+<li>Ariel Rokem</li>
+<li>Nicolas Rougier</li>
+<li>Christian Sachs</li>
+<li>Kshitij Saraogi</li>
+<li>Martin Savc</li>
 <li>Johannes Schönberger</li>
-<li>Tim Seifert</li>
 <li>Arve Seljebu</li>
+<li>Tim Sheerman-Chase</li>
+<li>Scott Sievert</li>
 <li>Steven Silvester</li>
-<li>Julian Taylor</li>
-<li>Matěj Týč</li>
-<li>Alexey Umnov</li>
+<li>Alexandre Fioravante de Siqueira</li>
+<li>Daichi Suzuo</li>
+<li>Noah Trebesch</li>
 <li>Pratap Vardhan</li>
+<li>Gael Varoquaux</li>
 <li>Stefan van der Walt</li>
 <li>Joshua Warner</li>
-<li>Tony S Yu</li>
+<li>Josh Warner</li>
+<li>Warren Weckesser</li>
+<li>Daniel Wennberg</li>
+<li>John Wiggins</li>
+<li>Robin Wilson</li>
+<li>Olivia Wilson</li>
 </ul>
 </div>
 </div>
 <div class="section" id="installation">
-<h1><a class="toc-backref" href="#id7">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id8">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 </div>
 <div class="section" id="installing-scikit-image">
-<h1><a class="toc-backref" href="#id8">Installing scikit-image</a><a class="headerlink" href="#installing-scikit-image" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id9">Installing scikit-image</a><a class="headerlink" href="#installing-scikit-image" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="standard-python-installation">
-<h2><a class="toc-backref" href="#id9">Standard Python installation</a><a class="headerlink" href="#standard-python-installation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id10">Standard Python installation</a><a class="headerlink" href="#standard-python-installation" title="Permalink to this headline">¶</a></h2>
 <p>From the shell, execute:</p>
 <div class="highlight-python"><div class="highlight"><pre>pip install scikit-image
 </pre></div>
 </div>
 </div>
 <div class="section" id="conda-based-distributions-anaconda-miniconda">
-<h2><a class="toc-backref" href="#id10">Conda-based distributions (Anaconda, Miniconda)</a><a class="headerlink" href="#conda-based-distributions-anaconda-miniconda" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id11">Conda-based distributions (Anaconda, Miniconda)</a><a class="headerlink" href="#conda-based-distributions-anaconda-miniconda" title="Permalink to this headline">¶</a></h2>
 <p>From the shell/command prompt, execute:</p>
 <div class="highlight-python"><div class="highlight"><pre>conda install scikit-image
 </pre></div>
 </div>
 </div>
 <div class="section" id="windows">
-<h2><a class="toc-backref" href="#id11">Windows</a><a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id12">Windows</a><a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal"><span class="pre">scikit-image</span></code> comes pre-installed with several Python
 distributions, including <a class="reference external" href="https://store.continuum.io/cshop/anaconda/">Anaconda</a>, <a class="reference external" href="https://www.enthought.com/products/canopy/">Enthought Canopy</a>,
 <a class="reference external" href="http://code.google.com/p/pythonxy/wiki/Welcome">Python(x,y)</a> and <cite>WinPython</cite>.</p>
@@ -221,20 +277,20 @@ manually download a few packages: numpy, scipy and scikit-image from
 </div>
 </div>
 <div class="section" id="debian-and-ubuntu">
-<h2><a class="toc-backref" href="#id12">Debian and Ubuntu</a><a class="headerlink" href="#debian-and-ubuntu" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">Debian and Ubuntu</a><a class="headerlink" href="#debian-and-ubuntu" title="Permalink to this headline">¶</a></h2>
 <p>On Debian and Ubuntu install scikit-image with:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo apt-get install python-skimage
 </pre></div>
 </div>
 </div>
 <div class="section" id="building-from-source">
-<h2><a class="toc-backref" href="#id13">Building from source</a><a class="headerlink" href="#building-from-source" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id14">Building from source</a><a class="headerlink" href="#building-from-source" title="Permalink to this headline">¶</a></h2>
 <p>Execute the following command from the shell:</p>
 <div class="highlight-python"><div class="highlight"><pre>pip install scikit-image
 </pre></div>
 </div>
 <div class="section" id="id1">
-<h3><a class="toc-backref" href="#id14">Windows</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id15">Windows</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>If you experience the error <code class="docutils literal"><span class="pre">Error:unable</span> <span class="pre">to</span> <span class="pre">find</span> <span class="pre">vcvarsall.bat</span></code> it means that
 distutils is not correctly configured to use the C compiler. Modify (or create,
 if not existing) the configuration file <code class="docutils literal"><span class="pre">distutils.cfg</span></code> (located for
@@ -247,7 +303,7 @@ example at <code class="docutils literal"><span class="pre">C:\Python26\Lib\dist
 into the <a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/appveyor.yml">setup of appveyor</a> (a continuous integration service).</p>
 </div>
 <div class="section" id="id2">
-<h3><a class="toc-backref" href="#id15">Debian and Ubuntu</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id16">Debian and Ubuntu</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>If your distribution ships an outdated version, you may recompile from
 source.  First install the dependencies:</p>
 <div class="highlight-python"><div class="highlight"><pre>sudo apt-get install python-matplotlib python-numpy python-pil python-scipy
@@ -261,7 +317,7 @@ source.  First install the dependencies:</p>
 </div>
 </div>
 <div class="section" id="running-the-development-version">
-<h2><a class="toc-backref" href="#id16">Running the development version</a><a class="headerlink" href="#running-the-development-version" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">Running the development version</a><a class="headerlink" href="#running-the-development-version" title="Permalink to this headline">¶</a></h2>
 <p>Obtain the source from the git repository at
 <code class="docutils literal"><span class="pre">http://github.com/scikit-image/scikit-image</span></code> by running:</p>
 <div class="highlight-python"><div class="highlight"><pre>git clone https://github.com/scikit-image/scikit-image.git
@@ -276,7 +332,7 @@ python setup.py build_ext -i  # Compile any modified extensions
 </pre></div>
 </div>
 <div class="section" id="building-with-bento">
-<h3><a class="toc-backref" href="#id17">Building with bento</a><a class="headerlink" href="#building-with-bento" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id18">Building with bento</a><a class="headerlink" href="#building-with-bento" title="Permalink to this headline">¶</a></h3>
 <p>Alternatively, <code class="docutils literal"><span class="pre">scikit-image</span></code> can also be built using <a class="reference external" href="http://cournape.github.io/Bento/">bento</a>.  Bento depends on <a class="reference external" href="https://code.google.com/p/waf/">WAF</a> for compilation.</p>
 <p>Follow the <a class="reference external" href="http://cournape.github.io/Bento/html/install.html">Bento installation instructions</a> and <a class="reference external" href="http://code.google.com/p/waf/downloads/list">download the WAF
 source</a>.</p>
@@ -295,7 +351,7 @@ sudo.</p>
 </div>
 </div>
 <div class="section" id="build-requirements">
-<h2><a class="toc-backref" href="#id18">Build Requirements</a><a class="headerlink" href="#build-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id19">Build Requirements</a><a class="headerlink" href="#build-requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://python.org">Python &gt;= 2.6</a></li>
 <li><a class="reference external" href="http://numpy.scipy.org/">Numpy &gt;= 1.7.2</a></li>
@@ -305,7 +361,7 @@ sudo.</p>
 </ul>
 </div>
 <div class="section" id="runtime-requirements">
-<h2><a class="toc-backref" href="#id19">Runtime requirements</a><a class="headerlink" href="#runtime-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">Runtime requirements</a><a class="headerlink" href="#runtime-requirements" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first"><a class="reference external" href="http://python.org">Python &gt;= 2.6</a></p>
 </li>
@@ -334,7 +390,7 @@ sudo.</p>
 </div>
 </div>
 <div class="section" id="optional-requirements">
-<h2><a class="toc-backref" href="#id20">Optional Requirements</a><a class="headerlink" href="#optional-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id21">Optional Requirements</a><a class="headerlink" href="#optional-requirements" title="Permalink to this headline">¶</a></h2>
 <p>You can use this scikit with the basic requirements listed above, but some
 functionality is only available with the following installed:</p>
 <ul>
@@ -370,7 +426,7 @@ Optional io plugin providing most standard <a class="reference external" href="h
 </ul>
 </div>
 <div class="section" id="testing-requirements">
-<h2><a class="toc-backref" href="#id21">Testing requirements</a><a class="headerlink" href="#testing-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id22">Testing requirements</a><a class="headerlink" href="#testing-requirements" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><dl class="first docutils">
 <dt><a class="reference external" href="https://nose.readthedocs.org/en/latest/">Nose</a></dt>
@@ -387,7 +443,7 @@ Optional io plugin providing most standard <a class="reference external" href="h
 </ul>
 </div>
 <div class="section" id="documentation-requirements">
-<h2><a class="toc-backref" href="#id22">Documentation requirements</a><a class="headerlink" href="#documentation-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id23">Documentation requirements</a><a class="headerlink" href="#documentation-requirements" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="http://sphinx-doc.org/">sphinx &gt;= 1.3</a> is required to build the
 documentation.</p>
 </div>
@@ -411,8 +467,9 @@ documentation.</p>
         <div class="well sidebar-box toc">
             <ul class="nav nav-list">
 <li><a class="reference internal" href="#">Release notes</a><ul class="nav nav-list">
-<li><a class="reference internal" href="#highlights">Highlights</a></li>
+<li><a class="reference internal" href="#highlights-and-new-features">Highlights and new features</a></li>
 <li><a class="reference internal" href="#api-changes">API Changes</a></li>
+<li><a class="reference internal" href="#deprecations">Deprecations</a></li>
 <li><a class="reference internal" href="#contributors-to-this-release">Contributors to this release</a></li>
 </ul>
 </li>
