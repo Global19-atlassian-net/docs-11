@@ -69,7 +69,7 @@ needed to recover the underlying, unwrapped signal. In this example we will
 demonstrate an algorithm <a class="footnote-reference" href="#id2" id="id1">[1]</a> implemented in <code class="docutils literal"><span class="pre">skimage</span></code> at work for such a
 problem. One-, two- and three dimensional images can all be unwrapped using
 skimage. Here we will demonstrate phase unwrapping in the two dimensional case.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">img_as_float</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">exposure</span>
 <span class="kn">from</span> <span class="nn">skimage.restoration</span> <span class="kn">import</span> <span class="n">unwrap_phase</span>
@@ -106,7 +106,7 @@ skimage. Here we will demonstrate phase unwrapping in the two dimensional case.<
 assume cyclic boundaries to connect edges of an image. In the example below,
 we study a simple phase ramp which has been split in two by masking
 a row of the image.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c1"># Create a simple ramp</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># Create a simple ramp</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="c1"># Mask the image to split it in two horizontally</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>

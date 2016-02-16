@@ -204,7 +204,7 @@ integer factors.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">array([[ 0,  1,  2,  3,  4],</span>
 <span class="go">       [ 5,  6,  7,  8,  9],</span>
@@ -237,7 +237,7 @@ with the total least-squares method.</p>
 <p><strong>kwargs</strong> : array or int</p>
 <blockquote>
 <div><p>Function parameters (src, dst, n, angle):</p>
-<div class="highlight-python"><div class="highlight"><pre>NAME / TTYPE        FUNCTION PARAMETERS
+<div class="highlight-python"><div class="highlight"><pre><span></span>NAME / TTYPE        FUNCTION PARAMETERS
 &#39;similarity&#39;        `src, `dst`
 &#39;affine&#39;            `src, `dst`
 &#39;piecewise-affine&#39;  `src, `dst`
@@ -260,36 +260,36 @@ access to forward and inverse transformation functions.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span> <span class="k">as</span> <span class="n">tf</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c1"># estimate transformation parameters</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># estimate transformation parameters</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">src</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dst</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">tform</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimate_transform</span><span class="p">(</span><span class="s1">&#39;similarity&#39;</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tform</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimate_transform</span><span class="p">(</span><span class="s1">&#39;similarity&#39;</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">tform</span><span class="p">(</span><span class="n">src</span><span class="p">)),</span> <span class="n">src</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">tform</span><span class="p">(</span><span class="n">src</span><span class="p">)),</span> <span class="n">src</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c1"># warp image using the estimated transformation</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># warp image using the estimated transformation</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">inverse_map</span><span class="o">=</span><span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">)</span> 
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">inverse_map</span><span class="o">=</span><span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">)</span> 
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create transformation with explicit parameters</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create transformation with explicit parameters</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tform2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">SimilarityTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c1"># unite transformations, applied in order from left to right</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># unite transformations, applied in order from left to right</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tform3</span> <span class="o">=</span> <span class="n">tform</span> <span class="o">+</span> <span class="n">tform2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">tform3</span><span class="p">(</span><span class="n">src</span><span class="p">),</span> <span class="n">tform2</span><span class="p">(</span><span class="n">tform</span><span class="p">(</span><span class="n">src</span><span class="p">)))</span>
 <span class="go">True</span>
@@ -345,12 +345,12 @@ and Electron Physics, 139 (2006)</td></tr>
 <p class="rubric">Examples</p>
 <p>Generate a test image:
 Use a prime number for the array dimensions</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">SIZE</span> <span class="o">=</span> <span class="mi">59</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SIZE</span> <span class="o">=</span> <span class="mi">59</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tri</span><span class="p">(</span><span class="n">SIZE</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Apply the Finite Radon Transform:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">frt2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">frt2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -399,7 +399,7 @@ Otherwise, R = 0.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_circle</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_circle</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <span class="n">circle_perimeter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">circle_perimeter</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
@@ -472,7 +472,7 @@ Conference on. Vol. 2. IEEE, 2002</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_ellipse</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_ellipse</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <span class="n">ellipse_perimeter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">ellipse_perimeter</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
@@ -529,7 +529,7 @@ The distance is the minimal algebraic distance from the origin
 to the detected line.</p>
 <p class="rubric">Examples</p>
 <p>Generate a test image:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[:,</span> <span class="mi">65</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="mi">35</span><span class="p">:</span><span class="mi">45</span><span class="p">,</span> <span class="mi">35</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -539,10 +539,10 @@ to the detected line.</p>
 </pre></div>
 </div>
 <p>Apply the Hough transform:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">hough_line</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">hough_line</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_line</span>
@@ -639,7 +639,7 @@ return <cite>num_peaks</cite> coordinates based on peak intensity.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_line</span><span class="p">,</span> <span class="n">hough_line_peaks</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_line</span><span class="p">,</span> <span class="n">hough_line_peaks</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <span class="n">line</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">line</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
@@ -701,20 +701,20 @@ and Electron Physics, 139 (2006)</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">SIZE</span> <span class="o">=</span> <span class="mi">59</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SIZE</span> <span class="o">=</span> <span class="mi">59</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tri</span><span class="p">(</span><span class="n">SIZE</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Apply the Finite Radon Transform:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">frt2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">frt2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Apply the Inverse Finite Radon Transform to recover the input</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">fi</span> <span class="o">=</span> <span class="n">ifrt2</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fi</span> <span class="o">=</span> <span class="n">ifrt2</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Check that it&#8217;s identical to the original</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">img</span><span class="o">-</span><span class="n">fi</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">img</span><span class="o">-</span><span class="n">fi</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -803,7 +803,7 @@ of window(s) to be integrated and <cite>r1</cite>, <cite>c1</cite> the end coord
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ii</span> <span class="o">=</span> <span class="n">integral_image</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">integrate</span><span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># sum from (1, 0) to (1, 2)</span>
 <span class="go">array([ 3.])</span>
@@ -1217,7 +1217,7 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 <dd><p>Yield images of the laplacian pyramid formed by the input image.</p>
 <p>Each layer contains the difference between the downsampled and the
 downsampled, smoothed image:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">layer</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">prev_layer</span><span class="p">)</span> <span class="o">-</span> <span class="n">smooth</span><span class="p">(</span><span class="n">resize</span><span class="p">(</span><span class="n">prev_layer</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">layer</span> <span class="o">=</span> <span class="n">resize</span><span class="p">(</span><span class="n">prev_layer</span><span class="p">)</span> <span class="o">-</span> <span class="n">smooth</span><span class="p">(</span><span class="n">resize</span><span class="p">(</span><span class="n">prev_layer</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Note that the first image of the pyramid will be the difference between the
@@ -1450,7 +1450,7 @@ image is converted according to the conventions of <cite>img_as_float</cite>.</p
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">rescale</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rescale</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
@@ -1533,7 +1533,7 @@ has values [0, 1, 2] and was padded to the right by four values using
 symmetric, the result would be [0, 1, 2, 2, 1, 0, 0], while for reflect it
 would be [0, 1, 2, 1, 0, 1, 2].</p>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">resize</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span><span class="o">.</span><span class="n">shape</span>
@@ -1612,7 +1612,7 @@ image is converted according to the conventions of <cite>img_as_float</cite>.</p
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">rotate</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rotate</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
@@ -1885,7 +1885,7 @@ underlying transformation matrix to warp the image with a much faster
 routine.</li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">warp</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">warp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 </pre></div>
@@ -1893,38 +1893,38 @@ routine.</li>
 <p>The following image warps are all equal but differ substantially in
 execution time. The image is shifted to the bottom.</p>
 <p>Use a geometric transform to warp an image (fast):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">SimilarityTransform</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">SimilarityTransform</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tform</span> <span class="o">=</span> <span class="n">SimilarityTransform</span><span class="p">(</span><span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">tform</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Use a callable (slow):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">shift_down</span><span class="p">(</span><span class="n">xy</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">shift_down</span><span class="p">(</span><span class="n">xy</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">xy</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">10</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">xy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">shift_down</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Use a transformation matrix to warp an image (fast):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">matrix</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">ProjectiveTransform</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">ProjectiveTransform</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="n">matrix</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>You can also use the inverse of a geometric transformation (fast):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>For N-D images you can pass a coordinate array, that specifies the
 coordinates in the input image for every element in the output image. E.g.
 if you want to rescale a 3-D cube, you can do:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">cube_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cube_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cube</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">cube_shape</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Setup the coordinate array, that defines the scaling:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.1</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">scale</span> <span class="o">*</span> <span class="n">cube_shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coords0</span><span class="p">,</span> <span class="n">coords1</span><span class="p">,</span> <span class="n">coords2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[:</span><span class="n">output_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
 <span class="gp">... </span>                   <span class="p">:</span><span class="n">output_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">:</span><span class="n">output_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
@@ -1934,7 +1934,7 @@ if you want to rescale a 3-D cube, you can do:</p>
 <p>Assume that the cube contains spatial data, where the first array element
 center is at coordinate (0.5, 0.5, 0.5) in real space, i.e. we have to
 account for this extra offset when scaling the image:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span> <span class="o">=</span> <span class="p">(</span><span class="n">coords</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">scale</span> <span class="o">-</span> <span class="mf">0.5</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span> <span class="o">=</span> <span class="p">(</span><span class="n">coords</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">scale</span> <span class="o">-</span> <span class="mf">0.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1987,7 +1987,7 @@ image-warping process, or to implement different post-processing logic
 than <cite>warp</cite> performs after the call to <cite>ndi.map_coordinates</cite>.</p>
 <p class="rubric">Examples</p>
 <p>Produce a coordinate map that shifts an image up and to the right:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">map_coordinates</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">shift_up10_left20</span><span class="p">(</span><span class="n">xy</span><span class="p">):</span>
@@ -2019,7 +2019,7 @@ than <cite>warp</cite> performs after the call to <cite>ndi.map_coordinates</cit
 </div></blockquote>
 <p>where <code class="docutils literal"><span class="pre">sx</span></code> and <code class="docutils literal"><span class="pre">sy</span></code> are zoom factors in the x and y directions,
 and the homogeneous transformation matrix is:</p>
-<div class="highlight-python"><div class="highlight"><pre>[[a0  a1  a2]
+<div class="highlight-python"><div class="highlight"><pre><span></span>[[a0  a1  a2]
  [b0  b1  b2]
  [0   0    1]]
 </pre></div>
@@ -2229,19 +2229,19 @@ parameters.</p>
 with the total least-squares method.</p>
 <p>Number of source and destination coordinates must match.</p>
 <p>The transformation is defined as:</p>
-<div class="highlight-python"><div class="highlight"><pre>X = sum[j=0:order]( sum[i=0:j]( a_ji * x**(j - i) * y**i ))
+<div class="highlight-python"><div class="highlight"><pre><span></span>X = sum[j=0:order]( sum[i=0:j]( a_ji * x**(j - i) * y**i ))
 Y = sum[j=0:order]( sum[i=0:j]( b_ji * x**(j - i) * y**i ))
 </pre></div>
 </div>
 <p>These equations can be transformed to the following form:</p>
-<div class="highlight-python"><div class="highlight"><pre>0 = sum[j=0:order]( sum[i=0:j]( a_ji * x**(j - i) * y**i )) - X
+<div class="highlight-python"><div class="highlight"><pre><span></span>0 = sum[j=0:order]( sum[i=0:j]( a_ji * x**(j - i) * y**i )) - X
 0 = sum[j=0:order]( sum[i=0:j]( b_ji * x**(j - i) * y**i )) - Y
 </pre></div>
 </div>
 <p>which exist for each set of corresponding points, so we have a set of
 N * 2 equations. The coefficients appear linearly so we can write
 A x = 0, where:</p>
-<div class="highlight-python"><div class="highlight"><pre>A   = [[1 x y x**2 x*y y**2 ... 0 ...             0 -X]
+<div class="highlight-python"><div class="highlight"><pre><span></span>A   = [[1 x y x**2 x*y y**2 ... 0 ...             0 -X]
        [0 ...                 0 1 x y x**2 x*y y**2 -Y]
         ...
         ...
@@ -2300,19 +2300,19 @@ smallest singular value normed by the coefficient c3.</p>
 <p>For each homogeneous coordinate <img class="math" src="../_images/math/e17eed3b373034f601fd8282af816ad9a5a2c3ae.png" alt="\mathbf{x} = [x, y, 1]^T"/>, its
 target position is calculated by multiplying with the given matrix,
 <img class="math" src="../_images/math/48f75e0b463f2fdb7fca9566cffdc439cae6967f.png" alt="H"/>, to give <img class="math" src="../_images/math/f9ed235ba4b6a90483667ccc43734ff051fc323b.png" alt="H \mathbf{x}"/>:</p>
-<div class="highlight-python"><div class="highlight"><pre>[[a0 a1 a2]
+<div class="highlight-python"><div class="highlight"><pre><span></span>[[a0 a1 a2]
  [b0 b1 b2]
  [c0 c1 1 ]].
 </pre></div>
 </div>
 <p>E.g., to rotate by theta degrees clockwise, the matrix should be:</p>
-<div class="highlight-python"><div class="highlight"><pre>[[cos(theta) -sin(theta) 0]
+<div class="highlight-python"><div class="highlight"><pre><span></span>[[cos(theta) -sin(theta) 0]
  [sin(theta)  cos(theta) 0]
  [0            0         1]]
 </pre></div>
 </div>
 <p>or, to translate x by 10 and y by 20:</p>
-<div class="highlight-python"><div class="highlight"><pre>[[1 0 10]
+<div class="highlight-python"><div class="highlight"><pre><span></span>[[1 0 10]
  [0 1 20]
  [0 0 1 ]].
 </pre></div>
@@ -2355,19 +2355,19 @@ parameters.</p>
 with the total least-squares method.</p>
 <p>Number of source and destination coordinates must match.</p>
 <p>The transformation is defined as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">X</span> <span class="o">=</span> <span class="p">(</span><span class="n">a0</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">a2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">c0</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c1</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">(</span><span class="n">a0</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">a2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">c0</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c1</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="p">(</span><span class="n">b0</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b1</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">b2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">c0</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c1</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>These equations can be transformed to the following form:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="mi">0</span> <span class="o">=</span> <span class="n">a0</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">a2</span> <span class="o">-</span> <span class="n">c0</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">X</span> <span class="o">-</span> <span class="n">c1</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">X</span> <span class="o">-</span> <span class="n">X</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="o">=</span> <span class="n">a0</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">a2</span> <span class="o">-</span> <span class="n">c0</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">X</span> <span class="o">-</span> <span class="n">c1</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">X</span> <span class="o">-</span> <span class="n">X</span>
 <span class="mi">0</span> <span class="o">=</span> <span class="n">b0</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">b1</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">b2</span> <span class="o">-</span> <span class="n">c0</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">Y</span> <span class="o">-</span> <span class="n">c1</span><span class="o">*</span><span class="n">y</span><span class="o">*</span><span class="n">Y</span> <span class="o">-</span> <span class="n">Y</span>
 </pre></div>
 </div>
 <p>which exist for each set of corresponding points, so we have a set of
 N * 2 equations. The coefficients appear linearly so we can write
 A x = 0, where:</p>
-<div class="highlight-python"><div class="highlight"><pre>A   = [[x y 1 0 0 0 -x*X -y*X -X]
+<div class="highlight-python"><div class="highlight"><pre><span></span>A   = [[x y 1 0 0 0 -x*X -y*X -X]
        [0 0 0 x y 1 -x*Y -y*Y -Y]
         ...
         ...
@@ -2380,7 +2380,7 @@ of equations is the right singular vector of A which corresponds to the
 smallest singular value normed by the coefficient c3.</p>
 <p>In case of the affine transformation the coefficients c0 and c1 are 0.
 Thus the system of equations is:</p>
-<div class="highlight-python"><div class="highlight"><pre>A   = [[x y 1 0 0 0 -X]
+<div class="highlight-python"><div class="highlight"><pre><span></span>A   = [[x y 1 0 0 0 -X]
        [0 0 0 x y 1 -Y]
         ...
         ...
@@ -2456,7 +2456,7 @@ x.T = [a0 a1 a2 b0 b1 b2 c3]
 </dl>
 </div></blockquote>
 <p>where <code class="docutils literal"><span class="pre">m</span></code> is a zoom factor and the homogeneous transformation matrix is:</p>
-<div class="highlight-python"><div class="highlight"><pre>[[a0  b0  a1]
+<div class="highlight-python"><div class="highlight"><pre><span></span>[[a0  b0  a1]
  [b0  a0  b1]
  [0   0    1]]
 </pre></div>
@@ -2510,19 +2510,19 @@ x.T = [a0 a1 a2 b0 b1 b2 c3]
 with the total least-squares method.</p>
 <p>Number of source and destination coordinates must match.</p>
 <p>The transformation is defined as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">X</span> <span class="o">=</span> <span class="n">a0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">b0</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">a1</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">a0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">b0</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">a1</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">a0</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">b1</span>
 </pre></div>
 </div>
 <p>These equations can be transformed to the following form:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="mi">0</span> <span class="o">=</span> <span class="n">a0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">b0</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">a1</span> <span class="o">-</span> <span class="n">X</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="o">=</span> <span class="n">a0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="n">b0</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">a1</span> <span class="o">-</span> <span class="n">X</span>
 <span class="mi">0</span> <span class="o">=</span> <span class="n">b0</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">a0</span> <span class="o">*</span> <span class="n">y</span> <span class="o">+</span> <span class="n">b1</span> <span class="o">-</span> <span class="n">Y</span>
 </pre></div>
 </div>
 <p>which exist for each set of corresponding points, so we have a set of
 N * 2 equations. The coefficients appear linearly so we can write
 A x = 0, where:</p>
-<div class="highlight-python"><div class="highlight"><pre>A   = [[x 1 -y 0 -X]
+<div class="highlight-python"><div class="highlight"><pre><span></span>A   = [[x 1 -y 0 -X]
        [y 0  x 1 -Y]
         ...
         ...

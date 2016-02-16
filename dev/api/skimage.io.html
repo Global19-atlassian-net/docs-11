@@ -74,38 +74,38 @@
 <tr class="row-odd"><td>Plugin</td>
 <td>Description</td>
 </tr>
-<tr class="row-even"><td>pil</td>
-<td>Image reading via the Python Imaging Library</td>
+<tr class="row-even"><td>imageio</td>
+<td>Image reading via the ImageIO Library</td>
 </tr>
 <tr class="row-odd"><td>qt</td>
 <td>Fast image display using the Qt library</td>
 </tr>
-<tr class="row-even"><td>gtk</td>
-<td>Fast image display using the GTK library</td>
+<tr class="row-even"><td>pil</td>
+<td>Image reading via the Python Imaging Library</td>
 </tr>
-<tr class="row-odd"><td>tifffile</td>
+<tr class="row-odd"><td>gdal</td>
+<td>Image reading via the GDAL Library (www.gdal.org)</td>
+</tr>
+<tr class="row-even"><td>tifffile</td>
 <td>Load and save TIFF and TIFF-based images using tifffile.py</td>
 </tr>
-<tr class="row-even"><td>imread</td>
-<td>Image reading and writing via imread</td>
+<tr class="row-odd"><td>fits</td>
+<td>FITS image reading via PyFITS</td>
 </tr>
-<tr class="row-odd"><td>freeimage</td>
+<tr class="row-even"><td>freeimage</td>
 <td>Load images using the FreeImage library</td>
 </tr>
-<tr class="row-even"><td>fits</td>
-<td>FITS image reading via PyFITS</td>
+<tr class="row-odd"><td>gtk</td>
+<td>Fast image display using the GTK library</td>
+</tr>
+<tr class="row-even"><td>matplotlib</td>
+<td>Display or save images using Matplotlib</td>
 </tr>
 <tr class="row-odd"><td>simpleitk</td>
 <td>Image reading and writing via SimpleITK</td>
 </tr>
-<tr class="row-even"><td>gdal</td>
-<td>Image reading via the GDAL Library (www.gdal.org)</td>
-</tr>
-<tr class="row-odd"><td>matplotlib</td>
-<td>Display or save images using Matplotlib</td>
-</tr>
-<tr class="row-even"><td>imageio</td>
-<td>Image reading via the ImageIO Library</td>
+<tr class="row-even"><td>imread</td>
+<td>Image reading and writing via imread</td>
 </tr>
 </tbody>
 </table>
@@ -671,10 +671,10 @@ pending images, queued via <cite>imshow</cite>. This is required when using
 <p>A call to <cite>show</cite> will block execution of code until all windows
 have been closed.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="kn">as</span> <span class="nn">io</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="kn">as</span> <span class="nn">io</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">ax_im</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </pre></div>
@@ -715,7 +715,7 @@ the plugin is set for all functions.</p>
 </div>
 <p class="rubric">Examples</p>
 <p>To use Matplotlib as the default image reader, you would write:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">io</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">use_plugin</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;imread&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -768,7 +768,7 @@ source by specifying a combination of <cite>load_pattern</cite> and
 <code class="docutils literal"><span class="pre">load_func(file_pattern[5])</span></code> to load the image.</p>
 <p>Imagine, for example, an ImageCollection that loads every tenth
 frame from a video file:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">class</span> <span class="nc">AVILoader</span><span class="p">:</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AVILoader</span><span class="p">:</span>
     <span class="n">video_file</span> <span class="o">=</span> <span class="s1">&#39;myvideo.avi&#39;</span>
 
     <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frame</span><span class="p">):</span>
@@ -783,7 +783,7 @@ frame from a video file:</p>
 </pre></div>
 </div>
 <p>Another use of <code class="docutils literal"><span class="pre">load_func</span></code> would be to convert all images to <code class="docutils literal"><span class="pre">uint8</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">imread_convert</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">imread_convert</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">imread</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 
 <span class="n">ic</span> <span class="o">=</span> <span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;/tmp/*.png&#39;</span><span class="p">,</span> <span class="n">load_func</span><span class="o">=</span><span class="n">imread_convert</span><span class="p">)</span>
@@ -793,18 +793,18 @@ frame from a video file:</p>
 and added to the list of available images.  In this case, <code class="docutils literal"><span class="pre">load_func</span></code>
 should accept the keyword argument <code class="docutils literal"><span class="pre">img_num</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="kn">as</span> <span class="nn">io</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="kn">as</span> <span class="nn">io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data_dir</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">coll</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;/lena*.png&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coll</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;/lena*.png&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">coll</span><span class="p">)</span>
 <span class="go">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coll</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(512, 512, 3)</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">ic</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;/tmp/work/*.png:/tmp/other/*.jpg&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ic</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;/tmp/work/*.png:/tmp/other/*.jpg&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
@@ -918,10 +918,10 @@ from file.</p>
 <p>The current implementation makes use of <code class="docutils literal"><span class="pre">tifffile</span></code> for Tiff files and
 PIL otherwise.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data_dir</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data_dir</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">MultiImage</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;/multipage.tif&#39;</span><span class="p">)</span> 
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">MultiImage</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;/multipage.tif&#39;</span><span class="p">)</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> 
 <span class="go">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">img</span><span class="p">:</span> 

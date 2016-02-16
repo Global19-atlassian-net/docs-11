@@ -77,7 +77,7 @@ value are independent channels, or the <a class="reference external" href="http:
 <p><a class="reference internal" href="../api/skimage.color.html#module-skimage.color" title="skimage.color"><code class="xref py py-mod docutils literal"><span class="pre">skimage.color</span></code></a> provides utility functions to convert images
 to and from different color spaces. Integer-type arrays can be
 transformed to floating-point type by the conversion operation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="c1"># bright saturated red</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># bright saturated red</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">red_pixel_rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">color</span><span class="o">.</span><span class="n">rgb2hsv</span><span class="p">(</span><span class="n">red_pixel_rgb</span><span class="p">)</span>
 <span class="go">array([[[ 0.,  1.,  1.]]])</span>
@@ -96,7 +96,7 @@ transformed to floating-point type by the conversion operation:</p>
 <h3>Conversion between color and gray values<a class="headerlink" href="#conversion-between-color-and-gray-values" title="Permalink to this headline">¶</a></h3>
 <p>Converting an RGB image to a grayscale image is realized with
 <a class="reference internal" href="../api/skimage.color.html#skimage.color.rgb2gray" title="skimage.color.rgb2gray"><code class="xref py py-func docutils literal"><span class="pre">rgb2gray()</span></code></a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2gray</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2gray</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img_gray</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
@@ -106,7 +106,7 @@ transformed to floating-point type by the conversion operation:</p>
 different sensitivity of the human eye to different colors. Therefore,
 such a weighting ensures <a class="reference external" href="http://en.wikipedia.org/wiki/Grayscale#Converting_color_to_grayscale">luminance preservation</a>
 from RGB to grayscale:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">red_pixel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">red_pixel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">color</span><span class="o">.</span><span class="n">rgb2gray</span><span class="p">(</span><span class="n">red_pixel</span><span class="p">)</span>
 <span class="go">array([[ 0.2125]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">green_pixel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
@@ -150,7 +150,7 @@ in <a class="reference internal" href="../api/skimage.exposure.html#skimage.expo
 <p>Other methods re-distribute pixel values according to the <em>histogram</em> of
 the image. The histogram of pixel values is computed with
 <a class="reference internal" href="../api/skimage.exposure.html#skimage.exposure.histogram" title="skimage.exposure.histogram"><code class="xref py py-func docutils literal"><span class="pre">skimage.exposure.histogram()</span></code></a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">exposure</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="go">(array([3, 0, 1]), array([1, 2, 3]))</span>
 </pre></div>
@@ -162,7 +162,7 @@ the boundaries of the bins.</p>
 <p>The simplest contrast enhancement <a class="reference internal" href="../api/skimage.exposure.html#skimage.exposure.rescale_intensity" title="skimage.exposure.rescale_intensity"><code class="xref py py-func docutils literal"><span class="pre">rescale_intensity()</span></code></a> consists in
 stretching pixel values to the whole allowed range, using a linear
 transformation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">exposure</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">exposure</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">text</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">text</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="go">(10, 197)</span>
@@ -176,7 +176,7 @@ little weight at the ends of the value range. In such a case, clipping
 pixel values using percentiles of the image improves the contrast (at the
 expense of some loss of information, because some pixels are saturated by
 this operation):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">moon</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">moon</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">moon</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">moon</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">v_min</span><span class="p">,</span> <span class="n">v_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">moon</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">99.8</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">v_min</span><span class="p">,</span> <span class="n">v_max</span>
 <span class="go">(10.0, 186.0)</span>

@@ -81,7 +81,7 @@ neighborhood around a pixel.</p>
 </ol>
 <p>To get started, let&#8217;s load an image using <code class="docutils literal"><span class="pre">io.imread</span></code>. Note that morphology
 functions only work on gray-scale or binary images, so we set <code class="docutils literal"><span class="pre">as_grey=True</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <span class="n">data_dir</span>
 <span class="kn">from</span> <span class="nn">skimage.util</span> <span class="kn">import</span> <span class="n">img_as_ubyte</span>
@@ -95,7 +95,7 @@ functions only work on gray-scale or binary images, so we set <code class="docut
 </div>
 <img alt="../../_images/plot_morphology_1.png" src="../../_images/plot_morphology_1.png" />
 <p>Let&#8217;s also define a convenience function for plotting comparisons:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">plot_comparison</span><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="n">filtered</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_comparison</span><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="n">filtered</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">):</span>
 
     <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                                    <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -116,7 +116,7 @@ pixels in the neighborhood centered at (i, j)</em>. The structuring element,
 <code class="docutils literal"><span class="pre">selem</span></code>, passed to <code class="docutils literal"><span class="pre">erosion</span></code> is a boolean array that describes this
 neighborhood. Below, we use <code class="docutils literal"><span class="pre">disk</span></code> to create a circular structuring element,
 which we use for most of the following examples.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">erosion</span><span class="p">,</span> <span class="n">dilation</span><span class="p">,</span> <span class="n">opening</span><span class="p">,</span> <span class="n">closing</span><span class="p">,</span> <span class="n">white_tophat</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">erosion</span><span class="p">,</span> <span class="n">dilation</span><span class="p">,</span> <span class="n">opening</span><span class="p">,</span> <span class="n">closing</span><span class="p">,</span> <span class="n">white_tophat</span>
 <span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">black_tophat</span><span class="p">,</span> <span class="n">skeletonize</span><span class="p">,</span> <span class="n">convex_hull_image</span>
 <span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">disk</span>
 
@@ -136,7 +136,7 @@ patches in the lower part of the image.</p>
 <p>Morphological <code class="docutils literal"><span class="pre">dilation</span></code> sets a pixel at (i, j) to the <em>maximum over all
 pixels in the neighborhood centered at (i, j)</em>. Dilation enlarges bright
 regions and shrinks dark regions.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">dilated</span> <span class="o">=</span> <span class="n">dilation</span><span class="p">(</span><span class="n">orig_phantom</span><span class="p">,</span> <span class="n">selem</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dilated</span> <span class="o">=</span> <span class="n">dilation</span><span class="p">(</span><span class="n">orig_phantom</span><span class="p">,</span> <span class="n">selem</span><span class="p">)</span>
 <span class="n">plot_comparison</span><span class="p">(</span><span class="n">orig_phantom</span><span class="p">,</span> <span class="n">dilated</span><span class="p">,</span> <span class="s1">&#39;dilation&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -151,7 +151,7 @@ the center and the 3 patches in the lower part of the image.</p>
 <p>Morphological <code class="docutils literal"><span class="pre">opening</span></code> on an image is defined as an <em>erosion followed by a
 dilation</em>. Opening can remove small bright spots (i.e. &#8220;salt&#8221;) and connect
 small dark cracks.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">opened</span> <span class="o">=</span> <span class="n">opening</span><span class="p">(</span><span class="n">orig_phantom</span><span class="p">,</span> <span class="n">selem</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">opened</span> <span class="o">=</span> <span class="n">opening</span><span class="p">(</span><span class="n">orig_phantom</span><span class="p">,</span> <span class="n">selem</span><span class="p">)</span>
 <span class="n">plot_comparison</span><span class="p">(</span><span class="n">orig_phantom</span><span class="p">,</span> <span class="n">opened</span><span class="p">,</span> <span class="s1">&#39;opening&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -171,7 +171,7 @@ erased, while the thicker region at the top retains its original thickness.</p>
 erosion</em>. Closing can remove small dark spots (i.e. &#8220;pepper&#8221;) and connect
 small bright cracks.</p>
 <p>To illustrate this more clearly, let&#8217;s add a small crack to the white border:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">phantom</span> <span class="o">=</span> <span class="n">orig_phantom</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">phantom</span> <span class="o">=</span> <span class="n">orig_phantom</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">phantom</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span> <span class="mi">200</span><span class="p">:</span><span class="mi">210</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="n">closed</span> <span class="o">=</span> <span class="n">closing</span><span class="p">(</span><span class="n">phantom</span><span class="p">,</span> <span class="n">selem</span><span class="p">)</span>
@@ -192,7 +192,7 @@ their original sizes. Also notice how the crack we added is mostly removed.</p>
 morphological opening</em>. This operation returns the bright spots of the image
 that are smaller than the structuring element.</p>
 <p>To make things interesting, we&#8217;ll add bright and dark spots to the image:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">phantom</span> <span class="o">=</span> <span class="n">orig_phantom</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">phantom</span> <span class="o">=</span> <span class="n">orig_phantom</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">phantom</span><span class="p">[</span><span class="mi">340</span><span class="p">:</span><span class="mi">350</span><span class="p">,</span> <span class="mi">200</span><span class="p">:</span><span class="mi">210</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
 <span class="n">phantom</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">110</span><span class="p">,</span> <span class="mi">200</span><span class="p">:</span><span class="mi">210</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
@@ -211,7 +211,7 @@ element, but the thicker region at the top disappears.</p>
 <p>The <code class="docutils literal"><span class="pre">black_tophat</span></code> of an image is defined as its morphological <strong>closing
 minus the original image</strong>. This operation returns the <em>dark spots of the
 image that are smaller than the structuring element</em>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">b_tophat</span> <span class="o">=</span> <span class="n">black_tophat</span><span class="p">(</span><span class="n">phantom</span><span class="p">,</span> <span class="n">selem</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">b_tophat</span> <span class="o">=</span> <span class="n">black_tophat</span><span class="p">(</span><span class="n">phantom</span><span class="p">,</span> <span class="n">selem</span><span class="p">)</span>
 <span class="n">plot_comparison</span><span class="p">(</span><span class="n">phantom</span><span class="p">,</span> <span class="n">b_tophat</span><span class="p">,</span> <span class="s1">&#39;black tophat&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -234,7 +234,7 @@ of another operation. This duality can be summarized as follows:</p>
 <p>Thinning is used to reduce each connected component in a binary image to a
 <em>single-pixel wide skeleton</em>. It is important to note that this is performed
 on binary images only.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">horse</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;horse.png&quot;</span><span class="p">),</span> <span class="n">as_grey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">horse</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;horse.png&quot;</span><span class="p">),</span> <span class="n">as_grey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="n">sk</span> <span class="o">=</span> <span class="n">skeletonize</span><span class="p">(</span><span class="n">horse</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">plot_comparison</span><span class="p">(</span><span class="n">horse</span><span class="p">,</span> <span class="n">sk</span><span class="p">,</span> <span class="s1">&#39;skeletonize&#39;</span><span class="p">)</span>
@@ -249,7 +249,7 @@ skeleton by applying thinning successively.</p>
 <p>The <code class="docutils literal"><span class="pre">convex_hull_image</span></code> is the <em>set of pixels included in the smallest
 convex polygon that surround all white pixels in the input image</em>. Again note
 that this is also performed on binary images.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">hull1</span> <span class="o">=</span> <span class="n">convex_hull_image</span><span class="p">(</span><span class="n">horse</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">hull1</span> <span class="o">=</span> <span class="n">convex_hull_image</span><span class="p">(</span><span class="n">horse</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">plot_comparison</span><span class="p">(</span><span class="n">horse</span><span class="p">,</span> <span class="n">hull1</span><span class="p">,</span> <span class="s1">&#39;convex hull&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -258,7 +258,7 @@ that this is also performed on binary images.</p>
 which covers the white or True completely in the image.</p>
 <p>If we add a small grain to the image, we can see how the convex hull adapts to
 enclose that grain:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="n">horse_mask</span> <span class="o">=</span> <span class="n">horse</span> <span class="o">==</span> <span class="mi">0</span>
 <span class="n">horse_mask</span><span class="p">[</span><span class="mi">45</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span> <span class="mi">75</span><span class="p">:</span><span class="mi">80</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -274,7 +274,7 @@ enclose that grain:</p>
 <p>1. <a class="reference external" href="http://www.mathworks.com/help/images/morphology-fundamentals-dilation-and-erosion.html">MathWorks tutorial on morphological processing</a>
 2. <a class="reference external" href="http://www.cs.auckland.ac.nz/courses/compsci773s1c/lectures/ImageProcessing-html/topic4.htm">Auckland university&#8217;s tutorial on Morphological Image Processing</a>
 3. <a class="reference external" href="http://en.wikipedia.org/wiki/Mathematical_morphology">http://en.wikipedia.org/wiki/Mathematical_morphology</a></p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 <p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_morphology.py"><code class="xref download docutils literal"><span class="pre">download</span></code></a>

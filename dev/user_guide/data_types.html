@@ -111,7 +111,7 @@ types</a>). If you need a particular dtype, <code class="docutils literal"><span
 functions that convert dtypes and properly rescale image intensities (see
 <a class="reference internal" href="#input-types">Input types</a>). You should <strong>never use</strong> <code class="docutils literal"><span class="pre">astype</span></code> on an image, because it
 violates these assumptions about the dtype range:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">img_as_float</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">img_as_float</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">))</span> <span class="c1"># These float values are out of range.</span>
 <span class="go">[  0.  10.  20.  30.  40.]</span>
@@ -156,7 +156,7 @@ and users:</p>
 <p>These functions convert images to the desired dtype and <em>properly rescale their
 values</em>. If conversion reduces the precision of the image, then a warning is
 issued:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">img_as_ubyte</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">img_as_ubyte</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img_as_ubyte</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="go">WARNING:dtype_converter:Possible precision loss when converting from</span>
@@ -174,7 +174,7 @@ With <code class="docutils literal"><span class="pre">preserve_range=True</span>
 preserved, even though the output is a float image. Users must then ensure
 this non-standard image is properly processed by downstream functions, which
 may expect an image in [0, 1].</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">rescale</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">coins</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">image</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
@@ -198,7 +198,7 @@ explicitly convert the output to whichever format is needed, it ensures that no
 unnecessary data copies take place.</p>
 <p>A user that requires a specific type of output (e.g., for display purposes),
 may write:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">img_as_uint</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">img_as_uint</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">img_as_uint</span><span class="p">(</span><span class="n">sobel</span><span class="p">(</span><span class="n">image</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
 </pre></div>
@@ -211,14 +211,14 @@ without worrying about the image dtype.  On the other hand, if you want to use
 a custom function that requires a particular dtype, you should call one of the
 dtype conversion functions (here, <code class="docutils literal"><span class="pre">func1</span></code> and <code class="docutils literal"><span class="pre">func2</span></code> are <code class="docutils literal"><span class="pre">skimage</span></code>
 functions):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">img_as_float</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">img_as_float</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">img_as_float</span><span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">func2</span><span class="p">(</span><span class="n">image</span><span class="p">)))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">processed_image</span> <span class="o">=</span> <span class="n">custom_func</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Better yet, you can convert the image internally and use a simplified
 processing pipeline:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">custom_func</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">custom_func</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">image</span> <span class="o">=</span> <span class="n">img_as_float</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="gp">... </span>    <span class="c1"># do something</span>
 <span class="gp">...</span>
@@ -241,7 +241,7 @@ uint16, then the image won&#8217;t extend over the full intensity range, and thu
 would appear dimmer than it should. To correct for this, you can use the
 <code class="docutils literal"><span class="pre">rescale_intensity</span></code> function to rescale the image so that it uses the full
 dtype range:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">exposure</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">exposure</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">img10bit</span><span class="p">,</span> <span class="n">in_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">10</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -250,7 +250,7 @@ By default, <code class="docutils literal"><span class="pre">rescale_intensity</
 the range of the dtype. <code class="docutils literal"><span class="pre">rescale_intensity</span></code> also accepts strings as inputs
 to <code class="docutils literal"><span class="pre">in_range</span></code> and <code class="docutils literal"><span class="pre">out_range</span></code>, so the example above could also be written
 as:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">img10bit</span><span class="p">,</span> <span class="n">in_range</span><span class="o">=</span><span class="s1">&#39;uint10&#39;</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">img10bit</span><span class="p">,</span> <span class="n">in_range</span><span class="o">=</span><span class="s1">&#39;uint10&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -263,7 +263,7 @@ of a signed dtype over the entire range of an unsigned dtype. In other words,
 negative values are clipped to 0 when converting from signed to unsigned
 dtypes. (Negative values are preserved when converting between signed dtypes.)
 To prevent this clipping behavior, you should rescale your image beforehand:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">img_int32</span><span class="p">,</span> <span class="n">out_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">31</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">exposure</span><span class="o">.</span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">img_int32</span><span class="p">,</span> <span class="n">out_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">31</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img_uint8</span> <span class="o">=</span> <span class="n">img_as_ubyte</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 </pre></div>
 </div>

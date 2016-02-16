@@ -76,7 +76,7 @@ importance of each pixel.</p>
 <a class="reference external" href="http://www.cs.jhu.edu/~misha/ReadingSeminar/Papers/Avidan07.pdf">http://www.cs.jhu.edu/~misha/ReadingSeminar/Papers/Avidan07.pdf</a></td></tr>
 </tbody>
 </table>
-<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">draw</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">draw</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span><span class="p">,</span> <span class="n">util</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">filters</span><span class="p">,</span> <span class="n">color</span>
@@ -94,14 +94,14 @@ importance of each pixel.</p>
 </pre></div>
 </div>
 <img alt="../../_images/plot_seam_carving_1.png" src="../../_images/plot_seam_carving_1.png" />
-<div class="highlight-python"><div class="highlight"><pre><span class="n">resized</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">200</span><span class="p">))</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">resized</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">200</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Resized Image&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">resized</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="../../_images/plot_seam_carving_2.png" src="../../_images/plot_seam_carving_2.png" />
-<div class="highlight-python"><div class="highlight"><pre><span class="n">out</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">seam_carve</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">eimg</span><span class="p">,</span> <span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">seam_carve</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">eimg</span><span class="p">,</span> <span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Resized using Seam Carving&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
@@ -116,7 +116,7 @@ removes empty spaces and preserves object proportions.</p>
 This requires weighting the artifact with low values. Recall lower weights are
 preferentially removed in seam carving. The following code masks the rocket&#8217;s
 region with low weights, indicating it should be removed.</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">masked_img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">masked_img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
 <span class="n">poly</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">404</span><span class="p">,</span> <span class="mi">281</span><span class="p">),</span> <span class="p">(</span><span class="mi">404</span><span class="p">,</span> <span class="mi">360</span><span class="p">),</span> <span class="p">(</span><span class="mi">359</span><span class="p">,</span> <span class="mi">364</span><span class="p">),</span> <span class="p">(</span><span class="mi">338</span><span class="p">,</span> <span class="mi">337</span><span class="p">),</span> <span class="p">(</span><span class="mi">145</span><span class="p">,</span> <span class="mi">337</span><span class="p">),</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">322</span><span class="p">),</span>
         <span class="p">(</span><span class="mi">145</span><span class="p">,</span> <span class="mi">304</span><span class="p">),</span> <span class="p">(</span><span class="mi">340</span><span class="p">,</span> <span class="mi">306</span><span class="p">),</span> <span class="p">(</span><span class="mi">362</span><span class="p">,</span> <span class="mi">284</span><span class="p">)]</span>
@@ -132,7 +132,7 @@ region with low weights, indicating it should be removed.</p>
 </pre></div>
 </div>
 <img alt="../../_images/plot_seam_carving_4.png" src="../../_images/plot_seam_carving_4.png" />
-<div class="highlight-python"><div class="highlight"><pre><span class="n">eimg</span><span class="p">[</span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1000</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">eimg</span><span class="p">[</span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1000</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Object Removed&#39;</span><span class="p">)</span>
