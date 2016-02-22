@@ -756,8 +756,8 @@ whereas with 8-&#8220;connectivity&#8221;, they have to share only edge or verte
 <p><strong>background</strong> : int, optional</p>
 <blockquote>
 <div><p>Consider all pixels with this value as background pixels, and label
-them as -1. (Note: background pixels will be labeled as 0 starting with
-version 0.12).</p>
+them as 0. By default, 0-valued pixels are considered as background
+pixels.</p>
 </div></blockquote>
 <p><strong>return_num</strong> : bool, optional</p>
 <blockquote>
@@ -767,7 +767,8 @@ version 0.12).</p>
 <blockquote>
 <div><p>Maximum number of orthogonal hops to consider a pixel/voxel
 as a neighbor.
-Accepted values are ranging from  1 to input.ndim.</p>
+Accepted values are ranging from  1 to input.ndim. If <code class="docutils literal"><span class="pre">None</span></code>, a full
+connectivity of <code class="docutils literal"><span class="pre">input.ndim</span></code> is used.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -794,15 +795,21 @@ returned if return_num is <cite>True</cite>.</p>
 <span class="go"> [0 0 1]]</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <span class="n">label</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="go">[[0 1 1]</span>
-<span class="go"> [2 3 1]</span>
-<span class="go"> [2 2 4]]</span>
+<span class="go">[[1 0 0]</span>
+<span class="go"> [0 2 0]</span>
+<span class="go"> [0 0 3]]</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
-<span class="go">[[0 1 1]</span>
-<span class="go"> [1 0 1]</span>
-<span class="go"> [1 1 0]]</span>
+<span class="go">[[1 0 0]</span>
+<span class="go"> [0 1 0]</span>
+<span class="go"> [0 0 1]]</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">background</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">[[1 2 2]</span>
+<span class="go"> [2 1 2]</span>
+<span class="go"> [2 2 1]]</span>
 </pre></div>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -810,10 +817,10 @@ returned if return_num is <cite>True</cite>.</p>
 <span class="gp">... </span>              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
-<span class="go">[[ 0 -1 -1]</span>
-<span class="go"> [ 0  0  1]</span>
-<span class="go"> [-1 -1 -1]]</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="go">[[1 0 0]</span>
+<span class="go"> [1 1 2]</span>
+<span class="go"> [0 0 0]]</span>
 </pre></div>
 </div>
 </dd></dl>
