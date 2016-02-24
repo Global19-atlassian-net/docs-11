@@ -2229,8 +2229,7 @@ of the two is chosen as the minimum intensity threshold of peaks.</p>
 <blockquote>
 <div><p>Minimum number of pixels separating peaks in a region of <cite>2 *
 min_distance + 1</cite> (i.e. peaks are separated by at least
-<cite>min_distance</cite>). If <cite>exclude_border</cite> is True, this value also excludes
-a border <cite>min_distance</cite> from the image boundary.
+<cite>min_distance</cite>).
 To find the maximum number of peaks, use <cite>min_distance=1</cite>.</p>
 </div></blockquote>
 <p><strong>threshold_abs</strong> : float, optional</p>
@@ -2242,10 +2241,10 @@ the minimum intensity of the image.</p>
 <blockquote>
 <div><p>Minimum intensity of peaks, calculated as <cite>max(image) * threshold_rel</cite>.</p>
 </div></blockquote>
-<p><strong>exclude_border</strong> : bool, optional</p>
+<p><strong>exclude_border</strong> : int, optional</p>
 <blockquote>
-<div><p>If True, <cite>min_distance</cite> excludes peaks from the border of the image as
-well as from each other.</p>
+<div><p>If nonzero, <cite>exclude_border</cite> excludes peaks from
+within <cite>exclude_border</cite>-pixels of the border of the image.</p>
 </div></blockquote>
 <p><strong>indices</strong> : bool, optional</p>
 <blockquote>
@@ -2314,7 +2313,7 @@ peaks where the dilated image equals the original image.</p>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">peak_local_max</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="n">exclude_border</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">peak_local_max</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="n">exclude_border</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">array([[10, 10, 10]])</span>
 </pre></div>
 </div>
