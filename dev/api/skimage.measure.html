@@ -1387,7 +1387,8 @@ information).</p>
 </div></blockquote>
 <p><strong>dst</strong> : 2-tuple of numeric scalar (float or int)</p>
 <blockquote>
-<div><p>The end point of the scan line.</p>
+<div><p>The end point of the scan line. The destination point is <em>included</em> 
+in the profile, in constrast to standard numpy indexing.</p>
 </div></blockquote>
 <p><strong>linewidth</strong> : int, optional</p>
 <blockquote>
@@ -1417,9 +1418,6 @@ is the ceil of the computed length of the scan line.</p>
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>The destination point is included in the profile, in contrast to
-standard numpy indexing.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span>
@@ -1431,8 +1429,17 @@ standard numpy indexing.</p>
 <span class="go">       [0, 0, 0, 0, 0, 0]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">profile_line</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="go">array([ 1.,  1.,  2.,  2.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">profile_line</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">cval</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">array([ 1.,  1.,  1.,  2.,  2.,  2.,  4.])</span>
 </pre></div>
 </div>
+<p>The destination point is included in the profile, in contrast to
+standard numpy indexing.
+For example: 
+&gt;&gt;&gt; profile_line(img, (1, 0), (1, 6))  # The final point is out of bounds
+array([ 1.,  1.,  1.,  2.,  2.,  2.,  0.])
+&gt;&gt;&gt; profile_line(img, (1, 0), (1, 5))  # This accesses the full first row
+array([ 1.,  1.,  1.,  2.,  2.,  2.])</p>
 </dd></dl>
 
 </div>
