@@ -67,34 +67,34 @@
 (CENSURE) that claims to outperform other detectors and is capable of real-time
 implementation.</p>
 <img alt="../../_images/plot_censure_1.png" class="align-center" src="../../_images/plot_censure_1.png" />
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span> <span class="k">as</span> <span class="n">tf</span>
 <span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">CENSURE</span>
 <span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2gray</span>
+
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
-
-<span class="n">img1</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">())</span>
+<span class="n">img_orig</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">())</span>
 <span class="n">tform</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">AffineTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
                            <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span><span class="p">))</span>
-<span class="n">img2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">warp</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">tform</span><span class="p">)</span>
+<span class="n">img_warp</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">warp</span><span class="p">(</span><span class="n">img_orig</span><span class="p">,</span> <span class="n">tform</span><span class="p">)</span>
 
 <span class="n">detector</span> <span class="o">=</span> <span class="n">CENSURE</span><span class="p">()</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">gray</span><span class="p">()</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">img_orig</span><span class="p">)</span>
 
-<span class="n">detector</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">img1</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img1</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_orig</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">detector</span><span class="o">.</span><span class="n">keypoints</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">detector</span><span class="o">.</span><span class="n">keypoints</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
               <span class="mi">2</span> <span class="o">**</span> <span class="n">detector</span><span class="o">.</span><span class="n">scales</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
-<span class="n">detector</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">img2</span><span class="p">)</span>
+<span class="n">detector</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">img_warp</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_warp</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">detector</span><span class="o">.</span><span class="n">keypoints</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">detector</span><span class="o">.</span><span class="n">keypoints</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
               <span class="mi">2</span> <span class="o">**</span> <span class="n">detector</span><span class="o">.</span><span class="n">scales</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
