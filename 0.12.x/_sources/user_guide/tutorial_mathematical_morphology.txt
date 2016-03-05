@@ -1,0 +1,195 @@
+Mathematical Morphology in ``scikit-image``
+===========================================
+
+`Mathematical morphology
+<http://en.wikipedia.org/wiki/Mathematical_morphology>`_ is a
+mathematical theory based on set theory, that can be applied easily to
+digital images. Beyond its strong theoretical bases, a key for its
+success in image processing is that some building blocks operations, such
+as `erosion <http://en.wikipedia.org/wiki/Erosion_(morphology)>`_ and
+`dilation <http://en.wikipedia.org/wiki/Erosion_(morphology)>`_ are
+easily coded in an efficient way, and have results easy to interpret. 
+
+Mathematical morphology functions are found in the
+:mod:`skimage.morphology` submodule ::
+
+    >>> from skimage import morphology 
+
+Structuring elements
+--------------------
+
+Basic mathematical morphology operations transform the value of a pixel
+by computing a function of pixel values in a neighbourhood of the pixel.
+The shape of this neighbourhood is given by a stencil, called
+*structuring elements*. 
+
+The simplest structuring element corresponds to 4-connectivity of a pixel
+in 2-D ::
+
+    >>> morphology.diamond(1)
+    array([[0, 1, 0],
+	   [1, 1, 1],
+	   [0, 1, 0]], dtype=uint8)
+
+Other shapes are possible, as well as other sizes (total extent) for the 
+structuring element::
+
+    >>> morphology.square(3)
+    array([[1, 1, 1],
+	   [1, 1, 1],
+	   [1, 1, 1]], dtype=uint8)
+    >>> morphology.disk(5)
+    array([[0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+	   [0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+	   [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+	   [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+	   [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+	   [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+	   [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+	   [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+	   [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
+	   [0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+	   [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]], dtype=uint8)
+
+
+.. image:: ../../_images/plot_structuring_elements_1.png
+    :width: 90%
+    :target: ../auto_examples/plot_structuring_elements.html
+
+Erosion and dilation
+--------------------
+
+The `erosion <http://en.wikipedia.org/wiki/Erosion_(morphology)>`_
+operation is a **minimum filter** using a neighbourhood specified by the
+structuring element: the value of a pixel is replaced by the minimum
+value of pixels covered by the structuring element. For binary (0/1 or
+False/True) images, this will have the consequence of *eroding* the
+boundary of 1-valued blocks, that have 0-valued neighbors covered by the
+structuring element::
+
+    >>> a = np.zeros((5, 5), dtype=np.uint8)
+    >>> a[1:-1, 1:-1] = 1
+    >>> a
+    array([[0, 0, 0, 0, 0],
+           [0, 1, 1, 1, 0],
+           [0, 1, 1, 1, 0],
+           [0, 1, 1, 1, 0],
+           [0, 0, 0, 0, 0]], dtype=uint8)
+    >>> diamond = morphology.diamond(1)
+    >>> morphology.binary_erosion(a, diamond)
+    array([[False, False, False, False, False],
+	   [False, False, False, False, False],
+	   [False, False,  True, False, False],
+	   [False, False, False, False, False],
+	   [False, False, False, False, False]], dtype=bool)
+    >>> # Convert result to uint8 for better readability
+    >>> morphology.binary_erosion(a, diamond).astype(np.uint8)
+    array([[0, 0, 0, 0, 0],
+	   [0, 0, 0, 0, 0],
+	   [0, 0, 1, 0, 0],
+	   [0, 0, 0, 0, 0],
+	   [0, 0, 0, 0, 0]], dtype=uint8)
+
+In the example above, only the central 1-valued pixel has only 1-valued
+neighbors (covered by the structural element `diamond`). All the other
+1-valued pixels had at least one 0-valued neighbor covered by the
+structuring element, and are therefore 0-valued in the output array. 
+
+In addition to eroding boundaries, erosion removes 1-valued objects
+smaller than the structuring element ::
+
+    >>> big_diamond = morphology.diamond(2)
+    >>> big_diamond
+    array([[0, 0, 1, 0, 0],
+	   [0, 1, 1, 1, 0],
+	   [1, 1, 1, 1, 1],
+	   [0, 1, 1, 1, 0],
+	   [0, 0, 1, 0, 0]], dtype=uint8)
+    >>> morphology.binary_erosion(a, big_diamond).astype(np.uint8)
+    array([[0, 0, 0, 0, 0],
+	   [0, 0, 0, 0, 0],
+	   [0, 0, 0, 0, 0],
+	   [0, 0, 0, 0, 0],
+	   [0, 0, 0, 0, 0]], dtype=uint8)
+
+The dual operation of erosion is called **dilation**: dilation is a maximal
+filter on a neighbourhood specified by the structural element. On binary
+images, this operation dilates the boundary of 1-valued objects::
+
+    >>> a[1:4, 2] = 1
+    >>> a
+    array([[0, 0, 0, 0, 0],
+	   [0, 0, 1, 0, 0],
+	   [0, 0, 1, 0, 0],
+	   [0, 0, 1, 0, 0],
+	   [0, 0, 0, 0, 0]], dtype=uint8)
+    >>> square = morphology.square(3)
+    >>> square
+    array([[1, 1, 1],
+	   [1, 1, 1],
+	   [1, 1, 1]], dtype=uint8)
+    >>> morphology.binary_dilation(a, square).astype(np.uint8)
+    array([[0, 1, 1, 1, 0],
+	   [0, 1, 1, 1, 0],
+	   [0, 1, 1, 1, 0],
+	   [0, 1, 1, 1, 0],
+	   [0, 1, 1, 1, 0]], dtype=uint8)
+
+A consequence of dilation is to remove small 0-valued "holes" inside 1-valued
+objects.
+    
+Erosion and dilation can also be used on grayscale images: they
+correspond to a minimum (resp. maximum) filter defined on a neighbourhood
+given by the structuring element.
+
+Closing and opening
+-------------------
+
+`Closing <http://en.wikipedia.org/wiki/Closing_(morphology)>`_ is the
+composition of an erosion followed by a dilation, both operations using
+the same structuring element. ::
+
+    >>> a = np.zeros((6, 6), dtype=np.uint8)
+    >>> a[2:, 2:] = 1
+    >>> a[4] = 1
+    >>> a[0, 0] = 1
+    >>> a
+    array([[1, 0, 0, 0, 0, 0],
+	   [0, 0, 0, 0, 0, 0],
+	   [0, 0, 1, 1, 1, 1],
+	   [0, 0, 1, 1, 1, 1],
+	   [1, 1, 1, 1, 1, 1],
+	   [0, 0, 1, 1, 1, 1]], dtype=uint8)
+    >>> morphology.binary_opening(a, diamond).astype(np.uint8)
+    array([[0, 0, 0, 0, 0, 0],
+	   [0, 0, 0, 0, 0, 0],
+	   [0, 0, 0, 1, 1, 1],
+	   [0, 0, 1, 1, 1, 1],
+	   [0, 1, 1, 1, 1, 1],
+	   [0, 0, 1, 1, 1, 1]], dtype=uint8)
+
+Closing therefore removes small objects and trims salient boundaries
+(such as corners), while leaving other parts of the boundaries invariant.
+
+The dual operation is called `opening
+<http://en.wikipedia.org/wiki/Opening_(morphology)>`_: opening is the
+composition of a dilation followed by an erosion. Opening a binary image
+removes small holes: ::
+
+    >>> a = np.ones((3, 3), dtype=np.uint8)
+    >>> a[1, 1] = 0
+    >>> a
+    array([[1, 1, 1],
+	   [1, 0, 1],
+	   [1, 1, 1]], dtype=uint8)
+    >>> morphology.binary_closing(a, diamond).astype(np.uint8)
+    array([[1, 1, 1],
+	   [1, 1, 1],
+	   [1, 1, 1]], dtype=uint8)
+
+The size of the objects removed by opening and closing operations depend
+on the size of the structuring element. 
+
+
+Some other applications of mathematical morphology
+--------------------------------------------------
