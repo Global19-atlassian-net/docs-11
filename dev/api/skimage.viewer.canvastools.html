@@ -228,6 +228,27 @@ redefines defaults in <code class="xref py py-class docutils literal"><span clas
 </tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <span class="n">camera</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.viewer.canvastools</span> <span class="kn">import</span> <span class="n">PaintTool</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">camera</span><span class="p">()</span> 
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">p</span> <span class="o">=</span> <span class="n">PaintTool</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">img</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.2</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">overlay</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -245,7 +266,7 @@ redefines defaults in <code class="xref py py-class docutils literal"><span clas
 </table>
 <dl class="method">
 <dt id="skimage.viewer.canvastools.PaintTool.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>manager</em>, <em>overlay_shape</em>, <em>radius=5</em>, <em>alpha=0.3</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>rect_props=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L41"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>manager</em>, <em>overlay_shape</em>, <em>radius=5</em>, <em>alpha=0.3</em>, <em>on_move=None</em>, <em>on_release=None</em>, <em>on_enter=None</em>, <em>rect_props=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -260,22 +281,22 @@ redefines defaults in <code class="xref py py-class docutils literal"><span clas
 
 <dl class="method">
 <dt id="skimage.viewer.canvastools.PaintTool.on_key_press">
-<code class="descname">on_key_press</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L122"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.on_key_press" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_key_press</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.on_key_press" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="skimage.viewer.canvastools.PaintTool.on_mouse_press">
-<code class="descname">on_mouse_press</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L127"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.on_mouse_press" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_mouse_press</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L145"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.on_mouse_press" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="skimage.viewer.canvastools.PaintTool.on_mouse_release">
-<code class="descname">on_mouse_release</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.on_mouse_release" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_mouse_release</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.on_mouse_release" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="skimage.viewer.canvastools.PaintTool.on_move">
-<code class="descname">on_move</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L138"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.on_move" title="Permalink to this definition">¶</a></dt>
+<code class="descname">on_move</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.on_move" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -295,12 +316,12 @@ redefines defaults in <code class="xref py py-class docutils literal"><span clas
 
 <dl class="method">
 <dt id="skimage.viewer.canvastools.PaintTool.update_cursor">
-<code class="descname">update_cursor</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L158"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.update_cursor" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update_cursor</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L176"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.update_cursor" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="skimage.viewer.canvastools.PaintTool.update_overlay">
-<code class="descname">update_overlay</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.update_overlay" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update_overlay</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/canvastools/painttool.py#L170"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.canvastools.PaintTool.update_overlay" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
