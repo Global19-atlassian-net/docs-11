@@ -66,13 +66,13 @@
 <p>This page is for maintainers — those of us who merge our own or other
 peoples&#8217; changes into the upstream repository.</p>
 <p>Being as how you&#8217;re a maintainer, you are completely on top of the basic stuff
-in <a class="reference internal" href="development_workflow.html#development-workflow"><span>Development workflow</span></a>.</p>
-<p>The instructions in <a class="reference internal" href="set_up_fork.html#linking-to-upstream"><span>Linking your repository to the upstream repo</span></a> add a remote that has read-only
+in <a class="reference internal" href="development_workflow.html#development-workflow"><span class="std std-ref">Development workflow</span></a>.</p>
+<p>The instructions in <a class="reference internal" href="set_up_fork.html#linking-to-upstream"><span class="std std-ref">Linking your repository to the upstream repo</span></a> add a remote that has read-only
 access to the upstream repo.  Being a maintainer, you&#8217;ve got read-write access.</p>
 <p>It&#8217;s good to have your upstream remote have a scary name, to remind you that
 it&#8217;s a read-write remote:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>git remote add upstream-rw git@github.com:scikit-image/scikit-image.git
-git fetch upstream-rw
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">upstream</span><span class="o">-</span><span class="n">rw</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">scikit</span><span class="o">-</span><span class="n">image</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span><span class="o">-</span><span class="n">rw</span>
 </pre></div>
 </div>
 <div class="section" id="integrating-changes">
@@ -81,10 +81,10 @@ git fetch upstream-rw
 (<code class="docutils literal"><span class="pre">upstream-rw/master</span></code>).</p>
 <p>The changes are in some branch that you are currently on.  For example, you are
 looking at someone&#8217;s changes like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>git remote add someone git://github.com/someone/scikit-image.git
-git fetch someone
-git branch cool-feature --track someone/cool-feature
-git checkout cool-feature
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">someone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">someone</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">git</span>
+<span class="n">git</span> <span class="n">fetch</span> <span class="n">someone</span>
+<span class="n">git</span> <span class="n">branch</span> <span class="n">cool</span><span class="o">-</span><span class="n">feature</span> <span class="o">--</span><span class="n">track</span> <span class="n">someone</span><span class="o">/</span><span class="n">cool</span><span class="o">-</span><span class="n">feature</span>
+<span class="n">git</span> <span class="n">checkout</span> <span class="n">cool</span><span class="o">-</span><span class="n">feature</span>
 </pre></div>
 </div>
 <p>So now you are on the branch with the changes to be incorporated upstream.  The
@@ -92,10 +92,10 @@ rest of this section assumes you are on this branch.</p>
 <div class="section" id="a-few-commits">
 <h3>A few commits<a class="headerlink" href="#a-few-commits" title="Permalink to this headline">¶</a></h3>
 <p>If there are only a few commits, consider rebasing to upstream:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span># Fetch upstream changes
-git fetch upstream-rw
-# rebase
-git rebase upstream-rw/master
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Fetch upstream changes</span>
+<span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span><span class="o">-</span><span class="n">rw</span>
+<span class="c1"># rebase</span>
+<span class="n">git</span> <span class="n">rebase</span> <span class="n">upstream</span><span class="o">-</span><span class="n">rw</span><span class="o">/</span><span class="n">master</span>
 </pre></div>
 </div>
 <p>Remember that, if you do a rebase, and push that, you&#8217;ll have to close any
@@ -105,8 +105,8 @@ changes have already been merged.</p>
 <div class="section" id="a-long-series-of-commits">
 <h3>A long series of commits<a class="headerlink" href="#a-long-series-of-commits" title="Permalink to this headline">¶</a></h3>
 <p>If there are a longer series of related commits, consider a merge instead:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>git fetch upstream-rw
-git merge --no-ff upstream-rw/master
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span><span class="o">-</span><span class="n">rw</span>
+<span class="n">git</span> <span class="n">merge</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">ff</span> <span class="n">upstream</span><span class="o">-</span><span class="n">rw</span><span class="o">/</span><span class="n">master</span>
 </pre></div>
 </div>
 <p>The merge will be detected by github, and should close any related pull requests
@@ -120,8 +120,8 @@ on top of trunk.</p>
 <h3>Check the history<a class="headerlink" href="#check-the-history" title="Permalink to this headline">¶</a></h3>
 <p>Now, in either case, you should check that the history is sensible and you have
 the right commits:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>git log --oneline --graph
-git log -p upstream-rw/master..
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="o">--</span><span class="n">graph</span>
+<span class="n">git</span> <span class="n">log</span> <span class="o">-</span><span class="n">p</span> <span class="n">upstream</span><span class="o">-</span><span class="n">rw</span><span class="o">/</span><span class="n">master</span><span class="o">..</span>
 </pre></div>
 </div>
 <p>The first line above just shows the history in a compact way, with a text
@@ -133,7 +133,7 @@ The <code class="docutils literal"><span class="pre">-p</span></code> option sho
 </div>
 <div class="section" id="push-to-trunk">
 <h3>Push to trunk<a class="headerlink" href="#push-to-trunk" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre><span></span>git push upstream-rw my-new-feature:master
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">upstream</span><span class="o">-</span><span class="n">rw</span> <span class="n">my</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">feature</span><span class="p">:</span><span class="n">master</span>
 </pre></div>
 </div>
 <p>This pushes the <code class="docutils literal"><span class="pre">my-new-feature</span></code> branch in this repository to the <code class="docutils literal"><span class="pre">master</span></code>

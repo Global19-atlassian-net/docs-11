@@ -69,18 +69,18 @@ then use the Hough transform to explore a parameter space for straight lines
 that may run through the image.</p>
 <div class="section" id="algorithm-overview">
 <h2>Algorithm overview<a class="headerlink" href="#algorithm-overview" title="Permalink to this headline">¶</a></h2>
-<p>Usually, lines are parameterised as <img class="math" src="../../_images/math/73b227b1abbfbeb3b8556b0d678ca91adcc89218.png" alt="y = mx + c"/>, with a gradient
-<img class="math" src="../../_images/math/c4bb40dd65eae6c11b325989b14e0b8d35e4e3ef.png" alt="m"/> and y-intercept <cite>c</cite>. However, this would mean that <img class="math" src="../../_images/math/c4bb40dd65eae6c11b325989b14e0b8d35e4e3ef.png" alt="m"/> goes to
+<p>Usually, lines are parameterised as <img class="math" src="../../_images/math/51e594a44abfc3adf1f05865ebcf426363799513.png" alt="y = mx + c"/>, with a gradient
+<img class="math" src="../../_images/math/edba97b4c0d864d26e92ea7ea73767fa38eef3f7.png" alt="m"/> and y-intercept <cite>c</cite>. However, this would mean that <img class="math" src="../../_images/math/edba97b4c0d864d26e92ea7ea73767fa38eef3f7.png" alt="m"/> goes to
 infinity for vertical lines. Instead, we therefore construct a segment
 perpendicular to the line, leading to the origin. The line is represented by
-the length of that segment, <img class="math" src="../../_images/math/2ede365ad144ab396916ec60458da03860803078.png" alt="r"/>, and the angle it makes with the x-axis,
+the length of that segment, <img class="math" src="../../_images/math/eaa6ad49a7f78fe5a13b486690163bf2dc7e3e60.png" alt="r"/>, and the angle it makes with the x-axis,
 :math:` heta`.</p>
 <p>The Hough transform constructs a histogram array representing the parameter
-space (i.e., an <img class="math" src="../../_images/math/99e41c8859d58f499ceaa05ae5e8a914b3b2e84a.png" alt="M        imes N"/> matrix, for <img class="math" src="../../_images/math/2de38926392ba23abeac75effc66c37a5f5be5fd.png" alt="M"/> different values of
-the radius and <img class="math" src="../../_images/math/75e27f04188974063be3230dca208cd495b77ce1.png" alt="N"/> different values of :math:`    heta`).  For each
-parameter combination, <img class="math" src="../../_images/math/2ede365ad144ab396916ec60458da03860803078.png" alt="r"/> and :math:`    heta`, we then find the number of
+space (i.e., an <img class="math" src="../../_images/math/c361abe5641c5c439d345591ced0a5fbfdd0bc89.png" alt="M        imes N"/> matrix, for <img class="math" src="../../_images/math/450a8e2c2320d77181e0d4fc68c947e9a5de8ecb.png" alt="M"/> different values of
+the radius and <img class="math" src="../../_images/math/f4170ed8938b79490d8923857962695514a8e4cb.png" alt="N"/> different values of :math:`    heta`).  For each
+parameter combination, <img class="math" src="../../_images/math/eaa6ad49a7f78fe5a13b486690163bf2dc7e3e60.png" alt="r"/> and :math:`    heta`, we then find the number of
 non-zero pixels in the input image that would fall close to the corresponding
-line, and increment the array at position <img class="math" src="../../_images/math/d2ec13e6f86e91f932687d6d67be7a82ed9828aa.png" alt="(r,    heta)"/> appropriately.</p>
+line, and increment the array at position <img class="math" src="../../_images/math/fc1966e1f5b2da2b1205372fd341bbc739bebaf9.png" alt="(r,    heta)"/> appropriately.</p>
 <p>We can think of each non-zero pixel &#8220;voting&#8221; for potential line candidates. The
 local maxima in the resulting histogram indicates the parameters of the most
 probably lines. In our example, the maxima occur at 45 and 135 degrees,
@@ -115,15 +115,15 @@ pp. 11-15 (January, 1972)</td></tr>
 </table>
 <img alt="../../_images/plot_line_hough_transform_1.png" class="align-center" src="../../_images/plot_line_hough_transform_1.png" />
 <img alt="../../_images/plot_line_hough_transform_2.png" class="align-center" src="../../_images/plot_line_hough_transform_2.png" />
-<div class="highlight-python"><div class="highlight"><pre><span></span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
-<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="p">(</span><span class="n">hough_line</span><span class="p">,</span> <span class="n">hough_line_peaks</span><span class="p">,</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="k">import</span> <span class="p">(</span><span class="n">hough_line</span><span class="p">,</span> <span class="n">hough_line_peaks</span><span class="p">,</span>
                                <span class="n">probabilistic_hough_line</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">canny</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <span class="n">canny</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># Constructing test image.</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
@@ -166,8 +166,8 @@ pp. 11-15 (January, 1972)</td></tr>
                                  <span class="n">line_gap</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="c1"># Generating figure 2.</span>
-<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-                                    <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax0</span><span class="p">,</span> <span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                                    <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
 <span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>

@@ -235,7 +235,7 @@ block size.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <span class="n">block_reduce</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="k">import</span> <span class="n">block_reduce</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="mi">3</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> 
 <span class="go">array([[[ 0,  1,  2,  3],</span>
@@ -613,7 +613,7 @@ consisting of n <code class="docutils literal"><span class="pre">(row,</span> <s
 <p class="rubric">Notes</p>
 <p>The marching squares algorithm is a special case of the marching cubes
 algorithm <a class="reference internal" href="#r263" id="id11">[R263]</a>.  A simple explanation is available here:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>http://www.essi.fr/~lingrand/MarchingCubes/algo.html
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">essi</span><span class="o">.</span><span class="n">fr</span><span class="o">/~</span><span class="n">lingrand</span><span class="o">/</span><span class="n">MarchingCubes</span><span class="o">/</span><span class="n">algo</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
 <p>There is a single ambiguous case in the marching squares algorithm: when
@@ -666,7 +666,7 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">array([[ 1.,  0.,  0.],</span>
@@ -729,13 +729,13 @@ duplicated.</p>
 In 2D, they can be neighbors either in a 1- or 2-connected sense.
 The value refers to the maximum number of orthogonal hops to consider a
 pixel/voxel a neighbor:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>1-connectivity      2-connectivity     diagonal connection close-up
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">-</span><span class="n">connectivity</span>      <span class="mi">2</span><span class="o">-</span><span class="n">connectivity</span>     <span class="n">diagonal</span> <span class="n">connection</span> <span class="n">close</span><span class="o">-</span><span class="n">up</span>
 
-     [ ]           [ ]  [ ]  [ ]         [ ]
-      |               \  |  /             |  &lt;- hop 2
-[ ]--[x]--[ ]      [ ]--[x]--[ ]    [x]--[ ]
-      |               /  |  \         hop 1
-     [ ]           [ ]  [ ]  [ ]
+     <span class="p">[</span> <span class="p">]</span>           <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>         <span class="p">[</span> <span class="p">]</span>
+      <span class="o">|</span>               \  <span class="o">|</span>  <span class="o">/</span>             <span class="o">|</span>  <span class="o">&lt;-</span> <span class="n">hop</span> <span class="mi">2</span>
+<span class="p">[</span> <span class="p">]</span><span class="o">--</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">--</span><span class="p">[</span> <span class="p">]</span>      <span class="p">[</span> <span class="p">]</span><span class="o">--</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">--</span><span class="p">[</span> <span class="p">]</span>    <span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">--</span><span class="p">[</span> <span class="p">]</span>
+      <span class="o">|</span>               <span class="o">/</span>  <span class="o">|</span>  \         <span class="n">hop</span> <span class="mi">1</span>
+     <span class="p">[</span> <span class="p">]</span>           <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -787,37 +787,37 @@ returned if return_num is <cite>True</cite>.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="go">[[1 0 0]</span>
 <span class="go"> [0 1 0]</span>
 <span class="go"> [0 0 1]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <span class="n">label</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="k">import</span> <span class="n">label</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="go">[[1 0 0]</span>
 <span class="go"> [0 2 0]</span>
 <span class="go"> [0 0 3]]</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 <span class="go">[[1 0 0]</span>
 <span class="go"> [0 1 0]</span>
 <span class="go"> [0 0 1]]</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">background</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">background</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
 <span class="go">[[1 2 2]</span>
 <span class="go"> [2 1 2]</span>
 <span class="go"> [2 2 1]]</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
 <span class="gp">... </span>              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
 <span class="gp">... </span>              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 </pre></div>
 </div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="go">[[1 0 0]</span>
 <span class="go"> [1 1 2]</span>
 <span class="go"> [0 0 0]]</span>
@@ -881,12 +881,12 @@ exactly three indices.</p>
 <p class="rubric">Notes</p>
 <p>The marching cubes algorithm is implemented as described in <a class="reference internal" href="#r264" id="id13">[R264]</a>.
 A simple explanation is available here:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>http://www.essi.fr/~lingrand/MarchingCubes/algo.html
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">essi</span><span class="o">.</span><span class="n">fr</span><span class="o">/~</span><span class="n">lingrand</span><span class="o">/</span><span class="n">MarchingCubes</span><span class="o">/</span><span class="n">algo</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
 <p>There are several known ambiguous cases in the marching cubes algorithm.
 Using point labeling as in <a class="reference internal" href="#r264" id="id14">[R264]</a>, Figure 4, as shown:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>    v8 ------ v7
+<div class="highlight-default"><div class="highlight"><pre><span></span>    v8 ------ v7
    / |       / |        y
   /  |      /  |        ^  z
 v4 ------ v3   |        | /
@@ -920,7 +920,7 @@ of how the input array is traversed, but can be relied upon.</p>
 outputs directly into <cite>skimage.measure.mesh_surface_area</cite>.</p>
 <p>Regarding visualization of algorithm output, the <code class="docutils literal"><span class="pre">mayavi</span></code> package
 is recommended. To contour a volume named <cite>myvolume</cite> about the level 0.0:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mayavi</span> <span class="kn">import</span> <span class="n">mlab</span> 
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mayavi</span> <span class="k">import</span> <span class="n">mlab</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">verts</span><span class="p">,</span> <span class="n">faces</span> <span class="o">=</span> <span class="n">marching_cubes</span><span class="p">(</span><span class="n">myvolume</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">))</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mlab</span><span class="o">.</span><span class="n">triangular_mesh</span><span class="p">([</span><span class="n">vert</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">vert</span> <span class="ow">in</span> <span class="n">verts</span><span class="p">],</span>
 <span class="gp">... </span>                     <span class="p">[</span><span class="n">vert</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">vert</span> <span class="ow">in</span> <span class="n">verts</span><span class="p">],</span>
@@ -1051,7 +1051,7 @@ Berlin, 1993.</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">moments</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cr</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
@@ -1133,7 +1133,7 @@ Berlin, 1993.</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">moments</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cr</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
@@ -1273,7 +1273,7 @@ Berlin, 1993.</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">moments</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cr</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
@@ -1293,7 +1293,7 @@ Berlin, 1993.</td></tr>
 <h2>perimeter<a class="headerlink" href="#perimeter" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.perimeter">
-<code class="descclassname">skimage.measure.</code><code class="descname">perimeter</code><span class="sig-paren">(</span><em>image</em>, <em>neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L541"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">perimeter</code><span class="sig-paren">(</span><em>image</em>, <em>neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L547"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate total perimeter of all objects in binary image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1419,7 +1419,7 @@ is the ceil of the computed length of the scan line.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span>
 <span class="go">array([[0, 0, 0, 0, 0, 0],</span>
@@ -1565,7 +1565,7 @@ total number of samples.</p>
 </table>
 <p class="rubric">Examples</p>
 <p>Generate ellipse data without tilt and add noise:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span> <span class="o">=</span> <span class="mi">20</span>
@@ -1578,14 +1578,14 @@ total number of samples.</p>
 </pre></div>
 </div>
 <p>Add some faulty data:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">110</span><span class="p">,</span> <span class="mi">120</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">130</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">140</span><span class="p">,</span> <span class="mi">130</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Estimate ellipse model using all available data:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">EllipseModel</span><span class="p">()</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">EllipseModel</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">params</span> 
@@ -1594,7 +1594,7 @@ total number of samples.</p>
 </pre></div>
 </div>
 <p>Estimate ellipse model using RANSAC:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ransac_model</span><span class="p">,</span> <span class="n">inliers</span> <span class="o">=</span> <span class="n">ransac</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">EllipseModel</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ransac_model</span><span class="p">,</span> <span class="n">inliers</span> <span class="o">=</span> <span class="n">ransac</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">EllipseModel</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ransac_model</span><span class="o">.</span><span class="n">params</span>
 <span class="go">array([ 20.12762373,  29.73563063,   4.81499637,  10.4743584 ,   0.05217117])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">inliers</span>
@@ -1607,7 +1607,7 @@ total number of samples.</p>
 </pre></div>
 </div>
 <p>Robustly estimate geometric transformation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">SimilarityTransform</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="k">import</span> <span class="n">SimilarityTransform</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">src</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model0</span> <span class="o">=</span> <span class="n">SimilarityTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
@@ -1633,7 +1633,7 @@ total number of samples.</p>
 <h2>regionprops<a class="headerlink" href="#regionprops" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.regionprops">
-<code class="descclassname">skimage.measure.</code><code class="descname">regionprops</code><span class="sig-paren">(</span><em>label_image</em>, <em>intensity_image=None</em>, <em>cache=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L342"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">regionprops</code><span class="sig-paren">(</span><em>label_image</em>, <em>intensity_image=None</em>, <em>cache=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L348"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
 <dd><p>Measure properties of labeled image regions.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1668,133 +1668,133 @@ attributes listed below.</p>
 <p class="rubric">Notes</p>
 <p>The following properties can be accessed as attributes or keys:</p>
 <dl class="docutils">
-<dt><strong>area</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>Number of pixels of region.</dd>
-<dt><strong>bbox</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
-<dd>Bounding box <code class="docutils literal"><span class="pre">(min_row,</span> <span class="pre">min_col,</span> <span class="pre">max_row,</span> <span class="pre">max_col)</span></code></dd>
-<dt><strong>centroid</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
-<dd>Centroid coordinate tuple <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</dd>
-<dt><strong>convex_area</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>Number of pixels of convex hull image.</dd>
-<dt><strong>convex_image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(H, J) ndarray</span></dt>
-<dd>Binary convex hull image which has the same size as bounding box.</dd>
-<dt><strong>coords</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(N, 2) ndarray</span></dt>
-<dd>Coordinate list <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code> of the region.</dd>
-<dt><strong>eccentricity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Eccentricity of the ellipse that has the same second-moments as the
+<dt><strong>area</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd>Number of pixels of region.</dd>
+<dt><strong>bbox</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span><dd>Bounding box <code class="docutils literal"><span class="pre">(min_row,</span> <span class="pre">min_col,</span> <span class="pre">max_row,</span> <span class="pre">max_col)</span></code></dd>
+<dt><strong>centroid</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">array</span><dd>Centroid coordinate tuple <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</dd>
+<dt><strong>convex_area</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd>Number of pixels of convex hull image.</dd>
+<dt><strong>convex_image</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(H, J) ndarray</span><dd>Binary convex hull image which has the same size as bounding box.</dd>
+<dt><strong>coords</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(N, 2) ndarray</span><dd>Coordinate list <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code> of the region.</dd>
+<dt><strong>eccentricity</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>Eccentricity of the ellipse that has the same second-moments as the
 region. The eccentricity is the ratio of the focal distance
 (distance between focal points) over the major axis length.
 The value is in the interval [0, 1).
 When it is 0, the ellipse becomes a circle.</dd>
-<dt><strong>equivalent_diameter</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>The diameter of a circle with the same area as the region.</dd>
-<dt><strong>euler_number</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>Euler characteristic of region. Computed as number of objects (= 1)
+<dt><strong>equivalent_diameter</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>The diameter of a circle with the same area as the region.</dd>
+<dt><strong>euler_number</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd>Euler characteristic of region. Computed as number of objects (= 1)
 subtracted by number of holes (8-connectivity).</dd>
-<dt><strong>extent</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Ratio of pixels in the region to pixels in the total bounding box.
+<dt><strong>extent</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>Ratio of pixels in the region to pixels in the total bounding box.
 Computed as <code class="docutils literal"><span class="pre">area</span> <span class="pre">/</span> <span class="pre">(rows</span> <span class="pre">*</span> <span class="pre">cols)</span></code></dd>
-<dt><strong>filled_area</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>Number of pixels of filled region.</dd>
-<dt><strong>filled_image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(H, J) ndarray</span></dt>
-<dd>Binary region image with filled holes which has the same size as
+<dt><strong>filled_area</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd>Number of pixels of filled region.</dd>
+<dt><strong>filled_image</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(H, J) ndarray</span><dd>Binary region image with filled holes which has the same size as
 bounding box.</dd>
-<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(H, J) ndarray</span></dt>
-<dd>Sliced binary region image which has the same size as bounding box.</dd>
-<dt><strong>inertia_tensor</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(2, 2) ndarray</span></dt>
-<dd>Inertia tensor of the region for the rotation around its mass.</dd>
-<dt><strong>inertia_tensor_eigvals</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
-<dd>The two eigen values of the inertia tensor in decreasing order.</dd>
-<dt><strong>intensity_image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
-<dd>Image inside region bounding box.</dd>
-<dt><strong>label</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>The label in the labeled input image.</dd>
-<dt><strong>local_centroid</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
-<dd>Centroid coordinate tuple <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code>, relative to region bounding
+<dt><strong>image</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(H, J) ndarray</span><dd>Sliced binary region image which has the same size as bounding box.</dd>
+<dt><strong>inertia_tensor</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(2, 2) ndarray</span><dd>Inertia tensor of the region for the rotation around its mass.</dd>
+<dt><strong>inertia_tensor_eigvals</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span><dd>The two eigen values of the inertia tensor in decreasing order.</dd>
+<dt><strong>intensity_image</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span><dd>Image inside region bounding box.</dd>
+<dt><strong>label</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd>The label in the labeled input image.</dd>
+<dt><strong>local_centroid</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">array</span><dd>Centroid coordinate tuple <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code>, relative to region bounding
 box.</dd>
-<dt><strong>major_axis_length</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>The length of the major axis of the ellipse that has the same
+<dt><strong>major_axis_length</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>The length of the major axis of the ellipse that has the same
 normalized second central moments as the region.</dd>
-<dt><strong>max_intensity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Value with the greatest intensity in the region.</dd>
-<dt><strong>mean_intensity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Value with the mean intensity in the region.</dd>
-<dt><strong>min_intensity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Value with the least intensity in the region.</dd>
-<dt><strong>minor_axis_length</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>The length of the minor axis of the ellipse that has the same
+<dt><strong>max_intensity</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>Value with the greatest intensity in the region.</dd>
+<dt><strong>mean_intensity</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>Value with the mean intensity in the region.</dd>
+<dt><strong>min_intensity</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>Value with the least intensity in the region.</dd>
+<dt><strong>minor_axis_length</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>The length of the minor axis of the ellipse that has the same
 normalized second central moments as the region.</dd>
-<dt><strong>moments</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(3, 3) ndarray</span></dt>
-<dd><p class="first">Spatial moments up to 3rd order:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>m_ji = sum{ array(x, y) * x^j * y^i }
+<dt><strong>moments</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(3, 3) ndarray</span><dd><p class="first">Spatial moments up to 3rd order:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">m_ji</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="n">j</span> <span class="o">*</span> <span class="n">y</span><span class="o">^</span><span class="n">i</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p class="last">where the sum is over the <cite>x</cite>, <cite>y</cite> coordinates of the region.</p>
 </dd>
-<dt><strong>moments_central</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(3, 3) ndarray</span></dt>
-<dd><p class="first">Central moments (translation invariant) up to 3rd order:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>mu_ji = sum{ array(x, y) * (x - x_c)^j * (y - y_c)^i }
+<dt><strong>moments_central</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(3, 3) ndarray</span><dd><p class="first">Central moments (translation invariant) up to 3rd order:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mu_ji</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_c</span><span class="p">)</span><span class="o">^</span><span class="n">j</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_c</span><span class="p">)</span><span class="o">^</span><span class="n">i</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p class="last">where the sum is over the <cite>x</cite>, <cite>y</cite> coordinates of the region,
 and <cite>x_c</cite> and <cite>y_c</cite> are the coordinates of the region&#8217;s centroid.</p>
 </dd>
-<dt><strong>moments_hu</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
-<dd>Hu moments (translation, scale and rotation invariant).</dd>
-<dt><strong>moments_normalized</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(3, 3) ndarray</span></dt>
-<dd><p class="first">Normalized moments (translation and scale invariant) up to 3rd order:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">nu_ji</span> <span class="o">=</span> <span class="n">mu_ji</span> <span class="o">/</span> <span class="n">m_00</span><span class="o">^</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+<dt><strong>moments_hu</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span><dd>Hu moments (translation, scale and rotation invariant).</dd>
+<dt><strong>moments_normalized</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(3, 3) ndarray</span><dd><p class="first">Normalized moments (translation and scale invariant) up to 3rd order:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">nu_ji</span> <span class="o">=</span> <span class="n">mu_ji</span> <span class="o">/</span> <span class="n">m_00</span><span class="o">^</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 <p class="last">where <cite>m_00</cite> is the zeroth spatial moment.</p>
 </dd>
-<dt><strong>orientation</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Angle between the X-axis and the major axis of the ellipse that has
+<dt><strong>orientation</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>Angle between the X-axis and the major axis of the ellipse that has
 the same second-moments as the region. Ranging from <cite>-pi/2</cite> to
 <cite>pi/2</cite> in counter-clockwise direction.</dd>
-<dt><strong>perimeter</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Perimeter of object which approximates the contour as a line
+<dt><strong>perimeter</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>Perimeter of object which approximates the contour as a line
 through the centers of border pixels using a 4-connectivity.</dd>
-<dt><strong>solidity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Ratio of pixels in the region to pixels of the convex hull image.</dd>
-<dt><strong>weighted_centroid</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
-<dd>Centroid coordinate tuple <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code> weighted with intensity
+<dt><strong>solidity</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float</span><dd>Ratio of pixels in the region to pixels of the convex hull image.</dd>
+<dt><strong>weighted_centroid</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">array</span><dd>Centroid coordinate tuple <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code> weighted with intensity
 image.</dd>
-<dt><strong>weighted_local_centroid</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
-<dd>Centroid coordinate tuple <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code>, relative to region bounding
+<dt><strong>weighted_local_centroid</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">array</span><dd>Centroid coordinate tuple <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code>, relative to region bounding
 box, weighted with intensity image.</dd>
-<dt><strong>weighted_moments</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(3, 3) ndarray</span></dt>
-<dd><p class="first">Spatial moments of intensity image up to 3rd order:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>wm_ji = sum{ array(x, y) * x^j * y^i }
+<dt><strong>weighted_moments</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(3, 3) ndarray</span><dd><p class="first">Spatial moments of intensity image up to 3rd order:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wm_ji</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="n">j</span> <span class="o">*</span> <span class="n">y</span><span class="o">^</span><span class="n">i</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p class="last">where the sum is over the <cite>x</cite>, <cite>y</cite> coordinates of the region.</p>
 </dd>
-<dt><strong>weighted_moments_central</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(3, 3) ndarray</span></dt>
-<dd><p class="first">Central moments (translation invariant) of intensity image up to
+<dt><strong>weighted_moments_central</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(3, 3) ndarray</span><dd><p class="first">Central moments (translation invariant) of intensity image up to
 3rd order:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>wmu_ji = sum{ array(x, y) * (x - x_c)^j * (y - y_c)^i }
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wmu_ji</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_c</span><span class="p">)</span><span class="o">^</span><span class="n">j</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_c</span><span class="p">)</span><span class="o">^</span><span class="n">i</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p class="last">where the sum is over the <cite>x</cite>, <cite>y</cite> coordinates of the region,
 and <cite>x_c</cite> and <cite>y_c</cite> are the coordinates of the region&#8217;s weighted
 centroid.</p>
 </dd>
-<dt><strong>weighted_moments_hu</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
-<dd>Hu moments (translation, scale and rotation invariant) of intensity
+<dt><strong>weighted_moments_hu</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span><dd>Hu moments (translation, scale and rotation invariant) of intensity
 image.</dd>
-<dt><strong>weighted_moments_normalized</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(3, 3) ndarray</span></dt>
-<dd><p class="first">Normalized moments (translation and scale invariant) of intensity
+<dt><strong>weighted_moments_normalized</strong></dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">(3, 3) ndarray</span><dd><p class="first">Normalized moments (translation and scale invariant) of intensity
 image up to 3rd order:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">wnu_ji</span> <span class="o">=</span> <span class="n">wmu_ji</span> <span class="o">/</span> <span class="n">wm_00</span><span class="o">^</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wnu_ji</span> <span class="o">=</span> <span class="n">wmu_ji</span> <span class="o">/</span> <span class="n">wm_00</span><span class="o">^</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 <p class="last">where <code class="docutils literal"><span class="pre">wm_00</span></code> is the zeroth spatial moment (intensity-weighted area).</p>
 </dd>
 </dl>
 <p>Each region also supports iteration, so that you can do:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">region</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">region</span><span class="p">[</span><span class="n">prop</span><span class="p">])</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="n">region</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">prop</span><span class="p">,</span> <span class="n">region</span><span class="p">[</span><span class="n">prop</span><span class="p">])</span>
 </pre></div>
 </div>
 <p class="rubric">References</p>
@@ -1827,8 +1827,8 @@ Berlin, 1993.</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">util</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <span class="n">label</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">util</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="k">import</span> <span class="n">label</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">img_as_ubyte</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">coins</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">110</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">label_img</span> <span class="o">=</span> <span class="n">label</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="n">img</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">props</span> <span class="o">=</span> <span class="n">regionprops</span><span class="p">(</span><span class="n">label_img</span><span class="p">)</span>
@@ -1905,12 +1905,12 @@ False.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">skimage.measure.fit.BaseModel</span></code></p>
 <p>Total least squares estimator for 2D circles.</p>
 <p>The functional model of the circle is:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xc</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">yc</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">xc</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">yc</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 </pre></div>
 </div>
 <p>This estimator minimizes the squared distances from all points to the
 circle:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>min{ sum((r - sqrt((x_i - xc)**2 + (y_i - yc)**2))**2) }
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">min</span><span class="p">{</span> <span class="nb">sum</span><span class="p">((</span><span class="n">r</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">x_i</span> <span class="o">-</span> <span class="n">xc</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y_i</span> <span class="o">-</span> <span class="n">yc</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p>A minimum number of 3 points is required to solve for the parameters.</p>
@@ -2020,7 +2020,7 @@ x-axis to positive y-axis in a right-handed system.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">skimage.measure.fit.BaseModel</span></code></p>
 <p>Total least squares estimator for 2D ellipses.</p>
 <p>The functional model of the ellipse is:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">xt</span> <span class="o">=</span> <span class="n">xc</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">xt</span> <span class="o">=</span> <span class="n">xc</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="n">yt</span> <span class="o">=</span> <span class="n">yc</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">xt</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">yt</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
@@ -2029,13 +2029,13 @@ x-axis to positive y-axis in a right-handed system.</p>
 d is the shortest distance from the point to the ellipse.</p>
 <p>This estimator minimizes the squared distances from all points to the
 ellipse:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>min{ sum(d_i**2) } = min{ sum((x_i - xt)**2 + (y_i - yt)**2) }
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">min</span><span class="p">{</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d_i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">min</span><span class="p">{</span> <span class="nb">sum</span><span class="p">((</span><span class="n">x_i</span> <span class="o">-</span> <span class="n">xt</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y_i</span> <span class="o">-</span> <span class="n">yt</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p>Thus you have <code class="docutils literal"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">N</span></code> equations (x_i, y_i) for <code class="docutils literal"><span class="pre">N</span> <span class="pre">+</span> <span class="pre">5</span></code> unknowns (t_i,
 xc, yc, a, b, theta), which gives you an effective redundancy of <code class="docutils literal"><span class="pre">N</span> <span class="pre">-</span> <span class="pre">5</span></code>.</p>
 <p>The <code class="docutils literal"><span class="pre">params</span></code> attribute contains the parameters in the following order:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">theta</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">theta</span>
 </pre></div>
 </div>
 <p>A minimum number of 5 points is required to solve for the parameters.</p>
@@ -2145,14 +2145,14 @@ x-axis to positive y-axis in a right-handed system.</p>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">skimage.measure.fit.BaseModel</span></code></p>
 <p>Total least squares estimator for 2D lines.</p>
 <p>Lines are parameterized using polar coordinates as functional model:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dist</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dist</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>This parameterization is able to model vertical lines in contrast to the
 standard line model <code class="docutils literal"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">a*x</span> <span class="pre">+</span> <span class="pre">b</span></code>.</p>
 <p>This estimator minimizes the squared distances from all points to the
 line:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>min{ sum((dist - x_i * cos(theta) + y_i * sin(theta))**2) }
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">min</span><span class="p">{</span> <span class="nb">sum</span><span class="p">((</span><span class="n">dist</span> <span class="o">-</span> <span class="n">x_i</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">y_i</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">}</span>
 </pre></div>
 </div>
 <p>A minimum number of 2 points is required to solve for the parameters.</p>
@@ -2291,7 +2291,7 @@ line:</p>
 <p>Total least squares estimator for N-dimensional lines.</p>
 <p>Lines are defined by a point (origin) and a unit vector (direction)
 according to the following vector equation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>X = origin + lambda * direction
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">origin</span> <span class="o">+</span> <span class="k">lambda</span> <span class="o">*</span> <span class="n">direction</span>
 </pre></div>
 </div>
 <p class="rubric">Attributes</p>
@@ -2374,7 +2374,7 @@ orthogonal to a given axis.</p>
 <code class="descname">predict_x</code><span class="sig-paren">(</span><em>y</em>, <em>params=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.predict_x" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict x-coordinates for 2D lines using the estimated model.</p>
 <p>Alias for:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">predict</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">predict</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2406,7 +2406,7 @@ orthogonal to a given axis.</p>
 <code class="descname">predict_y</code><span class="sig-paren">(</span><em>x</em>, <em>params=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L299"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.predict_y" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict y-coordinates  for 2D lines using the estimated model.</p>
 <p>Alias for:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 <table class="docutils field-list" frame="void" rules="none">

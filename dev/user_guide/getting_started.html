@@ -64,19 +64,19 @@
   <div class="section" id="getting-started">
 <h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p><code class="docutils literal"><span class="pre">scikit-image</span></code> is an image processing Python package that works with
-<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.9)"><code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code></a> arrays. The package is imported as <code class="docutils literal"><span class="pre">skimage</span></code>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage</span>
+<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/index.html#module-numpy" title="(in NumPy v1.10)"><code class="xref py py-mod docutils literal"><span class="pre">numpy</span></code></a> arrays. The package is imported as <code class="docutils literal"><span class="pre">skimage</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage</span>
 </pre></div>
 </div>
 <p>Most functions of <code class="docutils literal"><span class="pre">skimage</span></code> are found within submodules:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 </pre></div>
 </div>
 <p>A list of submodules and functions is found on the <a class="reference external" href="http://scikit-image.org/docs/stable/api/api.html">API reference</a> webpage.</p>
 <p>Within scikit-image, images are represented as NumPy arrays, for
 example 2-D arrays for grayscale 2-D images</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span>
 <span class="go">&lt;type &#39;numpy.ndarray&#39;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># An image with 512 rows and 512 columns</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">camera</span><span class="o">.</span><span class="n">shape</span>
@@ -86,8 +86,8 @@ example 2-D arrays for grayscale 2-D images</p>
 <p>The <a class="reference internal" href="../api/skimage.data.html#module-skimage.data" title="skimage.data"><code class="xref py py-mod docutils literal"><span class="pre">skimage.data</span></code></a> submodule provides a set of functions returning
 example images, that can be used to get started quickly on using
 scikit-image&#8217;s functions:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coins</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">coins</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">filters</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coins</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">coins</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">filters</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">threshold_value</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">threshold_otsu</span><span class="p">(</span><span class="n">coins</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">threshold_value</span>
 <span class="go">107</span>
@@ -95,9 +95,9 @@ scikit-image&#8217;s functions:</p>
 </div>
 <p>Of course, it is also possible to load your own images as NumPy arrays
 from image files, using <a class="reference internal" href="../api/skimage.io.html#skimage.io.imread" title="skimage.io.imread"><code class="xref py py-func docutils literal"><span class="pre">skimage.io.imread()</span></code></a>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">skimage</span><span class="o">.</span><span class="n">data_dir</span><span class="p">,</span> <span class="s1">&#39;moon.png&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">io</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">moon</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
 </pre></div>
 </div>

@@ -131,7 +131,7 @@ function.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">imsave</span><span class="p">(</span><span class="s1">&#39;temp.tif&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">301</span><span class="p">,</span> <span class="mi">219</span><span class="p">))</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">imsave</span><span class="p">(</span><span class="s1">&#39;temp.tif&#39;</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">301</span><span class="p">,</span> <span class="mi">219</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span> <span class="o">=</span> <span class="n">imread</span><span class="p">(</span><span class="s1">&#39;temp.tif&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">im</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(4, 301, 219)</span>
@@ -176,7 +176,7 @@ and &#8216;extratags&#8217; are passed to the TiffWriter.save function.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">301</span><span class="p">,</span> <span class="mi">219</span><span class="p">)</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">301</span><span class="p">,</span> <span class="mi">219</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;axes&#39;</span><span class="p">:</span> <span class="s1">&#39;TZCYX&#39;</span><span class="p">}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">imsave</span><span class="p">(</span><span class="s1">&#39;temp.tif&#39;</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">compress</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;axes&#39;</span><span class="p">:</span> <span class="s1">&#39;TZCYX&#39;</span><span class="p">})</span>
 </pre></div>
@@ -241,7 +241,7 @@ Requires pyplot already imported <cite>from matplotlib import pyplot</cite>.</p>
 <p>TiffFile instances must be closed using the &#8216;close&#8217; method, which is
 automatically called when using the &#8216;with&#8217; statement.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">TiffFile</span><span class="p">(</span><span class="s1">&#39;temp.tif&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tif</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">TiffFile</span><span class="p">(</span><span class="s1">&#39;temp.tif&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">tif</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="n">data</span> <span class="o">=</span> <span class="n">tif</span><span class="o">.</span><span class="n">asarray</span><span class="p">()</span>
 <span class="gp">... </span>    <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(5, 301, 219)</span>
@@ -481,7 +481,7 @@ file is created.</p>
 <p>Sequence of image files.</p>
 <p>The data shape and dtype of all files must match.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tifs</span> <span class="o">=</span> <span class="n">TiffSequence</span><span class="p">(</span><span class="s2">&quot;test.oif.files/*.tif&quot;</span><span class="p">)</span>  
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tifs</span> <span class="o">=</span> <span class="n">TiffSequence</span><span class="p">(</span><span class="s2">&quot;test.oif.files/*.tif&quot;</span><span class="p">)</span>  
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tifs</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">tifs</span><span class="o">.</span><span class="n">axes</span>  
 <span class="go">((2, 100), &#39;CT&#39;)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">tifs</span><span class="o">.</span><span class="n">asarray</span><span class="p">()</span>  
@@ -569,8 +569,8 @@ The args and kwargs parameters are passed to the imread function.</p>
 <p>TiffWriter instances must be closed using the &#8216;close&#8217; method, which is
 automatically called when using the &#8216;with&#8217; statement.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">301</span><span class="p">,</span> <span class="mi">219</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">TiffWriter</span><span class="p">(</span><span class="s1">&#39;temp.tif&#39;</span><span class="p">,</span> <span class="n">bigtiff</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">tif</span><span class="p">:</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">301</span><span class="p">,</span> <span class="mi">219</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">TiffWriter</span><span class="p">(</span><span class="s1">&#39;temp.tif&#39;</span><span class="p">,</span> <span class="n">bigtiff</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">tif</span><span class="p">:</span>
 <span class="gp">... </span>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
 <span class="gp">... </span>        <span class="n">tif</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">compress</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 </pre></div>
@@ -621,12 +621,12 @@ The ImageJ file format is undocumented.</p>
 
 <dl class="attribute">
 <dt id="skimage.external.tifffile.TiffWriter.TAGS">
-<code class="descname">TAGS</code><em class="property"> = {'tile_length': 323, 'software': 305, 'strip_offsets': 273, 'datetime': 306, 'predictor': 317, 'x_resolution': 282, 'document_name': 269, 'image_depth': 32997, 'page_name': 285, 'image_width': 256, 'resolution_unit': 296, 'compression': 259, 'tile_byte_counts': 325, 'rows_per_strip': 278, 'image_description': 270, 'planar_configuration': 284, 'tile_width': 322, 'photometric': 262, 'smin_sample_value': 340, 'samples_per_pixel': 277, 'tile_offsets': 324, 'extra_samples': 338, 'tile_depth': 32998, 'image_length': 257, 'sample_format': 339, 'smax_sample_value': 341, 'color_map': 320, 'subfile_type': 255, 'orientation': 274, 'bits_per_sample': 258, 'new_subfile_type': 254, 'y_resolution': 283, 'strip_byte_counts': 279}</em><a class="headerlink" href="#skimage.external.tifffile.TiffWriter.TAGS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TAGS</code><em class="property"> = {'rows_per_strip': 278, 'image_width': 256, 'resolution_unit': 296, 'bits_per_sample': 258, 'samples_per_pixel': 277, 'predictor': 317, 'tile_byte_counts': 325, 'sample_format': 339, 'tile_width': 322, 'planar_configuration': 284, 'image_description': 270, 'software': 305, 'new_subfile_type': 254, 'subfile_type': 255, 'tile_length': 323, 'document_name': 269, 'datetime': 306, 'smax_sample_value': 341, 'tile_depth': 32998, 'strip_byte_counts': 279, 'tile_offsets': 324, 'strip_offsets': 273, 'color_map': 320, 'image_length': 257, 'x_resolution': 282, 'photometric': 262, 'compression': 259, 'y_resolution': 283, 'orientation': 274, 'extra_samples': 338, 'image_depth': 32997, 'page_name': 285, 'smin_sample_value': 340}</em><a class="headerlink" href="#skimage.external.tifffile.TiffWriter.TAGS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="skimage.external.tifffile.TiffWriter.TYPES">
-<code class="descname">TYPES</code><em class="property"> = {'H': 3, 's': 2, 'd': 12, 'h': 8, 'I': 4, 'B': 1, 'f': 11, '2I': 5, 'q': 17, 'i': 9, 'b': 6, 'Q': 16}</em><a class="headerlink" href="#skimage.external.tifffile.TiffWriter.TYPES" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TYPES</code><em class="property"> = {'q': 17, 'i': 9, '2I': 5, 'd': 12, 's': 2, 'Q': 16, 'I': 4, 'f': 11, 'b': 6, 'B': 1, 'H': 3, 'h': 8}</em><a class="headerlink" href="#skimage.external.tifffile.TiffWriter.TYPES" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -722,21 +722,21 @@ ignored.</p>
 <blockquote class="last">
 <div><p>Additional tags as [(code, dtype, count, value, writeonce)].</p>
 <dl class="docutils">
-<dt>code <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd><p class="first last">The TIFF tag Id.</p>
+<dt>code</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd><p class="first last">The TIFF tag Id.</p>
 </dd>
-<dt>dtype <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
-<dd><p class="first last">Data type of items in &#8216;value&#8217; in Python struct format.
+<dt>dtype</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd><p class="first last">Data type of items in &#8216;value&#8217; in Python struct format.
 One of B, s, H, I, 2I, b, h, i, f, d, Q, or q.</p>
 </dd>
-<dt>count <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd><p class="first last">Number of data values. Not used for string values.</p>
+<dt>count</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd><p class="first last">Number of data values. Not used for string values.</p>
 </dd>
-<dt>value <span class="classifier-delimiter">:</span> <span class="classifier">sequence</span></dt>
-<dd><p class="first last">&#8216;Count&#8217; values compatible with &#8216;dtype&#8217;.</p>
+<dt>value</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">sequence</span><dd><p class="first last">&#8216;Count&#8217; values compatible with &#8216;dtype&#8217;.</p>
 </dd>
-<dt>writeonce <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
-<dd><p class="first last">If True, the tag is written to the first page only.</p>
+<dt>writeonce</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">bool</span><dd><p class="first last">If True, the tag is written to the first page only.</p>
 </dd>
 </dl>
 </div></blockquote>

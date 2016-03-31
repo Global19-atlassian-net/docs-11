@@ -70,15 +70,15 @@ similar to those of the human visual system.</p>
 kernels. The mean and variance of the filtered images are then used as features
 for classification, which is based on the least squared error for simplicity.</p>
 <img alt="../../_images/plot_gabor_1.png" class="align-center" src="../../_images/plot_gabor_1.png" />
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
 
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage.util</span> <span class="kn">import</span> <span class="n">img_as_float</span>
-<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <span class="n">gabor_kernel</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.util</span> <span class="k">import</span> <span class="n">img_as_float</span>
+<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="k">import</span> <span class="n">gabor_kernel</span>
 
 
 <span class="k">def</span> <span class="nf">compute_feats</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">kernels</span><span class="p">):</span>
@@ -92,7 +92,7 @@ for classification, which is based on the least squared error for simplicity.</p
 
 <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">feats</span><span class="p">,</span> <span class="n">ref_feats</span><span class="p">):</span>
     <span class="n">min_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-    <span class="n">min_i</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">min_i</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ref_feats</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
         <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">feats</span> <span class="o">-</span> <span class="n">ref_feats</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">error</span> <span class="o">&lt;</span> <span class="n">min_error</span><span class="p">:</span>
@@ -112,7 +112,7 @@ for classification, which is based on the least squared error for simplicity.</p
             <span class="n">kernels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span>
 
 
-<span class="n">shrink</span> <span class="o">=</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">shrink</span> <span class="o">=</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="n">brick</span> <span class="o">=</span> <span class="n">img_as_float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;brick.png&#39;</span><span class="p">))[</span><span class="n">shrink</span><span class="p">]</span>
 <span class="n">grass</span> <span class="o">=</span> <span class="n">img_as_float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;grass.png&#39;</span><span class="p">))[</span><span class="n">shrink</span><span class="p">]</span>
 <span class="n">wall</span> <span class="o">=</span> <span class="n">img_as_float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;rough-wall.png&#39;</span><span class="p">))[</span><span class="n">shrink</span><span class="p">]</span>
@@ -125,19 +125,19 @@ for classification, which is based on the least squared error for simplicity.</p
 <span class="n">ref_feats</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">compute_feats</span><span class="p">(</span><span class="n">grass</span><span class="p">,</span> <span class="n">kernels</span><span class="p">)</span>
 <span class="n">ref_feats</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">compute_feats</span><span class="p">(</span><span class="n">wall</span><span class="p">,</span> <span class="n">kernels</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Rotated images matched against references using Gabor filter banks:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Rotated images matched against references using Gabor filter banks:&#39;</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;original: brick, rotated: 30deg, match result: &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">feats</span> <span class="o">=</span> <span class="n">compute_feats</span><span class="p">(</span><span class="n">ndi</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">brick</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">190</span><span class="p">,</span> <span class="n">reshape</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span> <span class="n">kernels</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">image_names</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">feats</span><span class="p">,</span> <span class="n">ref_feats</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original: brick, rotated: 30deg, match result: &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">feats</span> <span class="o">=</span> <span class="n">compute_feats</span><span class="p">(</span><span class="n">ndi</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">brick</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">190</span><span class="p">,</span> <span class="n">reshape</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">kernels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image_names</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">feats</span><span class="p">,</span> <span class="n">ref_feats</span><span class="p">)])</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;original: brick, rotated: 70deg, match result: &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">feats</span> <span class="o">=</span> <span class="n">compute_feats</span><span class="p">(</span><span class="n">ndi</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">brick</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">reshape</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span> <span class="n">kernels</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">image_names</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">feats</span><span class="p">,</span> <span class="n">ref_feats</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original: brick, rotated: 70deg, match result: &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">feats</span> <span class="o">=</span> <span class="n">compute_feats</span><span class="p">(</span><span class="n">ndi</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">brick</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">reshape</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">kernels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image_names</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">feats</span><span class="p">,</span> <span class="n">ref_feats</span><span class="p">)])</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;original: grass, rotated: 145deg, match result: &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-<span class="n">feats</span> <span class="o">=</span> <span class="n">compute_feats</span><span class="p">(</span><span class="n">ndi</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">grass</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">145</span><span class="p">,</span> <span class="n">reshape</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span> <span class="n">kernels</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">image_names</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">feats</span><span class="p">,</span> <span class="n">ref_feats</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;original: grass, rotated: 145deg, match result: &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">feats</span> <span class="o">=</span> <span class="n">compute_feats</span><span class="p">(</span><span class="n">ndi</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">grass</span><span class="p">,</span> <span class="n">angle</span><span class="o">=</span><span class="mi">145</span><span class="p">,</span> <span class="n">reshape</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">kernels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">image_names</span><span class="p">[</span><span class="n">match</span><span class="p">(</span><span class="n">feats</span><span class="p">,</span> <span class="n">ref_feats</span><span class="p">)])</span>
 
 
 <span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">kernel</span><span class="p">):</span>

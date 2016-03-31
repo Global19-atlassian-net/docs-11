@@ -77,19 +77,19 @@ faulty and simply estimating the parameter set with all coordinates is not
 sufficient. Therefore, the RANSAC algorithm is used on top of the normal model
 to robustly estimate the parameter set by detecting outliers.</p>
 <img alt="../../_images/plot_matching_1.png" class="align-center" src="../../_images/plot_matching_1.png" />
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage.util</span> <span class="kn">import</span> <span class="n">img_as_float</span>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="p">(</span><span class="n">corner_harris</span><span class="p">,</span> <span class="n">corner_subpix</span><span class="p">,</span> <span class="n">corner_peaks</span><span class="p">,</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.util</span> <span class="k">import</span> <span class="n">img_as_float</span>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <span class="p">(</span><span class="n">corner_harris</span><span class="p">,</span> <span class="n">corner_subpix</span><span class="p">,</span> <span class="n">corner_peaks</span><span class="p">,</span>
                              <span class="n">plot_matches</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">warp</span><span class="p">,</span> <span class="n">AffineTransform</span>
-<span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="kn">import</span> <span class="n">rescale_intensity</span>
-<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2gray</span>
-<span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <span class="n">ransac</span>
+<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="k">import</span> <span class="n">warp</span><span class="p">,</span> <span class="n">AffineTransform</span>
+<span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="k">import</span> <span class="n">rescale_intensity</span>
+<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="k">import</span> <span class="n">rgb2gray</span>
+<span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="k">import</span> <span class="n">ransac</span>
 
 
 <span class="c1"># generate synthetic checkerboard image and add gradient for the later matching</span>
@@ -168,13 +168,13 @@ to robustly estimate the parameter set by detecting outliers.</p>
 <span class="c1"># robustly estimate affine transform model with RANSAC</span>
 <span class="n">model_robust</span><span class="p">,</span> <span class="n">inliers</span> <span class="o">=</span> <span class="n">ransac</span><span class="p">((</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">),</span> <span class="n">AffineTransform</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                                <span class="n">residual_threshold</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">outliers</span> <span class="o">=</span> <span class="n">inliers</span> <span class="o">==</span> <span class="bp">False</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">inliers</span> <span class="o">==</span> <span class="kc">False</span>
 
 
 <span class="c1"># compare &quot;true&quot; and estimated transform parameters</span>
-<span class="k">print</span><span class="p">(</span><span class="n">tform</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">translation</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">translation</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">model_robust</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="n">model_robust</span><span class="o">.</span><span class="n">translation</span><span class="p">,</span> <span class="n">model_robust</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tform</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">translation</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">translation</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_robust</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="n">model_robust</span><span class="o">.</span><span class="n">translation</span><span class="p">,</span> <span class="n">model_robust</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
 
 <span class="c1"># visualize correspondence</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
