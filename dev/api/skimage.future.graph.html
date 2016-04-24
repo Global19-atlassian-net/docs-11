@@ -75,20 +75,20 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.future.graph.cut_threshold" title="skimage.future.graph.cut_threshold"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.cut_threshold</span></code></a>(labels,&nbsp;...)</td>
 <td>Combine regions separated by weight less than threshold.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.future.graph.draw_rag" title="skimage.future.graph.draw_rag"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.draw_rag</span></code></a>(labels,&nbsp;rag,&nbsp;img)</td>
-<td>Draw a Region Adjacency Graph on an image.</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.future.graph.merge_hierarchical" title="skimage.future.graph.merge_hierarchical"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.merge_hierarchical</span></code></a>(...)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.future.graph.merge_hierarchical" title="skimage.future.graph.merge_hierarchical"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.merge_hierarchical</span></code></a>(...)</td>
 <td>Perform hierarchical merging of a RAG.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.future.graph.ncut" title="skimage.future.graph.ncut"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.ncut</span></code></a>(labels,&nbsp;rag[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.future.graph.ncut" title="skimage.future.graph.ncut"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.ncut</span></code></a>(labels,&nbsp;rag[,&nbsp;...])</td>
 <td>Perform Normalized Graph cut on the Region Adjacency Graph.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.future.graph.rag_boundary" title="skimage.future.graph.rag_boundary"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.rag_boundary</span></code></a>(labels,&nbsp;...)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.future.graph.rag_boundary" title="skimage.future.graph.rag_boundary"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.rag_boundary</span></code></a>(labels,&nbsp;...)</td>
 <td>Comouter RAG based on region boundaries</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.future.graph.rag_mean_color" title="skimage.future.graph.rag_mean_color"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.rag_mean_color</span></code></a>(image,&nbsp;...)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.future.graph.rag_mean_color" title="skimage.future.graph.rag_mean_color"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.rag_mean_color</span></code></a>(image,&nbsp;...)</td>
 <td>Compute the Region Adjacency Graph using mean colors.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.future.graph.show_rag" title="skimage.future.graph.show_rag"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.show_rag</span></code></a>(labels,&nbsp;rag,&nbsp;img)</td>
+<td>Draw a Region Adjacency Graph on an image.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.future.graph.RAG" title="skimage.future.graph.RAG"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.RAG</span></code></a>([label_image,&nbsp;...])</td>
 <td>The Region Adjacency Graph (RAG) of an image, subclasses</td>
@@ -231,85 +231,6 @@ makes a copy of <cite>rag</cite> before proceeding.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="draw-rag">
-<h2>draw_rag<a class="headerlink" href="#draw-rag" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="skimage.future.graph.draw_rag">
-<code class="descclassname">skimage.future.graph.</code><code class="descname">draw_rag</code><span class="sig-paren">(</span><em>labels</em>, <em>rag</em>, <em>img</em>, <em>border_color=None</em>, <em>node_color='#ffff00'</em>, <em>edge_color='#00ff00'</em>, <em>colormap=None</em>, <em>thresh=inf</em>, <em>desaturate=False</em>, <em>in_place=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L423"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.draw_rag" title="Permalink to this definition">¶</a></dt>
-<dd><p>Draw a Region Adjacency Graph on an image.</p>
-<p>Given a labelled image and its corresponding RAG, draw the nodes and edges
-of the RAG on the image with the specified colors. Nodes are marked by
-the centroids of the corresponding regions.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray, shape (M, N)</p>
-<blockquote>
-<div><p>The labelled image.</p>
-</div></blockquote>
-<p><strong>rag</strong> : RAG</p>
-<blockquote>
-<div><p>The Region Adjacency Graph.</p>
-</div></blockquote>
-<p><strong>img</strong> : ndarray, shape (M, N, 3)</p>
-<blockquote>
-<div><p>Input image.</p>
-</div></blockquote>
-<p><strong>border_color</strong> : colorspec, optional</p>
-<blockquote>
-<div><p>Any matplotlib colorspec.</p>
-</div></blockquote>
-<p><strong>node_color</strong> : colorspec, optional</p>
-<blockquote>
-<div><p>Any matplotlib colorspec. Yellow by default.</p>
-</div></blockquote>
-<p><strong>edge_color</strong> : colorspec, optional</p>
-<blockquote>
-<div><p>Any matplotlib colorspec. Green by default.</p>
-</div></blockquote>
-<p><strong>colormap</strong> : colormap, optional</p>
-<blockquote>
-<div><p>Any matplotlib colormap. If specified the edges are colormapped with
-the specified color map.</p>
-</div></blockquote>
-<p><strong>thresh</strong> : float, optional</p>
-<blockquote>
-<div><p>Edges with weight below <cite>thresh</cite> are not drawn, or considered for color
-mapping.</p>
-</div></blockquote>
-<p><strong>desaturate</strong> : bool, optional</p>
-<blockquote>
-<div><p>Convert the image to grayscale before displaying. Particularly helps
-visualization when using the <cite>colormap</cite> option.</p>
-</div></blockquote>
-<p><strong>in_place</strong> : bool, optional</p>
-<blockquote>
-<div><p>If set, the RAG is modified in place. For each node <cite>n</cite> the function
-will set a new attribute <code class="docutils literal"><span class="pre">rag.node[n]['centroid']</span></code>.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray, shape (M, N, 3)</p>
-<blockquote class="last">
-<div><p>The image with the RAG drawn.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">coffee</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span>  <span class="n">graph</span><span class="o">.</span><span class="n">rag_mean_color</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">out</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">draw_rag</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</div>
 <div class="section" id="merge-hierarchical">
 <h2>merge_hierarchical<a class="headerlink" href="#merge-hierarchical" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -446,7 +367,7 @@ IEEE Transactions on, vol. 22, no. 8, pp. 888-905, August 2000.</td></tr>
 <h2>rag_boundary<a class="headerlink" href="#rag-boundary" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.future.graph.rag_boundary">
-<code class="descclassname">skimage.future.graph.</code><code class="descname">rag_boundary</code><span class="sig-paren">(</span><em>labels</em>, <em>edge_map</em>, <em>connectivity=2</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L359"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.rag_boundary" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.future.graph.</code><code class="descname">rag_boundary</code><span class="sig-paren">(</span><em>labels</em>, <em>edge_map</em>, <em>connectivity=2</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L357"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.rag_boundary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Comouter RAG based on region boundaries</p>
 <p>Given an image&#8217;s initial segmentation and its edge map this method
 constructs the corresponding Region Adjacency Graph (RAG). Each node in the
@@ -482,7 +403,7 @@ behavior is the same as <cite>connectivity</cite> parameter in
 <h2>rag_mean_color<a class="headerlink" href="#rag-mean-color" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.future.graph.rag_mean_color">
-<code class="descclassname">skimage.future.graph.</code><code class="descname">rag_mean_color</code><span class="sig-paren">(</span><em>image</em>, <em>labels</em>, <em>connectivity=2</em>, <em>mode='distance'</em>, <em>sigma=255.0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L268"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.rag_mean_color" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.future.graph.</code><code class="descname">rag_mean_color</code><span class="sig-paren">(</span><em>image</em>, <em>labels</em>, <em>connectivity=2</em>, <em>mode='distance'</em>, <em>sigma=255.0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L266"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.rag_mean_color" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the Region Adjacency Graph using mean colors.</p>
 <p>Given an image and its initial segmentation, this method constructs the
 corresponding Region Adjacency Graph (RAG). Each node in the RAG
@@ -561,11 +482,88 @@ any two colors behave as though they were similar.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="show-rag">
+<h2>show_rag<a class="headerlink" href="#show-rag" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.future.graph.show_rag">
+<code class="descclassname">skimage.future.graph.</code><code class="descname">show_rag</code><span class="sig-paren">(</span><em>labels</em>, <em>rag</em>, <em>img</em>, <em>border_color='black'</em>, <em>edge_width=1.5</em>, <em>edge_cmap='magma'</em>, <em>img_cmap='bone'</em>, <em>in_place=True</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L421"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.show_rag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw a Region Adjacency Graph on an image.</p>
+<p>Given a labelled image and its corresponding RAG, draw the nodes and edges
+of the RAG on the image with the specified colors. Edges are drawn between
+the centroid of the 2 adjacent regions in the image.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray, shape (M, N)</p>
+<blockquote>
+<div><p>The labelled image.</p>
+</div></blockquote>
+<p><strong>rag</strong> : RAG</p>
+<blockquote>
+<div><p>The Region Adjacency Graph.</p>
+</div></blockquote>
+<p><strong>img</strong> : ndarray, shape (M, N[, 3])</p>
+<blockquote>
+<div><p>Input image. If <cite>colormap</cite> is <cite>None</cite>, the image should be in RGB
+format.</p>
+</div></blockquote>
+<p><strong>border_color</strong> : color spec, optional</p>
+<blockquote>
+<div><p>Color with which the borders between regions are drawn.</p>
+</div></blockquote>
+<p><strong>edge_width</strong> : float, optional</p>
+<blockquote>
+<div><p>The thickness with which the RAG edges are drawn.</p>
+</div></blockquote>
+<p><strong>edge_cmap</strong> : <a class="reference external" href="http://matplotlib.org/api/colors_api.html#matplotlib.colors.Colormap" title="(in Matplotlib v1.5.1)"><code class="xref py py-class docutils literal"><span class="pre">matplotlib.colors.Colormap</span></code></a>, optional</p>
+<blockquote>
+<div><p>Any matplotlib colormap with which the edges are drawn.</p>
+</div></blockquote>
+<p><strong>img_cmap</strong> : <a class="reference external" href="http://matplotlib.org/api/colors_api.html#matplotlib.colors.Colormap" title="(in Matplotlib v1.5.1)"><code class="xref py py-class docutils literal"><span class="pre">matplotlib.colors.Colormap</span></code></a>, optional</p>
+<blockquote>
+<div><p>Any matplotlib colormap with which the image is draw. If set to <cite>None</cite>
+the image is drawn as it is.</p>
+</div></blockquote>
+<p><strong>in_place</strong> : bool, optional</p>
+<blockquote>
+<div><p>If set, the RAG is modified in place. For each node <cite>n</cite> the function
+will set a new attribute <code class="docutils literal"><span class="pre">rag.node[n]['centroid']</span></code>.</p>
+</div></blockquote>
+<p><strong>ax</strong> : <a class="reference external" href="http://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v1.5.1)"><code class="xref py py-class docutils literal"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional</p>
+<blockquote>
+<div><p>The axes to draw on. If not specified, new axes are created and drawn
+on.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>lc</strong> : <a class="reference external" href="http://matplotlib.org/api/collections_api.html#matplotlib.collections.LineCollection" title="(in Matplotlib v1.5.1)"><code class="xref py py-class docutils literal"><span class="pre">matplotlib.collections.LineCollection</span></code></a></p>
+<blockquote class="last">
+<div><p>A colection of lines that represent the edges of the graph. It can be
+passed to the <a class="reference external" href="http://matplotlib.org/api/figure_api.html#matplotlib.figure.Figure.colorbar" title="(in Matplotlib v1.5.1)"><code class="xref py py-meth docutils literal"><span class="pre">matplotlib.figure.Figure.colorbar()</span></code></a> function.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">coffee</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span>  <span class="n">graph</span><span class="o">.</span><span class="n">rag_mean_color</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lc</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">show_rag</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">lc</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
 <div class="section" id="rag">
 <h2><a class="reference internal" href="#skimage.future.graph.RAG" title="skimage.future.graph.RAG"><code class="xref py py-class docutils literal"><span class="pre">RAG</span></code></a><a class="headerlink" href="#rag" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.future.graph.RAG">
-<em class="property">class </em><code class="descclassname">skimage.future.graph.</code><code class="descname">RAG</code><span class="sig-paren">(</span><em>label_image=None</em>, <em>connectivity=1</em>, <em>data=None</em>, <em>**attr</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L110"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">skimage.future.graph.</code><code class="descname">RAG</code><span class="sig-paren">(</span><em>label_image=None</em>, <em>connectivity=1</em>, <em>data=None</em>, <em>**attr</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L108"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">networkx.classes.graph.Graph</span></code></p>
 <p>The Region Adjacency Graph (RAG) of an image, subclasses
 <a class="reference external" href="http://networkx.github.io/documentation/latest/reference/classes.graph.html">networx.Graph</a></p>
@@ -603,12 +601,12 @@ sparse matrices.</p>
 </table>
 <dl class="method">
 <dt id="skimage.future.graph.RAG.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>label_image=None</em>, <em>connectivity=1</em>, <em>data=None</em>, <em>**attr</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L136"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>label_image=None</em>, <em>connectivity=1</em>, <em>data=None</em>, <em>**attr</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L134"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="skimage.future.graph.RAG.add_edge">
-<code class="descname">add_edge</code><span class="sig-paren">(</span><em>u</em>, <em>v</em>, <em>attr_dict=None</em>, <em>**attr</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L232"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.add_edge" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_edge</code><span class="sig-paren">(</span><em>u</em>, <em>v</em>, <em>attr_dict=None</em>, <em>**attr</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L230"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.add_edge" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add an edge between <cite>u</cite> and <cite>v</cite> while updating max node id.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
@@ -618,7 +616,7 @@ sparse matrices.</p>
 
 <dl class="method">
 <dt id="skimage.future.graph.RAG.add_node">
-<code class="descname">add_node</code><span class="sig-paren">(</span><em>n</em>, <em>attr_dict=None</em>, <em>**attr</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L225"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.add_node" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_node</code><span class="sig-paren">(</span><em>n</em>, <em>attr_dict=None</em>, <em>**attr</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.add_node" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add node <cite>n</cite> while updating the maximum node id.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
@@ -628,7 +626,7 @@ sparse matrices.</p>
 
 <dl class="method">
 <dt id="skimage.future.graph.RAG.copy">
-<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L239"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.copy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L237"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copy the graph with its max node id.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
@@ -638,7 +636,7 @@ sparse matrices.</p>
 
 <dl class="method">
 <dt id="skimage.future.graph.RAG.merge_nodes">
-<code class="descname">merge_nodes</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em>, <em>weight_func=&lt;function min_weight&gt;</em>, <em>in_place=True</em>, <em>extra_arguments=[]</em>, <em>extra_keywords={}</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L163"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.merge_nodes" title="Permalink to this definition">¶</a></dt>
+<code class="descname">merge_nodes</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em>, <em>weight_func=&lt;function min_weight&gt;</em>, <em>in_place=True</em>, <em>extra_arguments=[]</em>, <em>extra_keywords={}</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L161"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.merge_nodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge node <cite>src</cite> and <cite>dst</cite>.</p>
 <p>The new combined node is adjacent to all the neighbors of <cite>src</cite>
 and <cite>dst</cite>. <cite>weight_func</cite> is called to decide the weight of edges
@@ -691,7 +689,7 @@ node has a new id which is returned.</p>
 
 <dl class="method">
 <dt id="skimage.future.graph.RAG.next_id">
-<code class="descname">next_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L247"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.next_id" title="Permalink to this definition">¶</a></dt>
+<code class="descname">next_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L245"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.next_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the <cite>id</cite> for the new node to be inserted.</p>
 <p>The current implementation returns one more than the maximum <cite>id</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -739,11 +737,11 @@ node has a new id which is returned.</p>
 <li><a class="reference internal" href="#">Module: <code class="docutils literal"><span class="pre">future.graph</span></code></a><ul class="nav nav-list">
 <li><a class="reference internal" href="#cut-normalized">cut_normalized</a></li>
 <li><a class="reference internal" href="#cut-threshold">cut_threshold</a></li>
-<li><a class="reference internal" href="#draw-rag">draw_rag</a></li>
 <li><a class="reference internal" href="#merge-hierarchical">merge_hierarchical</a></li>
 <li><a class="reference internal" href="#ncut">ncut</a></li>
 <li><a class="reference internal" href="#rag-boundary">rag_boundary</a></li>
 <li><a class="reference internal" href="#rag-mean-color">rag_mean_color</a></li>
+<li><a class="reference internal" href="#show-rag">show_rag</a></li>
 <li><a class="reference internal" href="#rag"><code class="docutils literal"><span class="pre">RAG</span></code></a></li>
 </ul>
 </li>

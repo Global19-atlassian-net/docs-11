@@ -68,7 +68,7 @@
 <img alt="../../_images/plot_rag_boundary_1.png" class="align-center" src="../../_images/plot_rag_boundary_1.png" />
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">io</span>
-<span class="kn">from</span> <span class="nn">skimage.util.colormap</span> <span class="k">import</span> <span class="n">viridis</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 
 <span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">coffee</span><span class="p">()</span>
@@ -79,11 +79,10 @@
 <span class="n">edges_rgb</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">gray2rgb</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
 
 <span class="n">g</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">rag_boundary</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
+<span class="n">lc</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">show_rag</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">edges_rgb</span><span class="p">,</span> <span class="n">img_cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edge_cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+                    <span class="n">edge_width</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
 
-<span class="n">out</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">draw_rag</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">edges_rgb</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s2">&quot;#999999&quot;</span><span class="p">,</span>
-                     <span class="n">colormap</span><span class="o">=</span><span class="n">viridis</span><span class="p">)</span>
-
-<span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">lc</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
 <span class="n">io</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
