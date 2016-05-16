@@ -83,8 +83,9 @@ weight instead.</p>
 <span class="k">def</span> <span class="nf">max_edge</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Callback to handle merging nodes by choosing maximum weight.</span>
 
-<span class="sd">    Returns either the weight between (`src`, `n`) or (`dst`, `n`)</span>
-<span class="sd">    in `g` or the maximum of the two when both exist.</span>
+<span class="sd">    Returns a dictionary with `&quot;weight&quot;` set as either the weight between</span>
+<span class="sd">    (`src`, `n`) or (`dst`, `n`) in `g` or the maximum of the two when</span>
+<span class="sd">    both exist.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -97,15 +98,15 @@ weight instead.</p>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    weight : float</span>
-<span class="sd">        The weight between (`src`, `n`) or (`dst`, `n`) in `g` or the</span>
-<span class="sd">        maximum of the two when both exist.</span>
-
+<span class="sd">    data : dict</span>
+<span class="sd">        A dict with the &quot;weight&quot; attribute set the weight between</span>
+<span class="sd">        (`src`, `n`) or (`dst`, `n`) in `g` or the maximum of the two when</span>
+<span class="sd">        both exist.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">w1</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">})[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
     <span class="n">w2</span> <span class="o">=</span> <span class="n">g</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">dst</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">})[</span><span class="s1">&#39;weight&#39;</span><span class="p">]</span>
-    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)}</span>
 
 
 <span class="k">def</span> <span class="nf">display</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
