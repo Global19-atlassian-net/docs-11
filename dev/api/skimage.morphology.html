@@ -808,7 +808,7 @@ function more efficient for larger images and structuring elements.</p>
 <h2>label<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.label">
-<code class="descclassname">skimage.morphology.</code><code class="descname">label</code><span class="sig-paren">(</span><em>input</em>, <em>neighbors=None</em>, <em>background=None</em>, <em>return_num=False</em>, <em>connectivity=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_label.py#L3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.label" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.morphology.</code><code class="descname">label</code><span class="sig-paren">(</span><em>input</em>, <em>neighbors=None</em>, <em>background=None</em>, <em>return_num=False</em>, <em>connectivity=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_label.py#L17"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.label" title="Permalink to this definition">¶</a></dt>
 <dd><p>Label connected regions of an integer array.</p>
 <p>Two pixels are connected when they are neighbors and have the same value.
 In 2D, they can be neighbors either in a 1- or 2-connected sense.
@@ -871,6 +871,10 @@ returned if return_num is <cite>True</cite>.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">regionprops</span></code></p>
+</div>
 <p class="rubric">Examples</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
@@ -878,31 +882,22 @@ returned if return_num is <cite>True</cite>.</p>
 <span class="go">[[1 0 0]</span>
 <span class="go"> [0 1 0]</span>
 <span class="go"> [0 0 1]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="k">import</span> <span class="n">label</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="go">[[1 0 0]</span>
 <span class="go"> [0 2 0]</span>
 <span class="go"> [0 0 3]]</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 <span class="go">[[1 0 0]</span>
 <span class="go"> [0 1 0]</span>
 <span class="go"> [0 0 1]]</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">background</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">background</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
 <span class="go">[[1 2 2]</span>
 <span class="go"> [2 1 2]</span>
 <span class="go"> [2 2 1]]</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
 <span class="gp">... </span>              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
 <span class="gp">... </span>              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="go">[[1 0 0]</span>
 <span class="go"> [1 1 2]</span>
 <span class="go"> [0 0 0]]</span>

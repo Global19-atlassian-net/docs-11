@@ -723,7 +723,7 @@ duplicated.</p>
 <h2>label<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.label">
-<code class="descclassname">skimage.measure.</code><code class="descname">label</code><span class="sig-paren">(</span><em>input</em>, <em>neighbors=None</em>, <em>background=None</em>, <em>return_num=False</em>, <em>connectivity=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_label.py#L3"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.label" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">label</code><span class="sig-paren">(</span><em>input</em>, <em>neighbors=None</em>, <em>background=None</em>, <em>return_num=False</em>, <em>connectivity=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_label.py#L17"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.label" title="Permalink to this definition">¶</a></dt>
 <dd><p>Label connected regions of an integer array.</p>
 <p>Two pixels are connected when they are neighbors and have the same value.
 In 2D, they can be neighbors either in a 1- or 2-connected sense.
@@ -786,6 +786,10 @@ returned if return_num is <cite>True</cite>.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#skimage.measure.regionprops" title="skimage.measure.regionprops"><code class="xref py py-obj docutils literal"><span class="pre">regionprops</span></code></a></p>
+</div>
 <p class="rubric">Examples</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
@@ -793,31 +797,22 @@ returned if return_num is <cite>True</cite>.</p>
 <span class="go">[[1 0 0]</span>
 <span class="go"> [0 1 0]</span>
 <span class="go"> [0 0 1]]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="k">import</span> <span class="n">label</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="go">[[1 0 0]</span>
 <span class="go"> [0 2 0]</span>
 <span class="go"> [0 0 3]]</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 <span class="go">[[1 0 0]</span>
 <span class="go"> [0 1 0]</span>
 <span class="go"> [0 0 1]]</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">background</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">background</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
 <span class="go">[[1 2 2]</span>
 <span class="go"> [2 1 2]</span>
 <span class="go"> [2 2 1]]</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
 <span class="gp">... </span>              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
 <span class="gp">... </span>              <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
-</pre></div>
-</div>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">label</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="go">[[1 0 0]</span>
 <span class="go"> [1 1 2]</span>
 <span class="go"> [0 0 0]]</span>
@@ -1293,7 +1288,7 @@ Berlin, 1993.</td></tr>
 <h2>perimeter<a class="headerlink" href="#perimeter" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.perimeter">
-<code class="descclassname">skimage.measure.</code><code class="descname">perimeter</code><span class="sig-paren">(</span><em>image</em>, <em>neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L544"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">perimeter</code><span class="sig-paren">(</span><em>image</em>, <em>neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L551"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate total perimeter of all objects in binary image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1640,7 +1635,7 @@ by <cite>np.random</cite>.</p>
 <h2>regionprops<a class="headerlink" href="#regionprops" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.regionprops">
-<code class="descclassname">skimage.measure.</code><code class="descname">regionprops</code><span class="sig-paren">(</span><em>label_image</em>, <em>intensity_image=None</em>, <em>cache=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L345"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">regionprops</code><span class="sig-paren">(</span><em>label_image</em>, <em>intensity_image=None</em>, <em>cache=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L346"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
 <dd><p>Measure properties of labeled image regions.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1672,13 +1667,19 @@ attributes listed below.</p>
 </tr>
 </tbody>
 </table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#skimage.measure.label" title="skimage.measure.label"><code class="xref py py-obj docutils literal"><span class="pre">label</span></code></a></p>
+</div>
 <p class="rubric">Notes</p>
 <p>The following properties can be accessed as attributes or keys:</p>
 <dl class="docutils">
 <dt><strong>area</strong></dt>
  <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd>Number of pixels of region.</dd>
 <dt><strong>bbox</strong></dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span><dd>Bounding box <code class="docutils literal"><span class="pre">(min_row,</span> <span class="pre">min_col,</span> <span class="pre">max_row,</span> <span class="pre">max_col)</span></code></dd>
+ <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span><dd>Bounding box <code class="docutils literal"><span class="pre">(min_row,</span> <span class="pre">min_col,</span> <span class="pre">max_row,</span> <span class="pre">max_col)</span></code>.
+Pixels belonging to the bounding box are in the half-open interval
+<code class="docutils literal"><span class="pre">[min_row;</span> <span class="pre">max_row)</span></code> and <code class="docutils literal"><span class="pre">[min_col;</span> <span class="pre">max_col)</span></code>.</dd>
 <dt><strong>centroid</strong></dt>
  <span class="classifier-delimiter">:</span> <span class="classifier">array</span><dd>Centroid coordinate tuple <code class="docutils literal"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</dd>
 <dt><strong>convex_area</strong></dt>
