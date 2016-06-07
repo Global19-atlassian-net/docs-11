@@ -1,4 +1,6 @@
-.. _example_edges_plot_convex_hull.py:
+
+
+.. _sphx_glr_auto_examples_edges_plot_convex_hull.py:
 
 
 ===========
@@ -15,20 +17,68 @@ A good overview of the algorithm is given on `Steve Eddin's blog
 <http://blogs.mathworks.com/steve/2011/10/04/binary-image-convex-hull-algorithm-notes/>`__.
 
 
-.. image:: images/plot_convex_hull_1.png
+
+
+
+.. image:: /auto_examples/edges/images/sphx_glr_plot_convex_hull_001.png
     :align: center
 
 
-.. literalinclude:: plot_convex_hull.py
-    :lines: 16-
 
 
 
-**Python source code:** :download:`download <plot_convex_hull.py>`
-(generated using ``skimage`` |version|)
+.. code-block:: python
+
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    from skimage.morphology import convex_hull_image
+
+    image = np.array(
+        [[0, 0, 0, 0, 0, 0, 0, 0, 0],
+         [0, 0, 0, 0, 1, 0, 0, 0, 0],
+         [0, 0, 0, 1, 0, 1, 0, 0, 0],
+         [0, 0, 1, 0, 0, 0, 1, 0, 0],
+         [0, 1, 0, 0, 0, 0, 0, 1, 0],
+         [0, 0, 0, 0, 0, 0, 0, 0, 0]], dtype=float)
+
+    original_image = np.copy(image)
+
+    chull = convex_hull_image(image)
+    image[chull] += 1
+
+    # image is now:
+    # [[ 0.  0.  0.  0.  0.  0.  0.  0.  0.]
+    #  [ 0.  0.  0.  0.  2.  0.  0.  0.  0.]
+    #  [ 0.  0.  0.  2.  1.  2.  0.  0.  0.]
+    #  [ 0.  0.  2.  1.  1.  1.  2.  0.  0.]
+    #  [ 0.  2.  1.  1.  1.  1.  1.  2.  0.]
+    #  [ 0.  0.  0.  0.  0.  0.  0.  0.  0.]]
+
+    fig, (ax0, ax1) = plt.subplots(1, 2, figsize=(12, 4))
+    plt.tight_layout()
+
+    ax0.set_title('Original picture')
+    ax0.imshow(original_image, cmap=plt.cm.gray, interpolation='nearest')
+    ax0.set_xticks([]), ax0.set_yticks([])
+
+    ax1.set_title('Transformed picture')
+    ax1.imshow(image, cmap=plt.cm.gray, interpolation='nearest')
+    ax1.set_xticks([]), ax1.set_yticks([])
+
+    plt.show()
+
+**Total running time of the script:**
+(0 minutes 0.359 seconds)
 
 
 
-**IPython Notebook:** :download:`download <./notebook/plot_convex_hull.ipynb>`
-(generated using ``skimage`` |version|)
+.. container:: sphx-glr-download
 
+    **Download Python source code:** :download:`plot_convex_hull.py <plot_convex_hull.py>`
+
+
+.. container:: sphx-glr-download
+
+    **Download IPython notebook:** :download:`plot_convex_hull.ipynb <plot_convex_hull.ipynb>`

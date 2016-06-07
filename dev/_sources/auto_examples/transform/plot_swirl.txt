@@ -1,4 +1,6 @@
-.. _example_transform_plot_swirl.py:
+
+
+.. _sphx_glr_auto_examples_transform_plot_swirl.py:
 
 
 =====
@@ -67,20 +69,48 @@ transformation decays to :math:`\approx 1/1000^{\mathsf{th}}` within the
 specified radius.
 
 
-.. image:: images/plot_swirl_1.png
+
+
+
+.. image:: /auto_examples/transform/images/sphx_glr_plot_swirl_001.png
     :align: center
 
 
-.. literalinclude:: plot_swirl.py
-    :lines: 68-
 
 
 
-**Python source code:** :download:`download <plot_swirl.py>`
-(generated using ``skimage`` |version|)
+.. code-block:: python
+
+    import matplotlib.pyplot as plt
+
+    from skimage import data
+    from skimage.transform import swirl
+
+
+    image = data.checkerboard()
+    swirled = swirl(image, rotation=0, strength=10, radius=120)
+
+    fig, (ax0, ax1) = plt.subplots(nrows=1, ncols=2, figsize=(8, 3),
+                                   sharex=True, sharey=True,
+                                   subplot_kw={'adjustable':'box-forced'})
+
+    ax0.imshow(image, cmap=plt.cm.gray, interpolation='none')
+    ax0.axis('off')
+    ax1.imshow(swirled, cmap=plt.cm.gray, interpolation='none')
+    ax1.axis('off')
+
+    plt.show()
+
+**Total running time of the script:**
+(0 minutes 0.120 seconds)
 
 
 
-**IPython Notebook:** :download:`download <./notebook/plot_swirl.ipynb>`
-(generated using ``skimage`` |version|)
+.. container:: sphx-glr-download
 
+    **Download Python source code:** :download:`plot_swirl.py <plot_swirl.py>`
+
+
+.. container:: sphx-glr-download
+
+    **Download IPython notebook:** :download:`plot_swirl.ipynb <plot_swirl.ipynb>`

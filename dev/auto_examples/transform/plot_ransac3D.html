@@ -11,6 +11,7 @@
     <link href="../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../../_static/css/custom.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
     
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="../../_static/js/bootstrap.min.js"></script>
@@ -28,8 +29,8 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <link rel="top" title="skimage v0.13dev docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
-        <link rel="next" title="Cross-Correlation (Phase Correlation)" href="plot_register_translation.html" />
-        <link rel="prev" title="Robust line model estimation using RANSAC" href="plot_ransac.html" />
+        <link rel="next" title="Seam Carving" href="plot_seam_carving.html" />
+        <link rel="prev" title="Piecewise Affine Transformation" href="plot_piecewise_affine.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../../_static/favicon.ico">
 </head>
@@ -62,21 +63,21 @@
         <div class="span9">
             
   <div class="section" id="robust-3d-line-model-estimation-using-ransac">
-<span id="example-transform-plot-ransac3d-py"></span><h1>Robust 3D line model estimation using RANSAC<a class="headerlink" href="#robust-3d-line-model-estimation-using-ransac" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-transform-plot-ransac3d-py"></span><h1>Robust 3D line model estimation using RANSAC<a class="headerlink" href="#robust-3d-line-model-estimation-using-ransac" title="Permalink to this headline">¶</a></h1>
 <p>In this example we see how to robustly fit a 3D line model to faulty data using
 the RANSAC algorithm.</p>
-<img alt="../../_images/plot_ransac3D_1.png" class="align-center" src="../../_images/plot_ransac3D_1.png" />
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="k">import</span> <span class="n">Axes3D</span>
-<span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="k">import</span> <span class="n">LineModelND</span><span class="p">,</span> <span class="n">ransac</span>
+<img alt="../../_images/sphx_glr_plot_ransac3D_001.png" class="align-center" src="../../_images/sphx_glr_plot_ransac3D_001.png" />
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <a href="../../api/skimage.measure.html#skimage.measure.LineModelND"><span class="n">LineModelND</span></a><span class="p">,</span> <a href="../../api/skimage.measure.html#skimage.measure.ransac"><span class="n">ransac</span></a>
 
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.random.seed.html#numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># generate coordinates of line</span>
-<span class="n">point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
-<span class="n">direction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">xyz</span> <span class="o">=</span> <span class="n">point</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">*</span> <span class="n">direction</span>
+<span class="n">point</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+<span class="n">direction</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.array.html#numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span> <span class="o">/</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.sqrt.html#numpy.sqrt"><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span></a><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">xyz</span> <span class="o">=</span> <span class="n">point</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">*</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.arange.html#numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/arrays.indexing.html#numpy.newaxis"><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span></a><span class="p">]</span> <span class="o">*</span> <span class="n">direction</span>
 
 <span class="c1"># add gaussian noise to coordinates</span>
 <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">xyz</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -85,24 +86,26 @@ the RANSAC algorithm.</p>
 <span class="n">xyz</span><span class="p">[::</span><span class="mi">4</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">noise</span><span class="p">[::</span><span class="mi">4</span><span class="p">]</span>
 
 <span class="c1"># robustly fit line only using inlier data with RANSAC algorithm</span>
-<span class="n">model_robust</span><span class="p">,</span> <span class="n">inliers</span> <span class="o">=</span> <span class="n">ransac</span><span class="p">(</span><span class="n">xyz</span><span class="p">,</span> <span class="n">LineModelND</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="n">model_robust</span><span class="p">,</span> <span class="n">inliers</span> <span class="o">=</span> <a href="../../api/skimage.measure.html#skimage.measure.ransac"><span class="n">ransac</span></a><span class="p">(</span><span class="n">xyz</span><span class="p">,</span> <a href="../../api/skimage.measure.html#skimage.measure.LineModelND"><span class="n">LineModelND</span></a><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                                <span class="n">residual_threshold</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">outliers</span> <span class="o">=</span> <span class="n">inliers</span> <span class="o">==</span> <span class="kc">False</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">inliers</span> <span class="o">==</span> <span class="bp">False</span>
 
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">fig</span> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xyz</span><span class="p">[</span><span class="n">inliers</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">xyz</span><span class="p">[</span><span class="n">inliers</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">xyz</span><span class="p">[</span><span class="n">inliers</span><span class="p">][:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span>
            <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Inlier data&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xyz</span><span class="p">[</span><span class="n">outliers</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">xyz</span><span class="p">[</span><span class="n">outliers</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">xyz</span><span class="p">[</span><span class="n">outliers</span><span class="p">][:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span>
            <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Outlier data&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_ransac3D.py" download=""><code class="xref download docutils literal"><span class="pre">download</span></code></a>
-(generated using <code class="docutils literal"><span class="pre">skimage</span></code> 0.13dev)</p>
-<p><strong>IPython Notebook:</strong> <a class="reference download internal" href="../../_downloads/plot_ransac3D.ipynb" download=""><code class="xref download docutils literal"><span class="pre">download</span></code></a>
-(generated using <code class="docutils literal"><span class="pre">skimage</span></code> 0.13dev)</p>
+<p><strong>Total running time of the script:</strong>
+(0 minutes 0.291 seconds)</p>
+<div class="sphx-glr-download container">
+<strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_ransac3D.py" download=""><code class="xref download docutils literal"><span class="pre">plot_ransac3D.py</span></code></a></div>
+<div class="sphx-glr-download container">
+<strong>Download IPython notebook:</strong> <a class="reference download internal" href="../../_downloads/plot_ransac3D.ipynb" download=""><code class="xref download docutils literal"><span class="pre">plot_ransac3D.ipynb</span></code></a></div>
 </div>
 
 
@@ -116,13 +119,13 @@ the RANSAC algorithm.</p>
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="plot_ransac.html" title="previous chapter">Robust line model estimation using RANSAC</a></li>
+            <li><a href="plot_piecewise_affine.html" title="previous chapter">Piecewise Affine Transformation</a></li>
         </ul>
     </div>
     <h4 class="sidebar-box-heading">Next topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="plot_register_translation.html" title="next chapter">Cross-Correlation (Phase Correlation)</a></li>
+            <li><a href="plot_seam_carving.html" title="next chapter">Seam Carving</a></li>
         </ul>
     </div>
 

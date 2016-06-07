@@ -1,4 +1,6 @@
-.. _example_edges_plot_circular_elliptical_hough_transform.py:
+
+
+.. _sphx_glr_auto_examples_edges_plot_circular_elliptical_hough_transform.py:
 
 
 ========================================
@@ -37,140 +39,153 @@ Its size is extended by two times the larger radius.
 
 
 
+
 .. code-block:: python
 
-	import numpy as np
-	import matplotlib.pyplot as plt
-	
-	from skimage import data, color
-	from skimage.transform import hough_circle
-	from skimage.feature import peak_local_max, canny
-	from skimage.draw import circle_perimeter
-	from skimage.util import img_as_ubyte
-	
-	
-	# Load picture and detect edges
-	image = img_as_ubyte(data.coins()[0:95, 70:370])
-	edges = canny(image, sigma=3, low_threshold=10, high_threshold=50)
-	
-	fig, ax = plt.subplots(ncols=1, nrows=1, figsize=(5, 2))
-	
-	# Detect two radii
-	hough_radii = np.arange(15, 30, 2)
-	hough_res = hough_circle(edges, hough_radii)
-	
-	centers = []
-	accums = []
-	radii = []
-	
-	for radius, h in zip(hough_radii, hough_res):
-	    # For each radius, extract two circles
-	    num_peaks = 2
-	    peaks = peak_local_max(h, num_peaks=num_peaks)
-	    centers.extend(peaks)
-	    accums.extend(h[peaks[:, 0], peaks[:, 1]])
-	    radii.extend([radius] * num_peaks)
-	
-	# Draw the most prominent 5 circles
-	image = color.gray2rgb(image)
-	for idx in np.argsort(accums)[::-1][:5]:
-	    center_x, center_y = centers[idx]
-	    radius = radii[idx]
-	    cx, cy = circle_perimeter(center_y, center_x, radius)
-	    image[cy, cx] = (220, 20, 20)
-	
-	ax.imshow(image, cmap=plt.cm.gray)
-	
-	
-	
+    import numpy as np
+    import matplotlib.pyplot as plt
 
-.. image:: images/plot_circular_elliptical_hough_transform_1.png
+    from skimage import data, color
+    from skimage.transform import hough_circle
+    from skimage.feature import peak_local_max, canny
+    from skimage.draw import circle_perimeter
+    from skimage.util import img_as_ubyte
+
+
+    # Load picture and detect edges
+    image = img_as_ubyte(data.coins()[0:95, 70:370])
+    edges = canny(image, sigma=3, low_threshold=10, high_threshold=50)
+
+    fig, ax = plt.subplots(ncols=1, nrows=1, figsize=(5, 2))
+
+    # Detect two radii
+    hough_radii = np.arange(15, 30, 2)
+    hough_res = hough_circle(edges, hough_radii)
+
+    centers = []
+    accums = []
+    radii = []
+
+    for radius, h in zip(hough_radii, hough_res):
+        # For each radius, extract two circles
+        num_peaks = 2
+        peaks = peak_local_max(h, num_peaks=num_peaks)
+        centers.extend(peaks)
+        accums.extend(h[peaks[:, 0], peaks[:, 1]])
+        radii.extend([radius] * num_peaks)
+
+    # Draw the most prominent 5 circles
+    image = color.gray2rgb(image)
+    for idx in np.argsort(accums)[::-1][:5]:
+        center_x, center_y = centers[idx]
+        radius = radii[idx]
+        cx, cy = circle_perimeter(center_y, center_x, radius)
+        image[cy, cx] = (220, 20, 20)
+
+    ax.imshow(image, cmap=plt.cm.gray)
+
+
+
+
+
+.. image:: /auto_examples/edges/images/sphx_glr_plot_circular_elliptical_hough_transform_001.png
+    :align: center
+
+
+
 
 Ellipse detection
 =================
 
 In this second example, the aim is to detect the edge of a coffee cup.
-Basically, this is a projection of a circle, i.e. an ellipse.
-The problem to solve is much more difficult because five parameters have to be
+Basically, this is a projection of a circle, i.e. an ellipse. The problem
+to solve is much more difficult because five parameters have to be
 determined, instead of three for circles.
 
-
 Algorithm overview
-------------------
+-------------------
 
-The algorithm takes two different points belonging to the ellipse. It assumes
-that it is the main axis. A loop on all the other points determines how much
-an ellipse passes to them. A good match corresponds to high accumulator values.
+The algorithm takes two different points belonging to the ellipse. It
+assumes that it is the main axis. A loop on all the other points determines
+how much an ellipse passes to them. A good match corresponds to high
+accumulator values.
 
 A full description of the algorithm can be found in reference [1]_.
 
 References
 ----------
-.. [1] Xie, Yonghong, and Qiang Ji. "A new efficient ellipse detection
-       method." Pattern Recognition, 2002. Proceedings. 16th International
-       Conference on. Vol. 2. IEEE, 2002
+.. [1] Xie, Yonghong, and Qiang Ji. "A new efficient
+       ellipse detection method." Pattern Recognition, 2002. Proceedings.
+       16th International Conference on. Vol. 2. IEEE, 2002
+
 
 
 .. code-block:: python
 
-	
-	import matplotlib.pyplot as plt
-	
-	from skimage import data, color
-	from skimage.feature import canny
-	from skimage.transform import hough_ellipse
-	from skimage.draw import ellipse_perimeter
-	
-	# Load picture, convert to grayscale and detect edges
-	image_rgb = data.coffee()[0:220, 160:420]
-	image_gray = color.rgb2gray(image_rgb)
-	edges = canny(image_gray, sigma=2.0,
-	              low_threshold=0.55, high_threshold=0.8)
-	
-	# Perform a Hough Transform
-	# The accuracy corresponds to the bin size of a major axis.
-	# The value is chosen in order to get a single high accumulator.
-	# The threshold eliminates low accumulators
-	result = hough_ellipse(edges, accuracy=20, threshold=250,
-	                       min_size=100, max_size=120)
-	result.sort(order='accumulator')
-	
-	# Estimated parameters for the ellipse
-	best = list(result[-1])
-	yc, xc, a, b = [int(round(x)) for x in best[1:5]]
-	orientation = best[5]
-	
-	# Draw the ellipse on the original image
-	cy, cx = ellipse_perimeter(yc, xc, a, b, orientation)
-	image_rgb[cy, cx] = (0, 0, 255)
-	# Draw the edge (white) and the resulting ellipse (red)
-	edges = color.gray2rgb(edges)
-	edges[cy, cx] = (250, 0, 0)
-	
-	fig2, (ax1, ax2) = plt.subplots(ncols=2, nrows=1, figsize=(8, 4), sharex=True,
-	                                sharey=True,
-	                                subplot_kw={'adjustable':'box-forced'})
-	
-	ax1.set_title('Original picture')
-	ax1.imshow(image_rgb)
-	
-	ax2.set_title('Edge (white) and result (red)')
-	ax2.imshow(edges)
-	
-	plt.show()
-	
-	
 
-.. image:: images/plot_circular_elliptical_hough_transform_2.png
+    import matplotlib.pyplot as plt
+
+    from skimage import data, color
+    from skimage.feature import canny
+    from skimage.transform import hough_ellipse
+    from skimage.draw import ellipse_perimeter
+
+    # Load picture, convert to grayscale and detect edges
+    image_rgb = data.coffee()[0:220, 160:420]
+    image_gray = color.rgb2gray(image_rgb)
+    edges = canny(image_gray, sigma=2.0,
+                  low_threshold=0.55, high_threshold=0.8)
+
+    # Perform a Hough Transform
+    # The accuracy corresponds to the bin size of a major axis.
+    # The value is chosen in order to get a single high accumulator.
+    # The threshold eliminates low accumulators
+    result = hough_ellipse(edges, accuracy=20, threshold=250,
+                           min_size=100, max_size=120)
+    result.sort(order='accumulator')
+
+    # Estimated parameters for the ellipse
+    best = list(result[-1])
+    yc, xc, a, b = [int(round(x)) for x in best[1:5]]
+    orientation = best[5]
+
+    # Draw the ellipse on the original image
+    cy, cx = ellipse_perimeter(yc, xc, a, b, orientation)
+    image_rgb[cy, cx] = (0, 0, 255)
+    # Draw the edge (white) and the resulting ellipse (red)
+    edges = color.gray2rgb(edges)
+    edges[cy, cx] = (250, 0, 0)
+
+    fig2, (ax1, ax2) = plt.subplots(ncols=2, nrows=1, figsize=(8, 4), sharex=True,
+                                    sharey=True,
+                                    subplot_kw={'adjustable':'box-forced'})
+
+    ax1.set_title('Original picture')
+    ax1.imshow(image_rgb)
+
+    ax2.set_title('Edge (white) and result (red)')
+    ax2.imshow(edges)
+
+    plt.show()
 
 
 
-
-**Python source code:** :download:`download <plot_circular_elliptical_hough_transform.py>`
-(generated using ``skimage`` |version|)
-
+.. image:: /auto_examples/edges/images/sphx_glr_plot_circular_elliptical_hough_transform_002.png
+    :align: center
 
 
-**IPython Notebook:** :download:`download <./notebook/plot_circular_elliptical_hough_transform.ipynb>`
-(generated using ``skimage`` |version|)
 
+
+**Total running time of the script:**
+(0 minutes 20.875 seconds)
+
+
+
+.. container:: sphx-glr-download
+
+    **Download Python source code:** :download:`plot_circular_elliptical_hough_transform.py <plot_circular_elliptical_hough_transform.py>`
+
+
+.. container:: sphx-glr-download
+
+    **Download IPython notebook:** :download:`plot_circular_elliptical_hough_transform.ipynb <plot_circular_elliptical_hough_transform.ipynb>`

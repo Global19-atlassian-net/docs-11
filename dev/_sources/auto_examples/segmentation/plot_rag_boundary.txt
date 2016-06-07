@@ -1,4 +1,6 @@
-.. _example_segmentation_plot_rag_boundary.py:
+
+
+.. _sphx_glr_auto_examples_segmentation_plot_rag_boundary.py:
 
 
 ==========================
@@ -8,20 +10,47 @@ Region Boundary based RAGs
 This example demonstrates construction of region boundary based RAGs with the
 `rag_boundary` function.
 
-.. image:: images/plot_rag_boundary_1.png
+
+
+
+.. image:: /auto_examples/segmentation/images/sphx_glr_plot_rag_boundary_001.png
     :align: center
 
 
-.. literalinclude:: plot_rag_boundary.py
-    :lines: 9-
 
 
 
-**Python source code:** :download:`download <plot_rag_boundary.py>`
-(generated using ``skimage`` |version|)
+.. code-block:: python
+
+    from skimage.future import graph
+    from skimage import data, segmentation, color, filters, io
+    from matplotlib import pyplot as plt
+
+
+    img = data.coffee()
+    gimg = color.rgb2gray(img)
+
+    labels = segmentation.slic(img, compactness=30, n_segments=400)
+    edges = filters.sobel(gimg)
+    edges_rgb = color.gray2rgb(edges)
+
+    g = graph.rag_boundary(labels, edges)
+    lc = graph.show_rag(labels, g, edges_rgb, img_cmap=None, edge_cmap='viridis',
+                        edge_width=1.2)
+
+    plt.colorbar(lc, fraction=0.03)
+    io.show()
+
+**Total running time of the script:**
+(0 minutes 0.871 seconds)
 
 
 
-**IPython Notebook:** :download:`download <./notebook/plot_rag_boundary.ipynb>`
-(generated using ``skimage`` |version|)
+.. container:: sphx-glr-download
 
+    **Download Python source code:** :download:`plot_rag_boundary.py <plot_rag_boundary.py>`
+
+
+.. container:: sphx-glr-download
+
+    **Download IPython notebook:** :download:`plot_rag_boundary.ipynb <plot_rag_boundary.ipynb>`

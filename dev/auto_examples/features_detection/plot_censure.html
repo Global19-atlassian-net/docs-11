@@ -11,6 +11,7 @@
     <link href="../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../../_static/css/custom.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
     
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="../../_static/js/bootstrap.min.js"></script>
@@ -28,8 +29,8 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <link rel="top" title="skimage v0.13dev docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
-        <link rel="next" title="Corner detection" href="plot_corner.html" />
-        <link rel="prev" title="BRIEF binary descriptor" href="plot_brief.html" />
+        <link rel="next" title="Template Matching" href="plot_template.html" />
+        <link rel="prev" title="Corner detection" href="plot_corner.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../../_static/favicon.ico">
 </head>
@@ -62,28 +63,27 @@
         <div class="span9">
             
   <div class="section" id="censure-feature-detector">
-<span id="example-features-detection-plot-censure-py"></span><h1>CENSURE feature detector<a class="headerlink" href="#censure-feature-detector" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-features-detection-plot-censure-py"></span><h1>CENSURE feature detector<a class="headerlink" href="#censure-feature-detector" title="Permalink to this headline">¶</a></h1>
 <p>The CENSURE feature detector is a scale-invariant center-surround detector
 (CENSURE) that claims to outperform other detectors and is capable of real-time
 implementation.</p>
-<img alt="../../_images/plot_censure_1.png" class="align-center" src="../../_images/plot_censure_1.png" />
-<div class="highlight-default"><div class="highlight"><pre><span></span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">transform</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <span class="n">CENSURE</span>
-<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="k">import</span> <span class="n">rgb2gray</span>
+<img alt="../../_images/sphx_glr_plot_censure_001.png" class="align-center" src="../../_images/sphx_glr_plot_censure_001.png" />
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <a href="../../api/skimage.feature.html#skimage.feature.CENSURE"><span class="n">CENSURE</span></a>
+<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray"><span class="n">rgb2gray</span></a>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
-<span class="n">img_orig</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">())</span>
-<span class="n">tform</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">AffineTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="n">img_orig</span> <span class="o">=</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray"><span class="n">rgb2gray</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.astronaut"><span class="n">data</span><span class="o">.</span><span class="n">astronaut</span></a><span class="p">())</span>
+<span class="n">tform</span> <span class="o">=</span> <a href="../../api/skimage.transform.html#skimage.transform.AffineTransform"><span class="n">tf</span><span class="o">.</span><span class="n">AffineTransform</span></a><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
                            <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">200</span><span class="p">))</span>
-<span class="n">img_warp</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">warp</span><span class="p">(</span><span class="n">img_orig</span><span class="p">,</span> <span class="n">tform</span><span class="p">)</span>
+<span class="n">img_warp</span> <span class="o">=</span> <a href="../../api/skimage.transform.html#skimage.transform.warp"><span class="n">tf</span><span class="o">.</span><span class="n">warp</span></a><span class="p">(</span><span class="n">img_orig</span><span class="p">,</span> <span class="n">tform</span><span class="p">)</span>
 
-<span class="n">detector</span> <span class="o">=</span> <span class="n">CENSURE</span><span class="p">()</span>
+<span class="n">detector</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.CENSURE"><span class="n">CENSURE</span></a><span class="p">()</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<a href="http://matplotlib.org/api/tight_layout_api.html#matplotlib.tight_layout"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 
 <span class="n">detector</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">img_orig</span><span class="p">)</span>
 
@@ -99,13 +99,15 @@ implementation.</p>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">detector</span><span class="o">.</span><span class="n">keypoints</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">detector</span><span class="o">.</span><span class="n">keypoints</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
               <span class="mi">2</span> <span class="o">**</span> <span class="n">detector</span><span class="o">.</span><span class="n">scales</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_censure.py" download=""><code class="xref download docutils literal"><span class="pre">download</span></code></a>
-(generated using <code class="docutils literal"><span class="pre">skimage</span></code> 0.13dev)</p>
-<p><strong>IPython Notebook:</strong> <a class="reference download internal" href="../../_downloads/plot_censure.ipynb" download=""><code class="xref download docutils literal"><span class="pre">download</span></code></a>
-(generated using <code class="docutils literal"><span class="pre">skimage</span></code> 0.13dev)</p>
+<p><strong>Total running time of the script:</strong>
+(0 minutes 1.194 seconds)</p>
+<div class="sphx-glr-download container">
+<strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_censure.py" download=""><code class="xref download docutils literal"><span class="pre">plot_censure.py</span></code></a></div>
+<div class="sphx-glr-download container">
+<strong>Download IPython notebook:</strong> <a class="reference download internal" href="../../_downloads/plot_censure.ipynb" download=""><code class="xref download docutils literal"><span class="pre">plot_censure.ipynb</span></code></a></div>
 </div>
 
 
@@ -119,13 +121,13 @@ implementation.</p>
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="plot_brief.html" title="previous chapter">BRIEF binary descriptor</a></li>
+            <li><a href="plot_corner.html" title="previous chapter">Corner detection</a></li>
         </ul>
     </div>
     <h4 class="sidebar-box-heading">Next topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="plot_corner.html" title="next chapter">Corner detection</a></li>
+            <li><a href="plot_template.html" title="next chapter">Template Matching</a></li>
         </ul>
     </div>
 

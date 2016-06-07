@@ -1,4 +1,6 @@
-.. _example_transform_plot_edge_modes.py:
+
+
+.. _sphx_glr_auto_examples_transform_plot_edge_modes.py:
 
 
 =========================
@@ -9,20 +11,58 @@ This example illustrates the different edge modes available during
 interpolation in routines such as `skimage.transform.rescale` and
 `skimage.transform.resize`.
 
-.. image:: images/plot_edge_modes_1.png
+
+
+
+.. image:: /auto_examples/transform/images/sphx_glr_plot_edge_modes_001.png
     :align: center
 
 
-.. literalinclude:: plot_edge_modes.py
-    :lines: 10-
 
 
 
-**Python source code:** :download:`download <plot_edge_modes.py>`
-(generated using ``skimage`` |version|)
+.. code-block:: python
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    from skimage._shared.interpolation import extend_image
+
+    img = np.zeros((16, 16))
+    img[:8, :8] += 1
+    img[:4, :4] += 1
+    img[:2, :2] += 1
+    img[:1, :1] += 2
+    img[8, 8] = 4
+
+    modes = ['constant', 'edge', 'wrap', 'reflect', 'symmetric']
+    fig, axes = plt.subplots(2, 3)
+    axes = axes.flatten()
+
+    for n, mode in enumerate(modes):
+        img_extended = extend_image(img, pad=img.shape[0], mode=mode)
+        axes[n].imshow(img_extended, cmap=plt.cm.gray, interpolation='nearest')
+        axes[n].plot([15.5, 15.5, 31.5, 31.5, 15.5],
+                     [15.5, 31.5, 31.5, 15.5, 15.5], 'y--', linewidth=0.5)
+        axes[n].set_title(mode)
+
+    for n in range(len(axes)):
+        axes[n].set_axis_off()
+        axes[n].set_aspect('equal')
+    
+    plt.tight_layout()
+    plt.show()
+
+**Total running time of the script:**
+(0 minutes 0.497 seconds)
 
 
 
-**IPython Notebook:** :download:`download <./notebook/plot_edge_modes.ipynb>`
-(generated using ``skimage`` |version|)
+.. container:: sphx-glr-download
 
+    **Download Python source code:** :download:`plot_edge_modes.py <plot_edge_modes.py>`
+
+
+.. container:: sphx-glr-download
+
+    **Download IPython notebook:** :download:`plot_edge_modes.ipynb <plot_edge_modes.ipynb>`

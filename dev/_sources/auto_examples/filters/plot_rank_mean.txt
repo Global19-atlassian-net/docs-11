@@ -1,4 +1,6 @@
-.. _example_filters_plot_rank_mean.py:
+
+
+.. _sphx_glr_auto_examples_filters_plot_rank_mean.py:
 
 
 ============
@@ -20,20 +22,58 @@ filtering rate for continuous area (i.e. background) while higher image
 frequencies remain untouched.
 
 
-.. image:: images/plot_rank_mean_1.png
+
+
+
+.. image:: /auto_examples/filters/images/sphx_glr_plot_rank_mean_001.png
     :align: center
 
 
-.. literalinclude:: plot_rank_mean.py
-    :lines: 21-
 
 
 
-**Python source code:** :download:`download <plot_rank_mean.py>`
-(generated using ``skimage`` |version|)
+.. code-block:: python
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    from skimage import data
+    from skimage.morphology import disk
+    from skimage.filters import rank
+
+
+    image = data.coins()
+    selem = disk(20)
+
+    percentile_result = rank.mean_percentile(image, selem=selem, p0=.1, p1=.9)
+    bilateral_result = rank.mean_bilateral(image, selem=selem, s0=500, s1=500)
+    normal_result = rank.mean(image, selem=selem)
+
+
+    fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(8, 10),
+                             sharex=True, sharey=True)
+    ax = axes.ravel()
+
+    titles = ['Original', 'Percentile mean', 'Bilateral mean', 'Local mean']
+    imgs = [image, percentile_result, bilateral_result, normal_result]
+    for n in range(0, len(imgs)):
+        ax[n].imshow(imgs[n])
+        ax[n].set_title(titles[n])
+        ax[n].set_adjustable('box-forced')
+        ax[n].axis('off')
+
+    plt.show()
+
+**Total running time of the script:**
+(0 minutes 0.652 seconds)
 
 
 
-**IPython Notebook:** :download:`download <./notebook/plot_rank_mean.ipynb>`
-(generated using ``skimage`` |version|)
+.. container:: sphx-glr-download
 
+    **Download Python source code:** :download:`plot_rank_mean.py <plot_rank_mean.py>`
+
+
+.. container:: sphx-glr-download
+
+    **Download IPython notebook:** :download:`plot_rank_mean.ipynb <plot_rank_mean.ipynb>`

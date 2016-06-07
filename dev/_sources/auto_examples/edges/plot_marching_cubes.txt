@@ -1,4 +1,6 @@
-.. _example_edges_plot_marching_cubes.py:
+
+
+.. _sphx_glr_auto_examples_edges_plot_marching_cubes.py:
 
 
 ==============
@@ -22,20 +24,62 @@ voxel spacing is not equal for every spatial dimension, through use of the
 `spacing` kwarg.
 
 
-.. image:: images/plot_marching_cubes_1.png
+
+
+
+.. image:: /auto_examples/edges/images/sphx_glr_plot_marching_cubes_001.png
     :align: center
 
 
-.. literalinclude:: plot_marching_cubes.py
-    :lines: 23-
 
 
 
-**Python source code:** :download:`download <plot_marching_cubes.py>`
-(generated using ``skimage`` |version|)
+.. code-block:: python
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+
+    from skimage import measure
+    from skimage.draw import ellipsoid
+
+    # Generate a level set about zero of two identical ellipsoids in 3D
+    ellip_base = ellipsoid(6, 10, 16, levelset=True)
+    ellip_double = np.concatenate((ellip_base[:-1, ...],
+                                   ellip_base[2:, ...]), axis=0)
+
+    # Use marching cubes to obtain the surface mesh of these ellipsoids
+    verts, faces = measure.marching_cubes(ellip_double, 0)
+
+    # Display resulting triangular mesh using Matplotlib. This can also be done
+    # with mayavi (see skimage.measure.marching_cubes docstring).
+    fig = plt.figure(figsize=(10, 12))
+    ax = fig.add_subplot(111, projection='3d')
+
+    # Fancy indexing: `verts[faces]` to generate a collection of triangles
+    mesh = Poly3DCollection(verts[faces])
+    ax.add_collection3d(mesh)
+
+    ax.set_xlabel("x-axis: a = 6 per ellipsoid")
+    ax.set_ylabel("y-axis: b = 10")
+    ax.set_zlabel("z-axis: c = 16")
+
+    ax.set_xlim(0, 24)  # a = 6 (times two for 2nd ellipsoid)
+    ax.set_ylim(0, 20)  # b = 10
+    ax.set_zlim(0, 32)  # c = 16
+
+    plt.show()
+
+**Total running time of the script:**
+(0 minutes 0.166 seconds)
 
 
 
-**IPython Notebook:** :download:`download <./notebook/plot_marching_cubes.ipynb>`
-(generated using ``skimage`` |version|)
+.. container:: sphx-glr-download
 
+    **Download Python source code:** :download:`plot_marching_cubes.py <plot_marching_cubes.py>`
+
+
+.. container:: sphx-glr-download
+
+    **Download IPython notebook:** :download:`plot_marching_cubes.ipynb <plot_marching_cubes.ipynb>`

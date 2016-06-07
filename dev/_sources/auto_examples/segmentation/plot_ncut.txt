@@ -1,4 +1,6 @@
-.. _example_segmentation_plot_ncut.py:
+
+
+.. _sphx_glr_auto_examples_segmentation_plot_ncut.py:
 
 
 ==============
@@ -14,24 +16,58 @@ References
        Pattern Analysis and Machine Intelligence,
        IEEE Transactions on, vol. 22, no. 8, pp. 888-905, August 2000.
 
-.. image:: images/plot_ncut_1.png
-    :align: center
-
-
-.. image:: images/plot_ncut_2.png
-    :align: center
-
-
-.. literalinclude:: plot_ncut.py
-    :lines: 15-
 
 
 
-**Python source code:** :download:`download <plot_ncut.py>`
-(generated using ``skimage`` |version|)
+.. rst-class:: sphx-glr-horizontal
+
+
+    *
+
+      .. image:: /auto_examples/segmentation/images/sphx_glr_plot_ncut_001.png
+            :scale: 47
+
+    *
+
+      .. image:: /auto_examples/segmentation/images/sphx_glr_plot_ncut_002.png
+            :scale: 47
 
 
 
-**IPython Notebook:** :download:`download <./notebook/plot_ncut.ipynb>`
-(generated using ``skimage`` |version|)
 
+
+.. code-block:: python
+
+    from skimage import data, io, segmentation, color
+    from skimage.future import graph
+    from matplotlib import pyplot as plt
+
+
+    img = data.coffee()
+
+    labels1 = segmentation.slic(img, compactness=30, n_segments=400)
+    out1 = color.label2rgb(labels1, img, kind='avg')
+
+    g = graph.rag_mean_color(img, labels1, mode='similarity')
+    labels2 = graph.cut_normalized(labels1, g)
+    out2 = color.label2rgb(labels2, img, kind='avg')
+
+    plt.figure()
+    io.imshow(out1)
+    plt.figure()
+    io.imshow(out2)
+    io.show()
+
+**Total running time of the script:**
+(0 minutes 8.313 seconds)
+
+
+
+.. container:: sphx-glr-download
+
+    **Download Python source code:** :download:`plot_ncut.py <plot_ncut.py>`
+
+
+.. container:: sphx-glr-download
+
+    **Download IPython notebook:** :download:`plot_ncut.ipynb <plot_ncut.ipynb>`

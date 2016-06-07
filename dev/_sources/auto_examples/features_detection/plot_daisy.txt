@@ -1,4 +1,6 @@
-.. _example_features_detection_plot_daisy.py:
+
+
+.. _sphx_glr_auto_examples_features_detection_plot_daisy.py:
 
 
 ===============================
@@ -13,20 +15,44 @@ representations.
 In this example a limited number of DAISY descriptors are extracted at a large
 scale for illustrative purposes.
 
-.. image:: images/plot_daisy_1.png
+
+
+
+.. image:: /auto_examples/features_detection/images/sphx_glr_plot_daisy_001.png
     :align: center
 
 
-.. literalinclude:: plot_daisy.py
-    :lines: 14-
 
 
 
-**Python source code:** :download:`download <plot_daisy.py>`
-(generated using ``skimage`` |version|)
+.. code-block:: python
+
+    from skimage.feature import daisy
+    from skimage import data
+    import matplotlib.pyplot as plt
+
+
+    img = data.camera()
+    descs, descs_img = daisy(img, step=180, radius=58, rings=2, histograms=6,
+                             orientations=8, visualize=True)
+
+    fig, ax = plt.subplots()
+    ax.axis('off')
+    ax.imshow(descs_img)
+    descs_num = descs.shape[0] * descs.shape[1]
+    ax.set_title('%i DAISY descriptors extracted:' % descs_num)
+    plt.show()
+
+**Total running time of the script:**
+(0 minutes 2.057 seconds)
 
 
 
-**IPython Notebook:** :download:`download <./notebook/plot_daisy.ipynb>`
-(generated using ``skimage`` |version|)
+.. container:: sphx-glr-download
 
+    **Download Python source code:** :download:`plot_daisy.py <plot_daisy.py>`
+
+
+.. container:: sphx-glr-download
+
+    **Download IPython notebook:** :download:`plot_daisy.ipynb <plot_daisy.ipynb>`

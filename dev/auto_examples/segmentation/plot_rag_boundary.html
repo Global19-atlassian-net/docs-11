@@ -11,6 +11,7 @@
     <link href="../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../../_static/css/custom.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
     
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="../../_static/js/bootstrap.min.js"></script>
@@ -28,8 +29,8 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <link rel="top" title="skimage v0.13dev docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
-        <link rel="next" title="Drawing Region Adjacency Graphs (RAGs)" href="plot_rag_draw.html" />
-        <link rel="prev" title="Region Adjacency Graphs" href="plot_rag.html" />
+        <link rel="next" title="Adaptive Thresholding" href="plot_threshold_adaptive.html" />
+        <link rel="prev" title="Normalized Cut" href="plot_ncut.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../../_static/favicon.ico">
 </head>
@@ -62,34 +63,36 @@
         <div class="span9">
             
   <div class="section" id="region-boundary-based-rags">
-<span id="example-segmentation-plot-rag-boundary-py"></span><h1>Region Boundary based RAGs<a class="headerlink" href="#region-boundary-based-rags" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-segmentation-plot-rag-boundary-py"></span><h1>Region Boundary based RAGs<a class="headerlink" href="#region-boundary-based-rags" title="Permalink to this headline">¶</a></h1>
 <p>This example demonstrates construction of region boundary based RAGs with the
 <cite>rag_boundary</cite> function.</p>
-<img alt="../../_images/plot_rag_boundary_1.png" class="align-center" src="../../_images/plot_rag_boundary_1.png" />
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">io</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<img alt="../../_images/sphx_glr_plot_rag_boundary_001.png" class="align-center" src="../../_images/sphx_glr_plot_rag_boundary_001.png" />
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="kn">import</span> <span class="n">graph</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">io</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 
-<span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">coffee</span><span class="p">()</span>
-<span class="n">gimg</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.coffee"><span class="n">data</span><span class="o">.</span><span class="n">coffee</span></a><span class="p">()</span>
+<span class="n">gimg</span> <span class="o">=</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray"><span class="n">color</span><span class="o">.</span><span class="n">rgb2gray</span></a><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 
-<span class="n">labels</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">compactness</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">n_segments</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
-<span class="n">edges</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">sobel</span><span class="p">(</span><span class="n">gimg</span><span class="p">)</span>
-<span class="n">edges_rgb</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">gray2rgb</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.slic"><span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span></a><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">compactness</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">n_segments</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">edges</span> <span class="o">=</span> <a href="../../api/skimage.filters.html#skimage.filters.sobel"><span class="n">filters</span><span class="o">.</span><span class="n">sobel</span></a><span class="p">(</span><span class="n">gimg</span><span class="p">)</span>
+<span class="n">edges_rgb</span> <span class="o">=</span> <a href="../../api/skimage.color.html#skimage.color.gray2rgb"><span class="n">color</span><span class="o">.</span><span class="n">gray2rgb</span></a><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
 
 <span class="n">g</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">rag_boundary</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
-<span class="n">lc</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">show_rag</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">edges_rgb</span><span class="p">,</span> <span class="n">img_cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edge_cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+<span class="n">lc</span> <span class="o">=</span> <a href="../../api/skimage.future.graph.html#skimage.future.graph.show_rag"><span class="n">graph</span><span class="o">.</span><span class="n">show_rag</span></a><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">edges_rgb</span><span class="p">,</span> <span class="n">img_cmap</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">edge_cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
                     <span class="n">edge_width</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">lc</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
-<span class="n">io</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a href="http://matplotlib.org/api/colorbar_api.html#matplotlib.colorbar"><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">(</span><span class="n">lc</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
+<a href="../../api/skimage.io.html#skimage.io.show"><span class="n">io</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_rag_boundary.py" download=""><code class="xref download docutils literal"><span class="pre">download</span></code></a>
-(generated using <code class="docutils literal"><span class="pre">skimage</span></code> 0.13dev)</p>
-<p><strong>IPython Notebook:</strong> <a class="reference download internal" href="../../_downloads/plot_rag_boundary.ipynb" download=""><code class="xref download docutils literal"><span class="pre">download</span></code></a>
-(generated using <code class="docutils literal"><span class="pre">skimage</span></code> 0.13dev)</p>
+<p><strong>Total running time of the script:</strong>
+(0 minutes 0.871 seconds)</p>
+<div class="sphx-glr-download container">
+<strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_rag_boundary.py" download=""><code class="xref download docutils literal"><span class="pre">plot_rag_boundary.py</span></code></a></div>
+<div class="sphx-glr-download container">
+<strong>Download IPython notebook:</strong> <a class="reference download internal" href="../../_downloads/plot_rag_boundary.ipynb" download=""><code class="xref download docutils literal"><span class="pre">plot_rag_boundary.ipynb</span></code></a></div>
 </div>
 
 
@@ -103,13 +106,13 @@
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="plot_rag.html" title="previous chapter">Region Adjacency Graphs</a></li>
+            <li><a href="plot_ncut.html" title="previous chapter">Normalized Cut</a></li>
         </ul>
     </div>
     <h4 class="sidebar-box-heading">Next topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="plot_rag_draw.html" title="next chapter">Drawing Region Adjacency Graphs (RAGs)</a></li>
+            <li><a href="plot_threshold_adaptive.html" title="next chapter">Adaptive Thresholding</a></li>
         </ul>
     </div>
 

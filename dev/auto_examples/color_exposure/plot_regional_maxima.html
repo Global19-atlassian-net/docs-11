@@ -11,6 +11,7 @@
     <link href="../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../../_static/css/custom.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
     
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="../../_static/js/bootstrap.min.js"></script>
@@ -28,8 +29,8 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <link rel="top" title="skimage v0.13dev docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
-        <link rel="next" title="Tinting gray-scale images" href="plot_tinting_grayscale_images.html" />
-        <link rel="prev" title="Gamma and log contrast adjustment" href="plot_log_gamma.html" />
+        <link rel="next" title="Adapting gray-scale filters to RGB images" href="plot_adapt_rgb.html" />
+        <link rel="prev" title="Immunohistochemical staining colors separation" href="plot_ihc_color_separation.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../../_static/favicon.ico">
 </head>
@@ -62,7 +63,7 @@
         <div class="span9">
             
   <div class="section" id="filtering-regional-maxima">
-<span id="example-color-exposure-plot-regional-maxima-py"></span><h1>Filtering regional maxima<a class="headerlink" href="#filtering-regional-maxima" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-color-exposure-plot-regional-maxima-py"></span><h1>Filtering regional maxima<a class="headerlink" href="#filtering-regional-maxima" title="Permalink to this headline">¶</a></h1>
 <p>Here, we use morphological reconstruction to create a background image, which
 we can subtract from the original image to isolate bright features (regional
 maxima).</p>
@@ -75,22 +76,22 @@ get dilated in order to reconstruct the background image.</p>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">img_as_float</span>
-<span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">reconstruction</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <a href="../../api/skimage.html#skimage.img_as_float"><span class="n">img_as_float</span></a>
+<span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <a href="../../api/skimage.morphology.html#skimage.morphology.reconstruction"><span class="n">reconstruction</span></a>
 
 <span class="c1"># Convert to float: Important for subtraction later which won&#39;t work with uint8</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">img_as_float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">coins</span><span class="p">())</span>
+<span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_float"><span class="n">img_as_float</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.coins"><span class="n">data</span><span class="o">.</span><span class="n">coins</span></a><span class="p">())</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="n">seed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">seed</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.copy.html#numpy.copy"><span class="n">np</span><span class="o">.</span><span class="n">copy</span></a><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="n">seed</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">image</span>
 
-<span class="n">dilated</span> <span class="o">=</span> <span class="n">reconstruction</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dilation&#39;</span><span class="p">)</span>
+<span class="n">dilated</span> <span class="o">=</span> <a href="../../api/skimage.morphology.html#skimage.morphology.reconstruction"><span class="n">reconstruction</span></a><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dilation&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Subtracting the dilated image leaves an image with just the coins and a flat,
-black background, as shown below.</p>
+<p>Subtracting the dilated image leaves an image with just the coins and a
+flat, black background, as shown below.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
@@ -111,16 +112,17 @@ black background, as shown below.</p>
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../../_images/plot_regional_maxima_1.png" src="../../_images/plot_regional_maxima_1.png" />
+<img alt="../../_images/sphx_glr_plot_regional_maxima_001.png" class="align-center" src="../../_images/sphx_glr_plot_regional_maxima_001.png" />
 <p>Although the features (i.e. the coins) are clearly isolated, the coins
 surrounded by a bright background in the original image are dimmer in the
-subtracted image. We can attempt to correct this using a different seed image.</p>
-<p>Instead of creating a seed image with maxima along the image border, we can use
-the features of the image itself to seed the reconstruction process. Here, the
-seed image is the original image minus a fixed value, <code class="docutils literal"><span class="pre">h</span></code>.</p>
+subtracted image. We can attempt to correct this using a different seed
+image.</p>
+<p>Instead of creating a seed image with maxima along the image border, we can
+use the features of the image itself to seed the reconstruction process.
+Here, the seed image is the original image minus a fixed value, <code class="docutils literal"><span class="pre">h</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="mf">0.4</span>
 <span class="n">seed</span> <span class="o">=</span> <span class="n">image</span> <span class="o">-</span> <span class="n">h</span>
-<span class="n">dilated</span> <span class="o">=</span> <span class="n">reconstruction</span><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dilation&#39;</span><span class="p">)</span>
+<span class="n">dilated</span> <span class="o">=</span> <a href="../../api/skimage.morphology.html#skimage.morphology.reconstruction"><span class="n">reconstruction</span></a><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dilation&#39;</span><span class="p">)</span>
 <span class="n">hdome</span> <span class="o">=</span> <span class="n">image</span> <span class="o">-</span> <span class="n">dilated</span>
 </pre></div>
 </div>
@@ -150,21 +152,23 @@ line).</p>
 <span class="n">ax3</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../../_images/plot_regional_maxima_2.png" src="../../_images/plot_regional_maxima_2.png" />
+<img alt="../../_images/sphx_glr_plot_regional_maxima_002.png" class="align-center" src="../../_images/sphx_glr_plot_regional_maxima_002.png" />
 <p>As you can see in the image slice, each coin is given a different baseline
 intensity in the reconstructed image; this is because we used the local
 intensity (shifted by <code class="docutils literal"><span class="pre">h</span></code>) as a seed value. As a result, the coins in the
-subtracted image have similar pixel intensities. The final result is known as
-the h-dome of an image since this tends to isolate regional maxima of height
-<code class="docutils literal"><span class="pre">h</span></code>. This operation is particularly useful when your images are unevenly
-illuminated.</p>
-<p><strong>Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_regional_maxima.py" download=""><code class="xref download docutils literal"><span class="pre">download</span></code></a>
-(generated using <code class="docutils literal"><span class="pre">skimage</span></code> 0.13dev)</p>
-<p><strong>IPython Notebook:</strong> <a class="reference download internal" href="../../_downloads/plot_regional_maxima.ipynb" download=""><code class="xref download docutils literal"><span class="pre">download</span></code></a>
-(generated using <code class="docutils literal"><span class="pre">skimage</span></code> 0.13dev)</p>
+subtracted image have similar pixel intensities. The final result is known
+as the h-dome of an image since this tends to isolate regional maxima of
+height <code class="docutils literal"><span class="pre">h</span></code>. This operation is particularly useful when your images are
+unevenly illuminated.</p>
+<p><strong>Total running time of the script:</strong>
+(0 minutes 1.183 seconds)</p>
+<div class="sphx-glr-download container">
+<strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_regional_maxima.py" download=""><code class="xref download docutils literal"><span class="pre">plot_regional_maxima.py</span></code></a></div>
+<div class="sphx-glr-download container">
+<strong>Download IPython notebook:</strong> <a class="reference download internal" href="../../_downloads/plot_regional_maxima.ipynb" download=""><code class="xref download docutils literal"><span class="pre">plot_regional_maxima.ipynb</span></code></a></div>
 </div>
 
 
@@ -178,13 +182,13 @@ illuminated.</p>
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="plot_log_gamma.html" title="previous chapter">Gamma and log contrast adjustment</a></li>
+            <li><a href="plot_ihc_color_separation.html" title="previous chapter">Immunohistochemical staining colors separation</a></li>
         </ul>
     </div>
     <h4 class="sidebar-box-heading">Next topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="plot_tinting_grayscale_images.html" title="next chapter">Tinting gray-scale images</a></li>
+            <li><a href="plot_adapt_rgb.html" title="next chapter">Adapting gray-scale filters to RGB images</a></li>
         </ul>
     </div>
 
