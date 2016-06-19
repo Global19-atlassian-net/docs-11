@@ -82,10 +82,10 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.filters.gabor_kernel" title="skimage.filters.gabor_kernel"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gabor_kernel</span></code></a>(frequency[,&nbsp;...])</td>
 <td>Return complex 2D Gabor filter kernel.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.gaussian" title="skimage.filters.gaussian"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gaussian</span></code></a>(image,&nbsp;sigma[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.gaussian" title="skimage.filters.gaussian"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gaussian</span></code></a>(image[,&nbsp;sigma,&nbsp;...])</td>
 <td>Multi-dimensional Gaussian filter</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.filters.gaussian_filter" title="skimage.filters.gaussian_filter"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gaussian_filter</span></code></a>(image,&nbsp;sigma)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.filters.gaussian_filter" title="skimage.filters.gaussian_filter"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gaussian_filter</span></code></a>(image[,&nbsp;...])</td>
 <td><strong>Deprecated function</strong>. Use <code class="docutils literal"><span class="pre">skimage.filters.gaussian</span></code> instead.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.inverse" title="skimage.filters.inverse"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.inverse</span></code></a>(data[,&nbsp;...])</td>
@@ -94,7 +94,7 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.filters.laplace" title="skimage.filters.laplace"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.laplace</span></code></a>(image[,&nbsp;ksize,&nbsp;mask])</td>
 <td>Find the edges of an image using the Laplace operator.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.median" title="skimage.filters.median"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.median</span></code></a>(image,&nbsp;selem[,&nbsp;out,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.median" title="skimage.filters.median"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.median</span></code></a>(image[,&nbsp;selem,&nbsp;out,&nbsp;...])</td>
 <td>Return local median of an image.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.filters.prewitt" title="skimage.filters.prewitt"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.prewitt</span></code></a>(image[,&nbsp;mask])</td>
@@ -502,7 +502,7 @@ deviations</p>
 <h2>gaussian<a class="headerlink" href="#gaussian" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.gaussian">
-<code class="descclassname">skimage.filters.</code><code class="descname">gaussian</code><span class="sig-paren">(</span><em>image</em>, <em>sigma</em>, <em>output=None</em>, <em>mode='nearest'</em>, <em>cval=0</em>, <em>multichannel=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_gaussian.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gaussian" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.filters.</code><code class="descname">gaussian</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>output=None</em>, <em>mode='nearest'</em>, <em>cval=0</em>, <em>multichannel=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_gaussian.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gaussian" title="Permalink to this definition">¶</a></dt>
 <dd><p>Multi-dimensional Gaussian filter</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -510,11 +510,11 @@ deviations</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : array-like</p>
 <blockquote>
-<div><p>input image (grayscale or color) to filter.</p>
+<div><p>Input image (grayscale or color) to filter.</p>
 </div></blockquote>
-<p><strong>sigma</strong> : scalar or sequence of scalars</p>
+<p><strong>sigma</strong> : scalar or sequence of scalars, optional</p>
 <blockquote>
-<div><p>standard deviation for Gaussian kernel. The standard
+<div><p>Standard deviation for Gaussian kernel. The standard
 deviations of the Gaussian filter are given for each axis as a
 sequence, or as a single number, in which case it is equal for
 all axes.</p>
@@ -595,7 +595,7 @@ precision.</p>
 <h2>gaussian_filter<a class="headerlink" href="#gaussian-filter" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.gaussian_filter">
-<code class="descclassname">skimage.filters.</code><code class="descname">gaussian_filter</code><span class="sig-paren">(</span><em>image</em>, <em>sigma</em>, <em>output=None</em>, <em>mode='nearest'</em>, <em>cval=0</em>, <em>multichannel=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/_shared/utils.py#L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gaussian_filter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.filters.</code><code class="descname">gaussian_filter</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>output=None</em>, <em>mode='nearest'</em>, <em>cval=0</em>, <em>multichannel=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/_shared/utils.py#L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gaussian_filter" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Deprecated function</strong>. Use <code class="docutils literal"><span class="pre">skimage.filters.gaussian</span></code> instead.</p>
 <p>Multi-dimensional Gaussian filter</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -604,11 +604,11 @@ precision.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : array-like</p>
 <blockquote>
-<div><p>input image (grayscale or color) to filter.</p>
+<div><p>Input image (grayscale or color) to filter.</p>
 </div></blockquote>
-<p><strong>sigma</strong> : scalar or sequence of scalars</p>
+<p><strong>sigma</strong> : scalar or sequence of scalars, optional</p>
 <blockquote>
-<div><p>standard deviation for Gaussian kernel. The standard
+<div><p>Standard deviation for Gaussian kernel. The standard
 deviations of the Gaussian filter are given for each axis as a
 sequence, or as a single number, in which case it is equal for
 all axes.</p>
@@ -773,7 +773,7 @@ skimage.restoration.uft.laplacian().</p>
 <h2>median<a class="headerlink" href="#median" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.median">
-<code class="descclassname">skimage.filters.</code><code class="descname">median</code><span class="sig-paren">(</span><em>image</em>, <em>selem</em>, <em>out=None</em>, <em>mask=None</em>, <em>shift_x=False</em>, <em>shift_y=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/filters/rank/generic.py#L460"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.median" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.filters.</code><code class="descname">median</code><span class="sig-paren">(</span><em>image</em>, <em>selem=None</em>, <em>out=None</em>, <em>mask=None</em>, <em>shift_x=False</em>, <em>shift_y=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/filters/rank/generic.py#L147"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.median" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return local median of an image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -783,9 +783,10 @@ skimage.restoration.uft.laplacian().</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
-<p><strong>selem</strong> : 2-D array</p>
+<p><strong>selem</strong> : 2-D array, optional</p>
 <blockquote>
-<div><p>The neighborhood expressed as a 2-D array of 1&#8217;s and 0&#8217;s.</p>
+<div><p>The neighborhood expressed as a 2-D array of 1&#8217;s and 0&#8217;s. If None, a
+full square of size 3 is used.</p>
 </div></blockquote>
 <p><strong>out</strong> : 2-D array (same dtype as input)</p>
 <blockquote>
