@@ -73,20 +73,26 @@
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.copy_func" title="skimage.filters.copy_func"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.copy_func</span></code></a>(f[,&nbsp;name])</td>
 <td>Create a copy of a function.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.filters.gabor" title="skimage.filters.gabor"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gabor</span></code></a>(image,&nbsp;frequency[,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.filters.frangi" title="skimage.filters.frangi"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.frangi</span></code></a>(image[,&nbsp;scale_range,&nbsp;...])</td>
+<td>Filter an image with the Frangi filter.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.gabor" title="skimage.filters.gabor"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gabor</span></code></a>(image,&nbsp;frequency[,&nbsp;...])</td>
 <td>Return real and imaginary responses to Gabor filter.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.gabor_filter" title="skimage.filters.gabor_filter"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gabor_filter</span></code></a>(image,&nbsp;frequency)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.filters.gabor_filter" title="skimage.filters.gabor_filter"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gabor_filter</span></code></a>(image,&nbsp;frequency)</td>
 <td><strong>Deprecated function</strong>. Use <code class="docutils literal"><span class="pre">skimage.filters.gabor</span></code> instead.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.filters.gabor_kernel" title="skimage.filters.gabor_kernel"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gabor_kernel</span></code></a>(frequency[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.gabor_kernel" title="skimage.filters.gabor_kernel"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gabor_kernel</span></code></a>(frequency[,&nbsp;...])</td>
 <td>Return complex 2D Gabor filter kernel.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.gaussian" title="skimage.filters.gaussian"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gaussian</span></code></a>(image[,&nbsp;sigma,&nbsp;...])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.filters.gaussian" title="skimage.filters.gaussian"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gaussian</span></code></a>(image[,&nbsp;sigma,&nbsp;...])</td>
 <td>Multi-dimensional Gaussian filter</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.filters.gaussian_filter" title="skimage.filters.gaussian_filter"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gaussian_filter</span></code></a>(image[,&nbsp;...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.gaussian_filter" title="skimage.filters.gaussian_filter"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gaussian_filter</span></code></a>(image[,&nbsp;...])</td>
 <td><strong>Deprecated function</strong>. Use <code class="docutils literal"><span class="pre">skimage.filters.gaussian</span></code> instead.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.filters.hessian" title="skimage.filters.hessian"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.hessian</span></code></a>(image[,&nbsp;...])</td>
+<td>Filter an image with the Hessian filter.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.inverse" title="skimage.filters.inverse"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.inverse</span></code></a>(data[,&nbsp;...])</td>
 <td>Apply the filter in reverse to the given data.</td>
@@ -199,6 +205,83 @@
 </dd></dl>
 
 </div>
+<div class="section" id="frangi">
+<h2>frangi<a class="headerlink" href="#frangi" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.filters.frangi">
+<code class="descclassname">skimage.filters.</code><code class="descname">frangi</code><span class="sig-paren">(</span><em>image</em>, <em>scale_range=(1</em>, <em>10)</em>, <em>scale_step=2</em>, <em>beta1=0.5</em>, <em>beta2=15</em>, <em>black_ridges=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_frangi.py#L72"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.frangi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter an image with the Frangi filter.</p>
+<p>This filter can be used to detect continuous edges, e.g. vessels,
+wrinkles, rivers. It can be used to calculate the fraction of the
+whole image containing such objects.</p>
+<p>Calculates the eigenvectors of the Hessian to compute the similarity of
+an image region to vessels, according to the method described in _[1].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : (N, M) ndarray</p>
+<blockquote>
+<div><p>Array with input image data.</p>
+</div></blockquote>
+<p><strong>scale_range</strong> : 2-tuple of floats, optional</p>
+<blockquote>
+<div><p>The range of sigmas used.</p>
+</div></blockquote>
+<p><strong>scale_step</strong> : float, optional</p>
+<blockquote>
+<div><p>Step size between sigmas.</p>
+</div></blockquote>
+<p><strong>beta1</strong> : float, optional</p>
+<blockquote>
+<div><p>Frangi correction constant.</p>
+</div></blockquote>
+<p><strong>beta2</strong> : float, optional</p>
+<blockquote>
+<div><p>Frangi correction constant.</p>
+</div></blockquote>
+<p><strong>black_ridges</strong> : boolean, optional</p>
+<blockquote>
+<div><p>When True (the default), the filter detects black ridges; when
+False, it detects white ridges.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : (N, M) ndarray</p>
+<blockquote class="last">
+<div><p>Filtered image (maximum of pixels across all scales).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Written by Marc Schrijver, 2/11/2001
+Re-Written by D. J. Kroon University of Twente (May 2009)</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r191" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[R191]</a></td><td>A. Frangi, W. Niessen, K. Vincken, and M. Viergever. &#8220;Multiscale
+vessel enhancement filtering,&#8221; In LNCS, vol. 1496, pages 130-137,
+Germany, 1998. Springer-Verlag.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r192" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[R192]</a></td><td>Kroon, D.J.: Hessian based Frangi vesselness filter.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r193" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[R193]</a></td><td><a class="reference external" href="http://mplab.ucsd.edu/tutorials/gabor.pdf">http://mplab.ucsd.edu/tutorials/gabor.pdf</a>.</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 <div class="section" id="gabor">
 <h2>gabor<a class="headerlink" href="#gabor" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -271,16 +354,16 @@ kernel. Images are of the same dimensions as the input one.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r187" rules="none">
+<table class="docutils citation" frame="void" id="r194" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R187]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Gabor_filter">http://en.wikipedia.org/wiki/Gabor_filter</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id4">[R194]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Gabor_filter">http://en.wikipedia.org/wiki/Gabor_filter</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r188" rules="none">
+<table class="docutils citation" frame="void" id="r195" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R188]</a></td><td><a class="reference external" href="http://mplab.ucsd.edu/tutorials/gabor.pdf">http://mplab.ucsd.edu/tutorials/gabor.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id5">[R195]</a></td><td><a class="reference external" href="http://mplab.ucsd.edu/tutorials/gabor.pdf">http://mplab.ucsd.edu/tutorials/gabor.pdf</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -380,16 +463,16 @@ kernel. Images are of the same dimensions as the input one.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r189" rules="none">
+<table class="docutils citation" frame="void" id="r196" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R189]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Gabor_filter">http://en.wikipedia.org/wiki/Gabor_filter</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id6">[R196]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Gabor_filter">http://en.wikipedia.org/wiki/Gabor_filter</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r190" rules="none">
+<table class="docutils citation" frame="void" id="r197" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[R190]</a></td><td><a class="reference external" href="http://mplab.ucsd.edu/tutorials/gabor.pdf">http://mplab.ucsd.edu/tutorials/gabor.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id7">[R197]</a></td><td><a class="reference external" href="http://mplab.ucsd.edu/tutorials/gabor.pdf">http://mplab.ucsd.edu/tutorials/gabor.pdf</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -472,16 +555,16 @@ deviations</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r191" rules="none">
+<table class="docutils citation" frame="void" id="r198" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[R191]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Gabor_filter">http://en.wikipedia.org/wiki/Gabor_filter</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id8">[R198]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Gabor_filter">http://en.wikipedia.org/wiki/Gabor_filter</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r192" rules="none">
+<table class="docutils citation" frame="void" id="r199" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[R192]</a></td><td><a class="reference external" href="http://mplab.ucsd.edu/tutorials/gabor.pdf">http://mplab.ucsd.edu/tutorials/gabor.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id9">[R199]</a></td><td><a class="reference external" href="http://mplab.ucsd.edu/tutorials/gabor.pdf">http://mplab.ucsd.edu/tutorials/gabor.pdf</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -691,6 +774,65 @@ precision.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">filtered_img</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">multichannel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</dd></dl>
+
+</div>
+<div class="section" id="hessian">
+<h2>hessian<a class="headerlink" href="#hessian" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.filters.hessian">
+<code class="descclassname">skimage.filters.</code><code class="descname">hessian</code><span class="sig-paren">(</span><em>image</em>, <em>scale_range=(1</em>, <em>10)</em>, <em>scale_step=2</em>, <em>beta1=0.5</em>, <em>beta2=15</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_frangi.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.hessian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter an image with the Hessian filter.</p>
+<p>This filter can be used to detect continuous edges, e.g. vessels,
+wrinkles, rivers. It can be used to calculate the fraction of the whole
+image containing such objects.</p>
+<p>Almost equal to Frangi filter, but uses alternative method of smoothing.
+Refer to _[1] to find the differences between Frangi and Hessian filters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : (N, M) ndarray</p>
+<blockquote>
+<div><p>Array with input image data.</p>
+</div></blockquote>
+<p><strong>scale_range</strong> : 2-tuple of floats, optional</p>
+<blockquote>
+<div><p>The range of sigmas used.</p>
+</div></blockquote>
+<p><strong>scale_step</strong> : float, optional</p>
+<blockquote>
+<div><p>Step size between sigmas.</p>
+</div></blockquote>
+<p><strong>beta1</strong> : float, optional</p>
+<blockquote>
+<div><p>Frangi correction constant.</p>
+</div></blockquote>
+<p><strong>beta2</strong> : float, optional</p>
+<blockquote>
+<div><p>Frangi correction constant.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : (N, M) ndarray</p>
+<blockquote class="last">
+<div><p>Filtered image (maximum of pixels across all scales).</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Written by Marc Schrijver, 2/11/2001
+Re-Written by D. J. Kroon University of Twente (May 2009)</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r200" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id10">[R200]</a></td><td>Choon-Ching Ng, Moi Hoon Yap, Nicholas Costen and Baihua Li,
+&#8220;Automatic Wrinkle Detection using Hybrid Hessian Filter&#8221;.</td></tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -1179,17 +1321,17 @@ vertical Scharrs to get a magnitude that is somewhat insensitive to
 direction. The Scharr operator has a better rotation invariance than
 other edge filters such as the Sobel or the Prewitt operators.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r193" rules="none">
+<table class="docutils citation" frame="void" id="r201" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[R193]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
+<tr><td class="label"><a class="fn-backref" href="#id11">[R201]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
 Optimization of Kernel Based Image Derivatives.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r194" rules="none">
+<table class="docutils citation" frame="void" id="r202" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id8">[R194]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Sobel_operator#Alternative_operators">http://en.wikipedia.org/wiki/Sobel_operator#Alternative_operators</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id12">[R202]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Sobel_operator#Alternative_operators">http://en.wikipedia.org/wiki/Sobel_operator#Alternative_operators</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1240,10 +1382,10 @@ prevent masked regions from affecting the result.</p>
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r195" rules="none">
+<table class="docutils citation" frame="void" id="r203" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id9">[R195]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
+<tr><td class="label"><a class="fn-backref" href="#id13">[R203]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
 Optimization of Kernel Based Image Derivatives.</td></tr>
 </tbody>
 </table>
@@ -1288,10 +1430,10 @@ prevent masked regions from affecting the result.</p>
 </pre></div>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r196" rules="none">
+<table class="docutils citation" frame="void" id="r204" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[R196]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
+<tr><td class="label"><a class="fn-backref" href="#id14">[R204]</a></td><td>D. Kroon, 2009, Short Paper University Twente, Numerical
 Optimization of Kernel Based Image Derivatives.</td></tr>
 </tbody>
 </table>
@@ -1498,10 +1640,10 @@ threshold for the centre pixel.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r197" rules="none">
+<table class="docutils citation" frame="void" id="r205" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[R197]</a></td><td><a class="reference external" href="http://docs.opencv.org/modules/imgproc/doc/miscellaneous_transformations.html?highlight=threshold#adaptivethreshold">http://docs.opencv.org/modules/imgproc/doc/miscellaneous_transformations.html?highlight=threshold#adaptivethreshold</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id15">[R205]</a></td><td><a class="reference external" href="http://docs.opencv.org/modules/imgproc/doc/miscellaneous_transformations.html?highlight=threshold#adaptivethreshold">http://docs.opencv.org/modules/imgproc/doc/miscellaneous_transformations.html?highlight=threshold#adaptivethreshold</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1561,33 +1703,33 @@ the above equality. If True, return all valid thresholds.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r198" rules="none">
+<table class="docutils citation" frame="void" id="r206" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id12">[R198]</a></td><td>Ridler, TW &amp; Calvard, S (1978), &#8220;Picture thresholding using an
+<tr><td class="label"><a class="fn-backref" href="#id16">[R206]</a></td><td>Ridler, TW &amp; Calvard, S (1978), &#8220;Picture thresholding using an
 iterative selection method&#8221;</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r199" rules="none">
+<table class="docutils citation" frame="void" id="r207" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id13">[R199]</a></td><td>IEEE Transactions on Systems, Man and Cybernetics 8: 630-632,
+<tr><td class="label"><a class="fn-backref" href="#id17">[R207]</a></td><td>IEEE Transactions on Systems, Man and Cybernetics 8: 630-632,
 <a class="reference external" href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4310039">http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4310039</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r200" rules="none">
+<table class="docutils citation" frame="void" id="r208" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id14">[R200]</a></td><td>Sezgin M. and Sankur B. (2004) &#8220;Survey over Image Thresholding
+<tr><td class="label"><a class="fn-backref" href="#id18">[R208]</a></td><td>Sezgin M. and Sankur B. (2004) &#8220;Survey over Image Thresholding
 Techniques and Quantitative Performance Evaluation&#8221; Journal of
 Electronic Imaging, 13(1): 146-165,
 <a class="reference external" href="http://www.busim.ee.boun.edu.tr/~sankur/SankurFolder/Threshold_survey.pdf">http://www.busim.ee.boun.edu.tr/~sankur/SankurFolder/Threshold_survey.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r201" rules="none">
+<table class="docutils citation" frame="void" id="r209" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id15">[R201]</a></td><td>ImageJ AutoThresholder code,
+<tr><td class="label"><a class="fn-backref" href="#id19">[R209]</a></td><td>ImageJ AutoThresholder code,
 <a class="reference external" href="http://fiji.sc/wiki/index.php/Auto_Threshold">http://fiji.sc/wiki/index.php/Auto_Threshold</a></td></tr>
 </tbody>
 </table>
@@ -1627,33 +1769,33 @@ this value are assumed to be foreground.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r202" rules="none">
+<table class="docutils citation" frame="void" id="r210" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id16">[R202]</a></td><td>Li C.H. and Lee C.K. (1993) &#8220;Minimum Cross Entropy Thresholding&#8221;
+<tr><td class="label"><a class="fn-backref" href="#id20">[R210]</a></td><td>Li C.H. and Lee C.K. (1993) &#8220;Minimum Cross Entropy Thresholding&#8221;
 Pattern Recognition, 26(4): 617-625</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r203" rules="none">
+<table class="docutils citation" frame="void" id="r211" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id17">[R203]</a></td><td>Li C.H. and Tam P.K.S. (1998) &#8220;An Iterative Algorithm for Minimum
+<tr><td class="label"><a class="fn-backref" href="#id21">[R211]</a></td><td>Li C.H. and Tam P.K.S. (1998) &#8220;An Iterative Algorithm for Minimum
 Cross Entropy Thresholding&#8221; Pattern Recognition Letters, 18(8): 771-776</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r204" rules="none">
+<table class="docutils citation" frame="void" id="r212" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id18">[R204]</a></td><td>Sezgin M. and Sankur B. (2004) &#8220;Survey over Image Thresholding
+<tr><td class="label"><a class="fn-backref" href="#id22">[R212]</a></td><td>Sezgin M. and Sankur B. (2004) &#8220;Survey over Image Thresholding
 Techniques and Quantitative Performance Evaluation&#8221; Journal of
 Electronic Imaging, 13(1): 146-165
 <a class="reference external" href="http://citeseer.ist.psu.edu/sezgin04survey.html">http://citeseer.ist.psu.edu/sezgin04survey.html</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r205" rules="none">
+<table class="docutils citation" frame="void" id="r213" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id19">[R205]</a></td><td>ImageJ AutoThresholder code, <a class="reference external" href="http://fiji.sc/wiki/index.php/Auto_Threshold">http://fiji.sc/wiki/index.php/Auto_Threshold</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id23">[R213]</a></td><td>ImageJ AutoThresholder code, <a class="reference external" href="http://fiji.sc/wiki/index.php/Auto_Threshold">http://fiji.sc/wiki/index.php/Auto_Threshold</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1692,10 +1834,10 @@ this value are assumed to be foreground.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r206" rules="none">
+<table class="docutils citation" frame="void" id="r214" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id20">[R206]</a></td><td>C. A. Glasbey, &#8220;An analysis of histogram-based thresholding
+<tr><td class="label"><a class="fn-backref" href="#id24">[R214]</a></td><td>C. A. Glasbey, &#8220;An analysis of histogram-based thresholding
 algorithms,&#8221; CVGIP: Graphical Models and Image Processing,
 vol. 55, pp. 532-537, 1993.</td></tr>
 </tbody>
@@ -1759,10 +1901,10 @@ smoothing takes more than 1e4 iterations.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r207" rules="none">
+<table class="docutils citation" frame="void" id="r215" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id21">[R207]</a></td><td>Prewitt, JMS &amp; Mendelsohn, ML (1966), &#8220;The analysis of cell images&#8221;,
+<tr><td class="label"><a class="fn-backref" href="#id25">[R215]</a></td><td>Prewitt, JMS &amp; Mendelsohn, ML (1966), &#8220;The analysis of cell images&#8221;,
 Annals of the New York Academy of Sciences 128: 1035-1053</td></tr>
 </tbody>
 </table>
@@ -1815,10 +1957,10 @@ this value are assumed to be foreground.</p>
 <p class="rubric">Notes</p>
 <p>The input image must be grayscale.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r208" rules="none">
+<table class="docutils citation" frame="void" id="r216" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id22">[R208]</a></td><td>Wikipedia, <a class="reference external" href="http://en.wikipedia.org/wiki/Otsu's_Method">http://en.wikipedia.org/wiki/Otsu&#8217;s_Method</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id26">[R216]</a></td><td>Wikipedia, <a class="reference external" href="http://en.wikipedia.org/wiki/Otsu's_Method">http://en.wikipedia.org/wiki/Otsu&#8217;s_Method</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1862,10 +2004,10 @@ this value are assumed to be foreground.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r209" rules="none">
+<table class="docutils citation" frame="void" id="r217" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id23">[R209]</a></td><td>Zack, G. W., Rogers, W. E. and Latt, S. A., 1977,
+<tr><td class="label"><a class="fn-backref" href="#id27">[R217]</a></td><td>Zack, G. W., Rogers, W. E. and Latt, S. A., 1977,
 Automatic Measurement of Sister Chromatid Exchange Frequency,
 Journal of Histochemistry and Cytochemistry 25 (7), pp. 741-753</td></tr>
 </tbody>
@@ -1911,27 +2053,27 @@ this value are assumed to be foreground.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r210" rules="none">
+<table class="docutils citation" frame="void" id="r218" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id24">[R210]</a></td><td>Yen J.C., Chang F.J., and Chang S. (1995) &#8220;A New Criterion
+<tr><td class="label"><a class="fn-backref" href="#id28">[R218]</a></td><td>Yen J.C., Chang F.J., and Chang S. (1995) &#8220;A New Criterion
 for Automatic Multilevel Thresholding&#8221; IEEE Trans. on Image
 Processing, 4(3): 370-378</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r211" rules="none">
+<table class="docutils citation" frame="void" id="r219" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id25">[R211]</a></td><td>Sezgin M. and Sankur B. (2004) &#8220;Survey over Image Thresholding
+<tr><td class="label"><a class="fn-backref" href="#id29">[R219]</a></td><td>Sezgin M. and Sankur B. (2004) &#8220;Survey over Image Thresholding
 Techniques and Quantitative Performance Evaluation&#8221; Journal of
 Electronic Imaging, 13(1): 146-165,
 <a class="reference external" href="http://www.busim.ee.boun.edu.tr/~sankur/SankurFolder/Threshold_survey.pdf">http://www.busim.ee.boun.edu.tr/~sankur/SankurFolder/Threshold_survey.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r212" rules="none">
+<table class="docutils citation" frame="void" id="r220" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id26">[R212]</a></td><td>ImageJ AutoThresholder code, <a class="reference external" href="http://fiji.sc/wiki/index.php/Auto_Threshold">http://fiji.sc/wiki/index.php/Auto_Threshold</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id30">[R220]</a></td><td>ImageJ AutoThresholder code, <a class="reference external" href="http://fiji.sc/wiki/index.php/Auto_Threshold">http://fiji.sc/wiki/index.php/Auto_Threshold</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -2153,11 +2295,13 @@ function is deprecated; &#8216;raise&#8217; = raise error.</p>
             <ul class="nav nav-list">
 <li><a class="reference internal" href="#">Module: <code class="docutils literal"><span class="pre">filters</span></code></a><ul class="nav nav-list">
 <li><a class="reference internal" href="#copy-func">copy_func</a></li>
+<li><a class="reference internal" href="#frangi">frangi</a></li>
 <li><a class="reference internal" href="#gabor">gabor</a></li>
 <li><a class="reference internal" href="#gabor-filter">gabor_filter</a></li>
 <li><a class="reference internal" href="#gabor-kernel">gabor_kernel</a></li>
 <li><a class="reference internal" href="#gaussian">gaussian</a></li>
 <li><a class="reference internal" href="#gaussian-filter">gaussian_filter</a></li>
+<li><a class="reference internal" href="#hessian">hessian</a></li>
 <li><a class="reference internal" href="#inverse">inverse</a></li>
 <li><a class="reference internal" href="#laplace">laplace</a></li>
 <li><a class="reference internal" href="#median">median</a></li>
