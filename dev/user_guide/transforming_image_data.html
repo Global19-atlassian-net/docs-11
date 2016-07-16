@@ -93,6 +93,17 @@ transformed to floating-point type by the conversion operation:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="conversion-from-rgba-to-rgb-removing-alpha-channel-through-alpha-blending">
+<h3>Conversion from RGBA to RGB - Removing alpha channel through alpha blending<a class="headerlink" href="#conversion-from-rgba-to-rgb-removing-alpha-channel-through-alpha-blending" title="Permalink to this headline">¶</a></h3>
+<p>Converting an RGBA image to an RGB image by alpha blending it with a
+background is realized with <a class="reference internal" href="../api/skimage.color.html#skimage.color.rgba2rgb" title="skimage.color.rgba2rgb"><code class="xref py py-func docutils literal"><span class="pre">rgba2rgb()</span></code></a></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="k">import</span> <span class="n">rgba2rgb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_rgba</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">horse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_rgb</span> <span class="o">=</span> <span class="n">rgba2rgb</span><span class="p">(</span><span class="n">img_rgba</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="conversion-between-color-and-gray-values">
 <h3>Conversion between color and gray values<a class="headerlink" href="#conversion-between-color-and-gray-values" title="Permalink to this headline">¶</a></h3>
 <p>Converting an RGB image to a grayscale image is realized with
@@ -159,7 +170,7 @@ the image. The histogram of pixel values is computed with
 </div>
 <p><a class="reference internal" href="../api/skimage.exposure.html#skimage.exposure.histogram" title="skimage.exposure.histogram"><code class="xref py py-func docutils literal"><span class="pre">histogram()</span></code></a> returns the number of pixels for each value bin, and
 the centers of the bins. The behavior of <a class="reference internal" href="../api/skimage.exposure.html#skimage.exposure.histogram" title="skimage.exposure.histogram"><code class="xref py py-func docutils literal"><span class="pre">histogram()</span></code></a> is therefore
-slightly different from the one of <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.histogram.html#numpy.histogram" title="(in NumPy v1.9)"><code class="xref py py-func docutils literal"><span class="pre">numpy.histogram()</span></code></a>, which returns
+slightly different from the one of <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.histogram.html#numpy.histogram" title="(in NumPy v1.11)"><code class="xref py py-func docutils literal"><span class="pre">numpy.histogram()</span></code></a>, which returns
 the boundaries of the bins.</p>
 <p>The simplest contrast enhancement <a class="reference internal" href="../api/skimage.exposure.html#skimage.exposure.rescale_intensity" title="skimage.exposure.rescale_intensity"><code class="xref py py-func docutils literal"><span class="pre">rescale_intensity()</span></code></a> consists in
 stretching pixel values to the whole allowed range, using a linear
@@ -230,6 +241,7 @@ gradients across the image. See the example
 <li><a class="reference internal" href="#">Image adjustment: transforming image content</a><ul class="nav nav-list">
 <li><a class="reference internal" href="#color-manipulation">Color manipulation</a><ul class="nav nav-list">
 <li><a class="reference internal" href="#conversion-between-color-models">Conversion between color models</a></li>
+<li><a class="reference internal" href="#conversion-from-rgba-to-rgb-removing-alpha-channel-through-alpha-blending">Conversion from RGBA to RGB - Removing alpha channel through alpha blending</a></li>
 <li><a class="reference internal" href="#conversion-between-color-and-gray-values">Conversion between color and gray values</a></li>
 <li><a class="reference internal" href="#painting-images-with-labels">Painting images with labels</a></li>
 </ul>
