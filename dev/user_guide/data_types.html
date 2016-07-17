@@ -165,6 +165,15 @@ issued:</p>
 <span class="go">array([  0, 128, 255], dtype=uint8)</span>
 </pre></div>
 </div>
+<p>Warnings can be locally ignored with a context manager:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">warnings</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">warnings</span><span class="o">.</span><span class="n">catch_warnings</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">img_as_ubyte</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="go">array([  0, 128, 255], dtype=uint8)</span>
+</pre></div>
+</div>
 <p>Additionally, some functions take a <code class="docutils literal"><span class="pre">preserve_range</span></code> argument where a range
 conversion is convenient but not necessary. For example, interpolation in
 <code class="docutils literal"><span class="pre">transform.warp</span></code> requires an image of type float, which should have a range
