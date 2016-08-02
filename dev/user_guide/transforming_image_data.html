@@ -129,6 +129,19 @@ from RGB to grayscale:</p>
 <p>Converting a grayscale image to RGB with <a class="reference internal" href="../api/skimage.color.html#skimage.color.gray2rgb" title="skimage.color.gray2rgb"><code class="xref py py-func docutils literal"><span class="pre">gray2rgb()</span></code></a> simply
 duplicates the gray values over the three color channels.</p>
 </div>
+<div class="section" id="image-inversion">
+<h3>Image inversion<a class="headerlink" href="#image-inversion" title="Permalink to this headline">¶</a></h3>
+<p>An inverted image is also called complementary image. For binary images, True values
+become False and conversely. For grayscale images, pixel values are replaced by the
+difference of the maximum value of the data type and the actual value. For RGB
+images, the same operation is done for each channel. This operation can be achieved
+with <a class="reference internal" href="../api/skimage.util.html#skimage.util.invert" title="skimage.util.invert"><code class="xref py py-func docutils literal"><span class="pre">skimage.util.invert()</span></code></a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">util</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inverted_img</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="painting-images-with-labels">
 <h3>Painting images with labels<a class="headerlink" href="#painting-images-with-labels" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference internal" href="../api/skimage.color.html#skimage.color.label2rgb" title="skimage.color.label2rgb"><code class="xref py py-func docutils literal"><span class="pre">label2rgb()</span></code></a> can be used to superimpose colors on a grayscale image
@@ -243,6 +256,7 @@ gradients across the image. See the example
 <li><a class="reference internal" href="#conversion-between-color-models">Conversion between color models</a></li>
 <li><a class="reference internal" href="#conversion-from-rgba-to-rgb-removing-alpha-channel-through-alpha-blending">Conversion from RGBA to RGB - Removing alpha channel through alpha blending</a></li>
 <li><a class="reference internal" href="#conversion-between-color-and-gray-values">Conversion between color and gray values</a></li>
+<li><a class="reference internal" href="#image-inversion">Image inversion</a></li>
 <li><a class="reference internal" href="#painting-images-with-labels">Painting images with labels</a></li>
 </ul>
 </li>
