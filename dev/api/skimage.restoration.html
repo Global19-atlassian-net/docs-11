@@ -518,13 +518,13 @@ Springer, 2004, 20, 89-97.</td></tr>
 <h2>denoise_wavelet<a class="headerlink" href="#denoise-wavelet" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.restoration.denoise_wavelet">
-<code class="descclassname">skimage.restoration.</code><code class="descname">denoise_wavelet</code><span class="sig-paren">(</span><em>img</em>, <em>sigma=None</em>, <em>wavelet='db1'</em>, <em>mode='soft'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L397"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_wavelet" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.restoration.</code><code class="descname">denoise_wavelet</code><span class="sig-paren">(</span><em>img</em>, <em>sigma=None</em>, <em>wavelet='db1'</em>, <em>mode='soft'</em>, <em>multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L397"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_wavelet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs wavelet denoising on an image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : ndarray (2D/3D) of ints, uints or floats</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : ndarray ([M[, N[, ...P]][, C]) of ints, uints or floats</p>
 <blockquote>
 <div><p>Input data to be denoised. <cite>img</cite> can be of any numeric type,
 but it is cast into an ndarray of floats for the computation
@@ -547,6 +547,11 @@ standard deviation is estimated via the method in <a class="reference internal" 
 <div><p>An optional argument to choose the type of denoising performed. It
 noted that choosing soft thresholding given additive noise finds the
 best approximation of the original image.</p>
+</div></blockquote>
+<p><strong>multichannel</strong> : bool, optional</p>
+<blockquote>
+<div><p>Apply wavelet denoising separately for each channel (where channels
+correspond to the final axis of the array).</p>
 </div></blockquote>
 </td>
 </tr>
