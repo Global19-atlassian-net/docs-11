@@ -103,6 +103,9 @@
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.slic" title="skimage.segmentation.slic"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.slic</span></code></a>(image[,&nbsp;...])</td>
 <td>Segments image using k-means clustering in Color-(x,y,z) space.</td>
 </tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.watershed" title="skimage.segmentation.watershed"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.watershed</span></code></a>(image,&nbsp;markers)</td>
+<td>Find watershed basins in <cite>image</cite> flooded from given <cite>markers</cite>.</td>
+</tr>
 </tbody>
 </table>
 <div class="section" id="active-contour">
@@ -181,10 +184,10 @@ yields same behaviour as &#8216;fixed&#8217; and &#8216;free&#8217;, respectivel
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r377" rules="none">
+<table class="docutils citation" frame="void" id="r382" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R377]</a></td><td>Kass, M.; Witkin, A.; Terzopoulos, D. &#8220;Snakes: Active contour
+<tr><td class="label"><a class="fn-backref" href="#id1">[R382]</a></td><td>Kass, M.; Witkin, A.; Terzopoulos, D. &#8220;Snakes: Active contour
 models&#8221;. International Journal of Computer Vision 1 (4): 321
 (1988).</td></tr>
 </tbody>
@@ -321,10 +324,10 @@ color space.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r378" rules="none">
+<table class="docutils citation" frame="void" id="r383" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R378]</a></td><td>Efficient graph-based image segmentation, Felzenszwalb, P.F. and
+<tr><td class="label"><a class="fn-backref" href="#id2">[R383]</a></td><td>Efficient graph-based image segmentation, Felzenszwalb, P.F. and
 Huttenlocher, D.P.  International Journal of Computer Vision, 2004</td></tr>
 </tbody>
 </table>
@@ -630,10 +633,10 @@ segmentation. For this purpose, the input is assumed to be RGB.</p>
 segmentation, though this is not strictly necessary. For this to work, the
 image must be given in RGB format.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r379" rules="none">
+<table class="docutils citation" frame="void" id="r384" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R379]</a></td><td>Quick shift and kernel methods for mode seeking,
+<tr><td class="label"><a class="fn-backref" href="#id3">[R384]</a></td><td>Quick shift and kernel methods for mode seeking,
 Vedaldi, A. and Soatto, S.
 European Conference on Computer Vision, 2008</td></tr>
 </tbody>
@@ -977,7 +980,7 @@ in most of the cases.</p>
 </div></blockquote>
 <p><strong>slic_zero: bool, optional</strong></p>
 <blockquote>
-<div><p>Run SLIC-zero, the zero-parameter mode of SLIC. <a class="reference internal" href="#r381" id="id4">[R381]</a></p>
+<div><p>Run SLIC-zero, the zero-parameter mode of SLIC. <a class="reference internal" href="#r386" id="id4">[R386]</a></p>
 </div></blockquote>
 </td>
 </tr>
@@ -1010,18 +1013,18 @@ interpret them as 3D with the last dimension having length 3, use
 <cite>multichannel=False</cite>.</li>
 </ul>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r380" rules="none">
+<table class="docutils citation" frame="void" id="r385" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[R380]</a></td><td>Radhakrishna Achanta, Appu Shaji, Kevin Smith, Aurelien Lucchi,
+<tr><td class="label"><a class="fn-backref" href="#id5">[R385]</a></td><td>Radhakrishna Achanta, Appu Shaji, Kevin Smith, Aurelien Lucchi,
 Pascal Fua, and Sabine Süsstrunk, SLIC Superpixels Compared to
 State-of-the-art Superpixel Methods, TPAMI, May 2012.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r381" rules="none">
+<table class="docutils citation" frame="void" id="r386" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R381]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> <a class="reference external" href="http://ivrg.epfl.ch/research/superpixels#SLICO">http://ivrg.epfl.ch/research/superpixels#SLICO</a></td></tr>
+<tr><td class="label">[R386]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> <a class="reference external" href="http://ivrg.epfl.ch/research/superpixels#SLICO">http://ivrg.epfl.ch/research/superpixels#SLICO</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1035,6 +1038,135 @@ State-of-the-art Superpixel Methods, TPAMI, May 2012.</td></tr>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">segments</span> <span class="o">=</span> <span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">n_segments</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">compactness</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
+</dd></dl>
+
+</div>
+<div class="section" id="watershed">
+<h2>watershed<a class="headerlink" href="#watershed" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.segmentation.watershed">
+<code class="descclassname">skimage.segmentation.</code><code class="descname">watershed</code><span class="sig-paren">(</span><em>image</em>, <em>markers</em>, <em>connectivity=1</em>, <em>offset=None</em>, <em>mask=None</em>, <em>compactness=0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/watershed.py#L134"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.watershed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find watershed basins in <cite>image</cite> flooded from given <cite>markers</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image: ndarray (2-D, 3-D, ...) of integers</strong></p>
+<blockquote>
+<div><p>Data array where the lowest value points are labeled first.</p>
+</div></blockquote>
+<p><strong>markers: int, or ndarray of int, same shape as `image`</strong></p>
+<blockquote>
+<div><p>The desired number of markers, or an array marking the basins with the
+values to be assigned in the label matrix. Zero means not a marker.</p>
+</div></blockquote>
+<p><strong>connectivity: ndarray, optional</strong></p>
+<blockquote>
+<div><p>An array with the same number of dimensions as <cite>image</cite> whose
+non-zero elements indicate neighbors for connection.
+Following the scipy convention, default is a one-connected array of
+the dimension of the image.</p>
+</div></blockquote>
+<p><strong>offset: array_like of shape image.ndim, optional</strong></p>
+<blockquote>
+<div><p>offset of the connectivity (one offset per dimension)</p>
+</div></blockquote>
+<p><strong>mask: ndarray of bools or 0s and 1s, optional</strong></p>
+<blockquote>
+<div><p>Array of same shape as <cite>image</cite>. Only points at which mask == True
+will be labeled.</p>
+</div></blockquote>
+<p><strong>compactness</strong> : float, optional</p>
+<blockquote>
+<div><p>Use compact watershed <a class="reference internal" href="#r389" id="id7">[R389]</a> with given compactness parameter.
+Higher values result in more regularly-shaped watershed basins.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">out: ndarray</p>
+<blockquote class="last">
+<div><p>A labeled matrix of the same type and shape as markers</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="#skimage.segmentation.random_walker" title="skimage.segmentation.random_walker"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.random_walker</span></code></a></dt>
+<dd>random walker segmentation A segmentation algorithm based on anisotropic diffusion, usually slower than the watershed but with good results on noisy data and boundaries with holes.</dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<p>This function implements a watershed algorithm <a class="reference internal" href="#r387" id="id8">[R387]</a> <a class="reference internal" href="#r388" id="id9">[R388]</a> that apportions
+pixels into marked basins. The algorithm uses a priority queue to hold
+the pixels with the metric for the priority queue being pixel value, then
+the time of entry into the queue - this settles ties in favor of the
+closest marker.</p>
+<p>Some ideas taken from
+Soille, &#8220;Automated Basin Delineation from Digital Elevation Models Using
+Mathematical Morphology&#8221;, Signal Processing 20 (1990) 171-182</p>
+<p>The most important insight in the paper is that entry time onto the queue
+solves two problems: a pixel should be assigned to the neighbor with the
+largest gradient or, if there is no gradient, pixels on a plateau should
+be split between markers on opposite sides.</p>
+<p>This implementation converts all arguments to specific, lowest common
+denominator types, then passes these to a C algorithm.</p>
+<p>Markers can be determined manually, or automatically using for example
+the local minima of the gradient of the image, or the local maxima of the
+distance function to the background for separating overlapping objects
+(see example).</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r387" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R387]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Watershed_%28image_processing%29">http://en.wikipedia.org/wiki/Watershed_%28image_processing%29</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r388" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R388]</td><td><em>(<a class="fn-backref" href="#id9">1</a>, <a class="fn-backref" href="#id11">2</a>)</em> <a class="reference external" href="http://cmm.ensmp.fr/~beucher/wtshed.html">http://cmm.ensmp.fr/~beucher/wtshed.html</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="r389" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R389]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id12">2</a>)</em> Peer Neubert &amp; Peter Protzel (2014). Compact Watershed and
+Preemptive SLIC: On Improving Trade-offs of Superpixel Segmentation
+Algorithms. ICPR 2014, pp 996-1001. DOI:10.1109/ICPR.2014.181
+https://www.tu-chemnitz.de/etit/proaut/forschung/rsrc/cws_pSLIC_ICPR.pdf</td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<p>The watershed algorithm is useful to separate overlapping objects.</p>
+<p>We first generate an initial image with two overlapping circles:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">((</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">52</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">20</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mask_circle1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="n">r1</span><span class="o">**</span><span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mask_circle2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="n">r2</span><span class="o">**</span><span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">mask_circle1</span><span class="p">,</span> <span class="n">mask_circle2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Next, we want to separate the two circles. We generate markers at the
+maxima of the distance to the background:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">distance</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">distance_transform_edt</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <span class="n">peak_local_max</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">local_maxi</span> <span class="o">=</span> <span class="n">peak_local_max</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">image</span><span class="p">,</span>
+<span class="gp">... </span>                            <span class="n">footprint</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+<span class="gp">... </span>                            <span class="n">indices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">markers</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">local_maxi</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Finally, we run the watershed on the image and markers:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">watershed</span><span class="p">(</span><span class="o">-</span><span class="n">distance</span><span class="p">,</span> <span class="n">markers</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The algorithm works also for 3-D images, and can be used for example to
+separate overlapping spheres.</p>
 </dd></dl>
 
 </div>
@@ -1075,6 +1207,7 @@ State-of-the-art Superpixel Methods, TPAMI, May 2012.</td></tr>
 <li><a class="reference internal" href="#relabel-from-one">relabel_from_one</a></li>
 <li><a class="reference internal" href="#relabel-sequential">relabel_sequential</a></li>
 <li><a class="reference internal" href="#slic">slic</a></li>
+<li><a class="reference internal" href="#watershed">watershed</a></li>
 </ul>
 </li>
 </ul>
