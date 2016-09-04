@@ -29,8 +29,8 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <link rel="top" title="skimage v0.13dev docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
-        <link rel="next" title="Normalized Cut" href="plot_ncut.html" />
-        <link rel="prev" title="Block views on images/arrays" href="../numpy_operations/plot_view_as_blocks.html" />
+        <link rel="next" title="Find Regular Segments Using Compact Watershed" href="plot_compact_watershed.html" />
+        <link rel="prev" title="Normalized Cut" href="plot_ncut.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../../_static/favicon.ico">
 </head>
@@ -67,12 +67,7 @@
 <p>This example constructs a Region Adjacency Graph (RAG) and merges regions
 which are similar in color. We construct a RAG and define edges as the
 difference in mean color. We then join regions with similar mean color.</p>
-<ul class="sphx-glr-horizontal">
-<li><a class="first reference internal image-reference" href="../../_images/sphx_glr_plot_rag_mean_color_001.png"><img alt="../../_images/sphx_glr_plot_rag_mean_color_001.png" src="../../_images/sphx_glr_plot_rag_mean_color_001.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-<li><a class="first reference internal image-reference" href="../../_images/sphx_glr_plot_rag_mean_color_002.png"><img alt="../../_images/sphx_glr_plot_rag_mean_color_002.png" src="../../_images/sphx_glr_plot_rag_mean_color_002.png" style="width: 376.0px; height: 282.0px;" /></a>
-</li>
-</ul>
+<img alt="../../_images/sphx_glr_plot_rag_mean_color_001.png" class="align-center" src="../../_images/sphx_glr_plot_rag_mean_color_001.png" />
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">color</span>
 <span class="kn">from</span> <span class="nn">skimage.future</span> <span class="kn">import</span> <span class="n">graph</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -87,15 +82,20 @@ difference in mean color. We then join regions with similar mean color.</p>
 <span class="n">labels2</span> <span class="o">=</span> <a href="../../api/skimage.future.graph.html#skimage.future.graph.cut_threshold"><span class="n">graph</span><span class="o">.</span><span class="n">cut_threshold</span></a><span class="p">(</span><span class="n">labels1</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="mi">29</span><span class="p">)</span>
 <span class="n">out2</span> <span class="o">=</span> <a href="../../api/skimage.color.html#skimage.color.label2rgb"><span class="n">color</span><span class="o">.</span><span class="n">label2rgb</span></a><span class="p">(</span><span class="n">labels2</span><span class="p">,</span> <span class="n">img</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;avg&#39;</span><span class="p">)</span>
 
-<a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
-<a href="../../api/skimage.io.html#skimage.io.imshow"><span class="n">io</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><span class="n">out1</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">()</span>
-<a href="../../api/skimage.io.html#skimage.io.imshow"><span class="n">io</span><span class="o">.</span><span class="n">imshow</span></a><span class="p">(</span><span class="n">out2</span><span class="p">)</span>
-<a href="../../api/skimage.io.html#skimage.io.show"><span class="n">io</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                       <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">out1</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">out2</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">:</span>
+    <span class="n">a</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<a href="http://matplotlib.org/api/tight_layout_api.html#matplotlib.tight_layout"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 </pre></div>
 </div>
 <p><strong>Total running time of the script:</strong>
-(0 minutes 3.716 seconds)</p>
+(0 minutes 3.693 seconds)</p>
 <div class="sphx-glr-download container">
 <strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_rag_mean_color.py" download=""><code class="xref download docutils literal"><span class="pre">plot_rag_mean_color.py</span></code></a></div>
 <div class="sphx-glr-download container">
@@ -113,13 +113,13 @@ difference in mean color. We then join regions with similar mean color.</p>
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="../numpy_operations/plot_view_as_blocks.html" title="previous chapter">Block views on images/arrays</a></li>
+            <li><a href="plot_ncut.html" title="previous chapter">Normalized Cut</a></li>
         </ul>
     </div>
     <h4 class="sidebar-box-heading">Next topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="plot_ncut.html" title="next chapter">Normalized Cut</a></li>
+            <li><a href="plot_compact_watershed.html" title="next chapter">Find Regular Segments Using Compact Watershed</a></li>
         </ul>
     </div>
 

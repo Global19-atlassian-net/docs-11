@@ -159,12 +159,10 @@ Trans. Image Processing, 16(9):2389-2394, 2007.</td></tr>
 <span class="n">coin_hist</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.histogram.html#numpy.histogram"><span class="n">np</span><span class="o">.</span><span class="n">histogram</span></a><span class="p">(</span><span class="n">coin</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
 <span class="n">coin_hist</span> <span class="o">=</span> <span class="n">coin_hist</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.sum.html#numpy.sum"><span class="n">np</span><span class="o">.</span><span class="n">sum</span></a><span class="p">(</span><span class="n">coin_hist</span><span class="p">)</span>
 
-
 <span class="c1"># Compute a disk shaped mask that will define the shape of our sliding window</span>
 <span class="c1"># Example coin is ~44px across, so make a disk 61px wide (2 * rad + 1) to be</span>
 <span class="c1"># big enough for other coins too.</span>
 <span class="n">selem</span> <span class="o">=</span> <a href="../../api/skimage.morphology.html#skimage.morphology.disk"><span class="n">disk</span></a><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
-
 
 <span class="c1"># Compute the similarity across the complete image</span>
 <span class="n">similarity</span> <span class="o">=</span> <span class="n">windowed_histogram_similarity</span><span class="p">(</span><span class="n">quantized_img</span><span class="p">,</span> <span class="n">selem</span><span class="p">,</span> <span class="n">coin_hist</span><span class="p">,</span>
@@ -178,7 +176,6 @@ Trans. Image Processing, 16(9):2389-2394, 2007.</td></tr>
 <span class="n">rotated_similarity</span> <span class="o">=</span> <span class="n">windowed_histogram_similarity</span><span class="p">(</span><span class="n">quantized_rotated_image</span><span class="p">,</span>
                                                    <span class="n">selem</span><span class="p">,</span> <span class="n">coin_hist</span><span class="p">,</span>
                                                    <span class="n">coin_hist</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
@@ -200,11 +197,12 @@ Trans. Image Processing, 16(9):2389-2394, 2007.</td></tr>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Rotated image with overlaid similarity&#39;</span><span class="p">)</span>
 <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 
+<a href="http://matplotlib.org/api/tight_layout_api.html#matplotlib.tight_layout"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
 <p><strong>Total running time of the script:</strong>
-(0 minutes 0.561 seconds)</p>
+(0 minutes 0.600 seconds)</p>
 <div class="sphx-glr-download container">
 <strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_windowed_histogram.py" download=""><code class="xref download docutils literal"><span class="pre">plot_windowed_histogram.py</span></code></a></div>
 <div class="sphx-glr-download container">
