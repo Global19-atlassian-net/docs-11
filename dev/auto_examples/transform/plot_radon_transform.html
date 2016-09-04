@@ -65,7 +65,7 @@
   <div class="section" id="radon-transform">
 <span id="sphx-glr-auto-examples-transform-plot-radon-transform-py"></span><h1>Radon transform<a class="headerlink" href="#radon-transform" title="Permalink to this headline">¶</a></h1>
 <p>In computed tomography, the tomography reconstruction problem is to obtain
-a tomographic slice image from a set of projections <a class="footnote-reference" href="#id7" id="id1">[1]</a>. A projection is
+a tomographic slice image from a set of projections <a class="footnote-reference" href="#id2" id="id1">[1]</a>. A projection is
 formed by drawing a set of parallel rays through the 2D object of interest,
 assigning the integral of the object&#8217;s contrast along each ray to a single
 pixel in the projection. A single projection of a 2D object is one dimensional.
@@ -87,11 +87,36 @@ and reconstructing the original image are compared: The Filtered Back
 Projection (FBP) and the Simultaneous Algebraic Reconstruction
 Technique (SART).</p>
 <p>For further information on tomographic reconstruction, see</p>
-<ul class="simple">
-<li>AC Kak, M Slaney, &#8220;Principles of Computerized Tomographic Imaging&#8221;,
-<a class="reference external" href="http://www.slaney.org/pct/pct-toc.html">http://www.slaney.org/pct/pct-toc.html</a></li>
-<li><a class="reference external" href="http://en.wikipedia.org/wiki/Radon_transform">http://en.wikipedia.org/wiki/Radon_transform</a></li>
-</ul>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id8">2</a>)</em> AC Kak, M Slaney, &#8220;Principles of Computerized Tomographic Imaging&#8221;,
+IEEE Press 1988. <a class="reference external" href="http://www.slaney.org/pct/pct-toc.html">http://www.slaney.org/pct/pct-toc.html</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[2]</a></td><td>Wikipedia, Radon transform,
+<a class="reference external" href="http://en.wikipedia.org/wiki/Radon_transform#Relationship_with_the_Fourier_transform">http://en.wikipedia.org/wiki/Radon_transform#Relationship_with_the_Fourier_transform</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> S Kaczmarz, &#8220;Angenaeherte Aufloesung von Systemen linearer
+Gleichungen&#8221;, Bulletin International de l&#8217;Academie Polonaise
+des Sciences et des Lettres, 35 pp 355&#8211;357 (1937)</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[4]</a></td><td>AH Andersen, AC Kak, &#8220;Simultaneous algebraic reconstruction
+technique (SART): a superior implementation of the ART algorithm&#8221;,
+Ultrasonic Imaging 6 pp 81&#8211;94 (1984)</td></tr>
+</tbody>
+</table>
 <div class="section" id="the-forward-transform">
 <h2>The forward transform<a class="headerlink" href="#the-forward-transform" title="Permalink to this headline">¶</a></h2>
 <p>As our original image, we will use the Shepp-Logan phantom. When calculating
@@ -101,7 +126,7 @@ same as the number of pixels there are across the object (to see why this
 is so, consider how many unknown pixel values must be determined in the
 reconstruction process and compare this to the number of measurements
 provided by the projections), and we follow that rule here. Below is the
-original image and its Radon transform, often known as its _sinogram_:</p>
+original image and its Radon transform, often known as its <em>sinogram</em>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">division</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
@@ -136,7 +161,7 @@ original image and its Radon transform, often known as its _sinogram_:</p>
 <div class="section" id="reconstruction-with-the-filtered-back-projection-fbp">
 <h2>Reconstruction with the Filtered Back Projection (FBP)<a class="headerlink" href="#reconstruction-with-the-filtered-back-projection-fbp" title="Permalink to this headline">¶</a></h2>
 <p>The mathematical foundation of the filtered back projection is the Fourier
-slice theorem <a class="footnote-reference" href="#id8" id="id2">[2]</a>. It uses Fourier transform of the projection and
+slice theorem <a class="footnote-reference" href="#id3" id="id6">[2]</a>. It uses Fourier transform of the projection and
 interpolation in Fourier space to obtain the 2D Fourier transform of the
 image, which is then inverted to form the reconstructed image. The filtered
 back projection is among the fastest methods of performing the inverse
@@ -178,7 +203,7 @@ as a (large) set of linear equations. As each ray passes through a small
 fraction of the pixels in the image, this set of equations is sparse,
 allowing iterative solvers for sparse linear systems to tackle the system
 of equations. One iterative method has been particularly popular, namely
-Kaczmarz&#8217; method <a class="footnote-reference" href="#id9" id="id3">[3]</a>, which has the property that the solution will
+Kaczmarz&#8217; method <a class="footnote-reference" href="#id4" id="id7">[3]</a>, which has the property that the solution will
 approach a least-squares solution of the equation set.</p>
 <p>The combination of the formulation of the reconstruction problem as a set
 of linear equations and an iterative solver makes algebraic techniques
@@ -186,7 +211,7 @@ relatively flexible, hence some forms of prior knowledge can be
 incorporated with relative ease.</p>
 <p><code class="docutils literal"><span class="pre">skimage</span></code> provides one of the more popular variations of the algebraic
 reconstruction techniques: the Simultaneous Algebraic Reconstruction
-Technique (SART) <a class="footnote-reference" href="#id7" id="id4">[1]</a> <a class="footnote-reference" href="#id10" id="id5">[4]</a>. It uses Kaczmarz&#8217; method <a class="footnote-reference" href="#id9" id="id6">[3]</a> as the iterative
+Technique (SART) <a class="footnote-reference" href="#id2" id="id8">[1]</a> <a class="footnote-reference" href="#id5" id="id9">[4]</a>. It uses Kaczmarz&#8217; method <a class="footnote-reference" href="#id4" id="id10">[3]</a> as the iterative
 solver. A good reconstruction is normally obtained in a single iteration,
 making the method computationally effective. Running one or more extra
 iterations will normally improve the reconstruction of sharp, high
@@ -234,34 +259,8 @@ threshold on the reconstructed values to be supplied to the reconstruction.</p>
 <span class="n">SART</span> <span class="p">(</span><span class="mi">2</span> <span class="n">iterations</span><span class="p">)</span> <span class="n">rms</span> <span class="n">reconstruction</span> <span class="n">error</span><span class="p">:</span> <span class="mf">0.0348</span>
 </pre></div>
 </div>
-<p>References</p>
-<table class="docutils footnote" frame="void" id="id7" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> AC Kak, M Slaney, &#8220;Principles of Computerized Tomographic Imaging&#8221;, IEEE Press 1988. <a class="reference external" href="http://www.slaney.org/pct/pct-toc.html">http://www.slaney.org/pct/pct-toc.html</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Wikipedia, Radon transform, <a class="reference external" href="http://en.wikipedia.org/wiki/Radon_transform#Relationship_with_the_Fourier_transform">http://en.wikipedia.org/wiki/Radon_transform#Relationship_with_the_Fourier_transform</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> S Kaczmarz, &#8220;Angenaeherte Aufloesung von Systemen linearer Gleichungen&#8221;, Bulletin International de l&#8217;Academie Polonaise des Sciences et des Lettres, 35 pp 355&#8211;357 (1937)</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[4]</a></td><td>AH Andersen, AC Kak, &#8220;Simultaneous algebraic reconstruction
-technique (SART): a superior implementation of the ART algorithm&#8221;, Ultrasonic Imaging 6 pp 81&#8211;94 (1984)</td></tr>
-</tbody>
-</table>
 <p><strong>Total running time of the script:</strong>
-(0 minutes 1.790 seconds)</p>
+(0 minutes 1.693 seconds)</p>
 <div class="sphx-glr-download container">
 <strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_radon_transform.py" download=""><code class="xref download docutils literal"><span class="pre">plot_radon_transform.py</span></code></a></div>
 <div class="sphx-glr-download container">
