@@ -80,7 +80,14 @@ American Society of Cytology, vol. 23, no. 4, pp. 291-9, Aug. 2001.</td></tr>
 
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2hed"><span class="n">rgb2hed</span></a>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>
 
+<span class="c1"># Create an artificial color close to the orginal one</span>
+<span class="n">cmap_hema</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;mycmap&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;navy&#39;</span><span class="p">])</span>
+<span class="n">cmap_dab</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;mycmap&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">,</span>
+                                             <span class="s1">&#39;saddlebrown&#39;</span><span class="p">])</span>
+<span class="n">cmap_eosin</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;mycmap&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;darkviolet&#39;</span><span class="p">,</span>
+                                               <span class="s1">&#39;white&#39;</span><span class="p">])</span>
 
 <span class="n">ihc_rgb</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.immunohistochemistry"><span class="n">data</span><span class="o">.</span><span class="n">immunohistochemistry</span></a><span class="p">()</span>
 <span class="n">ihc_hed</span> <span class="o">=</span> <a href="../../api/skimage.color.html#skimage.color.rgb2hed"><span class="n">rgb2hed</span></a><span class="p">(</span><span class="n">ihc_rgb</span><span class="p">)</span>
@@ -92,13 +99,13 @@ American Society of Cytology, vol. 23, no. 4, pp. 291-9, Aug. 2001.</td></tr>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ihc_rgb</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Original image&quot;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ihc_hed</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ihc_hed</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_hema</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Hematoxylin&quot;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ihc_hed</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ihc_hed</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_eosin</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Eosin&quot;</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ihc_hed</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ihc_hed</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap_dab</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;DAB&quot;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">ravel</span><span class="p">():</span>
@@ -128,7 +135,7 @@ American Society of Cytology, vol. 23, no. 4, pp. 291-9, Aug. 2001.</td></tr>
 </div>
 <img alt="../../_images/sphx_glr_plot_ihc_color_separation_002.png" class="align-center" src="../../_images/sphx_glr_plot_ihc_color_separation_002.png" />
 <p><strong>Total running time of the script:</strong>
-(0 minutes 0.558 seconds)</p>
+(0 minutes 0.547 seconds)</p>
 <div class="sphx-glr-download container">
 <strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_ihc_color_separation.py" download=""><code class="xref download docutils literal"><span class="pre">plot_ihc_color_separation.py</span></code></a></div>
 <div class="sphx-glr-download container">
