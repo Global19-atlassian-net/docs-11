@@ -2228,7 +2228,7 @@ Stan Z. Li
 <h2>peak_local_max<a class="headerlink" href="#peak-local-max" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.peak_local_max">
-<code class="descclassname">skimage.feature.</code><code class="descname">peak_local_max</code><span class="sig-paren">(</span><em>image</em>, <em>min_distance=1</em>, <em>threshold_abs=None</em>, <em>threshold_rel=None</em>, <em>exclude_border=True</em>, <em>indices=True</em>, <em>num_peaks=inf</em>, <em>footprint=None</em>, <em>labels=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/peak.py#L6"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.peak_local_max" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">peak_local_max</code><span class="sig-paren">(</span><em>image</em>, <em>min_distance=1</em>, <em>threshold_abs=None</em>, <em>threshold_rel=None</em>, <em>exclude_border=True</em>, <em>indices=True</em>, <em>num_peaks=inf</em>, <em>footprint=None</em>, <em>labels=None</em>, <em>num_peaks_per_label=inf</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/peak.py#L22"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.peak_local_max" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find peaks in an image as coordinate list or boolean mask.</p>
 <p>Peaks are the local maxima in a region of <cite>2 * min_distance + 1</cite>
 (i.e. peaks are separated by at least <cite>min_distance</cite>).</p>
@@ -2286,6 +2286,10 @@ to search for peaks at every point in <cite>image</cite>.  Overrides
 <blockquote>
 <div><p>If provided, each unique region <cite>labels == value</cite> represents a unique
 region to search for peaks. Zero is reserved for background.</p>
+</div></blockquote>
+<p><strong>num_peaks_per_label</strong> : int, optional</p>
+<blockquote>
+<div><p>Maximum number of peaks for each label.</p>
 </div></blockquote>
 </td>
 </tr>
