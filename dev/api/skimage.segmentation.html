@@ -278,7 +278,7 @@ that touch the outside of the image are removed.</p>
 <h2>felzenszwalb<a class="headerlink" href="#felzenszwalb" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.felzenszwalb">
-<code class="descclassname">skimage.segmentation.</code><code class="descname">felzenszwalb</code><span class="sig-paren">(</span><em>image</em>, <em>scale=1</em>, <em>sigma=0.8</em>, <em>min_size=20</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/_felzenszwalb.py#L7"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.felzenszwalb" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.segmentation.</code><code class="descname">felzenszwalb</code><span class="sig-paren">(</span><em>image</em>, <em>scale=1</em>, <em>sigma=0.8</em>, <em>min_size=20</em>, <em>multichannel=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/_felzenszwalb.py#L7"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.felzenszwalb" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes Felsenszwalb&#8217;s efficient graph based image segmentation.</p>
 <p>Produces an oversegmentation of a multichannel (i.e. RGB) image
 using a fast, minimum spanning tree based clustering on the image grid.
@@ -309,6 +309,11 @@ color space.</p>
 <p><strong>min_size</strong> : int</p>
 <blockquote>
 <div><p>Minimum component size. Enforced using postprocessing.</p>
+</div></blockquote>
+<p><strong>multichannel</strong> : bool, optional (default: True)</p>
+<blockquote>
+<div><p>Whether the last axis of the image is to be interpreted as multiple
+channels. A value of False, for a 3D image, is not currently supported.</p>
 </div></blockquote>
 </td>
 </tr>
