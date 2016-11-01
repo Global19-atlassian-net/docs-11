@@ -102,11 +102,11 @@ arbitrary subpixel precision. <a class="footnote-reference" href="#id2" id="id1"
 <span class="kn">from</span> <span class="nn">skimage.feature.register_translation</span> <span class="kn">import</span> <span class="n">_upsampled_dft</span>
 <span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">fourier_shift</span>
 
-<span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">()</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 <span class="n">shift</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">2.4</span><span class="p">,</span> <span class="mf">1.32</span><span class="p">)</span>
 <span class="c1"># (-2.4, 1.32) pixel offset relative to reference coin</span>
-<span class="n">offset_image</span> <span class="o">=</span> <span class="n">fourier_shift</span><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.fft.fftn.html#numpy.fft.fftn"><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftn</span></a><span class="p">(</span><span class="n">image</span><span class="p">),</span> <span class="n">shift</span><span class="p">)</span>
-<span class="n">offset_image</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.fft.ifftn.html#numpy.fft.ifftn"><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftn</span></a><span class="p">(</span><span class="n">offset_image</span><span class="p">)</span>
+<span class="n">offset_image</span> <span class="o">=</span> <span class="n">fourier_shift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftn</span><span class="p">(</span><span class="n">image</span><span class="p">),</span> <span class="n">shift</span><span class="p">)</span>
+<span class="n">offset_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftn</span><span class="p">(</span><span class="n">offset_image</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Known offset (y, x):&quot;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">shift</span><span class="p">)</span>
 
@@ -128,8 +128,8 @@ arbitrary subpixel precision. <a class="footnote-reference" href="#id2" id="id1"
 
 <span class="c1"># View the output of a cross-correlation to show what the algorithm is</span>
 <span class="c1">#    doing behind the scenes</span>
-<span class="n">image_product</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.fft.fft2.html#numpy.fft.fft2"><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span></a><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="o">*</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.fft.fft2.html#numpy.fft.fft2"><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span></a><span class="p">(</span><span class="n">offset_image</span><span class="p">)</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span>
-<span class="n">cc_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.fft.ifft2.html#numpy.fft.ifft2"><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span></a><span class="p">(</span><span class="n">image_product</span><span class="p">))</span>
+<span class="n">image_product</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">offset_image</span><span class="p">)</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span>
+<span class="n">cc_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">image_product</span><span class="p">))</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">cc_image</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Cross-correlation&quot;</span><span class="p">)</span>
@@ -171,7 +171,7 @@ arbitrary subpixel precision. <a class="footnote-reference" href="#id2" id="id1"
 </pre></div>
 </div>
 <p><strong>Total running time of the script:</strong>
-(0 minutes 1.403 seconds)</p>
+(0 minutes 1.701 seconds)</p>
 <div class="sphx-glr-download container">
 <strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_register_translation.py" download=""><code class="xref download docutils literal"><span class="pre">plot_register_translation.py</span></code></a></div>
 <div class="sphx-glr-download container">
