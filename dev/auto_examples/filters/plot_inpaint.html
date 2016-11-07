@@ -101,7 +101,7 @@ inpainting by biharmonic functions: numerical aspects&#8221;,
 <span class="n">image_orig</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.astronaut"><span class="n">data</span><span class="o">.</span><span class="n">astronaut</span></a><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">200</span><span class="p">]</span>
 
 <span class="c1"># Create mask with three defect regions: left, middle, right respectively</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">image_orig</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">mask</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.zeros.html#numpy.zeros"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">(</span><span class="n">image_orig</span><span class="o">.</span><span class="n">shape</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">mask</span><span class="p">[</span><span class="mi">20</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">mask</span><span class="p">[</span><span class="mi">160</span><span class="p">:</span><span class="mi">180</span><span class="p">,</span> <span class="mi">70</span><span class="p">:</span><span class="mi">155</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">mask</span><span class="p">[</span><span class="mi">30</span><span class="p">:</span><span class="mi">60</span><span class="p">,</span> <span class="mi">170</span><span class="p">:</span><span class="mi">195</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -109,7 +109,7 @@ inpainting by biharmonic functions: numerical aspects&#8221;,
 <span class="c1"># Defect image over the same region in each color channel</span>
 <span class="n">image_defect</span> <span class="o">=</span> <span class="n">image_orig</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">image_defect</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
-    <span class="n">image_defect</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">mask</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">image_defect</span><span class="p">[</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.where.html#numpy.where"><span class="n">np</span><span class="o">.</span><span class="n">where</span></a><span class="p">(</span><span class="n">mask</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="n">image_result</span> <span class="o">=</span> <a href="../../api/skimage.restoration.html#skimage.restoration.inpaint_biharmonic"><span class="n">inpaint</span><span class="o">.</span><span class="n">inpaint_biharmonic</span></a><span class="p">(</span><span class="n">image_defect</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">multichannel</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
@@ -136,7 +136,7 @@ inpainting by biharmonic functions: numerical aspects&#8221;,
 </pre></div>
 </div>
 <p><strong>Total running time of the script:</strong>
-(0 minutes 8.263 seconds)</p>
+(0 minutes 8.110 seconds)</p>
 <div class="sphx-glr-download container">
 <strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_inpaint.py" download=""><code class="xref download docutils literal"><span class="pre">plot_inpaint.py</span></code></a></div>
 <div class="sphx-glr-download container">
