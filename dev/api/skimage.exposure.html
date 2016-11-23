@@ -328,7 +328,7 @@ Enhancement Functions&#8221;,
 <h2>equalize_adapthist<a class="headerlink" href="#equalize-adapthist" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.exposure.equalize_adapthist">
-<code class="descclassname">skimage.exposure.</code><code class="descname">equalize_adapthist</code><span class="sig-paren">(</span><em>image</em>, <em>ntiles_x=None</em>, <em>ntiles_y=None</em>, <em>clip_limit=0.01</em>, <em>nbins=256</em>, <em>kernel_size=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/color/adapt_rgb.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.exposure.equalize_adapthist" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.exposure.</code><code class="descname">equalize_adapthist</code><span class="sig-paren">(</span><em>image</em>, <em>kernel_size=None</em>, <em>clip_limit=0.01</em>, <em>nbins=256</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/color/adapt_rgb.py#L35"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.exposure.equalize_adapthist" title="Permalink to this definition">¶</a></dt>
 <dd><p>Contrast Limited Adaptive Histogram Equalization (CLAHE).</p>
 <p>An algorithm for local contrast enhancement, that uses histograms computed
 over different tile regions of the image. Local details can therefore be
@@ -337,25 +337,19 @@ enhanced even in regions that are darker or lighter than most of the image.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : array-like</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : (M, N[, C]) ndarray</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
-<p><strong>kernel_size: integer or 2-tuple</strong></p>
+<p><strong>kernel_size: integer or list-like, optional</strong></p>
 <blockquote>
-<div><p>Defines the shape of contextual regions used in the algorithm.
-If an integer is given, the shape will be a square of
-sidelength given by this value.</p>
+<div><p>Defines the shape of contextual regions used in the algorithm. If
+iterable is passed, it must have the same number of elements as
+<code class="docutils literal"><span class="pre">image.ndim</span></code> (without color channel). If integer, it is broadcasted
+to each <cite>image</cite> dimension. By default, <code class="docutils literal"><span class="pre">kernel_size</span></code> is 1/8 of
+<code class="docutils literal"><span class="pre">image</span></code> height by 1/8 of its width.</p>
 </div></blockquote>
-<p><strong>ntiles_x</strong> : int, optional (deprecated in favor of <code class="docutils literal"><span class="pre">kernel_size</span></code>)</p>
-<blockquote>
-<div><p>Number of tile regions in the X direction (horizontal).</p>
-</div></blockquote>
-<p><strong>ntiles_y</strong> : int, optional (deprecated in favor of <code class="docutils literal"><span class="pre">kernel_size</span></code>)</p>
-<blockquote>
-<div><p>Number of tile regions in the Y direction (vertical).</p>
-</div></blockquote>
-<p><strong>clip_limit</strong> : float: optional</p>
+<p><strong>clip_limit</strong> : float, optional</p>
 <blockquote>
 <div><p>Clipping limit, normalized between 0 and 1 (higher values give more
 contrast).</p>
@@ -366,7 +360,7 @@ contrast).</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : (M, N[, C]) ndarray</p>
 <blockquote class="last">
 <div><p>Equalized image.</p>
 </div></blockquote>
