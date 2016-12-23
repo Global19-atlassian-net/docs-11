@@ -71,20 +71,20 @@ dilated image are returned as local maxima.</p>
 <img alt="../../_images/sphx_glr_plot_peak_local_max_001.png" class="align-center" src="../../_images/sphx_glr_plot_peak_local_max_001.png" />
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <a href="../../api/skimage.feature.html#skimage.feature.peak_local_max"><span class="n">peak_local_max</span></a>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <a href="../../api/skimage.html#skimage.img_as_float"><span class="n">img_as_float</span></a>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <a href="../../api/skimage.feature.html#skimage.feature.peak_local_max" class="sphx-glr-code-links" tooltip="Link to documentation for skimage.feature.peak_local_max"><span class="n">peak_local_max</span></a>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <a href="../../api/skimage.html#skimage.img_as_float" class="sphx-glr-code-links" tooltip="Link to documentation for skimage.img_as_float"><span class="n">img_as_float</span></a>
 
-<span class="n">im</span> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_float"><span class="n">img_as_float</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.coins"><span class="n">data</span><span class="o">.</span><span class="n">coins</span></a><span class="p">())</span>
+<span class="n">im</span> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_float" class="sphx-glr-code-links" tooltip="Link to documentation for skimage.img_as_float"><span class="n">img_as_float</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.coins" class="sphx-glr-code-links" tooltip="Link to documentation for skimage.data.coins"><span class="n">data</span><span class="o">.</span><span class="n">coins</span></a><span class="p">())</span>
 
 <span class="c1"># image_max is the dilation of im with a 20*20 structuring element</span>
 <span class="c1"># It is used within peak_local_max function</span>
 <span class="n">image_max</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">maximum_filter</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">)</span>
 
 <span class="c1"># Comparison between image_max and im to find the coordinates of local maxima</span>
-<span class="n">coordinates</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.peak_local_max"><span class="n">peak_local_max</span></a><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">coordinates</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.peak_local_max" class="sphx-glr-code-links" tooltip="Link to documentation for skimage.feature.peak_local_max"><span class="n">peak_local_max</span></a><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="c1"># display results</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplots" class="sphx-glr-code-links" tooltip="Link to documentation for matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                          <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;adjustable&#39;</span><span class="p">:</span> <span class="s1">&#39;box-forced&#39;</span><span class="p">})</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
@@ -103,15 +103,17 @@ dilated image are returned as local maxima.</p>
 
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" class="sphx-glr-code-links" tooltip="Link to documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong>
-(0 minutes 0.426 seconds)</p>
-<div class="sphx-glr-download container">
-<strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_peak_local_max.py" download=""><code class="xref download docutils literal"><span class="pre">plot_peak_local_max.py</span></code></a></div>
-<div class="sphx-glr-download container">
-<strong>Download IPython notebook:</strong> <a class="reference download internal" href="../../_downloads/plot_peak_local_max.ipynb" download=""><code class="xref download docutils literal"><span class="pre">plot_peak_local_max.ipynb</span></code></a></div>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.292 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_peak_local_max.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_peak_local_max.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_peak_local_max.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_peak_local_max.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 
 

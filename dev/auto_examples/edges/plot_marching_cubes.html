@@ -82,12 +82,12 @@ voxel spacing is not equal for every spatial dimension, through use of the
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d.art3d</span> <span class="kn">import</span> <span class="n">Poly3DCollection</span>
 
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">measure</span>
-<span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <a href="../../api/skimage.draw.html#skimage.draw.ellipsoid"><span class="n">ellipsoid</span></a>
+<span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <a href="../../api/skimage.draw.html#skimage.draw.ellipsoid" class="sphx-glr-code-links" tooltip="Link to documentation for skimage.draw.ellipsoid"><span class="n">ellipsoid</span></a>
 
 
 <span class="c1"># Generate a level set about zero of two identical ellipsoids in 3D</span>
-<span class="n">ellip_base</span> <span class="o">=</span> <a href="../../api/skimage.draw.html#skimage.draw.ellipsoid"><span class="n">ellipsoid</span></a><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">levelset</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">ellip_double</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.concatenate.html#numpy.concatenate"><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span></a><span class="p">((</span><span class="n">ellip_base</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+<span class="n">ellip_base</span> <span class="o">=</span> <a href="../../api/skimage.draw.html#skimage.draw.ellipsoid" class="sphx-glr-code-links" tooltip="Link to documentation for skimage.draw.ellipsoid"><span class="n">ellipsoid</span></a><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">levelset</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">ellip_double</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.concatenate.html#numpy.concatenate" class="sphx-glr-code-links" tooltip="Link to documentation for numpy.concatenate"><span class="n">np</span><span class="o">.</span><span class="n">concatenate</span></a><span class="p">((</span><span class="n">ellip_base</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
                                <span class="n">ellip_base</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="o">...</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Use marching cubes to obtain the surface mesh of these ellipsoids</span>
@@ -95,7 +95,7 @@ voxel spacing is not equal for every spatial dimension, through use of the
 
 <span class="c1"># Display resulting triangular mesh using Matplotlib. This can also be done</span>
 <span class="c1"># with mayavi (see skimage.measure.marching_cubes docstring).</span>
-<span class="n">fig</span> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure" class="sphx-glr-code-links" tooltip="Link to documentation for matplotlib.pyplot.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
 
 <span class="c1"># Fancy indexing: `verts[faces]` to generate a collection of triangles</span>
@@ -110,16 +110,18 @@ voxel spacing is not equal for every spatial dimension, through use of the
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>  <span class="c1"># b = 10</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>  <span class="c1"># c = 16</span>
 
-<a href="http://matplotlib.org/api/tight_layout_api.html#matplotlib.tight_layout"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<a href="http://matplotlib.org/api/tight_layout_api.html#matplotlib.tight_layout" class="sphx-glr-code-links" tooltip="Link to documentation for matplotlib.pyplot.tight_layout"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" class="sphx-glr-code-links" tooltip="Link to documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong>
-(0 minutes 0.269 seconds)</p>
-<div class="sphx-glr-download container">
-<strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_marching_cubes.py" download=""><code class="xref download docutils literal"><span class="pre">plot_marching_cubes.py</span></code></a></div>
-<div class="sphx-glr-download container">
-<strong>Download IPython notebook:</strong> <a class="reference download internal" href="../../_downloads/plot_marching_cubes.ipynb" download=""><code class="xref download docutils literal"><span class="pre">plot_marching_cubes.ipynb</span></code></a></div>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.080 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_marching_cubes.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_marching_cubes.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_marching_cubes.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_marching_cubes.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 
 

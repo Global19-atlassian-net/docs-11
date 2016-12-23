@@ -71,11 +71,11 @@ the maximum and minimum possible values of the reconstructed image.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="kn">import</span> <a href="../../api/skimage.exposure.html#skimage.exposure.rescale_intensity"><span class="n">rescale_intensity</span></a>
+<span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="kn">import</span> <a href="../../api/skimage.exposure.html#skimage.exposure.rescale_intensity" class="sphx-glr-code-links" tooltip="Link to documentation for skimage.exposure.rescale_intensity"><span class="n">rescale_intensity</span></a>
 
-<span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.moon"><span class="n">data</span><span class="o">.</span><span class="n">moon</span></a><span class="p">()</span>
+<span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.moon" class="sphx-glr-code-links" tooltip="Link to documentation for skimage.data.moon"><span class="n">data</span><span class="o">.</span><span class="n">moon</span></a><span class="p">()</span>
 <span class="c1"># Rescale image intensity so that we can see dim features.</span>
-<span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.exposure.html#skimage.exposure.rescale_intensity"><span class="n">rescale_intensity</span></a><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">in_range</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
+<span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.exposure.html#skimage.exposure.rescale_intensity" class="sphx-glr-code-links" tooltip="Link to documentation for skimage.exposure.rescale_intensity"><span class="n">rescale_intensity</span></a><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">in_range</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">200</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>Now we need to create the seed image, where the minima represent the
@@ -85,13 +85,13 @@ use the original values of the image. These border pixels will be the
 starting points for the erosion process. We then limit the erosion by
 setting the mask to the values of the original image.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <a href="../../api/skimage.morphology.html#skimage.morphology.reconstruction"><span class="n">reconstruction</span></a>
+<span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <a href="../../api/skimage.morphology.html#skimage.morphology.reconstruction" class="sphx-glr-code-links" tooltip="Link to documentation for skimage.morphology.reconstruction"><span class="n">reconstruction</span></a>
 
-<span class="n">seed</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.copy.html#numpy.copy"><span class="n">np</span><span class="o">.</span><span class="n">copy</span></a><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="n">seed</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.copy.html#numpy.copy" class="sphx-glr-code-links" tooltip="Link to documentation for numpy.copy"><span class="n">np</span><span class="o">.</span><span class="n">copy</span></a><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="n">seed</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">image</span>
 
-<span class="n">filled</span> <span class="o">=</span> <a href="../../api/skimage.morphology.html#skimage.morphology.reconstruction"><span class="n">reconstruction</span></a><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;erosion&#39;</span><span class="p">)</span>
+<span class="n">filled</span> <span class="o">=</span> <a href="../../api/skimage.morphology.html#skimage.morphology.reconstruction" class="sphx-glr-code-links" tooltip="Link to documentation for skimage.morphology.reconstruction"><span class="n">reconstruction</span></a><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;erosion&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>As shown above, eroding inward from the edges removes holes, since (by
@@ -104,9 +104,9 @@ the <em>maximal</em> values of the seed image until it encounters a mask image.
 Since this is an inverse operation, we initialize the seed image to the
 minimum image intensity instead of the maximum. The remainder of the
 process is the same.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">seed</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.copy.html#numpy.copy"><span class="n">np</span><span class="o">.</span><span class="n">copy</span></a><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">seed</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.copy.html#numpy.copy" class="sphx-glr-code-links" tooltip="Link to documentation for numpy.copy"><span class="n">np</span><span class="o">.</span><span class="n">copy</span></a><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="n">seed</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-<span class="n">rec</span> <span class="o">=</span> <a href="../../api/skimage.morphology.html#skimage.morphology.reconstruction"><span class="n">reconstruction</span></a><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dilation&#39;</span><span class="p">)</span>
+<span class="n">rec</span> <span class="o">=</span> <a href="../../api/skimage.morphology.html#skimage.morphology.reconstruction" class="sphx-glr-code-links" tooltip="Link to documentation for skimage.morphology.reconstruction"><span class="n">reconstruction</span></a><span class="p">(</span><span class="n">seed</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;dilation&#39;</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                        <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;adjustable&#39;</span><span class="p">:</span> <span class="s1">&#39;box-forced&#39;</span><span class="p">})</span>
@@ -127,16 +127,18 @@ process is the same.</p>
 <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="o">-</span><span class="n">rec</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;peaks&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+<a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" class="sphx-glr-code-links" tooltip="Link to documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_holes_and_peaks_001.png" class="align-center" src="../../_images/sphx_glr_plot_holes_and_peaks_001.png" />
-<p><strong>Total running time of the script:</strong>
-(0 minutes 0.523 seconds)</p>
-<div class="sphx-glr-download container">
-<strong>Download Python source code:</strong> <a class="reference download internal" href="../../_downloads/plot_holes_and_peaks.py" download=""><code class="xref download docutils literal"><span class="pre">plot_holes_and_peaks.py</span></code></a></div>
-<div class="sphx-glr-download container">
-<strong>Download IPython notebook:</strong> <a class="reference download internal" href="../../_downloads/plot_holes_and_peaks.ipynb" download=""><code class="xref download docutils literal"><span class="pre">plot_holes_and_peaks.ipynb</span></code></a></div>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.410 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_holes_and_peaks.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_holes_and_peaks.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_holes_and_peaks.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_holes_and_peaks.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 
 

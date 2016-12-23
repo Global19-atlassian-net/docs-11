@@ -153,8 +153,14 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.transform.AffineTransform" title="skimage.transform.AffineTransform"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.AffineTransform</span></code></a>([matrix,&nbsp;...])</td>
 <td>2D affine transformation of the form:</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.EuclideanTransform" title="skimage.transform.EuclideanTransform"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.EuclideanTransform</span></code></a>([...])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.EssentialMatrixTransform" title="skimage.transform.EssentialMatrixTransform"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.EssentialMatrixTransform</span></code></a>([...])</td>
+<td>Essential matrix transformation.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.transform.EuclideanTransform" title="skimage.transform.EuclideanTransform"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.EuclideanTransform</span></code></a>([...])</td>
 <td>2D Euclidean transformation of the form:</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.FundamentalMatrixTransform" title="skimage.transform.FundamentalMatrixTransform"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.FundamentalMatrixTransform</span></code></a>([...])</td>
+<td>Fundamental matrix transformation.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.transform.PiecewiseAffineTransform" title="skimage.transform.PiecewiseAffineTransform"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.PiecewiseAffineTransform</span></code></a>()</td>
 <td>2D piecewise affine transformation.</td>
@@ -163,7 +169,7 @@
 <td>2D polynomial transformation of the form:</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.transform.ProjectiveTransform" title="skimage.transform.ProjectiveTransform"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.ProjectiveTransform</span></code></a>([matrix])</td>
-<td>Matrix transformation.</td>
+<td>Projective transformation.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.transform.SimilarityTransform" title="skimage.transform.SimilarityTransform"><code class="xref py py-obj docutils literal"><span class="pre">skimage.transform.SimilarityTransform</span></code></a>([...])</td>
 <td>2D similarity transformation of the form:</td>
@@ -174,7 +180,7 @@
 <h2>downscale_local_mean<a class="headerlink" href="#downscale-local-mean" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.downscale_local_mean">
-<code class="descclassname">skimage.transform.</code><code class="descname">downscale_local_mean</code><span class="sig-paren">(</span><em>image</em>, <em>factors</em>, <em>cval=0</em>, <em>clip=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L287"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.downscale_local_mean" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">downscale_local_mean</code><span class="sig-paren">(</span><em>image</em>, <em>factors</em>, <em>cval=0</em>, <em>clip=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L297"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.downscale_local_mean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Down-sample N-dimensional image by local averaging.</p>
 <p>The image is padded with <cite>cval</cite> if it is not perfectly divisible by the
 integer factors.</p>
@@ -227,7 +233,7 @@ integer factors.</p>
 <h2>estimate_transform<a class="headerlink" href="#estimate-transform" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.estimate_transform">
-<code class="descclassname">skimage.transform.</code><code class="descname">estimate_transform</code><span class="sig-paren">(</span><em>ttype</em>, <em>src</em>, <em>dst</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1006"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.estimate_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">estimate_transform</code><span class="sig-paren">(</span><em>ttype</em>, <em>src</em>, <em>dst</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1300"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.estimate_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate 2D geometric transformation parameters.</p>
 <p>You can determine the over-, well- and under-determined parameters
 with the total least-squares method.</p>
@@ -457,10 +463,10 @@ axes, respectively. The <cite>orientation</cite> value follows
 distribution. In other words, a flat accumulator distribution with low
 values may be caused by a too low bin size.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r415" rules="none">
+<table class="docutils citation" frame="void" id="r421" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R415]</a></td><td>Xie, Yonghong, and Qiang Ji. &#8220;A new efficient ellipse detection
+<tr><td class="label"><a class="fn-backref" href="#id2">[R421]</a></td><td>Xie, Yonghong, and Qiang Ji. &#8220;A new efficient ellipse detection
 method.&#8221; Pattern Recognition, 2002. Proceedings. 16th International
 Conference on. Vol. 2. IEEE, 2002</td></tr>
 </tbody>
@@ -681,13 +687,13 @@ an (n+1) x n integer array.</p>
 </div>
 <p class="rubric">Notes</p>
 <p>The FRT has a unique inverse if and only if n is prime.
-See <a class="reference internal" href="#r416" id="id3">[R416]</a> for an overview.
+See <a class="reference internal" href="#r422" id="id3">[R422]</a> for an overview.
 The idea for this algorithm is due to Vlad Negnevitski.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r416" rules="none">
+<table class="docutils citation" frame="void" id="r422" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R416]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> A. Kingston and I. Svalbe, &#8220;Projective transforms on periodic
+<tr><td class="label">[R422]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> A. Kingston and I. Svalbe, &#8220;Projective transforms on periodic
 discrete image arrays,&#8221; in P. Hawkes (Ed), Advances in Imaging
 and Electron Physics, 139 (2006)</td></tr>
 </tbody>
@@ -741,10 +747,10 @@ left of it, i.e.:</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r417" rules="none">
+<table class="docutils citation" frame="void" id="r423" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[R417]</a></td><td>F.C. Crow, &#8220;Summed-area tables for texture mapping,&#8221;
+<tr><td class="label"><a class="fn-backref" href="#id5">[R423]</a></td><td>F.C. Crow, &#8220;Summed-area tables for texture mapping,&#8221;
 ACM SIGGRAPH Computer Graphics, vol. 18, 1984, pp. 207-212.</td></tr>
 </tbody>
 </table>
@@ -873,17 +879,17 @@ with indices
 multiplying the frequency domain of the filter with the FFT of the
 projection data. This algorithm is called filtered back projection.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r418" rules="none">
+<table class="docutils citation" frame="void" id="r424" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[R418]</a></td><td>AC Kak, M Slaney, &#8220;Principles of Computerized Tomographic
+<tr><td class="label"><a class="fn-backref" href="#id6">[R424]</a></td><td>AC Kak, M Slaney, &#8220;Principles of Computerized Tomographic
 Imaging&#8221;, IEEE Press 1988.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r419" rules="none">
+<table class="docutils citation" frame="void" id="r425" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[R419]</a></td><td>B.R. Ramesh, N. Srinivasa, K. Rajgopal, &#8220;An Algorithm for Computing
+<tr><td class="label"><a class="fn-backref" href="#id7">[R425]</a></td><td>B.R. Ramesh, N. Srinivasa, K. Rajgopal, &#8220;An Algorithm for Computing
 the Discrete Radon Transform With Some Applications&#8221;, Proceedings of
 the Fourth IEEE Region 10 International Conference, TENCON &#8216;89, 1989</td></tr>
 </tbody>
@@ -964,41 +970,41 @@ a slightly modified Kaczmarz method.</p>
 reconstruction. Further iterations will tend to enhance high-frequency
 information, but will also often increase the noise.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r420" rules="none">
+<table class="docutils citation" frame="void" id="r426" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id8">[R420]</a></td><td>AC Kak, M Slaney, &#8220;Principles of Computerized Tomographic
+<tr><td class="label"><a class="fn-backref" href="#id8">[R426]</a></td><td>AC Kak, M Slaney, &#8220;Principles of Computerized Tomographic
 Imaging&#8221;, IEEE Press 1988.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r421" rules="none">
+<table class="docutils citation" frame="void" id="r427" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id9">[R421]</a></td><td>AH Andersen, AC Kak, &#8220;Simultaneous algebraic reconstruction
+<tr><td class="label"><a class="fn-backref" href="#id9">[R427]</a></td><td>AH Andersen, AC Kak, &#8220;Simultaneous algebraic reconstruction
 technique (SART): a superior implementation of the ART algorithm&#8221;,
 Ultrasonic Imaging 6 pp 81&#8211;94 (1984)</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r422" rules="none">
+<table class="docutils citation" frame="void" id="r428" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[R422]</a></td><td>S Kaczmarz, &#8220;Angenäherte auflösung von systemen linearer
+<tr><td class="label"><a class="fn-backref" href="#id10">[R428]</a></td><td>S Kaczmarz, &#8220;Angenäherte auflösung von systemen linearer
 gleichungen&#8221;, Bulletin International de l’Academie Polonaise des
 Sciences et des Lettres 35 pp 355&#8211;357 (1937)</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r423" rules="none">
+<table class="docutils citation" frame="void" id="r429" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[R423]</a></td><td>Kohler, T. &#8220;A projection access scheme for iterative
+<tr><td class="label"><a class="fn-backref" href="#id11">[R429]</a></td><td>Kohler, T. &#8220;A projection access scheme for iterative
 reconstruction based on the golden section.&#8221; Nuclear Science
 Symposium Conference Record, 2004 IEEE. Vol. 6. IEEE, 2004.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r424" rules="none">
+<table class="docutils citation" frame="void" id="r430" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id12">[R424]</a></td><td>Kaczmarz&#8217; method, Wikipedia,
+<tr><td class="label"><a class="fn-backref" href="#id12">[R430]</a></td><td>Kaczmarz&#8217; method, Wikipedia,
 <a class="reference external" href="http://en.wikipedia.org/wiki/Kaczmarz_method">http://en.wikipedia.org/wiki/Kaczmarz_method</a></td></tr>
 </tbody>
 </table>
@@ -1009,7 +1015,7 @@ Symposium Conference Record, 2004 IEEE. Vol. 6. IEEE, 2004.</td></tr>
 <h2>matrix_transform<a class="headerlink" href="#matrix-transform" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.matrix_transform">
-<code class="descclassname">skimage.transform.</code><code class="descname">matrix_transform</code><span class="sig-paren">(</span><em>coords</em>, <em>matrix</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1080"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.matrix_transform" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">matrix_transform</code><span class="sig-paren">(</span><em>coords</em>, <em>matrix</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1374"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.matrix_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply 2D matrix transform.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1068,18 +1074,18 @@ All non-negative integers &lt; <code class="docutils literal"><span class="pre">
 <p>The method used here is that of the golden ratio introduced
 by T. Kohler.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r425" rules="none">
+<table class="docutils citation" frame="void" id="r431" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id13">[R425]</a></td><td>Kohler, T. &#8220;A projection access scheme for iterative
+<tr><td class="label"><a class="fn-backref" href="#id13">[R431]</a></td><td>Kohler, T. &#8220;A projection access scheme for iterative
 reconstruction based on the golden section.&#8221; Nuclear Science
 Symposium Conference Record, 2004 IEEE. Vol. 6. IEEE, 2004.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r426" rules="none">
+<table class="docutils citation" frame="void" id="r432" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id14">[R426]</a></td><td>Winkelmann, Stefanie, et al. &#8220;An optimal radial profile order
+<tr><td class="label"><a class="fn-backref" href="#id14">[R432]</a></td><td>Winkelmann, Stefanie, et al. &#8220;An optimal radial profile order
 based on the Golden Ratio for time-resolved MRI.&#8221;
 Medical Imaging, IEEE Transactions on 26.1 (2007): 68-76.</td></tr>
 </tbody>
@@ -1132,10 +1138,10 @@ indicating line start and end.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r427" rules="none">
+<table class="docutils citation" frame="void" id="r433" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id15">[R427]</a></td><td>C. Galamhos, J. Matas and J. Kittler, &#8220;Progressive probabilistic
+<tr><td class="label"><a class="fn-backref" href="#id15">[R433]</a></td><td>C. Galamhos, J. Matas and J. Kittler, &#8220;Progressive probabilistic
 Hough transform for line detection&#8221;, in IEEE Computer Society
 Conference on Computer Vision and Pattern Recognition, 1999.</td></tr>
 </tbody>
@@ -1192,10 +1198,10 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r428" rules="none">
+<table class="docutils citation" frame="void" id="r434" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id16">[R428]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id16">[R434]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1261,10 +1267,10 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r429" rules="none">
+<table class="docutils citation" frame="void" id="r435" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id17">[R429]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id17">[R435]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1334,16 +1340,16 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r430" rules="none">
+<table class="docutils citation" frame="void" id="r436" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id18">[R430]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id18">[R436]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r431" rules="none">
+<table class="docutils citation" frame="void" id="r437" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id19">[R431]</a></td><td><a class="reference external" href="http://sepwww.stanford.edu/data/media/public/sep/morgan/texturematch/paper_html/node3.html">http://sepwww.stanford.edu/data/media/public/sep/morgan/texturematch/paper_html/node3.html</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id19">[R437]</a></td><td><a class="reference external" href="http://sepwww.stanford.edu/data/media/public/sep/morgan/texturematch/paper_html/node3.html">http://sepwww.stanford.edu/data/media/public/sep/morgan/texturematch/paper_html/node3.html</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1398,10 +1404,10 @@ cval is the value when mode is equal to &#8216;constant&#8217;.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r432" rules="none">
+<table class="docutils citation" frame="void" id="r438" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id20">[R432]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id20">[R438]</a></td><td><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1450,17 +1456,17 @@ dimension of <code class="docutils literal"><span class="pre">radon_image</span>
 <p>Based on code of Justin K. Romberg
 (<a class="reference external" href="http://www.clear.rice.edu/elec431/projects96/DSP/bpanalysis.html">http://www.clear.rice.edu/elec431/projects96/DSP/bpanalysis.html</a>)</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r433" rules="none">
+<table class="docutils citation" frame="void" id="r439" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id21">[R433]</a></td><td>AC Kak, M Slaney, &#8220;Principles of Computerized Tomographic
+<tr><td class="label"><a class="fn-backref" href="#id21">[R439]</a></td><td>AC Kak, M Slaney, &#8220;Principles of Computerized Tomographic
 Imaging&#8221;, IEEE Press 1988.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r434" rules="none">
+<table class="docutils citation" frame="void" id="r440" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id22">[R434]</a></td><td>B.R. Ramesh, N. Srinivasa, K. Rajgopal, &#8220;An Algorithm for Computing
+<tr><td class="label"><a class="fn-backref" href="#id22">[R440]</a></td><td>B.R. Ramesh, N. Srinivasa, K. Rajgopal, &#8220;An Algorithm for Computing
 the Discrete Radon Transform With Some Applications&#8221;, Proceedings of
 the Fourth IEEE Region 10 International Conference, TENCON &#8216;89, 1989</td></tr>
 </tbody>
@@ -1472,7 +1478,7 @@ the Fourth IEEE Region 10 International Conference, TENCON &#8216;89, 1989</td><
 <h2>rescale<a class="headerlink" href="#rescale" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.rescale">
-<code class="descclassname">skimage.transform.</code><code class="descname">rescale</code><span class="sig-paren">(</span><em>image</em>, <em>scale</em>, <em>order=1</em>, <em>mode='constant'</em>, <em>cval=0</em>, <em>clip=True</em>, <em>preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L125"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.rescale" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">rescale</code><span class="sig-paren">(</span><em>image</em>, <em>scale</em>, <em>order=1</em>, <em>mode='constant'</em>, <em>cval=0</em>, <em>clip=True</em>, <em>preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.rescale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Scale image by a certain factor.</p>
 <p>Performs interpolation to upscale or down-scale images. For down-sampling
 N-dimensional images with integer factors by applying the arithmetic sum or
@@ -1547,7 +1553,7 @@ image is converted according to the conventions of <cite>img_as_float</cite>.</p
 <h2>resize<a class="headerlink" href="#resize" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.resize">
-<code class="descclassname">skimage.transform.</code><code class="descname">resize</code><span class="sig-paren">(</span><em>image</em>, <em>output_shape</em>, <em>order=1</em>, <em>mode='constant'</em>, <em>cval=0</em>, <em>clip=True</em>, <em>preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L11"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.resize" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">resize</code><span class="sig-paren">(</span><em>image</em>, <em>output_shape</em>, <em>order=1</em>, <em>mode='constant'</em>, <em>cval=0</em>, <em>clip=True</em>, <em>preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize image to match a certain size.</p>
 <p>Performs interpolation to up-size or down-size images. For down-sampling
 N-dimensional images by applying the arithmetic sum or mean, see
@@ -1628,7 +1634,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <h2>rotate<a class="headerlink" href="#rotate" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.rotate">
-<code class="descclassname">skimage.transform.</code><code class="descname">rotate</code><span class="sig-paren">(</span><em>image</em>, <em>angle</em>, <em>resize=False</em>, <em>center=None</em>, <em>order=1</em>, <em>mode='constant'</em>, <em>cval=0</em>, <em>clip=True</em>, <em>preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L192"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.rotate" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">rotate</code><span class="sig-paren">(</span><em>image</em>, <em>angle</em>, <em>resize=False</em>, <em>center=None</em>, <em>order=1</em>, <em>mode='constant'</em>, <em>cval=0</em>, <em>clip=True</em>, <em>preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L202"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.rotate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rotate image by a certain angle around its center.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1764,10 +1770,10 @@ this opetration.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r435" rules="none">
+<table class="docutils citation" frame="void" id="r441" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id23">[R435]</a></td><td>Shai Avidan and Ariel Shamir
+<tr><td class="label"><a class="fn-backref" href="#id23">[R441]</a></td><td>Shai Avidan and Ariel Shamir
 &#8220;Seam Carving for Content-Aware Image Resizing&#8221;
 <a class="reference external" href="http://www.cs.jhu.edu/~misha/ReadingSeminar/Papers/Avidan07.pdf">http://www.cs.jhu.edu/~misha/ReadingSeminar/Papers/Avidan07.pdf</a></td></tr>
 </tbody>
@@ -1779,7 +1785,7 @@ this opetration.</p>
 <h2>swirl<a class="headerlink" href="#swirl" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.swirl">
-<code class="descclassname">skimage.transform.</code><code class="descname">swirl</code><span class="sig-paren">(</span><em>image</em>, <em>center=None</em>, <em>strength=1</em>, <em>radius=100</em>, <em>rotation=0</em>, <em>output_shape=None</em>, <em>order=1</em>, <em>mode=None</em>, <em>cval=0</em>, <em>clip=True</em>, <em>preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L347"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.swirl" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">swirl</code><span class="sig-paren">(</span><em>image</em>, <em>center=None</em>, <em>strength=1</em>, <em>radius=100</em>, <em>rotation=0</em>, <em>output_shape=None</em>, <em>order=1</em>, <em>mode=None</em>, <em>cval=0</em>, <em>clip=True</em>, <em>preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L357"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.swirl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a swirl transformation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1858,7 +1864,7 @@ image is converted according to the conventions of <cite>img_as_float</cite>.</p
 <h2>warp<a class="headerlink" href="#warp" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.warp">
-<code class="descclassname">skimage.transform.</code><code class="descname">warp</code><span class="sig-paren">(</span><em>image</em>, <em>inverse_map</em>, <em>map_args={}</em>, <em>output_shape=None</em>, <em>order=1</em>, <em>mode='constant'</em>, <em>cval=0.0</em>, <em>clip=True</em>, <em>preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1255"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.warp" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">warp</code><span class="sig-paren">(</span><em>image</em>, <em>inverse_map</em>, <em>map_args={}</em>, <em>output_shape=None</em>, <em>order=1</em>, <em>mode='constant'</em>, <em>cval=0.0</em>, <em>clip=True</em>, <em>preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L579"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.warp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Warp an image according to a given coordinate transformation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2027,7 +2033,7 @@ account for this extra offset when scaling the image:</p>
 <h2>warp_coords<a class="headerlink" href="#warp-coords" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.warp_coords">
-<code class="descclassname">skimage.transform.</code><code class="descname">warp_coords</code><span class="sig-paren">(</span><em>coord_map</em>, <em>shape</em>, <em>dtype=&lt;class 'numpy.float64'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1122"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.warp_coords" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">warp_coords</code><span class="sig-paren">(</span><em>coord_map</em>, <em>shape</em>, <em>dtype=&lt;class 'numpy.float64'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L446"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.warp_coords" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build the source coordinates for the output of a 2-D image warp.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2087,7 +2093,7 @@ than <cite>warp</cite> performs after the call to <cite>ndi.map_coordinates</cit
 <h2><a class="reference internal" href="#skimage.transform.AffineTransform" title="skimage.transform.AffineTransform"><code class="xref py py-class docutils literal"><span class="pre">AffineTransform</span></code></a><a class="headerlink" href="#affinetransform" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.transform.AffineTransform">
-<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">AffineTransform</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>scale=None</em>, <em>rotation=None</em>, <em>shear=None</em>, <em>translation=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L418"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.AffineTransform" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">AffineTransform</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>scale=None</em>, <em>rotation=None</em>, <em>shear=None</em>, <em>translation=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L716"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.AffineTransform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">skimage.transform._geometric.ProjectiveTransform</span></code></p>
 <p>2D affine transformation of the form:</p>
 <blockquote>
@@ -2147,7 +2153,7 @@ and the homogeneous transformation matrix is:</p>
 </table>
 <dl class="method">
 <dt id="skimage.transform.AffineTransform.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>scale=None</em>, <em>rotation=None</em>, <em>shear=None</em>, <em>translation=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L456"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.AffineTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>scale=None</em>, <em>rotation=None</em>, <em>shear=None</em>, <em>translation=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L754"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.AffineTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -2173,11 +2179,107 @@ and the homogeneous transformation matrix is:</p>
 </dd></dl>
 
 </div>
+<div class="section" id="essentialmatrixtransform">
+<h2><a class="reference internal" href="#skimage.transform.EssentialMatrixTransform" title="skimage.transform.EssentialMatrixTransform"><code class="xref py py-class docutils literal"><span class="pre">EssentialMatrixTransform</span></code></a><a class="headerlink" href="#essentialmatrixtransform" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="skimage.transform.EssentialMatrixTransform">
+<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">EssentialMatrixTransform</code><span class="sig-paren">(</span><em>rotation=None</em>, <em>translation=None</em>, <em>matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L398"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EssentialMatrixTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">skimage.transform._geometric.FundamentalMatrixTransform</span></code></p>
+<p>Essential matrix transformation.</p>
+<p>The essential matrix relates corresponding points between a pair of
+calibrated images. The matrix transforms normalized, homogeneous image
+points in one image to epipolar lines in the other image.</p>
+<p>The essential matrix is only defined for a pair of moving images capturing a
+non-planar scene. In the case of pure rotation or planar scenes, the
+homography describes the geometric relation between two images
+(<cite>ProjectiveTransform</cite>). If the intrinsic calibration of the images is
+unknown, the fundamental matrix describes the projective relation between
+the two images (<cite>FundamentalMatrixTransform</cite>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>rotation</strong> : (3, 3) array, optional</p>
+<blockquote>
+<div><p>Rotation matrix of the relative camera motion.</p>
+</div></blockquote>
+<p><strong>translation</strong> : (3, 1) array, optional</p>
+<blockquote>
+<div><p>Translation vector of the relative camera motion. The vector must
+have unit length.</p>
+</div></blockquote>
+<p><strong>matrix</strong> : (3, 3) array, optional</p>
+<blockquote class="last">
+<div><p>Essential matrix.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r442" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id24">[R442]</a></td><td>Hartley, Richard, and Andrew Zisserman. Multiple view geometry in
+computer vision. Cambridge university press, 2003.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="84%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>params</td>
+<td>((3, 3) array) Essential matrix.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="skimage.transform.EssentialMatrixTransform.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>rotation=None</em>, <em>translation=None</em>, <em>matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L434"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EssentialMatrixTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="skimage.transform.EssentialMatrixTransform.estimate">
+<code class="descname">estimate</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L459"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EssentialMatrixTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate essential matrix using 8-point algorithm.</p>
+<p>The 8-point algorithm requires at least 8 corresponding point pairs for
+a well-conditioned solution, otherwise the over-determined solution is
+estimated.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>src</strong> : (N, 2) array</p>
+<blockquote>
+<div><p>Source coordinates.</p>
+</div></blockquote>
+<p><strong>dst</strong> : (N, 2) array</p>
+<blockquote>
+<div><p>Destination coordinates.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>success</strong> : bool</p>
+<blockquote class="last">
+<div><p>True, if model estimation succeeds.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="euclideantransform">
 <h2><a class="reference internal" href="#skimage.transform.EuclideanTransform" title="skimage.transform.EuclideanTransform"><code class="xref py py-class docutils literal"><span class="pre">EuclideanTransform</span></code></a><a class="headerlink" href="#euclideantransform" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.transform.EuclideanTransform">
-<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">EuclideanTransform</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>rotation=None</em>, <em>translation=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L643"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EuclideanTransform" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">EuclideanTransform</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>rotation=None</em>, <em>translation=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L941"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EuclideanTransform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">skimage.transform._geometric.ProjectiveTransform</span></code></p>
 <p>2D Euclidean transformation of the form:</p>
 <blockquote>
@@ -2231,12 +2333,12 @@ transformation with a single scaling factor.</p>
 </table>
 <dl class="method">
 <dt id="skimage.transform.EuclideanTransform.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>rotation=None</em>, <em>translation=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L678"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EuclideanTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>rotation=None</em>, <em>translation=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L976"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EuclideanTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.EuclideanTransform.estimate">
-<code class="descname">estimate</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L705"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EuclideanTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">estimate</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1003"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EuclideanTransform.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate the transformation from a set of corresponding points.</p>
 <p>You can determine the over-, well- and under-determined parameters
 with the total least-squares method.</p>
@@ -2278,11 +2380,150 @@ with the total least-squares method.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="fundamentalmatrixtransform">
+<h2><a class="reference internal" href="#skimage.transform.FundamentalMatrixTransform" title="skimage.transform.FundamentalMatrixTransform"><code class="xref py py-class docutils literal"><span class="pre">FundamentalMatrixTransform</span></code></a><a class="headerlink" href="#fundamentalmatrixtransform" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="skimage.transform.FundamentalMatrixTransform">
+<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">FundamentalMatrixTransform</code><span class="sig-paren">(</span><em>matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.FundamentalMatrixTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">skimage.transform._geometric.GeometricTransform</span></code></p>
+<p>Fundamental matrix transformation.</p>
+<p>The fundamental matrix relates corresponding points between a pair of
+uncalibrated images. The matrix transforms homogeneous image points in one
+image to epipolar lines in the other image.</p>
+<p>The fundamental matrix is only defined for a pair of moving images. In the
+case of pure rotation or planar scenes, the homography describes the
+geometric relation between two images (<cite>ProjectiveTransform</cite>). If the
+intrinsic calibration of the images is known, the essential matrix describes
+the metric relation between the two images (<cite>EssentialMatrixTransform</cite>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>matrix</strong> : (3, 3) array, optional</p>
+<blockquote class="last">
+<div><p>Fundamental matrix.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r443" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id25">[R443]</a></td><td>Hartley, Richard, and Andrew Zisserman. Multiple view geometry in
+computer vision. Cambridge university press, 2003.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>params</td>
+<td>((3, 3) array) Fundamental matrix.</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="skimage.transform.FundamentalMatrixTransform.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L242"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.FundamentalMatrixTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="skimage.transform.FundamentalMatrixTransform.estimate">
+<code class="descname">estimate</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L334"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.FundamentalMatrixTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate fundamental matrix using 8-point algorithm.</p>
+<p>The 8-point algorithm requires at least 8 corresponding point pairs for
+a well-conditioned solution, otherwise the over-determined solution is
+estimated.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>src</strong> : (N, 2) array</p>
+<blockquote>
+<div><p>Source coordinates.</p>
+</div></blockquote>
+<p><strong>dst</strong> : (N, 2) array</p>
+<blockquote>
+<div><p>Destination coordinates.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>success</strong> : bool</p>
+<blockquote class="last">
+<div><p>True, if model estimation succeeds.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="skimage.transform.FundamentalMatrixTransform.inverse">
+<code class="descname">inverse</code><span class="sig-paren">(</span><em>coords</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L267"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.FundamentalMatrixTransform.inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply inverse transformation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
+<blockquote>
+<div><p>Destination coordinates.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 3) array</p>
+<blockquote class="last">
+<div><p>Epipolar lines in the source image.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="skimage.transform.FundamentalMatrixTransform.residuals">
+<code class="descname">residuals</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L368"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.FundamentalMatrixTransform.residuals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the Sampson distance.</p>
+<p>The Sampson distance is the first approximation to the geometric error.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>src</strong> : (N, 2) array</p>
+<blockquote>
+<div><p>Source coordinates.</p>
+</div></blockquote>
+<p><strong>dst</strong> : (N, 2) array</p>
+<blockquote>
+<div><p>Destination coordinates.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>residuals</strong> : (N, ) array</p>
+<blockquote class="last">
+<div><p>Sampson distance.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="piecewiseaffinetransform">
 <h2><a class="reference internal" href="#skimage.transform.PiecewiseAffineTransform" title="skimage.transform.PiecewiseAffineTransform"><code class="xref py py-class docutils literal"><span class="pre">PiecewiseAffineTransform</span></code></a><a class="headerlink" href="#piecewiseaffinetransform" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.transform.PiecewiseAffineTransform">
-<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">PiecewiseAffineTransform</code><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L509"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">PiecewiseAffineTransform</code><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L807"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">skimage.transform._geometric.GeometricTransform</span></code></p>
 <p>2D piecewise affine transformation.</p>
 <p>Control points are used to define the mapping. The transform is based on
@@ -2305,12 +2546,12 @@ used to find a local affine transform.</p>
 </table>
 <dl class="method">
 <dt id="skimage.transform.PiecewiseAffineTransform.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L525"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L823"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.PiecewiseAffineTransform.estimate">
-<code class="descname">estimate</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L531"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">estimate</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L829"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate the transformation from a set of corresponding points.</p>
 <p>Number of source and destination coordinates must match.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2339,7 +2580,7 @@ used to find a local affine transform.</p>
 
 <dl class="method">
 <dt id="skimage.transform.PiecewiseAffineTransform.inverse">
-<code class="descname">inverse</code><span class="sig-paren">(</span><em>coords</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L607"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform.inverse" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse</code><span class="sig-paren">(</span><em>coords</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L905"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform.inverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply inverse transformation.</p>
 <p>Coordinates outside of the mesh will be set to <cite>- 1</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2369,7 +2610,7 @@ used to find a local affine transform.</p>
 <h2><a class="reference internal" href="#skimage.transform.PolynomialTransform" title="skimage.transform.PolynomialTransform"><code class="xref py py-class docutils literal"><span class="pre">PolynomialTransform</span></code></a><a class="headerlink" href="#polynomialtransform" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.transform.PolynomialTransform">
-<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">PolynomialTransform</code><span class="sig-paren">(</span><em>params=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L844"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">PolynomialTransform</code><span class="sig-paren">(</span><em>params=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">skimage.transform._geometric.GeometricTransform</span></code></p>
 <p>2D polynomial transformation of the form:</p>
 <blockquote>
@@ -2402,12 +2643,12 @@ a_ji is defined in <cite>params[0, :]</cite> and b_ji in <cite>params[1, :]</cit
 </table>
 <dl class="method">
 <dt id="skimage.transform.PolynomialTransform.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>params=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L864"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>params=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1162"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.PolynomialTransform.estimate">
-<code class="descname">estimate</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em>, <em>order=2</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L872"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">estimate</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em>, <em>order=2</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1170"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate the transformation from a set of corresponding points.</p>
 <p>You can determine the over-, well- and under-determined parameters
 with the total least-squares method.</p>
@@ -2467,7 +2708,7 @@ smallest singular value normed by the coefficient c3.</p>
 
 <dl class="method">
 <dt id="skimage.transform.PolynomialTransform.inverse">
-<code class="descname">inverse</code><span class="sig-paren">(</span><em>coords</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L982"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform.inverse" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse</code><span class="sig-paren">(</span><em>coords</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1280"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform.inverse" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2477,9 +2718,9 @@ smallest singular value normed by the coefficient c3.</p>
 <h2><a class="reference internal" href="#skimage.transform.ProjectiveTransform" title="skimage.transform.ProjectiveTransform"><code class="xref py py-class docutils literal"><span class="pre">ProjectiveTransform</span></code></a><a class="headerlink" href="#projectivetransform" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.transform.ProjectiveTransform">
-<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">ProjectiveTransform</code><span class="sig-paren">(</span><em>matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L211"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">ProjectiveTransform</code><span class="sig-paren">(</span><em>matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L496"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">skimage.transform._geometric.GeometricTransform</span></code></p>
-<p>Matrix transformation.</p>
+<p>Projective transformation.</p>
 <p>Apply a projective transformation (homography) on coordinates.</p>
 <p>For each homogeneous coordinate <img class="math" src="../_images/math/3730c84041a061864602bca650e73e613cb4a8c9.png" alt="\mathbf{x} = [x, y, 1]^T"/>, its
 target position is calculated by multiplying with the given matrix,
@@ -2527,12 +2768,12 @@ target position is calculated by multiplying with the given matrix,
 </table>
 <dl class="method">
 <dt id="skimage.transform.ProjectiveTransform.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L250"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L535"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.ProjectiveTransform.estimate">
-<code class="descname">estimate</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L294"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">estimate</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L592"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate the transformation from a set of corresponding points.</p>
 <p>You can determine the over-, well- and under-determined parameters
 with the total least-squares method.</p>
@@ -2597,7 +2838,7 @@ Thus the system of equations is:</p>
 
 <dl class="method">
 <dt id="skimage.transform.ProjectiveTransform.inverse">
-<code class="descname">inverse</code><span class="sig-paren">(</span><em>coords</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L278"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform.inverse" title="Permalink to this definition">¶</a></dt>
+<code class="descname">inverse</code><span class="sig-paren">(</span><em>coords</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L576"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform.inverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply inverse transformation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2605,13 +2846,13 @@ Thus the system of equations is:</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
 <blockquote>
-<div><p>Source coordinates.</p>
+<div><p>Destination coordinates.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>coords</strong> : (N, 2) array</p>
 <blockquote class="last">
-<div><p>Transformed coordinates.</p>
+<div><p>Source coordinates.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2626,7 +2867,7 @@ Thus the system of equations is:</p>
 <h2><a class="reference internal" href="#skimage.transform.SimilarityTransform" title="skimage.transform.SimilarityTransform"><code class="xref py py-class docutils literal"><span class="pre">SimilarityTransform</span></code></a><a class="headerlink" href="#similaritytransform" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.transform.SimilarityTransform">
-<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">SimilarityTransform</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>scale=None</em>, <em>rotation=None</em>, <em>translation=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L740"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.SimilarityTransform" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">skimage.transform.</code><code class="descname">SimilarityTransform</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>scale=None</em>, <em>rotation=None</em>, <em>translation=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1038"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.SimilarityTransform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">skimage.transform._geometric.EuclideanTransform</span></code></p>
 <p>2D similarity transformation of the form:</p>
 <blockquote>
@@ -2684,12 +2925,12 @@ parameters.</p>
 </table>
 <dl class="method">
 <dt id="skimage.transform.SimilarityTransform.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>scale=None</em>, <em>rotation=None</em>, <em>translation=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L777"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.SimilarityTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>matrix=None</em>, <em>scale=None</em>, <em>rotation=None</em>, <em>translation=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1075"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.SimilarityTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.SimilarityTransform.estimate">
-<code class="descname">estimate</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L808"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.SimilarityTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">estimate</code><span class="sig-paren">(</span><em>src</em>, <em>dst</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1106"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.SimilarityTransform.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate the transformation from a set of corresponding points.</p>
 <p>You can determine the over-, well- and under-determined parameters
 with the total least-squares method.</p>
@@ -2786,7 +3027,9 @@ with the total least-squares method.</p>
 <li><a class="reference internal" href="#warp">warp</a></li>
 <li><a class="reference internal" href="#warp-coords">warp_coords</a></li>
 <li><a class="reference internal" href="#affinetransform"><code class="docutils literal"><span class="pre">AffineTransform</span></code></a></li>
+<li><a class="reference internal" href="#essentialmatrixtransform"><code class="docutils literal"><span class="pre">EssentialMatrixTransform</span></code></a></li>
 <li><a class="reference internal" href="#euclideantransform"><code class="docutils literal"><span class="pre">EuclideanTransform</span></code></a></li>
+<li><a class="reference internal" href="#fundamentalmatrixtransform"><code class="docutils literal"><span class="pre">FundamentalMatrixTransform</span></code></a></li>
 <li><a class="reference internal" href="#piecewiseaffinetransform"><code class="docutils literal"><span class="pre">PiecewiseAffineTransform</span></code></a></li>
 <li><a class="reference internal" href="#polynomialtransform"><code class="docutils literal"><span class="pre">PolynomialTransform</span></code></a></li>
 <li><a class="reference internal" href="#projectivetransform"><code class="docutils literal"><span class="pre">ProjectiveTransform</span></code></a></li>
