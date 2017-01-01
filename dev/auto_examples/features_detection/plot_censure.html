@@ -31,8 +31,8 @@
         <link rel="search" title="Search" href="../../search.html" />
         <link rel="top" title="skimage v0.13dev docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
-        <link rel="next" title="Template Matching" href="plot_template.html" />
-        <link rel="prev" title="Corner detection" href="plot_corner.html" />
+        <link rel="next" title="Filling holes and finding peaks" href="plot_holes_and_peaks.html" />
+        <link rel="prev" title="Template Matching" href="plot_template.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../../_static/favicon.ico">
 </head>
@@ -89,12 +89,14 @@ implementation.</p>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_orig</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">detector</span><span class="o">.</span><span class="n">keypoints</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">detector</span><span class="o">.</span><span class="n">keypoints</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
               <span class="mi">2</span> <span class="o">**</span> <span class="n">detector</span><span class="o">.</span><span class="n">scales</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Original Image&quot;</span><span class="p">)</span>
 
 <span class="n">detector</span><span class="o">.</span><span class="n">detect</span><span class="p">(</span><span class="n">img_warp</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_warp</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">detector</span><span class="o">.</span><span class="n">keypoints</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">detector</span><span class="o">.</span><span class="n">keypoints</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
               <span class="mi">2</span> <span class="o">**</span> <span class="n">detector</span><span class="o">.</span><span class="n">scales</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Transformed Image&#39;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">ax</span><span class="p">:</span>
     <span class="n">a</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
@@ -103,7 +105,7 @@ implementation.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" class="sphx-glr-code-links" tooltip="Link to documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.991 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.975 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_censure.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_censure.py</span></code></a></div>
@@ -130,13 +132,13 @@ implementation.</p>
     <h4 class="sidebar-box-heading">Previous topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="plot_corner.html" title="previous chapter">Corner detection</a></li>
+            <li><a href="plot_template.html" title="previous chapter">Template Matching</a></li>
         </ul>
     </div>
     <h4 class="sidebar-box-heading">Next topic</h4>
     <div class="well sidebar-box">
         <ul class="nav nav-list">
-            <li><a href="plot_template.html" title="next chapter">Template Matching</a></li>
+            <li><a href="plot_holes_and_peaks.html" title="next chapter">Filling holes and finding peaks</a></li>
         </ul>
     </div>
 
