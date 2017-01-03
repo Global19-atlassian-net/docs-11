@@ -1601,7 +1601,7 @@ array([ 1.,  1.,  1.,  2.,  2.,  2.])</p>
 <h2>ransac<a class="headerlink" href="#ransac" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.ransac">
-<code class="descclassname">skimage.measure.</code><code class="descname">ransac</code><span class="sig-paren">(</span><em>data</em>, <em>model_class</em>, <em>min_samples</em>, <em>residual_threshold</em>, <em>is_data_valid=None</em>, <em>is_model_valid=None</em>, <em>max_trials=100</em>, <em>stop_sample_num=inf</em>, <em>stop_residuals_sum=0</em>, <em>stop_probability=1</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L692"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.ransac" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">ransac</code><span class="sig-paren">(</span><em>data</em>, <em>model_class</em>, <em>min_samples</em>, <em>residual_threshold</em>, <em>is_data_valid=None</em>, <em>is_model_valid=None</em>, <em>max_trials=100</em>, <em>stop_sample_num=inf</em>, <em>stop_residuals_sum=0</em>, <em>stop_probability=1</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L698"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.ransac" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit a model to data with the RANSAC (random sample consensus) algorithm.</p>
 <p>RANSAC is an iterative algorithm for the robust estimation of parameters
 from a subset of inliers from the complete data set. Each iteration
@@ -1727,10 +1727,8 @@ by <cite>np.random</cite>.</p>
 <p class="rubric">Examples</p>
 <p>Generate ellipse data without tilt and add noise:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">yc</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">xc</span> <span class="o">+</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">yc</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
@@ -1749,22 +1747,23 @@ by <cite>np.random</cite>.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">EllipseModel</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">params</span> 
-<span class="go">array([ -3.30354146e+03,  -2.87791160e+03,   5.59062118e+03,</span>
-<span class="go">         7.84365066e+00,   7.19203152e-01])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>  
+<span class="go">array([ 72.,  75.,  77.,  14.,   1.])</span>
 </pre></div>
 </div>
 <p>Estimate ellipse model using RANSAC:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ransac_model</span><span class="p">,</span> <span class="n">inliers</span> <span class="o">=</span> <span class="n">ransac</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">EllipseModel</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ransac_model</span><span class="o">.</span><span class="n">params</span>
-<span class="go">array([ 20.12762373,  29.73563063,   4.81499637,  10.4743584 ,   0.05217117])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">inliers</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ransac_model</span><span class="p">,</span> <span class="n">inliers</span> <span class="o">=</span> <span class="n">ransac</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">EllipseModel</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ransac_model</span><span class="o">.</span><span class="n">params</span><span class="p">))</span>
+<span class="go">array([ 20.,  30.,   5.,  10.,   0.])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inliers</span> 
 <span class="go">array([False, False, False, False,  True,  True,  True,  True,  True,</span>
 <span class="go">        True,  True,  True,  True,  True,  True,  True,  True,  True,</span>
 <span class="go">        True,  True,  True,  True,  True,  True,  True,  True,  True,</span>
 <span class="go">        True,  True,  True,  True,  True,  True,  True,  True,  True,</span>
 <span class="go">        True,  True,  True,  True,  True,  True,  True,  True,  True,</span>
 <span class="go">        True,  True,  True,  True,  True], dtype=bool)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">inliers</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">40</span>
+<span class="go">True</span>
 </pre></div>
 </div>
 <p>Robustly estimate geometric transformation:</p>
@@ -2196,18 +2195,13 @@ x-axis to positive y-axis in a right-handed system.</p>
 </div>
 <p>where <code class="docutils literal"><span class="pre">(xt,</span> <span class="pre">yt)</span></code> is the closest point on the ellipse to <code class="docutils literal"><span class="pre">(x,</span> <span class="pre">y)</span></code>. Thus
 d is the shortest distance from the point to the ellipse.</p>
-<p>This estimator minimizes the squared distances from all points to the
-ellipse:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">min</span><span class="p">{</span> <span class="nb">sum</span><span class="p">(</span><span class="n">d_i</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">}</span> <span class="o">=</span> <span class="nb">min</span><span class="p">{</span> <span class="nb">sum</span><span class="p">((</span><span class="n">x_i</span> <span class="o">-</span> <span class="n">xt</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y_i</span> <span class="o">-</span> <span class="n">yt</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="p">}</span>
-</pre></div>
-</div>
-<p>Thus you have <code class="docutils literal"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">N</span></code> equations (x_i, y_i) for <code class="docutils literal"><span class="pre">N</span> <span class="pre">+</span> <span class="pre">5</span></code> unknowns (t_i,
-xc, yc, a, b, theta), which gives you an effective redundancy of <code class="docutils literal"><span class="pre">N</span> <span class="pre">-</span> <span class="pre">5</span></code>.</p>
+<p>The estimator is based on a least squares minimization. The optimal
+solution is computed directly, no iterations are required. This leads
+to a simple, stable and robust fitting method.</p>
 <p>The <code class="docutils literal"><span class="pre">params</span></code> attribute contains the parameters in the following order:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">theta</span>
 </pre></div>
 </div>
-<p>A minimum number of 5 points is required to solve for the parameters.</p>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -2227,7 +2221,7 @@ xc, yc, a, b, theta), which gives you an effective redundancy of <code class="do
 
 <dl class="method">
 <dt id="skimage.measure.EllipseModel.estimate">
-<code class="descname">estimate</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L482"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">estimate</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L475"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate circle model from data using total least squares.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2251,7 +2245,7 @@ xc, yc, a, b, theta), which gives you an effective redundancy of <code class="do
 
 <dl class="method">
 <dt id="skimage.measure.EllipseModel.predict_xy">
-<code class="descname">predict_xy</code><span class="sig-paren">(</span><em>t</em>, <em>params=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L619"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.predict_xy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict_xy</code><span class="sig-paren">(</span><em>t</em>, <em>params=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L625"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.predict_xy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict x- and y-coordinates using the estimated model.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2280,7 +2274,7 @@ x-axis to positive y-axis in a right-handed system.</p>
 
 <dl class="method">
 <dt id="skimage.measure.EllipseModel.residuals">
-<code class="descname">residuals</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L557"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.residuals" title="Permalink to this definition">¶</a></dt>
+<code class="descname">residuals</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L563"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.residuals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine residuals of data to model.</p>
 <p>For each point the shortest distance to the ellipse is returned.</p>
 <table class="docutils field-list" frame="void" rules="none">
