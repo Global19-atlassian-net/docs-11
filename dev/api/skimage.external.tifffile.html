@@ -69,7 +69,7 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.external.tifffile.imread" title="skimage.external.tifffile.imread"><code class="xref py py-obj docutils literal"><span class="pre">skimage.external.tifffile.imread</span></code></a>(files,&nbsp;\*\*kwargs)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.external.tifffile.imread" title="skimage.external.tifffile.imread"><code class="xref py py-obj docutils literal"><span class="pre">skimage.external.tifffile.imread</span></code></a>(files,&nbsp;**kwargs)</td>
 <td>Return image data from TIFF file(s) as numpy array.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.external.tifffile.imsave" title="skimage.external.tifffile.imsave"><code class="xref py py-obj docutils literal"><span class="pre">skimage.external.tifffile.imsave</span></code></a>(file,&nbsp;data,&nbsp;...)</td>
@@ -623,12 +623,12 @@ The ImageJ file format is undocumented.</p>
 
 <dl class="attribute">
 <dt id="skimage.external.tifffile.TiffWriter.TAGS">
-<code class="descname">TAGS</code><em class="property"> = {'strip_byte_counts': 279, 'page_name': 285, 'tile_depth': 32998, 'subfile_type': 255, 'bits_per_sample': 258, 'planar_configuration': 284, 'tile_offsets': 324, 'y_resolution': 283, 'smax_sample_value': 341, 'orientation': 274, 'x_resolution': 282, 'predictor': 317, 'document_name': 269, 'samples_per_pixel': 277, 'image_length': 257, 'new_subfile_type': 254, 'extra_samples': 338, 'compression': 259, 'rows_per_strip': 278, 'tile_width': 322, 'datetime': 306, 'image_width': 256, 'software': 305, 'image_description': 270, 'photometric': 262, 'smin_sample_value': 340, 'resolution_unit': 296, 'tile_length': 323, 'strip_offsets': 273, 'sample_format': 339, 'image_depth': 32997, 'color_map': 320, 'tile_byte_counts': 325}</em><a class="headerlink" href="#skimage.external.tifffile.TiffWriter.TAGS" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TAGS</code><em class="property"> = {'tile_length': 323, 'color_map': 320, 'document_name': 269, 'samples_per_pixel': 277, 'planar_configuration': 284, 'tile_offsets': 324, 'x_resolution': 282, 'smax_sample_value': 341, 'orientation': 274, 'extra_samples': 338, 'strip_byte_counts': 279, 'sample_format': 339, 'smin_sample_value': 340, 'bits_per_sample': 258, 'photometric': 262, 'compression': 259, 'page_name': 285, 'subfile_type': 255, 'image_depth': 32997, 'datetime': 306, 'predictor': 317, 'rows_per_strip': 278, 'tile_depth': 32998, 'image_width': 256, 'tile_width': 322, 'image_length': 257, 'software': 305, 'image_description': 270, 'y_resolution': 283, 'new_subfile_type': 254, 'tile_byte_counts': 325, 'strip_offsets': 273, 'resolution_unit': 296}</em><a class="headerlink" href="#skimage.external.tifffile.TiffWriter.TAGS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
 <dt id="skimage.external.tifffile.TiffWriter.TYPES">
-<code class="descname">TYPES</code><em class="property"> = {'H': 3, 'h': 8, 'Q': 16, 'q': 17, 'B': 1, '2I': 5, 'f': 11, 'I': 4, 'd': 12, 's': 2, 'i': 9, 'b': 6}</em><a class="headerlink" href="#skimage.external.tifffile.TiffWriter.TYPES" title="Permalink to this definition">¶</a></dt>
+<code class="descname">TYPES</code><em class="property"> = {'q': 17, 'i': 9, 'B': 1, 'd': 12, 's': 2, 'Q': 16, 'I': 4, 'b': 6, 'H': 3, 'h': 8, '2I': 5, 'f': 11}</em><a class="headerlink" href="#skimage.external.tifffile.TiffWriter.TYPES" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -724,21 +724,21 @@ ignored.</p>
 <blockquote class="last">
 <div><p>Additional tags as [(code, dtype, count, value, writeonce)].</p>
 <dl class="docutils">
-<dt>code</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd><p class="first last">The TIFF tag Id.</p>
+<dt>code <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">The TIFF tag Id.</p>
 </dd>
-<dt>dtype</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">str</span><dd><p class="first last">Data type of items in &#8216;value&#8217; in Python struct format.
+<dt>dtype <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Data type of items in &#8216;value&#8217; in Python struct format.
 One of B, s, H, I, 2I, b, h, i, f, d, Q, or q.</p>
 </dd>
-<dt>count</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">int</span><dd><p class="first last">Number of data values. Not used for string values.</p>
+<dt>count <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Number of data values. Not used for string values.</p>
 </dd>
-<dt>value</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">sequence</span><dd><p class="first last">&#8216;Count&#8217; values compatible with &#8216;dtype&#8217;.</p>
+<dt>value <span class="classifier-delimiter">:</span> <span class="classifier">sequence</span></dt>
+<dd><p class="first last">&#8216;Count&#8217; values compatible with &#8216;dtype&#8217;.</p>
 </dd>
-<dt>writeonce</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">bool</span><dd><p class="first last">If True, the tag is written to the first page only.</p>
+<dt>writeonce <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If True, the tag is written to the first page only.</p>
 </dd>
 </dl>
 </div></blockquote>
