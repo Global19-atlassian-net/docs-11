@@ -51,7 +51,8 @@ importance of each pixel.
 .. code-block:: python
 
 
-    resized = transform.resize(img, (img.shape[0], img.shape[1] - 200))
+    resized = transform.resize(img, (img.shape[0], img.shape[1] - 200),
+                               mode='reflect')
     plt.figure()
     plt.title('Resized Image')
     plt.imshow(resized)
@@ -131,7 +132,7 @@ rocket's region with low weights, indicating it should be removed.
     plt.figure()
     plt.title('Object Removed')
     out = transform.seam_carve(img, eimg, 'vertical', 90)
-    resized = transform.resize(img, out.shape)
+    resized = transform.resize(img, out.shape, mode='reflect')
     plt.imshow(out)
     plt.show()
 
@@ -144,7 +145,7 @@ rocket's region with low weights, indicating it should be removed.
 
 
 
-**Total running time of the script:** ( 0 minutes  1.079 seconds)
+**Total running time of the script:** ( 0 minutes  1.073 seconds)
 
 
 
