@@ -85,7 +85,7 @@
 <td>Return complex 2D Gabor filter kernel.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.filters.gaussian" title="skimage.filters.gaussian"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gaussian</span></code></a>(image[,&nbsp;sigma,&nbsp;...])</td>
-<td>Multi-dimensional Gaussian filter</td>
+<td>Multi-dimensional Gaussian filter.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.gaussian_filter" title="skimage.filters.gaussian_filter"><code class="xref py py-obj docutils literal"><span class="pre">skimage.filters.gaussian_filter</span></code></a>(image[,&nbsp;...])</td>
 <td><strong>Deprecated function</strong>. Use <code class="docutils literal"><span class="pre">skimage.filters.gaussian</span></code> instead.</td>
@@ -604,8 +604,8 @@ deviations</p>
 <h2>gaussian<a class="headerlink" href="#gaussian" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.gaussian">
-<code class="descclassname">skimage.filters.</code><code class="descname">gaussian</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>output=None</em>, <em>mode='nearest'</em>, <em>cval=0</em>, <em>multichannel=None</em>, <em>preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_gaussian.py#L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gaussian" title="Permalink to this definition">¶</a></dt>
-<dd><p>Multi-dimensional Gaussian filter</p>
+<code class="descclassname">skimage.filters.</code><code class="descname">gaussian</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>output=None</em>, <em>mode='nearest'</em>, <em>cval=0</em>, <em>multichannel=None</em>, <em>preserve_range=False</em>, <em>truncate=4.0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_gaussian.py#L21"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gaussian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multi-dimensional Gaussian filter.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -649,6 +649,10 @@ ambiguous, when the array has shape (M, N, 3).</p>
 <blockquote>
 <div><p>Whether to keep the original range of values. Otherwise, the input
 image is converted according to the conventions of <cite>img_as_float</cite>.</p>
+</div></blockquote>
+<p><strong>truncate</strong> : float, optional</p>
+<blockquote>
+<div><p>Truncate the filter at this many standard deviations.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -702,9 +706,9 @@ precision.</p>
 <h2>gaussian_filter<a class="headerlink" href="#gaussian-filter" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.gaussian_filter">
-<code class="descclassname">skimage.filters.</code><code class="descname">gaussian_filter</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>output=None</em>, <em>mode='nearest'</em>, <em>cval=0</em>, <em>multichannel=None</em>, <em>preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/_shared/utils.py#L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gaussian_filter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.filters.</code><code class="descname">gaussian_filter</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>output=None</em>, <em>mode='nearest'</em>, <em>cval=0</em>, <em>multichannel=None</em>, <em>preserve_range=False</em>, <em>truncate=4.0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/_shared/utils.py#L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gaussian_filter" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Deprecated function</strong>. Use <code class="docutils literal"><span class="pre">skimage.filters.gaussian</span></code> instead.</p>
-<p>Multi-dimensional Gaussian filter</p>
+<p>Multi-dimensional Gaussian filter.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -748,6 +752,10 @@ ambiguous, when the array has shape (M, N, 3).</p>
 <blockquote>
 <div><p>Whether to keep the original range of values. Otherwise, the input
 image is converted according to the conventions of <cite>img_as_float</cite>.</p>
+</div></blockquote>
+<p><strong>truncate</strong> : float, optional</p>
+<blockquote>
+<div><p>Truncate the filter at this many standard deviations.</p>
 </div></blockquote>
 </td>
 </tr>
