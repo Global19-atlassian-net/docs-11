@@ -1601,7 +1601,7 @@ array([ 1.,  1.,  1.,  2.,  2.,  2.])</p>
 <h2>ransac<a class="headerlink" href="#ransac" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.ransac">
-<code class="descclassname">skimage.measure.</code><code class="descname">ransac</code><span class="sig-paren">(</span><em>data</em>, <em>model_class</em>, <em>min_samples</em>, <em>residual_threshold</em>, <em>is_data_valid=None</em>, <em>is_model_valid=None</em>, <em>max_trials=100</em>, <em>stop_sample_num=inf</em>, <em>stop_residuals_sum=0</em>, <em>stop_probability=1</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L698"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.ransac" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">ransac</code><span class="sig-paren">(</span><em>data</em>, <em>model_class</em>, <em>min_samples</em>, <em>residual_threshold</em>, <em>is_data_valid=None</em>, <em>is_model_valid=None</em>, <em>max_trials=100</em>, <em>stop_sample_num=inf</em>, <em>stop_residuals_sum=0</em>, <em>stop_probability=1</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L719"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.ransac" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit a model to data with the RANSAC (random sample consensus) algorithm.</p>
 <p>RANSAC is an iterative algorithm for the robust estimation of parameters
 from a subset of inliers from the complete data set. Each iteration
@@ -2202,6 +2202,19 @@ to a simple, stable and robust fitting method.</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">theta</span>
 </pre></div>
 </div>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">xy</span> <span class="o">=</span> <span class="n">EllipseModel</span><span class="p">()</span><span class="o">.</span><span class="n">predict_xy</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>
+<span class="gp">... </span>                               <span class="n">params</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="mi">30</span><span class="p">)))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ellipse</span> <span class="o">=</span> <span class="n">EllipseModel</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ellipse</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ellipse</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">array([ 10.  ,  15.  ,   4.  ,   8.  ,   0.52])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">ellipse</span><span class="o">.</span><span class="n">residuals</span><span class="p">(</span><span class="n">xy</span><span class="p">)),</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,</span>
+<span class="go">        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])</span>
+</pre></div>
+</div>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -2221,7 +2234,7 @@ to a simple, stable and robust fitting method.</p>
 
 <dl class="method">
 <dt id="skimage.measure.EllipseModel.estimate">
-<code class="descname">estimate</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L475"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="descname">estimate</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L488"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate circle model from data using total least squares.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2245,7 +2258,7 @@ to a simple, stable and robust fitting method.</p>
 
 <dl class="method">
 <dt id="skimage.measure.EllipseModel.predict_xy">
-<code class="descname">predict_xy</code><span class="sig-paren">(</span><em>t</em>, <em>params=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L625"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.predict_xy" title="Permalink to this definition">¶</a></dt>
+<code class="descname">predict_xy</code><span class="sig-paren">(</span><em>t</em>, <em>params=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L645"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.predict_xy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict x- and y-coordinates using the estimated model.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2274,7 +2287,7 @@ x-axis to positive y-axis in a right-handed system.</p>
 
 <dl class="method">
 <dt id="skimage.measure.EllipseModel.residuals">
-<code class="descname">residuals</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L563"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.residuals" title="Permalink to this definition">¶</a></dt>
+<code class="descname">residuals</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L583"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.residuals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine residuals of data to model.</p>
 <p>For each point the shortest distance to the ellipse is returned.</p>
 <table class="docutils field-list" frame="void" rules="none">
