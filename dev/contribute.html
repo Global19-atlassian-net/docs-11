@@ -87,7 +87,8 @@ Refer to the <a class="reference internal" href="gitwash/index.html"><span class
 <li><a class="reference internal" href="#auto-generating-dev-docs" id="id11">Auto-generating dev docs</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#bugs" id="id12">Bugs</a></li>
+<li><a class="reference internal" href="#deprecation-cycle" id="id12">Deprecation cycle</a></li>
+<li><a class="reference internal" href="#bugs" id="id13">Bugs</a></li>
 </ul>
 </div>
 <div class="section" id="development-process">
@@ -382,8 +383,72 @@ you can get gem via <code class="docutils literal"><span class="pre">brew</span>
 <a class="reference external" href="http://docs.travis-ci.com/user/encryption-keys/">http://docs.travis-ci.com/user/encryption-keys/</a></p>
 </div>
 </div>
+<div class="section" id="deprecation-cycle">
+<h2><a class="toc-backref" href="#id12">Deprecation cycle</a><a class="headerlink" href="#deprecation-cycle" title="Permalink to this headline">¶</a></h2>
+<p>If the behavior of the library has to be changed, a deprecation cycle must be
+followed to warn users.</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>a deprecation cycle is <em>not</em> necessary when</dt>
+<dd><ul class="first last">
+<li>adding a new function, or</li>
+<li>adding a new keyword argument to the <em>end</em> of a function signature, or</li>
+<li>fixing what was buggy behaviour</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>a deprecation cycle is necessary for <em>any breaking API change</em>, meaning a</dt>
+<dd>change where the function, invoked with the same arguments, would return a
+different result after the change. This includes:
+* changing the order of arguments or keyword arguments, or
+* adding arguments or keyword arguments to a function, or
+* changing a function&#8217;s name or submodule, or
+* changing the default value of a function&#8217;s arguments.</dd>
+</dl>
+</li>
+</ul>
+<p>Usually, our policy is to put in place a deprecation cycle over two releases.</p>
+<p>For the sake of illustration, we consider the modification of a default value in
+a function signature. In version N (therefore, next release will be N+1), we
+have</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">do_something</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="n">rescale</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+<p>that has to be changed to</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">rescale</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">warn</span><span class="p">(</span><span class="s1">&#39;The default value of rescale will change to `False` in version N+3&#39;</span><span class="p">)</span>
+        <span class="n">rescale</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">do_something</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="n">rescale</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+<p>and in version N+3</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">do_something</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="n">rescale</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+<p>Here is the process for a 2-release deprecation cycle:</p>
+<ul class="simple">
+<li>In the signature, set default to <cite>None</cite>, and modify the docstring to specify
+that it&#8217;s <cite>True</cite>.</li>
+<li>In the function, _if_ rescale is set to <cite>None</cite>, set to <cite>True</cite> and warn that the
+default will change to <cite>False</cite> in version N+3.</li>
+<li>In <code class="docutils literal"><span class="pre">TODO.txt</span></code>, create an item in the section related to version N+3 and write
+&#8220;change rescale default to False in a_function&#8221;.</li>
+</ul>
+<p>Note that the 2-release deprecation cycle is not a strict rule and in some
+cases, the developers can agree on a different procedure upon justification
+(like when we can&#8217;t detect the change, or it involves moving or deleting an
+entire function for example).</p>
+</div>
 <div class="section" id="bugs">
-<h2><a class="toc-backref" href="#id12">Bugs</a><a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">Bugs</a><a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h2>
 <p>Please <a class="reference external" href="https://github.com/scikit-image/scikit-image/issues">report bugs on GitHub</a>.</p>
 </div>
 </div>
@@ -430,6 +495,7 @@ you can get gem via <code class="docutils literal"><span class="pre">brew</span>
 <li><a class="reference internal" href="#auto-generating-dev-docs">Auto-generating dev docs</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#deprecation-cycle">Deprecation cycle</a></li>
 <li><a class="reference internal" href="#bugs">Bugs</a></li>
 </ul>
 </li>
