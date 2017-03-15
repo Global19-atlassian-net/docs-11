@@ -92,7 +92,7 @@ the captured scene.</p>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="n">img_left</span><span class="p">,</span> <span class="n">img_right</span><span class="p">,</span> <span class="n">groundtruth_disp</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.stereo_motorcycle" title="View documentation for skimage.data.stereo_motorcycle"><span class="n">data</span><span class="o">.</span><span class="n">stereo_motorcycle</span></a><span class="p">()</span>
+<span class="n">img_left</span><span class="p">,</span> <span class="n">img_right</span><span class="p">,</span> <span class="n">groundtruth_disp</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">stereo_motorcycle</span><span class="p">()</span>
 <span class="n">img_left</span><span class="p">,</span> <span class="n">img_right</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a><span class="p">,</span> <span class="p">(</span><span class="n">img_left</span><span class="p">,</span> <span class="n">img_right</span><span class="p">))</span>
 
 <span class="c1"># Find sparse feature correspondences between left and right image.</span>
@@ -127,9 +127,9 @@ the captured scene.</p>
 
 <span class="n">disp</span> <span class="o">=</span> <span class="n">inlier_keypoints_left</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">inlier_keypoints_right</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">disp_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">inlier_keypoints_left</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
-<span class="n">disp_idxs</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.ravel_multi_index.html#numpy.ravel_multi_index" title="View documentation for numpy.ravel_multi_index"><span class="n">np</span><span class="o">.</span><span class="n">ravel_multi_index</span></a><span class="p">(</span><span class="n">disp_coords</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">groundtruth_disp</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">disp_idxs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel_multi_index</span><span class="p">(</span><span class="n">disp_coords</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">groundtruth_disp</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">disp_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">groundtruth_disp</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="n">disp_idxs</span><span class="p">]</span> <span class="o">-</span> <span class="n">disp</span><span class="p">)</span>
-<span class="n">disp_error</span> <span class="o">=</span> <span class="n">disp_error</span><span class="p">[</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.isfinite.html#numpy.isfinite" title="View documentation for numpy.isfinite"><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span></a><span class="p">(</span><span class="n">disp_error</span><span class="p">)]</span>
+<span class="n">disp_error</span> <span class="o">=</span> <span class="n">disp_error</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">disp_error</span><span class="p">)]</span>
 
 <span class="c1"># Visualize the results.</span>
 
@@ -148,7 +148,7 @@ the captured scene.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  4.274 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  4.223 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_fundamental_matrix.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_fundamental_matrix.py</span></code></a></div>
