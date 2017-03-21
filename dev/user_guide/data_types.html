@@ -213,6 +213,45 @@ may write:</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="working-with-opencv">
+<h2>Working with OpenCV<a class="headerlink" href="#working-with-opencv" title="Permalink to this headline">¶</a></h2>
+<p>It is possible that you may need to use an image created using <code class="docutils literal"><span class="pre">skimage</span></code> with
+<a class="reference external" href="http://opencv.org/">OpenCV</a> or vice versa. OpenCV image data can be accessed (without copying) in
+NumPy (and, thus, in scikit-image).
+OpenCV uses BGR (instead of scikit-image&#8217;s RGB) for color images, and its
+dtype is uint8 by default (See <a class="reference internal" href="#image-data-types-and-what-they-mean">Image data types and what they mean</a>). BGR stands
+for Blue Green Red.</p>
+<div class="section" id="converting-bgr-to-rgb-or-vice-versa">
+<h3>Converting BGR to RGB or vice versa<a class="headerlink" href="#converting-bgr-to-rgb-or-vice-versa" title="Permalink to this headline">¶</a></h3>
+<p>The color images in <code class="docutils literal"><span class="pre">skimage</span></code> and OpenCV have 3 dimensions: width, height and
+color. RGB and BGR use the same color space, except the order of colors is reversed.</p>
+<p>Note that in <code class="docutils literal"><span class="pre">scikit-image</span></code> we usually refer to <code class="docutils literal"><span class="pre">rows</span></code> and <code class="docutils literal"><span class="pre">columns</span></code> instead
+of width and height (see <a class="reference internal" href="numpy_images.html#numpy-images-coordinate-conventions"><span class="std std-ref">Coordinate conventions</span></a>).</p>
+<p>The following instruction effectively reverses the order of the colors, leaving
+the rows and columns unaffected.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-an-image-from-opencv-with-skimage">
+<h3>Using an image from OpenCV with <code class="docutils literal"><span class="pre">skimage</span></code><a class="headerlink" href="#using-an-image-from-opencv-with-skimage" title="Permalink to this headline">¶</a></h3>
+<p>If cv_image is an array of unsigned bytes, <code class="docutils literal"><span class="pre">skimage</span></code> will understand it by
+default. If you prefer working with floating point images, <code class="xref py py-func docutils literal"><span class="pre">img_as_float()</span></code>
+can be used to convert the image:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">img_as_float</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">img_as_float</span><span class="p">(</span><span class="n">any_opencv_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-an-image-from-skimage-with-opencv">
+<h3>Using an image from <code class="docutils literal"><span class="pre">skimage</span></code> with OpenCV<a class="headerlink" href="#using-an-image-from-skimage-with-opencv" title="Permalink to this headline">¶</a></h3>
+<p>The reverse can be achieved with <code class="xref py py-func docutils literal"><span class="pre">img_as_ubyte()</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">img_as_ubyte</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cv_image</span> <span class="o">=</span> <span class="n">img_as_ubyte</span><span class="p">(</span><span class="n">any_skimage_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="image-processing-pipeline">
 <h2>Image processing pipeline<a class="headerlink" href="#image-processing-pipeline" title="Permalink to this headline">¶</a></h2>
 <p>This dtype behavior allows you to string together any <code class="docutils literal"><span class="pre">skimage</span></code> function
@@ -322,6 +361,12 @@ just the positive range of a signed dtype.</p>
 <li><a class="reference internal" href="#">Image data types and what they mean</a><ul class="nav nav-list">
 <li><a class="reference internal" href="#input-types">Input types</a></li>
 <li><a class="reference internal" href="#output-types">Output types</a></li>
+<li><a class="reference internal" href="#working-with-opencv">Working with OpenCV</a><ul class="nav nav-list">
+<li><a class="reference internal" href="#converting-bgr-to-rgb-or-vice-versa">Converting BGR to RGB or vice versa</a></li>
+<li><a class="reference internal" href="#using-an-image-from-opencv-with-skimage">Using an image from OpenCV with <code class="docutils literal"><span class="pre">skimage</span></code></a></li>
+<li><a class="reference internal" href="#using-an-image-from-skimage-with-opencv">Using an image from <code class="docutils literal"><span class="pre">skimage</span></code> with OpenCV</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#image-processing-pipeline">Image processing pipeline</a></li>
 <li><a class="reference internal" href="#rescaling-intensity-values">Rescaling intensity values</a></li>
 <li><a class="reference internal" href="#note-about-negative-values">Note about negative values</a></li>
