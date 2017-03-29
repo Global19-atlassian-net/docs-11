@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Module: morphology &mdash; skimage v0.13dev docs</title>
+        <title>Module: morphology &mdash; skimage v0.14dev docs</title>
     
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13dev',
+        VERSION:     '0.14dev',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,7 +29,7 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <link rel="index" title="Index" href="../genindex.html" />
         <link rel="search" title="Search" href="../search.html" />
-        <link rel="top" title="skimage v0.13dev docs" href="../index.html" />
+        <link rel="top" title="skimage v0.14dev docs" href="../index.html" />
         <link rel="up" title="API Reference" href="api.html" />
         <link rel="next" title="Module: novice" href="skimage.novice.html" />
         <link rel="prev" title="Module: measure" href="skimage.measure.html" />
@@ -111,8 +111,20 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.morphology.erosion" title="skimage.morphology.erosion"><code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.erosion</span></code></a>(image[,&nbsp;selem,&nbsp;...])</td>
 <td>Return greyscale morphological erosion of an image.</td>
 </tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.morphology.h_maxima" title="skimage.morphology.h_maxima"><code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.h_maxima</span></code></a>(img,&nbsp;h[,&nbsp;selem])</td>
+<td>Determine all maxima of the image with height &gt;= h.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.morphology.h_minima" title="skimage.morphology.h_minima"><code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.h_minima</span></code></a>(img,&nbsp;h[,&nbsp;selem])</td>
+<td>Determine all minima of the image with depth &gt;= h.</td>
+</tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.morphology.label" title="skimage.morphology.label"><code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.label</span></code></a>(input[,&nbsp;neighbors,&nbsp;...])</td>
 <td>Label connected regions of an integer array.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.morphology.local_maxima" title="skimage.morphology.local_maxima"><code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.local_maxima</span></code></a>(img[,&nbsp;selem])</td>
+<td>Determine all local maxima of the image.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.morphology.local_minima" title="skimage.morphology.local_minima"><code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.local_minima</span></code></a>(img[,&nbsp;selem])</td>
+<td>Determine all local minima of the image.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.morphology.medial_axis" title="skimage.morphology.medial_axis"><code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.medial_axis</span></code></a>(image[,&nbsp;...])</td>
 <td>Compute the medial axis transform of a binary image</td>
@@ -514,10 +526,10 @@ polygon that surround all white pixels in the input image.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r371" rules="none">
+<table class="docutils citation" frame="void" id="r375" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R371]</a></td><td><a class="reference external" href="http://blogs.mathworks.com/steve/2011/10/04/binary-image-convex-hull-algorithm-notes/">http://blogs.mathworks.com/steve/2011/10/04/binary-image-convex-hull-algorithm-notes/</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[R375]</a></td><td><a class="reference external" href="http://blogs.mathworks.com/steve/2011/10/04/binary-image-convex-hull-algorithm-notes/">http://blogs.mathworks.com/steve/2011/10/04/binary-image-convex-hull-algorithm-notes/</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -807,6 +819,164 @@ function more efficient for larger images and structuring elements.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="h-maxima">
+<h2>h_maxima<a class="headerlink" href="#h-maxima" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.morphology.h_maxima">
+<code class="descclassname">skimage.morphology.</code><code class="descname">h_maxima</code><span class="sig-paren">(</span><em>img</em>, <em>h</em>, <em>selem=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/extrema.py#L48"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.h_maxima" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine all maxima of the image with height &gt;= h.</p>
+<p>The local maxima are defined as connected sets of pixels with equal
+grey level strictly greater than the grey level of all pixels in direct
+neighborhood of the set.</p>
+<p>A local maximum M of height h is a local maximum for which
+there is at least one path joining M with a higher maximum on which the
+minimal value is f(M) - h (i.e. the values along the path are not
+decreasing by more than h with respect to the maximum&#8217;s value) and no
+path for which the minimal value is greater.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : ndarray</p>
+<blockquote>
+<div><p>The input image for which the maxima are to be calculated.</p>
+</div></blockquote>
+<p><strong>h</strong> : unsigned integer</p>
+<blockquote>
+<div><p>The minimal height of all extracted maxima.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as an n-D array of 1&#8217;s and 0&#8217;s.
+Default is the ball of radius 1 according to the maximum norm
+(i.e. a 3x3 square for 2D images, a 3x3x3 cube for 3D images, etc.)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>h_max</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>The maxima of height &gt;= h. The result image is a binary image, where
+pixels belonging to the selected maxima take value 1, the others
+take value 0.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.extrema.h_minima</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.extrema.local_maxima</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.extrema.local_minima</span></code></p>
+</div>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r376" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[R376]</a></td><td>Soille, P., &#8220;Morphological Image Analysis: Principles and
+Applications&#8221; (Chapter 6), 2nd edition (2003), ISBN 3540429883.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <span class="n">extrema</span>
+</pre></div>
+</div>
+<p>We create an image (quadratic function with a maximum in the center and
+4 additional constant maxima.
+The heights of the maxima are: 1, 21, 41, 61, 81, 101</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">w</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">w</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">-</span> <span class="mf">0.2</span><span class="o">*</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span> <span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span> <span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span> <span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can calculate all maxima with a height of at least 40:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxima</span> <span class="o">=</span> <span class="n">extrema</span><span class="o">.</span><span class="n">h_maxima</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting image will contain 4 local maxima.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="h-minima">
+<h2>h_minima<a class="headerlink" href="#h-minima" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.morphology.h_minima">
+<code class="descclassname">skimage.morphology.</code><code class="descname">h_minima</code><span class="sig-paren">(</span><em>img</em>, <em>h</em>, <em>selem=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/extrema.py#L129"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.h_minima" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine all minima of the image with depth &gt;= h.</p>
+<p>The local minima are defined as connected sets of pixels with equal
+grey level strictly smaller than the grey levels of all pixels in direct
+neighborhood of the set.</p>
+<p>A local minimum M of depth h is a local minimum for which
+there is at least one path joining M with a deeper minimum on which the
+maximal value is f(M) + h (i.e. the values along the path are not
+increasing by more than h with respect to the minimum&#8217;s value) and no
+path for which the maximal value is smaller.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : ndarray</p>
+<blockquote>
+<div><p>The input image for which the minima are to be calculated.</p>
+</div></blockquote>
+<p><strong>h</strong> : unsigned integer</p>
+<blockquote>
+<div><p>The minimal depth of all extracted minima.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as an n-D array of 1&#8217;s and 0&#8217;s.
+Default is the ball of radius 1 according to the maximum norm
+(i.e. a 3x3 square for 2D images, a 3x3x3 cube for 3D images, etc.)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>h_min</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>The minima of depth &gt;= h. The result image is a binary image, where
+pixels belonging to the selected minima take value 1, the other pixels
+take value 0.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.extrema.h_maxima</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.extrema.local_maxima</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.extrema.local_minima</span></code></p>
+</div>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r377" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[R377]</a></td><td>Soille, P., &#8220;Morphological Image Analysis: Principles and
+Applications&#8221; (Chapter 6), 2nd edition (2003), ISBN 3540429883.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <span class="n">extrema</span>
+</pre></div>
+</div>
+<p>We create an image (quadratic function with a minimum in the center and
+4 additional constant maxima.
+The depth of the minima are: 1, 21, 41, 61, 81, 101</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">w</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">w</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="mi">180</span> <span class="o">+</span> <span class="mf">0.2</span><span class="o">*</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">160</span><span class="p">;</span> <span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">140</span><span class="p">;</span> <span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span><span class="p">;</span> <span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can calculate all minima with a depth of at least 40:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">minima</span> <span class="o">=</span> <span class="n">extrema</span><span class="o">.</span><span class="n">h_minima</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting image will contain 4 local minima.</p>
+</dd></dl>
+
+</div>
 <div class="section" id="label">
 <h2>label<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -879,18 +1049,18 @@ returned if return_num is <cite>True</cite>.</p>
 <p class="last"><code class="xref py py-obj docutils literal"><span class="pre">regionprops</span></code></p>
 </div>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r372" rules="none">
+<table class="docutils citation" frame="void" id="r378" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R372]</a></td><td>Christophe Fiorio and Jens Gustedt, &#8220;Two linear time Union-Find
+<tr><td class="label"><a class="fn-backref" href="#id4">[R378]</a></td><td>Christophe Fiorio and Jens Gustedt, &#8220;Two linear time Union-Find
 strategies for image processing&#8221;, Theoretical Computer Science
 154 (1996), pp. 165-181.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r373" rules="none">
+<table class="docutils citation" frame="void" id="r379" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R373]</a></td><td>Kensheng Wu, Ekow Otoo and Arie Shoshani, &#8220;Optimizing connected
+<tr><td class="label"><a class="fn-backref" href="#id5">[R379]</a></td><td>Kensheng Wu, Ekow Otoo and Arie Shoshani, &#8220;Optimizing connected
 component labeling algorithms&#8221;, Paper LBNL-56864, 2005,
 Lawrence Berkeley National Laboratory (University of California),
 <a class="reference external" href="http://repositories.cdlib.org/lbnl/LBNL-56864">http://repositories.cdlib.org/lbnl/LBNL-56864</a></td></tr>
@@ -924,6 +1094,152 @@ Lawrence Berkeley National Laboratory (University of California),
 <span class="go"> [0 0 0]]</span>
 </pre></div>
 </div>
+</dd></dl>
+
+</div>
+<div class="section" id="local-maxima">
+<h2>local_maxima<a class="headerlink" href="#local-maxima" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.morphology.local_maxima">
+<code class="descclassname">skimage.morphology.</code><code class="descname">local_maxima</code><span class="sig-paren">(</span><em>img</em>, <em>selem=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/extrema.py#L219"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.local_maxima" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine all local maxima of the image.</p>
+<p>The local maxima are defined as connected sets of pixels with equal
+grey level strictly greater than the grey levels of all pixels in direct
+neighborhood of the set.</p>
+<p>For integer typed images, this corresponds to the h-maxima with h=1.
+For float typed images, h is determined as the smallest difference
+between grey levels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : ndarray</p>
+<blockquote>
+<div><p>The input image for which the maxima are to be calculated.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as an n-D array of 1&#8217;s and 0&#8217;s.
+Default is the ball of radius 1 according to the maximum norm
+(i.e. a 3x3 square for 2D images, a 3x3x3 cube for 3D images, etc.)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>local_max</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>All local maxima of the image. The result image is a binary image,
+where pixels belonging to local maxima take value 1, the other pixels
+take value 0.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.extrema.h_minima</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.extrema.h_maxima</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.extrema.local_minima</span></code></p>
+</div>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r380" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[R380]</a></td><td>Soille, P., &#8220;Morphological Image Analysis: Principles and
+Applications&#8221; (Chapter 6), 2nd edition (2003), ISBN 3540429883.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <span class="n">extrema</span>
+</pre></div>
+</div>
+<p>We create an image (quadratic function with a maximum in the center and
+4 additional constant maxima.
+The heights of the maxima are: 1, 21, 41, 61, 81, 101</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">w</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">w</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">-</span> <span class="mf">0.2</span><span class="o">*</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span> <span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span> <span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span> <span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can calculate all local maxima:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">maxima</span> <span class="o">=</span> <span class="n">extrema</span><span class="o">.</span><span class="n">local_maxima</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting image will contain all 6 local maxima.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="local-minima">
+<h2>local_minima<a class="headerlink" href="#local-minima" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.morphology.local_minima">
+<code class="descclassname">skimage.morphology.</code><code class="descname">local_minima</code><span class="sig-paren">(</span><em>img</em>, <em>selem=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/extrema.py#L287"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.local_minima" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine all local minima of the image.</p>
+<p>The local minima are defined as connected sets of pixels with equal
+grey level strictly smaller than the grey levels of all pixels in direct
+neighborhood of the set.</p>
+<p>For integer typed images, this corresponds to the h-minima with h=1.
+For float typed images, h is determined as the smallest difference
+between grey levels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : ndarray</p>
+<blockquote>
+<div><p>The input image for which the minima are to be calculated.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as an n-D array of 1&#8217;s and 0&#8217;s.
+Default is the ball of radius 1 according to the maximum norm
+(i.e. a 3x3 square for 2D images, a 3x3x3 cube for 3D images, etc.)</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>local_min</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>All local minima of the image. The result image is a binary image,
+where pixels belonging to local minima take value 1, the other pixels
+take value 0.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.extrema.h_minima</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.extrema.h_maxima</span></code>, <code class="xref py py-obj docutils literal"><span class="pre">skimage.morphology.extrema.local_maxima</span></code></p>
+</div>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r381" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[R381]</a></td><td>Soille, P., &#8220;Morphological Image Analysis: Principles and
+Applications&#8221; (Chapter 6), 2nd edition (2003), ISBN 3540429883.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <span class="n">extrema</span>
+</pre></div>
+</div>
+<p>We create an image (quadratic function with a minimum in the center and
+4 additional constant maxima.
+The depth of the minima are: 1, 21, 41, 61, 81, 101</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">w</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">w</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="n">w</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="mi">180</span> <span class="o">+</span> <span class="mf">0.2</span><span class="o">*</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">160</span><span class="p">;</span> <span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">140</span><span class="p">;</span> <span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span><span class="p">;</span> <span class="n">f</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can calculate all local minima:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">minima</span> <span class="o">=</span> <span class="n">extrema</span><span class="o">.</span><span class="n">local_minima</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The resulting image will contain all 6 local minima.</p>
 </dd></dl>
 
 </div>
@@ -1214,28 +1530,28 @@ Default is the ball of radius 1 according to the maximum norm
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>The algorithm is taken from <a class="reference internal" href="#r374" id="id4">[R374]</a>. Applications for greyscale reconstruction
-are discussed in <a class="reference internal" href="#r375" id="id5">[R375]</a> and <a class="reference internal" href="#r376" id="id6">[R376]</a>.</p>
+<p>The algorithm is taken from <a class="reference internal" href="#r382" id="id8">[R382]</a>. Applications for greyscale reconstruction
+are discussed in <a class="reference internal" href="#r383" id="id9">[R383]</a> and <a class="reference internal" href="#r384" id="id10">[R384]</a>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r374" rules="none">
+<table class="docutils citation" frame="void" id="r382" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R374]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> Robinson, &#8220;Efficient morphological reconstruction: a downhill
+<tr><td class="label">[R382]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id11">2</a>)</em> Robinson, &#8220;Efficient morphological reconstruction: a downhill
 filter&#8221;, Pattern Recognition Letters 25 (2004) 1759-1767.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r375" rules="none">
+<table class="docutils citation" frame="void" id="r383" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R375]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id8">2</a>)</em> Vincent, L., &#8220;Morphological Grayscale Reconstruction in Image
+<tr><td class="label">[R383]</td><td><em>(<a class="fn-backref" href="#id9">1</a>, <a class="fn-backref" href="#id12">2</a>)</em> Vincent, L., &#8220;Morphological Grayscale Reconstruction in Image
 Analysis: Applications and Efficient Algorithms&#8221;, IEEE Transactions
 on Image Processing (1993)</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r376" rules="none">
+<table class="docutils citation" frame="void" id="r384" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R376]</td><td><em>(<a class="fn-backref" href="#id6">1</a>, <a class="fn-backref" href="#id9">2</a>)</em> Soille, P., &#8220;Morphological Image Analysis: Principles and
+<tr><td class="label">[R384]</td><td><em>(<a class="fn-backref" href="#id10">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> Soille, P., &#8220;Morphological Image Analysis: Principles and
 Applications&#8221;, Chapter 6, 2nd edition (2003), ISBN 3540429883.</td></tr>
 </tbody>
 </table>
@@ -1510,7 +1826,7 @@ also accepts arrays of boolean values where True is foreground.</p>
 <p class="last"><a class="reference internal" href="#skimage.morphology.medial_axis" title="skimage.morphology.medial_axis"><code class="xref py py-obj docutils literal"><span class="pre">medial_axis</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The algorithm <a class="reference internal" href="#zha84" id="id10">[Zha84]</a> works by making successive passes of the image,
+<p>The algorithm <a class="reference internal" href="#zha84" id="id14">[Zha84]</a> works by making successive passes of the image,
 removing pixels on object borders. This continues until no
 more pixels can be removed.  The image is correlated with a
 mask that assigns each pixel a number in the range [0...255]
@@ -1525,7 +1841,7 @@ medial axis transform, which is also often referred to as
 <table class="docutils citation" frame="void" id="zha84" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Zha84]</td><td><em>(<a class="fn-backref" href="#id10">1</a>, <a class="fn-backref" href="#id11">2</a>)</em> A fast parallel algorithm for thinning digital patterns,
+<tr><td class="label">[Zha84]</td><td><em>(<a class="fn-backref" href="#id14">1</a>, <a class="fn-backref" href="#id15">2</a>)</em> A fast parallel algorithm for thinning digital patterns,
 T. Y. Zhang and C. Y. Suen, Communications of the ACM,
 March 1984, Volume 27, Number 3.</td></tr>
 </tbody>
@@ -1591,7 +1907,7 @@ represent background, nonzero values are foreground.</p>
 <p class="last"><a class="reference internal" href="#skimage.morphology.skeletonize" title="skimage.morphology.skeletonize"><code class="xref py py-obj docutils literal"><span class="pre">skeletonize</span></code></a>, <a class="reference internal" href="#skimage.morphology.medial_axis" title="skimage.morphology.medial_axis"><code class="xref py py-obj docutils literal"><span class="pre">medial_axis</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The method of <a class="reference internal" href="#lee94" id="id12">[Lee94]</a> uses an octree data structure to examine a 3x3x3
+<p>The method of <a class="reference internal" href="#lee94" id="id16">[Lee94]</a> uses an octree data structure to examine a 3x3x3
 neighborhood of a pixel. The algorithm proceeds by iteratively sweeping
 over the image, and removing pixels at each iteration until the image
 stops changing. Each iteration consists of two steps: first, a list of
@@ -1604,7 +1920,7 @@ results produced by this function are generally different.</p>
 <table class="docutils citation" frame="void" id="lee94" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Lee94]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id13">2</a>)</em> T.-C. Lee, R.L. Kashyap and C.-N. Chu, Building skeleton models
+<tr><td class="label">[Lee94]</td><td><em>(<a class="fn-backref" href="#id16">1</a>, <a class="fn-backref" href="#id17">2</a>)</em> T.-C. Lee, R.L. Kashyap and C.-N. Chu, Building skeleton models
 via 3-D medial surface/axis thinning algorithms.
 Computer Vision, Graphics, and Image Processing, 56(6):462-478, 1994.</td></tr>
 </tbody>
@@ -1724,26 +2040,26 @@ the number of iterations performed.</p>
 <p class="last"><a class="reference internal" href="#skimage.morphology.skeletonize" title="skimage.morphology.skeletonize"><code class="xref py py-obj docutils literal"><span class="pre">skeletonize</span></code></a>, <a class="reference internal" href="#skimage.morphology.skeletonize_3d" title="skimage.morphology.skeletonize_3d"><code class="xref py py-obj docutils literal"><span class="pre">skeletonize_3d</span></code></a>, <a class="reference internal" href="#skimage.morphology.medial_axis" title="skimage.morphology.medial_axis"><code class="xref py py-obj docutils literal"><span class="pre">medial_axis</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>This algorithm <a class="reference internal" href="#r377" id="id14">[R377]</a> works by making multiple passes over the image,
+<p>This algorithm <a class="reference internal" href="#r385" id="id18">[R385]</a> works by making multiple passes over the image,
 removing pixels matching a set of criteria designed to thin
 connected regions while preserving eight-connected components and
-2 x 2 squares <a class="reference internal" href="#r378" id="id15">[R378]</a>. In each of the two sub-iterations the algorithm
+2 x 2 squares <a class="reference internal" href="#r386" id="id19">[R386]</a>. In each of the two sub-iterations the algorithm
 correlates the intermediate skeleton image with a neighborhood mask,
 then looks up each neighborhood in a lookup table indicating whether
 the central pixel should be deleted in that sub-iteration.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r377" rules="none">
+<table class="docutils citation" frame="void" id="r385" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R377]</td><td><em>(<a class="fn-backref" href="#id14">1</a>, <a class="fn-backref" href="#id16">2</a>)</em> Z. Guo and R. W. Hall, &#8220;Parallel thinning with
+<tr><td class="label">[R385]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id20">2</a>)</em> Z. Guo and R. W. Hall, &#8220;Parallel thinning with
 two-subiteration algorithms,&#8221; Comm. ACM, vol. 32, no. 3,
 pp. 359-373, 1989. DOI:10.1145/62065.62074</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r378" rules="none">
+<table class="docutils citation" frame="void" id="r386" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R378]</td><td><em>(<a class="fn-backref" href="#id15">1</a>, <a class="fn-backref" href="#id17">2</a>)</em> Lam, L., Seong-Whan Lee, and Ching Y. Suen, &#8220;Thinning
+<tr><td class="label">[R386]</td><td><em>(<a class="fn-backref" href="#id19">1</a>, <a class="fn-backref" href="#id21">2</a>)</em> Lam, L., Seong-Whan Lee, and Ching Y. Suen, &#8220;Thinning
 Methodologies-A Comprehensive Survey,&#8221; IEEE Transactions on
 Pattern Analysis and Machine Intelligence, Vol 14, No. 9,
 p. 879, 1992. DOI:10.1109/34.161346</td></tr>
@@ -1812,7 +2128,7 @@ will be labeled.</p>
 </div></blockquote>
 <p><strong>compactness</strong> : float, optional</p>
 <blockquote>
-<div><p>Use compact watershed <a class="reference internal" href="#r381" id="id18">[R381]</a> with given compactness parameter.
+<div><p>Use compact watershed <a class="reference internal" href="#r389" id="id22">[R389]</a> with given compactness parameter.
 Higher values result in more regularly-shaped watershed basins.</p>
 </div></blockquote>
 <p><strong>watershed_line</strong> : bool, optional</p>
@@ -1838,7 +2154,7 @@ obtained by the watershed algorithm. The line has the label 0.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This function implements a watershed algorithm <a class="reference internal" href="#r379" id="id19">[R379]</a> <a class="reference internal" href="#r380" id="id20">[R380]</a> that apportions
+<p>This function implements a watershed algorithm <a class="reference internal" href="#r387" id="id23">[R387]</a> <a class="reference internal" href="#r388" id="id24">[R388]</a> that apportions
 pixels into marked basins. The algorithm uses a priority queue to hold
 the pixels with the metric for the priority queue being pixel value, then
 the time of entry into the queue - this settles ties in favor of the
@@ -1857,22 +2173,22 @@ the local minima of the gradient of the image, or the local maxima of the
 distance function to the background for separating overlapping objects
 (see example).</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r379" rules="none">
+<table class="docutils citation" frame="void" id="r387" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R379]</td><td><em>(<a class="fn-backref" href="#id19">1</a>, <a class="fn-backref" href="#id21">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Watershed_%28image_processing%29">http://en.wikipedia.org/wiki/Watershed_%28image_processing%29</a></td></tr>
+<tr><td class="label">[R387]</td><td><em>(<a class="fn-backref" href="#id23">1</a>, <a class="fn-backref" href="#id25">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Watershed_%28image_processing%29">http://en.wikipedia.org/wiki/Watershed_%28image_processing%29</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r380" rules="none">
+<table class="docutils citation" frame="void" id="r388" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R380]</td><td><em>(<a class="fn-backref" href="#id20">1</a>, <a class="fn-backref" href="#id22">2</a>)</em> <a class="reference external" href="http://cmm.ensmp.fr/~beucher/wtshed.html">http://cmm.ensmp.fr/~beucher/wtshed.html</a></td></tr>
+<tr><td class="label">[R388]</td><td><em>(<a class="fn-backref" href="#id24">1</a>, <a class="fn-backref" href="#id26">2</a>)</em> <a class="reference external" href="http://cmm.ensmp.fr/~beucher/wtshed.html">http://cmm.ensmp.fr/~beucher/wtshed.html</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r381" rules="none">
+<table class="docutils citation" frame="void" id="r389" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R381]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id23">2</a>)</em> Peer Neubert &amp; Peter Protzel (2014). Compact Watershed and
+<tr><td class="label">[R389]</td><td><em>(<a class="fn-backref" href="#id22">1</a>, <a class="fn-backref" href="#id27">2</a>)</em> Peer Neubert &amp; Peter Protzel (2014). Compact Watershed and
 Preemptive SLIC: On Improving Trade-offs of Superpixel Segmentation
 Algorithms. ICPR 2014, pp 996-1001. DOI:10.1109/ICPR.2014.181
 https://www.tu-chemnitz.de/etit/proaut/forschung/rsrc/cws_pSLIC_ICPR.pdf</td></tr>
@@ -2012,7 +2328,11 @@ is passed, a new array will be allocated.</p>
 <li><a class="reference internal" href="#dilation">dilation</a></li>
 <li><a class="reference internal" href="#disk">disk</a></li>
 <li><a class="reference internal" href="#erosion">erosion</a></li>
+<li><a class="reference internal" href="#h-maxima">h_maxima</a></li>
+<li><a class="reference internal" href="#h-minima">h_minima</a></li>
 <li><a class="reference internal" href="#label">label</a></li>
+<li><a class="reference internal" href="#local-maxima">local_maxima</a></li>
+<li><a class="reference internal" href="#local-minima">local_minima</a></li>
 <li><a class="reference internal" href="#medial-axis">medial_axis</a></li>
 <li><a class="reference internal" href="#octagon">octagon</a></li>
 <li><a class="reference internal" href="#octahedron">octahedron</a></li>
