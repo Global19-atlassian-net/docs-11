@@ -76,13 +76,13 @@ a publicaion entitled &#8220;An Active Countour Model Without Edges&#8221; <a cl
 <p>This implementation of the algorithm is somewhat simplified in the
 sense that the area factor &#8216;nu&#8217; described in the original paper is not
 implemented, and is only suitable for grayscale images.</p>
-<p>Typical values for lambda1 and lambda2 are 1. If the &#8216;background&#8217; is
+<p>Typical values for <code class="docutils literal"><span class="pre">lambda1</span></code> and <code class="docutils literal"><span class="pre">lambda2</span></code> are 1. If the &#8216;background&#8217; is
 very different from the segmented object in terms of distribution (for
 example, a uniform black image with figures of varying intensity), then
 these values should be different from each other.</p>
-<p>Typical values for mu are between 0 and 1, though higher values can be
+<p>Typical values for <code class="docutils literal"><span class="pre">mu</span></code> are between 0 and 1, though higher values can be
 used when dealing with shapes with very ill-defined contours.</p>
-<p>The algorithm also returns a list of values which corresponds to the
+<p>The algorithm also returns a list of values that corresponds to the
 energy at each iteration. This can be used to adjust the various
 parameters described above.</p>
 <div class="section" id="references">
@@ -92,7 +92,7 @@ parameters described above.</p>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>An Active Contour Model without Edges, Tony Chan and
 Luminita Vese, Scale-Space Theories in Computer Vision, 1999,
-<a class="reference external" href="http://dx.doi.org/10.1007/3-540-48236-9_13">http://dx.doi.org/10.1007/3-540-48236-9_13</a></td></tr>
+DOI:10.1007/3-540-48236-9_13</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id3" rules="none">
@@ -100,7 +100,7 @@ Luminita Vese, Scale-Space Theories in Computer Vision, 1999,
 <tbody valign="top">
 <tr><td class="label">[2]</td><td>Chan-Vese Segmentation, Pascal Getreuer, Image Processing On
 Line, 2 (2012), pp. 214-224,
-<a class="reference external" href="https://doi.org/10.5201/ipol.2012.g-cv">https://doi.org/10.5201/ipol.2012.g-cv</a></td></tr>
+DOI:10.5201/ipol.2012.g-cv</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id4" rules="none">
@@ -113,10 +113,10 @@ Line, 2 (2012), pp. 214-224,
 <img alt="../../_images/sphx_glr_plot_chan_vese_001.png" class="align-center" src="../../_images/sphx_glr_plot_chan_vese_001.png" />
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.img_as_float"><span class="n">img_as_float</span></a>
 <span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.chan_vese" title="View documentation for skimage.segmentation.chan_vese"><span class="n">chan_vese</span></a>
 
-<span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.img_as_float"><span class="n">img_as_float</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">())</span>
 <span class="c1"># Feel free to play around with the parameters to see how they impact the result</span>
 <span class="n">cv</span> <span class="o">=</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.chan_vese" title="View documentation for skimage.segmentation.chan_vese"><span class="n">chan_vese</span></a><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">lambda1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">lambda2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
                <span class="n">dt</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">init_level_set</span><span class="o">=</span><span class="s2">&quot;checkerboard&quot;</span><span class="p">,</span> <span class="n">extended_output</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -144,7 +144,7 @@ Line, 2 (2012), pp. 214-224,
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  5.632 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  5.690 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_chan_vese.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_chan_vese.py</span></code></a></div>
