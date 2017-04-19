@@ -100,7 +100,7 @@ graylevel variations.</p>
 <a href="http://matplotlib.org/api/matplotlib_configuration_api.html#matplotlib.rcParams" title="View documentation for matplotlib.rcParams"><span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span></a><span class="p">[</span><span class="s1">&#39;font.size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>
 
 
-<span class="k">def</span> <span class="nf">plot_img_and_hist</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">256</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">plot_img_and_hist</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">256</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Plot an image along with its histogram and cumulative histogram.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -108,19 +108,19 @@ graylevel variations.</p>
     <span class="n">ax_cdf</span> <span class="o">=</span> <span class="n">ax_hist</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
 
     <span class="c1"># Display image</span>
-    <span class="n">ax_img</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">ax_img</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
     <span class="n">ax_img</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 
     <span class="c1"># Display histogram</span>
-    <span class="n">ax_hist</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+    <span class="n">ax_hist</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
     <span class="n">ax_hist</span><span class="o">.</span><span class="n">ticklabel_format</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;scientific&#39;</span><span class="p">,</span> <span class="n">scilimits</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
     <span class="n">ax_hist</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Pixel intensity&#39;</span><span class="p">)</span>
 
-    <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">dtype_range</span><span class="p">[</span><span class="n">img</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">]</span>
+    <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">dtype_range</span><span class="p">[</span><span class="n">image</span><span class="o">.</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">]</span>
     <span class="n">ax_hist</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
 
     <span class="c1"># Display cumulative distribution</span>
-    <span class="n">img_cdf</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <a href="../../api/skimage.exposure.html#skimage.exposure.cumulative_distribution" title="View documentation for skimage.exposure.cumulative_distribution"><span class="n">exposure</span><span class="o">.</span><span class="n">cumulative_distribution</span></a><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
+    <span class="n">img_cdf</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <a href="../../api/skimage.exposure.html#skimage.exposure.cumulative_distribution" title="View documentation for skimage.exposure.cumulative_distribution"><span class="n">exposure</span><span class="o">.</span><span class="n">cumulative_distribution</span></a><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">bins</span><span class="p">)</span>
     <span class="n">ax_cdf</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span> <span class="n">img_cdf</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">ax_img</span><span class="p">,</span> <span class="n">ax_hist</span><span class="p">,</span> <span class="n">ax_cdf</span>
@@ -166,7 +166,7 @@ graylevel variations.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  1.816 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  2.441 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_local_equalize.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_local_equalize.py</span></code></a></div>
