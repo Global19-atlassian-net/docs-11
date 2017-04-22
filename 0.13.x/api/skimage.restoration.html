@@ -30,7 +30,7 @@
         <link rel="index" title="Index" href="../genindex.html" />
         <link rel="search" title="Search" href="../search.html" />
         <link rel="top" title="skimage v0.13.0 docs" href="../index.html" />
-        <link rel="up" title="API Reference" href="api.html" />
+        <link rel="up" title="API Reference for skimage 0.13.0" href="api.html" />
         <link rel="next" title="Module: segmentation" href="skimage.segmentation.html" />
         <link rel="prev" title="Module: novice" href="skimage.novice.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
@@ -42,8 +42,7 @@
     <div class="navbar">
         <div class="navbar-inner">
             <ul class="nav">
-                <li><a href="/">Home</a></li>
-<li><a href="/download.html">Download</a></li>
+                <li><a href="/download.html">Download</a></li>
 <li><a href="/docs/dev/auto_examples">Gallery</a></li>
 <li><a href="/docs/dev">Documentation</a></li>
 <li><a href="/community_guidelines.html">Community Guidelines</a></li>
@@ -59,6 +58,57 @@
         </div>
     </div>
     <div class="row">
+        <div class="span3"><div style="padding-bottom: 3em">
+  <form class="navbar-form pull-right" action="../search.html" method="get">
+    <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
+    <input type="hidden" name="check_keywords" value="yes" >
+    <input type="hidden" name="area" value="default" >
+  </form>
+</div><!-- 
+        <h4 class="sidebar-box-heading">Contents</h4>
+        <div class="well sidebar-box toc">
+            <ul class="nav nav-list">
+<li><a class="reference internal" href="#">Module: <code class="docutils literal"><span class="pre">restoration</span></code></a><ul class="nav nav-list">
+<li><a class="reference internal" href="#references">References</a></li>
+<li><a class="reference internal" href="#denoise-bilateral">denoise_bilateral</a></li>
+<li><a class="reference internal" href="#denoise-nl-means">denoise_nl_means</a></li>
+<li><a class="reference internal" href="#denoise-tv-bregman">denoise_tv_bregman</a></li>
+<li><a class="reference internal" href="#denoise-tv-chambolle">denoise_tv_chambolle</a></li>
+<li><a class="reference internal" href="#denoise-wavelet">denoise_wavelet</a></li>
+<li><a class="reference internal" href="#estimate-sigma">estimate_sigma</a></li>
+<li><a class="reference internal" href="#inpaint-biharmonic">inpaint_biharmonic</a></li>
+<li><a class="reference internal" href="#nl-means-denoising">nl_means_denoising</a></li>
+<li><a class="reference internal" href="#richardson-lucy">richardson_lucy</a></li>
+<li><a class="reference internal" href="#unsupervised-wiener">unsupervised_wiener</a></li>
+<li><a class="reference internal" href="#unwrap-phase">unwrap_phase</a></li>
+<li><a class="reference internal" href="#wiener">wiener</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+
+
+ --><div class="well">
+    <strong>Docs for 0.13.0<br></strong>
+
+    <a id="other">All versions</a>
+
+    <ul id="versionList" style="display: none;">
+        <script src="../_static/docversions.js"></script>
+        <script type="text/javascript">
+            insert_version_links();
+        </script>
+    </ul>
+
+ </div>
+
+<script type="text/javascript">
+	$("#other").click(function() {
+		$("#versionList").toggle();
+	});
+</script>
+        </div>
         <div class="span9">
             
   <div class="section" id="module-skimage.restoration">
@@ -966,7 +1016,7 @@ noise and prior precision respectively.</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><p class="first"><strong>The keys of ``user_params`` are:</strong></p>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first"><strong>The keys of ``user_params`` are:</strong></p>
 <p><strong>threshold</strong> : float</p>
 <blockquote>
 <div><p>The stopping criterion: the norm of the difference between to
@@ -1113,7 +1163,7 @@ International Society for Optics and Photonics.</td></tr>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="mi">12</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">c0</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">c1</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_wrapped</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">image</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_unwrapped</span> <span class="o">=</span> <span class="n">unwrap_phase</span><span class="p">(</span><span class="n">image_wrapped</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">image_unwrapped</span> <span class="o">-</span> <span class="n">image</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span>   <span class="c1"># A constant offset is normal</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">image_unwrapped</span> <span class="o">-</span> <span class="n">image</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-6</span>   <span class="c1"># A constant offset is normal</span>
 <span class="go">True</span>
 </pre></div>
 </div>
@@ -1186,309 +1236,19 @@ under -1 are thresholded for skimage pipeline compatibility.</p>
 <p class="rubric">Notes</p>
 <p>This function applies the Wiener filter to a noisy and degraded
 image by an impulse response (or PSF). If the data model is</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">y = Hx + n
-
-</tt>)</p>
-latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2016/03/31&gt;
-Babel &lt;3.9r&gt; and hyphenation patterns for 22 language(s) loaded.
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size12.clo))
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/inputenc.sty
-
-! LaTeX Error: File `utf8x.def&#8217; not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: def)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.158 \endinput
-               ^^M
-No pages of output.
-Transcript written on math.log.
-</div>
-<p>where <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">n</tt>)</p>
-latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2016/03/31&gt;
-Babel &lt;3.9r&gt; and hyphenation patterns for 22 language(s) loaded.
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size12.clo))
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/inputenc.sty
-
-! LaTeX Error: File `utf8x.def&#8217; not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: def)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.158 \endinput
-               ^^M
-No pages of output.
-Transcript written on math.log.
-</div>
- is noise, <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">H</tt>)</p>
-latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2016/03/31&gt;
-Babel &lt;3.9r&gt; and hyphenation patterns for 22 language(s) loaded.
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size12.clo))
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/inputenc.sty
-
-! LaTeX Error: File `utf8x.def&#8217; not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: def)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.158 \endinput
-               ^^M
-No pages of output.
-Transcript written on math.log.
-</div>
- the PSF and <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">x</tt>)</p>
-latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2016/03/31&gt;
-Babel &lt;3.9r&gt; and hyphenation patterns for 22 language(s) loaded.
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size12.clo))
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/inputenc.sty
-
-! LaTeX Error: File `utf8x.def&#8217; not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: def)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.158 \endinput
-               ^^M
-No pages of output.
-Transcript written on math.log.
-</div>
- the
+<div class="math">
+<p><img src="../_images/math/ccdbb047bd3e214e872f12d0390b8690eb3263ef.png" alt="y = Hx + n"/></p>
+</div><p>where <img class="math" src="../_images/math/e11f2701c4a39c7fe543a6c4150b421d50f1c159.png" alt="n"/> is noise, <img class="math" src="../_images/math/44d4c3f22452acebfb3ac644e23508b67500be90.png" alt="H"/> the PSF and <img class="math" src="../_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> the
 unknown original image, the Wiener filter is</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">\hat x = F^\dag (|\Lambda_H|^2 + \lambda |\Lambda_D|^2)
-\Lambda_H^\dag F y
-
-</tt>)</p>
-latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2016/03/31&gt;
-Babel &lt;3.9r&gt; and hyphenation patterns for 22 language(s) loaded.
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size12.clo))
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/inputenc.sty
-
-! LaTeX Error: File `utf8x.def&#8217; not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: def)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.158 \endinput
-               ^^M
-No pages of output.
-Transcript written on math.log.
-</div>
-<p>where <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">F</tt>)</p>
-latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2016/03/31&gt;
-Babel &lt;3.9r&gt; and hyphenation patterns for 22 language(s) loaded.
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size12.clo))
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/inputenc.sty
-
-! LaTeX Error: File `utf8x.def&#8217; not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: def)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.158 \endinput
-               ^^M
-No pages of output.
-Transcript written on math.log.
-</div>
- and <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">F^\dag</tt>)</p>
-latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2016/03/31&gt;
-Babel &lt;3.9r&gt; and hyphenation patterns for 22 language(s) loaded.
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size12.clo))
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/inputenc.sty
-
-! LaTeX Error: File `utf8x.def&#8217; not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: def)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.158 \endinput
-               ^^M
-No pages of output.
-Transcript written on math.log.
-</div>
- are the Fourier and inverse
-Fourier transfroms respectively, <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">\Lambda_H</tt>)</p>
-latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2016/03/31&gt;
-Babel &lt;3.9r&gt; and hyphenation patterns for 22 language(s) loaded.
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size12.clo))
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/inputenc.sty
-
-! LaTeX Error: File `utf8x.def&#8217; not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: def)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.158 \endinput
-               ^^M
-No pages of output.
-Transcript written on math.log.
-</div>
- the transfer
+<div class="math">
+<p><img src="../_images/math/38189163da4aab462c720153fc4a5e064cdae3c3.png" alt="\hat x = F^\dag (|\Lambda_H|^2 + \lambda |\Lambda_D|^2)
+\Lambda_H^\dag F y"/></p>
+</div><p>where <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> and <img class="math" src="../_images/math/d4e4b311836eb70aed2d447e6d7a4568df696ed9.png" alt="F^\dag"/> are the Fourier and inverse
+Fourier transfroms respectively, <img class="math" src="../_images/math/2b6f0dc70068db2f23b50ab7f9da773486997627.png" alt="\Lambda_H"/> the transfer
 function (or the Fourier transfrom of the PSF, see [Hunt] below)
-and <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">\Lambda_D</tt>)</p>
-latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2016/03/31&gt;
-Babel &lt;3.9r&gt; and hyphenation patterns for 22 language(s) loaded.
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size12.clo))
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/inputenc.sty
-
-! LaTeX Error: File `utf8x.def&#8217; not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: def)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.158 \endinput
-               ^^M
-No pages of output.
-Transcript written on math.log.
-</div>
- the filter to penalize the restored image
+and <img class="math" src="../_images/math/a8526e7e04221d98ba751124d3ae70338bfc8c8a.png" alt="\Lambda_D"/> the filter to penalize the restored image
 frequencies (Laplacian by default, that is penalization of high
-frequency). The parameter <div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">\lambda</tt>)</p>
-latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2016/03/31&gt;
-Babel &lt;3.9r&gt; and hyphenation patterns for 22 language(s) loaded.
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size12.clo))
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/inputenc.sty
-
-! LaTeX Error: File `utf8x.def&#8217; not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: def)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.158 \endinput
-               ^^M
-No pages of output.
-Transcript written on math.log.
-</div>
- tunes the balance
+frequency). The parameter <img class="math" src="../_images/math/76f1d8ace30435987c01a00ca53a71cba1f40e6c.png" alt="\lambda"/> tunes the balance
 between the data (that tends to increase high frequency, even
 those coming from noise), and the regularization.</p>
 <p>These methods are then specific to a prior model. Consequently,
@@ -1499,36 +1259,7 @@ as high-frequency penalization to compensate the instability of
 the solution with respect to the data (sometimes called noise
 amplification or &#8220;explosive&#8221; solution).</p>
 <p>Finally, the use of Fourier space implies a circulant property of
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">H</tt>)</p>
-latex exited with error
-[stdout]
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=latex)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2016/03/31&gt;
-Babel &lt;3.9r&gt; and hyphenation patterns for 22 language(s) loaded.
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/size12.clo))
-(/usr/local/texlive/2016basic/texmf-dist/tex/latex/base/inputenc.sty
-
-! LaTeX Error: File `utf8x.def&#8217; not found.
-
-Type X to quit or &lt;RETURN&gt; to proceed,
-or enter new name. (Default extension: def)
-
-Enter file name: 
-! Emergency stop.
-&lt;read *&gt; 
-         
-l.158 \endinput
-               ^^M
-No pages of output.
-Transcript written on math.log.
-</div>
-, see [Hunt].</p>
+<img class="math" src="../_images/math/44d4c3f22452acebfb3ac644e23508b67500be90.png" alt="H"/>, see [Hunt].</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r435" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -1566,63 +1297,6 @@ Electroacoustics, vol. au-19, no. 4, pp. 285-288, dec. 1971</td></tr>
 </div>
 
 
-        </div>
-        <div class="span3"><div style="padding-bottom: 3em">
-  <form class="navbar-form pull-right" action="../search.html" method="get">
-    <input type="text" class="search span3" name="q" placeholder="Search documentation ...">
-    <input type="hidden" name="check_keywords" value="yes" >
-    <input type="hidden" name="area" value="default" >
-  </form>
-</div><h4 class="sidebar-box-heading">Navigation</h4>
-<div class="well sidebar-box">
-    <ul class="nav nav-list">
-        <li><a href="../index.html">Documentation Home</a></li>
-    </ul>
-</div>
-    <h4 class="sidebar-box-heading">Previous topic</h4>
-    <div class="well sidebar-box">
-        <ul class="nav nav-list">
-            <li><a href="skimage.novice.html" title="previous chapter">Module: <code class="docutils literal"><span class="pre">novice</span></code></a></li>
-        </ul>
-    </div>
-    <h4 class="sidebar-box-heading">Next topic</h4>
-    <div class="well sidebar-box">
-        <ul class="nav nav-list">
-            <li><a href="skimage.segmentation.html" title="next chapter">Module: <code class="docutils literal"><span class="pre">segmentation</span></code></a></li>
-        </ul>
-    </div>
-        <h4 class="sidebar-box-heading">Contents</h4>
-        <div class="well sidebar-box toc">
-            <ul class="nav nav-list">
-<li><a class="reference internal" href="#">Module: <code class="docutils literal"><span class="pre">restoration</span></code></a><ul class="nav nav-list">
-<li><a class="reference internal" href="#references">References</a></li>
-<li><a class="reference internal" href="#denoise-bilateral">denoise_bilateral</a></li>
-<li><a class="reference internal" href="#denoise-nl-means">denoise_nl_means</a></li>
-<li><a class="reference internal" href="#denoise-tv-bregman">denoise_tv_bregman</a></li>
-<li><a class="reference internal" href="#denoise-tv-chambolle">denoise_tv_chambolle</a></li>
-<li><a class="reference internal" href="#denoise-wavelet">denoise_wavelet</a></li>
-<li><a class="reference internal" href="#estimate-sigma">estimate_sigma</a></li>
-<li><a class="reference internal" href="#inpaint-biharmonic">inpaint_biharmonic</a></li>
-<li><a class="reference internal" href="#nl-means-denoising">nl_means_denoising</a></li>
-<li><a class="reference internal" href="#richardson-lucy">richardson_lucy</a></li>
-<li><a class="reference internal" href="#unsupervised-wiener">unsupervised_wiener</a></li>
-<li><a class="reference internal" href="#unwrap-phase">unwrap_phase</a></li>
-<li><a class="reference internal" href="#wiener">wiener</a></li>
-</ul>
-</li>
-</ul>
-
-        </div>
-
-<h4 class="sidebar-box-heading">Versions</h4>
-<div class="well sidebar-box">
-    <ul class="nav nav-list">
-        <script src="../_static/docversions.js"></script>
-        <script type="text/javascript">
-            insert_version_links();
-        </script>
-    </ul>
-</div>
         </div>
     </div>
     <div class="well footer">
