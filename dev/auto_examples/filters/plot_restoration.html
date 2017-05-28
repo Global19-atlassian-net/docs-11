@@ -104,7 +104,7 @@
 <span id="sphx-glr-auto-examples-filters-plot-restoration-py"></span><h1>Image Deconvolution<a class="headerlink" href="#image-deconvolution" title="Permalink to this headline">¶</a></h1>
 <p>In this example, we deconvolve a noisy version of an image using Wiener
 and unsupervised Wiener algorithms. This algorithms are based on
-linear models that can&#8217;t restore sharp edge as much as non-linear
+linear models that can’t restore sharp edge as much as non-linear
 methods (like TV restoration) but are much faster.</p>
 <div class="section" id="wiener-filter">
 <h2>Wiener filter<a class="headerlink" href="#wiener-filter" title="Permalink to this headline">¶</a></h2>
@@ -117,15 +117,15 @@ parameter must be hand tuned.</p>
 <h2>Unsupervised Wiener<a class="headerlink" href="#unsupervised-wiener" title="Permalink to this headline">¶</a></h2>
 <p>This algorithm has a self-tuned regularisation parameters based on
 data learning. This is not common and based on the following
-publication. The algorithm is based on a iterative Gibbs sampler that
+publication <a class="footnote-reference" href="#id2" id="id1">[1]</a>. The algorithm is based on a iterative Gibbs sampler that
 draw alternatively samples of posterior conditional law of the image,
 the noise power and the image frequency power.</p>
-<table class="docutils footnote" frame="void" id="id1" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td>François Orieux, Jean-François Giovannelli, and Thomas
-Rodet, &#8220;Bayesian estimation of regularization and point
-spread function parameters for Wiener-Hunt deconvolution&#8221;,
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>François Orieux, Jean-François Giovannelli, and Thomas
+Rodet, “Bayesian estimation of regularization and point
+spread function parameters for Wiener-Hunt deconvolution”,
 J. Opt. Soc. Am. A 27, 1593-1607 (2010)</td></tr>
 </tbody>
 </table>
@@ -139,7 +139,7 @@ J. Opt. Soc. Am. A 27, 1593-1607 (2010)</td></tr>
 <span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">convolve2d</span> <span class="k">as</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.signal.convolve2d.html#scipy.signal.convolve2d" title="View documentation for scipy.signal.convolve2d"><span class="n">conv2</span></a>
 <span class="n">psf</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.ones.html#numpy.ones" title="View documentation for numpy.ones"><span class="n">np</span><span class="o">.</span><span class="n">ones</span></a><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="o">/</span> <span class="mi">25</span>
 <span class="n">astro</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/scipy-0.11.0/reference/generated/scipy.signal.convolve2d.html#scipy.signal.convolve2d" title="View documentation for scipy.signal.convolve2d"><span class="n">conv2</span></a><span class="p">(</span><span class="n">astro</span><span class="p">,</span> <span class="n">psf</span><span class="p">,</span> <span class="s1">&#39;same&#39;</span><span class="p">)</span>
-<span class="n">astro</span> <span class="o">+=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">astro</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">astro</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">astro</span> <span class="o">+=</span> <span class="mf">0.1</span> <span class="o">*</span> <span class="n">astro</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">*</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.random.standard_normal.html#numpy.random.standard_normal" title="View documentation for numpy.random.standard_normal"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span></a><span class="p">(</span><span class="n">astro</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
 <span class="n">deconvolved</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <a href="../../api/skimage.restoration.html#skimage.restoration.unsupervised_wiener" title="View documentation for skimage.restoration.unsupervised_wiener"><span class="n">restoration</span><span class="o">.</span><span class="n">unsupervised_wiener</span></a><span class="p">(</span><span class="n">astro</span><span class="p">,</span> <span class="n">psf</span><span class="p">)</span>
 
@@ -162,14 +162,14 @@ J. Opt. Soc. Am. A 27, 1593-1607 (2010)</td></tr>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  1.469 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  1.487 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_restoration.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_restoration.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_restoration.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_restoration.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 </div>
 

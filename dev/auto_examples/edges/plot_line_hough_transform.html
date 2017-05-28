@@ -102,7 +102,8 @@
             
   <div class="section" id="straight-line-hough-transform">
 <span id="sphx-glr-auto-examples-edges-plot-line-hough-transform-py"></span><h1>Straight line Hough transform<a class="headerlink" href="#straight-line-hough-transform" title="Permalink to this headline">¶</a></h1>
-<p>The Hough transform in its simplest form is a method to detect straight lines.</p>
+<p>The Hough transform in its simplest form is a method to detect straight lines
+<a class="footnote-reference" href="#id3" id="id1">[1]</a>.</p>
 <p>In the following example, we construct an image with a line intersection. We
 then use the <a class="reference external" href="http://en.wikipedia.org/wiki/Hough_transform">Hough transform</a>.
 to explore a parameter space for straight lines that may run through the image.</p>
@@ -120,11 +121,11 @@ the radius and <img class="math" src="../../_images/math/f4170ed8938b79490d89238
 parameter combination, <img class="math" src="../../_images/math/eaa6ad49a7f78fe5a13b486690163bf2dc7e3e60.png" alt="r"/> and <img class="math" src="../../_images/math/3be04d4207434584251f6921820c24ac9fa8c6f1.png" alt="\theta"/>, we then find the number of
 non-zero pixels in the input image that would fall close to the corresponding
 line, and increment the array at position <img class="math" src="../../_images/math/91999ad24a87a1f32e40eea72c86d3c21fc6bdd4.png" alt="(r, \theta)"/> appropriately.</p>
-<p>We can think of each non-zero pixel &#8220;voting&#8221; for potential line candidates. The
+<p>We can think of each non-zero pixel “voting” for potential line candidates. The
 local maxima in the resulting histogram indicates the parameters of the most
 probably lines. In our example, the maxima occur at 45 and 135 degrees,
 corresponding to the normal vector angles of each line.</p>
-<p>Another approach is the Progressive Probabilistic Hough Transform <a class="footnote-reference" href="#id2" id="id1">[1]</a>. It is
+<p>Another approach is the Progressive Probabilistic Hough Transform <a class="footnote-reference" href="#id4" id="id2">[2]</a>. It is
 based on the assumption that using a random subset of voting points give a good
 approximation to the actual result, and that lines can be extracted during the
 voting process by walking along connected components. This returns the
@@ -136,20 +137,20 @@ than 10 with a gap less than 3 pixels.</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>C. Galamhos, J. Matas and J. Kittler,&#8221;Progressive probabilistic
-Hough transform for line detection&#8221;, in IEEE Computer Society
-Conference on Computer Vision and Pattern Recognition, 1999.</td></tr>
-</tbody>
-</table>
 <table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[2]</td><td>Duda, R. O. and P. E. Hart, &#8220;Use of the Hough Transformation to
-Detect Lines and Curves in Pictures,&#8221; Comm. ACM, Vol. 15,
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Duda, R. O. and P. E. Hart, “Use of the Hough Transformation to
+Detect Lines and Curves in Pictures,” Comm. ACM, Vol. 15,
 pp. 11-15 (January, 1972)</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>C. Galamhos, J. Matas and J. Kittler,”Progressive probabilistic
+Hough transform for line detection”, in IEEE Computer Society
+Conference on Computer Vision and Pattern Recognition, 1999.</td></tr>
 </tbody>
 </table>
 <ul class="sphx-glr-horizontal">
@@ -205,7 +206,7 @@ pp. 11-15 (January, 1972)</td></tr>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Detected lines&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<a href="http://matplotlib.org/api/tight_layout_api.html#matplotlib.tight_layout" title="View documentation for matplotlib.pyplot.tight_layout"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 
 <span class="c1"># Line finding using the Probabilistic Hough Transform</span>
@@ -236,18 +237,18 @@ pp. 11-15 (January, 1972)</td></tr>
     <span class="n">a</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
     <span class="n">a</span><span class="o">.</span><span class="n">set_adjustable</span><span class="p">(</span><span class="s1">&#39;box-forced&#39;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<a href="http://matplotlib.org/api/tight_layout_api.html#matplotlib.tight_layout" title="View documentation for matplotlib.pyplot.tight_layout"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  4.751 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  4.620 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_line_hough_transform.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_line_hough_transform.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_line_hough_transform.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_line_hough_transform.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 </div>
 

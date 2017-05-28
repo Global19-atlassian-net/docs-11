@@ -108,10 +108,10 @@
   <div class="section" id="rank-filters">
 <span id="sphx-glr-auto-examples-xx-applications-plot-rank-filters-py"></span><h1>Rank filters<a class="headerlink" href="#rank-filters" title="Permalink to this headline">¶</a></h1>
 <p>Rank filters are non-linear filters using the local gray-level ordering to
-compute the filtered value. This ensemble of filters share a common base: the
-local gray-level histogram is computed on the neighborhood of a pixel (defined
-by a 2-D structuring element). If the filtered value is taken as the middle
-value of the histogram, we get the classical median filter.</p>
+compute the filtered value <a class="footnote-reference" href="#id3" id="id1">[1]</a>. This ensemble of filters share a common base:
+the local gray-level histogram is computed on the neighborhood of a pixel
+(defined by a 2-D structuring element). If the filtered value is taken as the
+middle value of the histogram, we get the classical median filter.</p>
 <p>Rank filters can be used for several purposes such as:</p>
 <ul class="simple">
 <li>image quality enhancement
@@ -123,15 +123,15 @@ e.g. border detection, isolated point detection</li>
 <li>post-processing
 e.g. small object removal, object grouping, contour smoothing</li>
 </ul>
-<p>Some well known filters are specific cases of rank filters <a class="footnote-reference" href="#id2" id="id1">[1]</a> e.g.
+<p>Some well known filters are specific cases of rank filters <a class="footnote-reference" href="#id3" id="id2">[1]</a> e.g.
 morphological dilation, morphological erosion, median filters.</p>
 <p>In this example, we will see how to filter a gray-level image using some of the
 linear and non-linear filters available in skimage. We use the <code class="docutils literal"><span class="pre">camera</span></code> image
 from <code class="docutils literal"><span class="pre">skimage.data</span></code> for all comparisons.</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
+<table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id7">2</a>)</em> Pierre Soille, On morphological operators based on rank filters, Pattern
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> Pierre Soille, On morphological operators based on rank filters, Pattern
 Recognition 35 (2002) 527-535, DOI:10.1016/S0031-3203(01)00047-4</td></tr>
 </tbody>
 </table>
@@ -164,7 +164,7 @@ noise.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.html#skimage.filters.median" title="View documentation for skimage.filters.rank.median"><span class="n">median</span></a>
 <span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <a href="../../api/skimage.morphology.html#skimage.morphology.disk" title="View documentation for skimage.morphology.disk"><span class="n">disk</span></a>
 
-<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">noisy_image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">noise</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.random.pareto.html#numpy.random" title="View documentation for numpy.random.random"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span></a><span class="p">(</span><span class="n">noisy_image</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">noisy_image</span> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">())</span>
 <span class="n">noisy_image</span><span class="p">[</span><span class="n">noise</span> <span class="o">&gt;</span> <span class="mf">0.99</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
 <span class="n">noisy_image</span><span class="p">[</span><span class="n">noise</span> <span class="o">&lt;</span> <span class="mf">0.01</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
@@ -266,19 +266,19 @@ smoothed whereas other details are preserved.</p>
 <div class="section" id="contrast-enhancement">
 <h2>Contrast enhancement<a class="headerlink" href="#contrast-enhancement" title="Permalink to this headline">¶</a></h2>
 <p>We compare here how the global histogram equalization is applied locally.</p>
-<p>The equalized image <a class="footnote-reference" href="#id5" id="id3">[2]</a> has a roughly linear cumulative distribution
-function for each pixel neighborhood. The local version <a class="footnote-reference" href="#id6" id="id4">[3]</a> of the
+<p>The equalized image <a class="footnote-reference" href="#id6" id="id4">[2]</a> has a roughly linear cumulative distribution
+function for each pixel neighborhood. The local version <a class="footnote-reference" href="#id7" id="id5">[3]</a> of the
 histogram equalization emphasizes every local gray-level variations.</p>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Histogram_equalization">http://en.wikipedia.org/wiki/Histogram_equalization</a></td></tr>
-</tbody>
-</table>
 <table class="docutils footnote" frame="void" id="id6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[3]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Adaptive_histogram_equalization">http://en.wikipedia.org/wiki/Adaptive_histogram_equalization</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id4">[2]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Histogram_equalization">http://en.wikipedia.org/wiki/Histogram_equalization</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Adaptive_histogram_equalization">http://en.wikipedia.org/wiki/Adaptive_histogram_equalization</a></td></tr>
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">exposure</span>
@@ -456,8 +456,8 @@ percentile <em>p0</em> and <em>p1</em> instead of the local minimum and maximum.
 </div>
 <div class="section" id="image-threshold">
 <h2>Image threshold<a class="headerlink" href="#image-threshold" title="Permalink to this headline">¶</a></h2>
-<p>The Otsu threshold <a class="footnote-reference" href="#id2" id="id7">[1]</a> method can be applied locally using the local gray-
-level distribution. In the example below, for each pixel, an &#8220;optimal&#8221;
+<p>The Otsu threshold <a class="footnote-reference" href="#id9" id="id8">[4]</a> method can be applied locally using the local gray-
+level distribution. In the example below, for each pixel, an “optimal”
 threshold is determined by maximizing the variance between two classes of
 pixels of the local neighborhood defined by a structuring element.</p>
 <p>The example compares the local threshold with the global threshold
@@ -468,10 +468,10 @@ pixels of the local neighborhood defined by a structuring element.</p>
 Otsu thresholding can be found in :
 <a class="reference internal" href="../../api/skimage.filters.html#skimage.filters.threshold_otsu" title="skimage.filters.threshold_otsu"><code class="xref py py-func docutils literal"><span class="pre">skimage.filters.threshold_otsu()</span></code></a>.</p>
 </div>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
+<table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[4]</td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Otsu's_method">http://en.wikipedia.org/wiki/Otsu&#8217;s_method</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id8">[4]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Otsu's_method">http://en.wikipedia.org/wiki/Otsu’s_method</a></td></tr>
 </tbody>
 </table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.otsu" title="View documentation for skimage.filters.rank.otsu"><span class="n">otsu</span></a>
@@ -703,7 +703,7 @@ available in <code class="docutils literal"><span class="pre">skimage</span></co
 <span class="n">rec</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">s_range</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">s_range</span><span class="p">:</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.random.pareto.html#numpy.random" title="View documentation for numpy.random.random"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span></a><span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
     <span class="p">(</span><span class="n">rc</span><span class="p">,</span> <span class="n">ms_rc</span><span class="p">)</span> <span class="o">=</span> <span class="n">cr_max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
     <span class="p">(</span><span class="n">rcm</span><span class="p">,</span> <span class="n">ms_rcm</span><span class="p">)</span> <span class="o">=</span> <span class="n">cm_dil</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
     <span class="n">rec</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">ms_rc</span><span class="p">,</span> <span class="n">ms_rcm</span><span class="p">))</span>
@@ -772,7 +772,7 @@ available in <code class="docutils literal"><span class="pre">skimage</span></co
 <span class="n">rec</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">s_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">s_range</span><span class="p">:</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.random.pareto.html#numpy.random" title="View documentation for numpy.random.random"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span></a><span class="p">((</span><span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">))</span> <span class="o">*</span> <span class="mi">256</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
     <span class="p">(</span><span class="n">rc</span><span class="p">,</span> <span class="n">ms_rc</span><span class="p">)</span> <span class="o">=</span> <span class="n">cr_med</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">elem</span><span class="p">)</span>
     <span class="n">rndi</span><span class="p">,</span> <span class="n">ms_ndi</span> <span class="o">=</span> <span class="n">ndi_med</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
     <span class="n">rec</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">ms_rc</span><span class="p">,</span> <span class="n">ms_ndi</span><span class="p">))</span>
@@ -790,14 +790,14 @@ available in <code class="docutils literal"><span class="pre">skimage</span></co
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_rank_filters_018.png" class="align-center" src="../../_images/sphx_glr_plot_rank_filters_018.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  37.931 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  37.815 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_rank_filters.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_rank_filters.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_rank_filters.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_rank_filters.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 </div>
 
