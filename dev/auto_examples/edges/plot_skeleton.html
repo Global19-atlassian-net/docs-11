@@ -128,7 +128,7 @@ break the connectivity of the corresponding object.</p>
 </div>
 <img alt="../../_images/sphx_glr_plot_skeleton_001.png" class="align-center" src="../../_images/sphx_glr_plot_skeleton_001.png" />
 <p><strong>skeletonize vs skeletonize 3d</strong></p>
-<p><code class="docutils literal"><span class="pre">skeletonize</span></code> <a class="reference internal" href="../../api/skimage.morphology.html#zha84" id="id1">[Zha84]</a> works by making successive passes of
+<p><code class="docutils literal"><span class="pre">skeletonize</span></code> <a class="reference internal" href="#zha84" id="id1">[Zha84]</a> works by making successive passes of
 the image, removing pixels on object borders. This continues until no
 more pixels can be removed.  The image is correlated with a
 mask that assigns each pixel a number in the range [0…255]
@@ -136,7 +136,7 @@ corresponding to each possible pattern of its 8 neighbouring
 pixels. A look up table is then used to assign the pixels a
 value of 0, 1, 2 or 3, which are selectively removed during
 the iterations.</p>
-<p><code class="docutils literal"><span class="pre">skeletonize_3d</span></code> <a class="reference internal" href="../../api/skimage.morphology.html#lee94" id="id2">[Lee94]</a> uses an octree data structure to examine a 3x3x3
+<p><code class="docutils literal"><span class="pre">skeletonize_3d</span></code> <a class="reference internal" href="#lee94" id="id2">[Lee94]</a> uses an octree data structure to examine a 3x3x3
 neighborhood of a pixel. The algorithm proceeds by iteratively sweeping
 over the image, and removing pixels at each iteration until the image
 stops changing. Each iteration consists of two steps: first, a list of
@@ -144,6 +144,23 @@ candidates for removal is assembled; then pixels from this list are
 rechecked sequentially, to better preserve connectivity of the image.</p>
 <p>Note that <code class="docutils literal"><span class="pre">skeletonize_3d</span></code> is designed to be used mostly on 3-D images.
 However, for illustrative purposes, we apply this algorithm on a 2-D image.</p>
+<table class="docutils citation" frame="void" id="zha84" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[Zha84]</a></td><td>A fast parallel algorithm for thinning digital patterns,
+T. Y. Zhang and C. Y. Suen, Communications of the ACM,
+March 1984, Volume 27, Number 3.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="lee94" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[Lee94]</a></td><td>T.-C. Lee, R.L. Kashyap and C.-N. Chu, Building skeleton models
+via 3-D medial surface/axis thinning algorithms.
+Computer Vision, Graphics, and Image Processing, 56(6):462-478,
+1994.</td></tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <a href="../../api/skimage.morphology.html#skimage.morphology.skeletonize" title="View documentation for skimage.morphology.skeletonize"><span class="n">skeletonize</span></a><span class="p">,</span> <a href="../../api/skimage.morphology.html#skimage.morphology.skeletonize_3d" title="View documentation for skimage.morphology.skeletonize_3d"><span class="n">skeletonize_3d</span></a>
 <span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <a href="../../api/skimage.data.html#skimage.data.binary_blobs" title="View documentation for skimage.data.binary_blobs"><span class="n">binary_blobs</span></a>
@@ -271,7 +288,7 @@ thicker skeleton.</p>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_skeleton_004.png" class="align-center" src="../../_images/sphx_glr_plot_skeleton_004.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  2.142 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  2.434 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_skeleton.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_skeleton.py</span></code></a></div>
