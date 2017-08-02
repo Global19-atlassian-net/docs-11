@@ -536,7 +536,7 @@ Springer, 2004, 20, 89-97.</td></tr>
 <h2>denoise_wavelet<a class="headerlink" href="#denoise-wavelet" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.restoration.denoise_wavelet">
-<code class="descclassname">skimage.restoration.</code><code class="descname">denoise_wavelet</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=None</em>, <em>wavelet='db1'</em>, <em>mode='soft'</em>, <em>wavelet_levels=None</em>, <em>multichannel=False</em>, <em>convert2ycbcr=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L472"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_wavelet" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.restoration.</code><code class="descname">denoise_wavelet</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=None</em>, <em>wavelet='db1'</em>, <em>mode='soft'</em>, <em>wavelet_levels=None</em>, <em>multichannel=False</em>, <em>convert2ycbcr=False</em>, <em>method='BayesShrink'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L494"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_wavelet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform wavelet denoising on an image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -550,10 +550,9 @@ of the denoised image.</p>
 </div></blockquote>
 <p><strong>sigma</strong> : float or list, optional</p>
 <blockquote>
-<div><p>The noise standard deviation used when computing the threshold
-adaptively as described in <a class="reference internal" href="#r840841" id="id20">[R840841]</a> for each color channel. When None
-(default), the noise standard deviation is estimated via the method in
-<a class="reference internal" href="#r841841" id="id21">[R841841]</a>.</p>
+<div><p>The noise standard deviation used when computing the wavelet detail
+coefficient threshold(s). When None (default), the noise standard
+deviation is estimated via the method in <a class="reference internal" href="#r841841" id="id20">[R841841]</a>.</p>
 </div></blockquote>
 <p><strong>wavelet</strong> : string, optional</p>
 <blockquote>
@@ -583,6 +582,11 @@ correspond to the final axis of the array).</p>
 colorspace instead of the RGB color space. This typically results in
 better performance for RGB images.</p>
 </div></blockquote>
+<p><strong>method</strong> : {‘BayesShrink’, ‘VisuShrink’}, optional</p>
+<blockquote>
+<div><p>Thresholding method to be used. The currently supported methods are
+“BayesShrink” <a class="reference internal" href="#r840841" id="id21">[R840841]</a> and “VisuShrink” <a class="reference internal" href="#r841841" id="id22">[R841841]</a>. Defaults to “BayesShrink”.</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
@@ -605,11 +609,19 @@ plane separately. The output image is clipped between either [-1, 1] and
 [0, 1] depending on the input image range.</p>
 <p>When YCbCr conversion is done, every color channel is scaled between 0
 and 1, and <cite>sigma</cite> values are applied to these scaled color channels.</p>
+<p>Many wavelet coefficient thresholding approaches have been proposed.  By
+default, <code class="docutils literal"><span class="pre">denoise_wavelet</span></code> applies BayesShrink, which is an adaptive
+thresholding method that computes separate thresholds for each wavelet
+sub-band as described in <a class="reference internal" href="#r840841" id="id23">[R840841]</a>.</p>
+<p>If <code class="docutils literal"><span class="pre">method</span> <span class="pre">==</span> <span class="pre">&quot;VisuShrink&quot;</span></code>, a single “universal threshold” is applied to
+all wavelet detail coefficients as described in <a class="reference internal" href="#r841841" id="id24">[R841841]</a>.  This threshold
+is designed to remove all Gaussian noise at a given <code class="docutils literal"><span class="pre">sigma</span></code> with high
+probability, but tends to produce images that appear overly smooth.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r840841" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R840841]</td><td><em>(<a class="fn-backref" href="#id20">1</a>, <a class="fn-backref" href="#id22">2</a>)</em> Chang, S. Grace, Bin Yu, and Martin Vetterli. “Adaptive wavelet
+<tr><td class="label">[R840841]</td><td><em>(<a class="fn-backref" href="#id21">1</a>, <a class="fn-backref" href="#id23">2</a>, <a class="fn-backref" href="#id25">3</a>)</em> Chang, S. Grace, Bin Yu, and Martin Vetterli. “Adaptive wavelet
 thresholding for image denoising and compression.” Image Processing,
 IEEE Transactions on 9.9 (2000): 1532-1546.
 DOI: 10.1109/83.862633</td></tr>
@@ -618,7 +630,7 @@ DOI: 10.1109/83.862633</td></tr>
 <table class="docutils citation" frame="void" id="r841841" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R841841]</td><td><em>(<a class="fn-backref" href="#id21">1</a>, <a class="fn-backref" href="#id23">2</a>)</em> D. L. Donoho and I. M. Johnstone. “Ideal spatial adaptation
+<tr><td class="label">[R841841]</td><td><em>(<a class="fn-backref" href="#id20">1</a>, <a class="fn-backref" href="#id22">2</a>, <a class="fn-backref" href="#id24">3</a>, <a class="fn-backref" href="#id26">4</a>)</em> D. L. Donoho and I. M. Johnstone. “Ideal spatial adaptation
 by wavelet shrinkage.” Biometrika 81.3 (1994): 425-455.
 DOI: 10.1093/biomet/81.3.425</td></tr>
 </tbody>
@@ -639,7 +651,7 @@ DOI: 10.1093/biomet/81.3.425</td></tr>
 <h2>estimate_sigma<a class="headerlink" href="#estimate-sigma" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.restoration.estimate_sigma">
-<code class="descclassname">skimage.restoration.</code><code class="descname">estimate_sigma</code><span class="sig-paren">(</span><em>image</em>, <em>average_sigmas=False</em>, <em>multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L584"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.estimate_sigma" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.restoration.</code><code class="descname">estimate_sigma</code><span class="sig-paren">(</span><em>image</em>, <em>average_sigmas=False</em>, <em>multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L626"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.estimate_sigma" title="Permalink to this definition">¶</a></dt>
 <dd><p>Robust wavelet-based estimator of the (Gaussian) noise standard deviation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -674,12 +686,12 @@ estimates is returned.</p>
 <p class="rubric">Notes</p>
 <p>This function assumes the noise follows a Gaussian distribution. The
 estimation algorithm is based on the median absolute deviation of the
-wavelet detail coefficients as described in section 4.2 of <a class="reference internal" href="#r844844" id="id24">[R844844]</a>.</p>
+wavelet detail coefficients as described in section 4.2 of <a class="reference internal" href="#r844844" id="id27">[R844844]</a>.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r844844" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R844844]</td><td><em>(<a class="fn-backref" href="#id24">1</a>, <a class="fn-backref" href="#id25">2</a>)</em> D. L. Donoho and I. M. Johnstone. “Ideal spatial adaptation
+<tr><td class="label">[R844844]</td><td><em>(<a class="fn-backref" href="#id27">1</a>, <a class="fn-backref" href="#id28">2</a>)</em> D. L. Donoho and I. M. Johnstone. “Ideal spatial adaptation
 by wavelet shrinkage.” Biometrika 81.3 (1994): 425-455.
 DOI:10.1093/biomet/81.3.425</td></tr>
 </tbody>
@@ -735,7 +747,7 @@ otherwise as spatial.</p>
 <table class="docutils citation" frame="void" id="r846846" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id26">[R846846]</a></td><td>N.S.Hoang, S.B.Damelin, “On surface completion and image inpainting
+<tr><td class="label"><a class="fn-backref" href="#id29">[R846846]</a></td><td>N.S.Hoang, S.B.Damelin, “On surface completion and image inpainting
 by biharmonic functions: numerical aspects”</td></tr>
 </tbody>
 </table>
@@ -793,7 +805,7 @@ under -1 are thresholded for skimage pipeline compatibility.</p>
 <table class="docutils citation" frame="void" id="r848848" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id27">[R848848]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution">http://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id30">[R848848]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution">http://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -911,7 +923,7 @@ computation with an infinite sample set.</p>
 <table class="docutils citation" frame="void" id="r850850" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id28">[R850850]</a></td><td><p class="first">François Orieux, Jean-François Giovannelli, and Thomas
+<tr><td class="label"><a class="fn-backref" href="#id31">[R850850]</a></td><td><p class="first">François Orieux, Jean-François Giovannelli, and Thomas
 Rodet, “Bayesian estimation of regularization and point
 spread function parameters for Wiener-Hunt deconvolution”,
 J. Opt. Soc. Am. A 27, 1593-1607 (2010)</p>
@@ -988,7 +1000,7 @@ was a masked array, the mask will be preserved.</p>
 <table class="docutils citation" frame="void" id="r852853" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id29">[R852853]</a></td><td>Miguel Arevallilo Herraez, David R. Burton, Michael J. Lalor,
+<tr><td class="label"><a class="fn-backref" href="#id32">[R852853]</a></td><td>Miguel Arevallilo Herraez, David R. Burton, Michael J. Lalor,
 and Munther A. Gdeisat, “Fast two-dimensional phase-unwrapping
 algorithm based on sorting by reliability following a noncontinuous
 path”, Journal Applied Optics, Vol. 41, No. 35 (2002) 7437,</td></tr>
@@ -997,7 +1009,7 @@ path”, Journal Applied Optics, Vol. 41, No. 35 (2002) 7437,</td></tr>
 <table class="docutils citation" frame="void" id="r853853" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id30">[R853853]</a></td><td>Abdul-Rahman, H., Gdeisat, M., Burton, D., &amp; Lalor, M., “Fast
+<tr><td class="label"><a class="fn-backref" href="#id33">[R853853]</a></td><td>Abdul-Rahman, H., Gdeisat, M., Burton, D., &amp; Lalor, M., “Fast
 three-dimensional phase-unwrapping algorithm based on sorting by
 reliability following a non-continuous path. In W. Osten,
 C. Gorecki, &amp; E. L. Novak (Eds.), Optical Metrology (2005) 32–40,
@@ -1110,7 +1122,7 @@ amplification or “explosive” solution).</p>
 <table class="docutils citation" frame="void" id="r856857" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id31">[R856857]</a></td><td><p class="first">François Orieux, Jean-François Giovannelli, and Thomas
+<tr><td class="label"><a class="fn-backref" href="#id34">[R856857]</a></td><td><p class="first">François Orieux, Jean-François Giovannelli, and Thomas
 Rodet, “Bayesian estimation of regularization and point
 spread function parameters for Wiener-Hunt deconvolution”,
 J. Opt. Soc. Am. A 27, 1593-1607 (2010)</p>
@@ -1122,7 +1134,7 @@ J. Opt. Soc. Am. A 27, 1593-1607 (2010)</p>
 <table class="docutils citation" frame="void" id="r857857" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id32">[R857857]</a></td><td>B. R. Hunt “A matrix theory proof of the discrete
+<tr><td class="label"><a class="fn-backref" href="#id35">[R857857]</a></td><td>B. R. Hunt “A matrix theory proof of the discrete
 convolution theorem”, IEEE Trans. on Audio and
 Electroacoustics, vol. au-19, no. 4, pp. 285-288, dec. 1971</td></tr>
 </tbody>
