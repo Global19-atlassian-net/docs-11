@@ -449,7 +449,7 @@ Use a prime number for the array dimensions</p>
 <h2>hough_circle<a class="headerlink" href="#hough-circle" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.hough_circle">
-<code class="descclassname">skimage.transform.</code><code class="descname">hough_circle</code><span class="sig-paren">(</span><em>image</em>, <em>radius</em>, <em>normalize=True</em>, <em>full_output=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L69"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.hough_circle" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">hough_circle</code><span class="sig-paren">(</span><em>image</em>, <em>radius</em>, <em>normalize=True</em>, <em>full_output=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L67"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.hough_circle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a circular Hough transform.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -507,7 +507,7 @@ Otherwise, R = 0.</p>
 <h2>hough_circle_peaks<a class="headerlink" href="#hough-circle-peaks" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.hough_circle_peaks">
-<code class="descclassname">skimage.transform.</code><code class="descname">hough_circle_peaks</code><span class="sig-paren">(</span><em>hspaces</em>, <em>radii</em>, <em>min_xdistance=1</em>, <em>min_ydistance=1</em>, <em>threshold=None</em>, <em>num_peaks=inf</em>, <em>total_num_peaks=inf</em>, <em>normalize=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L267"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.hough_circle_peaks" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">hough_circle_peaks</code><span class="sig-paren">(</span><em>hspaces</em>, <em>radii</em>, <em>min_xdistance=1</em>, <em>min_ydistance=1</em>, <em>threshold=None</em>, <em>num_peaks=inf</em>, <em>total_num_peaks=inf</em>, <em>normalize=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L264"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.hough_circle_peaks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return peaks in a circle Hough transform.</p>
 <p>Identifies most prominent circles separated by certain distances in a
 Hough space. Non-maximum suppression with different sizes is applied
@@ -566,13 +566,12 @@ peaks.</p>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">transform</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">draw</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">transform</span><span class="p">,</span> <span class="n">draw</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">120</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">radius</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">y_0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">draw</span><span class="o">.</span><span class="n">circle_perimeter</span><span class="p">(</span><span class="n">y_0</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hspaces</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">hough_circle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hspaces</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">hough_circle</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">accum</span><span class="p">,</span> <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">rad</span> <span class="o">=</span> <span class="n">hough_circle_peaks</span><span class="p">(</span><span class="n">hspaces</span><span class="p">,</span> <span class="p">[</span><span class="n">radius</span><span class="p">,])</span>
 </pre></div>
 </div>
@@ -583,7 +582,7 @@ peaks.</p>
 <h2>hough_ellipse<a class="headerlink" href="#hough-ellipse" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.hough_ellipse">
-<code class="descclassname">skimage.transform.</code><code class="descname">hough_ellipse</code><span class="sig-paren">(</span><em>image</em>, <em>threshold=4</em>, <em>accuracy=1</em>, <em>min_size=4</em>, <em>max_size=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.hough_ellipse" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">hough_ellipse</code><span class="sig-paren">(</span><em>image</em>, <em>threshold=4</em>, <em>accuracy=1</em>, <em>min_size=4</em>, <em>max_size=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.hough_ellipse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform an elliptical Hough transform.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -654,7 +653,7 @@ Conference on. Vol. 2. IEEE, 2002</td></tr>
 <h2>hough_line<a class="headerlink" href="#hough-line" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.hough_line">
-<code class="descclassname">skimage.transform.</code><code class="descname">hough_line</code><span class="sig-paren">(</span><em>image</em>, <em>theta=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L166"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.hough_line" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">hough_line</code><span class="sig-paren">(</span><em>image</em>, <em>theta=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L163"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.hough_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a straight line Hough transform.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -752,7 +751,7 @@ the <cite>theta</cite> array.</p>
 <h2>hough_line_peaks<a class="headerlink" href="#hough-line-peaks" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.hough_line_peaks">
-<code class="descclassname">skimage.transform.</code><code class="descname">hough_line_peaks</code><span class="sig-paren">(</span><em>hspace</em>, <em>angles</em>, <em>dists</em>, <em>min_distance=9</em>, <em>min_angle=10</em>, <em>threshold=None</em>, <em>num_peaks=inf</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L10"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.hough_line_peaks" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">hough_line_peaks</code><span class="sig-paren">(</span><em>hspace</em>, <em>angles</em>, <em>dists</em>, <em>min_distance=9</em>, <em>min_angle=10</em>, <em>threshold=None</em>, <em>num_peaks=inf</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L8"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.hough_line_peaks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return peaks in a straight line Hough transform.</p>
 <p>Identifies most prominent lines separated by a certain angle and distance
 in a Hough transform. Non-maximum suppression with different sizes is
@@ -1258,7 +1257,7 @@ Medical Imaging, IEEE Transactions on 26.1 (2007): 68-76.</td></tr>
 <h2>probabilistic_hough_line<a class="headerlink" href="#probabilistic-hough-line" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.probabilistic_hough_line">
-<code class="descclassname">skimage.transform.</code><code class="descname">probabilistic_hough_line</code><span class="sig-paren">(</span><em>image</em>, <em>threshold=10</em>, <em>line_length=50</em>, <em>line_gap=10</em>, <em>theta=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L224"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.probabilistic_hough_line" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">probabilistic_hough_line</code><span class="sig-paren">(</span><em>image</em>, <em>threshold=10</em>, <em>line_length=50</em>, <em>line_gap=10</em>, <em>theta=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L221"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.probabilistic_hough_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return lines from a progressive probabilistic line Hough transform.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
