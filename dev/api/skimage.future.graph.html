@@ -412,7 +412,7 @@ IEEE Transactions on, vol. 22, no. 8, pp. 888-905, August 2000.</td></tr>
 <h2>rag_boundary<a class="headerlink" href="#rag-boundary" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.future.graph.rag_boundary">
-<code class="descclassname">skimage.future.graph.</code><code class="descname">rag_boundary</code><span class="sig-paren">(</span><em>labels</em>, <em>edge_map</em>, <em>connectivity=2</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L388"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.rag_boundary" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.future.graph.</code><code class="descname">rag_boundary</code><span class="sig-paren">(</span><em>labels</em>, <em>edge_map</em>, <em>connectivity=2</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L386"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.rag_boundary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Comouter RAG based on region boundaries</p>
 <p>Given an image’s initial segmentation and its edge map this method
 constructs the corresponding Region Adjacency Graph (RAG). Each node in the
@@ -448,7 +448,7 @@ behavior is the same as <cite>connectivity</cite> parameter in
 <h2>rag_mean_color<a class="headerlink" href="#rag-mean-color" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.future.graph.rag_mean_color">
-<code class="descclassname">skimage.future.graph.</code><code class="descname">rag_mean_color</code><span class="sig-paren">(</span><em>image</em>, <em>labels</em>, <em>connectivity=2</em>, <em>mode='distance'</em>, <em>sigma=255.0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L297"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.rag_mean_color" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.future.graph.</code><code class="descname">rag_mean_color</code><span class="sig-paren">(</span><em>image</em>, <em>labels</em>, <em>connectivity=2</em>, <em>mode='distance'</em>, <em>sigma=255.0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L295"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.rag_mean_color" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the Region Adjacency Graph using mean colors.</p>
 <p>Given an image and its initial segmentation, this method constructs the
 corresponding Region Adjacency Graph (RAG). Each node in the RAG
@@ -531,7 +531,7 @@ any two colors behave as though they were similar.</p>
 <h2>show_rag<a class="headerlink" href="#show-rag" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.future.graph.show_rag">
-<code class="descclassname">skimage.future.graph.</code><code class="descname">show_rag</code><span class="sig-paren">(</span><em>labels</em>, <em>rag</em>, <em>image</em>, <em>border_color='black'</em>, <em>edge_width=1.5</em>, <em>edge_cmap='magma'</em>, <em>img_cmap='bone'</em>, <em>in_place=True</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L452"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.show_rag" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.future.graph.</code><code class="descname">show_rag</code><span class="sig-paren">(</span><em>labels</em>, <em>rag</em>, <em>image</em>, <em>border_color='black'</em>, <em>edge_width=1.5</em>, <em>edge_cmap='magma'</em>, <em>img_cmap='bone'</em>, <em>in_place=True</em>, <em>ax=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L450"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.show_rag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show a Region Adjacency Graph on an image.</p>
 <p>Given a labelled image and its corresponding RAG, show the nodes and edges
 of the RAG on the image with the specified colors. Edges are displayed between
@@ -682,12 +682,24 @@ sparse matrices.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="skimage.future.graph.RAG.edges_iter">
-<code class="descname">edges_iter</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L284"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.edges_iter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Iterate over edges</p>
-<p>For compatibility with older versions of networkx.  Versions &lt;= 1.11
-have an <code class="docutils literal"><span class="pre">edges_iter</span></code> method, but later versions return an iterator from
-the edges method, and lack <code class="docutils literal"><span class="pre">edges_iter</span></code>.</p>
+<dt id="skimage.future.graph.RAG.fresh_copy">
+<code class="descname">fresh_copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L252"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.fresh_copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a fresh copy graph with the same data structure.</p>
+<p>A fresh copy has no nodes, edges or graph attributes. It is
+the same data structure as the current graph. This method is
+typically used to create an empty version of the graph.</p>
+<p>This is required when subclassing Graph with networkx v2 and
+does not cause problems for v1. Here is more detail from
+the network migrating from 1.x to 2.x document:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>With the new GraphViews (SubGraph, ReversedGraph, etc)
+you can&#39;t assume that ``G.__class__()`` will create a new
+instance of the same graph type as ``G``. In fact, the
+call signature for ``__class__`` differs depending on
+whether ``G`` is a view or a base class. For v2.x you
+should use ``G.fresh_copy()`` to create a null graph of
+the correct type---ready to fill with nodes and edges.
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -745,7 +757,7 @@ node has a new id which is returned.</p>
 
 <dl class="method">
 <dt id="skimage.future.graph.RAG.next_id">
-<code class="descname">next_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L252"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.next_id" title="Permalink to this definition">¶</a></dt>
+<code class="descname">next_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L274"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.next_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the <cite>id</cite> for the new node to be inserted.</p>
 <p>The current implementation returns one more than the maximum <cite>id</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -760,15 +772,6 @@ node has a new id which is returned.</p>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-<dl class="method">
-<dt id="skimage.future.graph.RAG.nodes_iter">
-<code class="descname">nodes_iter</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L272"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.nodes_iter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Iterate over nodes</p>
-<p>For compatibility with older versions of networkx.  Versions &lt;= 1.11
-have an <code class="docutils literal"><span class="pre">nodes_iter</span></code> method, but later versions return an iterator from
-the nodes method, and lack <code class="docutils literal"><span class="pre">nodes_iter</span></code>.</p>
 </dd></dl>
 
 </dd></dl>
