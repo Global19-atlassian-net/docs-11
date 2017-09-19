@@ -71,11 +71,16 @@
 <li><a class="reference internal" href="#">Module: <code class="docutils literal"><span class="pre">segmentation</span></code></a><ul class="nav nav-list">
 <li><a class="reference internal" href="#active-contour">active_contour</a></li>
 <li><a class="reference internal" href="#chan-vese">chan_vese</a></li>
+<li><a class="reference internal" href="#checkerboard-level-set">checkerboard_level_set</a></li>
+<li><a class="reference internal" href="#circle-level-set">circle_level_set</a></li>
 <li><a class="reference internal" href="#clear-border">clear_border</a></li>
 <li><a class="reference internal" href="#felzenszwalb">felzenszwalb</a></li>
 <li><a class="reference internal" href="#find-boundaries">find_boundaries</a></li>
+<li><a class="reference internal" href="#inverse-gaussian-gradient">inverse_gaussian_gradient</a></li>
 <li><a class="reference internal" href="#join-segmentations">join_segmentations</a></li>
 <li><a class="reference internal" href="#mark-boundaries">mark_boundaries</a></li>
+<li><a class="reference internal" href="#morphological-chan-vese">morphological_chan_vese</a></li>
+<li><a class="reference internal" href="#morphological-geodesic-active-contour">morphological_geodesic_active_contour</a></li>
 <li><a class="reference internal" href="#quickshift">quickshift</a></li>
 <li><a class="reference internal" href="#random-walker">random_walker</a></li>
 <li><a class="reference internal" href="#relabel-from-one">relabel_from_one</a></li>
@@ -125,6 +130,12 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.chan_vese" title="skimage.segmentation.chan_vese"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.chan_vese</span></code></a>(image[,&nbsp;mu,&nbsp;…])</td>
 <td>Chan-Vese segmentation algorithm.</td>
 </tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.checkerboard_level_set</span></code></a>(…)</td>
+<td>Create a checkerboard level set with binary values.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.circle_level_set" title="skimage.segmentation.circle_level_set"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.circle_level_set</span></code></a>(…[,&nbsp;…])</td>
+<td>Create a circle level set with binary values.</td>
+</tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.clear_border" title="skimage.segmentation.clear_border"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.clear_border</span></code></a>(labels[,&nbsp;…])</td>
 <td>Clear objects connected to the label image border.</td>
 </tr>
@@ -134,28 +145,37 @@
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.find_boundaries" title="skimage.segmentation.find_boundaries"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.find_boundaries</span></code></a>(label_img)</td>
 <td>Return bool array where boundaries between labeled regions are True.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.join_segmentations" title="skimage.segmentation.join_segmentations"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.join_segmentations</span></code></a>(s1,&nbsp;s2)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.inverse_gaussian_gradient" title="skimage.segmentation.inverse_gaussian_gradient"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.inverse_gaussian_gradient</span></code></a>(image)</td>
+<td>Inverse of gradient magnitude.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.join_segmentations" title="skimage.segmentation.join_segmentations"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.join_segmentations</span></code></a>(s1,&nbsp;s2)</td>
 <td>Return the join of the two input segmentations.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.mark_boundaries" title="skimage.segmentation.mark_boundaries"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.mark_boundaries</span></code></a>(image,&nbsp;…)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.mark_boundaries" title="skimage.segmentation.mark_boundaries"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.mark_boundaries</span></code></a>(image,&nbsp;…)</td>
 <td>Return image with boundaries between labeled regions highlighted.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.quickshift" title="skimage.segmentation.quickshift"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.quickshift</span></code></a>(image[,&nbsp;…])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.morphological_chan_vese" title="skimage.segmentation.morphological_chan_vese"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.morphological_chan_vese</span></code></a>(…)</td>
+<td>Morphological Active Contours without Edges (MorphACWE)</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.morphological_geodesic_active_contour" title="skimage.segmentation.morphological_geodesic_active_contour"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.morphological_geodesic_active_contour</span></code></a>(…)</td>
+<td>Morphological Geodesic Active Contours (MorphGAC).</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.quickshift" title="skimage.segmentation.quickshift"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.quickshift</span></code></a>(image[,&nbsp;…])</td>
 <td>Segments image using quickshift clustering in Color-(x,y) space.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.random_walker" title="skimage.segmentation.random_walker"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.random_walker</span></code></a>(data,&nbsp;labels)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.random_walker" title="skimage.segmentation.random_walker"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.random_walker</span></code></a>(data,&nbsp;labels)</td>
 <td>Random walker algorithm for segmentation from markers.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.relabel_from_one" title="skimage.segmentation.relabel_from_one"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.relabel_from_one</span></code></a>(…)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.relabel_from_one" title="skimage.segmentation.relabel_from_one"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.relabel_from_one</span></code></a>(…)</td>
 <td><strong>Deprecated function</strong>. Use <code class="docutils literal"><span class="pre">relabel_sequential</span></code> instead.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.relabel_sequential" title="skimage.segmentation.relabel_sequential"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.relabel_sequential</span></code></a>(…)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.relabel_sequential" title="skimage.segmentation.relabel_sequential"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.relabel_sequential</span></code></a>(…)</td>
 <td>Relabel arbitrary labels to {<cite>offset</cite>, …</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.slic" title="skimage.segmentation.slic"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.slic</span></code></a>(image[,&nbsp;…])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.slic" title="skimage.segmentation.slic"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.slic</span></code></a>(image[,&nbsp;…])</td>
 <td>Segments image using k-means clustering in Color-(x,y,z) space.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.watershed" title="skimage.segmentation.watershed"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.watershed</span></code></a>(image,&nbsp;markers)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.watershed" title="skimage.segmentation.watershed"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.watershed</span></code></a>(image,&nbsp;markers)</td>
 <td>Find watershed basins in <cite>image</cite> flooded from given <cite>markers</cite>.</td>
 </tr>
 </tbody>
@@ -239,10 +259,10 @@ yields same behaviour as ‘fixed’ and ‘free’, respectively.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r886886" rules="none">
+<table class="docutils citation" frame="void" id="r890890" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R886886]</a></td><td>Kass, M.; Witkin, A.; Terzopoulos, D. “Snakes: Active contour
+<tr><td class="label"><a class="fn-backref" href="#id1">[R890890]</a></td><td>Kass, M.; Witkin, A.; Terzopoulos, D. “Snakes: Active contour
 models”. International Journal of Computer Vision 1 (4): 321
 (1988).</td></tr>
 </tbody>
@@ -396,7 +416,7 @@ region, and a term which is dependent on the length of the
 boundary of the segmented region.</p>
 <p>This algorithm was first proposed by Tony Chan and Luminita Vese,
 in a publication entitled “An Active Countour Model Without Edges”
-<a class="reference internal" href="#r888890" id="id2">[R888890]</a>.</p>
+<a class="reference internal" href="#r892894" id="id2">[R892894]</a>.</p>
 <p>This implementation of the algorithm is somewhat simplified in the
 sense that the area factor ‘nu’ described in the original paper is
 not implemented, and is only suitable for grayscale images.</p>
@@ -415,29 +435,105 @@ length of the contour multiplied by the ‘mu’ factor.</p>
 <p>Supports 2D grayscale images only, and does not implement the area
 term described in the original article.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r888890" rules="none">
+<table class="docutils citation" frame="void" id="r892894" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R888890]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> An Active Contour Model without Edges, Tony Chan and
+<tr><td class="label">[R892894]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> An Active Contour Model without Edges, Tony Chan and
 Luminita Vese, Scale-Space Theories in Computer Vision,
 1999, DOI:10.1007/3-540-48236-9_13</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r889890" rules="none">
+<table class="docutils citation" frame="void" id="r893894" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[R889890]</a></td><td>Chan-Vese Segmentation, Pascal Getreuer Image Processing On
+<tr><td class="label"><a class="fn-backref" href="#id4">[R893894]</a></td><td>Chan-Vese Segmentation, Pascal Getreuer Image Processing On
 Line, 2 (2012), pp. 214-224,
 DOI:10.5201/ipol.2012.g-cv</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r890890" rules="none">
+<table class="docutils citation" frame="void" id="r894894" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[R890890]</a></td><td>The Chan-Vese Algorithm - Project Report, Rami Cohen,
+<tr><td class="label"><a class="fn-backref" href="#id5">[R894894]</a></td><td>The Chan-Vese Algorithm - Project Report, Rami Cohen,
 <a class="reference external" href="http://arxiv.org/abs/1107.2782">http://arxiv.org/abs/1107.2782</a>, 2011</td></tr>
 </tbody>
 </table>
+</dd></dl>
+
+</div>
+<div class="section" id="checkerboard-level-set">
+<h2>checkerboard_level_set<a class="headerlink" href="#checkerboard-level-set" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.segmentation.checkerboard_level_set">
+<code class="descclassname">skimage.segmentation.</code><code class="descname">checkerboard_level_set</code><span class="sig-paren">(</span><em>image_shape</em>, <em>square_size=5</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.checkerboard_level_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a checkerboard level set with binary values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image_shape</strong> : tuple of positive integers</p>
+<blockquote>
+<div><p>Shape of the image.</p>
+</div></blockquote>
+<p><strong>square_size</strong> : int, optional</p>
+<blockquote>
+<div><p>Size of the squares of the checkerboard. It defaults to 5.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : array with shape <cite>image_shape</cite></p>
+<blockquote class="last">
+<div><p>Binary level set of the checkerboard.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#skimage.segmentation.circle_level_set" title="skimage.segmentation.circle_level_set"><code class="xref py py-obj docutils literal"><span class="pre">circle_level_set</span></code></a></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="circle-level-set">
+<h2>circle_level_set<a class="headerlink" href="#circle-level-set" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.segmentation.circle_level_set">
+<code class="descclassname">skimage.segmentation.</code><code class="descname">circle_level_set</code><span class="sig-paren">(</span><em>image_shape</em>, <em>center=None</em>, <em>radius=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.circle_level_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a circle level set with binary values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image_shape</strong> : tuple of positive integers</p>
+<blockquote>
+<div><p>Shape of the image</p>
+</div></blockquote>
+<p><strong>center</strong> : tuple of positive integers, optional</p>
+<blockquote>
+<div><p>Coordinates of the center of the circle given in (row, column). If not
+given, it defaults to the center of the image.</p>
+</div></blockquote>
+<p><strong>radius</strong> : float, optional</p>
+<blockquote>
+<div><p>Radius of the circle. If not given, it is set to the 75% of the
+smallest image dimension.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : array with shape <cite>image_shape</cite></p>
+<blockquote class="last">
+<div><p>Binary level set of the circle with the given <cite>radius</cite> and <cite>center</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal"><span class="pre">checkerboard_level_set</span></code></a></p>
+</div>
 </dd></dl>
 
 </div>
@@ -551,10 +647,10 @@ channels. A value of False, for a 3D image, is not currently supported.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r894894" rules="none">
+<table class="docutils citation" frame="void" id="r898898" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[R894894]</a></td><td>Efficient graph-based image segmentation, Felzenszwalb, P.F. and
+<tr><td class="label"><a class="fn-backref" href="#id6">[R898898]</a></td><td>Efficient graph-based image segmentation, Felzenszwalb, P.F. and
 Huttenlocher, D.P.  International Journal of Computer Vision, 2004</td></tr>
 </tbody>
 </table>
@@ -699,6 +795,50 @@ inserted in between all other pairs of pixels).</p>
 </dd></dl>
 
 </div>
+<div class="section" id="inverse-gaussian-gradient">
+<h2>inverse_gaussian_gradient<a class="headerlink" href="#inverse-gaussian-gradient" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.segmentation.inverse_gaussian_gradient">
+<code class="descclassname">skimage.segmentation.</code><code class="descname">inverse_gaussian_gradient</code><span class="sig-paren">(</span><em>image</em>, <em>alpha=100.0</em>, <em>sigma=5.0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L182"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.inverse_gaussian_gradient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse of gradient magnitude.</p>
+<p>Compute the magnitude of the gradients in the image and then inverts the
+result in the range [0, 1]. Flat areas are assigned values close to 1,
+while areas close to borders are assigned values close to 0.</p>
+<p>This function or a similar one defined by the user should be applied over
+the image as a preprocessing step before calling
+<cite>morphological_geodesic_active_contour</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : (M, N) or (L, M, N) array</p>
+<blockquote>
+<div><p>Grayscale image or volume.</p>
+</div></blockquote>
+<p><strong>alpha</strong> : float, optional</p>
+<blockquote>
+<div><p>Controls the steepness of the inversion. A larger value will make the
+transition between the flat areas and border areas steeper in the
+resulting array.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float, optional</p>
+<blockquote>
+<div><p>Standard deviation of the Gaussian filter applied over the image.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>gimage</strong> : (M, N) or (L, M, N) array</p>
+<blockquote class="last">
+<div><p>Preprocessed image (or volume) suitable for
+<cite>morphological_geodesic_active_contour</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 <div class="section" id="join-segmentations">
 <h2>join_segmentations<a class="headerlink" href="#join-segmentations" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -797,6 +937,201 @@ superimposed on the original image.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="morphological-chan-vese">
+<h2>morphological_chan_vese<a class="headerlink" href="#morphological-chan-vese" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.segmentation.morphological_chan_vese">
+<code class="descclassname">skimage.segmentation.</code><code class="descname">morphological_chan_vese</code><span class="sig-paren">(</span><em>image</em>, <em>iterations</em>, <em>init_level_set='checkerboard'</em>, <em>smoothing=1</em>, <em>lambda1=1</em>, <em>lambda2=1</em>, <em>iter_callback=&lt;function &lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L214"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
+<dd><p>Morphological Active Contours without Edges (MorphACWE)</p>
+<p>Active contours without edges implemented with morphological operators. It
+can be used to segment objects in images and volumes without well defined
+borders. It is required that the inside of the object looks different on
+average than the outside (i.e., the inner area of the object should be
+darker or lighter than the outer area on average).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : (M, N) or (L, M, N) array</p>
+<blockquote>
+<div><p>Grayscale image or volume to be segmented.</p>
+</div></blockquote>
+<p><strong>iterations</strong> : uint</p>
+<blockquote>
+<div><p>Number of iterations to run</p>
+</div></blockquote>
+<p><strong>init_level_set</strong> : str, (M, N) array, or (L, M, N) array</p>
+<blockquote>
+<div><p>Initial level set. If an array is given, it will be binarized and used
+as the initial level set. If a string is given, it defines the method
+to generate a reasonable initial level set with the shape of the
+<cite>image</cite>. Accepted values are ‘checkerboard’ and ‘circle’. See the
+documentation of <cite>checkerboard_level_set</cite> and <cite>circle_level_set</cite>
+respectively for details about how these level sets are created.</p>
+</div></blockquote>
+<p><strong>smoothing</strong> : uint, optional</p>
+<blockquote>
+<div><p>Number of times the smoothing operator is applied per iteration.
+Reasonable values are around 1-4. Larger values lead to smoother
+segmentations.</p>
+</div></blockquote>
+<p><strong>lambda1</strong> : float, optional</p>
+<blockquote>
+<div><p>Weight parameter for the outer region. If <cite>lambda1</cite> is larger than
+<cite>lambda2</cite>, the outer region will contain a larger range of values than
+the inner region.</p>
+</div></blockquote>
+<p><strong>lambda2</strong> : float, optional</p>
+<blockquote>
+<div><p>Weight parameter for the inner region. If <cite>lambda2</cite> is larger than
+<cite>lambda1</cite>, the inner region will contain a larger range of values than
+the outer region.</p>
+</div></blockquote>
+<p><strong>iter_callback</strong> : function, optional</p>
+<blockquote>
+<div><p>If given, this function is called once per iteration with the current
+level set as the only argument. This is useful for debugging or for
+plotting intermediate results during the evolution.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : (M, N) or (L, M, N) array</p>
+<blockquote class="last">
+<div><p>Final segmentation (i.e., the final level set)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#skimage.segmentation.circle_level_set" title="skimage.segmentation.circle_level_set"><code class="xref py py-obj docutils literal"><span class="pre">circle_level_set</span></code></a>, <a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal"><span class="pre">checkerboard_level_set</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>This is a version of the Chan-Vese algorithm that uses morphological
+operators instead of solving a partial differential equation (PDE) for the
+evolution of the contour. The set of morphological operators used in this
+algorithm are proved to be infinitesimally equivalent to the Chan-Vese PDE
+(see <a class="reference internal" href="#r900900" id="id7">[R900900]</a>). However, morphological operators are do not suffer from the
+numerical stability issues typically found in PDEs (it is not necessary to
+find the right time step for the evolution), and are computationally
+faster.</p>
+<p>The algorithm and its theoretical derivation are described in <a class="reference internal" href="#r900900" id="id8">[R900900]</a>.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r900900" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R900900]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id8">2</a>, <a class="fn-backref" href="#id9">3</a>)</em> A Morphological Approach to Curvature-based Evolution of Curves and
+Surfaces, Pablo Márquez-Neila, Luis Baumela, Luis Álvarez. In IEEE
+Transactions on Pattern Analysis and Machine Intelligence (PAMI),
+2014, DOI 10.1109/TPAMI.2013.106</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="morphological-geodesic-active-contour">
+<h2>morphological_geodesic_active_contour<a class="headerlink" href="#morphological-geodesic-active-contour" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.segmentation.morphological_geodesic_active_contour">
+<code class="descclassname">skimage.segmentation.</code><code class="descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em>gimage</em>, <em>iterations</em>, <em>init_level_set='circle'</em>, <em>smoothing=1</em>, <em>threshold='auto'</em>, <em>balloon=0</em>, <em>iter_callback=&lt;function &lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L318"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
+<dd><p>Morphological Geodesic Active Contours (MorphGAC).</p>
+<p>Geodesic active contours implemented with morphological operators. It can
+be used to segment objects with visible but noisy, cluttered, broken
+borders.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>gimage</strong> : (M, N) or (L, M, N) array</p>
+<blockquote>
+<div><p>Preprocessed image or volume to be segmented. This is very rarely the
+original image. Instead, this is usually a preprocessed version of the
+original image that enhances and highlights the borders (or other
+structures) of the object to segment.
+<cite>morphological_geodesic_active_contour</cite> will try to stop the contour
+evolution in areas where <cite>gimage</cite> is small. See
+<cite>morphsnakes.inverse_gaussian_gradient</cite> as an example function to
+perform this preprocessing. Note that the quality of
+<cite>morphological_geodesic_active_contour</cite> might greatly depend on this
+preprocessing.</p>
+</div></blockquote>
+<p><strong>iterations</strong> : uint</p>
+<blockquote>
+<div><p>Number of iterations to run.</p>
+</div></blockquote>
+<p><strong>init_level_set</strong> : str, (M, N) array, or (L, M, N) array</p>
+<blockquote>
+<div><p>Initial level set. If an array is given, it will be binarized and used
+as the initial level set. If a string is given, it defines the method
+to generate a reasonable initial level set with the shape of the
+<cite>image</cite>. Accepted values are ‘checkerboard’ and ‘circle’. See the
+documentation of <cite>checkerboard_level_set</cite> and <cite>circle_level_set</cite>
+respectively for details about how these level sets are created.</p>
+</div></blockquote>
+<p><strong>smoothing</strong> : uint, optional</p>
+<blockquote>
+<div><p>Number of times the smoothing operator is applied per iteration.
+Reasonable values are around 1-4. Larger values lead to smoother
+segmentations.</p>
+</div></blockquote>
+<p><strong>threshold</strong> : float, optional</p>
+<blockquote>
+<div><p>Areas of the image with a value smaller than this threshold will be
+considered borders. The evolution of the contour will stop in this
+areas.</p>
+</div></blockquote>
+<p><strong>balloon</strong> : float, optional</p>
+<blockquote>
+<div><p>Balloon force to guide the contour in non-informative areas of the
+image, i.e., areas where the gradient of the image is too small to push
+the contour towards a border. A negative value will shrink the contour,
+while a positive value will expand the contour in these areas. Setting
+this to zero will disable the balloon force.</p>
+</div></blockquote>
+<p><strong>iter_callback</strong> : function, optional</p>
+<blockquote>
+<div><p>If given, this function is called once per iteration with the current
+level set as the only argument. This is useful for debugging or for
+plotting intermediate results during the evolution.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : (M, N) or (L, M, N) array</p>
+<blockquote class="last">
+<div><p>Final segmentation (i.e., the final level set)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#skimage.segmentation.inverse_gaussian_gradient" title="skimage.segmentation.inverse_gaussian_gradient"><code class="xref py py-obj docutils literal"><span class="pre">inverse_gaussian_gradient</span></code></a>, <a class="reference internal" href="#skimage.segmentation.circle_level_set" title="skimage.segmentation.circle_level_set"><code class="xref py py-obj docutils literal"><span class="pre">circle_level_set</span></code></a>, <a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal"><span class="pre">checkerboard_level_set</span></code></a></p>
+</div>
+<p class="rubric">Notes</p>
+<p>This is a version of the Geodesic Active Contours (GAC) algorithm that uses
+morphological operators instead of solving partial differential equations
+(PDEs) for the evolution of the contour. The set of morphological operators
+used in this algorithm are proved to be infinitesimally equivalent to the
+GAC PDEs (see <a class="reference internal" href="#r902902" id="id10">[R902902]</a>). However, morphological operators are do not suffer
+from the numerical stability issues typically found in PDEs (e.g., it is
+not necessary to find the right time step for the evolution), and are
+computationally faster.</p>
+<p>The algorithm and its theoretical derivation are described in <a class="reference internal" href="#r902902" id="id11">[R902902]</a>.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r902902" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[R902902]</td><td><em>(<a class="fn-backref" href="#id10">1</a>, <a class="fn-backref" href="#id11">2</a>, <a class="fn-backref" href="#id12">3</a>)</em> A Morphological Approach to Curvature-based Evolution of Curves and
+Surfaces, Pablo Márquez-Neila, Luis Baumela, Luis Álvarez. In IEEE
+Transactions on Pattern Analysis and Machine Intelligence (PAMI),
+2014, DOI 10.1109/TPAMI.2013.106</td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 <div class="section" id="quickshift">
 <h2>quickshift<a class="headerlink" href="#quickshift" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -860,10 +1195,10 @@ segmentation. For this purpose, the input is assumed to be RGB.</p>
 segmentation, though this is not strictly necessary. For this to work, the
 image must be given in RGB format.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r896896" rules="none">
+<table class="docutils citation" frame="void" id="r904904" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[R896896]</a></td><td>Quick shift and kernel methods for mode seeking,
+<tr><td class="label"><a class="fn-backref" href="#id13">[R904904]</a></td><td>Quick shift and kernel methods for mode seeking,
 Vedaldi, A. and Soatto, S.
 European Conference on Computer Vision, 2008</td></tr>
 </tbody>
@@ -1207,7 +1542,7 @@ in most of the cases.</p>
 </div></blockquote>
 <p><strong>slic_zero: bool, optional</strong></p>
 <blockquote>
-<div><p>Run SLIC-zero, the zero-parameter mode of SLIC. <a class="reference internal" href="#r899899" id="id8">[R899899]</a></p>
+<div><p>Run SLIC-zero, the zero-parameter mode of SLIC. <a class="reference internal" href="#r907907" id="id14">[R907907]</a></p>
 </div></blockquote>
 </td>
 </tr>
@@ -1240,18 +1575,18 @@ interpret them as 3D with the last dimension having length 3, use
 <cite>multichannel=False</cite>.</li>
 </ul>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r898899" rules="none">
+<table class="docutils citation" frame="void" id="r906907" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id9">[R898899]</a></td><td>Radhakrishna Achanta, Appu Shaji, Kevin Smith, Aurelien Lucchi,
+<tr><td class="label"><a class="fn-backref" href="#id15">[R906907]</a></td><td>Radhakrishna Achanta, Appu Shaji, Kevin Smith, Aurelien Lucchi,
 Pascal Fua, and Sabine Süsstrunk, SLIC Superpixels Compared to
 State-of-the-art Superpixel Methods, TPAMI, May 2012.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r899899" rules="none">
+<table class="docutils citation" frame="void" id="r907907" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R899899]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> <a class="reference external" href="http://ivrg.epfl.ch/research/superpixels#SLICO">http://ivrg.epfl.ch/research/superpixels#SLICO</a></td></tr>
+<tr><td class="label">[R907907]</td><td><em>(<a class="fn-backref" href="#id14">1</a>, <a class="fn-backref" href="#id16">2</a>)</em> <a class="reference external" href="http://ivrg.epfl.ch/research/superpixels#SLICO">http://ivrg.epfl.ch/research/superpixels#SLICO</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1305,7 +1640,7 @@ will be labeled.</p>
 </div></blockquote>
 <p><strong>compactness</strong> : float, optional</p>
 <blockquote>
-<div><p>Use compact watershed <a class="reference internal" href="#r904904" id="id11">[R904904]</a> with given compactness parameter.
+<div><p>Use compact watershed <a class="reference internal" href="#r912912" id="id17">[R912912]</a> with given compactness parameter.
 Higher values result in more regularly-shaped watershed basins.</p>
 </div></blockquote>
 <p><strong>watershed_line</strong> : bool, optional</p>
@@ -1331,7 +1666,7 @@ obtained by the watershed algorithm. The line has the label 0.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This function implements a watershed algorithm <a class="reference internal" href="#r902904" id="id12">[R902904]</a> <a class="reference internal" href="#r903904" id="id13">[R903904]</a> that apportions
+<p>This function implements a watershed algorithm <a class="reference internal" href="#r910912" id="id18">[R910912]</a> <a class="reference internal" href="#r911912" id="id19">[R911912]</a> that apportions
 pixels into marked basins. The algorithm uses a priority queue to hold
 the pixels with the metric for the priority queue being pixel value, then
 the time of entry into the queue - this settles ties in favor of the
@@ -1350,22 +1685,22 @@ the local minima of the gradient of the image, or the local maxima of the
 distance function to the background for separating overlapping objects
 (see example).</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r902904" rules="none">
+<table class="docutils citation" frame="void" id="r910912" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R902904]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id14">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Watershed_%28image_processing%29">http://en.wikipedia.org/wiki/Watershed_%28image_processing%29</a></td></tr>
+<tr><td class="label">[R910912]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id20">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Watershed_%28image_processing%29">http://en.wikipedia.org/wiki/Watershed_%28image_processing%29</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r903904" rules="none">
+<table class="docutils citation" frame="void" id="r911912" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R903904]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id15">2</a>)</em> <a class="reference external" href="http://cmm.ensmp.fr/~beucher/wtshed.html">http://cmm.ensmp.fr/~beucher/wtshed.html</a></td></tr>
+<tr><td class="label">[R911912]</td><td><em>(<a class="fn-backref" href="#id19">1</a>, <a class="fn-backref" href="#id21">2</a>)</em> <a class="reference external" href="http://cmm.ensmp.fr/~beucher/wtshed.html">http://cmm.ensmp.fr/~beucher/wtshed.html</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r904904" rules="none">
+<table class="docutils citation" frame="void" id="r912912" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R904904]</td><td><em>(<a class="fn-backref" href="#id11">1</a>, <a class="fn-backref" href="#id16">2</a>)</em> Peer Neubert &amp; Peter Protzel (2014). Compact Watershed and
+<tr><td class="label">[R912912]</td><td><em>(<a class="fn-backref" href="#id17">1</a>, <a class="fn-backref" href="#id22">2</a>)</em> Peer Neubert &amp; Peter Protzel (2014). Compact Watershed and
 Preemptive SLIC: On Improving Trade-offs of Superpixel Segmentation
 Algorithms. ICPR 2014, pp 996-1001. DOI:10.1109/ICPR.2014.181
 https://www.tu-chemnitz.de/etit/proaut/forschung/rsrc/cws_pSLIC_ICPR.pdf</td></tr>
