@@ -2124,7 +2124,7 @@ Timo Ahonen, Abdenour Hadid, Matti Pietikainen,
 <h2>match_descriptors<a class="headerlink" href="#match-descriptors" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.match_descriptors">
-<code class="descclassname">skimage.feature.</code><code class="descname">match_descriptors</code><span class="sig-paren">(</span><em>descriptors1</em>, <em>descriptors2</em>, <em>metric=None</em>, <em>p=2</em>, <em>max_distance=inf</em>, <em>cross_check=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/match.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.match_descriptors" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">match_descriptors</code><span class="sig-paren">(</span><em>descriptors1</em>, <em>descriptors2</em>, <em>metric=None</em>, <em>p=2</em>, <em>max_distance=inf</em>, <em>cross_check=True</em>, <em>max_ratio=1.0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/match.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.match_descriptors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Brute-force matching of descriptors.</p>
 <p>For each descriptor in the first set this matcher finds the closest
 descriptor in the second set (and vice-versa in the case of enabled
@@ -2164,6 +2164,16 @@ in separate images to be regarded as a match.</p>
 matched pair (keypoint1, keypoint2) is returned if keypoint2 is the
 best match for keypoint1 in second image and keypoint1 is the best
 match for keypoint2 in first image.</p>
+</div></blockquote>
+<p><strong>max_ratio</strong> : float</p>
+<blockquote>
+<div><p>Maximum ratio of distances between first and second closest descriptor
+in the second set of descriptors. This threshold is useful to filter
+ambiguous matches between the two descriptor sets. The choice of this
+value depends on the statistics of the chosen descriptor, e.g.,
+for SIFT descriptors a value of 0.8 is usually chosen, see
+D.G. Lowe, “Distinctive Image Features from Scale-Invariant Keypoints”,
+International Journal of Computer Vision, 2004.</p>
 </div></blockquote>
 </td>
 </tr>
