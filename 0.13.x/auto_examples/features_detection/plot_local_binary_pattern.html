@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Local Binary Pattern for texture classification &mdash; skimage v0.13.0 docs</title>
+        <title>Local Binary Pattern for texture classification &mdash; skimage v0.13.1 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13.0',
+        VERSION:     '0.13.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,7 +29,7 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.13.0 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.13.1 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Frangi filter" href="../filters/plot_frangi.html" />
         <link rel="prev" title="Gabor filter banks for texture classification" href="plot_gabor.html" />
@@ -68,7 +68,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.13.0<br></strong>
+    <strong>Docs for 0.13.1<br></strong>
 
     <a id="other">All versions</a>
 
@@ -161,9 +161,9 @@ The below code is just used to plot the schematic.</p>
 pixels that are less (or more) intense than the central pixel. When
 surrounding pixels are all black or all white, then that image region is
 flat (i.e. featureless). Groups of continuous black or white pixels are
-considered &#8220;uniform&#8221; patterns that can be interpreted as corners or edges.
+considered “uniform” patterns that can be interpreted as corners or edges.
 If pixels switch back-and-forth between black and white pixels, the pattern
-is considered &#8220;non-uniform&#8221;.</p>
+is considered “non-uniform”.</p>
 <p>When using LBP to detect texture, you measure a collection of LBPs over an
 image patch and look at the distribution of these LBPs. Lets apply LBP to a
 brick texture.</p>
@@ -241,7 +241,7 @@ Kullback-Leibler-Divergence.</p>
 <span class="k">def</span> <span class="nf">kullback_leibler_divergence</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">):</span>
     <span class="n">p</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.asarray.html#numpy.asarray" title="View documentation for numpy.asarray"><span class="n">np</span><span class="o">.</span><span class="n">asarray</span></a><span class="p">(</span><span class="n">p</span><span class="p">)</span>
     <span class="n">q</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.asarray.html#numpy.asarray" title="View documentation for numpy.asarray"><span class="n">np</span><span class="o">.</span><span class="n">asarray</span></a><span class="p">(</span><span class="n">q</span><span class="p">)</span>
-    <span class="n">filt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">q</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">filt</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.logical_and.html#numpy.logical_and" title="View documentation for numpy.logical_and"><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span></a><span class="p">(</span><span class="n">p</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">q</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">return</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.sum.html#numpy.sum" title="View documentation for numpy.sum"><span class="n">np</span><span class="o">.</span><span class="n">sum</span></a><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">filt</span><span class="p">]</span> <span class="o">*</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.log2.html#numpy.log2" title="View documentation for numpy.log2"><span class="n">np</span><span class="o">.</span><span class="n">log2</span></a><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">filt</span><span class="p">]</span> <span class="o">/</span> <span class="n">q</span><span class="p">[</span><span class="n">filt</span><span class="p">]))</span>
 
 
@@ -310,14 +310,14 @@ Kullback-Leibler-Divergence.</p>
 <span class="n">original</span><span class="p">:</span> <span class="n">grass</span><span class="p">,</span> <span class="n">rotated</span><span class="p">:</span> <span class="mi">145</span><span class="n">deg</span><span class="p">,</span> <span class="n">match</span> <span class="n">result</span><span class="p">:</span>  <span class="n">grass</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  1.776 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  1.931 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_local_binary_pattern.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_local_binary_pattern.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_local_binary_pattern.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_local_binary_pattern.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 
 

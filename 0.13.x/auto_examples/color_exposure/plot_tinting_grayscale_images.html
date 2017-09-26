@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Tinting gray-scale images &mdash; skimage v0.13.0 docs</title>
+        <title>Tinting gray-scale images &mdash; skimage v0.13.1 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13.0',
+        VERSION:     '0.13.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,7 +29,7 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.13.0 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.13.1 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Contour finding" href="../edges/plot_contours.html" />
         <link rel="prev" title="Histogram Equalization" href="plot_equalize.html" />
@@ -68,7 +68,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.13.0<br></strong>
+    <strong>Docs for 0.13.1<br></strong>
 
     <a id="other">All versions</a>
 
@@ -95,7 +95,7 @@
 highlight particular regions of an image or maybe just to liven up a grayscale
 image. This example demonstrates image-tinting by scaling RGB values and by
 adjusting colors in the HSV color-space.</p>
-<p>In 2D, color images are often represented in RGB&#8212;3 layers of 2D arrays, where
+<p>In 2D, color images are often represented in RGB—3 layers of 2D arrays, where
 the 3 layers represent (R)ed, (G)reen and (B)lue channels of the image. The
 simplest way of getting a tinted image is to set each RGB channel to the
 grayscale image scaled by a different multiplier for each channel. For example,
@@ -108,7 +108,7 @@ only the red and green channels, which combine to form yellow.</p>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.img_as_float"><span class="n">img_as_float</span></a>
 
 <span class="n">grayscale_image</span> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.img_as_float"><span class="n">img_as_float</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">()[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">])</span>
-<span class="n">image</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">gray2rgb</span><span class="p">(</span><span class="n">grayscale_image</span><span class="p">)</span>
+<span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.color.html#skimage.color.gray2rgb" title="View documentation for skimage.color.gray2rgb"><span class="n">color</span><span class="o">.</span><span class="n">gray2rgb</span></a><span class="p">(</span><span class="n">grayscale_image</span><span class="p">)</span>
 
 <span class="n">red_multiplier</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">yellow_multiplier</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
@@ -126,7 +126,7 @@ there are many other <a class="reference external" href="http://en.wikipedia.org
 image. One popular color space is called HSV, which represents hue (~the
 color), saturation (~colorfulness), and value (~brightness). For example, a
 color (hue) might be green, but its saturation is how intense that green is
-&#8212;where olive is on the low end and neon on the high end.</p>
+—where olive is on the low end and neon on the high end.</p>
 <p>In some implementations, the hue in HSV goes from 0 to 360, since hues wrap
 around in a circle. In scikit-image, however, hues are float values from 0
 to 1, so that hue, saturation, and value all share the same scale.</p>
@@ -150,7 +150,7 @@ turned all the way up:</p>
 <p>Notice how the colors at the far left and far right are the same. That
 reflects the fact that the hues wrap around like the color wheel (see <a class="reference external" href="http://en.wikipedia.org/wiki/HSL_and_HSV">HSV</a>
 for more info).</p>
-<p>Now, let&#8217;s create a little utility function to take an RGB image and:</p>
+<p>Now, let’s create a little utility function to take an RGB image and:</p>
 <p>1. Transform the RGB image to HSV 2. Set the hue and saturation 3.
 Transform the HSV image back to RGB</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">colorize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">hue</span><span class="p">,</span> <span class="n">saturation</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
@@ -166,7 +166,7 @@ Transform the HSV image back to RGB</p>
 </div>
 <p>Notice that we need to bump up the saturation; images with zero saturation
 are grayscale, so we need to a non-zero value to actually see the color
-we&#8217;ve set.</p>
+we’ve set.</p>
 <p>Using the function above, we plot six images with a linear gradient in the
 hue and a non-zero saturation:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">hue_rotations</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.linspace.html#numpy.linspace" title="View documentation for numpy.linspace"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
@@ -219,14 +219,14 @@ based on segmentation results or blob detection methods.</p>
 <img alt="../../_images/sphx_glr_plot_tinting_grayscale_images_004.png" class="align-center" src="../../_images/sphx_glr_plot_tinting_grayscale_images_004.png" />
 <p>For coloring multiple regions, you may also be interested in
 <a class="reference external" href="http://scikit-image.org/docs/0.9.x/api/skimage.color.html#label2rgb">skimage.color.label2rgb</a>.</p>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.900 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.913 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_tinting_grayscale_images.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_tinting_grayscale_images.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_tinting_grayscale_images.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_tinting_grayscale_images.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 
 

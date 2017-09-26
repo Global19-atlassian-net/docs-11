@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Image Viewer &mdash; skimage v0.13.0 docs</title>
+        <title>Image Viewer &mdash; skimage v0.13.1 docs</title>
     
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13.0',
+        VERSION:     '0.13.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,7 +29,7 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <link rel="index" title="Index" href="../genindex.html" />
         <link rel="search" title="Search" href="../search.html" />
-        <link rel="top" title="skimage v0.13.0 docs" href="../index.html" />
+        <link rel="top" title="skimage v0.13.1 docs" href="../index.html" />
         <link rel="up" title="User Guide" href="../user_guide.html" />
         <link rel="next" title="How to contribute to skimage" href="../contribute.html" />
         <link rel="prev" title="Getting help on using skimage" href="getting_help.html" />
@@ -78,7 +78,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.13.0<br></strong>
+    <strong>Docs for 0.13.1<br></strong>
 
     <a id="other">All versions</a>
 
@@ -119,7 +119,7 @@ alternatively, <code class="docutils literal"><span class="pre">skimage.io.imsho
 io-plugins) to display images. The advantage of <code class="docutils literal"><span class="pre">ImageViewer</span></code> is that you can
 easily add plugins for manipulating images. Currently, only a few plugins are
 implemented, but it is easy to write your own. Before going into the details,
-let&#8217;s see an example of how a pre-defined plugin is added to the viewer:</p>
+let’s see an example of how a pre-defined plugin is added to the viewer:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.viewer.plugins.lineprofile</span> <span class="kn">import</span> <span class="n">LineProfile</span>
 
 <span class="n">viewer</span> <span class="o">=</span> <span class="n">ImageViewer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
@@ -127,7 +127,7 @@ let&#8217;s see an example of how a pre-defined plugin is added to the viewer:</
 <span class="n">overlay</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>The viewer&#8217;s <code class="docutils literal"><span class="pre">show()</span></code> method returns a list of tuples, one for each attached
+<p>The viewer’s <code class="docutils literal"><span class="pre">show()</span></code> method returns a list of tuples, one for each attached
 plugin. Each tuple contains two elements: an overlay of the same shape as the
 input image, and a data field (which may be <code class="docutils literal"><span class="pre">None</span></code>). A plugin class documents
 its return value in its <code class="docutils literal"><span class="pre">output</span></code> method.</p>
@@ -162,10 +162,10 @@ slider:</p>
 <span class="n">denoise_plugin</span> <span class="o">+=</span> <span class="n">SaveButtons</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Here, we connect a slider widget to the filter&#8217;s &#8216;weight&#8217; argument.  We also
+<p>Here, we connect a slider widget to the filter’s ‘weight’ argument.  We also
 added some buttons for saving the image to file or to the <code class="docutils literal"><span class="pre">scikit-image</span></code>
 image stack (see <code class="docutils literal"><span class="pre">skimage.io.push</span></code> and <code class="docutils literal"><span class="pre">skimage.io.pop</span></code>).</p>
-<p>All that&#8217;s left is to create an image viewer and add the plugin to that viewer.</p>
+<p>All that’s left is to create an image viewer and add the plugin to that viewer.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">viewer</span> <span class="o">=</span> <span class="n">ImageViewer</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="n">viewer</span> <span class="o">+=</span> <span class="n">denoise_plugin</span>
 <span class="n">denoised</span> <span class="o">=</span> <span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>

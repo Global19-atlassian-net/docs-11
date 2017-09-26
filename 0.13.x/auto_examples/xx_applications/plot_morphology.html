@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Morphological Filtering &mdash; skimage v0.13.0 docs</title>
+        <title>Morphological Filtering &mdash; skimage v0.13.1 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13.0',
+        VERSION:     '0.13.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,7 +29,7 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.13.0 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.13.1 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Comparing edge-based and region-based segmentation" href="plot_coins_segmentation.html" />
         <link rel="prev" title="Using geometric transformations" href="plot_geometric.html" />
@@ -86,7 +86,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.13.0<br></strong>
+    <strong>Docs for 0.13.1<br></strong>
 
     <a id="other">All versions</a>
 
@@ -125,7 +125,7 @@ neighborhood around a pixel.</p>
 <li>Skeletonize</li>
 <li>Convex Hull</li>
 </ol>
-<p>To get started, let&#8217;s load an image using <code class="docutils literal"><span class="pre">io.imread</span></code>. Note that morphology
+<p>To get started, let’s load an image using <code class="docutils literal"><span class="pre">io.imread</span></code>. Note that morphology
 functions only work on gray-scale or binary images, so we set <code class="docutils literal"><span class="pre">as_grey=True</span></code>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -136,20 +136,20 @@ functions only work on gray-scale or binary images, so we set <code class="docut
 <span class="n">orig_phantom</span> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.util.img_as_ubyte"><span class="n">img_as_ubyte</span></a><span class="p">(</span><a href="../../api/skimage.io.html#skimage.io.imread" title="View documentation for skimage.io.imread"><span class="n">io</span><span class="o">.</span><span class="n">imread</span></a><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;phantom.png&quot;</span><span class="p">),</span>
                                       <span class="n">as_grey</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplots" title="View documentation for matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">orig_phantom</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">orig_phantom</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.gray" title="View documentation for matplotlib.pyplot.cm.gray"><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span></a><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_morphology_001.png" class="align-center" src="../../_images/sphx_glr_plot_morphology_001.png" />
-<p>Let&#8217;s also define a convenience function for plotting comparisons:</p>
+<p>Let’s also define a convenience function for plotting comparisons:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_comparison</span><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="n">filtered</span><span class="p">,</span> <span class="n">filter_name</span><span class="p">):</span>
 
     <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.subplots" title="View documentation for matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
                                    <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.gray" title="View documentation for matplotlib.pyplot.cm.gray"><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span></a><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;original&#39;</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
     <span class="n">ax1</span><span class="o">.</span><span class="n">set_adjustable</span><span class="p">(</span><span class="s1">&#39;box-forced&#39;</span><span class="p">)</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">filtered</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">filtered</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.gray" title="View documentation for matplotlib.pyplot.cm.gray"><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span></a><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">filter_name</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">set_adjustable</span><span class="p">(</span><span class="s1">&#39;box-forced&#39;</span><span class="p">)</span>
@@ -197,7 +197,7 @@ in the center and the 3 patches in the lower part of the image.</p>
 <div class="section" id="opening">
 <h2>Opening<a class="headerlink" href="#opening" title="Permalink to this headline">¶</a></h2>
 <p>Morphological <code class="docutils literal"><span class="pre">opening</span></code> on an image is defined as an <em>erosion followed by
-a dilation</em>. Opening can remove small bright spots (i.e. &#8220;salt&#8221;) and
+a dilation</em>. Opening can remove small bright spots (i.e. “salt”) and
 connect small dark cracks.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">opened</span> <span class="o">=</span> <a href="../../api/skimage.morphology.html#skimage.morphology.opening" title="View documentation for skimage.morphology.opening"><span class="n">opening</span></a><span class="p">(</span><span class="n">orig_phantom</span><span class="p">,</span> <span class="n">selem</span><span class="p">)</span>
 <span class="n">plot_comparison</span><span class="p">(</span><span class="n">orig_phantom</span><span class="p">,</span> <span class="n">opened</span><span class="p">,</span> <span class="s1">&#39;opening&#39;</span><span class="p">)</span>
@@ -217,9 +217,9 @@ top retains its original thickness.</p>
 <div class="section" id="closing">
 <h2>Closing<a class="headerlink" href="#closing" title="Permalink to this headline">¶</a></h2>
 <p>Morphological <code class="docutils literal"><span class="pre">closing</span></code> on an image is defined as a <em>dilation followed by
-an erosion</em>. Closing can remove small dark spots (i.e. &#8220;pepper&#8221;) and
+an erosion</em>. Closing can remove small dark spots (i.e. “pepper”) and
 connect small bright cracks.</p>
-<p>To illustrate this more clearly, let&#8217;s add a small crack to the white
+<p>To illustrate this more clearly, let’s add a small crack to the white
 border:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">phantom</span> <span class="o">=</span> <span class="n">orig_phantom</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">phantom</span><span class="p">[</span><span class="mi">10</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span> <span class="mi">200</span><span class="p">:</span><span class="mi">210</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
@@ -242,7 +242,7 @@ mostly removed.</p>
 <p>The <code class="docutils literal"><span class="pre">white_tophat</span></code> of an image is defined as the <em>image minus its
 morphological opening</em>. This operation returns the bright spots of the
 image that are smaller than the structuring element.</p>
-<p>To make things interesting, we&#8217;ll add bright and dark spots to the image:</p>
+<p>To make things interesting, we’ll add bright and dark spots to the image:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">phantom</span> <span class="o">=</span> <span class="n">orig_phantom</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">phantom</span><span class="p">[</span><span class="mi">340</span><span class="p">:</span><span class="mi">350</span><span class="p">,</span> <span class="mi">200</span><span class="p">:</span><span class="mi">210</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
 <span class="n">phantom</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">110</span><span class="p">,</span> <span class="mi">200</span><span class="p">:</span><span class="mi">210</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
@@ -254,7 +254,7 @@ image that are smaller than the structuring element.</p>
 <img alt="../../_images/sphx_glr_plot_morphology_006.png" class="align-center" src="../../_images/sphx_glr_plot_morphology_006.png" />
 <p>As you can see, the 10-pixel wide white square is highlighted since it is
 smaller than the structuring element. Also, the thin, white edges around
-most of the ellipse are retained because they&#8217;re smaller than the
+most of the ellipse are retained because they’re smaller than the
 structuring element, but the thicker region at the top disappears.</p>
 </div>
 <div class="section" id="black-tophat">
@@ -323,19 +323,19 @@ to enclose that grain:</p>
 <div class="section" id="additional-resources">
 <h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
 <p>1. <a class="reference external" href="http://www.mathworks.com/help/images/morphology-fundamentals-dilation-and-erosion.html">MathWorks tutorial on morphological processing</a></p>
-<p>2. <a class="reference external" href="http://www.cs.auckland.ac.nz/courses/compsci773s1c/lectures/ImageProcessing-html/topic4.htm">Auckland university&#8217;s tutorial on Morphological Image
+<p>2. <a class="reference external" href="http://www.cs.auckland.ac.nz/courses/compsci773s1c/lectures/ImageProcessing-html/topic4.htm">Auckland university’s tutorial on Morphological Image
 Processing</a></p>
 <ol class="arabic simple" start="3">
 <li><a class="reference external" href="http://en.wikipedia.org/wiki/Mathematical_morphology">http://en.wikipedia.org/wiki/Mathematical_morphology</a></li>
 </ol>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  1.304 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  1.818 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_morphology.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_morphology.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_morphology.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_morphology.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 </div>
 

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Handling Video Files &mdash; skimage v0.13.0 docs</title>
+        <title>Handling Video Files &mdash; skimage v0.13.1 docs</title>
     
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13.0',
+        VERSION:     '0.13.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,7 +29,7 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <link rel="index" title="Index" href="../genindex.html" />
         <link rel="search" title="Search" href="../search.html" />
-        <link rel="top" title="skimage v0.13.0 docs" href="../index.html" />
+        <link rel="top" title="skimage v0.13.1 docs" href="../index.html" />
         <link rel="up" title="User Guide" href="../user_guide.html" />
         <link rel="next" title="Tutorials" href="tutorials.html" />
         <link rel="prev" title="I/O Plugin Infrastructure" href="plugins.html" />
@@ -83,7 +83,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.13.0<br></strong>
+    <strong>Docs for 0.13.1<br></strong>
 
     <a id="other">All versions</a>
 
@@ -143,14 +143,14 @@ has some disadvantages.</p>
 </div>
 <div class="section" id="pyav">
 <h2>PyAV<a class="headerlink" href="#pyav" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://mikeboers.github.io/PyAV/">PyAV</a> uses FFmpeg&#8217;s (or LibAV&#8217;s) libraries
+<p><a class="reference external" href="http://mikeboers.github.io/PyAV/">PyAV</a> uses FFmpeg’s (or LibAV’s) libraries
 to read image data directly from the video file. It invokes them using Cython
 bindings, so it is very fast.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">av</span>
 <span class="n">v</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;path/to/video.mov&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>PyAV&#8217;s API reflects the way frames are stored in a video file.</p>
+<p>PyAV’s API reflects the way frames are stored in a video file.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">packet</span> <span class="ow">in</span> <span class="n">container</span><span class="o">.</span><span class="n">demux</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">packet</span><span class="o">.</span><span class="n">decode</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">frame</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;video&#39;</span><span class="p">:</span>
@@ -175,7 +175,7 @@ and its dependencies became available for OSX and Linux.</p>
 <a class="reference external" href="http://mikeboers.github.io/PyAV/#windows">shown to build successfully on Windows</a>, but convenient binary packages are not publicly distributed as of this
 writing.</p>
 <p>PyAV is pip-installable (<cite>pip install av</cite>) on Linux and OSX, but getting
-the linking to FFmpeg&#8217;s libraries set up correctly is subtle. The binary
+the linking to FFmpeg’s libraries set up correctly is subtle. The binary
 installers are recommended.</p>
 </div>
 <div class="section" id="adding-random-access-to-pyav">
@@ -206,9 +206,9 @@ and producing an internal table of contents that supports indexing by frame.</p>
 <p><a class="reference external" href="http://zulko.github.io/moviepy">Moviepy</a> invokes FFmpeg through a
 subprocess, pipes the decoded video from FFmpeg
 into RAM, and reads it out. This approach is straightforward, but it can be
-brittle, and it&#8217;s not workable for large videos that exceed available RAM.
+brittle, and it’s not workable for large videos that exceed available RAM.
 It works on all platforms if FFmpeg is installed.</p>
-<p>Since it does not link to FFmpeg&#8217;s underlying libraries, it is easier to
+<p>Since it does not link to FFmpeg’s underlying libraries, it is easier to
 install but about <a class="reference external" href="https://gist.github.com/mikeboers/6843684">half as fast</a>.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">moviepy.editor</span> <span class="kn">import</span> <span class="n">VideoFileClip</span>
 <span class="n">myclip</span> <span class="o">=</span> <span class="n">VideoFileClip</span><span class="p">(</span><span class="s2">&quot;some_video.avi&quot;</span><span class="p">)</span>

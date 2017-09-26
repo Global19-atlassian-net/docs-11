@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Robust matching using RANSAC &mdash; skimage v0.13.0 docs</title>
+        <title>Robust matching using RANSAC &mdash; skimage v0.13.1 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13.0',
+        VERSION:     '0.13.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,7 +29,7 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.13.0 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.13.1 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Using geometric transformations" href="../xx_applications/plot_geometric.html" />
         <link rel="prev" title="Radon transform" href="plot_radon_transform.html" />
@@ -68,7 +68,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.13.0<br></strong>
+    <strong>Docs for 0.13.1<br></strong>
 
     <a id="other">All versions</a>
 
@@ -107,8 +107,8 @@ to robustly estimate the parameter set by detecting outliers.</p>
 <img alt="../../_images/sphx_glr_plot_matching_001.png" class="align-center" src="../../_images/sphx_glr_plot_matching_001.png" />
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span> <span class="p">[</span> <span class="mf">20.</span> <span class="o">-</span><span class="mf">10.</span><span class="p">]</span> <span class="mf">0.19999999999999998</span>
-<span class="p">(</span><span class="mf">0.9014706578601688</span><span class="p">,</span> <span class="mf">0.8912502648246997</span><span class="p">)</span> <span class="p">[</span> <span class="o">-</span><span class="mf">9.3136398</span>   <span class="mf">14.97675567</span><span class="p">]</span> <span class="o">-</span><span class="mf">0.16775489484748188</span>
-<span class="p">(</span><span class="mf">0.8999207933418526</span><span class="p">,</span> <span class="mf">0.9000536710786019</span><span class="p">)</span> <span class="p">[</span><span class="o">-</span><span class="mf">10.00053748</span>  <span class="mf">19.97439706</span><span class="p">]</span> <span class="o">-</span><span class="mf">0.19991920832558693</span>
+<span class="p">(</span><span class="mf">0.9014706578601693</span><span class="p">,</span> <span class="mf">0.8912502648247</span><span class="p">)</span> <span class="p">[</span> <span class="o">-</span><span class="mf">9.3136398</span>   <span class="mf">14.97675567</span><span class="p">]</span> <span class="o">-</span><span class="mf">0.16775489484748193</span>
+<span class="p">(</span><span class="mf">0.899920793341853</span><span class="p">,</span> <span class="mf">0.9000536710786015</span><span class="p">)</span> <span class="p">[</span><span class="o">-</span><span class="mf">10.00053748</span>  <span class="mf">19.97439706</span><span class="p">]</span> <span class="o">-</span><span class="mf">0.19991920832558674</span>
 </pre></div>
 </div>
 <div class="line-block">
@@ -130,7 +130,7 @@ to robustly estimate the parameter set by detecting outliers.</p>
 
 
 <span class="c1"># generate synthetic checkerboard image and add gradient for the later matching</span>
-<span class="n">checkerboard</span> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.util.img_as_float"><span class="n">img_as_float</span></a><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">checkerboard</span><span class="p">())</span>
+<span class="n">checkerboard</span> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.util.img_as_float"><span class="n">img_as_float</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.checkerboard" title="View documentation for skimage.data.checkerboard"><span class="n">data</span><span class="o">.</span><span class="n">checkerboard</span></a><span class="p">())</span>
 <span class="n">img_orig</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.zeros.html#numpy.zeros" title="View documentation for numpy.zeros"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">checkerboard</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="mi">3</span><span class="p">])</span>
 <span class="n">img_orig</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">checkerboard</span>
 <span class="n">gradient_r</span><span class="p">,</span> <span class="n">gradient_c</span> <span class="o">=</span> <span class="p">(</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.mgrid.html#numpy.mgrid" title="View documentation for numpy.mgrid"><span class="n">np</span><span class="o">.</span><span class="n">mgrid</span></a><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">img_orig</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
@@ -233,14 +233,14 @@ to robustly estimate the parameter set by detecting outliers.</p>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.316 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.439 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_matching.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_matching.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_matching.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_matching.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 
 

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Immunohistochemical staining colors separation &mdash; skimage v0.13.0 docs</title>
+        <title>Immunohistochemical staining colors separation &mdash; skimage v0.13.1 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13.0',
+        VERSION:     '0.13.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,7 +29,7 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.13.0 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.13.1 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Adapting gray-scale filters to RGB images" href="plot_adapt_rgb.html" />
         <link rel="prev" title="General examples" href="../index.html" />
@@ -68,7 +68,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.13.0<br></strong>
+    <strong>Docs for 0.13.1<br></strong>
 
     <a id="other">All versions</a>
 
@@ -94,14 +94,14 @@
 <p>Color deconvolution consists of the separation of features by their colors.</p>
 <p>In this example we separate the immunohistochemical (IHC) staining from the
 hematoxylin counterstaining. The separation is achieved with the method
-described in <a class="footnote-reference" href="#id2" id="id1">[1]</a>, known as &#8220;color deconvolution&#8221;.</p>
+described in <a class="footnote-reference" href="#id2" id="id1">[1]</a>, known as “color deconvolution”.</p>
 <p>The IHC staining expression of the FHL2 protein is here revealed with
 Diaminobenzidine (DAB) which gives a brown color.</p>
 <table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>A. C. Ruifrok and D. A. Johnston, &#8220;Quantification of histochemical
-staining by color deconvolution.,&#8221; Analytical and quantitative
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>A. C. Ruifrok and D. A. Johnston, “Quantification of histochemical
+staining by color deconvolution.,” Analytical and quantitative
 cytology and histology / the International Academy of Cytology [and]
 American Society of Cytology, vol. 23, no. 4, pp. 291-9, Aug. 2001.</td></tr>
 </tbody>
@@ -113,10 +113,10 @@ American Society of Cytology, vol. 23, no. 4, pp. 291-9, Aug. 2001.</td></tr>
 <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>
 
 <span class="c1"># Create an artificial color close to the orginal one</span>
-<span class="n">cmap_hema</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;mycmap&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;navy&#39;</span><span class="p">])</span>
-<span class="n">cmap_dab</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;mycmap&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">,</span>
+<span class="n">cmap_hema</span> <span class="o">=</span> <a href="http://matplotlib.org/api/colors_api.html#matplotlib.colors.LinearSegmentedColormap.from_list" title="View documentation for matplotlib.colors.LinearSegmentedColormap.from_list"><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span></a><span class="p">(</span><span class="s1">&#39;mycmap&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;navy&#39;</span><span class="p">])</span>
+<span class="n">cmap_dab</span> <span class="o">=</span> <a href="http://matplotlib.org/api/colors_api.html#matplotlib.colors.LinearSegmentedColormap.from_list" title="View documentation for matplotlib.colors.LinearSegmentedColormap.from_list"><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span></a><span class="p">(</span><span class="s1">&#39;mycmap&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;white&#39;</span><span class="p">,</span>
                                              <span class="s1">&#39;saddlebrown&#39;</span><span class="p">])</span>
-<span class="n">cmap_eosin</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s1">&#39;mycmap&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;darkviolet&#39;</span><span class="p">,</span>
+<span class="n">cmap_eosin</span> <span class="o">=</span> <a href="http://matplotlib.org/api/colors_api.html#matplotlib.colors.LinearSegmentedColormap.from_list" title="View documentation for matplotlib.colors.LinearSegmentedColormap.from_list"><span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span></a><span class="p">(</span><span class="s1">&#39;mycmap&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;darkviolet&#39;</span><span class="p">,</span>
                                                <span class="s1">&#39;white&#39;</span><span class="p">])</span>
 
 <span class="n">ihc_rgb</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.immunohistochemistry" title="View documentation for skimage.data.immunohistochemistry"><span class="n">data</span><span class="o">.</span><span class="n">immunohistochemistry</span></a><span class="p">()</span>
@@ -145,7 +145,7 @@ American Society of Cytology, vol. 23, no. 4, pp. 291-9, Aug. 2001.</td></tr>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_ihc_color_separation_001.png" class="align-center" src="../../_images/sphx_glr_plot_ihc_color_separation_001.png" />
-<p>Now we can easily manipulate the hematoxylin and DAB &#8220;channels&#8221;:</p>
+<p>Now we can easily manipulate the hematoxylin and DAB “channels”:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="kn">import</span> <a href="../../api/skimage.exposure.html#skimage.exposure.rescale_intensity" title="View documentation for skimage.exposure.rescale_intensity"><span class="n">rescale_intensity</span></a>
@@ -164,14 +164,14 @@ American Society of Cytology, vol. 23, no. 4, pp. 291-9, Aug. 2001.</td></tr>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_ihc_color_separation_002.png" class="align-center" src="../../_images/sphx_glr_plot_ihc_color_separation_002.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.631 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.858 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_ihc_color_separation.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_ihc_color_separation.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_ihc_color_separation.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_ihc_color_separation.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 
 

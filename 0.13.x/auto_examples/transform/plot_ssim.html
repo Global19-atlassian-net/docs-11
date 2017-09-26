@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Structural similarity index &mdash; skimage v0.13.0 docs</title>
+        <title>Structural similarity index &mdash; skimage v0.13.1 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.13.0',
+        VERSION:     '0.13.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,7 +29,7 @@
         <script type="text/javascript" src="../../_static/doctools.js"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.13.0 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.13.1 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Fundamental matrix estimation" href="plot_fundamental_matrix.html" />
         <link rel="prev" title="Robust line model estimation using RANSAC" href="plot_ransac.html" />
@@ -68,7 +68,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.13.0<br></strong>
+    <strong>Docs for 0.13.1<br></strong>
 
     <a id="other">All versions</a>
 
@@ -91,8 +91,8 @@
             
   <div class="section" id="structural-similarity-index">
 <span id="sphx-glr-auto-examples-transform-plot-ssim-py"></span><h1>Structural similarity index<a class="headerlink" href="#structural-similarity-index" title="Permalink to this headline">¶</a></h1>
-<p>When comparing images, the mean squared error (MSE)&#8211;while simple to
-implement&#8211;is not highly indicative of perceived similarity.  Structural
+<p>When comparing images, the mean squared error (MSE)–while simple to
+implement–is not highly indicative of perceived similarity.  Structural
 similarity aims to address this shortcoming by taking texture into account
 <a class="footnote-reference" href="#id3" id="id1">[1]</a>, <a class="footnote-reference" href="#id4" id="id2">[2]</a>.</p>
 <p>The example shows two modifications of the input image, each with the same MSE,
@@ -100,16 +100,16 @@ but with very different mean structural similarity indices.</p>
 <table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Zhou Wang; Bovik, A.C.; ,&#8221;Mean squared error: Love it or leave it? A new
-look at Signal Fidelity Measures,&#8221; Signal Processing Magazine, IEEE,
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Zhou Wang; Bovik, A.C.; ,”Mean squared error: Love it or leave it? A new
+look at Signal Fidelity Measures,” Signal Processing Magazine, IEEE,
 vol. 26, no. 1, pp. 98-117, Jan. 2009.</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Z. Wang, A. C. Bovik, H. R. Sheikh and E. P. Simoncelli, &#8220;Image quality
-assessment: From error visibility to structural similarity,&#8221; IEEE
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Z. Wang, A. C. Bovik, H. R. Sheikh and E. P. Simoncelli, “Image quality
+assessment: From error visibility to structural similarity,” IEEE
 Transactions on Image Processing, vol. 13, no. 4, pp. 600-612,
 Apr. 2004.</td></tr>
 </tbody>
@@ -126,7 +126,7 @@ Apr. 2004.</td></tr>
 <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span>
 
 <span class="n">noise</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.ones_like.html#numpy.ones_like" title="View documentation for numpy.ones_like"><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span></a><span class="p">(</span><span class="n">img</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">img</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
-<span class="n">noise</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">noise</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">noise</span><span class="p">[</span><a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.random.wald.html#numpy.random" title="View documentation for numpy.random.random"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span></a><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">noise</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">]</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
 
 <span class="k">def</span> <span class="nf">mse</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <a href="http://docs.scipy.org/doc/numpy-1.6.0/reference/generated/numpy.linalg.norm.html#numpy.linalg.norm" title="View documentation for numpy.linalg.norm"><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span></a><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span>
@@ -168,14 +168,14 @@ Apr. 2004.</td></tr>
 <a href="http://matplotlib.org/api/pyplot_api.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.328 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.502 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_ssim.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_ssim.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_ssim.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_ssim.ipynb</span></code></a></div>
 </div>
-<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
 
 

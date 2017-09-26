@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Image data types and what they mean &mdash; skimage v0.13.0 docs</title>
+        <title>Image data types and what they mean &mdash; skimage v0.13.1 docs</title>
     
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.13.0',
+        VERSION:     '0.13.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -29,7 +29,7 @@
         <script type="text/javascript" src="../_static/doctools.js"></script>
         <link rel="index" title="Index" href="../genindex.html" />
         <link rel="search" title="Search" href="../search.html" />
-        <link rel="top" title="skimage v0.13.0 docs" href="../index.html" />
+        <link rel="top" title="skimage v0.13.1 docs" href="../index.html" />
         <link rel="up" title="User Guide" href="../user_guide.html" />
         <link rel="next" title="Image adjustment: transforming image content" href="transforming_image_data.html" />
         <link rel="prev" title="A crash course on NumPy for images" href="numpy_images.html" />
@@ -89,7 +89,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.13.0<br></strong>
+    <strong>Docs for 0.13.1<br></strong>
 
     <a id="other">All versions</a>
 
@@ -113,7 +113,7 @@
   <div class="section" id="image-data-types-and-what-they-mean">
 <span id="data-types"></span><h1>Image data types and what they mean<a class="headerlink" href="#image-data-types-and-what-they-mean" title="Permalink to this headline">¶</a></h1>
 <p>In <code class="docutils literal"><span class="pre">skimage</span></code>, images are simply <a class="reference external" href="http://docs.scipy.org/doc/numpy/user/">numpy</a> arrays, which support a variety of
-data types <a class="footnote-reference" href="#id2" id="id1">[1]</a>, <em>i.e.</em> &#8220;dtypes&#8221;. To avoid distorting image intensities (see
+data types <a class="footnote-reference" href="#id2" id="id1">[1]</a>, <em>i.e.</em> “dtypes”. To avoid distorting image intensities (see
 <a class="reference internal" href="#rescaling-intensity-values">Rescaling intensity values</a>), we assume that images use the following dtype
 ranges:</p>
 <table border="1" class="docutils">
@@ -267,7 +267,7 @@ may write:</p>
 <p>It is possible that you may need to use an image created using <code class="docutils literal"><span class="pre">skimage</span></code> with
 <a class="reference external" href="http://opencv.org/">OpenCV</a> or vice versa. OpenCV image data can be accessed (without copying) in
 NumPy (and, thus, in scikit-image).
-OpenCV uses BGR (instead of scikit-image&#8217;s RGB) for color images, and its
+OpenCV uses BGR (instead of scikit-image’s RGB) for color images, and its
 dtype is uint8 by default (See <a class="reference internal" href="#image-data-types-and-what-they-mean">Image data types and what they mean</a>). BGR stands
 for Blue Green Red.</p>
 <div class="section" id="converting-bgr-to-rgb-or-vice-versa">
@@ -327,14 +327,14 @@ processing pipeline:</p>
 <h2>Rescaling intensity values<a class="headerlink" href="#rescaling-intensity-values" title="Permalink to this headline">¶</a></h2>
 <p>When possible, functions should avoid blindly stretching image intensities
 (e.g. rescaling a float image so that the min and max intensities are
-0 and 1), since this can heavily distort an image. For example, if you&#8217;re
+0 and 1), since this can heavily distort an image. For example, if you’re
 looking for bright markers in dark images, there may be an image where no
 markers are present; stretching its input intensity to span the full range
 would make background noise look like markers.</p>
 <p>Sometimes, however, you have images that should span the entire intensity
 range but do not. For example, some cameras store images with 10-, 12-, or
 14-bit depth per pixel. If these images are stored in an array with dtype
-uint16, then the image won&#8217;t extend over the full intensity range, and thus,
+uint16, then the image won’t extend over the full intensity range, and thus,
 would appear dimmer than it should. To correct for this, you can use the
 <code class="docutils literal"><span class="pre">rescale_intensity</span></code> function to rescale the image so that it uses the full
 dtype range:</p>
