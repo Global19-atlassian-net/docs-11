@@ -179,7 +179,7 @@
 <code class="descclassname">skimage.restoration.</code><code class="descname">denoise_bilateral</code><span class="sig-paren">(</span><em>image</em>, <em>win_size=None</em>, <em>sigma_color=None</em>, <em>sigma_spatial=1</em>, <em>bins=10000</em>, <em>mode='constant'</em>, <em>cval=0</em>, <em>multichannel=None</em>, <em>sigma_range=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/v0.13.1/skimage/restoration/_denoise.py#L13"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_bilateral" title="Permalink to this definition">¶</a></dt>
 <dd><p>Denoise image using bilateral filter.</p>
 <p>This is an edge-preserving, denoising filter. It averages pixels based on
-their spatial closeness and radiometric similarity <a class="reference internal" href="#r846846" id="id1">[R846846]</a>.</p>
+their spatial closeness and radiometric similarity <a class="reference internal" href="#r419" id="id1">[R419]</a>.</p>
 <p>Spatial closeness is measured by the Gaussian function of the Euclidean
 distance between two pixels and a certain standard deviation
 (<cite>sigma_spatial</cite>).</p>
@@ -245,10 +245,10 @@ channels or another spatial dimension.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r846846" rules="none">
+<table class="docutils citation" frame="void" id="r419" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R846846]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="http://users.soe.ucsc.edu/~manduchi/Papers/ICCV98.pdf">http://users.soe.ucsc.edu/~manduchi/Papers/ICCV98.pdf</a></td></tr>
+<tr><td class="label">[R419]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="http://users.soe.ucsc.edu/~manduchi/Papers/ICCV98.pdf">http://users.soe.ucsc.edu/~manduchi/Papers/ICCV98.pdf</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -322,22 +322,22 @@ specific textures. The principle of the algorithm is to average the value
 of a given pixel with values of other pixels in a limited neighbourhood,
 provided that the <em>patches</em> centered on the other pixels are similar enough
 to the patch centered on the pixel of interest.</p>
-<p>In the original version of the algorithm <a class="reference internal" href="#r848850" id="id3">[R848850]</a>, corresponding to
+<p>In the original version of the algorithm <a class="reference internal" href="#r420" id="id3">[R420]</a>, corresponding to
 <code class="docutils literal"><span class="pre">fast=False</span></code>, the computational complexity is</p>
 <p>image.size * patch_size ** image.ndim * patch_distance ** image.ndim</p>
 <p>Hence, changing the size of patches or their maximal distance has a
 strong effect on computing times, especially for 3-D images.</p>
 <p>However, the default behavior corresponds to <code class="docutils literal"><span class="pre">fast_mode=True</span></code>, for which
-another version of non-local means <a class="reference internal" href="#r849850" id="id4">[R849850]</a> is used, corresponding to a
+another version of non-local means <a class="reference internal" href="#r421" id="id4">[R421]</a> is used, corresponding to a
 complexity of</p>
 <p>image.size * patch_distance ** image.ndim</p>
 <p>The computing time depends only weakly on the patch size, thanks to
 the computation of the integral of patches distances for a given
-shift, that reduces the number of operations <a class="reference internal" href="#r848850" id="id5">[R848850]</a>. Therefore, this
+shift, that reduces the number of operations <a class="reference internal" href="#r420" id="id5">[R420]</a>. Therefore, this
 algorithm executes faster than the classic algorith
 (<code class="docutils literal"><span class="pre">fast_mode=False</span></code>), at the expense of using twice as much memory.
 This implementation has been proven to be more efficient compared to
-other alternatives, see e.g. <a class="reference internal" href="#r850850" id="id6">[R850850]</a>.</p>
+other alternatives, see e.g. <a class="reference internal" href="#r422" id="id6">[R422]</a>.</p>
 <p>Compared to the classic algorithm, all pixels of a patch contribute
 to the distance to another patch with the same weight, no matter
 their distance to the center of the patch. This coarser computation
@@ -348,26 +348,26 @@ be faster due to boundary effects.</p>
 <p>The image is padded using the <cite>reflect</cite> mode of <cite>skimage.util.pad</cite>
 before denoising.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r848850" rules="none">
+<table class="docutils citation" frame="void" id="r420" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R848850]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id7">3</a>)</em> Buades, A., Coll, B., &amp; Morel, J. M. (2005, June). A non-local
+<tr><td class="label">[R420]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id7">3</a>)</em> Buades, A., Coll, B., &amp; Morel, J. M. (2005, June). A non-local
 algorithm for image denoising. In CVPR 2005, Vol. 2, pp. 60-65, IEEE.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r849850" rules="none">
+<table class="docutils citation" frame="void" id="r421" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R849850]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id8">2</a>)</em> J. Darbon, A. Cunha, T.F. Chan, S. Osher, and G.J. Jensen, Fast
+<tr><td class="label">[R421]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id8">2</a>)</em> J. Darbon, A. Cunha, T.F. Chan, S. Osher, and G.J. Jensen, Fast
 nonlocal filtering applied to electron cryomicroscopy, in 5th IEEE
 International Symposium on Biomedical Imaging: From Nano to Macro,
 2008, pp. 1331-1334.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r850850" rules="none">
+<table class="docutils citation" frame="void" id="r422" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R850850]</td><td><em>(<a class="fn-backref" href="#id6">1</a>, <a class="fn-backref" href="#id9">2</a>)</em> Jacques Froment. Parameter-Free Fast Pixelwise Non-Local Means
+<tr><td class="label">[R422]</td><td><em>(<a class="fn-backref" href="#id6">1</a>, <a class="fn-backref" href="#id9">2</a>)</em> Jacques Froment. Parameter-Free Fast Pixelwise Non-Local Means
 Denoising. Image Processing On Line, 2014, vol. 4, p. 300-326.</td></tr>
 </tbody>
 </table>
@@ -390,7 +390,7 @@ Denoising. Image Processing On Line, 2014, vol. 4, p. 300-326.</td></tr>
 <p>Total-variation denoising (also know as total-variation regularization)
 tries to find an image with less total-variation under the constraint
 of being similar to the input image, which is controlled by the
-regularization parameter (<a class="reference internal" href="#r854857" id="id10">[R854857]</a>, <a class="reference internal" href="#r855857" id="id11">[R855857]</a>, <a class="reference internal" href="#r856857" id="id12">[R856857]</a>, <a class="reference internal" href="#r857857" id="id13">[R857857]</a>).</p>
+regularization parameter (<a class="reference internal" href="#r423" id="id10">[R423]</a>, <a class="reference internal" href="#r424" id="id11">[R424]</a>, <a class="reference internal" href="#r425" id="id12">[R425]</a>, <a class="reference internal" href="#r426" id="id13">[R426]</a>).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -432,32 +432,32 @@ the stop criterion. The algorithm stops when:</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r854857" rules="none">
+<table class="docutils citation" frame="void" id="r423" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R854857]</td><td><em>(<a class="fn-backref" href="#id10">1</a>, <a class="fn-backref" href="#id14">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Total_variation_denoising">http://en.wikipedia.org/wiki/Total_variation_denoising</a></td></tr>
+<tr><td class="label">[R423]</td><td><em>(<a class="fn-backref" href="#id10">1</a>, <a class="fn-backref" href="#id14">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Total_variation_denoising">http://en.wikipedia.org/wiki/Total_variation_denoising</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r855857" rules="none">
+<table class="docutils citation" frame="void" id="r424" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R855857]</td><td><em>(<a class="fn-backref" href="#id11">1</a>, <a class="fn-backref" href="#id15">2</a>)</em> Tom Goldstein and Stanley Osher, “The Split Bregman Method For L1
+<tr><td class="label">[R424]</td><td><em>(<a class="fn-backref" href="#id11">1</a>, <a class="fn-backref" href="#id15">2</a>)</em> Tom Goldstein and Stanley Osher, “The Split Bregman Method For L1
 Regularized Problems”,
 <a class="reference external" href="ftp://ftp.math.ucla.edu/pub/camreport/cam08-29.pdf">ftp://ftp.math.ucla.edu/pub/camreport/cam08-29.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r856857" rules="none">
+<table class="docutils citation" frame="void" id="r425" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R856857]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id16">2</a>)</em> Pascal Getreuer, “Rudin–Osher–Fatemi Total Variation Denoising
+<tr><td class="label">[R425]</td><td><em>(<a class="fn-backref" href="#id12">1</a>, <a class="fn-backref" href="#id16">2</a>)</em> Pascal Getreuer, “Rudin–Osher–Fatemi Total Variation Denoising
 using Split Bregman” in Image Processing On Line on 2012–05–19,
 <a class="reference external" href="http://www.ipol.im/pub/art/2012/g-tvd/article_lr.pdf">http://www.ipol.im/pub/art/2012/g-tvd/article_lr.pdf</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r857857" rules="none">
+<table class="docutils citation" frame="void" id="r426" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R857857]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id17">2</a>)</em> <a class="reference external" href="http://www.math.ucsb.edu/~cgarcia/UGProjects/BregmanAlgorithms_JacquelineBush.pdf">http://www.math.ucsb.edu/~cgarcia/UGProjects/BregmanAlgorithms_JacquelineBush.pdf</a></td></tr>
+<tr><td class="label">[R426]</td><td><em>(<a class="fn-backref" href="#id13">1</a>, <a class="fn-backref" href="#id17">2</a>)</em> <a class="reference external" href="http://www.math.ucsb.edu/~cgarcia/UGProjects/BregmanAlgorithms_JacquelineBush.pdf">http://www.math.ucsb.edu/~cgarcia/UGProjects/BregmanAlgorithms_JacquelineBush.pdf</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -522,12 +522,12 @@ the integral of the norm of the image gradient. Total variation
 denoising tends to produce “cartoon-like” images, that is,
 piecewise-constant images.</p>
 <p>This code is an implementation of the algorithm of Rudin, Fatemi and Osher
-that was proposed by Chambolle in <a class="reference internal" href="#r862862" id="id18">[R862862]</a>.</p>
+that was proposed by Chambolle in <a class="reference internal" href="#r427" id="id18">[R427]</a>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r862862" rules="none">
+<table class="docutils citation" frame="void" id="r427" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R862862]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id19">2</a>)</em> A. Chambolle, An algorithm for total variation minimization and
+<tr><td class="label">[R427]</td><td><em>(<a class="fn-backref" href="#id18">1</a>, <a class="fn-backref" href="#id19">2</a>)</em> A. Chambolle, An algorithm for total variation minimization and
 applications, Journal of Mathematical Imaging and Vision,
 Springer, 2004, 20, 89-97.</td></tr>
 </tbody>
@@ -570,9 +570,9 @@ of the denoised image.</p>
 <p><strong>sigma</strong> : float or list, optional</p>
 <blockquote>
 <div><p>The noise standard deviation used when computing the threshold
-adaptively as described in <a class="reference internal" href="#r864865" id="id20">[R864865]</a> for each color channel. When None
+adaptively as described in <a class="reference internal" href="#r428" id="id20">[R428]</a> for each color channel. When None
 (default), the noise standard deviation is estimated via the method in
-<a class="reference internal" href="#r865865" id="id21">[R865865]</a>.</p>
+<a class="reference internal" href="#r429" id="id21">[R429]</a>.</p>
 </div></blockquote>
 <p><strong>wavelet</strong> : string, optional</p>
 <blockquote>
@@ -625,19 +625,19 @@ plane separately. The output image is clipped between either [-1, 1] and
 <p>When YCbCr conversion is done, every color channel is scaled between 0
 and 1, and <cite>sigma</cite> values are applied to these scaled color channels.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r864865" rules="none">
+<table class="docutils citation" frame="void" id="r428" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R864865]</td><td><em>(<a class="fn-backref" href="#id20">1</a>, <a class="fn-backref" href="#id22">2</a>)</em> Chang, S. Grace, Bin Yu, and Martin Vetterli. “Adaptive wavelet
+<tr><td class="label">[R428]</td><td><em>(<a class="fn-backref" href="#id20">1</a>, <a class="fn-backref" href="#id22">2</a>)</em> Chang, S. Grace, Bin Yu, and Martin Vetterli. “Adaptive wavelet
 thresholding for image denoising and compression.” Image Processing,
 IEEE Transactions on 9.9 (2000): 1532-1546.
 DOI: 10.1109/83.862633</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r865865" rules="none">
+<table class="docutils citation" frame="void" id="r429" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R865865]</td><td><em>(<a class="fn-backref" href="#id21">1</a>, <a class="fn-backref" href="#id23">2</a>)</em> D. L. Donoho and I. M. Johnstone. “Ideal spatial adaptation
+<tr><td class="label">[R429]</td><td><em>(<a class="fn-backref" href="#id21">1</a>, <a class="fn-backref" href="#id23">2</a>)</em> D. L. Donoho and I. M. Johnstone. “Ideal spatial adaptation
 by wavelet shrinkage.” Biometrika 81.3 (1994): 425-455.
 DOI: 10.1093/biomet/81.3.425</td></tr>
 </tbody>
@@ -693,12 +693,12 @@ estimates is returned.</p>
 <p class="rubric">Notes</p>
 <p>This function assumes the noise follows a Gaussian distribution. The
 estimation algorithm is based on the median absolute deviation of the
-wavelet detail coefficients as described in section 4.2 of <a class="reference internal" href="#r868868" id="id24">[R868868]</a>.</p>
+wavelet detail coefficients as described in section 4.2 of <a class="reference internal" href="#r430" id="id24">[R430]</a>.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r868868" rules="none">
+<table class="docutils citation" frame="void" id="r430" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R868868]</td><td><em>(<a class="fn-backref" href="#id24">1</a>, <a class="fn-backref" href="#id25">2</a>)</em> D. L. Donoho and I. M. Johnstone. “Ideal spatial adaptation
+<tr><td class="label">[R430]</td><td><em>(<a class="fn-backref" href="#id24">1</a>, <a class="fn-backref" href="#id25">2</a>)</em> D. L. Donoho and I. M. Johnstone. “Ideal spatial adaptation
 by wavelet shrinkage.” Biometrika 81.3 (1994): 425-455.
 DOI:10.1093/biomet/81.3.425</td></tr>
 </tbody>
@@ -751,10 +751,10 @@ otherwise as spatial.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r870870" rules="none">
+<table class="docutils citation" frame="void" id="r431" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id26">[R870870]</a></td><td>N.S.Hoang, S.B.Damelin, “On surface completion and image inpainting
+<tr><td class="label"><a class="fn-backref" href="#id26">[R431]</a></td><td>N.S.Hoang, S.B.Damelin, “On surface completion and image inpainting
 by biharmonic functions: numerical aspects”</td></tr>
 </tbody>
 </table>
@@ -830,22 +830,22 @@ specific textures. The principle of the algorithm is to average the value
 of a given pixel with values of other pixels in a limited neighbourhood,
 provided that the <em>patches</em> centered on the other pixels are similar enough
 to the patch centered on the pixel of interest.</p>
-<p>In the original version of the algorithm <a class="reference internal" href="#r872874" id="id27">[R872874]</a>, corresponding to
+<p>In the original version of the algorithm <a class="reference internal" href="#r432" id="id27">[R432]</a>, corresponding to
 <code class="docutils literal"><span class="pre">fast=False</span></code>, the computational complexity is</p>
 <p>image.size * patch_size ** image.ndim * patch_distance ** image.ndim</p>
 <p>Hence, changing the size of patches or their maximal distance has a
 strong effect on computing times, especially for 3-D images.</p>
 <p>However, the default behavior corresponds to <code class="docutils literal"><span class="pre">fast_mode=True</span></code>, for which
-another version of non-local means <a class="reference internal" href="#r873874" id="id28">[R873874]</a> is used, corresponding to a
+another version of non-local means <a class="reference internal" href="#r433" id="id28">[R433]</a> is used, corresponding to a
 complexity of</p>
 <p>image.size * patch_distance ** image.ndim</p>
 <p>The computing time depends only weakly on the patch size, thanks to
 the computation of the integral of patches distances for a given
-shift, that reduces the number of operations <a class="reference internal" href="#r872874" id="id29">[R872874]</a>. Therefore, this
+shift, that reduces the number of operations <a class="reference internal" href="#r432" id="id29">[R432]</a>. Therefore, this
 algorithm executes faster than the classic algorith
 (<code class="docutils literal"><span class="pre">fast_mode=False</span></code>), at the expense of using twice as much memory.
 This implementation has been proven to be more efficient compared to
-other alternatives, see e.g. <a class="reference internal" href="#r874874" id="id30">[R874874]</a>.</p>
+other alternatives, see e.g. <a class="reference internal" href="#r434" id="id30">[R434]</a>.</p>
 <p>Compared to the classic algorithm, all pixels of a patch contribute
 to the distance to another patch with the same weight, no matter
 their distance to the center of the patch. This coarser computation
@@ -856,26 +856,26 @@ be faster due to boundary effects.</p>
 <p>The image is padded using the <cite>reflect</cite> mode of <cite>skimage.util.pad</cite>
 before denoising.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r872874" rules="none">
+<table class="docutils citation" frame="void" id="r432" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R872874]</td><td><em>(<a class="fn-backref" href="#id27">1</a>, <a class="fn-backref" href="#id29">2</a>, <a class="fn-backref" href="#id31">3</a>)</em> Buades, A., Coll, B., &amp; Morel, J. M. (2005, June). A non-local
+<tr><td class="label">[R432]</td><td><em>(<a class="fn-backref" href="#id27">1</a>, <a class="fn-backref" href="#id29">2</a>, <a class="fn-backref" href="#id31">3</a>)</em> Buades, A., Coll, B., &amp; Morel, J. M. (2005, June). A non-local
 algorithm for image denoising. In CVPR 2005, Vol. 2, pp. 60-65, IEEE.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r873874" rules="none">
+<table class="docutils citation" frame="void" id="r433" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R873874]</td><td><em>(<a class="fn-backref" href="#id28">1</a>, <a class="fn-backref" href="#id32">2</a>)</em> J. Darbon, A. Cunha, T.F. Chan, S. Osher, and G.J. Jensen, Fast
+<tr><td class="label">[R433]</td><td><em>(<a class="fn-backref" href="#id28">1</a>, <a class="fn-backref" href="#id32">2</a>)</em> J. Darbon, A. Cunha, T.F. Chan, S. Osher, and G.J. Jensen, Fast
 nonlocal filtering applied to electron cryomicroscopy, in 5th IEEE
 International Symposium on Biomedical Imaging: From Nano to Macro,
 2008, pp. 1331-1334.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r874874" rules="none">
+<table class="docutils citation" frame="void" id="r434" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R874874]</td><td><em>(<a class="fn-backref" href="#id30">1</a>, <a class="fn-backref" href="#id33">2</a>)</em> Jacques Froment. Parameter-Free Fast Pixelwise Non-Local Means
+<tr><td class="label">[R434]</td><td><em>(<a class="fn-backref" href="#id30">1</a>, <a class="fn-backref" href="#id33">2</a>)</em> Jacques Froment. Parameter-Free Fast Pixelwise Non-Local Means
 Denoising. Image Processing On Line, 2014, vol. 4, p. 300-326.</td></tr>
 </tbody>
 </table>
@@ -928,10 +928,10 @@ under -1 are thresholded for skimage pipeline compatibility.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r878878" rules="none">
+<table class="docutils citation" frame="void" id="r435" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id34">[R878878]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution">http://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id34">[R435]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution">http://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1046,10 +1046,10 @@ their contribution is low. Finally the empirical mean of these
 samples give us an estimation of the mean, and an exact
 computation with an infinite sample set.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r880880" rules="none">
+<table class="docutils citation" frame="void" id="r436" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id35">[R880880]</a></td><td><p class="first">François Orieux, Jean-François Giovannelli, and Thomas
+<tr><td class="label"><a class="fn-backref" href="#id35">[R436]</a></td><td><p class="first">François Orieux, Jean-François Giovannelli, and Thomas
 Rodet, “Bayesian estimation of regularization and point
 spread function parameters for Wiener-Hunt deconvolution”,
 J. Opt. Soc. Am. A 27, 1593-1607 (2010)</p>
@@ -1123,19 +1123,19 @@ was a masked array, the mask will be preserved.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r882883" rules="none">
+<table class="docutils citation" frame="void" id="r437" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id36">[R882883]</a></td><td>Miguel Arevallilo Herraez, David R. Burton, Michael J. Lalor,
+<tr><td class="label"><a class="fn-backref" href="#id36">[R437]</a></td><td>Miguel Arevallilo Herraez, David R. Burton, Michael J. Lalor,
 and Munther A. Gdeisat, “Fast two-dimensional phase-unwrapping
 algorithm based on sorting by reliability following a noncontinuous
 path”, Journal Applied Optics, Vol. 41, No. 35 (2002) 7437,</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r883883" rules="none">
+<table class="docutils citation" frame="void" id="r438" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id37">[R883883]</a></td><td>Abdul-Rahman, H., Gdeisat, M., Burton, D., &amp; Lalor, M., “Fast
+<tr><td class="label"><a class="fn-backref" href="#id37">[R438]</a></td><td>Abdul-Rahman, H., Gdeisat, M., Burton, D., &amp; Lalor, M., “Fast
 three-dimensional phase-unwrapping algorithm based on sorting by
 reliability following a non-continuous path. In W. Osten,
 C. Gorecki, &amp; E. L. Novak (Eds.), Optical Metrology (2005) 32–40,
@@ -1221,18 +1221,18 @@ under -1 are thresholded for skimage pipeline compatibility.</p>
 <p>This function applies the Wiener filter to a noisy and degraded
 image by an impulse response (or PSF). If the data model is</p>
 <div class="math">
-<p><span class="math">y = Hx + n</span></p>
-</div><p>where <span class="math">n</span> is noise, <span class="math">H</span> the PSF and <span class="math">x</span> the
+<p><img src="../_images/math/ccdbb047bd3e214e872f12d0390b8690eb3263ef.png" alt="y = Hx + n"/></p>
+</div><p>where <img class="math" src="../_images/math/e11f2701c4a39c7fe543a6c4150b421d50f1c159.png" alt="n"/> is noise, <img class="math" src="../_images/math/44d4c3f22452acebfb3ac644e23508b67500be90.png" alt="H"/> the PSF and <img class="math" src="../_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> the
 unknown original image, the Wiener filter is</p>
 <div class="math">
-<p><span class="math">\hat x = F^\dag (|\Lambda_H|^2 + \lambda |\Lambda_D|^2)
-\Lambda_H^\dag F y</span></p>
-</div><p>where <span class="math">F</span> and <span class="math">F^\dag</span> are the Fourier and inverse
-Fourier transfroms respectively, <span class="math">\Lambda_H</span> the transfer
+<p><img src="../_images/math/38189163da4aab462c720153fc4a5e064cdae3c3.png" alt="\hat x = F^\dag (|\Lambda_H|^2 + \lambda |\Lambda_D|^2)
+\Lambda_H^\dag F y"/></p>
+</div><p>where <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> and <img class="math" src="../_images/math/d4e4b311836eb70aed2d447e6d7a4568df696ed9.png" alt="F^\dag"/> are the Fourier and inverse
+Fourier transfroms respectively, <img class="math" src="../_images/math/2b6f0dc70068db2f23b50ab7f9da773486997627.png" alt="\Lambda_H"/> the transfer
 function (or the Fourier transfrom of the PSF, see [Hunt] below)
-and <span class="math">\Lambda_D</span> the filter to penalize the restored image
+and <img class="math" src="../_images/math/a8526e7e04221d98ba751124d3ae70338bfc8c8a.png" alt="\Lambda_D"/> the filter to penalize the restored image
 frequencies (Laplacian by default, that is penalization of high
-frequency). The parameter <span class="math">\lambda</span> tunes the balance
+frequency). The parameter <img class="math" src="../_images/math/76f1d8ace30435987c01a00ca53a71cba1f40e6c.png" alt="\lambda"/> tunes the balance
 between the data (that tends to increase high frequency, even
 those coming from noise), and the regularization.</p>
 <p>These methods are then specific to a prior model. Consequently,
@@ -1243,12 +1243,12 @@ as high-frequency penalization to compensate the instability of
 the solution with respect to the data (sometimes called noise
 amplification or “explosive” solution).</p>
 <p>Finally, the use of Fourier space implies a circulant property of
-<span class="math">H</span>, see [Hunt].</p>
+<img class="math" src="../_images/math/44d4c3f22452acebfb3ac644e23508b67500be90.png" alt="H"/>, see [Hunt].</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r886887" rules="none">
+<table class="docutils citation" frame="void" id="r439" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id38">[R886887]</a></td><td><p class="first">François Orieux, Jean-François Giovannelli, and Thomas
+<tr><td class="label"><a class="fn-backref" href="#id38">[R439]</a></td><td><p class="first">François Orieux, Jean-François Giovannelli, and Thomas
 Rodet, “Bayesian estimation of regularization and point
 spread function parameters for Wiener-Hunt deconvolution”,
 J. Opt. Soc. Am. A 27, 1593-1607 (2010)</p>
@@ -1257,10 +1257,10 @@ J. Opt. Soc. Am. A 27, 1593-1607 (2010)</p>
 </td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r887887" rules="none">
+<table class="docutils citation" frame="void" id="r440" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id39">[R887887]</a></td><td>B. R. Hunt “A matrix theory proof of the discrete
+<tr><td class="label"><a class="fn-backref" href="#id39">[R440]</a></td><td>B. R. Hunt “A matrix theory proof of the discrete
 convolution theorem”, IEEE Trans. on Audio and
 Electroacoustics, vol. au-19, no. 4, pp. 285-288, dec. 1971</td></tr>
 </tbody>

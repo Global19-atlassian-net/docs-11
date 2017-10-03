@@ -136,7 +136,7 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.mark_boundaries" title="skimage.segmentation.mark_boundaries"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.mark_boundaries</span></code></a>(image,&nbsp;…)</td>
 <td>Return image with boundaries between labeled regions highlighted.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.quickshift" title="skimage.segmentation.quickshift"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.quickshift</span></code></a></td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.quickshift" title="skimage.segmentation.quickshift"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.quickshift</span></code></a>(image[,&nbsp;…])</td>
 <td>Segments image using quickshift clustering in Color-(x,y) space.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.random_walker" title="skimage.segmentation.random_walker"><code class="xref py py-obj docutils literal"><span class="pre">skimage.segmentation.random_walker</span></code></a>(data,&nbsp;labels)</td>
@@ -247,10 +247,10 @@ yields same behaviour as ‘fixed’ and ‘free’, respectively.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r906906" rules="none">
+<table class="docutils citation" frame="void" id="r449" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R906906]</a></td><td>Kass, M.; Witkin, A.; Terzopoulos, D. “Snakes: Active contour
+<tr><td class="label"><a class="fn-backref" href="#id1">[R449]</a></td><td>Kass, M.; Witkin, A.; Terzopoulos, D. “Snakes: Active contour
 models”. International Journal of Computer Vision 1 (4): 321
 (1988).</td></tr>
 </tbody>
@@ -392,10 +392,10 @@ channels. A value of False, for a 3D image, is not currently supported.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r908908" rules="none">
+<table class="docutils citation" frame="void" id="r450" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R908908]</a></td><td>Efficient graph-based image segmentation, Felzenszwalb, P.F. and
+<tr><td class="label"><a class="fn-backref" href="#id2">[R450]</a></td><td>Efficient graph-based image segmentation, Felzenszwalb, P.F. and
 Huttenlocher, D.P.  International Journal of Computer Vision, 2004</td></tr>
 </tbody>
 </table>
@@ -642,7 +642,7 @@ superimposed on the original image.</p>
 <h2>quickshift<a class="headerlink" href="#quickshift" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.quickshift">
-<code class="descclassname">skimage.segmentation.</code><code class="descname">quickshift</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skimage.segmentation.quickshift" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.segmentation.</code><code class="descname">quickshift</code><span class="sig-paren">(</span><em>image</em>, <em>ratio=1.0</em>, <em>kernel_size=5</em>, <em>max_dist=10</em>, <em>return_tree=False</em>, <em>sigma=0</em>, <em>convert2lab=True</em>, <em>random_seed=42</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/v0.13.1/skimage/segmentation/_quickshift.py#L11"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.quickshift" title="Permalink to this definition">¶</a></dt>
 <dd><p>Segments image using quickshift clustering in Color-(x,y) space.</p>
 <p>Produces an oversegmentation of the image using the quickshift mode-seeking
 algorithm.</p>
@@ -654,35 +654,35 @@ algorithm.</p>
 <blockquote>
 <div><p>Input image.</p>
 </div></blockquote>
-<p><strong>ratio</strong> : float, optional, between 0 and 1 (default 1).</p>
+<p><strong>ratio</strong> : float, optional, between 0 and 1</p>
 <blockquote>
 <div><p>Balances color-space proximity and image-space proximity.
 Higher values give more weight to color-space.</p>
 </div></blockquote>
-<p><strong>kernel_size</strong> : float, optional (default 5)</p>
+<p><strong>kernel_size</strong> : float, optional</p>
 <blockquote>
 <div><p>Width of Gaussian kernel used in smoothing the
 sample density. Higher means fewer clusters.</p>
 </div></blockquote>
-<p><strong>max_dist</strong> : float, optional (default 10)</p>
+<p><strong>max_dist</strong> : float, optional</p>
 <blockquote>
 <div><p>Cut-off point for data distances.
 Higher means fewer clusters.</p>
 </div></blockquote>
-<p><strong>return_tree</strong> : bool, optional (default False)</p>
+<p><strong>return_tree</strong> : bool, optional</p>
 <blockquote>
 <div><p>Whether to return the full segmentation hierarchy tree and distances.</p>
 </div></blockquote>
-<p><strong>sigma</strong> : float, optional (default 0)</p>
+<p><strong>sigma</strong> : float, optional</p>
 <blockquote>
 <div><p>Width for Gaussian smoothing as preprocessing. Zero means no smoothing.</p>
 </div></blockquote>
-<p><strong>convert2lab</strong> : bool, optional (default True)</p>
+<p><strong>convert2lab</strong> : bool, optional</p>
 <blockquote>
 <div><p>Whether the input should be converted to Lab colorspace prior to
 segmentation. For this purpose, the input is assumed to be RGB.</p>
 </div></blockquote>
-<p><strong>random_seed</strong> : None (default) or int, optional</p>
+<p><strong>random_seed</strong> : int, optional</p>
 <blockquote>
 <div><p>Random seed used for breaking ties.</p>
 </div></blockquote>
@@ -701,10 +701,10 @@ segmentation. For this purpose, the input is assumed to be RGB.</p>
 segmentation, though this is not strictly necessary. For this to work, the
 image must be given in RGB format.</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r910910" rules="none">
+<table class="docutils citation" frame="void" id="r451" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R910910]</a></td><td>Quick shift and kernel methods for mode seeking,
+<tr><td class="label"><a class="fn-backref" href="#id3">[R451]</a></td><td>Quick shift and kernel methods for mode seeking,
 Vedaldi, A. and Soatto, S.
 European Conference on Computer Vision, 2008</td></tr>
 </tbody>
@@ -1048,7 +1048,7 @@ in most of the cases.</p>
 </div></blockquote>
 <p><strong>slic_zero: bool, optional</strong></p>
 <blockquote>
-<div><p>Run SLIC-zero, the zero-parameter mode of SLIC. <a class="reference internal" href="#r913913" id="id4">[R913913]</a></p>
+<div><p>Run SLIC-zero, the zero-parameter mode of SLIC. <a class="reference internal" href="#r453" id="id4">[R453]</a></p>
 </div></blockquote>
 </td>
 </tr>
@@ -1081,18 +1081,18 @@ interpret them as 3D with the last dimension having length 3, use
 <cite>multichannel=False</cite>.</li>
 </ul>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r912913" rules="none">
+<table class="docutils citation" frame="void" id="r452" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[R912913]</a></td><td>Radhakrishna Achanta, Appu Shaji, Kevin Smith, Aurelien Lucchi,
+<tr><td class="label"><a class="fn-backref" href="#id5">[R452]</a></td><td>Radhakrishna Achanta, Appu Shaji, Kevin Smith, Aurelien Lucchi,
 Pascal Fua, and Sabine Süsstrunk, SLIC Superpixels Compared to
 State-of-the-art Superpixel Methods, TPAMI, May 2012.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r913913" rules="none">
+<table class="docutils citation" frame="void" id="r453" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R913913]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> <a class="reference external" href="http://ivrg.epfl.ch/research/superpixels#SLICO">http://ivrg.epfl.ch/research/superpixels#SLICO</a></td></tr>
+<tr><td class="label">[R453]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> <a class="reference external" href="http://ivrg.epfl.ch/research/superpixels#SLICO">http://ivrg.epfl.ch/research/superpixels#SLICO</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1146,7 +1146,7 @@ will be labeled.</p>
 </div></blockquote>
 <p><strong>compactness</strong> : float, optional</p>
 <blockquote>
-<div><p>Use compact watershed <a class="reference internal" href="#r918918" id="id7">[R918918]</a> with given compactness parameter.
+<div><p>Use compact watershed <a class="reference internal" href="#r456" id="id7">[R456]</a> with given compactness parameter.
 Higher values result in more regularly-shaped watershed basins.</p>
 </div></blockquote>
 <p><strong>watershed_line</strong> : bool, optional</p>
@@ -1172,7 +1172,7 @@ obtained by the watershed algorithm. The line has the label 0.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This function implements a watershed algorithm <a class="reference internal" href="#r916918" id="id8">[R916918]</a> <a class="reference internal" href="#r917918" id="id9">[R917918]</a> that apportions
+<p>This function implements a watershed algorithm <a class="reference internal" href="#r454" id="id8">[R454]</a> <a class="reference internal" href="#r455" id="id9">[R455]</a> that apportions
 pixels into marked basins. The algorithm uses a priority queue to hold
 the pixels with the metric for the priority queue being pixel value, then
 the time of entry into the queue - this settles ties in favor of the
@@ -1191,22 +1191,22 @@ the local minima of the gradient of the image, or the local maxima of the
 distance function to the background for separating overlapping objects
 (see example).</p>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r916918" rules="none">
+<table class="docutils citation" frame="void" id="r454" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R916918]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Watershed_%28image_processing%29">http://en.wikipedia.org/wiki/Watershed_%28image_processing%29</a></td></tr>
+<tr><td class="label">[R454]</td><td><em>(<a class="fn-backref" href="#id8">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/Watershed_%28image_processing%29">http://en.wikipedia.org/wiki/Watershed_%28image_processing%29</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r917918" rules="none">
+<table class="docutils citation" frame="void" id="r455" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R917918]</td><td><em>(<a class="fn-backref" href="#id9">1</a>, <a class="fn-backref" href="#id11">2</a>)</em> <a class="reference external" href="http://cmm.ensmp.fr/~beucher/wtshed.html">http://cmm.ensmp.fr/~beucher/wtshed.html</a></td></tr>
+<tr><td class="label">[R455]</td><td><em>(<a class="fn-backref" href="#id9">1</a>, <a class="fn-backref" href="#id11">2</a>)</em> <a class="reference external" href="http://cmm.ensmp.fr/~beucher/wtshed.html">http://cmm.ensmp.fr/~beucher/wtshed.html</a></td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="r918918" rules="none">
+<table class="docutils citation" frame="void" id="r456" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[R918918]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id12">2</a>)</em> Peer Neubert &amp; Peter Protzel (2014). Compact Watershed and
+<tr><td class="label">[R456]</td><td><em>(<a class="fn-backref" href="#id7">1</a>, <a class="fn-backref" href="#id12">2</a>)</em> Peer Neubert &amp; Peter Protzel (2014). Compact Watershed and
 Preemptive SLIC: On Improving Trade-offs of Superpixel Segmentation
 Algorithms. ICPR 2014, pp 996-1001. DOI:10.1109/ICPR.2014.181
 https://www.tu-chemnitz.de/etit/proaut/forschung/rsrc/cws_pSLIC_ICPR.pdf</td></tr>
