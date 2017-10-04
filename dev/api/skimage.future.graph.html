@@ -69,13 +69,13 @@
         <div class="well sidebar-box toc">
             <ul class="nav nav-list">
 <li><a class="reference internal" href="#">Module: <code class="docutils literal"><span class="pre">future.graph</span></code></a><ul class="nav nav-list">
-<li><a class="reference internal" href="#cut-normalized">cut_normalized</a></li>
-<li><a class="reference internal" href="#cut-threshold">cut_threshold</a></li>
-<li><a class="reference internal" href="#merge-hierarchical">merge_hierarchical</a></li>
-<li><a class="reference internal" href="#ncut">ncut</a></li>
-<li><a class="reference internal" href="#rag-boundary">rag_boundary</a></li>
 <li><a class="reference internal" href="#rag-mean-color">rag_mean_color</a></li>
+<li><a class="reference internal" href="#cut-threshold">cut_threshold</a></li>
+<li><a class="reference internal" href="#cut-normalized">cut_normalized</a></li>
+<li><a class="reference internal" href="#ncut">ncut</a></li>
 <li><a class="reference internal" href="#show-rag">show_rag</a></li>
+<li><a class="reference internal" href="#merge-hierarchical">merge_hierarchical</a></li>
+<li><a class="reference internal" href="#rag-boundary">rag_boundary</a></li>
 <li><a class="reference internal" href="#rag"><code class="docutils literal"><span class="pre">RAG</span></code></a></li>
 </ul>
 </li>
@@ -114,336 +114,32 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.future.graph.cut_normalized" title="skimage.future.graph.cut_normalized"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.cut_normalized</span></code></a>(labels,&nbsp;rag)</td>
-<td>Perform Normalized Graph cut on the Region Adjacency Graph.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.future.graph.rag_mean_color" title="skimage.future.graph.rag_mean_color"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.rag_mean_color</span></code></a>(image,&nbsp;…)</td>
+<td>Compute the Region Adjacency Graph using mean colors.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.future.graph.cut_threshold" title="skimage.future.graph.cut_threshold"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.cut_threshold</span></code></a>(labels,&nbsp;…)</td>
 <td>Combine regions separated by weight less than threshold.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.future.graph.merge_hierarchical" title="skimage.future.graph.merge_hierarchical"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.merge_hierarchical</span></code></a>(…)</td>
-<td>Perform hierarchical merging of a RAG.</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.future.graph.cut_normalized" title="skimage.future.graph.cut_normalized"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.cut_normalized</span></code></a>(labels,&nbsp;rag)</td>
+<td>Perform Normalized Graph cut on the Region Adjacency Graph.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.future.graph.ncut" title="skimage.future.graph.ncut"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.ncut</span></code></a>(labels,&nbsp;rag[,&nbsp;…])</td>
 <td>Perform Normalized Graph cut on the Region Adjacency Graph.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.future.graph.rag_boundary" title="skimage.future.graph.rag_boundary"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.rag_boundary</span></code></a>(labels,&nbsp;…)</td>
-<td>Comouter RAG based on region boundaries</td>
-</tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.future.graph.rag_mean_color" title="skimage.future.graph.rag_mean_color"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.rag_mean_color</span></code></a>(image,&nbsp;…)</td>
-<td>Compute the Region Adjacency Graph using mean colors.</td>
-</tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.future.graph.show_rag" title="skimage.future.graph.show_rag"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.show_rag</span></code></a>(labels,&nbsp;rag,&nbsp;image)</td>
 <td>Show a Region Adjacency Graph on an image.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.future.graph.merge_hierarchical" title="skimage.future.graph.merge_hierarchical"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.merge_hierarchical</span></code></a>(…)</td>
+<td>Perform hierarchical merging of a RAG.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.future.graph.rag_boundary" title="skimage.future.graph.rag_boundary"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.rag_boundary</span></code></a>(labels,&nbsp;…)</td>
+<td>Comouter RAG based on region boundaries</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.future.graph.RAG" title="skimage.future.graph.RAG"><code class="xref py py-obj docutils literal"><span class="pre">skimage.future.graph.RAG</span></code></a>([label_image,&nbsp;…])</td>
 <td>The Region Adjacency Graph (RAG) of an image, subclasses</td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="cut-normalized">
-<h2>cut_normalized<a class="headerlink" href="#cut-normalized" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="skimage.future.graph.cut_normalized">
-<code class="descclassname">skimage.future.graph.</code><code class="descname">cut_normalized</code><span class="sig-paren">(</span><em>labels</em>, <em>rag</em>, <em>thresh=0.001</em>, <em>num_cuts=10</em>, <em>in_place=True</em>, <em>max_edge=1.0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_cut.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.cut_normalized" title="Permalink to this definition">¶</a></dt>
-<dd><p>Perform Normalized Graph cut on the Region Adjacency Graph.</p>
-<p>Given an image’s labels and its similarity RAG, recursively perform
-a 2-way normalized cut on it. All nodes belonging to a subgraph
-that cannot be cut further are assigned a unique label in the
-output.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray</p>
-<blockquote>
-<div><p>The array of labels.</p>
-</div></blockquote>
-<p><strong>rag</strong> : RAG</p>
-<blockquote>
-<div><p>The region adjacency graph.</p>
-</div></blockquote>
-<p><strong>thresh</strong> : float</p>
-<blockquote>
-<div><p>The threshold. A subgraph won’t be further subdivided if the
-value of the N-cut exceeds <cite>thresh</cite>.</p>
-</div></blockquote>
-<p><strong>num_cuts</strong> : int</p>
-<blockquote>
-<div><p>The number or N-cuts to perform before determining the optimal one.</p>
-</div></blockquote>
-<p><strong>in_place</strong> : bool</p>
-<blockquote>
-<div><p>If set, modifies <cite>rag</cite> in place. For each node <cite>n</cite> the function will
-set a new attribute <code class="docutils literal"><span class="pre">rag.node[n]['ncut</span> <span class="pre">label']</span></code>.</p>
-</div></blockquote>
-<p><strong>max_edge</strong> : float, optional</p>
-<blockquote>
-<div><p>The maximum possible value of an edge in the RAG. This corresponds to
-an edge between identical regions. This is used to put self
-edges in the RAG.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The new labeled array.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r561561" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R561561]</a></td><td>Shi, J.; Malik, J., “Normalized cuts and image segmentation”,
-Pattern Analysis and Machine Intelligence,
-IEEE Transactions on, vol. 22, no. 8, pp. 888-905, August 2000.</td></tr>
-</tbody>
-</table>
-<p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rag</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">rag_mean_color</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;similarity&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">new_labels</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">cut_normalized</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rag</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</div>
-<div class="section" id="cut-threshold">
-<h2>cut_threshold<a class="headerlink" href="#cut-threshold" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="skimage.future.graph.cut_threshold">
-<code class="descclassname">skimage.future.graph.</code><code class="descname">cut_threshold</code><span class="sig-paren">(</span><em>labels</em>, <em>rag</em>, <em>thresh</em>, <em>in_place=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_cut.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.cut_threshold" title="Permalink to this definition">¶</a></dt>
-<dd><p>Combine regions separated by weight less than threshold.</p>
-<p>Given an image’s labels and its RAG, output new labels by
-combining regions whose nodes are separated by a weight less
-than the given threshold.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray</p>
-<blockquote>
-<div><p>The array of labels.</p>
-</div></blockquote>
-<p><strong>rag</strong> : RAG</p>
-<blockquote>
-<div><p>The region adjacency graph.</p>
-</div></blockquote>
-<p><strong>thresh</strong> : float</p>
-<blockquote>
-<div><p>The threshold. Regions connected by edges with smaller weights are
-combined.</p>
-</div></blockquote>
-<p><strong>in_place</strong> : bool</p>
-<blockquote>
-<div><p>If set, modifies <cite>rag</cite> in place. The function will remove the edges
-with weights less that <cite>thresh</cite>. If set to <cite>False</cite> the function
-makes a copy of <cite>rag</cite> before proceeding.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The new labelled array.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r563563" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R563563]</a></td><td>Alain Tremeau and Philippe Colantoni
-“Regions Adjacency Graph Applied To Color Image Segmentation”
-<a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.11.5274">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.11.5274</a></td></tr>
-</tbody>
-</table>
-<p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rag</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">rag_mean_color</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">new_labels</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">cut_threshold</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rag</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</div>
-<div class="section" id="merge-hierarchical">
-<h2>merge_hierarchical<a class="headerlink" href="#merge-hierarchical" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="skimage.future.graph.merge_hierarchical">
-<code class="descclassname">skimage.future.graph.</code><code class="descname">merge_hierarchical</code><span class="sig-paren">(</span><em>labels</em>, <em>rag</em>, <em>thresh</em>, <em>rag_copy</em>, <em>in_place_merge</em>, <em>merge_func</em>, <em>weight_func</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_merge.py#L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.merge_hierarchical" title="Permalink to this definition">¶</a></dt>
-<dd><p>Perform hierarchical merging of a RAG.</p>
-<p>Greedily merges the most similar pair of nodes until no edges lower than
-<cite>thresh</cite> remain.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray</p>
-<blockquote>
-<div><p>The array of labels.</p>
-</div></blockquote>
-<p><strong>rag</strong> : RAG</p>
-<blockquote>
-<div><p>The Region Adjacency Graph.</p>
-</div></blockquote>
-<p><strong>thresh</strong> : float</p>
-<blockquote>
-<div><p>Regions connected by an edge with weight smaller than <cite>thresh</cite> are
-merged.</p>
-</div></blockquote>
-<p><strong>rag_copy</strong> : bool</p>
-<blockquote>
-<div><p>If set, the RAG copied before modifying.</p>
-</div></blockquote>
-<p><strong>in_place_merge</strong> : bool</p>
-<blockquote>
-<div><p>If set, the nodes are merged in place. Otherwise, a new node is
-created for each merge..</p>
-</div></blockquote>
-<p><strong>merge_func</strong> : callable</p>
-<blockquote>
-<div><p>This function is called before merging two nodes. For the RAG <cite>graph</cite>
-while merging <cite>src</cite> and <cite>dst</cite>, it is called as follows
-<code class="docutils literal"><span class="pre">merge_func(graph,</span> <span class="pre">src,</span> <span class="pre">dst)</span></code>.</p>
-</div></blockquote>
-<p><strong>weight_func</strong> : callable</p>
-<blockquote>
-<div><p>The function to compute the new weights of the nodes adjacent to the
-merged node. This is directly supplied as the argument <cite>weight_func</cite>
-to <cite>merge_nodes</cite>.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The new labeled array.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</div>
-<div class="section" id="ncut">
-<h2>ncut<a class="headerlink" href="#ncut" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="skimage.future.graph.ncut">
-<code class="descclassname">skimage.future.graph.</code><code class="descname">ncut</code><span class="sig-paren">(</span><em>labels</em>, <em>rag</em>, <em>thresh=0.001</em>, <em>num_cuts=10</em>, <em>in_place=True</em>, <em>max_edge=1.0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_cut.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.ncut" title="Permalink to this definition">¶</a></dt>
-<dd><p>Perform Normalized Graph cut on the Region Adjacency Graph.</p>
-<p>Given an image’s labels and its similarity RAG, recursively perform
-a 2-way normalized cut on it. All nodes belonging to a subgraph
-that cannot be cut further are assigned a unique label in the
-output.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray</p>
-<blockquote>
-<div><p>The array of labels.</p>
-</div></blockquote>
-<p><strong>rag</strong> : RAG</p>
-<blockquote>
-<div><p>The region adjacency graph.</p>
-</div></blockquote>
-<p><strong>thresh</strong> : float</p>
-<blockquote>
-<div><p>The threshold. A subgraph won’t be further subdivided if the
-value of the N-cut exceeds <cite>thresh</cite>.</p>
-</div></blockquote>
-<p><strong>num_cuts</strong> : int</p>
-<blockquote>
-<div><p>The number or N-cuts to perform before determining the optimal one.</p>
-</div></blockquote>
-<p><strong>in_place</strong> : bool</p>
-<blockquote>
-<div><p>If set, modifies <cite>rag</cite> in place. For each node <cite>n</cite> the function will
-set a new attribute <code class="docutils literal"><span class="pre">rag.node[n]['ncut</span> <span class="pre">label']</span></code>.</p>
-</div></blockquote>
-<p><strong>max_edge</strong> : float, optional</p>
-<blockquote>
-<div><p>The maximum possible value of an edge in the RAG. This corresponds to
-an edge between identical regions. This is used to put self
-edges in the RAG.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The new labeled array.</p>
-</div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r565565" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R565565]</a></td><td>Shi, J.; Malik, J., “Normalized cuts and image segmentation”,
-Pattern Analysis and Machine Intelligence,
-IEEE Transactions on, vol. 22, no. 8, pp. 888-905, August 2000.</td></tr>
-</tbody>
-</table>
-<p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rag</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">rag_mean_color</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;similarity&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">new_labels</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">cut_normalized</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rag</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</div>
-<div class="section" id="rag-boundary">
-<h2>rag_boundary<a class="headerlink" href="#rag-boundary" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="skimage.future.graph.rag_boundary">
-<code class="descclassname">skimage.future.graph.</code><code class="descname">rag_boundary</code><span class="sig-paren">(</span><em>labels</em>, <em>edge_map</em>, <em>connectivity=2</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L386"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.rag_boundary" title="Permalink to this definition">¶</a></dt>
-<dd><p>Comouter RAG based on region boundaries</p>
-<p>Given an image’s initial segmentation and its edge map this method
-constructs the corresponding Region Adjacency Graph (RAG). Each node in the
-RAG represents a set of pixels within the image with the same label in
-<cite>labels</cite>. The weight between two adjacent regions is the average value
-in <cite>edge_map</cite> along their boundary.</p>
-<dl class="docutils">
-<dt>labels <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
-<dd>The labelled image.</dd>
-<dt>edge_map <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
-<dd>This should have the same shape as that of <cite>labels</cite>. For all pixels
-along the boundary between 2 adjacent regions, the average value of the
-corresponding pixels in <cite>edge_map</cite> is the edge weight between them.</dd>
-<dt>connectivity <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
-<dd>Pixels with a squared distance less than <cite>connectivity</cite> from each other
-are considered adjacent. It can range from 1 to <cite>labels.ndim</cite>. Its
-behavior is the same as <cite>connectivity</cite> parameter in
-<cite>scipy.ndimage.filters.generate_binary_structure</cite>.</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">color</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">chelsea</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">edge_map</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">sobel</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rag</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">rag_boundary</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">edge_map</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</div>
 <div class="section" id="rag-mean-color">
 <h2>rag_mean_color<a class="headerlink" href="#rag-mean-color" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -508,10 +204,10 @@ any two colors behave as though they were similar.</p>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r567567" rules="none">
+<table class="docutils citation" frame="void" id="r525525" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[R567567]</a></td><td>Alain Tremeau and Philippe Colantoni
+<tr><td class="label"><a class="fn-backref" href="#id1">[R525525]</a></td><td>Alain Tremeau and Philippe Colantoni
 “Regions Adjacency Graph Applied To Color Image Segmentation”
 <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.11.5274">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.11.5274</a></td></tr>
 </tbody>
@@ -522,6 +218,215 @@ any two colors behave as though they were similar.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rag</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">rag_mean_color</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="cut-threshold">
+<h2>cut_threshold<a class="headerlink" href="#cut-threshold" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.future.graph.cut_threshold">
+<code class="descclassname">skimage.future.graph.</code><code class="descname">cut_threshold</code><span class="sig-paren">(</span><em>labels</em>, <em>rag</em>, <em>thresh</em>, <em>in_place=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_cut.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.cut_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combine regions separated by weight less than threshold.</p>
+<p>Given an image’s labels and its RAG, output new labels by
+combining regions whose nodes are separated by a weight less
+than the given threshold.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray</p>
+<blockquote>
+<div><p>The array of labels.</p>
+</div></blockquote>
+<p><strong>rag</strong> : RAG</p>
+<blockquote>
+<div><p>The region adjacency graph.</p>
+</div></blockquote>
+<p><strong>thresh</strong> : float</p>
+<blockquote>
+<div><p>The threshold. Regions connected by edges with smaller weights are
+combined.</p>
+</div></blockquote>
+<p><strong>in_place</strong> : bool</p>
+<blockquote>
+<div><p>If set, modifies <cite>rag</cite> in place. The function will remove the edges
+with weights less that <cite>thresh</cite>. If set to <cite>False</cite> the function
+makes a copy of <cite>rag</cite> before proceeding.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>The new labelled array.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r527527" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[R527527]</a></td><td>Alain Tremeau and Philippe Colantoni
+“Regions Adjacency Graph Applied To Color Image Segmentation”
+<a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.11.5274">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.11.5274</a></td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rag</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">rag_mean_color</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_labels</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">cut_threshold</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rag</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="cut-normalized">
+<h2>cut_normalized<a class="headerlink" href="#cut-normalized" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.future.graph.cut_normalized">
+<code class="descclassname">skimage.future.graph.</code><code class="descname">cut_normalized</code><span class="sig-paren">(</span><em>labels</em>, <em>rag</em>, <em>thresh=0.001</em>, <em>num_cuts=10</em>, <em>in_place=True</em>, <em>max_edge=1.0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_cut.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.cut_normalized" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform Normalized Graph cut on the Region Adjacency Graph.</p>
+<p>Given an image’s labels and its similarity RAG, recursively perform
+a 2-way normalized cut on it. All nodes belonging to a subgraph
+that cannot be cut further are assigned a unique label in the
+output.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray</p>
+<blockquote>
+<div><p>The array of labels.</p>
+</div></blockquote>
+<p><strong>rag</strong> : RAG</p>
+<blockquote>
+<div><p>The region adjacency graph.</p>
+</div></blockquote>
+<p><strong>thresh</strong> : float</p>
+<blockquote>
+<div><p>The threshold. A subgraph won’t be further subdivided if the
+value of the N-cut exceeds <cite>thresh</cite>.</p>
+</div></blockquote>
+<p><strong>num_cuts</strong> : int</p>
+<blockquote>
+<div><p>The number or N-cuts to perform before determining the optimal one.</p>
+</div></blockquote>
+<p><strong>in_place</strong> : bool</p>
+<blockquote>
+<div><p>If set, modifies <cite>rag</cite> in place. For each node <cite>n</cite> the function will
+set a new attribute <code class="docutils literal"><span class="pre">rag.node[n]['ncut</span> <span class="pre">label']</span></code>.</p>
+</div></blockquote>
+<p><strong>max_edge</strong> : float, optional</p>
+<blockquote>
+<div><p>The maximum possible value of an edge in the RAG. This corresponds to
+an edge between identical regions. This is used to put self
+edges in the RAG.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>The new labeled array.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r529529" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[R529529]</a></td><td>Shi, J.; Malik, J., “Normalized cuts and image segmentation”,
+Pattern Analysis and Machine Intelligence,
+IEEE Transactions on, vol. 22, no. 8, pp. 888-905, August 2000.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rag</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">rag_mean_color</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;similarity&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_labels</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">cut_normalized</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rag</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="ncut">
+<h2>ncut<a class="headerlink" href="#ncut" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.future.graph.ncut">
+<code class="descclassname">skimage.future.graph.</code><code class="descname">ncut</code><span class="sig-paren">(</span><em>labels</em>, <em>rag</em>, <em>thresh=0.001</em>, <em>num_cuts=10</em>, <em>in_place=True</em>, <em>max_edge=1.0</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_cut.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.ncut" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform Normalized Graph cut on the Region Adjacency Graph.</p>
+<p>Given an image’s labels and its similarity RAG, recursively perform
+a 2-way normalized cut on it. All nodes belonging to a subgraph
+that cannot be cut further are assigned a unique label in the
+output.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray</p>
+<blockquote>
+<div><p>The array of labels.</p>
+</div></blockquote>
+<p><strong>rag</strong> : RAG</p>
+<blockquote>
+<div><p>The region adjacency graph.</p>
+</div></blockquote>
+<p><strong>thresh</strong> : float</p>
+<blockquote>
+<div><p>The threshold. A subgraph won’t be further subdivided if the
+value of the N-cut exceeds <cite>thresh</cite>.</p>
+</div></blockquote>
+<p><strong>num_cuts</strong> : int</p>
+<blockquote>
+<div><p>The number or N-cuts to perform before determining the optimal one.</p>
+</div></blockquote>
+<p><strong>in_place</strong> : bool</p>
+<blockquote>
+<div><p>If set, modifies <cite>rag</cite> in place. For each node <cite>n</cite> the function will
+set a new attribute <code class="docutils literal"><span class="pre">rag.node[n]['ncut</span> <span class="pre">label']</span></code>.</p>
+</div></blockquote>
+<p><strong>max_edge</strong> : float, optional</p>
+<blockquote>
+<div><p>The maximum possible value of an edge in the RAG. This corresponds to
+an edge between identical regions. This is used to put self
+edges in the RAG.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>The new labeled array.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="r531531" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[R531531]</a></td><td>Shi, J.; Malik, J., “Normalized cuts and image segmentation”,
+Pattern Analysis and Machine Intelligence,
+IEEE Transactions on, vol. 22, no. 8, pp. 888-905, August 2000.</td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rag</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">rag_mean_color</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;similarity&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_labels</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">cut_normalized</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">rag</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -601,6 +506,101 @@ passed to the <a class="reference external" href="http://matplotlib.org/api/figu
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span>  <span class="n">graph</span><span class="o">.</span><span class="n">rag_mean_color</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lc</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">show_rag</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">lc</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="merge-hierarchical">
+<h2>merge_hierarchical<a class="headerlink" href="#merge-hierarchical" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.future.graph.merge_hierarchical">
+<code class="descclassname">skimage.future.graph.</code><code class="descname">merge_hierarchical</code><span class="sig-paren">(</span><em>labels</em>, <em>rag</em>, <em>thresh</em>, <em>rag_copy</em>, <em>in_place_merge</em>, <em>merge_func</em>, <em>weight_func</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_merge.py#L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.merge_hierarchical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform hierarchical merging of a RAG.</p>
+<p>Greedily merges the most similar pair of nodes until no edges lower than
+<cite>thresh</cite> remain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray</p>
+<blockquote>
+<div><p>The array of labels.</p>
+</div></blockquote>
+<p><strong>rag</strong> : RAG</p>
+<blockquote>
+<div><p>The Region Adjacency Graph.</p>
+</div></blockquote>
+<p><strong>thresh</strong> : float</p>
+<blockquote>
+<div><p>Regions connected by an edge with weight smaller than <cite>thresh</cite> are
+merged.</p>
+</div></blockquote>
+<p><strong>rag_copy</strong> : bool</p>
+<blockquote>
+<div><p>If set, the RAG copied before modifying.</p>
+</div></blockquote>
+<p><strong>in_place_merge</strong> : bool</p>
+<blockquote>
+<div><p>If set, the nodes are merged in place. Otherwise, a new node is
+created for each merge..</p>
+</div></blockquote>
+<p><strong>merge_func</strong> : callable</p>
+<blockquote>
+<div><p>This function is called before merging two nodes. For the RAG <cite>graph</cite>
+while merging <cite>src</cite> and <cite>dst</cite>, it is called as follows
+<code class="docutils literal"><span class="pre">merge_func(graph,</span> <span class="pre">src,</span> <span class="pre">dst)</span></code>.</p>
+</div></blockquote>
+<p><strong>weight_func</strong> : callable</p>
+<blockquote>
+<div><p>The function to compute the new weights of the nodes adjacent to the
+merged node. This is directly supplied as the argument <cite>weight_func</cite>
+to <cite>merge_nodes</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
+<blockquote class="last">
+<div><p>The new labeled array.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="rag-boundary">
+<h2>rag_boundary<a class="headerlink" href="#rag-boundary" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.future.graph.rag_boundary">
+<code class="descclassname">skimage.future.graph.</code><code class="descname">rag_boundary</code><span class="sig-paren">(</span><em>labels</em>, <em>edge_map</em>, <em>connectivity=2</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L386"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.rag_boundary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Comouter RAG based on region boundaries</p>
+<p>Given an image’s initial segmentation and its edge map this method
+constructs the corresponding Region Adjacency Graph (RAG). Each node in the
+RAG represents a set of pixels within the image with the same label in
+<cite>labels</cite>. The weight between two adjacent regions is the average value
+in <cite>edge_map</cite> along their boundary.</p>
+<dl class="docutils">
+<dt>labels <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>The labelled image.</dd>
+<dt>edge_map <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd>This should have the same shape as that of <cite>labels</cite>. For all pixels
+along the boundary between 2 adjacent regions, the average value of the
+corresponding pixels in <cite>edge_map</cite> is the edge weight between them.</dd>
+<dt>connectivity <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd>Pixels with a squared distance less than <cite>connectivity</cite> from each other
+are considered adjacent. It can range from 1 to <cite>labels.ndim</cite>. Its
+behavior is the same as <cite>connectivity</cite> parameter in
+<cite>scipy.ndimage.filters.generate_binary_structure</cite>.</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">color</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">chelsea</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">edge_map</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">sobel</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rag</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">rag_boundary</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">edge_map</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
