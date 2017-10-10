@@ -27,6 +27,7 @@
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
         <link rel="top" title="skimage v0.13.1 docs" href="../../index.html" />
@@ -136,26 +137,18 @@ mapping for such a shift would be:</p>
 </div>
 <div class="section" id="the-swirl-transformation">
 <h2>The swirl transformation<a class="headerlink" href="#the-swirl-transformation" title="Permalink to this headline">¶</a></h2>
-<p>Consider the coordinate <img class="math" src="../../_images/math/b7c48905409677f888c39e46ee27f2d17a3530fd.png" alt="(x, y)"/> in the output image.  The reverse
+<p>Consider the coordinate <span class="math">\((x, y)\)</span> in the output image.  The reverse
 mapping for the swirl transformation first computes, relative to a center
-<img class="math" src="../../_images/math/5532c34cc44ad6185e11bd9cbc4a9c145a659acd.png" alt="(x_0, y_0)"/>, its polar coordinates,</p>
+<span class="math">\((x_0, y_0)\)</span>, its polar coordinates,</p>
 <div class="math">
-<p><img src="../../_images/math/9368b837c2c8384bc64a39a05669553dacd3c520.png" alt="\theta = \arctan(y/x)
-
-\rho = \sqrt{(x - x_0)^2 + (y - y_0)^2},"/></p>
-</div><p>and then transforms them according to</p>
+\[ \begin{align}\begin{aligned}\theta = \arctan(y/x)\\\rho = \sqrt{(x - x_0)^2 + (y - y_0)^2},\end{aligned}\end{align} \]</div>
+<p>and then transforms them according to</p>
 <div class="math">
-<p><img src="../../_images/math/1eecf94e7bd5fb5e23633075ca3a8f6b7d86cace.png" alt="r = \ln(2) \, \mathtt{radius} / 5
-
-\phi = \mathtt{rotation}
-
-s = \mathtt{strength}
-
-\theta' = \phi + s \, e^{-\rho / r + \theta}"/></p>
-</div><p>where <code class="docutils literal"><span class="pre">strength</span></code> is a parameter for the amount of swirl, <code class="docutils literal"><span class="pre">radius</span></code> indicates
+\[ \begin{align}\begin{aligned}r = \ln(2) \, \mathtt{radius} / 5\\\phi = \mathtt{rotation}\\s = \mathtt{strength}\\\theta' = \phi + s \, e^{-\rho / r + \theta}\end{aligned}\end{align} \]</div>
+<p>where <code class="docutils literal"><span class="pre">strength</span></code> is a parameter for the amount of swirl, <code class="docutils literal"><span class="pre">radius</span></code> indicates
 the swirl extent in pixels, and <code class="docutils literal"><span class="pre">rotation</span></code> adds a rotation angle.  The
-transformation of <code class="docutils literal"><span class="pre">radius</span></code> into <img class="math" src="../../_images/math/eaa6ad49a7f78fe5a13b486690163bf2dc7e3e60.png" alt="r"/> is to ensure that the
-transformation decays to <img class="math" src="../../_images/math/4cf144b1f84d2a5ca19a6a67bc55310ecd35efda.png" alt="\approx 1/1000^{\mathsf{th}}"/> within the
+transformation of <code class="docutils literal"><span class="pre">radius</span></code> into <span class="math">\(r\)</span> is to ensure that the
+transformation decays to <span class="math">\(\approx 1/1000^{\mathsf{th}}\)</span> within the
 specified radius.</p>
 <img alt="../../_images/sphx_glr_plot_swirl_001.png" class="align-center" src="../../_images/sphx_glr_plot_swirl_001.png" />
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>

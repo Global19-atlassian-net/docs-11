@@ -27,6 +27,7 @@
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../genindex.html" />
         <link rel="search" title="Search" href="../search.html" />
         <link rel="top" title="skimage v0.13.1 docs" href="../index.html" />
@@ -1221,18 +1222,18 @@ under -1 are thresholded for skimage pipeline compatibility.</p>
 <p>This function applies the Wiener filter to a noisy and degraded
 image by an impulse response (or PSF). If the data model is</p>
 <div class="math">
-<p><img src="../_images/math/ccdbb047bd3e214e872f12d0390b8690eb3263ef.png" alt="y = Hx + n"/></p>
-</div><p>where <img class="math" src="../_images/math/e11f2701c4a39c7fe543a6c4150b421d50f1c159.png" alt="n"/> is noise, <img class="math" src="../_images/math/44d4c3f22452acebfb3ac644e23508b67500be90.png" alt="H"/> the PSF and <img class="math" src="../_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> the
+\[y = Hx + n\]</div>
+<p>where <span class="math">\(n\)</span> is noise, <span class="math">\(H\)</span> the PSF and <span class="math">\(x\)</span> the
 unknown original image, the Wiener filter is</p>
 <div class="math">
-<p><img src="../_images/math/38189163da4aab462c720153fc4a5e064cdae3c3.png" alt="\hat x = F^\dag (|\Lambda_H|^2 + \lambda |\Lambda_D|^2)
-\Lambda_H^\dag F y"/></p>
-</div><p>where <img class="math" src="../_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> and <img class="math" src="../_images/math/d4e4b311836eb70aed2d447e6d7a4568df696ed9.png" alt="F^\dag"/> are the Fourier and inverse
-Fourier transfroms respectively, <img class="math" src="../_images/math/2b6f0dc70068db2f23b50ab7f9da773486997627.png" alt="\Lambda_H"/> the transfer
+\[\hat x = F^\dag (|\Lambda_H|^2 + \lambda |\Lambda_D|^2)
+\Lambda_H^\dag F y\]</div>
+<p>where <span class="math">\(F\)</span> and <span class="math">\(F^\dag\)</span> are the Fourier and inverse
+Fourier transfroms respectively, <span class="math">\(\Lambda_H\)</span> the transfer
 function (or the Fourier transfrom of the PSF, see [Hunt] below)
-and <img class="math" src="../_images/math/a8526e7e04221d98ba751124d3ae70338bfc8c8a.png" alt="\Lambda_D"/> the filter to penalize the restored image
+and <span class="math">\(\Lambda_D\)</span> the filter to penalize the restored image
 frequencies (Laplacian by default, that is penalization of high
-frequency). The parameter <img class="math" src="../_images/math/76f1d8ace30435987c01a00ca53a71cba1f40e6c.png" alt="\lambda"/> tunes the balance
+frequency). The parameter <span class="math">\(\lambda\)</span> tunes the balance
 between the data (that tends to increase high frequency, even
 those coming from noise), and the regularization.</p>
 <p>These methods are then specific to a prior model. Consequently,
@@ -1243,7 +1244,7 @@ as high-frequency penalization to compensate the instability of
 the solution with respect to the data (sometimes called noise
 amplification or “explosive” solution).</p>
 <p>Finally, the use of Fourier space implies a circulant property of
-<img class="math" src="../_images/math/44d4c3f22452acebfb3ac644e23508b67500be90.png" alt="H"/>, see [Hunt].</p>
+<span class="math">\(H\)</span>, see [Hunt].</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r439" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
