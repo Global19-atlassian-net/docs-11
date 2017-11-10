@@ -83,6 +83,7 @@
 <li><a class="reference internal" href="#circle-perimeter">circle_perimeter</a></li>
 <li><a class="reference internal" href="#circle-perimeter-aa">circle_perimeter_aa</a></li>
 <li><a class="reference internal" href="#set-color">set_color</a></li>
+<li><a class="reference internal" href="#random-shapes">random_shapes</a></li>
 <li><a class="reference internal" href="#rectangle">rectangle</a></li>
 </ul>
 </li>
@@ -160,7 +161,10 @@
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.draw.set_color" title="skimage.draw.set_color"><code class="xref py py-obj docutils literal"><span class="pre">skimage.draw.set_color</span></code></a>(image,&nbsp;coords,&nbsp;color)</td>
 <td>Set pixel color in the image at the given coordinates.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.draw.rectangle" title="skimage.draw.rectangle"><code class="xref py py-obj docutils literal"><span class="pre">skimage.draw.rectangle</span></code></a>(start[,&nbsp;end,&nbsp;extent,&nbsp;…])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.draw.random_shapes" title="skimage.draw.random_shapes"><code class="xref py py-obj docutils literal"><span class="pre">skimage.draw.random_shapes</span></code></a>(image_shape,&nbsp;…)</td>
+<td>Generate an image with random shapes, labeled with bounding boxes.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.draw.rectangle" title="skimage.draw.rectangle"><code class="xref py py-obj docutils literal"><span class="pre">skimage.draw.rectangle</span></code></a>(start[,&nbsp;end,&nbsp;extent,&nbsp;…])</td>
 <td>Generate coordinates of pixels within a rectangle.</td>
 </tr>
 </tbody>
@@ -994,6 +998,106 @@ Coordinates that exceed the shape of the image will be ignored.</p>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]], dtype=uint8)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="random-shapes">
+<h2>random_shapes<a class="headerlink" href="#random-shapes" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.draw.random_shapes">
+<code class="descclassname">skimage.draw.</code><code class="descname">random_shapes</code><span class="sig-paren">(</span><em>image_shape</em>, <em>max_shapes</em>, <em>min_shapes=1</em>, <em>min_size=2</em>, <em>max_size=None</em>, <em>gray=False</em>, <em>shape=None</em>, <em>min_pixel_intensity=0</em>, <em>allow_overlap=False</em>, <em>num_trials=100</em>, <em>random_seed=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/draw/_random_shapes.py#L206"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.draw.random_shapes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate an image with random shapes, labeled with bounding boxes.</p>
+<p>The image is populated with random shapes with random sizes, random
+locations, and random colors, with or without overlap.</p>
+<p>Shapes have random (row, col) starting coordinates and random sizes bounded
+by <cite>min_size</cite> and <cite>max_size</cite>. It can occur that a randomly generated shape
+will not fit the image at all. In that case, the algorithm will try again
+with new starting coordinates a certain number of times. However, it also
+means that some shapes may be skipped altogether. In that case, this
+function will generate fewer shapes than requested.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image_shape</strong> : tuple</p>
+<blockquote>
+<div><p>The number of rows and columns of the image to generate.</p>
+</div></blockquote>
+<p><strong>max_shapes</strong> : int</p>
+<blockquote>
+<div><p>The maximum number of shapes to (attempt to) fit into the shape.</p>
+</div></blockquote>
+<p><strong>min_shapes</strong> : int, optional</p>
+<blockquote>
+<div><p>The minimum number of shapes to (attempt to) fit into the shape.</p>
+</div></blockquote>
+<p><strong>min_size</strong> : int, optional</p>
+<blockquote>
+<div><p>The minimum dimension of each shape to fit into the image.</p>
+</div></blockquote>
+<p><strong>max_size</strong> : int, optional</p>
+<blockquote>
+<div><p>The maximum dimension of each shape to fit into the image.</p>
+</div></blockquote>
+<p><strong>gray</strong> : bool, optional</p>
+<blockquote>
+<div><p>If <cite>True</cite>, generate monochrome images, else color images with multiple
+channels.</p>
+</div></blockquote>
+<p><strong>shape</strong> : {rectangle, circle, triangle, None} str, optional</p>
+<blockquote>
+<div><p>The name of the shape to generate or <cite>None</cite> to pick random ones.</p>
+</div></blockquote>
+<p><strong>min_pixel_intensity</strong> : [0-255] int, optional</p>
+<blockquote>
+<div><p>The minimum pixel value for colors.</p>
+</div></blockquote>
+<p><strong>allow_overlap</strong> : bool, optional</p>
+<blockquote>
+<div><p>If <cite>True</cite>, allow shapes to overlap.</p>
+</div></blockquote>
+<p><strong>num_trials</strong> : int, optional</p>
+<blockquote>
+<div><p>How often to attempt to fit a shape into the image before skipping it.</p>
+</div></blockquote>
+<p><strong>seed</strong> : int, optional</p>
+<blockquote>
+<div><p>Seed to initialize the random number generator.
+If <cite>None</cite>, a random seed from the operating system is used.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>image</strong> : uint8 array</p>
+<blockquote>
+<div><p>An image with the fitted shapes.</p>
+</div></blockquote>
+<p><strong>labels</strong> : list</p>
+<blockquote class="last">
+<div><p>A list of labels, one per shape in the image. Each label is a (category,
+((r0, r1), (c0, c1))) tuple specifying the category and bounding box
+coordinates of the shape.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage.draw</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">skimage</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">random_shapes</span><span class="p">((</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span> <span class="n">max_shapes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> 
+<span class="go">array([</span>
+<span class="go">   [[255, 255, 255],</span>
+<span class="go">    [255, 255, 255],</span>
+<span class="go">    [255, 255, 255],</span>
+<span class="go">    ...,</span>
+<span class="go">    [255, 255, 255],</span>
+<span class="go">    [255, 255, 255],</span>
+<span class="go">    [255, 255, 255]]], dtype=uint8)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> 
+<span class="go">[(&#39;circle&#39;, ((22, 18), (25, 21))),</span>
+<span class="go"> (&#39;triangle&#39;, ((5, 6), (13, 13)))]</span>
 </pre></div>
 </div>
 </dd></dl>
