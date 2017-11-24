@@ -480,13 +480,13 @@ Transactions on 32.5 (2010): 815-830.</td></tr>
 <h2>hog<a class="headerlink" href="#hog" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.hog">
-<code class="descclassname">skimage.feature.</code><code class="descname">hog</code><span class="sig-paren">(</span><em>image</em>, <em>orientations=9</em>, <em>pixels_per_cell=(8</em>, <em>8)</em>, <em>cells_per_block=(3</em>, <em>3)</em>, <em>block_norm=None</em>, <em>visualize=False</em>, <em>visualise=None</em>, <em>transform_sqrt=False</em>, <em>feature_vector=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/_hog.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.hog" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">hog</code><span class="sig-paren">(</span><em>image</em>, <em>orientations=9</em>, <em>pixels_per_cell=(8</em>, <em>8)</em>, <em>cells_per_block=(3</em>, <em>3)</em>, <em>block_norm=None</em>, <em>visualize=False</em>, <em>visualise=None</em>, <em>transform_sqrt=False</em>, <em>feature_vector=True</em>, <em>multichannel=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/_hog.py#L48"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.hog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract Histogram of Oriented Gradients (HOG) for a given image.</p>
 <p>Compute a Histogram of Oriented Gradients (HOG) by</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li>(optional) global image normalization</li>
-<li>computing the gradient image in x and y</li>
+<li>computing the gradient image in <cite>row</cite> and <cite>col</cite></li>
 <li>computing gradient histograms</li>
 <li>normalizing across blocks</li>
 <li>flattening into a feature vector</li>
@@ -496,9 +496,9 @@ Transactions on 32.5 (2010): 815-830.</td></tr>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : (M, N) ndarray</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : (M, N[, C]) ndarray</p>
 <blockquote>
-<div><p>Input image (greyscale).</p>
+<div><p>Input image.</p>
 </div></blockquote>
 <p><strong>orientations</strong> : int, optional</p>
 <blockquote>
@@ -552,15 +552,21 @@ values. Also see <cite>notes</cite> section below.</p>
 <div><p>Return the data as a feature vector by calling .ravel() on the result
 just before returning.</p>
 </div></blockquote>
+<p><strong>multichannel</strong> : boolean, optional</p>
+<blockquote>
+<div><p>If True, the last <cite>image</cite> dimension is considered as a color channel,
+otherwise as spatial.</p>
+</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>newarr</strong> : ndarray</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : (n_blocks_row, n_blocks_col, n_cells_row, n_cells_col, n_orient) ndarray</p>
 <blockquote>
-<div><p>HOG for the image as a 1D (flattened) array.</p>
+<div><p>HOG descriptor for the image. If <cite>feature_vector</cite> is True, a 1D
+(flattened) array is returned.</p>
 </div></blockquote>
-<p><strong>hog_image</strong> : ndarray (if visualize==True)</p>
+<p><strong>hog_image</strong> : (M, N) ndarray, optional</p>
 <blockquote class="last">
-<div><p>A visualisation of the HOG image.</p>
+<div><p>A visualisation of the HOG image. Only provided if <cite>visualize</cite> is True.</p>
 </div></blockquote>
 </td>
 </tr>
