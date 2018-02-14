@@ -103,18 +103,18 @@
   <div class="section" id="sliding-window-histogram">
 <span id="sphx-glr-auto-examples-features-detection-plot-windowed-histogram-py"></span><h1>Sliding window histogram<a class="headerlink" href="#sliding-window-histogram" title="Permalink to this headline">¶</a></h1>
 <p>Histogram matching can be used for object detection in images <a class="footnote-reference" href="#id3" id="id1">[1]</a>. This
-example extracts a single coin from the <code class="docutils literal"><span class="pre">skimage.data.coins</span></code> image and uses
+example extracts a single coin from the <code class="docutils literal notranslate"><span class="pre">skimage.data.coins</span></code> image and uses
 histogram matching to attempt to locate it within the original image.</p>
 <p>First, a box-shaped region of the image containing the target coin is
 extracted and a histogram of its greyscale values is computed.</p>
 <p>Next, for each pixel in the test image, a histogram of the greyscale values in
 a region of the image surrounding the pixel is computed.
-<code class="docutils literal"><span class="pre">skimage.filters.rank.windowed_histogram</span></code> is used for this task, as it employs
+<code class="docutils literal notranslate"><span class="pre">skimage.filters.rank.windowed_histogram</span></code> is used for this task, as it employs
 an efficient sliding window based algorithm that is able to compute these
 histograms quickly <a class="footnote-reference" href="#id4" id="id2">[2]</a>. The local histogram for the region surrounding each
 pixel in the image is compared to that of the single coin, with a similarity
 measure being computed and displayed.</p>
-<p>The histogram of the single coin is computed using <code class="docutils literal"><span class="pre">numpy.histogram</span></code> on a box
+<p>The histogram of the single coin is computed using <code class="docutils literal notranslate"><span class="pre">numpy.histogram</span></code> on a box
 shaped region surrounding the coin, while the sliding window histograms are
 computed using a disc shaped structural element of a slightly different size.
 This is done in aid of demonstrating that the technique still finds similarity
@@ -138,7 +138,7 @@ Trans. Image Processing, 16(9):2389-2394, 2007.</td></tr>
 </tbody>
 </table>
 <img alt="../../_images/sphx_glr_plot_windowed_histogram_001.png" class="align-center" src="../../_images/sphx_glr_plot_windowed_histogram_001.png" />
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -170,7 +170,7 @@ Trans. Image Processing, 16(9):2389-2394, 2007.</td></tr>
     <span class="n">denom</span><span class="p">[</span><span class="n">denom</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">infty</span>
     <span class="n">frac</span> <span class="o">=</span> <span class="n">num</span> <span class="o">/</span> <span class="n">denom</span>
 
-    <span class="n">chi_sqr</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html#numpy.sum" title="View documentation for numpy.sum"><span class="n">np</span><span class="o">.</span><span class="n">sum</span></a><span class="p">(</span><span class="n">frac</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">chi_sqr</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html#numpy.sum" title="View documentation for numpy.sum"><span class="n">np</span><span class="o">.</span><span class="n">sum</span></a><span class="p">(</span><span class="n">frac</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
     <span class="c1"># Generate a similarity measure. It needs to be low when distance is high</span>
     <span class="c1"># and high when distance is low; taking the reciprocal will do this.</span>
@@ -194,8 +194,8 @@ Trans. Image Processing, 16(9):2389-2394, 2007.</td></tr>
                      <span class="n">coin_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span><span class="n">coin_coords</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
 
 <span class="c1"># Compute coin histogram and normalize</span>
-<span class="n">coin_hist</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.histogram.html#numpy.histogram" title="View documentation for numpy.histogram"><span class="n">np</span><span class="o">.</span><span class="n">histogram</span></a><span class="p">(</span><span class="n">coin</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
-<span class="n">coin_hist</span> <span class="o">=</span> <span class="n">coin_hist</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html#numpy.sum" title="View documentation for numpy.sum"><span class="n">np</span><span class="o">.</span><span class="n">sum</span></a><span class="p">(</span><span class="n">coin_hist</span><span class="p">)</span>
+<span class="n">coin_hist</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.histogram.html#numpy.histogram" title="View documentation for numpy.histogram"><span class="n">np</span><span class="o">.</span><span class="n">histogram</span></a><span class="p">(</span><span class="n">coin</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+<span class="n">coin_hist</span> <span class="o">=</span> <span class="n">coin_hist</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.sum.html#numpy.sum" title="View documentation for numpy.sum"><span class="n">np</span><span class="o">.</span><span class="n">sum</span></a><span class="p">(</span><span class="n">coin_hist</span><span class="p">)</span>
 
 <span class="c1"># Compute a disk shaped mask that will define the shape of our sliding window</span>
 <span class="c1"># Example coin is ~44px across, so make a disk 61px wide (2 * rad + 1) to be</span>
@@ -239,12 +239,12 @@ Trans. Image Processing, 16(9):2389-2394, 2007.</td></tr>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.614 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.646 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../../_downloads/plot_windowed_histogram.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_windowed_histogram.py</span></code></a></div>
+<a class="reference download internal" href="../../_downloads/plot_windowed_histogram.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_windowed_histogram.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../../_downloads/plot_windowed_histogram.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_windowed_histogram.ipynb</span></code></a></div>
+<a class="reference download internal" href="../../_downloads/plot_windowed_histogram.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_windowed_histogram.ipynb</span></code></a></div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

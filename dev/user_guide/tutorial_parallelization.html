@@ -96,7 +96,7 @@
 on a large batch of images. In this paragraph, we propose to
 use <a class="reference external" href="https://pythonhosted.org/joblib/">joblib</a> to parallelize
 loops. Here is an example of such repetitive tasks:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">util</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">util</span>
 <span class="kn">from</span> <span class="nn">skimage.restoration</span> <span class="kn">import</span> <span class="n">denoise_tv_chambolle</span>
 <span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">hog</span>
 
@@ -117,10 +117,10 @@ loops. Here is an example of such repetitive tasks:</p>
 <span class="n">pics</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">view_as_windows</span><span class="p">(</span><span class="n">hubble</span><span class="p">,</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">hubble</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">hubble</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="n">step</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>To call the function <code class="docutils literal"><span class="pre">task</span></code> on each element of the list <code class="docutils literal"><span class="pre">pics</span></code>, it is
+<p>To call the function <code class="docutils literal notranslate"><span class="pre">task</span></code> on each element of the list <code class="docutils literal notranslate"><span class="pre">pics</span></code>, it is
 usual to write a for loop. To measure the execution time of this loop, you can
-use ipython and measure the execution time with <code class="docutils literal"><span class="pre">%timeit</span></code>.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">classic_loop</span><span class="p">():</span>
+use ipython and measure the execution time with <code class="docutils literal notranslate"><span class="pre">%timeit</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">classic_loop</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">pics</span><span class="p">:</span>
         <span class="n">task</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 
@@ -129,15 +129,15 @@ use ipython and measure the execution time with <code class="docutils literal"><
 </pre></div>
 </div>
 <p>Another equivalent way to code this loop is to use a comprehension list which has the same efficiency.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">comprehension_loop</span><span class="p">():</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">comprehension_loop</span><span class="p">():</span>
     <span class="p">[</span><span class="n">task</span><span class="p">(</span><span class="n">image</span><span class="p">)</span> <span class="k">for</span> <span class="n">image</span> <span class="ow">in</span> <span class="n">pics</span><span class="p">]</span>
 
 <span class="o">%</span><span class="n">timeit</span> <span class="n">comprehension_loop</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><code class="docutils literal"><span class="pre">joblib</span></code> is a library providing an easy way to parallelize for loops once we have a comprehension list.
+<p><code class="docutils literal notranslate"><span class="pre">joblib</span></code> is a library providing an easy way to parallelize for loops once we have a comprehension list.
 The number of jobs can be specified.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">joblib</span> <span class="kn">import</span> <span class="n">Parallel</span><span class="p">,</span> <span class="n">delayed</span>
 <span class="k">def</span> <span class="nf">joblib_loop</span><span class="p">():</span>
     <span class="n">Parallel</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">4</span><span class="p">)(</span><span class="n">delayed</span><span class="p">(</span><span class="n">task</span><span class="p">)(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">pics</span><span class="p">)</span>
 

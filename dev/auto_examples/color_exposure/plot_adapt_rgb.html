@@ -94,22 +94,22 @@
 <span id="sphx-glr-auto-examples-color-exposure-plot-adapt-rgb-py"></span><h1>Adapting gray-scale filters to RGB images<a class="headerlink" href="#adapting-gray-scale-filters-to-rgb-images" title="Permalink to this headline">¶</a></h1>
 <p>There are many filters that are designed to work with gray-scale images but not
 with color images. To simplify the process of creating functions that can adapt
-to RGB images, scikit-image provides the <code class="docutils literal"><span class="pre">adapt_rgb</span></code> decorator.</p>
-<p>To actually use the <code class="docutils literal"><span class="pre">adapt_rgb</span></code> decorator, you have to decide how you want to
+to RGB images, scikit-image provides the <code class="docutils literal notranslate"><span class="pre">adapt_rgb</span></code> decorator.</p>
+<p>To actually use the <code class="docutils literal notranslate"><span class="pre">adapt_rgb</span></code> decorator, you have to decide how you want to
 adapt the RGB image for use with the gray-scale filter. There are two
 pre-defined handlers:</p>
 <dl class="docutils">
-<dt><code class="docutils literal"><span class="pre">each_channel</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">each_channel</span></code></dt>
 <dd>Pass each of the RGB channels to the filter one-by-one, and stitch the
 results back into an RGB image.</dd>
-<dt><code class="docutils literal"><span class="pre">hsv_value</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">hsv_value</span></code></dt>
 <dd>Convert the RGB image to HSV and pass the value channel to the filter.
 The filtered result is inserted back into the HSV image and converted
 back to RGB.</dd>
 </dl>
-<p>Below, we demonstrate the use of <code class="docutils literal"><span class="pre">adapt_rgb</span></code> on a couple of gray-scale
+<p>Below, we demonstrate the use of <code class="docutils literal notranslate"><span class="pre">adapt_rgb</span></code> on a couple of gray-scale
 filters:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.color.adapt_rgb</span> <span class="kn">import</span> <span class="n">adapt_rgb</span><span class="p">,</span> <span class="n">each_channel</span><span class="p">,</span> <span class="n">hsv_value</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.color.adapt_rgb</span> <span class="kn">import</span> <span class="n">adapt_rgb</span><span class="p">,</span> <span class="n">each_channel</span><span class="p">,</span> <span class="n">hsv_value</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">filters</span>
 
 
@@ -126,7 +126,7 @@ filters:</p>
 <p>We can use these functions as we would normally use them, but now they work
 with both gray-scale and color images. Let’s plot the results with a color
 image:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="kn">import</span> <a href="../../api/skimage.exposure.html#skimage.exposure.rescale_intensity" title="View documentation for skimage.exposure.rescale_intensity"><span class="n">rescale_intensity</span></a>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 
@@ -154,20 +154,20 @@ image:</p>
 the original image, but channel filtered image combines in a more
 surprising way. In other common cases, smoothing for example, the channel
 filtered image will produce a better result than the value-filtered image.</p>
-<p>You can also create your own handler functions for <code class="docutils literal"><span class="pre">adapt_rgb</span></code>. To do so,
+<p>You can also create your own handler functions for <code class="docutils literal notranslate"><span class="pre">adapt_rgb</span></code>. To do so,
 just create a function with the following signature:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">image_filter</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="n">image_filter</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="c1"># Manipulate RGB image here...</span>
     <span class="n">image</span> <span class="o">=</span> <span class="n">image_filter</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="c1"># Manipulate filtered image here...</span>
     <span class="k">return</span> <span class="n">image</span>
 </pre></div>
 </div>
-<p>Note that <code class="docutils literal"><span class="pre">adapt_rgb</span></code> handlers are written for filters where the image is
+<p>Note that <code class="docutils literal notranslate"><span class="pre">adapt_rgb</span></code> handlers are written for filters where the image is
 the first argument.</p>
 <p>As a very simple example, we can just convert any RGB image to grayscale
 and then return the filtered result:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a>
 
 
 <span class="k">def</span> <span class="nf">as_gray</span><span class="p">(</span><span class="n">image_filter</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
@@ -175,11 +175,11 @@ and then return the filtered result:</p>
     <span class="k">return</span> <span class="n">image_filter</span><span class="p">(</span><span class="n">gray_image</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>It’s important to create a signature that uses <code class="docutils literal"><span class="pre">*args</span></code> and <code class="docutils literal"><span class="pre">**kwargs</span></code>
+<p>It’s important to create a signature that uses <code class="docutils literal notranslate"><span class="pre">*args</span></code> and <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code>
 to pass arguments along to the filter so that the decorated function is
 allowed to have any number of positional and keyword arguments.</p>
-<p>Finally, we can use this handler with <code class="docutils literal"><span class="pre">adapt_rgb</span></code> just as before:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@adapt_rgb</span><span class="p">(</span><span class="n">as_gray</span><span class="p">)</span>
+<p>Finally, we can use this handler with <code class="docutils literal notranslate"><span class="pre">adapt_rgb</span></code> just as before:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@adapt_rgb</span><span class="p">(</span><span class="n">as_gray</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">sobel_gray</span><span class="p">(</span><span class="n">image</span><span class="p">):</span>
     <span class="k">return</span> <a href="../../api/skimage.filters.html#skimage.filters.sobel" title="View documentation for skimage.filters.sobel"><span class="n">filters</span><span class="o">.</span><span class="n">sobel</span></a><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 
@@ -200,15 +200,15 @@ allowed to have any number of positional and keyword arguments.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">A very simple check of the array shape is used for detecting RGB
-images, so <code class="docutils literal"><span class="pre">adapt_rgb</span></code> is not recommended for functions that support
+images, so <code class="docutils literal notranslate"><span class="pre">adapt_rgb</span></code> is not recommended for functions that support
 3D volumes or color images in non-RGB spaces.</p>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.707 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.657 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../../_downloads/plot_adapt_rgb.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_adapt_rgb.py</span></code></a></div>
+<a class="reference download internal" href="../../_downloads/plot_adapt_rgb.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_adapt_rgb.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../../_downloads/plot_adapt_rgb.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_adapt_rgb.ipynb</span></code></a></div>
+<a class="reference download internal" href="../../_downloads/plot_adapt_rgb.ipynb" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_adapt_rgb.ipynb</span></code></a></div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>
