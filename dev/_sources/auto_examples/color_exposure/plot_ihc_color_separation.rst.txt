@@ -43,8 +43,7 @@ Diaminobenzidine (DAB) which gives a brown color.
     ihc_rgb = data.immunohistochemistry()
     ihc_hed = rgb2hed(ihc_rgb)
 
-    fig, axes = plt.subplots(2, 2, figsize=(7, 6), sharex=True, sharey=True,
-                             subplot_kw={'adjustable': 'box-forced'})
+    fig, axes = plt.subplots(2, 2, figsize=(7, 6), sharex=True, sharey=True)
     ax = axes.ravel()
 
     ax[0].imshow(ihc_rgb)
@@ -82,7 +81,6 @@ Now we can easily manipulate the hematoxylin and DAB "channels":
 
 
     import numpy as np
-
     from skimage.exposure import rescale_intensity
 
     # Rescale hematoxylin and DAB signals and give them a fluorescence look
@@ -91,7 +89,7 @@ Now we can easily manipulate the hematoxylin and DAB "channels":
     zdh = np.dstack((np.zeros_like(h), d, h))
 
     fig = plt.figure()
-    axis = plt.subplot(1, 1, 1, sharex=ax[0], sharey=ax[0], adjustable='box-forced')
+    axis = plt.subplot(1, 1, 1, sharex=ax[0], sharey=ax[0])
     axis.imshow(zdh)
     axis.set_title("Stain separated image (rescaled)")
     axis.axis('off')
@@ -105,7 +103,7 @@ Now we can easily manipulate the hematoxylin and DAB "channels":
 
 
 
-**Total running time of the script:** ( 0 minutes  0.758 seconds)
+**Total running time of the script:** ( 0 minutes  0.835 seconds)
 
 
 
