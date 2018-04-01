@@ -143,28 +143,28 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : ndarray of float64</p>
-<p><strong>reach</strong> : int, optional</p>
-<blockquote>
-<div><p>By default (<code class="docutils literal notranslate"><span class="pre">reach</span> <span class="pre">=</span> <span class="pre">1</span></code>), the shortest path can only move
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray of float64</span></dt>
+<dd></dd>
+<dt><strong>reach</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first last">By default (<code class="docutils literal notranslate"><span class="pre">reach</span> <span class="pre">=</span> <span class="pre">1</span></code>), the shortest path can only move
 one row up or down for every step it moves forward (i.e.,
 the path gradient is limited to 1). <cite>reach</cite> defines the
 number of elements that can be skipped along each non-axis
 dimension at each step.</p>
-</div></blockquote>
-<p><strong>axis</strong> : int, optional</p>
-<blockquote>
-<div><p>The axis along which the path must always move forward (default -1)</p>
-</div></blockquote>
-<p><strong>output_indexlist: bool, optional</strong></p>
-<blockquote>
-<div><p>See return value <cite>p</cite> for explanation.</p>
-</div></blockquote>
+</dd>
+<dt><strong>axis</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first last">The axis along which the path must always move forward (default -1)</p>
+</dd>
+<dt><strong>output_indexlist: bool, optional</strong></dt>
+<dd><p class="first last">See return value <cite>p</cite> for explanation.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>p</strong> : iterable of int</p>
-<blockquote>
-<div><p>For each step along <cite>axis</cite>, the coordinate of the shortest path.
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">iterable of int</span></dt>
+<dd><p class="first last">For each step along <cite>axis</cite>, the coordinate of the shortest path.
 If <cite>output_indexlist</cite> is True, then the path is returned as a list of
 n-d tuples that index into <cite>arr</cite>. If False, then the path is returned
 as an array listing the coordinates of the path along the non-axis
@@ -172,12 +172,12 @@ dimensions for each step along the axis dimension. That is,
 <cite>p.shape == (arr.shape[axis], arr.ndim-1)</cite> except that p is squeezed
 before returning so if <cite>arr.ndim == 2</cite>, then
 <cite>p.shape == (arr.shape[axis],)</cite></p>
-</div></blockquote>
-<p><strong>cost</strong> : float</p>
-<blockquote class="last">
-<div><p>Cost of path.  This is the absolute sum of all the
+</dd>
+<dt><strong>cost</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Cost of path.  This is the absolute sum of all the
 differences along the path.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -197,41 +197,38 @@ path-finding algorithm.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>array</strong> : ndarray</p>
-<blockquote>
-<div><p>Array of costs.</p>
-</div></blockquote>
-<p><strong>start</strong> : iterable</p>
-<blockquote>
-<div><p>n-d index into <cite>array</cite> defining the starting point</p>
-</div></blockquote>
-<p><strong>end</strong> : iterable</p>
-<blockquote>
-<div><p>n-d index into <cite>array</cite> defining the end point</p>
-</div></blockquote>
-<p><strong>fully_connected</strong> : bool (optional)</p>
-<blockquote>
-<div><p>If True, diagonal moves are permitted, if False, only axial moves.</p>
-</div></blockquote>
-<p><strong>geometric</strong> : bool (optional)</p>
-<blockquote>
-<div><p>If True, the MCP_Geometric class is used to calculate costs, if False,
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>array</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">Array of costs.</p>
+</dd>
+<dt><strong>start</strong> <span class="classifier-delimiter">:</span> <span class="classifier">iterable</span></dt>
+<dd><p class="first last">n-d index into <cite>array</cite> defining the starting point</p>
+</dd>
+<dt><strong>end</strong> <span class="classifier-delimiter">:</span> <span class="classifier">iterable</span></dt>
+<dd><p class="first last">n-d index into <cite>array</cite> defining the end point</p>
+</dd>
+<dt><strong>fully_connected</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool (optional)</span></dt>
+<dd><p class="first last">If True, diagonal moves are permitted, if False, only axial moves.</p>
+</dd>
+<dt><strong>geometric</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool (optional)</span></dt>
+<dd><p class="first last">If True, the MCP_Geometric class is used to calculate costs, if False,
 the MCP base class is used. See the class documentation for
 an explanation of the differences between MCP and MCP_Geometric.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>path</strong> : list</p>
-<blockquote>
-<div><p>List of n-d index tuples defining the path from <cite>start</cite> to <cite>end</cite>.</p>
-</div></blockquote>
-<p><strong>cost</strong> : float</p>
-<blockquote class="last">
-<div><p>Cost of the path. If <cite>geometric</cite> is False, the cost of the path is
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>path</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list</span></dt>
+<dd><p class="first last">List of n-d index tuples defining the path from <cite>start</cite> to <cite>end</cite>.</p>
+</dd>
+<dt><strong>cost</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Cost of the path. If <cite>geometric</cite> is False, the cost of the path is
 the sum of the values of <cite>array</cite> along the path. If <cite>geometric</cite> is
 True, a finer computation is made (see the documentation of the
 MCP_Geometric class).</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -308,40 +305,38 @@ will paths whose cumulative cost overflows to infinite.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>costs</strong> : ndarray</p>
-<p><strong>offsets</strong> : iterable, optional</p>
-<blockquote>
-<div><p>A list of offset tuples: each offset specifies a valid move from a
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>costs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd></dd>
+<dt><strong>offsets</strong> <span class="classifier-delimiter">:</span> <span class="classifier">iterable, optional</span></dt>
+<dd><p class="first last">A list of offset tuples: each offset specifies a valid move from a
 given n-d position.
 If not provided, offsets corresponding to a singly- or fully-connected
 n-d neighborhood will be constructed with make_offsets(), using the
 <cite>fully_connected</cite> parameter value.</p>
-</div></blockquote>
-<p><strong>fully_connected</strong> : bool, optional</p>
-<blockquote>
-<div><p>If no <cite>offsets</cite> are provided, this determines the connectivity of the
+</dd>
+<dt><strong>fully_connected</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">If no <cite>offsets</cite> are provided, this determines the connectivity of the
 generated neighborhood. If true, the path may go along diagonals
 between elements of the <cite>costs</cite> array; otherwise only axial moves are
 permitted.</p>
-</div></blockquote>
-<p><strong>sampling</strong> : tuple, optional</p>
-<blockquote class="last">
-<div><p>For each dimension, specifies the distance between two cells/voxels.
+</dd>
+<dt><strong>sampling</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple, optional</span></dt>
+<dd><p class="first last">For each dimension, specifies the distance between two cells/voxels.
 If not given or None, the distance is assumed unit.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-</tbody>
-</table>
-<p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="4%" />
-<col width="96%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>offsets</strong></td>
-<td>(ndarray) Equivalent to the <cite>offsets</cite> provided to the constructor, or if none were so provided, the offsets created for the requested n-d neighborhood. These are useful for interpreting the <cite>traceback</cite> array returned by the find_costs() method.</td>
+<tr class="field-even field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>offsets</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">Equivalent to the <cite>offsets</cite> provided to the constructor, or if none
+were so provided, the offsets created for the requested n-d
+neighborhood. These are useful for interpreting the <cite>traceback</cite> array
+returned by the find_costs() method.</p>
+</dd>
+</dl>
+</td>
 </tr>
 </tbody>
 </table>
@@ -363,45 +358,44 @@ the costs array will be found.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>starts</strong> : iterable</p>
-<blockquote>
-<div><p>A list of n-d starting indices (where n is the dimension of the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>starts</strong> <span class="classifier-delimiter">:</span> <span class="classifier">iterable</span></dt>
+<dd><p class="first last">A list of n-d starting indices (where n is the dimension of the
 <cite>costs</cite> array). The minimum cost path to the closest/cheapest
 starting point will be found.</p>
-</div></blockquote>
-<p><strong>ends</strong> : iterable, optional</p>
-<blockquote>
-<div><p>A list of n-d ending indices.</p>
-</div></blockquote>
-<p><strong>find_all_ends</strong> : bool, optional</p>
-<blockquote>
-<div><p>If ‘True’ (default), the minimum-cost-path to every specified
+</dd>
+<dt><strong>ends</strong> <span class="classifier-delimiter">:</span> <span class="classifier">iterable, optional</span></dt>
+<dd><p class="first last">A list of n-d ending indices.</p>
+</dd>
+<dt><strong>find_all_ends</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">If ‘True’ (default), the minimum-cost-path to every specified
 end-position will be found; otherwise the algorithm will stop when
 a a path is found to any end-position. (If no <cite>ends</cite> were
 specified, then this parameter has no effect.)</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cumulative_costs</strong> : ndarray</p>
-<blockquote>
-<div><p>Same shape as the <cite>costs</cite> array; this array records the minimum
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>cumulative_costs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">Same shape as the <cite>costs</cite> array; this array records the minimum
 cost path from the nearest/cheapest starting index to each index
 considered. (If <cite>ends</cite> were specified, not all elements in the
 array will necessarily be considered: positions not evaluated will
 have a cumulative cost of inf. If <cite>find_all_ends</cite> is ‘False’, only
 one of the specified end-positions will have a finite cumulative
 cost.)</p>
-</div></blockquote>
-<p><strong>traceback</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>Same shape as the <cite>costs</cite> array; this array contains the offset to
+</dd>
+<dt><strong>traceback</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">Same shape as the <cite>costs</cite> array; this array contains the offset to
 any given index from its predecessor index. The offset indices
 index into the <cite>offsets</cite> attribute, which is a array of n-d
 offsets. In the 2-d case, if offsets[traceback[x, y]] is (-1, -1),
 that means that the predecessor of [x, y] in the minimum cost path
 to some start position is [x+1, y+1]. Note that if the
 offset_index is -1, then the given index was not considered.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -436,21 +430,23 @@ run.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>end</strong> : iterable</p>
-<blockquote>
-<div><p>An n-d index into the <cite>costs</cite> array.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>end</strong> <span class="classifier-delimiter">:</span> <span class="classifier">iterable</span></dt>
+<dd><p class="first last">An n-d index into the <cite>costs</cite> array.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>traceback</strong> : list of n-d tuples</p>
-<blockquote class="last">
-<div><p>A list of indices into the <cite>costs</cite> array, starting with one of
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>traceback</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list of n-d tuples</span></dt>
+<dd><p class="first last">A list of indices into the <cite>costs</cite> array, starting with one of
 the start positions passed to find_costs(), and ending with the
 given <cite>end</cite> index. These indices specify the minimum-cost path
 from any given start index to the <cite>end</cite> index. (The total cost
 of that path can be read out from the <cite>cumulative_costs</cite> array
 returned by find_costs().)</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -524,30 +520,26 @@ and will not be visited again by the MCP algorithm.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>id1</strong> : int</p>
-<blockquote>
-<div><p>The seed point id where the first neighbor originated from.</p>
-</div></blockquote>
-<p><strong>id2</strong> : int</p>
-<blockquote>
-<div><p>The seed point id where the second neighbor originated from.</p>
-</div></blockquote>
-<p><strong>pos1</strong> : tuple</p>
-<blockquote>
-<div><p>The index of of the first neighbour in the connection.</p>
-</div></blockquote>
-<p><strong>pos2</strong> : tuple</p>
-<blockquote>
-<div><p>The index of of the second neighbour in the connection.</p>
-</div></blockquote>
-<p><strong>cost1</strong> : float</p>
-<blockquote>
-<div><p>The cumulative cost at <cite>pos1</cite>.</p>
-</div></blockquote>
-<p><strong>cost2</strong> : float</p>
-<blockquote class="last">
-<div><p>The cumulative costs at <cite>pos2</cite>.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>id1</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">The seed point id where the first neighbor originated from.</p>
+</dd>
+<dt><strong>id2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">The seed point id where the second neighbor originated from.</p>
+</dd>
+<dt><strong>pos1</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
+<dd><p class="first last">The index of of the first neighbour in the connection.</p>
+</dd>
+<dt><strong>pos2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
+<dd><p class="first last">The index of of the second neighbour in the connection.</p>
+</dd>
+<dt><strong>cost1</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">The cumulative cost at <cite>pos1</cite>.</p>
+</dd>
+<dt><strong>cost2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">The cumulative costs at <cite>pos2</cite>.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>

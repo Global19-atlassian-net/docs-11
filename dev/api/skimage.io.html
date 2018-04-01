@@ -132,35 +132,35 @@
 <tr class="row-odd"><td>Plugin</td>
 <td>Description</td>
 </tr>
-<tr class="row-even"><td>pil</td>
-<td>Image reading via the Python Imaging Library</td>
-</tr>
-<tr class="row-odd"><td>imread</td>
-<td>Image reading and writing via imread</td>
-</tr>
-<tr class="row-even"><td>matplotlib</td>
-<td>Display or save images using Matplotlib</td>
+<tr class="row-even"><td>gdal</td>
+<td>Image reading via the GDAL Library (www.gdal.org)</td>
 </tr>
 <tr class="row-odd"><td>imageio</td>
 <td>Image reading via the ImageIO Library</td>
 </tr>
-<tr class="row-even"><td>gdal</td>
-<td>Image reading via the GDAL Library (www.gdal.org)</td>
+<tr class="row-even"><td>tifffile</td>
+<td>Load and save TIFF and TIFF-based images using tifffile.py</td>
 </tr>
-<tr class="row-odd"><td>simpleitk</td>
-<td>Image reading and writing via SimpleITK</td>
-</tr>
-<tr class="row-even"><td>fits</td>
+<tr class="row-odd"><td>fits</td>
 <td>FITS image reading via PyFITS</td>
+</tr>
+<tr class="row-even"><td>gtk</td>
+<td>Fast image display using the GTK library</td>
+</tr>
+<tr class="row-odd"><td>matplotlib</td>
+<td>Display or save images using Matplotlib</td>
+</tr>
+<tr class="row-even"><td>simpleitk</td>
+<td>Image reading and writing via SimpleITK</td>
 </tr>
 <tr class="row-odd"><td>qt</td>
 <td>Fast image display using the Qt library</td>
 </tr>
-<tr class="row-even"><td>tifffile</td>
-<td>Load and save TIFF and TIFF-based images using tifffile.py</td>
+<tr class="row-even"><td>imread</td>
+<td>Image reading and writing via imread</td>
 </tr>
-<tr class="row-odd"><td>gtk</td>
-<td>Fast image display using the GTK library</td>
+<tr class="row-odd"><td>pil</td>
+<td>Image reading via the Python Imaging Library</td>
 </tr>
 </tbody>
 </table>
@@ -254,19 +254,18 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kind</strong> : {‘imshow’, ‘imsave’, ‘imread’, ‘imread_collection’}</p>
-<blockquote>
-<div><p>Function to look up.</p>
-</div></blockquote>
-<p><strong>plugin</strong> : str, optional</p>
-<blockquote>
-<div><p>Plugin to load.  Defaults to None, in which case the first
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>kind</strong> <span class="classifier-delimiter">:</span> <span class="classifier">{‘imshow’, ‘imsave’, ‘imread’, ‘imread_collection’}</span></dt>
+<dd><p class="first last">Function to look up.</p>
+</dd>
+<dt><strong>plugin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
+<dd><p class="first last">Plugin to load.  Defaults to None, in which case the first
 matching plugin is used.</p>
-</div></blockquote>
-<p><strong>*args, **kwargs</strong> : arguments and keyword arguments</p>
-<blockquote class="last">
-<div><p>Passed to the plugin function.</p>
-</div></blockquote>
+</dd>
+<dt><strong>*args, **kwargs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">arguments and keyword arguments</span></dt>
+<dd><p class="first last">Passed to the plugin function.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -284,22 +283,25 @@ matching plugin is used.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ic: an iterable of images (including ImageCollection and MultiImage)</strong></p>
-<blockquote>
-<div><p>The images to be concatenated.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>ic: an iterable of images (including ImageCollection and MultiImage)</strong></dt>
+<dd><p class="first last">The images to be concatenated.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ar</strong> : np.ndarray</p>
-<blockquote>
-<div><p>An array having one more dimension than the images in <cite>ic</cite>.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>ar</strong> <span class="classifier-delimiter">:</span> <span class="classifier">np.ndarray</span></dt>
+<dd><p class="first last">An array having one more dimension than the images in <cite>ic</cite>.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong></p>
-<blockquote class="last">
-<div><p>If images in <cite>ic</cite> don’t have identical shapes.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>ValueError</strong></dt>
+<dd><p class="first last">If images in <cite>ic</cite> don’t have identical shapes.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -321,18 +323,20 @@ matching plugin is used.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>loaded</strong> : bool</p>
-<blockquote>
-<div><p>If True, show only those plugins currently loaded.  By default,
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>loaded</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If True, show only those plugins currently loaded.  By default,
 all plugins are shown.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>p</strong> : dict</p>
-<blockquote class="last">
-<div><p>Dictionary with plugin names as keys and exposed functions as
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Dictionary with plugin names as keys and exposed functions as
 values.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -350,41 +354,41 @@ values.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fname</strong> : string</p>
-<blockquote>
-<div><p>Image file name, e.g. <code class="docutils literal notranslate"><span class="pre">test.jpg</span></code> or URL.</p>
-</div></blockquote>
-<p><strong>as_grey</strong> : bool</p>
-<blockquote>
-<div><p>If True, convert color images to grey-scale (64-bit floats).
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>fname</strong> <span class="classifier-delimiter">:</span> <span class="classifier">string</span></dt>
+<dd><p class="first last">Image file name, e.g. <code class="docutils literal notranslate"><span class="pre">test.jpg</span></code> or URL.</p>
+</dd>
+<dt><strong>as_grey</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If True, convert color images to grey-scale (64-bit floats).
 Images that are already in grey-scale format are not converted.</p>
-</div></blockquote>
-<p><strong>plugin</strong> : str</p>
-<blockquote>
-<div><p>Name of plugin to use.  By default, the different plugins are
+</dd>
+<dt><strong>plugin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Name of plugin to use.  By default, the different plugins are
 tried (starting with the Python Imaging Library) until a suitable
 candidate is found.  If not given and fname is a tiff file, the
 tifffile plugin will be used.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>img_array</strong> : ndarray</p>
-<blockquote>
-<div><p>The different color bands/channels are stored in the
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>img_array</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The different color bands/channels are stored in the
 third dimension, such that a grey-image is MxN, an
 RGB-image MxNx3 and an RGBA-image MxNx4.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first"><strong>plugin_args</strong> : keywords</p>
-<blockquote>
-<div><p>Passed to the given plugin.</p>
-</div></blockquote>
-<p><strong>flatten</strong> : bool</p>
-<blockquote class="last">
-<div><p>Backward compatible keyword, superseded by <cite>as_grey</cite>.</p>
-</div></blockquote>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><dl class="first last docutils">
+<dt><strong>plugin_args</strong> <span class="classifier-delimiter">:</span> <span class="classifier">keywords</span></dt>
+<dd><p class="first last">Passed to the given plugin.</p>
+</dd>
+<dt><strong>flatten</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">Backward compatible keyword, superseded by <cite>as_grey</cite>.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -402,30 +406,32 @@ RGB-image MxNx3 and an RGBA-image MxNx4.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>load_pattern</strong> : str or list</p>
-<blockquote>
-<div><p>List of objects to load. These are usually filenames, but may
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>load_pattern</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str or list</span></dt>
+<dd><p class="first last">List of objects to load. These are usually filenames, but may
 vary depending on the currently active plugin.  See the docstring
 for <code class="docutils literal notranslate"><span class="pre">ImageCollection</span></code> for the default behaviour of this parameter.</p>
-</div></blockquote>
-<p><strong>conserve_memory</strong> : bool, optional</p>
-<blockquote>
-<div><p>If True, never keep more than one in memory at a specific
+</dd>
+<dt><strong>conserve_memory</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">If True, never keep more than one in memory at a specific
 time.  Otherwise, images will be cached once they are loaded.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ic</strong> : ImageCollection</p>
-<blockquote>
-<div><p>Collection of images.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>ic</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ImageCollection</span></dt>
+<dd><p class="first last">Collection of images.</p>
+</dd>
+</dl>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first"><strong>plugin_args</strong> : keywords</p>
-<blockquote class="last">
-<div><p>Passed to the given plugin.</p>
-</div></blockquote>
+<tr class="field-odd field"><td>&#160;</td><td class="field-body"><dl class="first last docutils">
+<dt><strong>plugin_args</strong> <span class="classifier-delimiter">:</span> <span class="classifier">keywords</span></dt>
+<dd><p class="first last">Passed to the given plugin.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -451,28 +457,28 @@ time.  Otherwise, images will be cached once they are loaded.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>fname</strong> : str</p>
-<blockquote>
-<div><p>Target filename.</p>
-</div></blockquote>
-<p><strong>arr</strong> : ndarray of shape (M,N) or (M,N,3) or (M,N,4)</p>
-<blockquote>
-<div><p>Image data.</p>
-</div></blockquote>
-<p><strong>plugin</strong> : str</p>
-<blockquote>
-<div><p>Name of plugin to use.  By default, the different plugins are
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>fname</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Target filename.</p>
+</dd>
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray of shape (M,N) or (M,N,3) or (M,N,4)</span></dt>
+<dd><p class="first last">Image data.</p>
+</dd>
+<dt><strong>plugin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Name of plugin to use.  By default, the different plugins are
 tried (starting with the Python Imaging Library) until a suitable
 candidate is found.  If not given and fname is a tiff file, the
 tifffile plugin will be used.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first"><strong>plugin_args</strong> : keywords</p>
-<blockquote class="last">
-<div><p>Passed to the given plugin.</p>
-</div></blockquote>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><dl class="first last docutils">
+<dt><strong>plugin_args</strong> <span class="classifier-delimiter">:</span> <span class="classifier">keywords</span></dt>
+<dd><p class="first last">Passed to the given plugin.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -496,23 +502,24 @@ the PIL and imageio plugins.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>arr</strong> : ndarray or str</p>
-<blockquote>
-<div><p>Image data or name of image file.</p>
-</div></blockquote>
-<p><strong>plugin</strong> : str</p>
-<blockquote>
-<div><p>Name of plugin to use.  By default, the different plugins are
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray or str</span></dt>
+<dd><p class="first last">Image data or name of image file.</p>
+</dd>
+<dt><strong>plugin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Name of plugin to use.  By default, the different plugins are
 tried (starting with the Python Imaging Library) until a suitable
 candidate is found.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first"><strong>plugin_args</strong> : keywords</p>
-<blockquote class="last">
-<div><p>Passed to the given plugin.</p>
-</div></blockquote>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><dl class="first last docutils">
+<dt><strong>plugin_args</strong> <span class="classifier-delimiter">:</span> <span class="classifier">keywords</span></dt>
+<dd><p class="first last">Passed to the given plugin.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -530,22 +537,23 @@ candidate is found.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ic</strong> : ImageCollection</p>
-<blockquote>
-<div><p>Collection to display.</p>
-</div></blockquote>
-<p><strong>plugin</strong> : str</p>
-<blockquote>
-<div><p>Name of plugin to use.  By default, the different plugins are
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>ic</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ImageCollection</span></dt>
+<dd><p class="first last">Collection to display.</p>
+</dd>
+<dt><strong>plugin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Name of plugin to use.  By default, the different plugins are
 tried until a suitable candidate is found.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first"><strong>plugin_args</strong> : keywords</p>
-<blockquote class="last">
-<div><p>Passed to the given plugin.</p>
-</div></blockquote>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><dl class="first last docutils">
+<dt><strong>plugin_args</strong> <span class="classifier-delimiter">:</span> <span class="classifier">keywords</span></dt>
+<dd><p class="first last">Passed to the given plugin.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -569,21 +577,21 @@ instead.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>filelike</strong> : string or open file</p>
-<blockquote>
-<div><p>Input file generated by the feature detectors from
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>filelike</strong> <span class="classifier-delimiter">:</span> <span class="classifier">string or open file</span></dt>
+<dd><p class="first last">Input file generated by the feature detectors from
 <a class="reference external" href="http://people.cs.ubc.ca/~lowe/keypoints/">http://people.cs.ubc.ca/~lowe/keypoints/</a> or
 <a class="reference external" href="http://www.vision.ee.ethz.ch/~surf/">http://www.vision.ee.ethz.ch/~surf/</a> .</p>
-</div></blockquote>
-<p><strong>mode</strong> : {‘SIFT’, ‘SURF’}, optional</p>
-<blockquote>
-<div><p>Kind of descriptor used to generate <cite>filelike</cite>.</p>
-</div></blockquote>
+</dd>
+<dt><strong>mode</strong> <span class="classifier-delimiter">:</span> <span class="classifier">{‘SIFT’, ‘SURF’}, optional</span></dt>
+<dd><p class="first last">Kind of descriptor used to generate <cite>filelike</cite>.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data</strong> : record array with fields</p>
-<blockquote class="last">
-<div><ul class="simple">
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>data</strong> <span class="classifier-delimiter">:</span> <span class="classifier">record array with fields</span></dt>
+<dd><ul class="first last simple">
 <li><dl class="first docutils">
 <dt>row: int</dt>
 <dd>row position of feature</dd>
@@ -610,7 +618,8 @@ instead.</p>
 </dl>
 </li>
 </ul>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -634,21 +643,21 @@ instead.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>filelike</strong> : string or open file</p>
-<blockquote>
-<div><p>Input file generated by the feature detectors from
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>filelike</strong> <span class="classifier-delimiter">:</span> <span class="classifier">string or open file</span></dt>
+<dd><p class="first last">Input file generated by the feature detectors from
 <a class="reference external" href="http://people.cs.ubc.ca/~lowe/keypoints/">http://people.cs.ubc.ca/~lowe/keypoints/</a> or
 <a class="reference external" href="http://www.vision.ee.ethz.ch/~surf/">http://www.vision.ee.ethz.ch/~surf/</a> .</p>
-</div></blockquote>
-<p><strong>mode</strong> : {‘SIFT’, ‘SURF’}, optional</p>
-<blockquote>
-<div><p>Kind of descriptor used to generate <cite>filelike</cite>.</p>
-</div></blockquote>
+</dd>
+<dt><strong>mode</strong> <span class="classifier-delimiter">:</span> <span class="classifier">{‘SIFT’, ‘SURF’}, optional</span></dt>
+<dd><p class="first last">Kind of descriptor used to generate <cite>filelike</cite>.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data</strong> : record array with fields</p>
-<blockquote class="last">
-<div><ul class="simple">
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>data</strong> <span class="classifier-delimiter">:</span> <span class="classifier">record array with fields</span></dt>
+<dd><ul class="first last simple">
 <li><dl class="first docutils">
 <dt>row: int</dt>
 <dd>row position of feature</dd>
@@ -675,7 +684,8 @@ instead.</p>
 </dl>
 </li>
 </ul>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -693,16 +703,18 @@ instead.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>plugin</strong> : str</p>
-<blockquote>
-<div><p>Name of plugin.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>plugin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Name of plugin.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>m</strong> : dict</p>
-<blockquote class="last">
-<div><p>Meta data as specified in plugin <code class="docutils literal notranslate"><span class="pre">.ini</span></code>.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>m</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Meta data as specified in plugin <code class="docutils literal notranslate"><span class="pre">.ini</span></code>.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -720,11 +732,12 @@ instead.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>p</strong> : dict</p>
-<blockquote class="last">
-<div><p>Dictionary of preferred plugin order, with function name as key and
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>p</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dict</span></dt>
+<dd><p class="first last">Dictionary of preferred plugin order, with function name as key and
 plugins (in order of preference) as value.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -742,10 +755,11 @@ plugins (in order of preference) as value.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>img</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>Image popped from the stack.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>img</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">Image popped from the stack.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -763,10 +777,11 @@ plugins (in order of preference) as value.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>img</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>Image to push.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>img</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">Image to push.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -816,15 +831,15 @@ will be loaded if it hasn’t been already.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name</strong> : str</p>
-<blockquote>
-<div><p>Name of plugin.</p>
-</div></blockquote>
-<p><strong>kind</strong> : {‘imsave’, ‘imread’, ‘imshow’, ‘imread_collection’, ‘imshow_collection’}, optional</p>
-<blockquote class="last">
-<div><p>Set the plugin for this function.  By default,
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>name</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Name of plugin.</p>
+</dd>
+<dt><strong>kind</strong> <span class="classifier-delimiter">:</span> <span class="classifier">{‘imsave’, ‘imread’, ‘imshow’, ‘imread_collection’, ‘imshow_collection’}, optional</span></dt>
+<dd><p class="first last">Set the plugin for this function.  By default,
 the plugin is set for all functions.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -861,25 +876,26 @@ slicing returns a new ImageCollection, <em>not</em> a view into the data.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>load_pattern</strong> : str or list</p>
-<blockquote>
-<div><p>Pattern glob or filenames to load. The path can be absolute or
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>load_pattern</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str or list</span></dt>
+<dd><p class="first last">Pattern glob or filenames to load. The path can be absolute or
 relative.  Multiple patterns should be separated by os.pathsep,
 e.g. ‘/tmp/work/<em>.png:/tmp/other/</em>.jpg’.  Also see
 implementation notes below.</p>
-</div></blockquote>
-<p><strong>conserve_memory</strong> : bool, optional</p>
-<blockquote>
-<div><p>If True, never keep more than one in memory at a specific
+</dd>
+<dt><strong>conserve_memory</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">If True, never keep more than one in memory at a specific
 time.  Otherwise, images will be cached once they are loaded.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">Other Parameters:</th></tr>
-<tr class="field-even field"><td>&#160;</td><td class="field-body"><p class="first"><strong>load_func</strong> : callable</p>
-<blockquote class="last">
-<div><p><code class="docutils literal notranslate"><span class="pre">imread</span></code> by default.  See notes below.</p>
-</div></blockquote>
+<tr class="field-even field"><td>&#160;</td><td class="field-body"><dl class="first last docutils">
+<dt><strong>load_func</strong> <span class="classifier-delimiter">:</span> <span class="classifier">callable</span></dt>
+<dd><p class="first last"><code class="docutils literal notranslate"><span class="pre">imread</span></code> by default.  See notes below.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -930,15 +946,18 @@ should accept the keyword argument <code class="docutils literal notranslate"><s
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ic</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;/tmp/work/*.png:/tmp/other/*.jpg&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="rubric">Attributes</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="5%" />
-<col width="95%" />
-</colgroup>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
 <tbody valign="top">
-<tr class="row-odd"><td><strong>files</strong></td>
-<td>(list of str) If a glob string is given for <cite>load_pattern</cite>, this attribute stores the expanded file list.  Otherwise, this is simply equal to <cite>load_pattern</cite>.</td>
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>files</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list of str</span></dt>
+<dd><p class="first last">If a glob string is given for <cite>load_pattern</cite>, this attribute
+stores the expanded file list.  Otherwise, this is simply
+equal to <cite>load_pattern</cite>.</p>
+</dd>
+</dl>
+</td>
 </tr>
 </tbody>
 </table>
@@ -956,16 +975,18 @@ should accept the keyword argument <code class="docutils literal notranslate"><s
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ar</strong> : np.ndarray</p>
-<blockquote>
-<div><p>An array having one more dimension than the images in <cite>self</cite>.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>ar</strong> <span class="classifier-delimiter">:</span> <span class="classifier">np.ndarray</span></dt>
+<dd><p class="first last">An array having one more dimension than the images in <cite>self</cite>.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong></p>
-<blockquote class="last">
-<div><p>If images in the <cite>ImageCollection</cite> don’t have identical shapes.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>ValueError</strong></dt>
+<dd><p class="first last">If images in the <cite>ImageCollection</cite> don’t have identical shapes.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -994,11 +1015,12 @@ should accept the keyword argument <code class="docutils literal notranslate"><s
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n</strong> : None or int</p>
-<blockquote class="last">
-<div><p>Clear the cache for this image only. By default, the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>n</strong> <span class="classifier-delimiter">:</span> <span class="classifier">None or int</span></dt>
+<dd><p class="first last">Clear the cache for this image only. By default, the
 entire cache is erased.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -1019,15 +1041,15 @@ entire cache is erased.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>filename</strong> : str</p>
-<blockquote>
-<div><p>The complete path to the image file.</p>
-</div></blockquote>
-<p><strong>conserve_memory</strong> : bool, optional</p>
-<blockquote class="last">
-<div><p>Whether to conserve memory by only caching a single frame. Default is
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>filename</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">The complete path to the image file.</p>
+</dd>
+<dt><strong>conserve_memory</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">Whether to conserve memory by only caching a single frame. Default is
 True.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>

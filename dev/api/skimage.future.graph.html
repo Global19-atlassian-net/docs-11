@@ -137,7 +137,7 @@
 <td>Comouter RAG based on region boundaries</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.future.graph.RAG" title="skimage.future.graph.RAG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.future.graph.RAG</span></code></a>([label_image,&nbsp;…])</td>
-<td>The Region Adjacency Graph (RAG) of an image, subclasses <a class="reference external" href="http://networkx.github.io/documentation/latest/reference/classes/graph.html">networx.Graph</a>.</td>
+<td>The Region Adjacency Graph (RAG) of an image, subclasses <a class="reference external" href="http://networkx.github.io/documentation/latest/reference/classes/graph.html">networx.Graph</a></td>
 </tr>
 </tbody>
 </table>
@@ -156,27 +156,24 @@ dissimilar two regions are depending on the <cite>mode</cite> parameter.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image</strong> : ndarray, shape(M, N, […, P,] 3)</p>
-<blockquote>
-<div><p>Input image.</p>
-</div></blockquote>
-<p><strong>labels</strong> : ndarray, shape(M, N, […, P])</p>
-<blockquote>
-<div><p>The labelled image. This should have one dimension less than
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, shape(M, N, […, P,] 3)</span></dt>
+<dd><p class="first last">Input image.</p>
+</dd>
+<dt><strong>labels</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, shape(M, N, […, P])</span></dt>
+<dd><p class="first last">The labelled image. This should have one dimension less than
 <cite>image</cite>. If <cite>image</cite> has dimensions <cite>(M, N, 3)</cite> <cite>labels</cite> should have
 dimensions <cite>(M, N)</cite>.</p>
-</div></blockquote>
-<p><strong>connectivity</strong> : int, optional</p>
-<blockquote>
-<div><p>Pixels with a squared distance less than <cite>connectivity</cite> from each other
+</dd>
+<dt><strong>connectivity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first last">Pixels with a squared distance less than <cite>connectivity</cite> from each other
 are considered adjacent. It can range from 1 to <cite>labels.ndim</cite>. Its
 behavior is the same as <cite>connectivity</cite> parameter in
 <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.generate_binary_structure</span></code>.</p>
-</div></blockquote>
-<p><strong>mode</strong> : {‘distance’, ‘similarity’}, optional</p>
-<blockquote>
-<div><p>The strategy to assign edge weights.</p>
-<blockquote>
+</dd>
+<dt><strong>mode</strong> <span class="classifier-delimiter">:</span> <span class="classifier">{‘distance’, ‘similarity’}, optional</span></dt>
+<dd><p class="first">The strategy to assign edge weights.</p>
+<blockquote class="last">
 <div><p>‘distance’ : The weight between two adjacent regions is the
 <span class="math notranslate">\(|c_1 - c_2|\)</span>, where <span class="math notranslate">\(c_1\)</span> and <span class="math notranslate">\(c_2\)</span> are the mean
 colors of the two regions. It represents the Euclidean distance in
@@ -186,29 +183,30 @@ their average color.</p>
 <span class="math notranslate">\(c_1\)</span> and <span class="math notranslate">\(c_2\)</span> are the mean colors of the two regions.
 It represents how similar two regions are.</p>
 </div></blockquote>
-</div></blockquote>
-<p><strong>sigma</strong> : float, optional</p>
-<blockquote>
-<div><p>Used for computation when <cite>mode</cite> is “similarity”. It governs how
+</dd>
+<dt><strong>sigma</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd><p class="first last">Used for computation when <cite>mode</cite> is “similarity”. It governs how
 close to each other two colors should be, for their corresponding edge
 weight to be significant. A very large value of <cite>sigma</cite> could make
 any two colors behave as though they were similar.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : RAG</p>
-<blockquote class="last">
-<div><p>The region adjacency graph.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>out</strong> <span class="classifier-delimiter">:</span> <span class="classifier">RAG</span></dt>
+<dd><p class="first last">The region adjacency graph.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r273" rules="none">
+<table class="docutils citation" frame="void" id="r3cef2b317682-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[R273]</a></td><td>Alain Tremeau and Philippe Colantoni
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Alain Tremeau and Philippe Colantoni
 “Regions Adjacency Graph Applied To Color Image Segmentation”
 <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.11.5274">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.11.5274</a></td></tr>
 </tbody>
@@ -237,40 +235,39 @@ than the given threshold.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray</p>
-<blockquote>
-<div><p>The array of labels.</p>
-</div></blockquote>
-<p><strong>rag</strong> : RAG</p>
-<blockquote>
-<div><p>The region adjacency graph.</p>
-</div></blockquote>
-<p><strong>thresh</strong> : float</p>
-<blockquote>
-<div><p>The threshold. Regions connected by edges with smaller weights are
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>labels</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The array of labels.</p>
+</dd>
+<dt><strong>rag</strong> <span class="classifier-delimiter">:</span> <span class="classifier">RAG</span></dt>
+<dd><p class="first last">The region adjacency graph.</p>
+</dd>
+<dt><strong>thresh</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">The threshold. Regions connected by edges with smaller weights are
 combined.</p>
-</div></blockquote>
-<p><strong>in_place</strong> : bool</p>
-<blockquote>
-<div><p>If set, modifies <cite>rag</cite> in place. The function will remove the edges
+</dd>
+<dt><strong>in_place</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If set, modifies <cite>rag</cite> in place. The function will remove the edges
 with weights less that <cite>thresh</cite>. If set to <cite>False</cite> the function
 makes a copy of <cite>rag</cite> before proceeding.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The new labelled array.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>out</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The new labelled array.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r274" rules="none">
+<table class="docutils citation" frame="void" id="rf405e43f96e5-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[R274]</a></td><td>Alain Tremeau and Philippe Colantoni
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Alain Tremeau and Philippe Colantoni
 “Regions Adjacency Graph Applied To Color Image Segmentation”
 <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.11.5274">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.11.5274</a></td></tr>
 </tbody>
@@ -301,49 +298,46 @@ output.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray</p>
-<blockquote>
-<div><p>The array of labels.</p>
-</div></blockquote>
-<p><strong>rag</strong> : RAG</p>
-<blockquote>
-<div><p>The region adjacency graph.</p>
-</div></blockquote>
-<p><strong>thresh</strong> : float</p>
-<blockquote>
-<div><p>The threshold. A subgraph won’t be further subdivided if the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>labels</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The array of labels.</p>
+</dd>
+<dt><strong>rag</strong> <span class="classifier-delimiter">:</span> <span class="classifier">RAG</span></dt>
+<dd><p class="first last">The region adjacency graph.</p>
+</dd>
+<dt><strong>thresh</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">The threshold. A subgraph won’t be further subdivided if the
 value of the N-cut exceeds <cite>thresh</cite>.</p>
-</div></blockquote>
-<p><strong>num_cuts</strong> : int</p>
-<blockquote>
-<div><p>The number or N-cuts to perform before determining the optimal one.</p>
-</div></blockquote>
-<p><strong>in_place</strong> : bool</p>
-<blockquote>
-<div><p>If set, modifies <cite>rag</cite> in place. For each node <cite>n</cite> the function will
+</dd>
+<dt><strong>num_cuts</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">The number or N-cuts to perform before determining the optimal one.</p>
+</dd>
+<dt><strong>in_place</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If set, modifies <cite>rag</cite> in place. For each node <cite>n</cite> the function will
 set a new attribute <code class="docutils literal notranslate"><span class="pre">rag.node[n]['ncut</span> <span class="pre">label']</span></code>.</p>
-</div></blockquote>
-<p><strong>max_edge</strong> : float, optional</p>
-<blockquote>
-<div><p>The maximum possible value of an edge in the RAG. This corresponds to
+</dd>
+<dt><strong>max_edge</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd><p class="first last">The maximum possible value of an edge in the RAG. This corresponds to
 an edge between identical regions. This is used to put self
 edges in the RAG.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The new labeled array.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>out</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The new labeled array.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r275" rules="none">
+<table class="docutils citation" frame="void" id="re3a6b101708e-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[R275]</a></td><td>Shi, J.; Malik, J., “Normalized cuts and image segmentation”,
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td>Shi, J.; Malik, J., “Normalized cuts and image segmentation”,
 Pattern Analysis and Machine Intelligence,
 IEEE Transactions on, vol. 22, no. 8, pp. 888-905, August 2000.</td></tr>
 </tbody>
@@ -374,49 +368,46 @@ output.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray</p>
-<blockquote>
-<div><p>The array of labels.</p>
-</div></blockquote>
-<p><strong>rag</strong> : RAG</p>
-<blockquote>
-<div><p>The region adjacency graph.</p>
-</div></blockquote>
-<p><strong>thresh</strong> : float</p>
-<blockquote>
-<div><p>The threshold. A subgraph won’t be further subdivided if the
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>labels</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The array of labels.</p>
+</dd>
+<dt><strong>rag</strong> <span class="classifier-delimiter">:</span> <span class="classifier">RAG</span></dt>
+<dd><p class="first last">The region adjacency graph.</p>
+</dd>
+<dt><strong>thresh</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">The threshold. A subgraph won’t be further subdivided if the
 value of the N-cut exceeds <cite>thresh</cite>.</p>
-</div></blockquote>
-<p><strong>num_cuts</strong> : int</p>
-<blockquote>
-<div><p>The number or N-cuts to perform before determining the optimal one.</p>
-</div></blockquote>
-<p><strong>in_place</strong> : bool</p>
-<blockquote>
-<div><p>If set, modifies <cite>rag</cite> in place. For each node <cite>n</cite> the function will
+</dd>
+<dt><strong>num_cuts</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">The number or N-cuts to perform before determining the optimal one.</p>
+</dd>
+<dt><strong>in_place</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If set, modifies <cite>rag</cite> in place. For each node <cite>n</cite> the function will
 set a new attribute <code class="docutils literal notranslate"><span class="pre">rag.node[n]['ncut</span> <span class="pre">label']</span></code>.</p>
-</div></blockquote>
-<p><strong>max_edge</strong> : float, optional</p>
-<blockquote>
-<div><p>The maximum possible value of an edge in the RAG. This corresponds to
+</dd>
+<dt><strong>max_edge</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd><p class="first last">The maximum possible value of an edge in the RAG. This corresponds to
 an edge between identical regions. This is used to put self
 edges in the RAG.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The new labeled array.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>out</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The new labeled array.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="r276" rules="none">
+<table class="docutils citation" frame="void" id="rc6a68e7e02db-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[R276]</a></td><td>Shi, J.; Malik, J., “Normalized cuts and image segmentation”,
+<tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td>Shi, J.; Malik, J., “Normalized cuts and image segmentation”,
 Pattern Analysis and Machine Intelligence,
 IEEE Transactions on, vol. 22, no. 8, pp. 888-905, August 2000.</td></tr>
 </tbody>
@@ -446,53 +437,47 @@ the centroid of the 2 adjacent regions in the image.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray, shape (M, N)</p>
-<blockquote>
-<div><p>The labelled image.</p>
-</div></blockquote>
-<p><strong>rag</strong> : RAG</p>
-<blockquote>
-<div><p>The Region Adjacency Graph.</p>
-</div></blockquote>
-<p><strong>image</strong> : ndarray, shape (M, N[, 3])</p>
-<blockquote>
-<div><p>Input image. If <cite>colormap</cite> is <cite>None</cite>, the image should be in RGB
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>labels</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, shape (M, N)</span></dt>
+<dd><p class="first last">The labelled image.</p>
+</dd>
+<dt><strong>rag</strong> <span class="classifier-delimiter">:</span> <span class="classifier">RAG</span></dt>
+<dd><p class="first last">The Region Adjacency Graph.</p>
+</dd>
+<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, shape (M, N[, 3])</span></dt>
+<dd><p class="first last">Input image. If <cite>colormap</cite> is <cite>None</cite>, the image should be in RGB
 format.</p>
-</div></blockquote>
-<p><strong>border_color</strong> : color spec, optional</p>
-<blockquote>
-<div><p>Color with which the borders between regions are drawn.</p>
-</div></blockquote>
-<p><strong>edge_width</strong> : float, optional</p>
-<blockquote>
-<div><p>The thickness with which the RAG edges are drawn.</p>
-</div></blockquote>
-<p><strong>edge_cmap</strong> : <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v2.1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.colors.Colormap</span></code></a>, optional</p>
-<blockquote>
-<div><p>Any matplotlib colormap with which the edges are drawn.</p>
-</div></blockquote>
-<p><strong>img_cmap</strong> : <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v2.1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.colors.Colormap</span></code></a>, optional</p>
-<blockquote>
-<div><p>Any matplotlib colormap with which the image is draw. If set to <cite>None</cite>
+</dd>
+<dt><strong>border_color</strong> <span class="classifier-delimiter">:</span> <span class="classifier">color spec, optional</span></dt>
+<dd><p class="first last">Color with which the borders between regions are drawn.</p>
+</dd>
+<dt><strong>edge_width</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd><p class="first last">The thickness with which the RAG edges are drawn.</p>
+</dd>
+<dt><strong>edge_cmap</strong> <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v2.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.colors.Colormap</span></code></a>, optional</span></dt>
+<dd><p class="first last">Any matplotlib colormap with which the edges are drawn.</p>
+</dd>
+<dt><strong>img_cmap</strong> <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v2.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.colors.Colormap</span></code></a>, optional</span></dt>
+<dd><p class="first last">Any matplotlib colormap with which the image is draw. If set to <cite>None</cite>
 the image is drawn as it is.</p>
-</div></blockquote>
-<p><strong>in_place</strong> : bool, optional</p>
-<blockquote>
-<div><p>If set, the RAG is modified in place. For each node <cite>n</cite> the function
+</dd>
+<dt><strong>in_place</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">If set, the RAG is modified in place. For each node <cite>n</cite> the function
 will set a new attribute <code class="docutils literal notranslate"><span class="pre">rag.node[n]['centroid']</span></code>.</p>
-</div></blockquote>
-<p><strong>ax</strong> : <a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v2.1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional</p>
-<blockquote>
-<div><p>The axes to draw on. If not specified, new axes are created and drawn
+</dd>
+<dt><strong>ax</strong> <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v2.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional</span></dt>
+<dd><p class="first last">The axes to draw on. If not specified, new axes are created and drawn
 on.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>lc</strong> : <a class="reference external" href="https://matplotlib.org/api/collections_api.html#matplotlib.collections.LineCollection" title="(in Matplotlib v2.1.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.collections.LineCollection</span></code></a></p>
-<blockquote class="last">
-<div><p>A colection of lines that represent the edges of the graph. It can be
-passed to the <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.colorbar" title="(in Matplotlib v2.1.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.colorbar()</span></code></a> function.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>lc</strong> <span class="classifier-delimiter">:</span> <span class="classifier"><a class="reference external" href="https://matplotlib.org/api/collections_api.html#matplotlib.collections.LineCollection" title="(in Matplotlib v2.2.2)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.collections.LineCollection</span></code></a></span></dt>
+<dd><p class="first last">A colection of lines that represent the edges of the graph. It can be
+passed to the <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.colorbar" title="(in Matplotlib v2.2.2)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">matplotlib.figure.Figure.colorbar()</span></code></a> function.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -524,46 +509,42 @@ passed to the <a class="reference external" href="https://matplotlib.org/api/_as
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>labels</strong> : ndarray</p>
-<blockquote>
-<div><p>The array of labels.</p>
-</div></blockquote>
-<p><strong>rag</strong> : RAG</p>
-<blockquote>
-<div><p>The Region Adjacency Graph.</p>
-</div></blockquote>
-<p><strong>thresh</strong> : float</p>
-<blockquote>
-<div><p>Regions connected by an edge with weight smaller than <cite>thresh</cite> are
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>labels</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The array of labels.</p>
+</dd>
+<dt><strong>rag</strong> <span class="classifier-delimiter">:</span> <span class="classifier">RAG</span></dt>
+<dd><p class="first last">The Region Adjacency Graph.</p>
+</dd>
+<dt><strong>thresh</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Regions connected by an edge with weight smaller than <cite>thresh</cite> are
 merged.</p>
-</div></blockquote>
-<p><strong>rag_copy</strong> : bool</p>
-<blockquote>
-<div><p>If set, the RAG copied before modifying.</p>
-</div></blockquote>
-<p><strong>in_place_merge</strong> : bool</p>
-<blockquote>
-<div><p>If set, the nodes are merged in place. Otherwise, a new node is
+</dd>
+<dt><strong>rag_copy</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If set, the RAG copied before modifying.</p>
+</dd>
+<dt><strong>in_place_merge</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dd><p class="first last">If set, the nodes are merged in place. Otherwise, a new node is
 created for each merge..</p>
-</div></blockquote>
-<p><strong>merge_func</strong> : callable</p>
-<blockquote>
-<div><p>This function is called before merging two nodes. For the RAG <cite>graph</cite>
+</dd>
+<dt><strong>merge_func</strong> <span class="classifier-delimiter">:</span> <span class="classifier">callable</span></dt>
+<dd><p class="first last">This function is called before merging two nodes. For the RAG <cite>graph</cite>
 while merging <cite>src</cite> and <cite>dst</cite>, it is called as follows
 <code class="docutils literal notranslate"><span class="pre">merge_func(graph,</span> <span class="pre">src,</span> <span class="pre">dst)</span></code>.</p>
-</div></blockquote>
-<p><strong>weight_func</strong> : callable</p>
-<blockquote>
-<div><p>The function to compute the new weights of the nodes adjacent to the
+</dd>
+<dt><strong>weight_func</strong> <span class="classifier-delimiter">:</span> <span class="classifier">callable</span></dt>
+<dd><p class="first last">The function to compute the new weights of the nodes adjacent to the
 merged node. This is directly supplied as the argument <cite>weight_func</cite>
 to <cite>merge_nodes</cite>.</p>
-</div></blockquote>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>out</strong> : ndarray</p>
-<blockquote class="last">
-<div><p>The new labeled array.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>out</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The new labeled array.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -619,30 +600,28 @@ behavior is the same as <cite>connectivity</cite> parameter in
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>label_image</strong> : array of int</p>
-<blockquote>
-<div><p>An initial segmentation, with each region labeled as a different
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>label_image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array of int</span></dt>
+<dd><p class="first last">An initial segmentation, with each region labeled as a different
 integer. Every unique value in <code class="docutils literal notranslate"><span class="pre">label_image</span></code> will correspond to
 a node in the graph.</p>
-</div></blockquote>
-<p><strong>connectivity</strong> : int in {1, …, <code class="docutils literal notranslate"><span class="pre">label_image.ndim</span></code>}, optional</p>
-<blockquote>
-<div><p>The connectivity between pixels in <code class="docutils literal notranslate"><span class="pre">label_image</span></code>. For a 2D image,
+</dd>
+<dt><strong>connectivity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int in {1, …, <code class="docutils literal notranslate"><span class="pre">label_image.ndim</span></code>}, optional</span></dt>
+<dd><p class="first last">The connectivity between pixels in <code class="docutils literal notranslate"><span class="pre">label_image</span></code>. For a 2D image,
 a connectivity of 1 corresponds to immediate neighbors up, down,
 left, and right, while a connectivity of 2 also includes diagonal
 neighbors. See <cite>scipy.ndimage.generate_binary_structure</cite>.</p>
-</div></blockquote>
-<p><strong>data</strong> : networkx Graph specification, optional</p>
-<blockquote>
-<div><p>Initial or additional edges to pass to the NetworkX Graph
+</dd>
+<dt><strong>data</strong> <span class="classifier-delimiter">:</span> <span class="classifier">networkx Graph specification, optional</span></dt>
+<dd><p class="first last">Initial or additional edges to pass to the NetworkX Graph
 constructor. See <cite>networkx.Graph</cite>. Valid edge specifications
 include edge list (list of tuples), NumPy arrays, and SciPy
 sparse matrices.</p>
-</div></blockquote>
-<p><strong>**attr</strong> : keyword arguments, optional</p>
-<blockquote class="last">
-<div><p>Additional attributes to add to the graph.</p>
-</div></blockquote>
+</dd>
+<dt><strong>**attr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">keyword arguments, optional</span></dt>
+<dd><p class="first last">Additional attributes to add to the graph.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -655,18 +634,18 @@ sparse matrices.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>incoming_graph_data</strong> : input graph (optional, default: None)</p>
-<blockquote>
-<div><p>Data to initialize graph. If None (default) an empty
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>incoming_graph_data</strong> <span class="classifier-delimiter">:</span> <span class="classifier">input graph (optional, default: None)</span></dt>
+<dd><p class="first last">Data to initialize graph. If None (default) an empty
 graph is created.  The data can be an edge list, or any
 NetworkX graph object.  If the corresponding optional Python
 packages are installed the data can also be a NumPy matrix
 or 2d ndarray, a SciPy sparse matrix, or a PyGraphviz graph.</p>
-</div></blockquote>
-<p><strong>attr</strong> : keyword arguments, optional (default= no attributes)</p>
-<blockquote class="last">
-<div><p>Attributes to add to graph as key=value pairs.</p>
-</div></blockquote>
+</dd>
+<dt><strong>attr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">keyword arguments, optional (default= no attributes)</span></dt>
+<dd><p class="first last">Attributes to add to graph as key=value pairs.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -752,39 +731,37 @@ incident on the new node.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>src, dst</strong> : int</p>
-<blockquote>
-<div><p>Nodes to be merged.</p>
-</div></blockquote>
-<p><strong>weight_func</strong> : callable, optional</p>
-<blockquote>
-<div><p>Function to decide the attributes of edges incident on the new
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>src, dst</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Nodes to be merged.</p>
+</dd>
+<dt><strong>weight_func</strong> <span class="classifier-delimiter">:</span> <span class="classifier">callable, optional</span></dt>
+<dd><p class="first last">Function to decide the attributes of edges incident on the new
 node. For each neighbor <cite>n</cite> for <cite>src and `dst</cite>, <cite>weight_func</cite> will
 be called as follows: <cite>weight_func(src, dst, n, *extra_arguments,
 **extra_keywords)</cite>. <cite>src</cite>, <cite>dst</cite> and <cite>n</cite> are IDs of vertices in the
 RAG object which is in turn a subclass of <cite>networkx.Graph</cite>. It is
 expected to return a dict of attributes of the resulting edge.</p>
-</div></blockquote>
-<p><strong>in_place</strong> : bool, optional</p>
-<blockquote>
-<div><p>If set to <cite>True</cite>, the merged node has the id <cite>dst</cite>, else merged
+</dd>
+<dt><strong>in_place</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">If set to <cite>True</cite>, the merged node has the id <cite>dst</cite>, else merged
 node has a new id which is returned.</p>
-</div></blockquote>
-<p><strong>extra_arguments</strong> : sequence, optional</p>
-<blockquote>
-<div><p>The sequence of extra positional arguments passed to
+</dd>
+<dt><strong>extra_arguments</strong> <span class="classifier-delimiter">:</span> <span class="classifier">sequence, optional</span></dt>
+<dd><p class="first last">The sequence of extra positional arguments passed to
 <cite>weight_func</cite>.</p>
-</div></blockquote>
-<p><strong>extra_keywords</strong> : dictionary, optional</p>
-<blockquote>
-<div><p>The dict of keyword arguments passed to the <cite>weight_func</cite>.</p>
-</div></blockquote>
+</dd>
+<dt><strong>extra_keywords</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dictionary, optional</span></dt>
+<dd><p class="first last">The dict of keyword arguments passed to the <cite>weight_func</cite>.</p>
+</dd>
+</dl>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>id</strong> : int</p>
-<blockquote class="last">
-<div><p>The id of the new node.</p>
-</div></blockquote>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>id</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">The id of the new node.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
@@ -803,10 +780,11 @@ node has a new id which is returned.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>id</strong> : int</p>
-<blockquote class="last">
-<div><p>The <cite>id</cite> of the new node to be inserted.</p>
-</div></blockquote>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>id</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">The <cite>id</cite> of the new node to be inserted.</p>
+</dd>
+</dl>
 </td>
 </tr>
 </tbody>
