@@ -79,7 +79,7 @@
 <li><a class="reference internal" href="#block-reduce">block_reduce</a></li>
 <li><a class="reference internal" href="#moments">moments</a></li>
 <li><a class="reference internal" href="#moments-central">moments_central</a></li>
-<li><a class="reference internal" href="#moments-normalized">moments_normalized</a></li>
+<li><a class="reference internal" href="#moments-coords">moments_coords</a></li>
 <li><a class="reference internal" href="#moments-hu">moments_hu</a></li>
 <li><a class="reference internal" href="#marching-cubes-lewiner">marching_cubes_lewiner</a></li>
 <li><a class="reference internal" href="#marching-cubes-classic">marching_cubes_classic</a></li>
@@ -161,8 +161,8 @@
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.measure.moments_central" title="skimage.measure.moments_central"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.moments_central</span></code></a>(image[,&nbsp;…])</td>
 <td>Calculate all central image moments up to a certain order.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.measure.moments_normalized" title="skimage.measure.moments_normalized"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.moments_normalized</span></code></a>(mu[,&nbsp;order])</td>
-<td>Calculate all normalized central image moments up to a certain order.</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.measure.moments_coords" title="skimage.measure.moments_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.moments_coords</span></code></a>(coords[,&nbsp;order])</td>
+<td>Calculate all raw image moments up to a certain order.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.measure.moments_hu" title="skimage.measure.moments_hu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.moments_hu</span></code></a>(nu)</td>
 <td>Calculate Hu’s set of image moments (2D-only).</td>
@@ -943,7 +943,7 @@ block size.</p>
 <h2>moments<a class="headerlink" href="#moments" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.moments">
-<code class="descclassname">skimage.measure.</code><code class="descname">moments</code><span class="sig-paren">(</span><em>image</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">moments</code><span class="sig-paren">(</span><em>image</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate all raw image moments up to a certain order.</p>
 <dl class="docutils">
 <dt>The following properties can be calculated from raw image moments:</dt>
@@ -960,7 +960,7 @@ invariant.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">2D double or uint8 array</span></dt>
+<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">nD double or uint8 array</span></dt>
 <dd><p class="first last">Rasterized shape as image.</p>
 </dd>
 <dt><strong>order</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
@@ -1024,7 +1024,7 @@ Berlin, 1993.</td></tr>
 <h2>moments_central<a class="headerlink" href="#moments-central" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.moments_central">
-<code class="descclassname">skimage.measure.</code><code class="descname">moments_central</code><span class="sig-paren">(</span><em>image</em>, <em>center=None</em>, <em>cc=None</em>, <em>order=3</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_central" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">moments_central</code><span class="sig-paren">(</span><em>image</em>, <em>center=None</em>, <em>cc=None</em>, <em>order=3</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_central" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate all central image moments up to a certain order.</p>
 <p>The center coordinates (cr, cc) can be calculated from the raw moments as:
 {<code class="docutils literal notranslate"><span class="pre">M[1,</span> <span class="pre">0]</span> <span class="pre">/</span> <span class="pre">M[0,</span> <span class="pre">0]</span></code>, <code class="docutils literal notranslate"><span class="pre">M[0,</span> <span class="pre">1]</span> <span class="pre">/</span> <span class="pre">M[0,</span> <span class="pre">0]</span></code>}.</p>
@@ -1035,7 +1035,7 @@ rotation invariant.</p>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">2D double or uint8 array</span></dt>
+<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">nD double or uint8 array</span></dt>
 <dd><p class="first last">Rasterized shape as image.</p>
 </dd>
 <dt><strong>center</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple of float, optional</span></dt>
@@ -1113,22 +1113,30 @@ Berlin, 1993.</td></tr>
 </dd></dl>
 
 </div>
-<div class="section" id="moments-normalized">
-<h2>moments_normalized<a class="headerlink" href="#moments-normalized" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="moments-coords">
+<h2>moments_coords<a class="headerlink" href="#moments-coords" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="skimage.measure.moments_normalized">
-<code class="descclassname">skimage.measure.</code><code class="descname">moments_normalized</code><span class="sig-paren">(</span><em>mu</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L133"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_normalized" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate all normalized central image moments up to a certain order.</p>
-<p>Note that normalized central moments are translation and scale invariant
-but not rotation invariant.</p>
+<dt id="skimage.measure.moments_coords">
+<code class="descclassname">skimage.measure.</code><code class="descname">moments_coords</code><span class="sig-paren">(</span><em>coords</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L10"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_coords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate all raw image moments up to a certain order.</p>
+<dl class="docutils">
+<dt>The following properties can be calculated from raw image moments:</dt>
+<dd><ul class="first last simple">
+<li>Area as: <code class="docutils literal notranslate"><span class="pre">M[0,</span> <span class="pre">0]</span></code>.</li>
+<li>Centroid as: {<code class="docutils literal notranslate"><span class="pre">M[1,</span> <span class="pre">0]</span> <span class="pre">/</span> <span class="pre">M[0,</span> <span class="pre">0]</span></code>, <code class="docutils literal notranslate"><span class="pre">M[0,</span> <span class="pre">1]</span> <span class="pre">/</span> <span class="pre">M[0,</span> <span class="pre">0]</span></code>}.</li>
+</ul>
+</dd>
+</dl>
+<p>Note that raw moments are neither translation, scale nor rotation
+invariant.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>mu</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(M,[ …,] M) array</span></dt>
-<dd><p class="first last">Central image moments, where M must be greater than or equal
-to <code class="docutils literal notranslate"><span class="pre">order</span></code>.</p>
+<dt><strong>coords</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(N, D) double or uint8 array</span></dt>
+<dd><p class="first last">Array of N points that describe an image of D dimensionality in
+Cartesian space.</p>
 </dd>
 <dt><strong>order</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
 <dd><p class="first last">Maximum order of moments. Default is 3.</p>
@@ -1137,8 +1145,8 @@ to <code class="docutils literal notranslate"><span class="pre">order</span></co
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>nu</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>,[ …,] <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>) array</span></dt>
-<dd><p class="first last">Normalized central image moments.</p>
+<dt><strong>M</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, …) array</span></dt>
+<dd><p class="first last">Raw image moments. (D dimensions)</p>
 </dd>
 </dl>
 </td>
@@ -1146,46 +1154,22 @@ to <code class="docutils literal notranslate"><span class="pre">order</span></co
 </tbody>
 </table>
 <p class="rubric">References</p>
-<table class="docutils citation" frame="void" id="rc5867b15e1bf-1" rules="none">
+<table class="docutils citation" frame="void" id="r1906bd878ddc-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id19">[1]</a></td><td>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
-Core Algorithms. Springer-Verlag, London, 2009.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="rc5867b15e1bf-2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id20">[2]</a></td><td>B. Jähne. Digital Image Processing. Springer-Verlag,
-Berlin-Heidelberg, 6. edition, 2005.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="rc5867b15e1bf-3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id21">[3]</a></td><td>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
-Features, from Lecture notes in computer science, p. 676. Springer,
-Berlin, 1993.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="rc5867b15e1bf-4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id22">[4]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Image_moment">http://en.wikipedia.org/wiki/Image_moment</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id19">[1]</a></td><td>Johannes Kilian. Simple Image Analysis By Moments. Durham
+University, version 0.2, Durham, 2001.</td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">moments</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cr</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mu</span> <span class="o">=</span> <span class="n">moments_central</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cr</span><span class="p">,</span> <span class="n">cc</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">moments_normalized</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
-<span class="go">array([[        nan,         nan,  0.078125  ,  0.        ],</span>
-<span class="go">       [        nan,  0.        ,  0.        ,  0.        ],</span>
-<span class="go">       [ 0.078125  ,  0.        ,  0.00610352,  0.        ],</span>
-<span class="go">       [ 0.        ,  0.        ,  0.        ,  0.        ]])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">]</span>
+<span class="gp">... </span>                   <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
+<span class="gp">... </span>                   <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">M</span> <span class="o">=</span> <span class="n">moments_coords</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centroid_row</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centroid_col</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centroid_row</span><span class="p">,</span> <span class="n">centroid_col</span>
+<span class="go">(14.5, 15.5)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1195,7 +1179,7 @@ Berlin, 1993.</td></tr>
 <h2>moments_hu<a class="headerlink" href="#moments-hu" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.moments_hu">
-<code class="descclassname">skimage.measure.</code><code class="descname">moments_hu</code><span class="sig-paren">(</span><em>nu</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L190"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_hu" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">moments_hu</code><span class="sig-paren">(</span><em>nu</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L333"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_hu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate Hu’s set of image moments (2D-only).</p>
 <p>Note that this set of moments is proofed to be translation, scale and
 rotation invariant.</p>
@@ -1223,28 +1207,28 @@ rotation invariant.</p>
 <table class="docutils citation" frame="void" id="r8f5f4137a534-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id23">[1]</a></td><td>M. K. Hu, “Visual Pattern Recognition by Moment Invariants”,
+<tr><td class="label"><a class="fn-backref" href="#id20">[1]</a></td><td>M. K. Hu, “Visual Pattern Recognition by Moment Invariants”,
 IRE Trans. Info. Theory, vol. IT-8, pp. 179-187, 1962</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r8f5f4137a534-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id24">[2]</a></td><td>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
+<tr><td class="label"><a class="fn-backref" href="#id21">[2]</a></td><td>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
 Core Algorithms. Springer-Verlag, London, 2009.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r8f5f4137a534-3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id25">[3]</a></td><td>B. Jähne. Digital Image Processing. Springer-Verlag,
+<tr><td class="label"><a class="fn-backref" href="#id22">[3]</a></td><td>B. Jähne. Digital Image Processing. Springer-Verlag,
 Berlin-Heidelberg, 6. edition, 2005.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r8f5f4137a534-4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id26">[4]</a></td><td>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
+<tr><td class="label"><a class="fn-backref" href="#id23">[4]</a></td><td>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
 Features, from Lecture notes in computer science, p. 676. Springer,
 Berlin, 1993.</td></tr>
 </tbody>
@@ -1252,7 +1236,7 @@ Berlin, 1993.</td></tr>
 <table class="docutils citation" frame="void" id="r8f5f4137a534-5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id27">[5]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Image_moment">http://en.wikipedia.org/wiki/Image_moment</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id24">[5]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Image_moment">http://en.wikipedia.org/wiki/Image_moment</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1372,7 +1356,7 @@ named <cite>myvolume</cite> about the level 0.0, using the <code class="docutils
 <table class="docutils citation" frame="void" id="rda8f856612d5-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id28">[1]</a></td><td>Thomas Lewiner, Helio Lopes, Antonio Wilson Vieira and Geovan
+<tr><td class="label"><a class="fn-backref" href="#id25">[1]</a></td><td>Thomas Lewiner, Helio Lopes, Antonio Wilson Vieira and Geovan
 Tavares. Efficient implementation of Marching Cubes’ cases with
 topological guarantees. Journal of Graphics Tools 8(2)
 pp. 1-15 (december 2003).
@@ -1436,13 +1420,13 @@ exactly three indices.</p>
 <p class="last"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.marching_cubes</span></code>, <a class="reference internal" href="#skimage.measure.mesh_surface_area" title="skimage.measure.mesh_surface_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.mesh_surface_area</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The marching cubes algorithm is implemented as described in <a class="reference internal" href="#r1e43a330a523-1" id="id29">[1]</a>.
+<p>The marching cubes algorithm is implemented as described in <a class="reference internal" href="#r1e43a330a523-1" id="id26">[1]</a>.
 A simple explanation is available here:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">essi</span><span class="o">.</span><span class="n">fr</span><span class="o">/~</span><span class="n">lingrand</span><span class="o">/</span><span class="n">MarchingCubes</span><span class="o">/</span><span class="n">algo</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
 <p>There are several known ambiguous cases in the marching cubes algorithm.
-Using point labeling as in <a class="reference internal" href="#r1e43a330a523-1" id="id30">[1]</a>, Figure 4, as shown:</p>
+Using point labeling as in <a class="reference internal" href="#r1e43a330a523-1" id="id27">[1]</a>, Figure 4, as shown:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    v8 ------ v7
    / |       / |        y
   /  |      /  |        ^  z
@@ -1459,7 +1443,7 @@ algorithm, separating v4 and v8 from v2 and v6. An equally valid
 interpretation would be a single connected thin surface enclosing all
 four points. This is the best known ambiguity, though there are others.</p>
 <p>This algorithm does not attempt to resolve such ambiguities; it is a naive
-implementation of marching cubes as in <a class="reference internal" href="#r1e43a330a523-1" id="id31">[1]</a>, but may be a good beginning
+implementation of marching cubes as in <a class="reference internal" href="#r1e43a330a523-1" id="id28">[1]</a>, but may be a good beginning
 for work with more recent techniques (Dual Marching Cubes, Extended
 Marching Cubes, Cubic Marching Squares, etc.).</p>
 <p>Because of interactions between neighboring cubes, the isosurface(s)
@@ -1479,7 +1463,7 @@ outputs directly into <cite>skimage.measure.mesh_surface_area</cite>.</p>
 <table class="docutils citation" frame="void" id="r1e43a330a523-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id29">1</a>, <a class="fn-backref" href="#id30">2</a>, <a class="fn-backref" href="#id31">3</a>, <a class="fn-backref" href="#id32">4</a>)</em> Lorensen, William and Harvey E. Cline. Marching Cubes: A High
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id26">1</a>, <a class="fn-backref" href="#id27">2</a>, <a class="fn-backref" href="#id28">3</a>, <a class="fn-backref" href="#id29">4</a>)</em> Lorensen, William and Harvey E. Cline. Marching Cubes: A High
 Resolution 3D Surface Construction Algorithm. Computer Graphics
 (SIGGRAPH 87 Proceedings) 21(4) July 1987, p. 163-170).
 DOI: 10.1145/37401.37422</td></tr>
@@ -1745,7 +1729,7 @@ returned if return_num is <cite>True</cite>.</p>
 <table class="docutils citation" frame="void" id="r4c017a27ed0c-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id33">[1]</a></td><td>Christophe Fiorio and Jens Gustedt, “Two linear time Union-Find
+<tr><td class="label"><a class="fn-backref" href="#id30">[1]</a></td><td>Christophe Fiorio and Jens Gustedt, “Two linear time Union-Find
 strategies for image processing”, Theoretical Computer Science
 154 (1996), pp. 165-181.</td></tr>
 </tbody>
@@ -1753,7 +1737,7 @@ strategies for image processing”, Theoretical Computer Science
 <table class="docutils citation" frame="void" id="r4c017a27ed0c-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id34">[2]</a></td><td>Kensheng Wu, Ekow Otoo and Arie Shoshani, “Optimizing connected
+<tr><td class="label"><a class="fn-backref" href="#id31">[2]</a></td><td>Kensheng Wu, Ekow Otoo and Arie Shoshani, “Optimizing connected
 component labeling algorithms”, Paper LBNL-56864, 2005,
 Lawrence Berkeley National Laboratory (University of California),
 <a class="reference external" href="http://repositories.cdlib.org/lbnl/LBNL-56864">http://repositories.cdlib.org/lbnl/LBNL-56864</a></td></tr>
@@ -1871,7 +1855,7 @@ duplicated.</p>
 <h2>compare_ssim<a class="headerlink" href="#compare-ssim" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.compare_ssim">
-<code class="descclassname">skimage.measure.</code><code class="descname">compare_ssim</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em>, <em>win_size=None</em>, <em>gradient=False</em>, <em>data_range=None</em>, <em>multichannel=False</em>, <em>gaussian_weights=False</em>, <em>full=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_structural_similarity.py#L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.compare_ssim" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">compare_ssim</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em>, <em>win_size=None</em>, <em>gradient=False</em>, <em>data_range=None</em>, <em>multichannel=False</em>, <em>gaussian_weights=False</em>, <em>full=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_structural_similarity.py#L13"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.compare_ssim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the mean structural similarity index between two images.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1914,7 +1898,7 @@ mean value.</p>
 <dd><p class="first last">The mean structural similarity over the image.</p>
 </dd>
 <dt><strong>grad</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
-<dd><p class="first last">The gradient of the structural similarity index between X and Y <a class="reference internal" href="#rccea9a164d3e-2" id="id35">[2]</a>.
+<dd><p class="first last">The gradient of the structural similarity index between X and Y <a class="reference internal" href="#rccea9a164d3e-2" id="id32">[2]</a>.
 This is only returned if <cite>gradient</cite> is set to True.</p>
 </dd>
 <dt><strong>S</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
@@ -1930,10 +1914,10 @@ This is only returned if <cite>gradient</cite> is set to True.</p>
 number of pixels within the sliding window.</p>
 </dd>
 <dt><strong>K1</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd><p class="first last">algorithm parameter, K1 (small constant, see <a class="reference internal" href="#rccea9a164d3e-1" id="id36">[1]</a>)</p>
+<dd><p class="first last">algorithm parameter, K1 (small constant, see <a class="reference internal" href="#rccea9a164d3e-1" id="id33">[1]</a>)</p>
 </dd>
 <dt><strong>K2</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd><p class="first last">algorithm parameter, K2 (small constant, see <a class="reference internal" href="#rccea9a164d3e-1" id="id37">[1]</a>)</p>
+<dd><p class="first last">algorithm parameter, K2 (small constant, see <a class="reference internal" href="#rccea9a164d3e-1" id="id34">[1]</a>)</p>
 </dd>
 <dt><strong>sigma</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
 <dd><p class="first last">sigma for the Gaussian when <cite>gaussian_weights</cite> is True.</p>
@@ -1944,13 +1928,13 @@ number of pixels within the sliding window.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>To match the implementation of Wang et. al. <a class="reference internal" href="#rccea9a164d3e-1" id="id38">[1]</a>, set <cite>gaussian_weights</cite>
+<p>To match the implementation of Wang et. al. <a class="reference internal" href="#rccea9a164d3e-1" id="id35">[1]</a>, set <cite>gaussian_weights</cite>
 to True, <cite>sigma</cite> to 1.5, and <cite>use_sample_covariance</cite> to False.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="rccea9a164d3e-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id36">1</a>, <a class="fn-backref" href="#id37">2</a>, <a class="fn-backref" href="#id38">3</a>, <a class="fn-backref" href="#id39">4</a>)</em> Wang, Z., Bovik, A. C., Sheikh, H. R., &amp; Simoncelli, E. P.
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id33">1</a>, <a class="fn-backref" href="#id34">2</a>, <a class="fn-backref" href="#id35">3</a>, <a class="fn-backref" href="#id36">4</a>)</em> Wang, Z., Bovik, A. C., Sheikh, H. R., &amp; Simoncelli, E. P.
 (2004). Image quality assessment: From error visibility to
 structural similarity. IEEE Transactions on Image Processing,
 13, 600-612.
@@ -1961,7 +1945,7 @@ DOI:10.1109/TIP.2003.819861</td></tr>
 <table class="docutils citation" frame="void" id="rccea9a164d3e-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id35">1</a>, <a class="fn-backref" href="#id40">2</a>)</em> Avanaki, A. N. (2009). Exact global histogram specification
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id32">1</a>, <a class="fn-backref" href="#id37">2</a>)</em> Avanaki, A. N. (2009). Exact global histogram specification
 optimized for structural similarity. Optical Review, 16, 613-621.
 <a class="reference external" href="http://arxiv.org/abs/0901.0065">http://arxiv.org/abs/0901.0065</a>,
 DOI:10.1007/s10043-009-0119-z</td></tr>
@@ -2020,7 +2004,7 @@ images.</p>
 <dt><strong>norm_type</strong> <span class="classifier-delimiter">:</span> <span class="classifier">{‘Euclidean’, ‘min-max’, ‘mean’}</span></dt>
 <dd><p class="first">Controls the normalization method to use in the denominator of the
 NRMSE.  There is no standard method of normalization across the
-literature <a class="reference internal" href="#rb7f5201e5e31-1" id="id41">[1]</a>.  The methods available here are as follows:</p>
+literature <a class="reference internal" href="#rb7f5201e5e31-1" id="id38">[1]</a>.  The methods available here are as follows:</p>
 <ul class="last">
 <li><p class="first">‘Euclidean’ : normalize by the averaged Euclidean norm of
 <code class="docutils literal notranslate"><span class="pre">im_true</span></code>:</p>
@@ -2055,7 +2039,7 @@ This result is equivalent to:</p>
 <table class="docutils citation" frame="void" id="rb7f5201e5e31-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id41">1</a>, <a class="fn-backref" href="#id42">2</a>)</em> <a class="reference external" href="https://en.wikipedia.org/wiki/Root-mean-square_deviation">https://en.wikipedia.org/wiki/Root-mean-square_deviation</a></td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id38">1</a>, <a class="fn-backref" href="#id39">2</a>)</em> <a class="reference external" href="https://en.wikipedia.org/wiki/Root-mean-square_deviation">https://en.wikipedia.org/wiki/Root-mean-square_deviation</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -2099,7 +2083,7 @@ data-type.</p>
 <table class="docutils citation" frame="void" id="rc30fc0f79907-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id43">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio">https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id40">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio">https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -2142,13 +2126,13 @@ unit (nat) for base=np.e and hartley (Hart) for base=10.</p>
 <table class="docutils citation" frame="void" id="rd3de3b6e4b40-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id44">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Entropy_(information_theory">https://en.wikipedia.org/wiki/Entropy_(information_theory</a>)</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id41">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Entropy_(information_theory">https://en.wikipedia.org/wiki/Entropy_(information_theory</a>)</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="rd3de3b6e4b40-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id45">[2]</a></td><td><a class="reference external" href="https://en.wiktionary.org/wiki/Shannon_entropy">https://en.wiktionary.org/wiki/Shannon_entropy</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id42">[2]</a></td><td><a class="reference external" href="https://en.wiktionary.org/wiki/Shannon_entropy">https://en.wiktionary.org/wiki/Shannon_entropy</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -2598,7 +2582,7 @@ to a simple, stable and robust fitting method.</p>
 <table class="docutils citation" frame="void" id="rb82f40f15f1b-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id46">[1]</a></td><td>Halir, R.; Flusser, J. “Numerically stable direct least squares
+<tr><td class="label"><a class="fn-backref" href="#id43">[1]</a></td><td>Halir, R.; Flusser, J. “Numerically stable direct least squares
 fitting of ellipses”. In Proc. 6th International Conference in
 Central Europe on Computer Graphics and Visualization.
 WSCG (Vol. 98, pp. 125-132).</td></tr>

@@ -740,19 +740,19 @@ for a 1-pixel offset upwards.</p>
 a compact summary of the matrix. The properties are computed as
 follows:</p>
 <ul>
-<li><p class="first">‘contrast’: <span class="math notranslate">\(\sum_{i,j=0}^{levels-1} P_{i,j}(i-j)^2\)</span></p>
+<li><p class="first">‘contrast’: <span class="math notranslate nohighlight">\(\sum_{i,j=0}^{levels-1} P_{i,j}(i-j)^2\)</span></p>
 </li>
-<li><p class="first">‘dissimilarity’: <span class="math notranslate">\(\sum_{i,j=0}^{levels-1}P_{i,j}|i-j|\)</span></p>
+<li><p class="first">‘dissimilarity’: <span class="math notranslate nohighlight">\(\sum_{i,j=0}^{levels-1}P_{i,j}|i-j|\)</span></p>
 </li>
-<li><p class="first">‘homogeneity’: <span class="math notranslate">\(\sum_{i,j=0}^{levels-1}\frac{P_{i,j}}{1+(i-j)^2}\)</span></p>
+<li><p class="first">‘homogeneity’: <span class="math notranslate nohighlight">\(\sum_{i,j=0}^{levels-1}\frac{P_{i,j}}{1+(i-j)^2}\)</span></p>
 </li>
-<li><p class="first">‘ASM’: <span class="math notranslate">\(\sum_{i,j=0}^{levels-1} P_{i,j}^2\)</span></p>
+<li><p class="first">‘ASM’: <span class="math notranslate nohighlight">\(\sum_{i,j=0}^{levels-1} P_{i,j}^2\)</span></p>
 </li>
-<li><p class="first">‘energy’: <span class="math notranslate">\(\sqrt{ASM}\)</span></p>
+<li><p class="first">‘energy’: <span class="math notranslate nohighlight">\(\sqrt{ASM}\)</span></p>
 </li>
 <li><dl class="first docutils">
 <dt>‘correlation’:</dt>
-<dd><div class="first last math notranslate">
+<dd><div class="first last math notranslate nohighlight">
 \[\sum_{i,j=0}^{levels-1} P_{i,j}\left[\frac{(i-\mu_i) \
 (j-\mu_j)}{\sqrt{(\sigma_i^2)(\sigma_j^2)}}\right]\]</div>
 </dd>
@@ -2461,7 +2461,7 @@ and <code class="docutils literal notranslate"><span class="pre">matches[:,</spa
 <h2>plot_matches<a class="headerlink" href="#plot-matches" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.plot_matches">
-<code class="descclassname">skimage.feature.</code><code class="descname">plot_matches</code><span class="sig-paren">(</span><em>ax</em>, <em>image1</em>, <em>image2</em>, <em>keypoints1</em>, <em>keypoints2</em>, <em>matches</em>, <em>keypoints_color='k'</em>, <em>matches_color=None</em>, <em>only_matches=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/util.py#L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.plot_matches" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">plot_matches</code><span class="sig-paren">(</span><em>ax</em>, <em>image1</em>, <em>image2</em>, <em>keypoints1</em>, <em>keypoints2</em>, <em>matches</em>, <em>keypoints_color='k'</em>, <em>matches_color=None</em>, <em>only_matches=False</em>, <em>alignment='horizontal'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/util.py#L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.plot_matches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot matched features.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2497,6 +2497,10 @@ color is chosen randomly.</p>
 </dd>
 <dt><strong>only_matches</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
 <dd><p class="first last">Whether to only plot matches and not plot the keypoint locations.</p>
+</dd>
+<dt><strong>alignment</strong> <span class="classifier-delimiter">:</span> <span class="classifier">{‘horizontal’, ‘vertical’}, optional</span></dt>
+<dd><p class="first last">Whether to show images side by side, <code class="docutils literal notranslate"><span class="pre">'horizontal'</span></code>, or one above
+the other, <code class="docutils literal notranslate"><span class="pre">'vertical'</span></code>.</p>
 </dd>
 </dl>
 </td>
@@ -2562,8 +2566,8 @@ detected the blob.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>The radius of each blob is approximately <span class="math notranslate">\(\sqrt{2}\sigma\)</span> for
-a 2-D image and <span class="math notranslate">\(\sqrt{3}\sigma\)</span> for a 3-D image.</p>
+<p>The radius of each blob is approximately <span class="math notranslate nohighlight">\(\sqrt{2}\sigma\)</span> for
+a 2-D image and <span class="math notranslate nohighlight">\(\sqrt{3}\sigma\)</span> for a 3-D image.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="rf5218630e229-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -2771,8 +2775,8 @@ detected the blob.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>The radius of each blob is approximately <span class="math notranslate">\(\sqrt{2}\sigma\)</span> for
-a 2-D image and <span class="math notranslate">\(\sqrt{3}\sigma\)</span> for a 3-D image.</p>
+<p>The radius of each blob is approximately <span class="math notranslate nohighlight">\(\sqrt{2}\sigma\)</span> for
+a 2-D image and <span class="math notranslate nohighlight">\(\sqrt{3}\sigma\)</span> for a 3-D image.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r520e53dd5fa2-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -2873,6 +2877,15 @@ is <cite>uint</cite> or <cite>int</cite> and <cite>float</cite> when the data ty
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>When extracting those features in parallel, be aware that the choice of the
+backend (i.e. multiprocessing vs threading) will have an impact on the
+performance. The rule of thumb is as follows: use multiprocessing when
+extracting features for all possible ROI in an image; use threading when
+extracting the feature at specific location for a limited number of ROIs.
+Refer to the example
+<a class="reference internal" href="../auto_examples/xx_applications/plot_haar_extraction_selection_classification.html#sphx-glr-auto-examples-xx-applications-plot-haar-extraction-selection-classification-py"><span class="std std-ref">Face classification using Haar-like feature descriptor</span></a>
+for more insights.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="rbcb83f52fce4-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -2997,7 +3010,7 @@ DOI: 10.1109/CVPR.2001.990517</td></tr>
 <h2>draw_haar_like_feature<a class="headerlink" href="#draw-haar-like-feature" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.draw_haar_like_feature">
-<code class="descclassname">skimage.feature.</code><code class="descname">draw_haar_like_feature</code><span class="sig-paren">(</span><em>image</em>, <em>r</em>, <em>c</em>, <em>width</em>, <em>height</em>, <em>feature_coord</em>, <em>color_positive_block=(1.0</em>, <em>0.0</em>, <em>0.0)</em>, <em>color_negative_block=(0.0</em>, <em>1.0</em>, <em>0.0)</em>, <em>alpha=0.5</em>, <em>max_n_features=None</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/haar.py#L213"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.draw_haar_like_feature" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">draw_haar_like_feature</code><span class="sig-paren">(</span><em>image</em>, <em>r</em>, <em>c</em>, <em>width</em>, <em>height</em>, <em>feature_coord</em>, <em>color_positive_block=(1.0</em>, <em>0.0</em>, <em>0.0)</em>, <em>color_negative_block=(0.0</em>, <em>1.0</em>, <em>0.0)</em>, <em>alpha=0.5</em>, <em>max_n_features=None</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/feature/haar.py#L224"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.draw_haar_like_feature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Visualization of Haar-like features.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
