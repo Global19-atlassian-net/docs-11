@@ -174,6 +174,9 @@ and backported features deemed important (by community demand) until January
 <h2><a class="toc-backref" href="#id4">New Features</a><a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Lookfor function to search across the library: <code class="docutils literal notranslate"><span class="pre">skimage.lookfor</span></code>. (#2713)</li>
+<li>nD support for <code class="docutils literal notranslate"><span class="pre">skimage.transform.rescale</span></code>, <code class="docutils literal notranslate"><span class="pre">skimage.transform.resize</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">skimage.transform.pyramid_*</span></code> transforms. (#1522)</li>
+<li>Chan-Vese segmentation algorithm. (#1957)</li>
 <li>Manual segmentation with matplotlib for fast data annotation:
 <code class="docutils literal notranslate"><span class="pre">skimage.future.manual_polygon_segmentation</span></code>,
 <code class="docutils literal notranslate"><span class="pre">skimage.future.manual_lasso_segmentation</span></code>. (#2584)</li>
@@ -211,6 +214,7 @@ results from a series of spatial shifts:
 <h2><a class="toc-backref" href="#id5">Improvements</a><a class="headerlink" href="#improvements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">VisuShrink</span></code> method for <code class="docutils literal notranslate"><span class="pre">skimage.restoration.denoise_wavelet</span></code>. (#2470)</li>
+<li>New <code class="docutils literal notranslate"><span class="pre">max_ratio</span></code> parameter for <code class="docutils literal notranslate"><span class="pre">skimage.feature.match_descriptors</span></code>. (#2472)</li>
 <li><code class="docutils literal notranslate"><span class="pre">skimage.transform.resize</span></code> and <code class="docutils literal notranslate"><span class="pre">skimage.transform.rescale</span></code> have a new
 <code class="docutils literal notranslate"><span class="pre">anti_aliasing</span></code> option to avoid aliasing artifacts when down-sampling
 images. (#2802)</li>
@@ -253,6 +257,7 @@ value, and is now consistent with <code class="docutils literal notranslate"><sp
 <div class="section" id="deprecations">
 <h2><a class="toc-backref" href="#id8">Deprecations</a><a class="headerlink" href="#deprecations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">freeimage</span></code> plugin has been removed from <code class="docutils literal notranslate"><span class="pre">skimage.io</span></code>.</li>
 <li><code class="docutils literal notranslate"><span class="pre">skimage.util.montage2d</span></code> is deprecated and will be removed in 0.15.
 Use <code class="docutils literal notranslate"><span class="pre">skimage.util.montage</span></code> function instead.</li>
 <li><code class="docutils literal notranslate"><span class="pre">skimage.novice</span></code> is deprecated and will be removed in 0.16.</li>
@@ -276,16 +281,22 @@ and will be removed in 0.16. Use <code class="docutils literal notranslate"><spa
 <ul class="simple">
 <li>Alvin</li>
 <li>Norman Barker</li>
+<li>Brad Bazemore</li>
 <li>Leonid Bloch</li>
 <li>Benedikt Boecking</li>
+<li>Jirka Borovec</li>
 <li>François Boulogne</li>
 <li>Larry Bradley</li>
+<li>Robert Bradshaw</li>
 <li>Matthew Brett</li>
+<li>Floris van Breugel</li>
 <li>Alex Chum</li>
 <li>Yannick Copin</li>
 <li>Nethanel Elzas</li>
 <li>Kira Evans</li>
 <li>Christoph Gohlke</li>
+<li>GGoussar</li>
+<li>Jens Glaser</li>
 <li>Peter Goldsborough</li>
 <li>Emmanuelle Gouillart</li>
 <li>Ben Hadfield</li>
@@ -293,15 +304,26 @@ and will be removed in 0.16. Use <code class="docutils literal notranslate"><spa
 <li>Scott Heatwole</li>
 <li>Gregory R. Lee</li>
 <li>Guillaume Lemaitre</li>
+<li>Theodore Lindsay</li>
 <li>Kevin Mader</li>
 <li>Jarrod Millman</li>
+<li>Vinicius Monego</li>
 <li>Pradyumna Narayana</li>
 <li>Juan Nunez-Iglesias</li>
+<li>Kesavan PS</li>
 <li>Egor Panfilov</li>
 <li>Oleksandr Pavlyk</li>
+<li>Justin Pinkney</li>
+<li>Robert Pollak</li>
+<li>Jonathan Reich</li>
+<li>Émile Robitaille</li>
+<li>Rose Zhao</li>
 <li>Alex Rothberg</li>
+<li>Arka Sadhu</li>
 <li>Max Schambach</li>
 <li>Johannes Schönberger</li>
+<li>Sourav Singh</li>
+<li>Kesavan Subburam</li>
 <li>Matt Swain</li>
 <li>Saurav R. Tuladhar</li>
 <li>Nelle Varoquaux</li>
@@ -310,18 +332,28 @@ and will be removed in 0.16. Use <code class="docutils literal notranslate"><spa
 <li>Stefan van der Walt</li>
 <li>Thomas Walter</li>
 <li>Scott Warchal</li>
+<li>Josh Warner</li>
 <li>Nicholas Weir</li>
+<li>Sera Yang</li>
+<li>Chiang, Yi-Yo</li>
 <li>corrado9999</li>
 <li>ed1d1a8d</li>
 <li>eepaillard</li>
+<li>leaprovenzano</li>
 <li>mikigom</li>
+<li>mrastgoo</li>
 <li>mutterer</li>
+<li>pmneila</li>
+<li>timhok</li>
+<li>zhongzyd</li>
 </ul>
 <p>We’d also like to thank all the people who contributed their time to perform the reviews:</p>
 <ul class="simple">
 <li>Leonid Bloch</li>
 <li>Jirka Borovec</li>
 <li>François Boulogne</li>
+<li>Matthew Brett</li>
+<li>Thomas A Caswell</li>
 <li>Kira Evans</li>
 <li>Peter Goldsborough</li>
 <li>Emmanuelle Gouillart</li>
@@ -329,10 +361,14 @@ and will be removed in 0.16. Use <code class="docutils literal notranslate"><spa
 <li>Gregory R. Lee</li>
 <li>Joan Massich</li>
 <li>Juan Nunez-Iglesias</li>
+<li>Faraz Oloumi</li>
 <li>Daniil Pakhomov</li>
 <li>Egor Panfilov</li>
+<li>Dan Schult</li>
 <li>Johannes Schönberger</li>
 <li>Steven Silvester</li>
+<li>Alexandre de Siqueira</li>
+<li>Nelle Varoquaux</li>
 <li>Stefan van der Walt</li>
 <li>Josh Warner</li>
 <li>Eric Wieser</li>
@@ -340,19 +376,98 @@ and will be removed in 0.16. Use <code class="docutils literal notranslate"><spa
 </div>
 <div class="section" id="full-list-of-changes">
 <h2><a class="toc-backref" href="#id10">Full list of changes</a><a class="headerlink" href="#full-list-of-changes" title="Permalink to this headline">¶</a></h2>
-<p>This release is the result of 8 months of work.
-It contains the following 107 merged pull requests by 42 committers:</p>
+<p>This release is the result of 14 months of work.
+It contains the following 186 merged pull requests by 67 committers:</p>
 <ul class="simple">
+<li>n-dimensional rescale, resize, and pyramid transforms (#1522)</li>
+<li>Segmentation: Implemention of a simple Chan-Vese Algorithm (#1957)</li>
+<li>JPEG quality argument in imsave (#2063)</li>
+<li>improve geometric models fitting (line, circle) using LSM (#2433)</li>
+<li>Improve input parameter handling in <cite>_sift_read</cite> (#2452)</li>
+<li>Remove broken test in <cite>_shared/tests/test_interpolation.py</cite> (#2454)</li>
+<li>[MRG] Pytest migration (#2468)</li>
+<li>Add VisuShrink method for <cite>denoise_wavelet</cite> (#2470)</li>
+<li>Ratio test for descriptor matching (#2472)</li>
 <li>Make HOG visualization use midpoints of orientation bins (#2525)</li>
+<li>DOC: Add example for rescaling/resizing/downscaling (#2560)</li>
+<li>Gallery random walker: Rescale image range to -1, 1 (#2575)</li>
 <li>Update conditional requirement for PySide (#2578)</li>
+<li>Add configuration file for <cite>pep8_speaks</cite> (#2579)</li>
+<li>Manual segmentation tool with matplotlib (#2584)</li>
+<li>Website updates (documentation build) (#2585)</li>
+<li>Update the release process notes (#2593)</li>
+<li>Defer matplotlib imports (#2596)</li>
+<li>Spelling: replaces colour by color (#2598)</li>
 <li>Add nD support to image moments computation (#2603)</li>
+<li>Set xlim and ylim in rescale gallery example (#2606)</li>
+<li>Reduce runtime of local_maxima gallery example (#2608)</li>
 <li>MAINT _shared.testing now contains pytest’s useful functions (#2614)</li>
+<li>error message misspelled, integral to integer (#2615)</li>
+<li>Respect standard notations for images in functions arguments (#2617)</li>
+<li>MAINT: remove unused argument in private inpainting function (#2618)</li>
+<li>MAINT: some minor edits on Chan Vese segmentation (#2619)</li>
+<li>Fix UserWarning: Unknown section Example (#2620)</li>
+<li>Eliminate some TODOs for 0.14 (#2621)</li>
+<li>Clean up and fix bug in ssim tests (#2622)</li>
+<li>Add padding_width to montage2d and add montage_rgb (#2626)</li>
+<li>Add tests covering erroneous input to morphology.watershed (#2631)</li>
+<li>Fix name of code coverage tool (#2638)</li>
+<li>MAINT: Remove undefined attributes in skimage.filters (#2643)</li>
+<li>Improve the support for 1D images in <cite>color.gray2rgb</cite>  (#2645)</li>
 <li>ENH: add cycle spinning routine (#2647)</li>
 <li>as_gray replaces as_grey in imread() and load() (#2652)</li>
+<li>Fix AppVeyor pytest execution (#2658)</li>
+<li>More TODOs for 0.14 (#2659)</li>
+<li>pin sphinx to &lt;1.6 (#2662)</li>
+<li>MAINT: use relative imports instead of absolute ones (#2664)</li>
+<li>Add hysteresis thresholding function (#2665)</li>
+<li>Improve hysteresis docstring (#2669)</li>
+<li>Add helper functions img_as_float32 and img_as_float64 (#2673)</li>
+<li>Remove unnecessary assignment in pxd file. (#2683)</li>
+<li>Unused var and function call in documentation example (#2684)</li>
+<li>Make <cite>imshow_collection</cite> to plot images on a grid of convenient aspect ratio (#2689)</li>
+<li>Fix typo in Chan-Vese docstrings (#2692)</li>
+<li>Fix data type error with marching_cubes_lewiner(allow_degenerate=False) (#2694)</li>
+<li>Add handling for uniform arrays when finding local extrema. (#2699)</li>
+<li>Avoid uneccesary copies in skimage.morphology.label (#2701)</li>
+<li>Deprecate <cite>visualise</cite> in favor of <cite>visualize</cite> in <cite>skimage.feature.hog</cite> (#2705)</li>
+<li>Remove alpha channel when saving to jpg format (#2706)</li>
+<li>Tweak in-place installation instructions (#2712)</li>
+<li>Add <cite>skimage.lookfor</cite> function (#2713)</li>
+<li>Speedup image dtype conversion by switching to <cite>asarray</cite> (#2715)</li>
+<li>MAINT reorganizing CI-related scripts (#2718)</li>
+<li>added rect function to draw module (#2719)</li>
+<li>Remove duplicate parameter in <cite>skimage.io.imread</cite> docstring (#2725)</li>
+<li>Add support for 1D arrays for grey erosion (#2727)</li>
+<li>Build with Xcode 9 beta 3, MacOS 10.12 (#2730)</li>
+<li>Travis docs one platform (#2732)</li>
+<li>Install documentation build requirements on Travis-CI (#2737)</li>
+<li>Add reference papers for <cite>restoration.inpaint_biharmonic</cite> (#2738)</li>
+<li>Completely remove <cite>freeimage</cite> plugin from <cite>skimage.io</cite> (#2744)</li>
+<li>Implementation and test fix for shannon_entropy calculation. (#2749)</li>
+<li>Minor cleanup (#2750)</li>
+<li>Add notes on testing to CONTRIBUTING (#2751)</li>
+<li>Update OSX install script (#2752)</li>
+<li>fix bug in horizontal seam_carve and seam_carve test. issue :#2545 (#2754)</li>
+<li>Recommend merging instead of rebasing, to lower contribution barrier (#2757)</li>
+<li>updated second link, first link still has paywall (#2768)</li>
+<li>DOC: set_color docstring, in-place said explicitly (#2771)</li>
 <li>Add module for generating random, labeled shapes (#2773)</li>
+<li>Ignore known failures (#2774)</li>
+<li>Update testdoc (#2775)</li>
+<li>Remove bento support (#2776)</li>
+<li>AppVeyor supports dot-file-style (#2779)</li>
 <li>Fix bug in <cite>color.convert_colorspace</cite> for YCbCr, YPbPr (#2780)</li>
+<li>Reorganizing requirements (#2781)</li>
+<li>WIP: Deal with long running command on travis (#2782)</li>
+<li>Deprecate the novice module (#2742) (#2784)</li>
+<li>Document mentioning deprecations in the release notes (#2785)</li>
+<li>[WIP] FIX Swirl center coordinates are reversed (#2790)</li>
+<li>Implementation of the Morphological Snakes (#2791)</li>
+<li>Merge TASKS.txt with CONTRIBUTING.txt (#2800)</li>
+<li>Add Gaussian filter-based antialiasing to resize (#2802)</li>
+<li>Add morphological snakes to release notes (#2803)</li>
 <li>Return empty array if hough_line_peaks detects nothing (#2805)</li>
-<li>Also document submodules, and ignore private modules <cite>_*</cite> (#2810)</li>
 <li>Add W503 to pep8speaks ignore. (#2816)</li>
 <li>Slice PIL palette correctly using extreme image value. (#2818)</li>
 <li>Move INSTALL to top-level (#2819)</li>
