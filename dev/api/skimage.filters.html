@@ -105,6 +105,7 @@
 <li><a class="reference internal" href="#threshold-sauvola">threshold_sauvola</a></li>
 <li><a class="reference internal" href="#threshold-triangle">threshold_triangle</a></li>
 <li><a class="reference internal" href="#apply-hysteresis-threshold">apply_hysteresis_threshold</a></li>
+<li><a class="reference internal" href="#unsharp-mask">unsharp_mask</a></li>
 <li><a class="reference internal" href="#lpifilter2d"><code class="docutils literal notranslate"><span class="pre">LPIFilter2D</span></code></a></li>
 </ul>
 </li>
@@ -248,10 +249,13 @@
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.apply_hysteresis_threshold" title="skimage.filters.apply_hysteresis_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.apply_hysteresis_threshold</span></code></a>(…)</td>
 <td>Apply hysteresis thresholding to <cite>image</cite>.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.filters.LPIFilter2D" title="skimage.filters.LPIFilter2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.LPIFilter2D</span></code></a>(…)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.filters.unsharp_mask" title="skimage.filters.unsharp_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.unsharp_mask</span></code></a>(image[,&nbsp;…])</td>
+<td>Unsharp masking filter.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.filters.LPIFilter2D" title="skimage.filters.LPIFilter2D"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.LPIFilter2D</span></code></a>(…)</td>
 <td>Linear Position-Invariant Filter (2-dimensional)</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="skimage.filters.rank.html#module-skimage.filters.rank" title="skimage.filters.rank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.rank</span></code></a></td>
+<tr class="row-even"><td><a class="reference internal" href="skimage.filters.rank.html#module-skimage.filters.rank" title="skimage.filters.rank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.rank</span></code></a></td>
 <td></td>
 </tr>
 </tbody>
@@ -1526,7 +1530,7 @@ Re-Written by D. J. Kroon University of Twente (May 2009)</p>
 <h2>threshold_adaptive<a class="headerlink" href="#threshold-adaptive" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.threshold_adaptive">
-<code class="descclassname">skimage.filters.</code><code class="descname">threshold_adaptive</code><span class="sig-paren">(</span><em>image</em>, <em>block_size</em>, <em>method='gaussian'</em>, <em>offset=0</em>, <em>mode='reflect'</em>, <em>param=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/_shared/utils.py#L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_adaptive" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.filters.</code><code class="descname">threshold_adaptive</code><span class="sig-paren">(</span><em>image</em>, <em>block_size</em>, <em>method='gaussian'</em>, <em>offset=0</em>, <em>mode='reflect'</em>, <em>param=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/_shared/utils.py#L57"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_adaptive" title="Permalink to this definition">¶</a></dt>
 <dd><p><strong>Deprecated function</strong>. Use <code class="docutils literal notranslate"><span class="pre">threshold_local</span></code> instead.</p>
 </dd></dl>
 
@@ -2241,6 +2245,124 @@ DOI: 10.1109/TPAMI.1986.4767851</td></tr>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">apply_hysteresis_threshold</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="go">array([0, 1, 1, 1, 0, 0, 0, 1, 1])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="unsharp-mask">
+<h2>unsharp_mask<a class="headerlink" href="#unsharp-mask" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.filters.unsharp_mask">
+<code class="descclassname">skimage.filters.</code><code class="descname">unsharp_mask</code><span class="sig-paren">(</span><em>image</em>, <em>radius=1.0</em>, <em>amount=1.0</em>, <em>multichannel=False</em>, <em>preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_unsharp_mask.py#L20"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.unsharp_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unsharp masking filter.</p>
+<p>The sharp details are identified as the difference between the original
+image and its blurred version. These details are then scaled, and added
+back to the original image.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">[P, …, ]M[, N][, C] ndarray</span></dt>
+<dd><p class="first last">Input image.</p>
+</dd>
+<dt><strong>radius</strong> <span class="classifier-delimiter">:</span> <span class="classifier">scalar or sequence of scalars, optional</span></dt>
+<dd><p class="first last">If a scalar is given, then its value is used for all dimensions.
+If sequence is given, then there must be exactly one radius
+for each dimension except the last dimension for multichannel images.
+Note that 0 radius means no blurring, and negative values are
+not allowed.</p>
+</dd>
+<dt><strong>amount</strong> <span class="classifier-delimiter">:</span> <span class="classifier">scalar, optional</span></dt>
+<dd><p class="first last">The details will be amplified with this factor. The factor could be 0
+or negative. Typically, it is a small positive number, e.g. 1.0.</p>
+</dd>
+<dt><strong>multichannel</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">If True, the last <cite>image</cite> dimension is considered as a color channel,
+otherwise as spatial. Color channels are processed individually.</p>
+</dd>
+<dt><strong>preserve_range: bool, optional</strong></dt>
+<dd><p class="first last">Whether to keep the original range of values. Otherwise, the input
+image is converted according to the conventions of <cite>img_as_float</cite>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>output</strong> <span class="classifier-delimiter">:</span> <span class="classifier">[P, …, ]M[, N][, C] ndarray of float</span></dt>
+<dd><p class="first last">Image with unsharp mask applied.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Unsharp masking is an image sharpening technique. It is a linear image
+operation, and numerically stable, unlike deconvolution which is an
+ill-posed problem. Because of this stability, it is often
+preferred over deconvolution.</p>
+<p>The main idea is as follows: sharp details are identified as the
+difference between the original image and its blurred version.
+These details are added back to the original image after a scaling step:</p>
+<blockquote>
+<div>enhanced image = original + amount * (original - blurred)</div></blockquote>
+<p>When applying this filter to several color layers independently,
+color bleeding may occur. More visually pleasing result can be
+achieved by processing only the brightness/lightness/intensity
+channel in a suitable color space such as HSV, HSL, YUV, or YCbCr.</p>
+<p>Unsharp masking is described in most introductory digital image
+processing books. This implementation is based on <a class="reference internal" href="#re30cac9066b6-1" id="id35">[1]</a>.</p>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="re30cac9066b6-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id35">1</a>, <a class="fn-backref" href="#id36">2</a>)</em> Maria Petrou, Costas Petrou
+“Image Processing: The Fundamentals”, (2010), ed ii., page 357,
+ISBN 13: 9781119994398  DOI: 10.1002/9781119994398</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="re30cac9066b6-2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id37">[2]</a></td><td>Wikipedia. Unsharp masking
+<a class="reference external" href="https://en.wikipedia.org/wiki/Unsharp_masking">https://en.wikipedia.org/wiki/Unsharp_masking</a></td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">120</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array</span>
+<span class="go">array([[100, 100, 100, 100, 100],</span>
+<span class="go">       [100, 100, 100, 100, 100],</span>
+<span class="go">       [100, 100, 120, 100, 100],</span>
+<span class="go">       [100, 100, 100, 100, 100],</span>
+<span class="go">       [100, 100, 100, 100, 100]], dtype=uint8)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">unsharp_mask</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">amount</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">array([[ 0.39,  0.39,  0.39,  0.39,  0.39],</span>
+<span class="go">       [ 0.39,  0.39,  0.39,  0.39,  0.39],</span>
+<span class="go">       [ 0.39,  0.39,  0.47,  0.39,  0.39],</span>
+<span class="go">       [ 0.39,  0.39,  0.39,  0.39,  0.39],</span>
+<span class="go">       [ 0.39,  0.39,  0.39,  0.39,  0.39]])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">127</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">unsharp_mask</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">amount</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">array([[ 0.79,  0.79,  0.79,  0.79,  0.79],</span>
+<span class="go">       [ 0.79,  0.79,  0.79,  0.79,  0.79],</span>
+<span class="go">       [ 0.79,  0.79,  1.  ,  0.79,  0.79],</span>
+<span class="go">       [ 0.79,  0.79,  0.79,  0.79,  0.79],</span>
+<span class="go">       [ 0.79,  0.79,  0.79,  0.79,  0.79]])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">unsharp_mask</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">amount</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">preserve_range</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="go">array([[ 100.  ,  100.  ,   99.99,  100.  ,  100.  ],</span>
+<span class="go">       [ 100.  ,   99.39,   95.48,   99.39,  100.  ],</span>
+<span class="go">       [  99.99,   95.48,  147.59,   95.48,   99.99],</span>
+<span class="go">       [ 100.  ,   99.39,   95.48,   99.39,  100.  ],</span>
+<span class="go">       [ 100.  ,  100.  ,   99.99,  100.  ,  100.  ]])</span>
 </pre></div>
 </div>
 </dd></dl>
