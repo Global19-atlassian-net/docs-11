@@ -1490,7 +1490,7 @@ of all the slices give the coordinates of regularly spaced points.</p>
 <h2>apply_parallel<a class="headerlink" href="#apply-parallel" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.apply_parallel">
-<code class="descclassname">skimage.util.</code><code class="descname">apply_parallel</code><span class="sig-paren">(</span><em>function</em>, <em>array</em>, <em>chunks=None</em>, <em>depth=0</em>, <em>mode=None</em>, <em>extra_arguments=()</em>, <em>extra_keywords={}</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/apply_parallel.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.apply_parallel" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">apply_parallel</code><span class="sig-paren">(</span><em>function</em>, <em>array</em>, <em>chunks=None</em>, <em>depth=0</em>, <em>mode=None</em>, <em>extra_arguments=()</em>, <em>extra_keywords={}</em>, <em>*</em>, <em>compute=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/apply_parallel.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.apply_parallel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Map a function in parallel across an array.</p>
 <p>Split an array into possibly overlapping chunks of a given depth and
 boundary type, call the given function in parallel on the chunks, combine
@@ -1499,11 +1499,11 @@ the chunks and return the resulting array.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
 <dt><strong>function</strong> <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
 <dd><p class="first last">Function to be mapped which takes an array as an argument.</p>
 </dd>
-<dt><strong>array</strong> <span class="classifier-delimiter">:</span> <span class="classifier">numpy array</span></dt>
+<dt><strong>array</strong> <span class="classifier-delimiter">:</span> <span class="classifier">numpy array or dask array</span></dt>
 <dd><p class="first last">Array which the function will be applied to.</p>
 </dd>
 <dt><strong>chunks</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, tuple, or tuple of tuples, optional</span></dt>
@@ -1529,6 +1529,18 @@ zero.</p>
 <dt><strong>extra_keywords</strong> <span class="classifier-delimiter">:</span> <span class="classifier">dictionary, optional</span></dt>
 <dd><p class="first last">Dictionary of keyword arguments to be passed to the function.</p>
 </dd>
+<dt><strong>compute</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">Whether to compute right away (default) or
+skip computing and return a dask Array.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>out</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray or dask Array</span></dt>
+<dd><p class="first last">Returns the result of the applying the operation.
+Type is dependent on the <code class="docutils literal notranslate"><span class="pre">compute</span></code> argument.</p>
+</dd>
 </dl>
 </td>
 </tr>
@@ -1536,8 +1548,11 @@ zero.</p>
 </table>
 <p class="rubric">Notes</p>
 <p>Numpy edge modes ‘symmetric’, ‘wrap’, and ‘edge’ are converted to the
-equivalent <cite>dask</cite> boundary modes ‘reflect’, ‘periodic’ and ‘nearest’,
-respectively.</p>
+equivalent <code class="docutils literal notranslate"><span class="pre">dask</span></code> boundary modes ‘reflect’, ‘periodic’ and ‘nearest’,
+respectively.
+Setting <code class="docutils literal notranslate"><span class="pre">compute=False</span></code> can be useful for chaining later operations.
+For example region selection to preview a result or storing large data
+to disk instead of loading in memory.</p>
 </dd></dl>
 
 </div>
