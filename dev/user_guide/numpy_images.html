@@ -329,12 +329,13 @@ in a different order, even if the number of operations is the same:</p>
 <span class="go">Speedup: 8.6x</span>
 </pre></div>
 </div>
-<p>When the dimension you are iterating over is even larger, the
-speedup is even more dramatic. It is worth thinking about this
+<p>When the last/rightmost dimension becomes even larger, the
+speedup is even more dramatic. It is worth thinking about
 <em>data locality</em> when writing algorithms. In particular, know that
-scikit-image uses C-contiguous arrays unless otherwise specified, so
-one should iterate along the last/rightmost dimension in the
-innermost loop of the computation.</p>
+scikit-image uses C-contiguous arrays unless otherwise specified.
+When using nested loops, the last/rightmost dimension of the array
+should be in the innermost loop of the computation. In the example
+above, the <code class="docutils literal notranslate"><span class="pre">*=</span></code> numpy operator iterates over all remaining dimensions.</p>
 </div>
 <div class="section" id="a-note-on-time">
 <h2>A note on time<a class="headerlink" href="#a-note-on-time" title="Permalink to this headline">¶</a></h2>
