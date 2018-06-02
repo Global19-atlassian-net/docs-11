@@ -280,7 +280,7 @@
 <td>Perform a morphological reconstruction of an image.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.morphology.remove_small_objects" title="skimage.morphology.remove_small_objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_objects</span></code></a>(ar)</td>
-<td>Remove connected components smaller than the specified size.</td>
+<td>Remove objects smaller than the specified size.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.morphology.remove_small_holes" title="skimage.morphology.remove_small_holes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_holes</span></code></a>(ar[,&nbsp;…])</td>
 <td>Remove continguous holes smaller than the specified size.</td>
@@ -2160,25 +2160,29 @@ of height <cite>h</cite> in the subtracted image.</p>
 <dl class="function">
 <dt id="skimage.morphology.remove_small_objects">
 <code class="descclassname">skimage.morphology.</code><code class="descname">remove_small_objects</code><span class="sig-paren">(</span><em>ar</em>, <em>min_size=64</em>, <em>connectivity=1</em>, <em>in_place=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/misc.py#L51"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.remove_small_objects" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove connected components smaller than the specified size.</p>
+<dd><p>Remove objects smaller than the specified size.</p>
+<p>Expects ar to be an array with labeled objects, and removes objects
+smaller than min_size. If <cite>ar</cite> is bool, the image is first labeled.
+This leads to potentially different behavior for bool and 0-and-1
+arrays.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
 <dt><strong>ar</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray (arbitrary shape, int or bool type)</span></dt>
-<dd><p class="first last">The array containing the connected components of interest. If the array
-type is int, it is assumed that it contains already-labeled objects.
-The ints must be non-negative.</p>
+<dd><p class="first last">The array containing the objects of interest. If the array type is
+int, the ints must be non-negative.</p>
 </dd>
 <dt><strong>min_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional (default: 64)</span></dt>
-<dd><p class="first last">The smallest allowable connected component size.</p>
+<dd><p class="first last">The smallest allowable object size.</p>
 </dd>
 <dt><strong>connectivity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, {1, 2, …, ar.ndim}, optional (default: 1)</span></dt>
-<dd><p class="first last">The connectivity defining the neighborhood of a pixel.</p>
+<dd><p class="first last">The connectivity defining the neighborhood of a pixel. Used during
+labelling if <cite>ar</cite> is bool.</p>
 </dd>
 <dt><strong>in_place</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional (default: False)</span></dt>
-<dd><p class="first last">If <cite>True</cite>, remove the connected components in the input array itself.
+<dd><p class="first last">If <code class="docutils literal notranslate"><span class="pre">True</span></code>, remove the objects in the input array itself.
 Otherwise, make a copy.</p>
 </dd>
 </dl>
@@ -2237,7 +2241,7 @@ Otherwise, make a copy.</p>
 <h2>remove_small_holes<a class="headerlink" href="#remove-small-holes" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.remove_small_holes">
-<code class="descclassname">skimage.morphology.</code><code class="descname">remove_small_holes</code><span class="sig-paren">(</span><em>ar</em>, <em>area_threshold=64</em>, <em>connectivity=1</em>, <em>in_place=False</em>, <em>min_size=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/misc.py#L137"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.remove_small_holes" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.morphology.</code><code class="descname">remove_small_holes</code><span class="sig-paren">(</span><em>ar</em>, <em>area_threshold=64</em>, <em>connectivity=1</em>, <em>in_place=False</em>, <em>min_size=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/misc.py#L142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.remove_small_holes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove continguous holes smaller than the specified size.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
