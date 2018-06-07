@@ -40,7 +40,6 @@ mechanisms.
 
 .. code-block:: python
 
-    import matplotlib
     import matplotlib.pyplot as plt
 
     from skimage import data
@@ -228,8 +227,8 @@ of the local neighborhood minus an offset value.
     binary_global = image > global_thresh
 
     block_size = 35
-    adaptive_thresh = threshold_local(image, block_size, offset=10)
-    binary_adaptive = image > adaptive_thresh
+    local_thresh = threshold_local(image, block_size, offset=10)
+    binary_local = image > local_thresh
 
     fig, axes = plt.subplots(nrows=3, figsize=(7, 8))
     ax = axes.ravel()
@@ -241,8 +240,8 @@ of the local neighborhood minus an offset value.
     ax[1].imshow(binary_global)
     ax[1].set_title('Global thresholding')
 
-    ax[2].imshow(binary_adaptive)
-    ax[2].set_title('Adaptive thresholding')
+    ax[2].imshow(binary_local)
+    ax[2].set_title('Local thresholding')
 
     for a in ax:
         a.axis('off')
@@ -317,7 +316,7 @@ The example compares the local threshold with the global threshold.
 
 
 
-**Total running time of the script:** ( 0 minutes  2.081 seconds)
+**Total running time of the script:** ( 0 minutes  1.523 seconds)
 
 
 .. _sphx_glr_download_auto_examples_xx_applications_plot_thresholding.py:
