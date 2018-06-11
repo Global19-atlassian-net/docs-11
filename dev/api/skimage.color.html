@@ -72,6 +72,7 @@
 <li><a class="reference internal" href="#">Module: <code class="docutils literal notranslate"><span class="pre">color</span></code></a><ul class="nav nav-list">
 <li><a class="reference internal" href="#convert-colorspace">convert_colorspace</a></li>
 <li><a class="reference internal" href="#guess-spatial-dimensions">guess_spatial_dimensions</a></li>
+<li><a class="reference internal" href="#rgba2rgb">rgba2rgb</a></li>
 <li><a class="reference internal" href="#rgb2hsv">rgb2hsv</a><ul class="nav nav-list">
 <li><a class="reference internal" href="#examples-using-skimage-color-rgb2hsv">Examples using <code class="docutils literal notranslate"><span class="pre">skimage.color.rgb2hsv</span></code></a></li>
 </ul>
@@ -168,109 +169,112 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.color.guess_spatial_dimensions" title="skimage.color.guess_spatial_dimensions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.guess_spatial_dimensions</span></code></a>(image)</td>
 <td>Make an educated guess about whether an image has a channels dimension.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgb2hsv" title="skimage.color.rgb2hsv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2hsv</span></code></a>(rgb)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgba2rgb" title="skimage.color.rgba2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgba2rgb</span></code></a>(rgba[,&nbsp;background])</td>
+<td>RGBA to RGB conversion.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgb2hsv" title="skimage.color.rgb2hsv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2hsv</span></code></a>(rgb)</td>
 <td>RGB to HSV color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.hsv2rgb" title="skimage.color.hsv2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.hsv2rgb</span></code></a>(hsv)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.hsv2rgb" title="skimage.color.hsv2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.hsv2rgb</span></code></a>(hsv)</td>
 <td>HSV to RGB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgb2xyz" title="skimage.color.rgb2xyz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2xyz</span></code></a>(rgb)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgb2xyz" title="skimage.color.rgb2xyz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2xyz</span></code></a>(rgb)</td>
 <td>RGB to XYZ color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.xyz2rgb" title="skimage.color.xyz2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.xyz2rgb</span></code></a>(xyz)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.xyz2rgb" title="skimage.color.xyz2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.xyz2rgb</span></code></a>(xyz)</td>
 <td>XYZ to RGB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgb2rgbcie" title="skimage.color.rgb2rgbcie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2rgbcie</span></code></a>(rgb)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgb2rgbcie" title="skimage.color.rgb2rgbcie"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2rgbcie</span></code></a>(rgb)</td>
 <td>RGB to RGB CIE color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgbcie2rgb" title="skimage.color.rgbcie2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgbcie2rgb</span></code></a>(rgbcie)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgbcie2rgb" title="skimage.color.rgbcie2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgbcie2rgb</span></code></a>(rgbcie)</td>
 <td>RGB CIE to RGB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgb2grey" title="skimage.color.rgb2grey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2grey</span></code></a>(rgb)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgb2grey" title="skimage.color.rgb2grey"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2grey</span></code></a>(rgb)</td>
 <td>Compute luminance of an RGB image.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgb2gray" title="skimage.color.rgb2gray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2gray</span></code></a>(rgb)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgb2gray" title="skimage.color.rgb2gray"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2gray</span></code></a>(rgb)</td>
 <td>Compute luminance of an RGB image.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.gray2rgb" title="skimage.color.gray2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.gray2rgb</span></code></a>(image[,&nbsp;alpha])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.gray2rgb" title="skimage.color.gray2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.gray2rgb</span></code></a>(image[,&nbsp;alpha])</td>
 <td>Create an RGB representation of a gray-level image.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.grey2rgb" title="skimage.color.grey2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.grey2rgb</span></code></a>(image[,&nbsp;alpha])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.grey2rgb" title="skimage.color.grey2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.grey2rgb</span></code></a>(image[,&nbsp;alpha])</td>
 <td>Create an RGB representation of a gray-level image.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.xyz2lab" title="skimage.color.xyz2lab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.xyz2lab</span></code></a>(xyz[,&nbsp;illuminant,&nbsp;…])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.xyz2lab" title="skimage.color.xyz2lab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.xyz2lab</span></code></a>(xyz[,&nbsp;illuminant,&nbsp;…])</td>
 <td>XYZ to CIE-LAB color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.lab2xyz" title="skimage.color.lab2xyz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.lab2xyz</span></code></a>(lab[,&nbsp;illuminant,&nbsp;…])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.lab2xyz" title="skimage.color.lab2xyz"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.lab2xyz</span></code></a>(lab[,&nbsp;illuminant,&nbsp;…])</td>
 <td>CIE-LAB to XYZcolor space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.lab2rgb" title="skimage.color.lab2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.lab2rgb</span></code></a>(lab[,&nbsp;illuminant,&nbsp;…])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.lab2rgb" title="skimage.color.lab2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.lab2rgb</span></code></a>(lab[,&nbsp;illuminant,&nbsp;…])</td>
 <td>Lab to RGB color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgb2lab" title="skimage.color.rgb2lab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2lab</span></code></a>(rgb[,&nbsp;illuminant,&nbsp;…])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgb2lab" title="skimage.color.rgb2lab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2lab</span></code></a>(rgb[,&nbsp;illuminant,&nbsp;…])</td>
 <td>RGB to lab color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgb2hed" title="skimage.color.rgb2hed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2hed</span></code></a>(rgb)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgb2hed" title="skimage.color.rgb2hed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2hed</span></code></a>(rgb)</td>
 <td>RGB to Haematoxylin-Eosin-DAB (HED) color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.hed2rgb" title="skimage.color.hed2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.hed2rgb</span></code></a>(hed)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.hed2rgb" title="skimage.color.hed2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.hed2rgb</span></code></a>(hed)</td>
 <td>Haematoxylin-Eosin-DAB (HED) to RGB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.lab2lch" title="skimage.color.lab2lch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.lab2lch</span></code></a>(lab)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.lab2lch" title="skimage.color.lab2lch"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.lab2lch</span></code></a>(lab)</td>
 <td>CIE-LAB to CIE-LCH color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.lch2lab" title="skimage.color.lch2lab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.lch2lab</span></code></a>(lch)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.lch2lab" title="skimage.color.lch2lab"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.lch2lab</span></code></a>(lch)</td>
 <td>CIE-LCH to CIE-LAB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgb2yuv" title="skimage.color.rgb2yuv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2yuv</span></code></a>(rgb)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgb2yuv" title="skimage.color.rgb2yuv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2yuv</span></code></a>(rgb)</td>
 <td>RGB to YUV color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.yuv2rgb" title="skimage.color.yuv2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.yuv2rgb</span></code></a>(yuv)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.yuv2rgb" title="skimage.color.yuv2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.yuv2rgb</span></code></a>(yuv)</td>
 <td>YUV to RGB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgb2yiq" title="skimage.color.rgb2yiq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2yiq</span></code></a>(rgb)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgb2yiq" title="skimage.color.rgb2yiq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2yiq</span></code></a>(rgb)</td>
 <td>RGB to YIQ color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.yiq2rgb" title="skimage.color.yiq2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.yiq2rgb</span></code></a>(yiq)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.yiq2rgb" title="skimage.color.yiq2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.yiq2rgb</span></code></a>(yiq)</td>
 <td>YIQ to RGB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgb2ypbpr" title="skimage.color.rgb2ypbpr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2ypbpr</span></code></a>(rgb)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgb2ypbpr" title="skimage.color.rgb2ypbpr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2ypbpr</span></code></a>(rgb)</td>
 <td>RGB to YPbPr color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.ypbpr2rgb" title="skimage.color.ypbpr2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.ypbpr2rgb</span></code></a>(ypbpr)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.ypbpr2rgb" title="skimage.color.ypbpr2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.ypbpr2rgb</span></code></a>(ypbpr)</td>
 <td>YPbPr to RGB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgb2ycbcr" title="skimage.color.rgb2ycbcr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2ycbcr</span></code></a>(rgb)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgb2ycbcr" title="skimage.color.rgb2ycbcr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2ycbcr</span></code></a>(rgb)</td>
 <td>RGB to YCbCr color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.ycbcr2rgb" title="skimage.color.ycbcr2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.ycbcr2rgb</span></code></a>(ycbcr)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.ycbcr2rgb" title="skimage.color.ycbcr2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.ycbcr2rgb</span></code></a>(ycbcr)</td>
 <td>YCbCr to RGB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.rgb2ydbdr" title="skimage.color.rgb2ydbdr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2ydbdr</span></code></a>(rgb)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.rgb2ydbdr" title="skimage.color.rgb2ydbdr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.rgb2ydbdr</span></code></a>(rgb)</td>
 <td>RGB to YDbDr color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.ydbdr2rgb" title="skimage.color.ydbdr2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.ydbdr2rgb</span></code></a>(ydbdr)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.ydbdr2rgb" title="skimage.color.ydbdr2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.ydbdr2rgb</span></code></a>(ydbdr)</td>
 <td>YDbDr to RGB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.separate_stains" title="skimage.color.separate_stains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.separate_stains</span></code></a>(rgb,&nbsp;conv_matrix)</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.separate_stains" title="skimage.color.separate_stains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.separate_stains</span></code></a>(rgb,&nbsp;conv_matrix)</td>
 <td>RGB to stain color space conversion.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.combine_stains" title="skimage.color.combine_stains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.combine_stains</span></code></a>(stains,&nbsp;conv_matrix)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.combine_stains" title="skimage.color.combine_stains"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.combine_stains</span></code></a>(stains,&nbsp;conv_matrix)</td>
 <td>Stain to RGB color space conversion.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.label2rgb" title="skimage.color.label2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.label2rgb</span></code></a>(label[,&nbsp;image,&nbsp;…])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.label2rgb" title="skimage.color.label2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.label2rgb</span></code></a>(label[,&nbsp;image,&nbsp;…])</td>
 <td>Return an RGB image where color-coded labels are painted over the image.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.deltaE_cie76" title="skimage.color.deltaE_cie76"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.deltaE_cie76</span></code></a>(lab1,&nbsp;lab2)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.deltaE_cie76" title="skimage.color.deltaE_cie76"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.deltaE_cie76</span></code></a>(lab1,&nbsp;lab2)</td>
 <td>Euclidean distance between two points in Lab color space</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.deltaE_ciede94" title="skimage.color.deltaE_ciede94"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.deltaE_ciede94</span></code></a>(lab1,&nbsp;lab2[,&nbsp;…])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.deltaE_ciede94" title="skimage.color.deltaE_ciede94"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.deltaE_ciede94</span></code></a>(lab1,&nbsp;lab2[,&nbsp;…])</td>
 <td>Color difference according to CIEDE 94 standard</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.color.deltaE_ciede2000" title="skimage.color.deltaE_ciede2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.deltaE_ciede2000</span></code></a>(lab1,&nbsp;lab2[,&nbsp;…])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.deltaE_ciede2000" title="skimage.color.deltaE_ciede2000"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.deltaE_ciede2000</span></code></a>(lab1,&nbsp;lab2[,&nbsp;…])</td>
 <td>Color difference as given by the CIEDE 2000 standard.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.color.deltaE_cmc" title="skimage.color.deltaE_cmc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.deltaE_cmc</span></code></a>(lab1,&nbsp;lab2[,&nbsp;kL,&nbsp;kC])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.color.deltaE_cmc" title="skimage.color.deltaE_cmc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.color.deltaE_cmc</span></code></a>(lab1,&nbsp;lab2[,&nbsp;kL,&nbsp;kC])</td>
 <td>Color difference from the  CMC l:c standard.</td>
 </tr>
 </tbody>
@@ -361,6 +365,60 @@ is <code class="docutils literal notranslate"><span class="pre">None</span></cod
 </dd></dl>
 
 </div>
+<div class="section" id="rgba2rgb">
+<h2>rgba2rgb<a class="headerlink" href="#rgba2rgb" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.color.rgba2rgb">
+<code class="descclassname">skimage.color.</code><code class="descname">rgba2rgb</code><span class="sig-paren">(</span><em>rgba</em>, <em>background=(1</em>, <em>1</em>, <em>1)</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/color/colorconv.py#L175"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.color.rgba2rgb" title="Permalink to this definition">¶</a></dt>
+<dd><p>RGBA to RGB conversion.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>rgba</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array_like</span></dt>
+<dd><p class="first last">The image in RGBA format, in a 3-D array of shape <code class="docutils literal notranslate"><span class="pre">(..,</span> <span class="pre">..,</span> <span class="pre">4)</span></code>.</p>
+</dd>
+<dt><strong>background</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array_like</span></dt>
+<dd><p class="first last">The color of the background to blend the image with. A tuple
+containing 3 floats between 0 to 1 - the RGB value of the background.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>out</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">The image in RGB format, in a 3-D array of shape <code class="docutils literal notranslate"><span class="pre">(..,</span> <span class="pre">..,</span> <span class="pre">3)</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>ValueError</strong></dt>
+<dd><p class="first last">If <cite>rgba</cite> is not a 3-D array of shape <code class="docutils literal notranslate"><span class="pre">(..,</span> <span class="pre">..,</span> <span class="pre">4)</span></code>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<table class="docutils citation" frame="void" id="rd9bc87eaa392-1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Alpha_compositing#Alpha_blending">https://en.wikipedia.org/wiki/Alpha_compositing#Alpha_blending</a></td></tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">color</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_rgba</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">logo</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_rgb</span> <span class="o">=</span> <span class="n">color</span><span class="o">.</span><span class="n">rgba2rgb</span><span class="p">(</span><span class="n">img_rgba</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
 <div class="section" id="rgb2hsv">
 <h2>rgb2hsv<a class="headerlink" href="#rgb2hsv" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -396,12 +454,12 @@ is <code class="docutils literal notranslate"><span class="pre">None</span></cod
 </table>
 <p class="rubric">Notes</p>
 <p>Conversion between RGB and HSV color spaces results in some loss of
-precision, due to integer arithmetic and rounding <a class="reference internal" href="#r80b4a664a365-1" id="id1">[1]</a>.</p>
+precision, due to integer arithmetic and rounding <a class="reference internal" href="#r80b4a664a365-1" id="id2">[1]</a>.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r80b4a664a365-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/HSL_and_HSV">http://en.wikipedia.org/wiki/HSL_and_HSV</a></td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/HSL_and_HSV">http://en.wikipedia.org/wiki/HSL_and_HSV</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -415,7 +473,7 @@ precision, due to integer arithmetic and rounding <a class="reference internal" 
 
 <div class="section" id="examples-using-skimage-color-rgb2hsv">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.color.rgb2hsv</span></code><a class="headerlink" href="#examples-using-skimage-color-rgb2hsv" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="It can be useful to artificially tint an image with some color, either to highlight particular ..."><div class="figure" id="id41">
+<div class="sphx-glr-thumbcontainer" tooltip="It can be useful to artificially tint an image with some color, either to highlight particular ..."><div class="figure" id="id42">
 <img alt="../_images/sphx_glr_plot_tinting_grayscale_images_thumb.png" src="../_images/sphx_glr_plot_tinting_grayscale_images_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/color_exposure/plot_tinting_grayscale_images.html#sphx-glr-auto-examples-color-exposure-plot-tinting-grayscale-images-py"><span class="std std-ref">Tinting gray-scale images</span></a></span></p>
 </div>
@@ -456,12 +514,12 @@ precision, due to integer arithmetic and rounding <a class="reference internal" 
 </table>
 <p class="rubric">Notes</p>
 <p>Conversion between RGB and HSV color spaces results in some loss of
-precision, due to integer arithmetic and rounding <a class="reference internal" href="#r933d6ba7a3ec-1" id="id3">[1]</a>.</p>
+precision, due to integer arithmetic and rounding <a class="reference internal" href="#r933d6ba7a3ec-1" id="id4">[1]</a>.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r933d6ba7a3ec-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id4">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/HSL_and_HSV">http://en.wikipedia.org/wiki/HSL_and_HSV</a></td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> <a class="reference external" href="http://en.wikipedia.org/wiki/HSL_and_HSV">http://en.wikipedia.org/wiki/HSL_and_HSV</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -475,7 +533,7 @@ precision, due to integer arithmetic and rounding <a class="reference internal" 
 
 <div class="section" id="examples-using-skimage-color-hsv2rgb">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.color.hsv2rgb</span></code><a class="headerlink" href="#examples-using-skimage-color-hsv2rgb" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="It can be useful to artificially tint an image with some color, either to highlight particular ..."><div class="figure" id="id42">
+<div class="sphx-glr-thumbcontainer" tooltip="It can be useful to artificially tint an image with some color, either to highlight particular ..."><div class="figure" id="id43">
 <img alt="../_images/sphx_glr_plot_tinting_grayscale_images_thumb.png" src="../_images/sphx_glr_plot_tinting_grayscale_images_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/color_exposure/plot_tinting_grayscale_images.html#sphx-glr-auto-examples-color-exposure-plot-tinting-grayscale-images-py"><span class="std std-ref">Tinting gray-scale images</span></a></span></p>
 </div>
@@ -523,7 +581,7 @@ however that this function converts from sRGB.</p>
 <table class="docutils citation" frame="void" id="red663c8b20aa-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/CIE_1931_color_space">http://en.wikipedia.org/wiki/CIE_1931_color_space</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id6">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/CIE_1931_color_space">http://en.wikipedia.org/wiki/CIE_1931_color_space</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -575,7 +633,7 @@ however that this function converts to sRGB.</p>
 <table class="docutils citation" frame="void" id="r9d9291b93e17-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/CIE_1931_color_space">http://en.wikipedia.org/wiki/CIE_1931_color_space</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id7">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/CIE_1931_color_space">http://en.wikipedia.org/wiki/CIE_1931_color_space</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -626,7 +684,7 @@ however that this function converts to sRGB.</p>
 <table class="docutils citation" frame="void" id="r257c17720fcd-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/CIE_1931_color_space">http://en.wikipedia.org/wiki/CIE_1931_color_space</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id8">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/CIE_1931_color_space">http://en.wikipedia.org/wiki/CIE_1931_color_space</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -676,7 +734,7 @@ however that this function converts to sRGB.</p>
 <table class="docutils citation" frame="void" id="r2849fa51c8e1-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id8">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/CIE_1931_color_space">http://en.wikipedia.org/wiki/CIE_1931_color_space</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id9">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/CIE_1931_color_space">http://en.wikipedia.org/wiki/CIE_1931_color_space</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -738,7 +796,7 @@ CRT phosphors:</p>
 <table class="docutils citation" frame="void" id="ra04b3b016ff9-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id9">[1]</a></td><td><a class="reference external" href="http://www.poynton.com/PDFs/ColorFAQ.pdf">http://www.poynton.com/PDFs/ColorFAQ.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id10">[1]</a></td><td><a class="reference external" href="http://www.poynton.com/PDFs/ColorFAQ.pdf">http://www.poynton.com/PDFs/ColorFAQ.pdf</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -799,7 +857,7 @@ CRT phosphors:</p>
 <table class="docutils citation" frame="void" id="rd27ab9645ca9-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[1]</a></td><td><a class="reference external" href="http://www.poynton.com/PDFs/ColorFAQ.pdf">http://www.poynton.com/PDFs/ColorFAQ.pdf</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id11">[1]</a></td><td><a class="reference external" href="http://www.poynton.com/PDFs/ColorFAQ.pdf">http://www.poynton.com/PDFs/ColorFAQ.pdf</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -813,83 +871,83 @@ CRT phosphors:</p>
 
 <div class="section" id="examples-using-skimage-color-rgb2gray">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.color.rgb2gray</span></code><a class="headerlink" href="#examples-using-skimage-color-rgb2gray" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="There are many filters that are designed to work with gray-scale images but not with color imag..."><div class="figure" id="id43">
+<div class="sphx-glr-thumbcontainer" tooltip="There are many filters that are designed to work with gray-scale images but not with color imag..."><div class="figure" id="id44">
 <img alt="../_images/sphx_glr_plot_adapt_rgb_thumb.png" src="../_images/sphx_glr_plot_adapt_rgb_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/color_exposure/plot_adapt_rgb.html#sphx-glr-auto-examples-color-exposure-plot-adapt-rgb-py"><span class="std std-ref">Adapting gray-scale filters to RGB images</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The active contour model is a method to fit open or closed splines to lines or edges in an imag..."><div class="figure" id="id44">
+</div><div class="sphx-glr-thumbcontainer" tooltip="The active contour model is a method to fit open or closed splines to lines or edges in an imag..."><div class="figure" id="id45">
 <img alt="../_images/sphx_glr_plot_active_contours_thumb.png" src="../_images/sphx_glr_plot_active_contours_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_active_contours.html#sphx-glr-auto-examples-edges-plot-active-contours-py"><span class="std std-ref">Active Contour Model</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The Hough transform in its simplest form is a `method to detect straight lines &lt;http://en.wikip..."><div class="figure" id="id45">
+</div><div class="sphx-glr-thumbcontainer" tooltip="The Hough transform in its simplest form is a `method to detect straight lines &lt;http://en.wikip..."><div class="figure" id="id46">
 <img alt="../_images/sphx_glr_plot_circular_elliptical_hough_transform_thumb.png" src="../_images/sphx_glr_plot_circular_elliptical_hough_transform_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_circular_elliptical_hough_transform.html#sphx-glr-auto-examples-edges-plot-circular-elliptical-hough-transform-py"><span class="std std-ref">Circular and Elliptical Hough Transforms</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The CENSURE feature detector is a scale-invariant center-surround detector (CENSURE) that claim..."><div class="figure" id="id46">
+</div><div class="sphx-glr-thumbcontainer" tooltip="The CENSURE feature detector is a scale-invariant center-surround detector (CENSURE) that claim..."><div class="figure" id="id47">
 <img alt="../_images/sphx_glr_plot_censure_thumb.png" src="../_images/sphx_glr_plot_censure_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_censure.html#sphx-glr-auto-examples-features-detection-plot-censure-py"><span class="std std-ref">CENSURE feature detector</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Blobs are bright on dark or dark on bright regions in an image. In this example, blobs are dete..."><div class="figure" id="id47">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Blobs are bright on dark or dark on bright regions in an image. In this example, blobs are dete..."><div class="figure" id="id48">
 <img alt="../_images/sphx_glr_plot_blob_thumb.png" src="../_images/sphx_glr_plot_blob_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_blob.html#sphx-glr-auto-examples-features-detection-plot-blob-py"><span class="std std-ref">Blob Detection</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the ORB feature detection and binary description algorithm. It uses a..."><div class="figure" id="id48">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the ORB feature detection and binary description algorithm. It uses a..."><div class="figure" id="id49">
 <img alt="../_images/sphx_glr_plot_orb_thumb.png" src="../_images/sphx_glr_plot_orb_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_orb.html#sphx-glr-auto-examples-features-detection-plot-orb-py"><span class="std std-ref">ORB feature detector and binary descriptor</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the BRIEF binary description algorithm. The descriptor consists of re..."><div class="figure" id="id49">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the BRIEF binary description algorithm. The descriptor consists of re..."><div class="figure" id="id50">
 <img alt="../_images/sphx_glr_plot_brief_thumb.png" src="../_images/sphx_glr_plot_brief_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_brief.html#sphx-glr-auto-examples-features-detection-plot-brief-py"><span class="std std-ref">BRIEF binary descriptor</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="How to build a (bio-plausible) *sparse* dictionary (or &#x27;codebook&#x27;, or &#x27;filterbank&#x27;) for e.g. im..."><div class="figure" id="id50">
+</div><div class="sphx-glr-thumbcontainer" tooltip="How to build a (bio-plausible) *sparse* dictionary (or &#x27;codebook&#x27;, or &#x27;filterbank&#x27;) for e.g. im..."><div class="figure" id="id51">
 <img alt="../_images/sphx_glr_plot_gabors_from_astronaut_thumb.png" src="../_images/sphx_glr_plot_gabors_from_astronaut_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_gabors_from_astronaut.html#sphx-glr-auto-examples-features-detection-plot-gabors-from-astronaut-py"><span class="std std-ref">Gabors / Primary Visual Cortex “Simple Cells” from an Image</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we deconvolve a noisy version of an image using Wiener and unsupervised Wiener..."><div class="figure" id="id51">
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we deconvolve a noisy version of an image using Wiener and unsupervised Wiener..."><div class="figure" id="id52">
 <img alt="../_images/sphx_glr_plot_restoration_thumb.png" src="../_images/sphx_glr_plot_restoration_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/filters/plot_restoration.html#sphx-glr-auto-examples-filters-plot-restoration-py"><span class="std std-ref">Image Deconvolution</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The algorithm is based on a PSF (Point Spread Function), where PSF is described as the impulse ..."><div class="figure" id="id52">
+</div><div class="sphx-glr-thumbcontainer" tooltip="The algorithm is based on a PSF (Point Spread Function), where PSF is described as the impulse ..."><div class="figure" id="id53">
 <img alt="../_images/sphx_glr_plot_deconvolution_thumb.png" src="../_images/sphx_glr_plot_deconvolution_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/filters/plot_deconvolution.html#sphx-glr-auto-examples-filters-plot-deconvolution-py"><span class="std std-ref">Image Deconvolution</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Some signals can only be observed modulo 2*pi, and this can also apply to two- and three dimens..."><div class="figure" id="id53">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Some signals can only be observed modulo 2*pi, and this can also apply to two- and three dimens..."><div class="figure" id="id54">
 <img alt="../_images/sphx_glr_plot_phase_unwrap_thumb.png" src="../_images/sphx_glr_plot_phase_unwrap_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/filters/plot_phase_unwrap.html#sphx-glr-auto-examples-filters-plot-phase-unwrap-py"><span class="std std-ref">Phase Unwrapping</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of ``view_as_blocks`` from :py:func:`skimage.util`.  Block vie..."><div class="figure" id="id54">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the use of ``view_as_blocks`` from :py:func:`skimage.util`.  Block vie..."><div class="figure" id="id55">
 <img alt="../_images/sphx_glr_plot_view_as_blocks_thumb.png" src="../_images/sphx_glr_plot_view_as_blocks_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/numpy_operations/plot_view_as_blocks.html#sphx-glr-auto-examples-numpy-operations-plot-view-as-blocks-py"><span class="std std-ref">Block views on images/arrays</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Construct a region boundary RAG with the ``rag_boundary`` function. The function  :py:func:`ski..."><div class="figure" id="id55">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Construct a region boundary RAG with the ``rag_boundary`` function. The function  :py:func:`ski..."><div class="figure" id="id56">
 <img alt="../_images/sphx_glr_plot_rag_boundary_thumb.png" src="../_images/sphx_glr_plot_rag_boundary_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_rag_boundary.html#sphx-glr-auto-examples-segmentation-plot-rag-boundary-py"><span class="std std-ref">Region Boundary based RAGs</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example compares four popular low-level image segmentation methods.  As it is difficult to..."><div class="figure" id="id56">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example compares four popular low-level image segmentation methods.  As it is difficult to..."><div class="figure" id="id57">
 <img alt="../_images/sphx_glr_plot_segmentations_thumb.png" src="../_images/sphx_glr_plot_segmentations_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_segmentations.html#sphx-glr-auto-examples-segmentation-plot-segmentations-py"><span class="std std-ref">Comparison of segmentation and superpixel algorithms</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to perform hierarchical merging on region boundary Region Adjacen..."><div class="figure" id="id57">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to perform hierarchical merging on region boundary Region Adjacen..."><div class="figure" id="id58">
 <img alt="../_images/sphx_glr_plot_boundary_merge_thumb.png" src="../_images/sphx_glr_plot_boundary_merge_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_boundary_merge.html#sphx-glr-auto-examples-segmentation-plot-boundary-merge-py"><span class="std std-ref">Hierarchical Merging of Region Boundary RAGs</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="We detect local maxima in a galaxy image. The image is corrupted by noise, generating many loca..."><div class="figure" id="id58">
+</div><div class="sphx-glr-thumbcontainer" tooltip="We detect local maxima in a galaxy image. The image is corrupted by noise, generating many loca..."><div class="figure" id="id59">
 <img alt="../_images/sphx_glr_plot_extrema_thumb.png" src="../_images/sphx_glr_plot_extrema_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_extrema.html#sphx-glr-auto-examples-segmentation-plot-extrema-py"><span class="std std-ref">Extrema</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="`Rescale` operation resizes an image by a given scaling factor. The scaling factor can either b..."><div class="figure" id="id59">
+</div><div class="sphx-glr-thumbcontainer" tooltip="`Rescale` operation resizes an image by a given scaling factor. The scaling factor can either b..."><div class="figure" id="id60">
 <img alt="../_images/sphx_glr_plot_rescale_thumb.png" src="../_images/sphx_glr_plot_rescale_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_rescale.html#sphx-glr-auto-examples-transform-plot-rescale-py"><span class="std std-ref">Rescale, resize, and downscale</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how images can be resized using seam carving [1]_. Resizing to a new ..."><div class="figure" id="id60">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how images can be resized using seam carving [1]_. Resizing to a new ..."><div class="figure" id="id61">
 <img alt="../_images/sphx_glr_plot_seam_carving_thumb.png" src="../_images/sphx_glr_plot_seam_carving_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_seam_carving.html#sphx-glr-auto-examples-transform-plot-seam-carving-py"><span class="std std-ref">Seam Carving</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to robustly estimate epipolar geometry between two views using sp..."><div class="figure" id="id61">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to robustly estimate epipolar geometry between two views using sp..."><div class="figure" id="id62">
 <img alt="../_images/sphx_glr_plot_fundamental_matrix_thumb.png" src="../_images/sphx_glr_plot_fundamental_matrix_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_fundamental_matrix.html#sphx-glr-auto-examples-transform-plot-fundamental-matrix-py"><span class="std std-ref">Fundamental matrix estimation</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this simplified example we first generate two synthetic images as if they were taken from di..."><div class="figure" id="id62">
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this simplified example we first generate two synthetic images as if they were taken from di..."><div class="figure" id="id63">
 <img alt="../_images/sphx_glr_plot_matching_thumb.png" src="../_images/sphx_glr_plot_matching_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_matching.html#sphx-glr-auto-examples-transform-plot-matching-py"><span class="std std-ref">Robust matching using RANSAC</span></a></span></p>
 </div>
@@ -939,15 +997,15 @@ will be shape <code class="docutils literal notranslate"><span class="pre">(M,</
 
 <div class="section" id="examples-using-skimage-color-gray2rgb">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.color.gray2rgb</span></code><a class="headerlink" href="#examples-using-skimage-color-gray2rgb" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="It can be useful to artificially tint an image with some color, either to highlight particular ..."><div class="figure" id="id63">
+<div class="sphx-glr-thumbcontainer" tooltip="It can be useful to artificially tint an image with some color, either to highlight particular ..."><div class="figure" id="id64">
 <img alt="../_images/sphx_glr_plot_tinting_grayscale_images_thumb.png" src="../_images/sphx_glr_plot_tinting_grayscale_images_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/color_exposure/plot_tinting_grayscale_images.html#sphx-glr-auto-examples-color-exposure-plot-tinting-grayscale-images-py"><span class="std std-ref">Tinting gray-scale images</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The Hough transform in its simplest form is a `method to detect straight lines &lt;http://en.wikip..."><div class="figure" id="id64">
+</div><div class="sphx-glr-thumbcontainer" tooltip="The Hough transform in its simplest form is a `method to detect straight lines &lt;http://en.wikip..."><div class="figure" id="id65">
 <img alt="../_images/sphx_glr_plot_circular_elliptical_hough_transform_thumb.png" src="../_images/sphx_glr_plot_circular_elliptical_hough_transform_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_circular_elliptical_hough_transform.html#sphx-glr-auto-examples-edges-plot-circular-elliptical-hough-transform-py"><span class="std std-ref">Circular and Elliptical Hough Transforms</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Construct a region boundary RAG with the ``rag_boundary`` function. The function  :py:func:`ski..."><div class="figure" id="id65">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Construct a region boundary RAG with the ``rag_boundary`` function. The function  :py:func:`ski..."><div class="figure" id="id66">
 <img alt="../_images/sphx_glr_plot_rag_boundary_thumb.png" src="../_images/sphx_glr_plot_rag_boundary_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_rag_boundary.html#sphx-glr-auto-examples-segmentation-plot-rag-boundary-py"><span class="std std-ref">Region Boundary based RAGs</span></a></span></p>
 </div>
@@ -1049,13 +1107,13 @@ a list of supported illuminants.</p>
 <table class="docutils citation" frame="void" id="r4da17b7d8c4a-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[1]</a></td><td><a class="reference external" href="http://www.easyrgb.com/index.php?X=MATH&amp;H=07#text7">http://www.easyrgb.com/index.php?X=MATH&amp;H=07#text7</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id12">[1]</a></td><td><a class="reference external" href="http://www.easyrgb.com/index.php?X=MATH&amp;H=07#text7">http://www.easyrgb.com/index.php?X=MATH&amp;H=07#text7</a></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r4da17b7d8c4a-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id12">[2]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Lab_color_space">http://en.wikipedia.org/wiki/Lab_color_space</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id13">[2]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Lab_color_space">http://en.wikipedia.org/wiki/Lab_color_space</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1123,13 +1181,13 @@ a list of supported illuminants.</p>
 <table class="docutils citation" frame="void" id="re0405dfe368d-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id13">[1]</a></td><td><a class="reference external" href="http://www.easyrgb.com/index.php?X=MATH&amp;H=07#text7">http://www.easyrgb.com/index.php?X=MATH&amp;H=07#text7</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id14">[1]</a></td><td><a class="reference external" href="http://www.easyrgb.com/index.php?X=MATH&amp;H=07#text7">http://www.easyrgb.com/index.php?X=MATH&amp;H=07#text7</a></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="re0405dfe368d-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id14">[2]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Lab_color_space">http://en.wikipedia.org/wiki/Lab_color_space</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id15">[2]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Lab_color_space">http://en.wikipedia.org/wiki/Lab_color_space</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1183,7 +1241,7 @@ a list of supported illuminants.</p>
 <table class="docutils citation" frame="void" id="re1452ae18462-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id15">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Standard_illuminant">https://en.wikipedia.org/wiki/Standard_illuminant</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id16">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Standard_illuminant">https://en.wikipedia.org/wiki/Standard_illuminant</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1239,7 +1297,7 @@ a list of supported illuminants.</p>
 <table class="docutils citation" frame="void" id="r1c84b85532ae-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id16">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Standard_illuminant">https://en.wikipedia.org/wiki/Standard_illuminant</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id17">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Standard_illuminant">https://en.wikipedia.org/wiki/Standard_illuminant</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1282,7 +1340,7 @@ a list of supported illuminants.</p>
 <table class="docutils citation" frame="void" id="rf86217e39d55-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id17">[1]</a></td><td>A. C. Ruifrok and D. A. Johnston, “Quantification of histochemical
+<tr><td class="label"><a class="fn-backref" href="#id18">[1]</a></td><td>A. C. Ruifrok and D. A. Johnston, “Quantification of histochemical
 staining by color deconvolution.,” Analytical and quantitative
 cytology and histology / the International Academy of Cytology [and]
 American Society of Cytology, vol. 23, no. 4, pp. 291-9, Aug. 2001.</td></tr>
@@ -1299,7 +1357,7 @@ American Society of Cytology, vol. 23, no. 4, pp. 291-9, Aug. 2001.</td></tr>
 
 <div class="section" id="examples-using-skimage-color-rgb2hed">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.color.rgb2hed</span></code><a class="headerlink" href="#examples-using-skimage-color-rgb2hed" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="Color deconvolution consists of the separation of features by their colors."><div class="figure" id="id66">
+<div class="sphx-glr-thumbcontainer" tooltip="Color deconvolution consists of the separation of features by their colors."><div class="figure" id="id67">
 <img alt="../_images/sphx_glr_plot_ihc_color_separation_thumb.png" src="../_images/sphx_glr_plot_ihc_color_separation_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/color_exposure/plot_ihc_color_separation.html#sphx-glr-auto-examples-color-exposure-plot-ihc-color-separation-py"><span class="std std-ref">Immunohistochemical staining colors separation</span></a></span></p>
 </div>
@@ -1343,7 +1401,7 @@ American Society of Cytology, vol. 23, no. 4, pp. 291-9, Aug. 2001.</td></tr>
 <table class="docutils citation" frame="void" id="reed723509ed7-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id18">[1]</a></td><td>A. C. Ruifrok and D. A. Johnston, “Quantification of histochemical
+<tr><td class="label"><a class="fn-backref" href="#id19">[1]</a></td><td>A. C. Ruifrok and D. A. Johnston, “Quantification of histochemical
 staining by color deconvolution.,” Analytical and quantitative
 cytology and histology / the International Academy of Cytology [and]
 American Society of Cytology, vol. 23, no. 4, pp. 291-9, Aug. 2001.</td></tr>
@@ -1499,7 +1557,7 @@ is commonly used by video codecs (where Y ranges from 16 to 235)</p>
 <table class="docutils citation" frame="void" id="rb0be8b630a8e-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id19">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YUV">https://en.wikipedia.org/wiki/YUV</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id20">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YUV">https://en.wikipedia.org/wiki/YUV</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1544,7 +1602,7 @@ is commonly used by video codecs (where Y ranges from 16 to 235)</p>
 <table class="docutils citation" frame="void" id="r7368eb3c6155-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id20">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YUV">https://en.wikipedia.org/wiki/YUV</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id21">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YUV">https://en.wikipedia.org/wiki/YUV</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1665,7 +1723,7 @@ is commonly used by video codecs (where Y ranges from 16 to 235)</p>
 <table class="docutils citation" frame="void" id="r1133fcf15857-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id21">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YPbPr">https://en.wikipedia.org/wiki/YPbPr</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id22">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YPbPr">https://en.wikipedia.org/wiki/YPbPr</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1710,7 +1768,7 @@ is commonly used by video codecs (where Y ranges from 16 to 235)</p>
 <table class="docutils citation" frame="void" id="rda6f12754efe-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id22">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YPbPr">https://en.wikipedia.org/wiki/YPbPr</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id23">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YPbPr">https://en.wikipedia.org/wiki/YPbPr</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1758,7 +1816,7 @@ by video codecs, it is sometimes incorrectly called “YUV”</p>
 <table class="docutils citation" frame="void" id="rd1cc982388a0-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id23">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YCbCr">https://en.wikipedia.org/wiki/YCbCr</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id24">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YCbCr">https://en.wikipedia.org/wiki/YCbCr</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1806,7 +1864,7 @@ by video codecs, it is sometimes incorrectly called “YUV”</p>
 <table class="docutils citation" frame="void" id="rd9444bca3aae-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id24">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YCbCr">https://en.wikipedia.org/wiki/YCbCr</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id25">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YCbCr">https://en.wikipedia.org/wiki/YCbCr</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1854,7 +1912,7 @@ by video codecs, it is also the reversible color transform in JPEG2000.</p>
 <table class="docutils citation" frame="void" id="rff3dffc390fe-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id25">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YDbDr">https://en.wikipedia.org/wiki/YDbDr</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id26">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YDbDr">https://en.wikipedia.org/wiki/YDbDr</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1902,7 +1960,7 @@ by video codecs, it is also the reversible color transform in JPEG2000.</p>
 <table class="docutils citation" frame="void" id="r781219fbb868-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id26">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YDbDr">https://en.wikipedia.org/wiki/YDbDr</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id27">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/YDbDr">https://en.wikipedia.org/wiki/YDbDr</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -1923,7 +1981,7 @@ by video codecs, it is also the reversible color transform in JPEG2000.</p>
 <dd><p class="first last">The image in RGB format, in a 3-D array of shape <code class="docutils literal notranslate"><span class="pre">(..,</span> <span class="pre">..,</span> <span class="pre">3)</span></code>.</p>
 </dd>
 <dt><strong>conv_matrix: ndarray</strong></dt>
-<dd><p class="first last">The stain separation matrix as described by G. Landini <a class="reference internal" href="#re5603a4e7517-1" id="id27">[1]</a>.</p>
+<dd><p class="first last">The stain separation matrix as described by G. Landini <a class="reference internal" href="#re5603a4e7517-1" id="id28">[1]</a>.</p>
 </dd>
 </dl>
 </td>
@@ -1965,7 +2023,7 @@ respective colorspace:</p>
 <table class="docutils citation" frame="void" id="re5603a4e7517-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id27">1</a>, <a class="fn-backref" href="#id28">2</a>)</em> <a class="reference external" href="http://www.dentistry.bham.ac.uk/landinig/software/cdeconv/cdeconv.html">http://www.dentistry.bham.ac.uk/landinig/software/cdeconv/cdeconv.html</a></td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id28">1</a>, <a class="fn-backref" href="#id29">2</a>)</em> <a class="reference external" href="http://www.dentistry.bham.ac.uk/landinig/software/cdeconv/cdeconv.html">http://www.dentistry.bham.ac.uk/landinig/software/cdeconv/cdeconv.html</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -1994,7 +2052,7 @@ respective colorspace:</p>
 <code class="docutils literal notranslate"><span class="pre">(..,</span> <span class="pre">..,</span> <span class="pre">3)</span></code>.</p>
 </dd>
 <dt><strong>conv_matrix: ndarray</strong></dt>
-<dd><p class="first last">The stain separation matrix as described by G. Landini <a class="reference internal" href="#r33a9a7d2e90f-1" id="id29">[1]</a>.</p>
+<dd><p class="first last">The stain separation matrix as described by G. Landini <a class="reference internal" href="#r33a9a7d2e90f-1" id="id30">[1]</a>.</p>
 </dd>
 </dl>
 </td>
@@ -2035,7 +2093,7 @@ respective colorspace:</p>
 <table class="docutils citation" frame="void" id="r33a9a7d2e90f-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id29">1</a>, <a class="fn-backref" href="#id30">2</a>)</em> <a class="reference external" href="http://www.dentistry.bham.ac.uk/landinig/software/cdeconv/cdeconv.html">http://www.dentistry.bham.ac.uk/landinig/software/cdeconv/cdeconv.html</a></td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id30">1</a>, <a class="fn-backref" href="#id31">2</a>)</em> <a class="reference external" href="http://www.dentistry.bham.ac.uk/landinig/software/cdeconv/cdeconv.html">http://www.dentistry.bham.ac.uk/landinig/software/cdeconv/cdeconv.html</a></td></tr>
 </tbody>
 </table>
 <p class="rubric">Examples</p>
@@ -2108,43 +2166,43 @@ value in <cite>label</cite> with the image, at a certain alpha value.</p>
 
 <div class="section" id="examples-using-skimage-color-label2rgb">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.color.label2rgb</span></code><a class="headerlink" href="#examples-using-skimage-color-label2rgb" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to classify textures based on LBP (Local Binary Pattern). LBP ..."><div class="figure" id="id67">
+<div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to classify textures based on LBP (Local Binary Pattern). LBP ..."><div class="figure" id="id68">
 <img alt="../_images/sphx_glr_plot_local_binary_pattern_thumb.png" src="../_images/sphx_glr_plot_local_binary_pattern_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_local_binary_pattern.html#sphx-glr-auto-examples-features-detection-plot-local-binary-pattern-py"><span class="std std-ref">Local Binary Pattern for texture classification</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example constructs a Region Adjacency Graph (RAG) and recursively performs a Normalized Cu..."><div class="figure" id="id68">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example constructs a Region Adjacency Graph (RAG) and recursively performs a Normalized Cu..."><div class="figure" id="id69">
 <img alt="../_images/sphx_glr_plot_ncut_thumb.png" src="../_images/sphx_glr_plot_ncut_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_ncut.html#sphx-glr-auto-examples-segmentation-plot-ncut-py"><span class="std std-ref">Normalized Cut</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example constructs a Region Adjacency Graph (RAG) and merges regions which are similar in ..."><div class="figure" id="id69">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example constructs a Region Adjacency Graph (RAG) and merges regions which are similar in ..."><div class="figure" id="id70">
 <img alt="../_images/sphx_glr_plot_rag_mean_color_thumb.png" src="../_images/sphx_glr_plot_rag_mean_color_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_rag_mean_color.html#sphx-glr-auto-examples-segmentation-plot-rag-mean-color-py"><span class="std std-ref">RAG Thresholding</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The watershed transform is commonly used as a starting point for many segmentation algorithms. ..."><div class="figure" id="id70">
+</div><div class="sphx-glr-thumbcontainer" tooltip="The watershed transform is commonly used as a starting point for many segmentation algorithms. ..."><div class="figure" id="id71">
 <img alt="../_images/sphx_glr_plot_compact_watershed_thumb.png" src="../_images/sphx_glr_plot_compact_watershed_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_compact_watershed.html#sphx-glr-auto-examples-segmentation-plot-compact-watershed-py"><span class="std std-ref">Find Regular Segments Using Compact Watershed</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to segment an image with image labelling. The following steps are applie..."><div class="figure" id="id71">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to segment an image with image labelling. The following steps are applie..."><div class="figure" id="id72">
 <img alt="../_images/sphx_glr_plot_label_thumb.png" src="../_images/sphx_glr_plot_label_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_label.html#sphx-glr-auto-examples-segmentation-plot-label-py"><span class="std std-ref">Label image regions</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="When segmenting an image, you may want to combine multiple alternative segmentations. The :py:f..."><div class="figure" id="id72">
+</div><div class="sphx-glr-thumbcontainer" tooltip="When segmenting an image, you may want to combine multiple alternative segmentations. The :py:f..."><div class="figure" id="id73">
 <img alt="../_images/sphx_glr_plot_join_segmentations_thumb.png" src="../_images/sphx_glr_plot_join_segmentations_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_join_segmentations.html#sphx-glr-auto-examples-segmentation-plot-join-segmentations-py"><span class="std std-ref">Find the intersection of two segmentations</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example constructs a Region Adjacency Graph (RAG) and progressively merges regions that ar..."><div class="figure" id="id73">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example constructs a Region Adjacency Graph (RAG) and progressively merges regions that ar..."><div class="figure" id="id74">
 <img alt="../_images/sphx_glr_plot_rag_merge_thumb.png" src="../_images/sphx_glr_plot_rag_merge_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_rag_merge.html#sphx-glr-auto-examples-segmentation-plot-rag-merge-py"><span class="std std-ref">RAG Merging</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to perform hierarchical merging on region boundary Region Adjacen..."><div class="figure" id="id74">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to perform hierarchical merging on region boundary Region Adjacen..."><div class="figure" id="id75">
 <img alt="../_images/sphx_glr_plot_boundary_merge_thumb.png" src="../_images/sphx_glr_plot_boundary_merge_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_boundary_merge.html#sphx-glr-auto-examples-segmentation-plot-boundary-merge-py"><span class="std std-ref">Hierarchical Merging of Region Boundary RAGs</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="We detect local maxima in a galaxy image. The image is corrupted by noise, generating many loca..."><div class="figure" id="id75">
+</div><div class="sphx-glr-thumbcontainer" tooltip="We detect local maxima in a galaxy image. The image is corrupted by noise, generating many loca..."><div class="figure" id="id76">
 <img alt="../_images/sphx_glr_plot_extrema_thumb.png" src="../_images/sphx_glr_plot_extrema_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_extrema.html#sphx-glr-auto-examples-segmentation-plot-extrema-py"><span class="std std-ref">Extrema</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to segment objects from a background. We use the ``coins`` ima..."><div class="figure" id="id76">
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to segment objects from a background. We use the ``coins`` ima..."><div class="figure" id="id77">
 <img alt="../_images/sphx_glr_plot_coins_segmentation_thumb.png" src="../_images/sphx_glr_plot_coins_segmentation_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/xx_applications/plot_coins_segmentation.html#sphx-glr-auto-examples-xx-applications-plot-coins-segmentation-py"><span class="std std-ref">Comparing edge-based and region-based segmentation</span></a></span></p>
 </div>
@@ -2183,13 +2241,13 @@ value in <cite>label</cite> with the image, at a certain alpha value.</p>
 <table class="docutils citation" frame="void" id="recf559e1e24c-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id31">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Color_difference">http://en.wikipedia.org/wiki/Color_difference</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id32">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Color_difference">http://en.wikipedia.org/wiki/Color_difference</a></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="recf559e1e24c-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id32">[2]</a></td><td>A. R. Robertson, “The CIE 1976 color-difference formulae,”
+<tr><td class="label"><a class="fn-backref" href="#id33">[2]</a></td><td>A. R. Robertson, “The CIE 1976 color-difference formulae,”
 Color Res. Appl. 2, 7-11 (1977).</td></tr>
 </tbody>
 </table>
@@ -2280,13 +2338,13 @@ suggested for graphic arts</p>
 <table class="docutils citation" frame="void" id="r1823c4852a43-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id33">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Color_difference">http://en.wikipedia.org/wiki/Color_difference</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id34">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Color_difference">http://en.wikipedia.org/wiki/Color_difference</a></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r1823c4852a43-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id34">[2]</a></td><td><a class="reference external" href="http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CIE94.html">http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CIE94.html</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id35">[2]</a></td><td><a class="reference external" href="http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CIE94.html">http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CIE94.html</a></td></tr>
 </tbody>
 </table>
 </dd></dl>
@@ -2340,20 +2398,20 @@ and hue (<cite>kL</cite>, <cite>kC</cite>, <cite>kH</cite> respectively).  These
 <table class="docutils citation" frame="void" id="r6d08e505fdf3-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id35">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Color_difference">http://en.wikipedia.org/wiki/Color_difference</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id36">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Color_difference">http://en.wikipedia.org/wiki/Color_difference</a></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r6d08e505fdf3-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id36">[2]</a></td><td><a class="reference external" href="http://www.ece.rochester.edu/~gsharma/ciede2000/ciede2000noteCRNA.pdf">http://www.ece.rochester.edu/~gsharma/ciede2000/ciede2000noteCRNA.pdf</a>
+<tr><td class="label"><a class="fn-backref" href="#id37">[2]</a></td><td><a class="reference external" href="http://www.ece.rochester.edu/~gsharma/ciede2000/ciede2000noteCRNA.pdf">http://www.ece.rochester.edu/~gsharma/ciede2000/ciede2000noteCRNA.pdf</a>
 (doi:10.1364/AO.33.008069)</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r6d08e505fdf3-3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id37">[3]</a></td><td>M. Melgosa, J. Quesada, and E. Hita, “Uniformity of some recent
+<tr><td class="label"><a class="fn-backref" href="#id38">[3]</a></td><td>M. Melgosa, J. Quesada, and E. Hita, “Uniformity of some recent
 color metrics tested with an accurate color-difference tolerance
 dataset,” Appl. Opt. 33, 8069-8077 (1994).</td></tr>
 </tbody>
@@ -2406,19 +2464,19 @@ in terms of the first color.  Consequently
 <table class="docutils citation" frame="void" id="r1c96f965f867-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id38">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Color_difference">http://en.wikipedia.org/wiki/Color_difference</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id39">[1]</a></td><td><a class="reference external" href="http://en.wikipedia.org/wiki/Color_difference">http://en.wikipedia.org/wiki/Color_difference</a></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r1c96f965f867-2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id39">[2]</a></td><td><a class="reference external" href="http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CIE94.html">http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CIE94.html</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id40">[2]</a></td><td><a class="reference external" href="http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CIE94.html">http://www.brucelindbloom.com/index.html?Eqn_DeltaE_CIE94.html</a></td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="r1c96f965f867-3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id40">[3]</a></td><td>F. J. J. Clarke, R. McDonald, and B. Rigg, “Modification to the
+<tr><td class="label"><a class="fn-backref" href="#id41">[3]</a></td><td>F. J. J. Clarke, R. McDonald, and B. Rigg, “Modification to the
 JPC79 colour-difference formula,” J. Soc. Dyers Colour. 100, 128-132
 (1984).</td></tr>
 </tbody>
