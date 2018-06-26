@@ -160,43 +160,21 @@ bindings, so it is very fast.</p>
             <span class="c1"># Do something!</span>
 </pre></div>
 </div>
-<p>Recently, <a class="reference external" href="https://binstar.org/danielballan/pyav">conda packages</a> (with
-<a class="reference external" href="https://github.com/conda/conda-recipes">public recipes</a> for PyAV
-and its dependencies became available for OSX and Linux.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c danielballan pyav
-</pre></div>
-</div>
-<p>Wheels are also available for OSX.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -f http://wheels.scipy.org av
-</pre></div>
-</div>
-<p>PyAV has also been
-<a class="reference external" href="http://mikeboers.github.io/PyAV/#windows">shown to build successfully on Windows</a>, but convenient binary packages are not publicly distributed as of this
-writing.</p>
-<p>PyAV is pip-installable (<cite>pip install av</cite>) on Linux and OSX, but getting
-the linking to FFmpeg’s libraries set up correctly is subtle. The binary
-installers are recommended.</p>
 </div>
 <div class="section" id="adding-random-access-to-pyav">
 <h2>Adding Random Access to PyAV<a class="headerlink" href="#adding-random-access-to-pyav" title="Permalink to this headline">¶</a></h2>
-<p>The <cite>Video</cite> class in <a class="reference external" href="github.com/soft-matter/pims">PIMS</a> invokes PyAV and
-adds additional functionality to solve a common problem in scientific
-applications, accessing a video by frame number. Video file
-formats are designed to be searched in an approximate way, by time, and they do
-not support an efficient means of seeking a specific frame number. PIMS adds
-this missing functionality by decoding (but not reading) the entire video at
-and producing an internal table of contents that supports indexing by frame.</p>
+<p>The <cite>Video</cite> class in <a class="reference external" href="https://github.com/soft-matter/pims">PIMS</a>
+invokes PyAV and adds additional functionality to solve a common
+problem in scientific applications, accessing a video by frame
+number. Video file formats are designed to be searched in an
+approximate way, by time, and they do not support an efficient means
+of seeking a specific frame number. PIMS adds this missing
+functionality by decoding (but not reading) the entire video at and
+producing an internal table of contents that supports indexing by
+frame.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pims</span>
 <span class="n">v</span> <span class="o">=</span> <span class="n">pims</span><span class="o">.</span><span class="n">Video</span><span class="p">(</span><span class="s1">&#39;path/to/video.mov&#39;</span><span class="p">)</span>
 <span class="n">v</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># a 2D numpy array representing the last frame</span>
-</pre></div>
-</div>
-<p>PIMS is installable via conda on the <code class="docutils literal notranslate"><span class="pre">soft-matter</span></code> channel</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c soft-matter pims
-</pre></div>
-</div>
-<p>and pip</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install pims
 </pre></div>
 </div>
 </div>
@@ -211,10 +189,6 @@ It works on all platforms if FFmpeg is installed.</p>
 install but about <a class="reference external" href="https://gist.github.com/mikeboers/6843684">half as fast</a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">moviepy.editor</span> <span class="kn">import</span> <span class="n">VideoFileClip</span>
 <span class="n">myclip</span> <span class="o">=</span> <span class="n">VideoFileClip</span><span class="p">(</span><span class="s2">&quot;some_video.avi&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>MoviePy can be installed with pip.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install moviepy
 </pre></div>
 </div>
 </div>
@@ -232,19 +206,12 @@ supports a wide range of other image file formats as well.</p>
 <span class="n">metadata</span> <span class="o">=</span> <span class="n">vid</span><span class="o">.</span><span class="n">get_meta_data</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Imageio can be installed with pip.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install imageio
-</pre></div>
-</div>
 </div>
 <div class="section" id="opencv">
 <h2>OpenCV<a class="headerlink" href="#opencv" title="Permalink to this headline">¶</a></h2>
 <p>Finally, another solution is the <a class="reference external" href="http://docs.opencv.org/modules/highgui/doc/reading_and_writing_images_and_video.html#videocapture-open">VideoReader</a>
 class in OpenCV, which has bindings to FFmpeg. If you need OpenCV for other reasons,
-then this may be the best approach. However, OpenCV can be difficult to
-install, especially because it must be linked to FFmpeg to support reading video
-from files. Also, it is known to get the meta data wrong
-for some video codecs. (See <a class="reference external" href="http://code.opencv.org/issues/481">this issue</a>.)</p>
+then this may be the best approach.</p>
 </div>
 </div>
 
