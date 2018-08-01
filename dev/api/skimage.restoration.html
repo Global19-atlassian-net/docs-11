@@ -861,7 +861,7 @@ channels or another spatial dimension.</p>
 <h2>denoise_wavelet<a class="headerlink" href="#denoise-wavelet" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.restoration.denoise_wavelet">
-<code class="descclassname">skimage.restoration.</code><code class="descname">denoise_wavelet</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=None</em>, <em>wavelet='db1'</em>, <em>mode='soft'</em>, <em>wavelet_levels=None</em>, <em>multichannel=False</em>, <em>convert2ycbcr=False</em>, <em>method='BayesShrink'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L490"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_wavelet" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.restoration.</code><code class="descname">denoise_wavelet</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=None</em>, <em>wavelet='db1'</em>, <em>mode='soft'</em>, <em>wavelet_levels=None</em>, <em>multichannel=False</em>, <em>convert2ycbcr=False</em>, <em>method='BayesShrink'</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L494"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_wavelet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform wavelet denoising on an image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -929,14 +929,23 @@ plane separately. The output image is clipped between either [-1, 1] and
 [0, 1] depending on the input image range.</p>
 <p>When YCbCr conversion is done, every color channel is scaled between 0
 and 1, and <cite>sigma</cite> values are applied to these scaled color channels.</p>
-<p>Many wavelet coefficient thresholding approaches have been proposed.  By
+<p>Many wavelet coefficient thresholding approaches have been proposed. By
 default, <code class="docutils literal notranslate"><span class="pre">denoise_wavelet</span></code> applies BayesShrink, which is an adaptive
 thresholding method that computes separate thresholds for each wavelet
 sub-band as described in <a class="reference internal" href="#r3b8ec6d23a4e-1" id="id22">[1]</a>.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">==</span> <span class="pre">&quot;VisuShrink&quot;</span></code>, a single “universal threshold” is applied to
-all wavelet detail coefficients as described in <a class="reference internal" href="#r3b8ec6d23a4e-2" id="id23">[2]</a>.  This threshold
+all wavelet detail coefficients as described in <a class="reference internal" href="#r3b8ec6d23a4e-2" id="id23">[2]</a>. This threshold
 is designed to remove all Gaussian noise at a given <code class="docutils literal notranslate"><span class="pre">sigma</span></code> with high
 probability, but tends to produce images that appear overly smooth.</p>
+<p>Although any of the wavelets from <code class="docutils literal notranslate"><span class="pre">PyWavelets</span></code> can be selected, the
+thresholding methods assume an orthogonal wavelet transform and may not
+choose the threshold appropriately for biorthogonal wavelets. Orthogonal
+wavelets are desirable because white noise in the input remains white noise
+in the subbands. Biorthogonal wavelets lead to colored noise in the
+subbands. Additionally, the orthogonal wavelets in PyWavelets are
+orthonormal so that noise variance in the subbands remains identical to the
+noise variance of the input. Example orthogonal wavelets are the Daubechies
+(e.g. ‘db2’) or symmlet (e.g. ‘sym2’) families.</p>
 <p class="rubric">References</p>
 <table class="docutils citation" frame="void" id="r3b8ec6d23a4e-1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -1139,7 +1148,7 @@ DOI: 10.5201/ipol.2011.bcm_nlm</td></tr>
 <h2>estimate_sigma<a class="headerlink" href="#estimate-sigma" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.restoration.estimate_sigma">
-<code class="descclassname">skimage.restoration.</code><code class="descname">estimate_sigma</code><span class="sig-paren">(</span><em>image</em>, <em>average_sigmas=False</em>, <em>multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L622"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.estimate_sigma" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.restoration.</code><code class="descname">estimate_sigma</code><span class="sig-paren">(</span><em>image</em>, <em>average_sigmas=False</em>, <em>multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L636"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.estimate_sigma" title="Permalink to this definition">¶</a></dt>
 <dd><p>Robust wavelet-based estimator of the (Gaussian) noise standard deviation.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1287,7 +1296,7 @@ DOI: 10.1016/j.acha.2009.04.004</td></tr>
 <h2>cycle_spin<a class="headerlink" href="#cycle-spin" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.restoration.cycle_spin">
-<code class="descclassname">skimage.restoration.</code><code class="descname">cycle_spin</code><span class="sig-paren">(</span><em>x</em>, <em>func</em>, <em>max_shifts</em>, <em>shift_steps=1</em>, <em>num_workers=None</em>, <em>multichannel=False</em>, <em>func_kw={}</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_cycle_spin.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.cycle_spin" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.restoration.</code><code class="descname">cycle_spin</code><span class="sig-paren">(</span><em>x</em>, <em>func</em>, <em>max_shifts</em>, <em>shift_steps=1</em>, <em>num_workers=None</em>, <em>multichannel=False</em>, <em>func_kw={}</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_cycle_spin.py#L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.cycle_spin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cycle spinning (repeatedly apply func to shifted versions of x).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />

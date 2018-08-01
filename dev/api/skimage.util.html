@@ -723,7 +723,7 @@ even worse as the dimension of the input array becomes larger.</p>
 <h2>pad<a class="headerlink" href="#pad" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.pad">
-<code class="descclassname">skimage.util.</code><code class="descname">pad</code><span class="sig-paren">(</span><em>array</em>, <em>pad_width</em>, <em>mode</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/../../../../venv/lib/python3.6/site-packages/numpy/lib/arraypad.py#L1094"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.pad" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">pad</code><span class="sig-paren">(</span><em>array</em>, <em>pad_width</em>, <em>mode</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/../../../../venv/lib/python3.6/site-packages/numpy/lib/arraypad.py#L993"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.pad" title="Permalink to this definition">¶</a></dt>
 <dd><p>Pads an array.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -825,7 +825,7 @@ all axes.</p>
 <dt><strong>reflect_type</strong> <span class="classifier-delimiter">:</span> <span class="classifier">{‘even’, ‘odd’}, optional</span></dt>
 <dd><p class="first last">Used in ‘reflect’, and ‘symmetric’.  The ‘even’ style is the
 default with an unaltered reflection around the edge value.  For
-the ‘odd’ style, the extented part of the array is created by
+the ‘odd’ style, the extended part of the array is created by
 subtracting the reflected values from two times the edge value.</p>
 </dd>
 </dl>
@@ -1284,9 +1284,18 @@ number of dimensions.</p>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>slices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list of slice objects</span></dt>
-<dd><p class="first last">A slice along each dimension of <cite>ar_shape</cite>, such that the intersection
+<dt><strong>slices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple of slice objects</span></dt>
+<dd><p class="first">A slice along each dimension of <cite>ar_shape</cite>, such that the intersection
 of all the slices give the coordinates of regularly spaced points.</p>
+<div class="last versionchanged">
+<p><span class="versionmodified">Changed in version 0.14.1: </span>In scikit-image 0.14.1 and 0.15, the return type was changed from a
+list to a tuple to ensure <a class="reference external" href="https://github.com/numpy/numpy/blob/master/doc/release/1.15.0-notes.rst#deprecations">compatibility with Numpy 1.15</a> and
+higher. If your code requires the returned result to be a list, you
+may convert the output of this function to a list with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">regular_grid</span><span class="p">(</span><span class="n">ar_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">n_points</span><span class="o">=</span><span class="mi">8</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
 </dd>
 </dl>
 </td>
@@ -1297,21 +1306,21 @@ of all the slices give the coordinates of regularly spaced points.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">regular_grid</span><span class="p">(</span><span class="n">ar</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span>
-<span class="go">[slice(5, None, 10), slice(5, None, 10)]</span>
+<span class="go">(slice(5, None, 10), slice(5, None, 10))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ar</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ar</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">8.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">regular_grid</span><span class="p">(</span><span class="n">ar</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span>
-<span class="go">[slice(2, None, 5), slice(2, None, 5)]</span>
+<span class="go">(slice(2, None, 5), slice(2, None, 5))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ar</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ar</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">32.0</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="n">regular_grid</span><span class="p">(</span><span class="n">ar</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">g</span>
-<span class="go">[slice(1, None, 3), slice(5, None, 10), slice(5, None, 10)]</span>
+<span class="go">(slice(1, None, 3), slice(5, None, 10), slice(5, None, 10))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ar</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ar</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="go">8.0</span>
@@ -1331,7 +1340,7 @@ of all the slices give the coordinates of regularly spaced points.</p>
 <h2>regular_seeds<a class="headerlink" href="#regular-seeds" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.regular_seeds">
-<code class="descclassname">skimage.util.</code><code class="descname">regular_seeds</code><span class="sig-paren">(</span><em>ar_shape</em>, <em>n_points</em>, <em>dtype=&lt;class 'int'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/_regular_grid.py#L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.regular_seeds" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">regular_seeds</code><span class="sig-paren">(</span><em>ar_shape</em>, <em>n_points</em>, <em>dtype=&lt;class 'int'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/_regular_grid.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.regular_seeds" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an image with ~`n_points` regularly-spaced nonzero pixels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1375,7 +1384,7 @@ of all the slices give the coordinates of regularly spaced points.</p>
 <h2>apply_parallel<a class="headerlink" href="#apply-parallel" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.apply_parallel">
-<code class="descclassname">skimage.util.</code><code class="descname">apply_parallel</code><span class="sig-paren">(</span><em>function</em>, <em>array</em>, <em>chunks=None</em>, <em>depth=0</em>, <em>mode=None</em>, <em>extra_arguments=()</em>, <em>extra_keywords={}</em>, <em>*</em>, <em>compute=True</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/apply_parallel.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.apply_parallel" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.util.</code><code class="descname">apply_parallel</code><span class="sig-paren">(</span><em>function</em>, <em>array</em>, <em>chunks=None</em>, <em>depth=0</em>, <em>mode=None</em>, <em>extra_arguments=()</em>, <em>extra_keywords={}</em>, <em>*</em>, <em>compute=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/util/apply_parallel.py#L60"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.apply_parallel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Map a function in parallel across an array.</p>
 <p>Split an array into possibly overlapping chunks of a given depth and
 boundary type, call the given function in parallel on the chunks, combine
@@ -1415,8 +1424,10 @@ zero.</p>
 <dd><p class="first last">Dictionary of keyword arguments to be passed to the function.</p>
 </dd>
 <dt><strong>compute</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
-<dd><p class="first last">Whether to compute right away (default) or
-skip computing and return a dask Array.</p>
+<dd><p class="first last">If <code class="docutils literal notranslate"><span class="pre">True</span></code>, compute eagerly returning a NumPy Array.
+If <code class="docutils literal notranslate"><span class="pre">False</span></code>, compute lazily returning a Dask Array.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code> (default), compute based on array type provided
+(eagerly for NumPy Arrays and lazily for Dask Arrays).</p>
 </dd>
 </dl>
 </td>
