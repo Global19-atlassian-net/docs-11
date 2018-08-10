@@ -374,7 +374,7 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 <h2>regionprops<a class="headerlink" href="#regionprops" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.regionprops">
-<code class="descclassname">skimage.measure.</code><code class="descname">regionprops</code><span class="sig-paren">(</span><em>label_image</em>, <em>intensity_image=None</em>, <em>cache=True</em>, <em>coordinates=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L360"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">regionprops</code><span class="sig-paren">(</span><em>label_image</em>, <em>intensity_image=None</em>, <em>cache=True</em>, <em>coordinates=None</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L361"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
 <dd><p>Measure properties of labeled image regions.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -509,9 +509,12 @@ and <cite>x_c</cite> and <cite>y_c</cite> are the coordinates of the region’s 
 <p class="last">where <cite>m_00</cite> is the zeroth spatial moment.</p>
 </dd>
 <dt><strong>orientation</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
-<dd>Angle between the X-axis and the major axis of the ellipse that has
-the same second-moments as the region. Ranging from <cite>-pi/2</cite> to
-<cite>pi/2</cite> in counter-clockwise direction.</dd>
+<dd><p class="first">In ‘rc’ coordinates, angle between the 0th axis (rows) and the major
+axis of the ellipse that has the same second moments as the region,
+ranging from <cite>-pi/2</cite> to <cite>pi/2</cite> counter-clockwise.</p>
+<p class="last">In <cite>xy</cite> coordinates, as above but the angle is now measured from the
+“x” or horizontal axis.</p>
+</dd>
 <dt><strong>perimeter</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
 <dd>Perimeter of object which approximates the contour as a line
 through the centers of border pixels using a 4-connectivity.</dd>
@@ -620,7 +623,7 @@ Berlin, 1993.</td></tr>
 <h2>perimeter<a class="headerlink" href="#perimeter" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.perimeter">
-<code class="descclassname">skimage.measure.</code><code class="descname">perimeter</code><span class="sig-paren">(</span><em>image</em>, <em>neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L578"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">perimeter</code><span class="sig-paren">(</span><em>image</em>, <em>neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="http://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L582"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate total perimeter of all objects in binary image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
