@@ -41,7 +41,7 @@ References
     import numpy as np
     import matplotlib.pyplot as plt
 
-    from dask import delayed, threaded, multiprocessing
+    from dask import delayed
 
     from sklearn.ensemble import RandomForestClassifier
     from sklearn.model_selection import train_test_split
@@ -106,9 +106,9 @@ class to check the performance of the classifier.
     # the computation step
     X = delayed(extract_feature_image(img, feature_types)
                 for img in images)
-    # Compute the result using the "multiprocessing" dask backend
+    # Compute the result using the "processes" dask backend
     t_start = time()
-    X = np.array(X.compute(get=multiprocessing.get))
+    X = np.array(X.compute(scheduler='processes'))
     time_full_feature_comp = time() - t_start
     y = np.array([1] * 100 + [0] * 100)
     X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=150,
@@ -198,14 +198,14 @@ cumulative value which represent only 3% of the total number of features.
     X = delayed(extract_feature_image(img, selected_feature_type,
                                       selected_feature_coord)
                 for img in images)
-    # Compute the result using the *threaded* backend:
+    # Compute the result using the *threads* backend:
     # When computing all features, the Python GIL is acquired to process each ROI,
     # and this is where most of the time is spent, so multiprocessing is faster.
     # For this small subset, most of the time is spent on the feature computation
     # rather than the ROI scanning, and using threaded is *much* faster, because
     # we avoid the overhead of launching a new process.
     t_start = time()
-    X = np.array(X.compute(get=threaded.get))
+    X = np.array(X.compute(scheduler='threads'))
     time_subs_feature_comp = time() - t_start
     y = np.array([1] * 100 + [0] * 100)
     X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=150,
@@ -256,10 +256,10 @@ Once the features are extracted, we can train and test the a new classifier.
 
  .. code-block:: none
 
-    Computing the full feature set took 69.593s, plus 3.575s training, for an AUC of 1.00. Computing the restricted feature set took 0.261s, plus 2.762s training, for an AUC of 1.00.
+    Computing the full feature set took 62.805s, plus 2.778s training, for an AUC of 1.00. Computing the restricted feature set took 0.197s, plus 2.427s training, for an AUC of 1.00.
 
 
-**Total running time of the script:** ( 1 minutes  19.524 seconds)
+**Total running time of the script:** ( 1 minutes  11.091 seconds)
 
 
 .. _sphx_glr_download_auto_examples_xx_applications_plot_haar_extraction_selection_classification.py:
