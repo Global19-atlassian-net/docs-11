@@ -173,6 +173,7 @@
 <li><a class="reference internal" href="#examples-using-skimage-feature-draw-haar-like-feature">Examples using <code class="docutils literal notranslate"><span class="pre">skimage.feature.draw_haar_like_feature</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#cascade"><code class="docutils literal notranslate"><span class="pre">Cascade</span></code></a></li>
 <li><a class="reference internal" href="#brief"><code class="docutils literal notranslate"><span class="pre">BRIEF</span></code></a></li>
 <li><a class="reference internal" href="#censure"><code class="docutils literal notranslate"><span class="pre">CENSURE</span></code></a></li>
 <li><a class="reference internal" href="#orb"><code class="docutils literal notranslate"><span class="pre">ORB</span></code></a></li>
@@ -315,13 +316,16 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.feature.draw_haar_like_feature" title="skimage.feature.draw_haar_like_feature"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.feature.draw_haar_like_feature</span></code></a>(…)</td>
 <td>Visualization of Haar-like features.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.BRIEF" title="skimage.feature.BRIEF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.feature.BRIEF</span></code></a>([descriptor_size,&nbsp;…])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.Cascade" title="skimage.feature.Cascade"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.feature.Cascade</span></code></a></td>
+<td>Class for cascade of classifiers that is used for object detection.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.BRIEF" title="skimage.feature.BRIEF"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.feature.BRIEF</span></code></a>([descriptor_size,&nbsp;…])</td>
 <td>BRIEF binary descriptor extractor.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.CENSURE" title="skimage.feature.CENSURE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.feature.CENSURE</span></code></a>([min_scale,&nbsp;…])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.CENSURE" title="skimage.feature.CENSURE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.feature.CENSURE</span></code></a>([min_scale,&nbsp;…])</td>
 <td>CENSURE keypoint detector.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.feature.ORB" title="skimage.feature.ORB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.feature.ORB</span></code></a>([downscale,&nbsp;n_scales,&nbsp;…])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.feature.ORB" title="skimage.feature.ORB"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.feature.ORB</span></code></a>([downscale,&nbsp;n_scales,&nbsp;…])</td>
 <td>Oriented FAST and rotated BRIEF feature detector and binary descriptor extractor.</td>
 </tr>
 </tbody>
@@ -3388,6 +3392,178 @@ features smaller than the total number of available features.</p>
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/xx_applications/plot_haar_extraction_selection_classification.html#sphx-glr-auto-examples-xx-applications-plot-haar-extraction-selection-classification-py"><span class="std std-ref">Face classification using Haar-like feature descriptor</span></a></span></p>
 </div>
 </div></div>
+</div>
+<div class="section" id="cascade">
+<h2><a class="reference internal" href="#skimage.feature.Cascade" title="skimage.feature.Cascade"><code class="xref py py-class docutils literal notranslate"><span class="pre">Cascade</span></code></a><a class="headerlink" href="#cascade" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="skimage.feature.Cascade">
+<em class="property">class </em><code class="descclassname">skimage.feature.</code><code class="descname">Cascade</code><a class="headerlink" href="#skimage.feature.Cascade" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.6/library/functions.html#object" title="(in Python v3.6)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class for cascade of classifiers that is used for object detection.</p>
+<p>The main idea behind cascade of classifiers is to create classifiers
+of medium accuracy and ensemble them into one strong classifier
+instead of just creating a strong one. The second advantage of cascade
+classifier is that easy examples can be classified only by evaluating
+some of the classifiers in the cascade, making the process much faster
+than the process of evaluating a one strong classifier.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Attributes:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>eps</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Accuracy parameter. Increasing it, makes the classifier detect less
+false positives but at the same time the false negative score increases.</p>
+</dd>
+<dt><strong>stages_number</strong> <span class="classifier-delimiter">:</span> <span class="classifier">Py_ssize_t</span></dt>
+<dd><p class="first last">Amount of stages in a cascade. Each cascade consists of stumps i.e.
+trained features.</p>
+</dd>
+<dt><strong>stumps_number</strong> <span class="classifier-delimiter">:</span> <span class="classifier">Py_ssize_t</span></dt>
+<dd><p class="first last">The overall amount of stumps in all the stages of cascade.</p>
+</dd>
+<dt><strong>features_number</strong> <span class="classifier-delimiter">:</span> <span class="classifier">Py_ssize_t</span></dt>
+<dd><p class="first last">The overall amount of different features used by cascade.
+Two stumps can use the same features but has different trained
+values.</p>
+</dd>
+<dt><strong>window_width</strong> <span class="classifier-delimiter">:</span> <span class="classifier">Py_ssize_t</span></dt>
+<dd><p class="first last">The width of a detection window that is used. Objects smaller than
+this window can’t be detected.</p>
+</dd>
+<dt><strong>window_height</strong> <span class="classifier-delimiter">:</span> <span class="classifier">Py_ssize_t</span></dt>
+<dd><p class="first last">The height of a detection window.</p>
+</dd>
+<dt><strong>stages</strong> <span class="classifier-delimiter">:</span> <span class="classifier">Stage*</span></dt>
+<dd><p class="first last">A link to the c array that stores stages information using
+Stage struct.</p>
+</dd>
+<dt><strong>features</strong> <span class="classifier-delimiter">:</span> <span class="classifier">MBLBP*</span></dt>
+<dd><p class="first last">Link to the c array that stores MBLBP features using MBLBP struct.</p>
+</dd>
+<dt><strong>LUTs</strong> <span class="classifier-delimiter">:</span> <span class="classifier">cnp.uint32_t*</span></dt>
+<dd><p class="first last">The ling to the array with look-up tables that are used by trained
+MBLBP features (MBLBPStumps) to evaluate a particular region.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="skimage.feature.Cascade.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skimage.feature.Cascade.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize cascade classifier.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>xml_file</strong> <span class="classifier-delimiter">:</span> <span class="classifier">file’s path or file’s object</span></dt>
+<dd><p class="first last">A file in a OpenCv format from which all the cascade classifier’s
+parameters are loaded.</p>
+</dd>
+<dt><strong>eps</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Accuracy parameter. Increasing it, makes the classifier detect less
+false positives but at the same time the false negative score increases.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="skimage.feature.Cascade.detect_multi_scale">
+<code class="descname">detect_multi_scale</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skimage.feature.Cascade.detect_multi_scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for the object on multiple scales of input image.</p>
+<p>The function takes the input image, the scale factor by which the
+searching window is multiplied on each step, minimum window size
+and maximum window size that specify the interval for the search
+windows that are applied to the input image to detect objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>img</strong> <span class="classifier-delimiter">:</span> <span class="classifier">2-D or 3-D ndarray</span></dt>
+<dd><p class="first last">Ndarray that represents the input image.</p>
+</dd>
+<dt><strong>scale_factor</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">The scale by which searching window is multiplied on each step.</p>
+</dd>
+<dt><strong>step_ratio</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">The ratio by which the search step in multiplied on each scale
+of the image. 1 represents the exaustive search and usually is
+slow. By setting this parameter to higher values the results will
+be worse but the computation will be much faster. Usually, values
+in the interval [1, 1.5] give good results.</p>
+</dd>
+<dt><strong>min_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">typle (int, int)</span></dt>
+<dd><p class="first last">Minimum size of the search window.</p>
+</dd>
+<dt><strong>max_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">typle (int, int)</span></dt>
+<dd><p class="first last">Maximum size of the search window.</p>
+</dd>
+<dt><strong>min_neighbour_number</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Minimum amount of intersecting detections in order for detection
+to be approved by the function.</p>
+</dd>
+<dt><strong>intersection_score_threshold</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">The minimum value of value of ratio
+(intersection area) / (small rectangle ratio) in order to merge
+two detections into one.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>output</strong> <span class="classifier-delimiter">:</span> <span class="classifier">list of dicts</span></dt>
+<dd><p class="first last">Dict have form {‘r’: int, ‘c’: int, ‘width’: int, ‘height’: int},
+where ‘r’ represents row position of top left corner of detected
+window, ‘c’ - col position, ‘width’ - width of detected window,
+‘height’ - height of detected window.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="skimage.feature.Cascade.eps">
+<code class="descname">eps</code><a class="headerlink" href="#skimage.feature.Cascade.eps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="skimage.feature.Cascade.features_number">
+<code class="descname">features_number</code><a class="headerlink" href="#skimage.feature.Cascade.features_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="skimage.feature.Cascade.stages_number">
+<code class="descname">stages_number</code><a class="headerlink" href="#skimage.feature.Cascade.stages_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="skimage.feature.Cascade.stumps_number">
+<code class="descname">stumps_number</code><a class="headerlink" href="#skimage.feature.Cascade.stumps_number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="skimage.feature.Cascade.window_height">
+<code class="descname">window_height</code><a class="headerlink" href="#skimage.feature.Cascade.window_height" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="skimage.feature.Cascade.window_width">
+<code class="descname">window_width</code><a class="headerlink" href="#skimage.feature.Cascade.window_width" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="brief">
 <h2><a class="reference internal" href="#skimage.feature.BRIEF" title="skimage.feature.BRIEF"><code class="xref py py-class docutils literal notranslate"><span class="pre">BRIEF</span></code></a><a class="headerlink" href="#brief" title="Permalink to this headline">¶</a></h2>
