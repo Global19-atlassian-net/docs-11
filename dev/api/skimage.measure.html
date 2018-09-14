@@ -912,7 +912,7 @@ by <cite>np.random</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">EllipseModel</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="go">True</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>  
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>  <span class="c1"># doctest: +SKIP</span>
 <span class="go">array([ 72.,  75.,  77.,  14.,   1.])</span>
 </pre></div>
 </div>
@@ -920,7 +920,7 @@ by <cite>np.random</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ransac_model</span><span class="p">,</span> <span class="n">inliers</span> <span class="o">=</span> <span class="n">ransac</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">EllipseModel</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ransac_model</span><span class="o">.</span><span class="n">params</span><span class="p">))</span>
 <span class="go">array([ 20.,  30.,   5.,  10.,   0.])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">inliers</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inliers</span> <span class="c1"># doctest: +SKIP</span>
 <span class="go">array([False, False, False, False,  True,  True,  True,  True,  True,</span>
 <span class="go">        True,  True,  True,  True,  True,  True,  True,  True,  True,</span>
 <span class="go">        True,  True,  True,  True,  True,  True,  True,  True,  True,</span>
@@ -1014,7 +1014,7 @@ block size.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="k">import</span> <span class="n">block_reduce</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="mi">3</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="c1"># doctest: +NORMALIZE_WHITESPACE</span>
 <span class="go">array([[[ 0,  1,  2,  3],</span>
 <span class="go">        [ 4,  5,  6,  7],</span>
 <span class="go">        [ 8,  9, 10, 11]],</span>
@@ -1027,12 +1027,12 @@ block size.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">block_reduce</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
 <span class="go">array([[[ 16.,  17.,  18.,  19.]]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_max1</span> <span class="o">=</span> <span class="n">block_reduce</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">image_max1</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_max1</span> <span class="c1"># doctest: +NORMALIZE_WHITESPACE</span>
 <span class="go">array([[[11]],</span>
 <span class="go">       [[23]],</span>
 <span class="go">       [[35]]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_max2</span> <span class="o">=</span> <span class="n">block_reduce</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">image_max2</span> 
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_max2</span> <span class="c1"># doctest: +NORMALIZE_WHITESPACE</span>
 <span class="go">array([[[27],</span>
 <span class="go">        [31],</span>
 <span class="go">        [35]]])</span>
