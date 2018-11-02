@@ -784,8 +784,9 @@ projection angles.</p>
 <dd><p class="first last">Input image. The rotation axis will be located in the pixel with
 indices <code class="docutils literal notranslate"><span class="pre">(image.shape[0]</span> <span class="pre">//</span> <span class="pre">2,</span> <span class="pre">image.shape[1]</span> <span class="pre">//</span> <span class="pre">2)</span></code>.</p>
 </dd>
-<dt><strong>theta</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array_like, dtype=float, optional (default np.arange(180))</span></dt>
-<dd><p class="first last">Projection angles (in degrees).</p>
+<dt><strong>theta</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array_like, dtype=float, optional</span></dt>
+<dd><p class="first last">Projection angles (in degrees). If <cite>None</cite>, the value is set to
+np.arange(180).</p>
 </dd>
 <dt><strong>circle</strong> <span class="classifier-delimiter">:</span> <span class="classifier">boolean, optional</span></dt>
 <dd><p class="first last">Assume image is zero outside the inscribed circle, making the
@@ -839,7 +840,7 @@ the Fourth IEEE Region 10 International Conference, TENCON ‘89, 1989</td></tr>
 <h2>iradon<a class="headerlink" href="#iradon" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.iradon">
-<code class="descclassname">skimage.transform.</code><code class="descname">iradon</code><span class="sig-paren">(</span><em>radon_image</em>, <em>theta=None</em>, <em>output_size=None</em>, <em>filter='ramp'</em>, <em>interpolation='linear'</em>, <em>circle=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L120"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.iradon" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">iradon</code><span class="sig-paren">(</span><em>radon_image</em>, <em>theta=None</em>, <em>output_size=None</em>, <em>filter='ramp'</em>, <em>interpolation='linear'</em>, <em>circle=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L121"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.iradon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse radon transform.</p>
 <p>Reconstruct an image from the radon transform, using the filtered
 back projection algorithm.</p>
@@ -859,15 +860,15 @@ tomography rotation axis should lie at the pixel index
 <dd><p class="first last">Reconstruction angles (in degrees). Default: m angles evenly spaced
 between 0 and 180 (if the shape of <cite>radon_image</cite> is (N, M)).</p>
 </dd>
-<dt><strong>output_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dt><strong>output_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
 <dd><p class="first last">Number of rows and columns in the reconstruction.</p>
 </dd>
-<dt><strong>filter</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str, optional (default ramp)</span></dt>
+<dt><strong>filter</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
 <dd><p class="first last">Filter used in frequency domain filtering. Ramp filter used by default.
 Filters available: ramp, shepp-logan, cosine, hamming, hann.
 Assign None to use no filter.</p>
 </dd>
-<dt><strong>interpolation</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str, optional (default ‘linear’)</span></dt>
+<dt><strong>interpolation</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
 <dd><p class="first last">Interpolation method used in reconstruction. Methods available:
 ‘linear’, ‘nearest’, and ‘cubic’ (‘cubic’ is slow).</p>
 </dd>
@@ -924,7 +925,7 @@ the Fourth IEEE Region 10 International Conference, TENCON ‘89, 1989</td></tr>
 <h2>iradon_sart<a class="headerlink" href="#iradon-sart" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.iradon_sart">
-<code class="descclassname">skimage.transform.</code><code class="descname">iradon_sart</code><span class="sig-paren">(</span><em>radon_image</em>, <em>theta=None</em>, <em>image=None</em>, <em>projection_shifts=None</em>, <em>clip=None</em>, <em>relaxation=0.15</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L317"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.iradon_sart" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">iradon_sart</code><span class="sig-paren">(</span><em>radon_image</em>, <em>theta=None</em>, <em>image=None</em>, <em>projection_shifts=None</em>, <em>clip=None</em>, <em>relaxation=0.15</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L318"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.iradon_sart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inverse radon transform</p>
 <p>Reconstruct an image from the radon transform, using a single iteration of
 the Simultaneous Algebraic Reconstruction Technique (SART) algorithm.</p>
@@ -949,16 +950,16 @@ between 0 and 180 (if the shape of <cite>radon_image</cite> is (N, M)).</p>
 array should be <code class="docutils literal notranslate"><span class="pre">(radon_image.shape[0],</span> <span class="pre">radon_image.shape[0])</span></code>. The
 default is an array of zeros.</p>
 </dd>
-<dt><strong>projection_shifts</strong> <span class="classifier-delimiter">:</span> <span class="classifier">1D array, dtype=float</span></dt>
+<dt><strong>projection_shifts</strong> <span class="classifier-delimiter">:</span> <span class="classifier">1D array, dtype=float, optional</span></dt>
 <dd><p class="first last">Shift the projections contained in <code class="docutils literal notranslate"><span class="pre">radon_image</span></code> (the sinogram) by
 this many pixels before reconstructing the image. The i’th value
 defines the shift of the i’th column of <code class="docutils literal notranslate"><span class="pre">radon_image</span></code>.</p>
 </dd>
-<dt><strong>clip</strong> <span class="classifier-delimiter">:</span> <span class="classifier">length-2 sequence of floats</span></dt>
+<dt><strong>clip</strong> <span class="classifier-delimiter">:</span> <span class="classifier">length-2 sequence of floats, optional</span></dt>
 <dd><p class="first last">Force all values in the reconstructed tomogram to lie in the range
 <code class="docutils literal notranslate"><span class="pre">[clip[0],</span> <span class="pre">clip[1]]</span></code></p>
 </dd>
-<dt><strong>relaxation</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dt><strong>relaxation</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
 <dd><p class="first last">Relaxation parameter for the update step. A higher value can
 improve the convergence rate, but one runs the risk of instabilities.
 Values close to or higher than 1 are not recommended.</p>
@@ -1042,7 +1043,7 @@ Symposium Conference Record, 2004 IEEE. Vol. 6. IEEE, 2004.</td></tr>
 <h2>order_angles_golden_ratio<a class="headerlink" href="#order-angles-golden-ratio" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.order_angles_golden_ratio">
-<code class="descclassname">skimage.transform.</code><code class="descname">order_angles_golden_ratio</code><span class="sig-paren">(</span><em>theta</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.order_angles_golden_ratio" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.transform.</code><code class="descname">order_angles_golden_ratio</code><span class="sig-paren">(</span><em>theta</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L260"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.order_angles_golden_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Order angles to reduce the amount of correlated information
 in subsequent projections.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -2297,7 +2298,7 @@ the reduction does not change its shape.</p>
 <dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
 <dd><p class="first last">Input image.</p>
 </dd>
-<dt><strong>max_layer</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dt><strong>max_layer</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
 <dd><p class="first last">Number of layers for the pyramid. 0th layer is the original image.
 Default is -1 which builds all possible layers.</p>
 </dd>
@@ -2379,7 +2380,7 @@ change its shape.</p>
 <dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
 <dd><p class="first last">Input image.</p>
 </dd>
-<dt><strong>max_layer</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dt><strong>max_layer</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
 <dd><p class="first last">Number of layers for the pyramid. 0th layer is the original image.
 Default is -1 which builds all possible layers.</p>
 </dd>
