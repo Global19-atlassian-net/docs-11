@@ -118,6 +118,7 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#rectangle">rectangle</a></li>
+<li><a class="reference internal" href="#rectangle-perimeter">rectangle_perimeter</a></li>
 </ul>
 </li>
 </ul>
@@ -199,6 +200,9 @@
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.draw.rectangle" title="skimage.draw.rectangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.draw.rectangle</span></code></a>(start[,&nbsp;end,&nbsp;extent,&nbsp;…])</td>
 <td>Generate coordinates of pixels within a rectangle.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.draw.rectangle_perimeter" title="skimage.draw.rectangle_perimeter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.draw.rectangle_perimeter</span></code></a>(start[,&nbsp;…])</td>
+<td>Generate coordinates of pixels that are exactly around a rectangle.</td>
 </tr>
 </tbody>
 </table>
@@ -712,7 +716,7 @@ May be used to directly index into an array, e.g.
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]], dtype=uint8)</span>
 </pre></div>
 </div>
-<p>Note that the positions of <cite>ellipse</cite> without specified <cite>shape</cite> can have 
+<p>Note that the positions of <cite>ellipse</cite> without specified <cite>shape</cite> can have
 also, negative values, as this is correct on the plane. On the other hand
 using these ellipse positions for an image afterwards may lead to appearing
 on the other side of image, because <code class="docutils literal notranslate"><span class="pre">image[-1,</span> <span class="pre">-1]</span> <span class="pre">=</span> <span class="pre">image[end-1,</span> <span class="pre">end-1]</span></code></p>
@@ -1249,12 +1253,17 @@ bounding box coordinates of the shape.</p>
 </dd>
 <dt><strong>end</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
 <dd><p class="first last">End point of the rectangle <code class="docutils literal notranslate"><span class="pre">([plane,]</span> <span class="pre">row,</span> <span class="pre">column)</span></code>.
+For a 2D matrix, the slice defined by the rectangle is
+<code class="docutils literal notranslate"><span class="pre">[start:(end+1)]</span></code>.
 Either <cite>end</cite> or <cite>extent</cite> must be specified.</p>
 </dd>
 <dt><strong>extent</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
 <dd><p class="first last">The extent (size) of the drawn rectangle.  E.g.,
 <code class="docutils literal notranslate"><span class="pre">([num_planes,]</span> <span class="pre">num_rows,</span> <span class="pre">num_cols)</span></code>.
-Either <cite>end</cite> or <cite>extent</cite> must be specified.</p>
+Either <cite>end</cite> or <cite>extent</cite> must be specified.
+A negative extent is valid, and will result in a rectangle
+going along the oposite direction. If extent is negative, the
+<cite>start</cite> point is not included.</p>
 </dd>
 <dt><strong>shape</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple, optional</span></dt>
 <dd><p class="first last">Image shape used to determine the maximum bounds of the output
@@ -1303,6 +1312,107 @@ the image size. By default, no clipping is done.</p>
 <span class="go">       [0, 1, 1, 1, 0],</span>
 <span class="go">       [0, 1, 1, 1, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0]], dtype=uint8)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="k">import</span> <span class="n">rectangle</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">rectangle</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">rectangle</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">rectangle</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">rectangle</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="go">[[0 0 0 0 0 0]</span>
+<span class="go"> [0 3 3 2 2 0]</span>
+<span class="go"> [0 3 3 2 2 0]</span>
+<span class="go"> [0 4 4 1 1 0]</span>
+<span class="go"> [0 4 4 1 1 0]</span>
+<span class="go"> [0 0 0 0 0 0]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="rectangle-perimeter">
+<h2>rectangle_perimeter<a class="headerlink" href="#rectangle-perimeter" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.draw.rectangle_perimeter">
+<code class="descclassname">skimage.draw.</code><code class="descname">rectangle_perimeter</code><span class="sig-paren">(</span><em>start</em>, <em>end=None</em>, <em>extent=None</em>, <em>shape=None</em>, <em>clip=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/draw/draw.py#L788"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.draw.rectangle_perimeter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate coordinates of pixels that are exactly around a rectangle.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>start</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
+<dd><p class="first last">Origin point of the inner rectangle, e.g., <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">column)</span></code>.</p>
+</dd>
+<dt><strong>end</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
+<dd><p class="first last">End point of the inner rectangle <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">column)</span></code>.
+For a 2D matrix, the slice defined by inner the rectangle is
+<code class="docutils literal notranslate"><span class="pre">[start:(end+1)]</span></code>.
+Either <cite>end</cite> or <cite>extent</cite> must be specified.</p>
+</dd>
+<dt><strong>extent</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
+<dd><p class="first last">The extent (size) of the inner rectangle.  E.g.,
+<code class="docutils literal notranslate"><span class="pre">(num_rows,</span> <span class="pre">num_cols)</span></code>.
+Either <cite>end</cite> or <cite>extent</cite> must be specified.
+Negative extents are permitted. See <cite>rectangle</cite> to better
+understand how they behave.</p>
+</dd>
+<dt><strong>shape</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple, optional</span></dt>
+<dd><p class="first last">Image shape used to determine the maximum bounds of the output
+coordinates. This is useful for clipping perimeters that exceed
+the image size. By default, no clipping is done.</p>
+</dd>
+<dt><strong>clip</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">Whether to clip the perimeter to the provided shape. If this is set
+to True, the drawn figure will always be a closed polygon with all
+edges visible.</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>coords</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array of int, shape (2, Npoints)</span></dt>
+<dd><p class="first last">The coordinates of all pixels in the rectangle.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="k">import</span> <span class="n">rectangle_perimeter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">end</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">rectangle_perimeter</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span>
+<span class="go">array([[0, 0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 0, 1, 1, 1, 1],</span>
+<span class="go">       [0, 0, 1, 0, 0, 1],</span>
+<span class="go">       [0, 0, 1, 0, 0, 1],</span>
+<span class="go">       [0, 0, 1, 1, 1, 1]], dtype=uint8)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">rectangle_perimeter</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">shape</span><span class="o">=</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span>
+<span class="go">array([[0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 0, 1, 1, 1],</span>
+<span class="go">       [0, 0, 1, 0, 1],</span>
+<span class="go">       [0, 0, 1, 0, 1],</span>
+<span class="go">       [0, 0, 1, 1, 1]], dtype=uint8)</span>
 </pre></div>
 </div>
 </dd></dl>
