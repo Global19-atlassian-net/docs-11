@@ -11,6 +11,7 @@
     <link href="_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="_static/css/custom.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
         <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
     
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -27,6 +28,8 @@
         <script type="text/javascript" src="_static/jquery.js"></script>
         <script type="text/javascript" src="_static/underscore.js"></script>
         <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+        <script type="text/javascript" src="_static/copybutton.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="genindex.html" />
         <link rel="search" title="Search" href="search.html" />
@@ -445,13 +448,24 @@ and you will receive an email notification when the process is done.</p>
 <div class="section" id="building-docs">
 <h2><a class="toc-backref" href="#id9">Building docs</a><a class="headerlink" href="#building-docs" title="Permalink to this headline">¶</a></h2>
 <p>To build docs, run <code class="docutils literal notranslate"><span class="pre">make</span></code> from the <code class="docutils literal notranslate"><span class="pre">doc</span></code> directory. <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">help</span></code> lists
-all targets.</p>
+all targets. For example, to build the HTML documentation, you can run:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
+<p>Then, all the HTML files will be generated in <code class="docutils literal notranslate"><span class="pre">scikit-image/doc/build/html/</span></code>.
+To rebuild a full clean documentation, run:</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span>
+<span class="n">make</span> <span class="n">html</span>
+</pre></div>
+</div>
 <div class="section" id="requirements">
 <h3><a class="toc-backref" href="#id10">Requirements</a><a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> and LaTeX are needed to build
 the documentation.</p>
 <p><strong>Sphinx:</strong></p>
-<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">sphinx</span>
+<p>Sphinx and other python packages needed to build the documentation
+can be installed using: <code class="docutils literal notranslate"><span class="pre">scikit-image/requirements/docs.txt</span></code> file.</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">/</span><span class="n">docs</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p><strong>LaTeX Ubuntu:</strong></p>
