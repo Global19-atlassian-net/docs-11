@@ -1150,13 +1150,13 @@ otherwise as spatial.</p>
 <dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
 <dd><p class="first last">Input image data. Will be converted to float.</p>
 </dd>
-<dt><strong>mode</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dt><strong>mode</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
 <dd><p class="first">One of the following strings, selecting the type of noise to add:</p>
 <ul class="last simple">
 <li>‘gaussian’  Gaussian-distributed additive noise.</li>
 <li><dl class="first docutils">
 <dt>‘localvar’  Gaussian-distributed additive noise, with specified</dt>
-<dd>local variance at each point of <cite>image</cite></dd>
+<dd>local variance at each point of <cite>image</cite>.</dd>
 </dl>
 </li>
 <li>‘poisson’   Poisson-distributed noise generated from the data.</li>
@@ -1179,33 +1179,33 @@ images.</dd>
 </li>
 </ul>
 </dd>
-<dt><strong>seed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dt><strong>seed</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
 <dd><p class="first last">If provided, this will set the random seed before generating noise,
 for valid pseudo-random comparisons.</p>
 </dd>
-<dt><strong>clip</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool</span></dt>
+<dt><strong>clip</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
 <dd><p class="first last">If True (default), the output will be clipped after noise applied
 for modes <cite>‘speckle’</cite>, <cite>‘poisson’</cite>, and <cite>‘gaussian’</cite>. This is
 needed to maintain the proper image data range. If False, clipping
 is not applied, and the output may extend beyond the range [-1, 1].</p>
 </dd>
-<dt><strong>mean</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dt><strong>mean</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
 <dd><p class="first last">Mean of random distribution. Used in ‘gaussian’ and ‘speckle’.
 Default : 0.</p>
 </dd>
-<dt><strong>var</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dt><strong>var</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
 <dd><p class="first last">Variance of random distribution. Used in ‘gaussian’ and ‘speckle’.
 Note: variance = (standard deviation) ** 2. Default : 0.01</p>
 </dd>
-<dt><strong>local_vars</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dt><strong>local_vars</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, optional</span></dt>
 <dd><p class="first last">Array of positive floats, same shape as <cite>image</cite>, defining the local
 variance at every image point. Used in ‘localvar’.</p>
 </dd>
-<dt><strong>amount</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dt><strong>amount</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
 <dd><p class="first last">Proportion of image pixels to replace with noise on range [0, 1].
 Used in ‘salt’, ‘pepper’, and ‘salt &amp; pepper’. Default : 0.05</p>
 </dd>
-<dt><strong>salt_vs_pepper</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dt><strong>salt_vs_pepper</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
 <dd><p class="first last">Proportion of salt vs. pepper noise for ‘s&amp;p’ on range [0, 1].
 Higher values represent more salt. Default : 0.5 (equal amounts)</p>
 </dd>
@@ -1254,7 +1254,11 @@ Poisson noise is generated, then it is returned to the original range.</p>
 <img alt="../_images/sphx_glr_plot_cycle_spinning_thumb.png" src="../_images/sphx_glr_plot_cycle_spinning_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/filters/plot_cycle_spinning.html#sphx-glr-auto-examples-filters-plot-cycle-spinning-py"><span class="std std-ref">Wavelet denoising</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Wavelet denoising relies on the wavelet representation of the image. Gaussian noise tends to be..."><div class="figure" id="id9">
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we denoise a detail of the astronaut image using the non-local means filter. T..."><div class="figure" id="id9">
+<img alt="../_images/sphx_glr_plot_nonlocal_means_thumb.png" src="../_images/sphx_glr_plot_nonlocal_means_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/filters/plot_nonlocal_means.html#sphx-glr-auto-examples-filters-plot-nonlocal-means-py"><span class="std std-ref">Non-local means denoising for preserving textures</span></a></span></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Wavelet denoising relies on the wavelet representation of the image. Gaussian noise tends to be..."><div class="figure" id="id10">
 <img alt="../_images/sphx_glr_plot_denoise_wavelet_thumb.png" src="../_images/sphx_glr_plot_denoise_wavelet_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/filters/plot_denoise_wavelet.html#sphx-glr-auto-examples-filters-plot-denoise-wavelet-py"><span class="std std-ref">Wavelet denoising</span></a></span></p>
 </div>
@@ -1333,7 +1337,7 @@ may convert the output of this function to a list with:</p>
 
 <div class="section" id="examples-using-skimage-util-regular-grid">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.util.regular_grid</span></code><a class="headerlink" href="#examples-using-skimage-util-regular-grid" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="The watershed transform is commonly used as a starting point for many segmentation algorithms. ..."><div class="figure" id="id10">
+<div class="sphx-glr-thumbcontainer" tooltip="The watershed transform is commonly used as a starting point for many segmentation algorithms. ..."><div class="figure" id="id11">
 <img alt="../_images/sphx_glr_plot_compact_watershed_thumb.png" src="../_images/sphx_glr_plot_compact_watershed_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_compact_watershed.html#sphx-glr-auto-examples-segmentation-plot-compact-watershed-py"><span class="std std-ref">Find Regular Segments Using Compact Watershed</span></a></span></p>
 </div>
@@ -1527,11 +1531,11 @@ minimum.</p>
 
 <div class="section" id="examples-using-skimage-util-invert">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.util.invert</span></code><a class="headerlink" href="#examples-using-skimage-util-invert" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="The convex hull of a binary image is the set of pixels included in the smallest convex polygon ..."><div class="figure" id="id11">
+<div class="sphx-glr-thumbcontainer" tooltip="The convex hull of a binary image is the set of pixels included in the smallest convex polygon ..."><div class="figure" id="id12">
 <img alt="../_images/sphx_glr_plot_convex_hull_thumb.png" src="../_images/sphx_glr_plot_convex_hull_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_convex_hull.html#sphx-glr-auto-examples-edges-plot-convex-hull-py"><span class="std std-ref">Convex Hull</span></a></span></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Skeletonization reduces binary objects to 1 pixel wide representations. This can be useful for ..."><div class="figure" id="id12">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Skeletonization reduces binary objects to 1 pixel wide representations. This can be useful for ..."><div class="figure" id="id13">
 <img alt="../_images/sphx_glr_plot_skeleton_thumb.png" src="../_images/sphx_glr_plot_skeleton_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_skeleton.html#sphx-glr-auto-examples-edges-plot-skeleton-py"><span class="std std-ref">Skeletonize</span></a></span></p>
 </div>

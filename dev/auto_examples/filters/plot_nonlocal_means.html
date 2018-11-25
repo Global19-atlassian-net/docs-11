@@ -106,19 +106,19 @@ other pixels are compared to the patch centered on the pixel of interest, and
 the average is performed only for pixels that have patches close to the current
 patch. As a result, this algorithm can restore well textures, that would be
 blurred by other denoising algorithm.</p>
-<p>When the <cite>fast_mode</cite> argument is <cite>False</cite>, a spatial Gaussian weighting is
-applied to the patches when computing patch distances.  When <cite>fast_mode</cite> is
-<cite>True</cite> a faster algorithm employing uniform spatial weighting on the patches
+<p>When the <code class="docutils literal notranslate"><span class="pre">fast_mode</span></code> argument is <code class="docutils literal notranslate"><span class="pre">False</span></code>, a spatial Gaussian weighting is
+applied to the patches when computing patch distances.  When <code class="docutils literal notranslate"><span class="pre">fast_mode</span></code> is
+<code class="docutils literal notranslate"><span class="pre">True</span></code> a faster algorithm employing uniform spatial weighting on the patches
 is applied.</p>
-<p>For either of these cases, if the noise standard deviation, <cite>sigma</cite>, is
+<p>For either of these cases, if the noise standard deviation, <code class="docutils literal notranslate"><span class="pre">sigma</span></code>, is
 provided, the expected noise variance is subtracted out when computing patch
 distances.  This can lead to a modest improvement in image quality.</p>
-<p>The <cite>estimate_sigma</cite> function can provide a good starting point for setting
-the <cite>h</cite> (and optionally, <cite>sigma</cite>) parameters for the non-local means algorithm.
-<cite>h</cite> is a constant that controls the decay in patch weights as a function of the
-distance between patches.  Larger <cite>h</cite> allows more smoothing between disimilar
+<p>The <code class="docutils literal notranslate"><span class="pre">estimate_sigma</span></code> function can provide a good starting point for setting
+the <code class="docutils literal notranslate"><span class="pre">h</span></code> (and optionally, <code class="docutils literal notranslate"><span class="pre">sigma</span></code>) parameters for the non-local means algorithm.
+<code class="docutils literal notranslate"><span class="pre">h</span></code> is a constant that controls the decay in patch weights as a function of the
+distance between patches.  Larger <code class="docutils literal notranslate"><span class="pre">h</span></code> allows more smoothing between disimilar
 patches.</p>
-<p>In this demo, <cite>h</cite>, was hand-tuned to give the approximate best-case performance
+<p>In this demo, <code class="docutils literal notranslate"><span class="pre">h</span></code>, was hand-tuned to give the approximate best-case performance
 of each variant.</p>
 <img alt="../../_images/sphx_glr_plot_nonlocal_means_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_nonlocal_means_001.png" />
 <p class="sphx-glr-script-out">Out:</p>
@@ -139,14 +139,14 @@ PSNR (fast, using sigma) = 29.22
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.img_as_float"><span class="n">img_as_float</span></a>
 <span class="kn">from</span> <span class="nn">skimage.restoration</span> <span class="kn">import</span> <a href="../../api/skimage.restoration.html#skimage.restoration.denoise_nl_means" title="View documentation for skimage.restoration.denoise_nl_means"><span class="n">denoise_nl_means</span></a><span class="p">,</span> <a href="../../api/skimage.restoration.html#skimage.restoration.estimate_sigma" title="View documentation for skimage.restoration.estimate_sigma"><span class="n">estimate_sigma</span></a>
 <span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <a href="../../api/skimage.measure.html#skimage.measure.compare_psnr" title="View documentation for skimage.measure.compare_psnr"><span class="n">compare_psnr</span></a>
+<span class="kn">from</span> <span class="nn">skimage.util</span> <span class="kn">import</span> <a href="../../api/skimage.util.html#skimage.util.random_noise" title="View documentation for skimage.util.random_noise"><span class="n">random_noise</span></a>
 
 
 <span class="n">astro</span> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.img_as_float"><span class="n">img_as_float</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.astronaut" title="View documentation for skimage.data.astronaut"><span class="n">data</span><span class="o">.</span><span class="n">astronaut</span></a><span class="p">())</span>
 <span class="n">astro</span> <span class="o">=</span> <span class="n">astro</span><span class="p">[</span><span class="mi">30</span><span class="p">:</span><span class="mi">180</span><span class="p">,</span> <span class="mi">150</span><span class="p">:</span><span class="mi">300</span><span class="p">]</span>
 
 <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.08</span>
-<span class="n">noisy</span> <span class="o">=</span> <span class="n">astro</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.standard_normal.html#numpy.random.standard_normal" title="View documentation for numpy.random.standard_normal"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span></a><span class="p">(</span><span class="n">astro</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="n">noisy</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.clip.html#numpy.clip" title="View documentation for numpy.clip"><span class="n">np</span><span class="o">.</span><span class="n">clip</span></a><span class="p">(</span><span class="n">noisy</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">noisy</span> <span class="o">=</span> <a href="../../api/skimage.util.html#skimage.util.random_noise" title="View documentation for skimage.util.random_noise"><span class="n">random_noise</span></a><span class="p">(</span><span class="n">astro</span><span class="p">,</span> <span class="n">var</span><span class="o">=</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="c1"># estimate the noise standard deviation from the noisy image</span>
 <span class="n">sigma_est</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.mean.html#numpy.mean" title="View documentation for numpy.mean"><span class="n">np</span><span class="o">.</span><span class="n">mean</span></a><span class="p">(</span><a href="../../api/skimage.restoration.html#skimage.restoration.estimate_sigma" title="View documentation for skimage.restoration.estimate_sigma"><span class="n">estimate_sigma</span></a><span class="p">(</span><span class="n">noisy</span><span class="p">,</span> <span class="n">multichannel</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
@@ -212,7 +212,7 @@ PSNR (fast, using sigma) = 29.22
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  2.202 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  1.662 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-filters-plot-nonlocal-means-py">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" download="" href="../../_downloads/20db30cdbbbaf688de2c1a34efd9ea75/plot_nonlocal_means.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_nonlocal_means.py</span></code></a></div>
