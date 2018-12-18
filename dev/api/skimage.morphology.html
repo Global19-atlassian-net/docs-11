@@ -2051,16 +2051,22 @@ are dilated or eroded.</p>
 <dt><strong>mask</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
 <dd><p class="first last">The maximum (dilation) / minimum (erosion) allowed value at each pixel.</p>
 </dd>
-<dt><strong>method</strong> <span class="classifier-delimiter">:</span> <span class="classifier">{‘dilation’|’erosion’}</span></dt>
+<dt><strong>method</strong> <span class="classifier-delimiter">:</span> <span class="classifier">{‘dilation’|’erosion’}, optional</span></dt>
 <dd><p class="first last">Perform reconstruction by dilation or erosion. In dilation (or
 erosion), the seed image is dilated (or eroded) until limited by the
 mask image. For dilation, each seed value must be less than or equal
-to the corresponding mask value; for erosion, the reverse is true.</p>
+to the corresponding mask value; for erosion, the reverse is true.
+Default is ‘dilation’.</p>
 </dd>
-<dt><strong>selem</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dt><strong>selem</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, optional</span></dt>
 <dd><p class="first last">The neighborhood expressed as an n-D array of 1’s and 0’s.
-Default is the ball of radius 1 according to the maximum norm
-(i.e. a 3x3 square for 2D images, a 3x3x3 cube for 3D images, etc.)</p>
+Default is the n-D square of radius equal to 1 (i.e. a 3x3 square
+for 2D images, a 3x3x3 cube for 3D images, etc.)</p>
+</dd>
+<dt><strong>offset</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, optional</span></dt>
+<dd><p class="first last">The coordinates of the center of the structuring element.
+Default is located on the geometrical center of the selem, in that case
+selem dimensions must be odd.</p>
 </dd>
 </dl>
 </td>
