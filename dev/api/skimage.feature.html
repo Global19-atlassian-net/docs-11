@@ -1197,8 +1197,9 @@ Stan Z. Li
 <dd><p>Find peaks in an image as coordinate list or boolean mask.</p>
 <p>Peaks are the local maxima in a region of <cite>2 * min_distance + 1</cite>
 (i.e. peaks are separated by at least <cite>min_distance</cite>).</p>
-<p>If peaks are flat (i.e. multiple adjacent pixels have identical
-intensities), the coordinates of all such pixels are returned.</p>
+<p>If there are multiple local maxima with identical pixel intensities
+inside the region defined with <cite>min_distance</cite>,
+the coordinates of all such pixels are returned.</p>
 <p>If both <cite>threshold_abs</cite> and <cite>threshold_rel</cite> are provided, the maximum
 of the two is chosen as the minimum intensity threshold of peaks.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -1222,9 +1223,12 @@ the minimum intensity of the image.</p>
 <dt><strong>threshold_rel</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
 <dd><p class="first last">Minimum intensity of peaks, calculated as <cite>max(image) * threshold_rel</cite>.</p>
 </dd>
-<dt><strong>exclude_border</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
-<dd><p class="first last">If nonzero, <cite>exclude_border</cite> excludes peaks from
-within <cite>exclude_border</cite>-pixels of the border of the image.</p>
+<dt><strong>exclude_border</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or bool, optional</span></dt>
+<dd><p class="first last">If nonzero int, <cite>exclude_border</cite> excludes peaks from
+within <cite>exclude_border</cite>-pixels of the border of the image.
+If True, takes the <cite>min_distance</cite> parameter as value.
+If zero or False, peaks are identified regardless of their
+distance from the border.</p>
 </dd>
 <dt><strong>indices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
 <dd><p class="first last">If True, the output will be an array representing peak
