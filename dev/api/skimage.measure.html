@@ -436,7 +436,7 @@ attributes listed below.</p>
 <p>The following properties can be accessed as attributes or keys:</p>
 <dl class="docutils">
 <dt><strong>area</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>Number of pixels of region.</dd>
+<dd>Number of pixels of the region.</dd>
 <dt><strong>bbox</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple</span></dt>
 <dd>Bounding box <code class="docutils literal notranslate"><span class="pre">(min_row,</span> <span class="pre">min_col,</span> <span class="pre">max_row,</span> <span class="pre">max_col)</span></code>.
 Pixels belonging to the bounding box are in the half-open interval
@@ -446,7 +446,8 @@ Pixels belonging to the bounding box are in the half-open interval
 <dt><strong>centroid</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
 <dd>Centroid coordinate tuple <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</dd>
 <dt><strong>convex_area</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>Number of pixels of convex hull image.</dd>
+<dd>Number of pixels of convex hull image, which is the smallest convex
+polygon that encloses the region.</dd>
 <dt><strong>convex_image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(H, J) ndarray</span></dt>
 <dd>Binary convex hull image which has the same size as bounding box.</dd>
 <dt><strong>coords</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(N, 2) ndarray</span></dt>
@@ -466,7 +467,8 @@ subtracted by number of holes (8-connectivity).</dd>
 <dd>Ratio of pixels in the region to pixels in the total bounding box.
 Computed as <code class="docutils literal notranslate"><span class="pre">area</span> <span class="pre">/</span> <span class="pre">(rows</span> <span class="pre">*</span> <span class="pre">cols)</span></code></dd>
 <dt><strong>filled_area</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
-<dd>Number of pixels of filled region.</dd>
+<dd>Number of pixels of the region will all the holes filled in. Describes
+the area of the filled_image.</dd>
 <dt><strong>filled_image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(H, J) ndarray</span></dt>
 <dd>Binary region image with filled holes which has the same size as
 bounding box.</dd>
@@ -634,7 +636,7 @@ Berlin, 1993.</td></tr>
 <h2>perimeter<a class="headerlink" href="#perimeter" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.perimeter">
-<code class="descclassname">skimage.measure.</code><code class="descname">perimeter</code><span class="sig-paren">(</span><em>image</em>, <em>neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L582"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">perimeter</code><span class="sig-paren">(</span><em>image</em>, <em>neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L584"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate total perimeter of all objects in binary image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
