@@ -643,11 +643,13 @@ Berlin, 1993.</td></tr>
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
-<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">array</span></dt>
-<dd><p class="first last">Binary image.</p>
+<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(N, M) ndarray</span></dt>
+<dd><p class="first last">2D binary image.</p>
 </dd>
 <dt><strong>neighbourhood</strong> <span class="classifier-delimiter">:</span> <span class="classifier">4 or 8, optional</span></dt>
-<dd><p class="first last">Neighborhood connectivity for border pixel determination.</p>
+<dd><p class="first last">Neighborhood connectivity for border pixel determination. It is used to
+compute the contour. A higher neighbourhood widens the border on which
+the perimeter is computed.</p>
 </dd>
 </dl>
 </td>
@@ -670,6 +672,18 @@ a Perimeter Estimator. The Queen’s University of Belfast.
 <a class="reference external" href="http://www.cs.qub.ac.uk/~d.crookes/webpubs/papers/perimeter.doc">http://www.cs.qub.ac.uk/~d.crookes/webpubs/papers/perimeter.doc</a></td></tr>
 </tbody>
 </table>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">util</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="k">import</span> <span class="n">label</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># coins image (binary)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img_coins</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">coins</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">110</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># total perimeter of all objects in the image</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">perimeter</span><span class="p">(</span><span class="n">img_coins</span><span class="p">,</span> <span class="n">neighbourhood</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># doctest: +ELLIPSIS</span>
+<span class="go">7796.867...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">perimeter</span><span class="p">(</span><span class="n">img_coins</span><span class="p">,</span> <span class="n">neighbourhood</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>  <span class="c1"># doctest: +ELLIPSIS</span>
+<span class="go">8806.268...</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
