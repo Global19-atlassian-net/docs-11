@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Wavelet denoising &mdash; skimage v0.15.dev0 docs</title>
+        <title>Shift-invariant wavelet denoising &mdash; skimage v0.15.dev0 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -97,8 +97,8 @@
 <p class="first admonition-title">Note</p>
 <p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-filters-plot-cycle-spinning-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="wavelet-denoising">
-<span id="sphx-glr-auto-examples-filters-plot-cycle-spinning-py"></span><h1>Wavelet denoising<a class="headerlink" href="#wavelet-denoising" title="Permalink to this headline">¶</a></h1>
+<div class="sphx-glr-example-title section" id="shift-invariant-wavelet-denoising">
+<span id="sphx-glr-auto-examples-filters-plot-cycle-spinning-py"></span><h1>Shift-invariant wavelet denoising<a class="headerlink" href="#shift-invariant-wavelet-denoising" title="Permalink to this headline">¶</a></h1>
 <p>The discrete wavelet transform is not <a class="reference external" href="https://en.wikipedia.org/wiki/Shift-invariant_system">shift-invariant</a>.  Shift invariance can
 be achieved through an undecimated wavelet transform (also called stationary
 wavelet transform), at cost of increased redundancy (i.e. more wavelet
@@ -107,9 +107,11 @@ shift-invariance in the context of image denoising with the discrete wavelet
 transform is to use the technique known as “cycle spinning”.  This involves
 averaging the results of the following 3-step procedure for multiple spatial
 shifts, n:</p>
-<p>1.) (circularly) shift the signal by an amount, n
-2.) apply denoising
-3.) apply the inverse shift</p>
+<ol class="arabic simple">
+<li>(circularly) shift the signal by an amount, n</li>
+<li>apply denoising</li>
+<li>apply the inverse shift</li>
+</ol>
 <p>For 2D image denoising, we demonstrate here that such cycle-spinning can
 provide a substantial increase in quality, with much of the gain being
 achieved simply by averaging shifts of only n=0 and n=1 on each axis.</p>
@@ -181,7 +183,7 @@ achieved simply by averaging shifts of only n=0 and n=1 on each axis.</p>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  1.220 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  1.292 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-filters-plot-cycle-spinning-py">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" download="" href="../../_downloads/2eca0819937e8f74af29b32855c30453/plot_cycle_spinning.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_cycle_spinning.py</span></code></a></div>
