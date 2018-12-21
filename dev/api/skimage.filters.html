@@ -2222,7 +2222,7 @@ vol. 55, pp. 532-537, 1993.
 <h2>threshold_niblack<a class="headerlink" href="#threshold-niblack" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.threshold_niblack">
-<code class="descclassname">skimage.filters.</code><code class="descname">threshold_niblack</code><span class="sig-paren">(</span><em>image</em>, <em>window_size=15</em>, <em>k=0.2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L864"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_niblack" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.filters.</code><code class="descname">threshold_niblack</code><span class="sig-paren">(</span><em>image</em>, <em>window_size=15</em>, <em>k=0.2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L872"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_niblack" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies Niblack local threshold to an array.</p>
 <p>A threshold T is calculated for every pixel in the image using the
 following formula:</p>
@@ -2241,10 +2241,10 @@ that weights the effect of standard deviation.</p>
 <dt><strong>image: ndarray</strong></dt>
 <dd><p class="first last">Input image.</p>
 </dd>
-<dt><strong>window_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, tuple or list of integer, optional</span></dt>
-<dd><p class="first last">Odd size window specified as a single integer (e.g., 3, 5,
-etc.) or a tuple of the same dimension than <code class="docutils literal notranslate"><span class="pre">image</span></code>
-containing odd integers (e.g., (3, 5)).</p>
+<dt><strong>window_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, or iterable of int, optional</span></dt>
+<dd><p class="first last">Window size specified as a single odd integer (3, 5, 7, …),
+or an iterable of length <code class="docutils literal notranslate"><span class="pre">image.ndim</span></code> containing only odd
+integers (e.g. <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">5,</span> <span class="pre">5)</span></code>).</p>
 </dd>
 <dt><strong>k</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
 <dd><p class="first last">Value of parameter k in threshold formula.</p>
@@ -2292,7 +2292,7 @@ Processing, Prentice-Hall.</td></tr>
 <h2>threshold_sauvola<a class="headerlink" href="#threshold-sauvola" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.threshold_sauvola">
-<code class="descclassname">skimage.filters.</code><code class="descname">threshold_sauvola</code><span class="sig-paren">(</span><em>image</em>, <em>window_size=15</em>, <em>k=0.2</em>, <em>r=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L913"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_sauvola" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.filters.</code><code class="descname">threshold_sauvola</code><span class="sig-paren">(</span><em>image</em>, <em>window_size=15</em>, <em>k=0.2</em>, <em>r=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L921"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_sauvola" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies Sauvola local threshold to an array. Sauvola is a
 modification of Niblack technique.</p>
 <p>In the original method a threshold T is calculated for every pixel
@@ -2313,10 +2313,10 @@ R is the maximum standard deviation of a greyscale image.</p>
 <dt><strong>image: ndarray</strong></dt>
 <dd><p class="first last">Input image.</p>
 </dd>
-<dt><strong>window_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, tuple or list of integer, optional</span></dt>
-<dd><p class="first last">Odd size window specified as a single integer (e.g., 3, 5,
-etc.) or a tuple of the same dimension than <code class="docutils literal notranslate"><span class="pre">image</span></code>
-containing odd integers (e.g., (3, 5)).</p>
+<dt><strong>window_size</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, or iterable of int, optional</span></dt>
+<dd><p class="first last">Window size specified as a single odd integer (3, 5, 7, …),
+or an iterable of length <code class="docutils literal notranslate"><span class="pre">image.ndim</span></code> containing only odd
+integers (e.g. <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">5,</span> <span class="pre">5)</span></code>).</p>
 </dd>
 <dt><strong>k</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
 <dd><p class="first last">Value of the positive parameter k.</p>
@@ -2429,7 +2429,7 @@ Journal of Histochemistry and Cytochemistry 25 (7), pp. 741-753
 <h2>apply_hysteresis_threshold<a class="headerlink" href="#apply-hysteresis-threshold" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.apply_hysteresis_threshold">
-<code class="descclassname">skimage.filters.</code><code class="descname">apply_hysteresis_threshold</code><span class="sig-paren">(</span><em>image</em>, <em>low</em>, <em>high</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L973"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.apply_hysteresis_threshold" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.filters.</code><code class="descname">apply_hysteresis_threshold</code><span class="sig-paren">(</span><em>image</em>, <em>low</em>, <em>high</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L981"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.apply_hysteresis_threshold" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply hysteresis thresholding to <cite>image</cite>.</p>
 <p>This algorithm finds regions where <cite>image</cite> is greater than <cite>high</cite>
 OR <cite>image</cite> is greater than <cite>low</cite> <em>and</em> that region is connected to
