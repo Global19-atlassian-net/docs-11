@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Release notes &mdash; skimage v0.14.1 docs</title>
+        <title>Release notes &mdash; skimage v0.14.2 docs</title>
     
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.14.1',
+        VERSION:     '0.14.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -30,7 +30,7 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="genindex.html" />
         <link rel="search" title="Search" href="search.html" />
-        <link rel="top" title="skimage v0.14.1 docs" href="index.html" />
+        <link rel="top" title="skimage v0.14.2 docs" href="index.html" />
         <link rel="prev" title="Rank filters" href="auto_examples/xx_applications/plot_rank_filters.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="_static/favicon.ico">
@@ -68,9 +68,17 @@
         <div class="well sidebar-box toc">
             <ul class="nav nav-list">
 <li><a class="reference internal" href="#">Release notes</a><ul class="nav nav-list">
+<li><a class="reference internal" href="#api-changes">API changes</a></li>
 <li><a class="reference internal" href="#bug-fixes">Bug fixes</a></li>
 <li><a class="reference internal" href="#enhancements">Enhancements</a></li>
-<li><a class="reference internal" href="#api-changes">API changes</a></li>
+<li><a class="reference internal" href="#build-process-testing">Build Process &amp; Testing</a></li>
+<li><a class="reference internal" href="#contributors-reviewers">Contributors &amp; Reviewers</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#announcement-scikit-image-0-14-1">Announcement: scikit-image 0.14.1</a><ul class="nav nav-list">
+<li><a class="reference internal" href="#id1">Bug fixes</a></li>
+<li><a class="reference internal" href="#id2">Enhancements</a></li>
+<li><a class="reference internal" href="#id3">API changes</a></li>
 <li><a class="reference internal" href="#documentation">Documentation</a></li>
 <li><a class="reference internal" href="#build-process-development">Build process / development</a></li>
 <li><a class="reference internal" href="#credits">Credits</a></li>
@@ -80,7 +88,7 @@
 <li><a class="reference internal" href="#new-features">New Features</a></li>
 <li><a class="reference internal" href="#improvements">Improvements</a></li>
 <li><a class="reference internal" href="#bugfixes">Bugfixes</a></li>
-<li><a class="reference internal" href="#id1">API Changes</a></li>
+<li><a class="reference internal" href="#id4">API Changes</a></li>
 <li><a class="reference internal" href="#deprecations">Deprecations</a></li>
 <li><a class="reference internal" href="#contributors-to-this-release">Contributors to this release</a></li>
 <li><a class="reference internal" href="#full-list-of-changes">Full list of changes</a></li>
@@ -94,8 +102,8 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#development-installation">2. Development Installation:</a><ul class="nav nav-list">
-<li><a class="reference internal" href="#id2">a. Windows</a></li>
-<li><a class="reference internal" href="#id3">b. Debian and Ubuntu</a></li>
+<li><a class="reference internal" href="#id5">a. Windows</a></li>
+<li><a class="reference internal" href="#id6">b. Debian and Ubuntu</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#build-requirements">Build Requirements</a></li>
@@ -111,7 +119,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.14.1<br></strong>
+    <strong>Docs for 0.14.2<br></strong>
 
     <a id="other">All versions</a>
 
@@ -135,48 +143,110 @@
   <div class="contents topic" id="nbsp">
 <p class="topic-title first">&nbsp;</p>
 <ul class="simple">
-<li><a class="reference internal" href="#release-notes" id="id4">Release notes</a><ul>
-<li><a class="reference internal" href="#bug-fixes" id="id5">Bug fixes</a></li>
-<li><a class="reference internal" href="#enhancements" id="id6">Enhancements</a></li>
-<li><a class="reference internal" href="#api-changes" id="id7">API changes</a></li>
-<li><a class="reference internal" href="#documentation" id="id8">Documentation</a></li>
-<li><a class="reference internal" href="#build-process-development" id="id9">Build process / development</a></li>
-<li><a class="reference internal" href="#credits" id="id10">Credits</a></li>
+<li><a class="reference internal" href="#release-notes" id="id7">Release notes</a><ul>
+<li><a class="reference internal" href="#api-changes" id="id8">API changes</a></li>
+<li><a class="reference internal" href="#bug-fixes" id="id9">Bug fixes</a></li>
+<li><a class="reference internal" href="#enhancements" id="id10">Enhancements</a></li>
+<li><a class="reference internal" href="#build-process-testing" id="id11">Build Process &amp; Testing</a></li>
+<li><a class="reference internal" href="#contributors-reviewers" id="id12">Contributors &amp; Reviewers</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#announcement-scikit-image-0-14-0" id="id11">Announcement: scikit-image 0.14.0</a><ul>
-<li><a class="reference internal" href="#new-features" id="id12">New Features</a></li>
-<li><a class="reference internal" href="#improvements" id="id13">Improvements</a></li>
-<li><a class="reference internal" href="#bugfixes" id="id14">Bugfixes</a></li>
-<li><a class="reference internal" href="#id1" id="id15">API Changes</a></li>
-<li><a class="reference internal" href="#deprecations" id="id16">Deprecations</a></li>
-<li><a class="reference internal" href="#contributors-to-this-release" id="id17">Contributors to this release</a></li>
-<li><a class="reference internal" href="#full-list-of-changes" id="id18">Full list of changes</a></li>
+<li><a class="reference internal" href="#announcement-scikit-image-0-14-1" id="id13">Announcement: scikit-image 0.14.1</a><ul>
+<li><a class="reference internal" href="#id1" id="id14">Bug fixes</a></li>
+<li><a class="reference internal" href="#id2" id="id15">Enhancements</a></li>
+<li><a class="reference internal" href="#id3" id="id16">API changes</a></li>
+<li><a class="reference internal" href="#documentation" id="id17">Documentation</a></li>
+<li><a class="reference internal" href="#build-process-development" id="id18">Build process / development</a></li>
+<li><a class="reference internal" href="#credits" id="id19">Credits</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#installation" id="id19">Installation</a></li>
-<li><a class="reference internal" href="#installing-scikit-image" id="id20">Installing scikit-image</a><ul>
-<li><a class="reference internal" href="#standard-installation" id="id21">1. Standard Installation:</a><ul>
-<li><a class="reference internal" href="#a-windows" id="id22">a. Windows</a></li>
-<li><a class="reference internal" href="#b-debian-and-ubuntu" id="id23">b. Debian and Ubuntu</a></li>
+<li><a class="reference internal" href="#announcement-scikit-image-0-14-0" id="id20">Announcement: scikit-image 0.14.0</a><ul>
+<li><a class="reference internal" href="#new-features" id="id21">New Features</a></li>
+<li><a class="reference internal" href="#improvements" id="id22">Improvements</a></li>
+<li><a class="reference internal" href="#bugfixes" id="id23">Bugfixes</a></li>
+<li><a class="reference internal" href="#id4" id="id24">API Changes</a></li>
+<li><a class="reference internal" href="#deprecations" id="id25">Deprecations</a></li>
+<li><a class="reference internal" href="#contributors-to-this-release" id="id26">Contributors to this release</a></li>
+<li><a class="reference internal" href="#full-list-of-changes" id="id27">Full list of changes</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#development-installation" id="id24">2. Development Installation:</a><ul>
-<li><a class="reference internal" href="#id2" id="id25">a. Windows</a></li>
-<li><a class="reference internal" href="#id3" id="id26">b. Debian and Ubuntu</a></li>
+<li><a class="reference internal" href="#installation" id="id28">Installation</a></li>
+<li><a class="reference internal" href="#installing-scikit-image" id="id29">Installing scikit-image</a><ul>
+<li><a class="reference internal" href="#standard-installation" id="id30">1. Standard Installation:</a><ul>
+<li><a class="reference internal" href="#a-windows" id="id31">a. Windows</a></li>
+<li><a class="reference internal" href="#b-debian-and-ubuntu" id="id32">b. Debian and Ubuntu</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#build-requirements" id="id27">Build Requirements</a></li>
-<li><a class="reference internal" href="#runtime-requirements" id="id28">Runtime requirements</a></li>
-<li><a class="reference internal" href="#optional-requirements" id="id29">Optional Requirements</a></li>
-<li><a class="reference internal" href="#testing-requirements" id="id30">Testing requirements</a></li>
-<li><a class="reference internal" href="#documentation-requirements" id="id31">Documentation requirements</a></li>
+<li><a class="reference internal" href="#development-installation" id="id33">2. Development Installation:</a><ul>
+<li><a class="reference internal" href="#id5" id="id34">a. Windows</a></li>
+<li><a class="reference internal" href="#id6" id="id35">b. Debian and Ubuntu</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#build-requirements" id="id36">Build Requirements</a></li>
+<li><a class="reference internal" href="#runtime-requirements" id="id37">Runtime requirements</a></li>
+<li><a class="reference internal" href="#optional-requirements" id="id38">Optional Requirements</a></li>
+<li><a class="reference internal" href="#testing-requirements" id="id39">Testing requirements</a></li>
+<li><a class="reference internal" href="#documentation-requirements" id="id40">Documentation requirements</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="release-notes">
-<h1><a class="toc-backref" href="#id4">Release notes</a><a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id7">Release notes</a><a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<p>This release handles an incompatibility between scikit-image and NumPy
+1.16.0, released on January 13th 2019.</p>
+<p>It contains the following changes from 0.14.1:</p>
+<div class="section" id="api-changes">
+<h2><a class="toc-backref" href="#id8">API changes</a><a class="headerlink" href="#api-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">skimage.measure.regionprops</span></code> no longer removes singleton dimensions from
+label images (#3284). To recover the old behavior, replace
+<code class="docutils literal notranslate"><span class="pre">regionprops(label_image)</span></code> calls with
+<code class="docutils literal notranslate"><span class="pre">regionprops(np.squeeze(label_image))</span></code></li>
+</ul>
+</div>
+<div class="section" id="bug-fixes">
+<h2><a class="toc-backref" href="#id9">Bug fixes</a><a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Address deprecation of NumPy <cite>_validate_lengths</cite> (backport of #3556)</li>
+<li>Correctly handle the maximum number of lines in Hough transforms
+(backport of #3514)</li>
+<li>Correctly implement early stopping criterion for rank kernel noise
+filter (backport of #3503)</li>
+<li>Fix <cite>skimage.measure.regionprops</cite> for 1x1 inputs (backport of #3284)</li>
+</ul>
+</div>
+<div class="section" id="enhancements">
+<h2><a class="toc-backref" href="#id10">Enhancements</a><a class="headerlink" href="#enhancements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Rewrite of <cite>local_maxima</cite> with flood-fill (backport of #3022, #3447)</li>
+</ul>
+</div>
+<div class="section" id="build-process-testing">
+<h2><a class="toc-backref" href="#id11">Build Process &amp; Testing</a><a class="headerlink" href="#build-process-testing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Dedicate a <cite>–pre</cite> build in appveyor (backport of #3222)</li>
+<li>Avoid travis failure regarding scikit.lookfor) (backport of #3477)</li>
+<li>Stop using the <cite>pytest.fixtures</cite> decorator (#3558)</li>
+<li>Filter out DeprecationPendingWarning for matrix subclass (#3637)</li>
+<li>Fix matplotlib test warnings and circular import (#3632)</li>
+</ul>
+</div>
+<div class="section" id="contributors-reviewers">
+<h2><a class="toc-backref" href="#id12">Contributors &amp; Reviewers</a><a class="headerlink" href="#contributors-reviewers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>François Boulogne</li>
+<li>Emmanuelle Gouillart</li>
+<li>Lars Grüter</li>
+<li>Mark Harfouche</li>
+<li>Juan Nunez-Iglesias</li>
+<li>Egor Panfilov</li>
+<li>Stefan van der Walt</li>
+</ul>
+</div>
+</div>
+<div class="section" id="announcement-scikit-image-0-14-1">
+<h1><a class="toc-backref" href="#id13">Announcement: scikit-image 0.14.1</a><a class="headerlink" href="#announcement-scikit-image-0-14-1" title="Permalink to this headline">¶</a></h1>
 <p>We’re happy to announce the release of scikit-image v0.14.1!</p>
 <p>scikit-image is an image processing toolbox for SciPy that includes algorithms
 for segmentation, geometric transformations, color space manipulation,
@@ -185,8 +255,8 @@ analysis, filtering, morphology, feature detection, and more.</p>
 reminder, 0.14 is the last release to support Python 2.7, but it will be
 updated with bug fixes and popular features until January 1st, 2020.</p>
 <p>This release contains the following changes from 0.14.0:</p>
-<div class="section" id="bug-fixes">
-<h2><a class="toc-backref" href="#id5">Bug fixes</a><a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id14">Bug fixes</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">skimage.color.adapt_rgb</span></code> was applying input functions to the wrong axis
 (#3097)</li>
@@ -204,8 +274,8 @@ namespace (#3374)</li>
 passed to <code class="docutils literal notranslate"><span class="pre">filters.threshold_li</span></code> (#3402)</li>
 </ul>
 </div>
-<div class="section" id="enhancements">
-<h2><a class="toc-backref" href="#id6">Enhancements</a><a class="headerlink" href="#enhancements" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h2><a class="toc-backref" href="#id15">Enhancements</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>“Reflect” mode in transforms now works fine when an image dimension has size
 1 (#3174)</li>
@@ -222,14 +292,14 @@ backend when imported (#3243)</li>
 <li>Add missing <code class="docutils literal notranslate"><span class="pre">cval</span></code> parameter to threshold_local (#3370)</li>
 </ul>
 </div>
-<div class="section" id="api-changes">
-<h2><a class="toc-backref" href="#id7">API changes</a><a class="headerlink" href="#api-changes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2><a class="toc-backref" href="#id16">API changes</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Remove deprecated <code class="docutils literal notranslate"><span class="pre">dynamic_range</span></code> in <code class="docutils literal notranslate"><span class="pre">measure.compare_psnr</span></code> (#3313)</li>
 </ul>
 </div>
 <div class="section" id="documentation">
-<h2><a class="toc-backref" href="#id8">Documentation</a><a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">Documentation</a><a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Improve the documentation on data locality (#3127)</li>
 <li>Improve the documentation on dealing with video (#3176)</li>
@@ -240,7 +310,7 @@ backend when imported (#3243)</li>
 </ul>
 </div>
 <div class="section" id="build-process-development">
-<h2><a class="toc-backref" href="#id9">Build process / development</a><a class="headerlink" href="#build-process-development" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">Build process / development</a><a class="headerlink" href="#build-process-development" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Ensure Cython is 0.23.4 or newer (#3171)</li>
 <li>Suppress warnings during testing (#3143)</li>
@@ -259,10 +329,11 @@ backend when imported (#3243)</li>
 (#3434)</li>
 <li>Ignore failure to raise floating point warnings on certain ARM platforms
 (#3337)</li>
+<li>Fix tests to be compatible with PyWavelets 1.0 (#3406)</li>
 </ul>
 </div>
 <div class="section" id="credits">
-<h2><a class="toc-backref" href="#id10">Credits</a><a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id19">Credits</a><a class="headerlink" href="#credits" title="Permalink to this headline">¶</a></h2>
 <p>Made with commits from (alphabetical by last name):</p>
 <ul class="simple">
 <li>François Boulogne</li>
@@ -276,6 +347,7 @@ backend when imported (#3243)</li>
 <li>Yaroslav Halchenko</li>
 <li>Mark Harfouche</li>
 <li>Jonathan Helmus</li>
+<li>Gregory Lee</li>
 <li>&#64;Legodev</li>
 <li>Matt McCormick</li>
 <li>Juan Nunez-Iglesias</li>
@@ -300,7 +372,7 @@ created by Matthias Bussonnier</p>
 </div>
 </div>
 <div class="section" id="announcement-scikit-image-0-14-0">
-<h1><a class="toc-backref" href="#id11">Announcement: scikit-image 0.14.0</a><a class="headerlink" href="#announcement-scikit-image-0-14-0" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id20">Announcement: scikit-image 0.14.0</a><a class="headerlink" href="#announcement-scikit-image-0-14-0" title="Permalink to this headline">¶</a></h1>
 <p>We’re happy to announce the release of scikit-image v0.14.0!</p>
 <p>scikit-image is an image processing toolbox for SciPy that includes algorithms
 for segmentation, geometric transformations, color space manipulation,
@@ -313,7 +385,7 @@ and backported features deemed important (by community demand) until January
 <p>For more information, examples, and documentation, please visit our website:</p>
 <p><a class="reference external" href="http://scikit-image.org">http://scikit-image.org</a></p>
 <div class="section" id="new-features">
-<h2><a class="toc-backref" href="#id12">New Features</a><a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id21">New Features</a><a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Lookfor function to search across the library: <code class="docutils literal notranslate"><span class="pre">skimage.lookfor</span></code>. (#2713)</li>
 <li>nD support for <code class="docutils literal notranslate"><span class="pre">skimage.transform.rescale</span></code>, <code class="docutils literal notranslate"><span class="pre">skimage.transform.resize</span></code>,
@@ -353,7 +425,7 @@ results from a series of spatial shifts:
 </ul>
 </div>
 <div class="section" id="improvements">
-<h2><a class="toc-backref" href="#id13">Improvements</a><a class="headerlink" href="#improvements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id22">Improvements</a><a class="headerlink" href="#improvements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">VisuShrink</span></code> method for <code class="docutils literal notranslate"><span class="pre">skimage.restoration.denoise_wavelet</span></code>. (#2470)</li>
 <li>New <code class="docutils literal notranslate"><span class="pre">max_ratio</span></code> parameter for <code class="docutils literal notranslate"><span class="pre">skimage.feature.match_descriptors</span></code>. (#2472)</li>
@@ -372,7 +444,7 @@ standard deviation. This enables noise-robust patch distance estimation. (#2890)
 </ul>
 </div>
 <div class="section" id="bugfixes">
-<h2><a class="toc-backref" href="#id14">Bugfixes</a><a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id23">Bugfixes</a><a class="headerlink" href="#bugfixes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Fixed <code class="docutils literal notranslate"><span class="pre">skimage.measure.regionprops.bbox_area</span></code> returning incorrect value. (#2837)</li>
 <li>Changed gradient and L2-Hys norm computation in <code class="docutils literal notranslate"><span class="pre">skimage.feature.hog</span></code>
@@ -386,8 +458,8 @@ to closely follow the paper. (#2864)</li>
 <li>Fixed platform-specific issues appearing in Windows and/or 32-bit environments. (#2867, #3033)</li>
 </ul>
 </div>
-<div class="section" id="id1">
-<h2><a class="toc-backref" href="#id15">API Changes</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2><a class="toc-backref" href="#id24">API Changes</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">skimage.util.montage.</span></code> namespace has been removed, and
 <code class="docutils literal notranslate"><span class="pre">skimage.util.montage.montage2d</span></code> function is now available as
@@ -397,7 +469,7 @@ value, and is now consistent with <code class="docutils literal notranslate"><sp
 </ul>
 </div>
 <div class="section" id="deprecations">
-<h2><a class="toc-backref" href="#id16">Deprecations</a><a class="headerlink" href="#deprecations" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id25">Deprecations</a><a class="headerlink" href="#deprecations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">freeimage</span></code> plugin has been removed from <code class="docutils literal notranslate"><span class="pre">skimage.io</span></code>.</li>
 <li><code class="docutils literal notranslate"><span class="pre">skimage.util.montage2d</span></code> is deprecated and will be removed in 0.15.
@@ -419,7 +491,7 @@ and will be removed in 0.16. Use <code class="docutils literal notranslate"><spa
 </ul>
 </div>
 <div class="section" id="contributors-to-this-release">
-<h2><a class="toc-backref" href="#id17">Contributors to this release</a><a class="headerlink" href="#contributors-to-this-release" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id26">Contributors to this release</a><a class="headerlink" href="#contributors-to-this-release" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Alvin</li>
 <li>Norman Barker</li>
@@ -517,7 +589,7 @@ and will be removed in 0.16. Use <code class="docutils literal notranslate"><spa
 </ul>
 </div>
 <div class="section" id="full-list-of-changes">
-<h2><a class="toc-backref" href="#id18">Full list of changes</a><a class="headerlink" href="#full-list-of-changes" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id27">Full list of changes</a><a class="headerlink" href="#full-list-of-changes" title="Permalink to this headline">¶</a></h2>
 <p>This release is the result of 14 months of work.
 It contains the following 186 merged pull requests by 67 committers:</p>
 <ul class="simple">
@@ -711,10 +783,10 @@ It contains the following 186 merged pull requests by 67 committers:</p>
 </div>
 </div>
 <div class="section" id="installation">
-<h1><a class="toc-backref" href="#id19">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id28">Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 </div>
 <div class="section" id="installing-scikit-image">
-<h1><a class="toc-backref" href="#id20">Installing scikit-image</a><a class="headerlink" href="#installing-scikit-image" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id29">Installing scikit-image</a><a class="headerlink" href="#installing-scikit-image" title="Permalink to this headline">¶</a></h1>
 <p>We are assuming that you have default Python environment already configured on
 your computer and you intend to install <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> inside of it. If you
 want to create and work with Python virtual environments, please follow the
@@ -726,13 +798,13 @@ environment.</p>
 <li>Development Installation</li>
 </ol>
 <div class="section" id="standard-installation">
-<h2><a class="toc-backref" href="#id21">1. Standard Installation:</a><a class="headerlink" href="#standard-installation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id30">1. Standard Installation:</a><a class="headerlink" href="#standard-installation" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> comes pre-installed with several Python distributions,
 including <a class="reference external" href="https://store.continuum.io/cshop/anaconda/">Anaconda</a>, <a class="reference external" href="https://www.enthought.com/products/canopy/">Enthought Canopy</a>, <a class="reference external" href="http://python-xy.github.io/">Python(x,y)</a> and <a class="reference external" href="https://winpython.github.io/">WinPython</a>.
 However, you can install or upgrade existing <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> via
 shell/command prompt.</p>
 <div class="section" id="a-windows">
-<h3><a class="toc-backref" href="#id22">a. Windows</a><a class="headerlink" href="#a-windows" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id31">a. Windows</a><a class="headerlink" href="#a-windows" title="Permalink to this headline">¶</a></h3>
 <p>On Windows, you can install <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> using:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">scikit</span><span class="o">-</span><span class="n">image</span>
 </pre></div>
@@ -750,7 +822,7 @@ You can install Python wheels using:</p>
 </div>
 </div>
 <div class="section" id="b-debian-and-ubuntu">
-<h3><a class="toc-backref" href="#id23">b. Debian and Ubuntu</a><a class="headerlink" href="#b-debian-and-ubuntu" title="Permalink to this headline">¶</a></h3>
+<h3><a class="toc-backref" href="#id32">b. Debian and Ubuntu</a><a class="headerlink" href="#b-debian-and-ubuntu" title="Permalink to this headline">¶</a></h3>
 <p>On Debian and Ubuntu, install <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">skimage</span>
 </pre></div>
@@ -758,12 +830,12 @@ You can install Python wheels using:</p>
 </div>
 </div>
 <div class="section" id="development-installation">
-<h2><a class="toc-backref" href="#id24">2. Development Installation:</a><a class="headerlink" href="#development-installation" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id33">2. Development Installation:</a><a class="headerlink" href="#development-installation" title="Permalink to this headline">¶</a></h2>
 <p>You can install <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> development version if either your
 distribution ships an outdated version or you want to develop and work on new
 features before the package is released officially.</p>
-<div class="section" id="id2">
-<h3><a class="toc-backref" href="#id25">a. Windows</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id34">a. Windows</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>Before installing the development version, uninstall the standard version of
 <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> using pip as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">uninstall</span> <span class="n">scikit</span><span class="o">-</span><span class="n">image</span>
@@ -812,8 +884,8 @@ installation using:</p>
 <p>For more details on compiling in Windows, there is a lot of knowledge iterated
 into the <a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/.appveyor.yml">setup of appveyor</a> (a continuous integration service).</p>
 </div>
-<div class="section" id="id3">
-<h3><a class="toc-backref" href="#id26">b. Debian and Ubuntu</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3><a class="toc-backref" href="#id35">b. Debian and Ubuntu</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>Install all the required dependencies:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">matplotlib</span> <span class="n">python</span><span class="o">-</span><span class="n">numpy</span> <span class="n">python</span><span class="o">-</span><span class="n">pil</span> <span class="n">python</span><span class="o">-</span><span class="n">scipy</span>
 </pre></div>
@@ -839,7 +911,7 @@ into the <a class="reference external" href="https://github.com/scikit-image/sci
 </div>
 </div>
 <div class="section" id="build-requirements">
-<h2><a class="toc-backref" href="#id27">Build Requirements</a><a class="headerlink" href="#build-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id36">Build Requirements</a><a class="headerlink" href="#build-requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://python.org">Python &gt;= 2.7</a></li>
 <li><a class="reference external" href="http://numpy.scipy.org/">Numpy &gt;= 1.11</a></li>
@@ -850,7 +922,7 @@ into the <a class="reference external" href="https://github.com/scikit-image/sci
 </ul>
 </div>
 <div class="section" id="runtime-requirements">
-<h2><a class="toc-backref" href="#id28">Runtime requirements</a><a class="headerlink" href="#runtime-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id37">Runtime requirements</a><a class="headerlink" href="#runtime-requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="http://python.org">Python &gt;= 2.7</a></li>
 <li><a class="reference external" href="http://numpy.scipy.org/">Numpy &gt;= 1.11</a></li>
@@ -876,7 +948,7 @@ into the <a class="reference external" href="https://github.com/scikit-image/sci
 </div>
 </div>
 <div class="section" id="optional-requirements">
-<h2><a class="toc-backref" href="#id29">Optional Requirements</a><a class="headerlink" href="#optional-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id38">Optional Requirements</a><a class="headerlink" href="#optional-requirements" title="Permalink to this headline">¶</a></h2>
 <p>You can use <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> with the basic requirements listed above, but some
 functionality is only available with the following installed:</p>
 <ul class="simple">
@@ -910,7 +982,7 @@ including specialized formats using in medical imaging.</dd>
 </ul>
 </div>
 <div class="section" id="testing-requirements">
-<h2><a class="toc-backref" href="#id30">Testing requirements</a><a class="headerlink" href="#testing-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id39">Testing requirements</a><a class="headerlink" href="#testing-requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="first docutils">
 <dt><a class="reference external" href="http://doc.pytest.org/en/latest/">pytest</a></dt>
@@ -925,7 +997,7 @@ including specialized formats using in medical imaging.</dd>
 </ul>
 </div>
 <div class="section" id="documentation-requirements">
-<h2><a class="toc-backref" href="#id31">Documentation requirements</a><a class="headerlink" href="#documentation-requirements" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id40">Documentation requirements</a><a class="headerlink" href="#documentation-requirements" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><dl class="first docutils">
 <dt><a class="reference external" href="http://sphinx-doc.org/">sphinx &gt;= 1.3</a></dt>
