@@ -2842,7 +2842,7 @@ the other, <code class="docutils literal notranslate"><span class="pre">'vertica
 <h2>blob_dog<a class="headerlink" href="#blob-dog" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.blob_dog">
-<code class="descclassname">skimage.feature.</code><code class="descname">blob_dog</code><span class="sig-paren">(</span><em>image</em>, <em>min_sigma=1</em>, <em>max_sigma=50</em>, <em>sigma_ratio=1.6</em>, <em>threshold=2.0</em>, <em>overlap=0.5</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L168"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_dog" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">blob_dog</code><span class="sig-paren">(</span><em>image</em>, <em>min_sigma=1</em>, <em>max_sigma=50</em>, <em>sigma_ratio=1.6</em>, <em>threshold=2.0</em>, <em>overlap=0.5</em>, <em>*</em>, <em>exclude_border=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L168"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_dog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds blobs in the given grayscale image.</p>
 <p>Blobs are found using the Difference of Gaussian (DoG) method <a class="reference internal" href="#rf5218630e229-1" id="id47">[1]</a>.
 For each blob found, the method returns its coordinates and the standard
@@ -2856,13 +2856,17 @@ deviation of the Gaussian kernel that detected the blob.</p>
 <dd><p class="first last">Input grayscale image, blobs are assumed to be light on dark
 background (white on black).</p>
 </dd>
-<dt><strong>min_sigma</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
-<dd><p class="first last">The minimum standard deviation for Gaussian Kernel. Keep this low to
-detect smaller blobs.</p>
+<dt><strong>min_sigma</strong> <span class="classifier-delimiter">:</span> <span class="classifier">scalar or sequence of scalars, optional</span></dt>
+<dd><p class="first last">The minimum standard deviation for Gaussian kernel. Keep this low to
+detect smaller blobs. The standard deviations of the Gaussian filter
+are given for each axis as a sequence, or as a single number, in
+which case it is equal for all axes.</p>
 </dd>
-<dt><strong>max_sigma</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
-<dd><p class="first last">The maximum standard deviation for Gaussian Kernel. Keep this high to
-detect larger blobs.</p>
+<dt><strong>max_sigma</strong> <span class="classifier-delimiter">:</span> <span class="classifier">scalar or sequence of scalars, optional</span></dt>
+<dd><p class="first last">The maximum standard deviation for Gaussian kernel. Keep this high to
+detect larger blobs. The standard deviations of the Gaussian filter
+are given for each axis as a sequence, or as a single number, in
+which case it is equal for all axes.</p>
 </dd>
 <dt><strong>sigma_ratio</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
 <dd><p class="first last">The ratio between the standard deviation of Gaussian Kernels used for
@@ -2877,16 +2881,23 @@ intensities.</p>
 <dd><p class="first last">A value between 0 and 1. If the area of two blobs overlaps by a
 fraction greater than <cite>threshold</cite>, the smaller blob is eliminated.</p>
 </dd>
+<dt><strong>exclude_border</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or bool, optional</span></dt>
+<dd><p class="first last">If nonzero int, <cite>exclude_border</cite> excludes blobs from
+within <cite>exclude_border</cite>-pixels of the border of the image.</p>
+</dd>
 </dl>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>A</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(n, image.ndim + 1) ndarray</span></dt>
-<dd><p class="first last">A 2d array with each row representing 3 values for a 2D image,
-and 4 values for a 3D image: <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">c,</span> <span class="pre">sigma)</span></code> or <code class="docutils literal notranslate"><span class="pre">(p,</span> <span class="pre">r,</span> <span class="pre">c,</span> <span class="pre">sigma)</span></code>
-where <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">c)</span></code> or <code class="docutils literal notranslate"><span class="pre">(p,</span> <span class="pre">r,</span> <span class="pre">c)</span></code> are coordinates of the blob and
-<code class="docutils literal notranslate"><span class="pre">sigma</span></code> is the standard deviation of the Gaussian kernel which
-detected the blob.</p>
+<dt><strong>A</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(n, image.ndim + sigma) ndarray</span></dt>
+<dd><p class="first last">A 2d array with each row representing 2 coordinate values for a 2D
+image, and 3 coordinate values for a 3D image, plus the sigma(s) used.
+When a single sigma is passed, outputs are:
+<code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">c,</span> <span class="pre">sigma)</span></code> or <code class="docutils literal notranslate"><span class="pre">(p,</span> <span class="pre">r,</span> <span class="pre">c,</span> <span class="pre">sigma)</span></code> where <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">c)</span></code> or
+<code class="docutils literal notranslate"><span class="pre">(p,</span> <span class="pre">r,</span> <span class="pre">c)</span></code> are coordinates of the blob and <code class="docutils literal notranslate"><span class="pre">sigma</span></code> is the standard
+deviation of the Gaussian kernel which detected the blob. When an
+anisotropic gaussian is used (sigmas per dimension), the detected sigma
+is returned for each dimension.</p>
 </dd>
 </dl>
 </td>
@@ -2946,7 +2957,7 @@ a 2-D image and <span class="math notranslate nohighlight">\(\sqrt{3}\sigma\)</s
 <h2>blob_doh<a class="headerlink" href="#blob-doh" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.blob_doh">
-<code class="descclassname">skimage.feature.</code><code class="descname">blob_doh</code><span class="sig-paren">(</span><em>image</em>, <em>min_sigma=1</em>, <em>max_sigma=30</em>, <em>num_sigma=10</em>, <em>threshold=0.01</em>, <em>overlap=0.5</em>, <em>log_scale=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L383"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_doh" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">blob_doh</code><span class="sig-paren">(</span><em>image</em>, <em>min_sigma=1</em>, <em>max_sigma=30</em>, <em>num_sigma=10</em>, <em>threshold=0.01</em>, <em>overlap=0.5</em>, <em>log_scale=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L459"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_doh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds blobs in the given grayscale image.</p>
 <p>Blobs are found using the Determinant of Hessian method <a class="reference internal" href="#ra19a7aed16ca-1" id="id49">[1]</a>. For each blob
 found, the method returns its coordinates and the standard deviation
@@ -3060,7 +3071,7 @@ due to the box filters used in the approximation of Hessian Determinant.</p>
 <h2>blob_log<a class="headerlink" href="#blob-log" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.blob_log">
-<code class="descclassname">skimage.feature.</code><code class="descname">blob_log</code><span class="sig-paren">(</span><em>image</em>, <em>min_sigma=1</em>, <em>max_sigma=50</em>, <em>num_sigma=10</em>, <em>threshold=0.2</em>, <em>overlap=0.5</em>, <em>log_scale=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L278"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_log" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">blob_log</code><span class="sig-paren">(</span><em>image</em>, <em>min_sigma=1</em>, <em>max_sigma=50</em>, <em>num_sigma=10</em>, <em>threshold=0.2</em>, <em>overlap=0.5</em>, <em>log_scale=False</em>, <em>*</em>, <em>exclude_border=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L313"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_log" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds blobs in the given grayscale image.</p>
 <p>Blobs are found using the Laplacian of Gaussian (LoG) method <a class="reference internal" href="#r520e53dd5fa2-1" id="id53">[1]</a>.
 For each blob found, the method returns its coordinates and the standard
@@ -3074,13 +3085,17 @@ deviation of the Gaussian kernel that detected the blob.</p>
 <dd><p class="first last">Input grayscale image, blobs are assumed to be light on dark
 background (white on black).</p>
 </dd>
-<dt><strong>min_sigma</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
-<dd><p class="first last">The minimum standard deviation for Gaussian Kernel. Keep this low to
-detect smaller blobs.</p>
+<dt><strong>min_sigma</strong> <span class="classifier-delimiter">:</span> <span class="classifier">scalar or sequence of scalars, optional</span></dt>
+<dd><p class="first last">the minimum standard deviation for Gaussian kernel. Keep this low to
+detect smaller blobs. The standard deviations of the Gaussian filter
+are given for each axis as a sequence, or as a single number, in
+which case it is equal for all axes.</p>
 </dd>
-<dt><strong>max_sigma</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
-<dd><p class="first last">The maximum standard deviation for Gaussian Kernel. Keep this high to
-detect larger blobs.</p>
+<dt><strong>max_sigma</strong> <span class="classifier-delimiter">:</span> <span class="classifier">scalar or sequence of scalars, optional</span></dt>
+<dd><p class="first last">The maximum standard deviation for Gaussian kernel. Keep this high to
+detect larger blobs. The standard deviations of the Gaussian filter
+are given for each axis as a sequence, or as a single number, in
+which case it is equal for all axes.</p>
 </dd>
 <dt><strong>num_sigma</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
 <dd><p class="first last">The number of intermediate values of standard deviations to consider
@@ -3100,16 +3115,23 @@ fraction greater than <cite>threshold</cite>, the smaller blob is eliminated.</p
 using a logarithmic scale to the base <cite>10</cite>. If not, linear
 interpolation is used.</p>
 </dd>
+<dt><strong>exclude_border</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or bool, optional</span></dt>
+<dd><p class="first last">If nonzero int, <cite>exclude_border</cite> excludes blobs from
+within <cite>exclude_border</cite>-pixels of the border of the image.</p>
+</dd>
 </dl>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
-<dt><strong>A</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(n, image.ndim + 1) ndarray</span></dt>
-<dd><p class="first last">A 2d array with each row representing 3 values for a 2D image,
-and 4 values for a 3D image: <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">c,</span> <span class="pre">sigma)</span></code> or <code class="docutils literal notranslate"><span class="pre">(p,</span> <span class="pre">r,</span> <span class="pre">c,</span> <span class="pre">sigma)</span></code>
-where <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">c)</span></code> or <code class="docutils literal notranslate"><span class="pre">(p,</span> <span class="pre">r,</span> <span class="pre">c)</span></code> are coordinates of the blob and
-<code class="docutils literal notranslate"><span class="pre">sigma</span></code> is the standard deviation of the Gaussian kernel which
-detected the blob.</p>
+<dt><strong>A</strong> <span class="classifier-delimiter">:</span> <span class="classifier">(n, image.ndim + sigma) ndarray</span></dt>
+<dd><p class="first last">A 2d array with each row representing 2 coordinate values for a 2D
+image, and 3 coordinate values for a 3D image, plus the sigma(s) used.
+When a single sigma is passed, outputs are:
+<code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">c,</span> <span class="pre">sigma)</span></code> or <code class="docutils literal notranslate"><span class="pre">(p,</span> <span class="pre">r,</span> <span class="pre">c,</span> <span class="pre">sigma)</span></code> where <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">c)</span></code> or
+<code class="docutils literal notranslate"><span class="pre">(p,</span> <span class="pre">r,</span> <span class="pre">c)</span></code> are coordinates of the blob and <code class="docutils literal notranslate"><span class="pre">sigma</span></code> is the standard
+deviation of the Gaussian kernel which detected the blob. When an
+anisotropic gaussian is used (sigmas per dimension), the detected sigma
+is returned for each dimension.</p>
 </dd>
 </dl>
 </td>
