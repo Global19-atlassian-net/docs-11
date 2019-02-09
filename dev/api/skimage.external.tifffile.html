@@ -77,6 +77,7 @@
 <li><a class="reference internal" href="#imsave">imsave</a></li>
 <li><a class="reference internal" href="#imread">imread</a></li>
 <li><a class="reference internal" href="#imshow">imshow</a></li>
+<li><a class="reference internal" href="#parse-kwargs">parse_kwargs</a></li>
 <li><a class="reference internal" href="#tifffile"><code class="docutils literal notranslate"><span class="pre">TiffFile</span></code></a></li>
 <li><a class="reference internal" href="#tiffwriter"><code class="docutils literal notranslate"><span class="pre">TiffWriter</span></code></a></li>
 <li><a class="reference internal" href="#tiffsequence"><code class="docutils literal notranslate"><span class="pre">TiffSequence</span></code></a></li>
@@ -126,13 +127,16 @@
 <tr class="row-odd"><td><a class="reference internal" href="#skimage.external.tifffile.imshow" title="skimage.external.tifffile.imshow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.external.tifffile.imshow</span></code></a>(data[,&nbsp;…])</td>
 <td>Plot n-dimensional images using matplotlib.pyplot.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.external.tifffile.TiffFile" title="skimage.external.tifffile.TiffFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.external.tifffile.TiffFile</span></code></a>(arg[,&nbsp;…])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.external.tifffile.parse_kwargs" title="skimage.external.tifffile.parse_kwargs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.external.tifffile.parse_kwargs</span></code></a>(…)</td>
+<td>Return dict with keys from keys|keyvals and values from kwargs|keyvals.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.external.tifffile.TiffFile" title="skimage.external.tifffile.TiffFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.external.tifffile.TiffFile</span></code></a>(arg[,&nbsp;…])</td>
 <td>Read image and metadata from TIFF, STK, LSM, and FluoView files.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.external.tifffile.TiffWriter" title="skimage.external.tifffile.TiffWriter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.external.tifffile.TiffWriter</span></code></a>(file[,&nbsp;…])</td>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.external.tifffile.TiffWriter" title="skimage.external.tifffile.TiffWriter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.external.tifffile.TiffWriter</span></code></a>(file[,&nbsp;…])</td>
 <td>Write image data to TIFF file.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#skimage.external.tifffile.TiffSequence" title="skimage.external.tifffile.TiffSequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.external.tifffile.TiffSequence</span></code></a>(files)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.external.tifffile.TiffSequence" title="skimage.external.tifffile.TiffSequence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.external.tifffile.TiffSequence</span></code></a>(files)</td>
 <td>Sequence of image files.</td>
 </tr>
 </tbody>
@@ -256,6 +260,24 @@ Requires pyplot already imported <cite>from matplotlib import pyplot</cite>.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+</div>
+<div class="section" id="parse-kwargs">
+<h2>parse_kwargs<a class="headerlink" href="#parse-kwargs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.external.tifffile.parse_kwargs">
+<code class="descclassname">skimage.external.tifffile.</code><code class="descname">parse_kwargs</code><span class="sig-paren">(</span><em>kwargs</em>, <em>*keys</em>, <em>**keyvalues</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/external/tifffile/tifffile.py#L5018"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.external.tifffile.parse_kwargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dict with keys from keys|keyvals and values from kwargs|keyvals.</p>
+<p>Existing keys are deleted from kwargs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs2</span> <span class="o">=</span> <span class="n">parse_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="n">four</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">five</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;one&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kwargs2</span> <span class="o">==</span> <span class="p">{</span><span class="s1">&#39;two&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;five&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">}</span>
+<span class="go">True</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
