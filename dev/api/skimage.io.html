@@ -201,7 +201,7 @@
 <tr class="row-even"><td><a class="reference internal" href="#skimage.io.imread_collection_wrapper" title="skimage.io.imread_collection_wrapper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.io.imread_collection_wrapper</span></code></a>(imread)</td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#skimage.io.imsave" title="skimage.io.imsave"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.io.imsave</span></code></a>(fname,&nbsp;arr[,&nbsp;plugin])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.io.imsave" title="skimage.io.imsave"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.io.imsave</span></code></a>(fname,&nbsp;arr[,&nbsp;plugin,&nbsp;…])</td>
 <td>Save an image to file.</td>
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.io.imshow" title="skimage.io.imshow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.io.imshow</span></code></a>(arr[,&nbsp;plugin])</td>
@@ -475,7 +475,7 @@ time.  Otherwise, images will be cached once they are loaded.</p>
 <h2>imsave<a class="headerlink" href="#imsave" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.imsave">
-<code class="descclassname">skimage.io.</code><code class="descname">imsave</code><span class="sig-paren">(</span><em>fname</em>, <em>arr</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imsave" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">imsave</code><span class="sig-paren">(</span><em>fname</em>, <em>arr</em>, <em>plugin=None</em>, <em>check_contrast=True</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L107"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imsave" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save an image to file.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -488,11 +488,14 @@ time.  Otherwise, images will be cached once they are loaded.</p>
 <dt><strong>arr</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray of shape (M,N) or (M,N,3) or (M,N,4)</span></dt>
 <dd><p class="first last">Image data.</p>
 </dd>
-<dt><strong>plugin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dt><strong>plugin</strong> <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
 <dd><p class="first last">Name of plugin to use.  By default, the different plugins are
 tried (starting with imageio) until a suitable
 candidate is found.  If not given and fname is a tiff file, the
 tifffile plugin will be used.</p>
+</dd>
+<dt><strong>check_contrast</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">Check for low contrast and print warning (default: True).</p>
 </dd>
 </dl>
 </td>
@@ -520,7 +523,7 @@ the PIL and imageio plugins.</p>
 <h2>imshow<a class="headerlink" href="#imshow" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.imshow">
-<code class="descclassname">skimage.io.</code><code class="descname">imshow</code><span class="sig-paren">(</span><em>arr</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L145"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imshow" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">imshow</code><span class="sig-paren">(</span><em>arr</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L147"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imshow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display an image.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -562,7 +565,7 @@ candidate is found.</p>
 <h2>imshow_collection<a class="headerlink" href="#imshow-collection" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.imshow_collection">
-<code class="descclassname">skimage.io.</code><code class="descname">imshow_collection</code><span class="sig-paren">(</span><em>ic</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L168"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imshow_collection" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">imshow_collection</code><span class="sig-paren">(</span><em>ic</em>, <em>plugin=None</em>, <em>**plugin_args</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L170"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imshow_collection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display a collection of images.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -832,7 +835,7 @@ plugins (in order of preference) as value.</p>
 <h2>show<a class="headerlink" href="#show" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.show">
-<code class="descclassname">skimage.io.</code><code class="descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.show" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.io.</code><code class="descname">show</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/_io.py#L190"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.show" title="Permalink to this definition">¶</a></dt>
 <dd><p>Display pending images.</p>
 <p>Launch the event loop of the current gui plugin, and display all
 pending images, queued via <cite>imshow</cite>. This is required when using
