@@ -2509,8 +2509,9 @@ neighborhood.</p>
 </dd>
 <dt><strong>selem</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, optional</span></dt>
 <dd><p class="first last">A structuring element used to determine the neighborhood of each
-evaluated pixel. It must contain only 1’s and 0’s, have the same number
-of dimensions as <cite>image</cite>. If not given, all adjacent pixels are
+evaluated pixel (<code class="docutils literal notranslate"><span class="pre">True</span></code> denotes a connected pixel). It must be a
+boolean array and have the same number of dimensions as <cite>image</cite>. If
+neither <cite>selem</cite> nor <cite>connectivity</cite> are given, all adjacent pixels are
 considered as part of the neighborhood.</p>
 </dd>
 <dt><strong>connectivity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
@@ -2522,8 +2523,7 @@ equal to <cite>connectivity</cite> are considered neighbors. Ignored if
 <dt><strong>indices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
 <dd><p class="first last">If True, the output will be a tuple of one-dimensional arrays
 representing the indices of local maxima in each dimension. If False,
-the output will be an array of 0’s and 1’s with the same shape as
-<cite>image</cite>.</p>
+the output will be a boolean array with the same shape as <cite>image</cite>.</p>
 </dd>
 <dt><strong>allow_borders</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
 <dd><p class="first last">If true, plateaus that touch the image border are valid maxima.</p>
@@ -2533,10 +2533,10 @@ the output will be an array of 0’s and 1’s with the same shape as
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first docutils">
 <dt><strong>maxima</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray or tuple[ndarray]</span></dt>
-<dd><p class="first last">If <cite>indices</cite> is false, an array with the same shape as <cite>image</cite> is
-returned with 1’s indicating the position of local maxima
-(0 otherwise). If <cite>indices</cite> is true, a tuple of one-dimensional arrays
-containing the coordinates (indices) of all found maxima.</p>
+<dd><p class="first last">If <cite>indices</cite> is false, a boolean array with the same shape as <cite>image</cite>
+is returned with <code class="docutils literal notranslate"><span class="pre">True</span></code> indicating the position of local maxima
+(<code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise). If <cite>indices</cite> is true, a tuple of one-dimensional
+arrays containing the coordinates (indices) of all found maxima.</p>
 </dd>
 </dl>
 </td>
@@ -2587,28 +2587,28 @@ has a higher gray level, mark the plateau as a definite local maximum.</li>
 <p>Find local maxima by comparing to all neighboring pixels (maximal
 connectivity):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">local_maxima</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-<span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
-<span class="go">       [0, 1, 1, 0, 0, 0, 0],</span>
-<span class="go">       [0, 1, 1, 0, 0, 0, 0],</span>
-<span class="go">       [1, 0, 0, 0, 0, 0, 1]], dtype=uint8)</span>
+<span class="go">array([[False, False, False, False, False, False, False],</span>
+<span class="go">       [False,  True,  True, False, False, False, False],</span>
+<span class="go">       [False,  True,  True, False, False, False, False],</span>
+<span class="go">       [ True, False, False, False, False, False,  True]], dtype=bool)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">local_maxima</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">(array([1, 1, 2, 2, 3, 3]), array([1, 2, 1, 2, 0, 6]))</span>
 </pre></div>
 </div>
 <p>Find local maxima without comparing to diagonal pixels (connectivity 1):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">local_maxima</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
-<span class="go">       [0, 1, 1, 0, 1, 1, 0],</span>
-<span class="go">       [0, 1, 1, 0, 1, 1, 0],</span>
-<span class="go">       [1, 0, 0, 0, 0, 0, 1]], dtype=uint8)</span>
+<span class="go">array([[False, False, False, False, False, False, False],</span>
+<span class="go">       [False,  True,  True, False,  True,  True, False],</span>
+<span class="go">       [False,  True,  True, False,  True,  True, False],</span>
+<span class="go">       [ True, False, False, False, False, False,  True]], dtype=bool)</span>
 </pre></div>
 </div>
 <p>and exclude maxima that border the image edge:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">local_maxima</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">allow_borders</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
-<span class="go">       [0, 1, 1, 0, 1, 1, 0],</span>
-<span class="go">       [0, 1, 1, 0, 1, 1, 0],</span>
-<span class="go">       [0, 0, 0, 0, 0, 0, 0]], dtype=uint8)</span>
+<span class="go">array([[False, False, False, False, False, False, False],</span>
+<span class="go">       [False,  True,  True, False,  True,  True, False],</span>
+<span class="go">       [False,  True,  True, False,  True,  True, False],</span>
+<span class="go">       [False, False, False, False, False, False, False]], dtype=bool)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2640,8 +2640,9 @@ neighborhood.</p>
 </dd>
 <dt><strong>selem</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, optional</span></dt>
 <dd><p class="first last">A structuring element used to determine the neighborhood of each
-evaluated pixel. It must contain only 1’s and 0’s, have the same number
-of dimensions as <cite>image</cite>. If not given, all adjacent pixels are
+evaluated pixel (<code class="docutils literal notranslate"><span class="pre">True</span></code> denotes a connected pixel). It must be a
+boolean array and have the same number of dimensions as <cite>image</cite>. If
+neither <cite>selem</cite> nor <cite>connectivity</cite> are given, all adjacent pixels are
 considered as part of the neighborhood.</p>
 </dd>
 <dt><strong>connectivity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
@@ -2653,8 +2654,7 @@ equal to <cite>connectivity</cite> are considered neighbors. Ignored if
 <dt><strong>indices</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
 <dd><p class="first last">If True, the output will be a tuple of one-dimensional arrays
 representing the indices of local minima in each dimension. If False,
-the output will be an array of 0’s and 1’s with the same shape as
-<cite>image</cite>.</p>
+the output will be a boolean array with the same shape as <cite>image</cite>.</p>
 </dd>
 <dt><strong>allow_borders</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
 <dd><p class="first last">If true, plateaus that touch the image border are valid minima.</p>
@@ -2664,10 +2664,10 @@ the output will be an array of 0’s and 1’s with the same shape as
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
 <dt><strong>minima</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray or tuple[ndarray]</span></dt>
-<dd><p class="first last">If <cite>indices</cite> is false, an array with the same shape as <cite>image</cite> is
-returned with 1’s indicating the position of local minima
-(0 otherwise). If <cite>indices</cite> is true, a tuple of one-dimensional arrays
-containing the coordinates (indices) of all found minima.</p>
+<dd><p class="first last">If <cite>indices</cite> is false, a boolean array with the same shape as <cite>image</cite>
+is returned with <code class="docutils literal notranslate"><span class="pre">True</span></code> indicating the position of local minima
+(<code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise). If <cite>indices</cite> is true, a tuple of one-dimensional
+arrays containing the coordinates (indices) of all found minima.</p>
 </dd>
 </dl>
 </td>
@@ -2710,28 +2710,28 @@ has a smaller gray level, mark the plateau as a definite local minimum.</li>
 <p>Find local minima by comparing to all neighboring pixels (maximal
 connectivity):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">local_minima</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-<span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
-<span class="go">       [0, 1, 1, 0, 0, 0, 0],</span>
-<span class="go">       [0, 1, 1, 0, 0, 0, 0],</span>
-<span class="go">       [1, 0, 0, 0, 0, 0, 1]], dtype=uint8)</span>
+<span class="go">array([[False, False, False, False, False, False, False],</span>
+<span class="go">       [False,  True,  True, False, False, False, False],</span>
+<span class="go">       [False,  True,  True, False, False, False, False],</span>
+<span class="go">       [ True, False, False, False, False, False,  True]], dtype=bool)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">local_minima</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">indices</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="go">(array([1, 1, 2, 2, 3, 3]), array([1, 2, 1, 2, 0, 6]))</span>
 </pre></div>
 </div>
 <p>Find local minima without comparing to diagonal pixels (connectivity 1):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">local_minima</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
-<span class="go">       [0, 1, 1, 0, 1, 1, 0],</span>
-<span class="go">       [0, 1, 1, 0, 1, 1, 0],</span>
-<span class="go">       [1, 0, 0, 0, 0, 0, 1]], dtype=uint8)</span>
+<span class="go">array([[False, False, False, False, False, False, False],</span>
+<span class="go">       [False,  True,  True, False,  True,  True, False],</span>
+<span class="go">       [False,  True,  True, False,  True,  True, False],</span>
+<span class="go">       [ True, False, False, False, False, False,  True]], dtype=bool)</span>
 </pre></div>
 </div>
 <p>and exclude minima that border the image edge:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">local_minima</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">allow_borders</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
-<span class="go">       [0, 1, 1, 0, 1, 1, 0],</span>
-<span class="go">       [0, 1, 1, 0, 1, 1, 0],</span>
-<span class="go">       [0, 0, 0, 0, 0, 0, 0]], dtype=uint8)</span>
+<span class="go">array([[False, False, False, False, False, False, False],</span>
+<span class="go">       [False,  True,  True, False,  True,  True, False],</span>
+<span class="go">       [False,  True,  True, False,  True,  True, False],</span>
+<span class="go">       [False, False, False, False, False, False, False]], dtype=bool)</span>
 </pre></div>
 </div>
 </dd></dl>
