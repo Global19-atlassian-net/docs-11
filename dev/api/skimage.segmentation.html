@@ -134,6 +134,14 @@
 <li><a class="reference internal" href="#examples-using-skimage-segmentation-checkerboard-level-set">Examples using <code class="docutils literal notranslate"><span class="pre">skimage.segmentation.checkerboard_level_set</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#flood">flood</a><ul class="nav nav-list">
+<li><a class="reference internal" href="#examples-using-skimage-segmentation-flood">Examples using <code class="docutils literal notranslate"><span class="pre">skimage.segmentation.flood</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#flood-fill">flood_fill</a><ul class="nav nav-list">
+<li><a class="reference internal" href="#examples-using-skimage-segmentation-flood-fill">Examples using <code class="docutils literal notranslate"><span class="pre">skimage.segmentation.flood_fill</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -224,6 +232,12 @@
 </tr>
 <tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.checkerboard_level_set</span></code></a>(…)</td>
 <td>Create a checkerboard level set with binary values.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="#skimage.segmentation.flood" title="skimage.segmentation.flood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.flood</span></code></a>(image,&nbsp;seed_point,&nbsp;*)</td>
+<td>Mask corresponding to a flood fill.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#skimage.segmentation.flood_fill" title="skimage.segmentation.flood_fill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.flood_fill</span></code></a>(image,&nbsp;…)</td>
+<td>Perform flood filling on an image.</td>
 </tr>
 </tbody>
 </table>
@@ -1254,7 +1268,7 @@ guaranteed to be smaller than either the input or output images.</p>
 <h2>watershed<a class="headerlink" href="#watershed" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.watershed">
-<code class="descclassname">skimage.segmentation.</code><code class="descname">watershed</code><span class="sig-paren">(</span><em>image</em>, <em>markers</em>, <em>connectivity=1</em>, <em>offset=None</em>, <em>mask=None</em>, <em>compactness=0</em>, <em>watershed_line=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/watershed.py#L156"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.watershed" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.segmentation.</code><code class="descname">watershed</code><span class="sig-paren">(</span><em>image</em>, <em>markers</em>, <em>connectivity=1</em>, <em>offset=None</em>, <em>mask=None</em>, <em>compactness=0</em>, <em>watershed_line=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/watershed.py#L157"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.watershed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find watershed basins in <cite>image</cite> flooded from given <cite>markers</cite>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1886,6 +1900,231 @@ smallest image dimension.</p>
 <div class="sphx-glr-thumbcontainer" tooltip="*Morphological Snakes* [1]_ are a family of methods for image segmentation. Their behavior is s..."><div class="figure" id="id46">
 <img alt="../_images/sphx_glr_plot_morphsnakes_thumb.png" src="../_images/sphx_glr_plot_morphsnakes_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_morphsnakes.html#sphx-glr-auto-examples-segmentation-plot-morphsnakes-py"><span class="std std-ref">Morphological Snakes</span></a></span></p>
+</div>
+</div></div>
+</div>
+<div class="section" id="flood">
+<h2>flood<a class="headerlink" href="#flood" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.segmentation.flood">
+<code class="descclassname">skimage.segmentation.</code><code class="descname">flood</code><span class="sig-paren">(</span><em>image</em>, <em>seed_point</em>, <em>*</em>, <em>selem=None</em>, <em>connectivity=None</em>, <em>tolerance=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/_flood_fill.py#L113"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.flood" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mask corresponding to a flood fill.</p>
+<p>Starting at a specific <cite>seed_point</cite>, connected points equal or within
+<cite>tolerance</cite> of the seed value are found.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">An n-dimensional array.</p>
+</dd>
+<dt><strong>seed_point</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple or int</span></dt>
+<dd><p class="first last">The point in <cite>image</cite> used as the starting point for the flood fill.  If
+the image is 1D, this point may be given as an integer.</p>
+</dd>
+<dt><strong>selem</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, optional</span></dt>
+<dd><p class="first last">A structuring element used to determine the neighborhood of each
+evaluated pixel. It must contain only 1’s and 0’s, have the same number
+of dimensions as <cite>image</cite>. If not given, all adjacent pixels are
+considered as part of the neighborhood (fully connected).</p>
+</dd>
+<dt><strong>connectivity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first last">A number used to determine the neighborhood of each evaluated pixel.
+Adjacent pixels whose squared distance from the center is larger or
+equal to <cite>connectivity</cite> are considered neighbors. Ignored if
+<cite>selem</cite> is not None.</p>
+</dd>
+<dt><strong>tolerance</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float or int, optional</span></dt>
+<dd><p class="first last">If None (default), adjacent values must be strictly equal to the
+initial value of <cite>image</cite> at <cite>seed_point</cite>.  This is fastest.  If a value
+is given, a comparison will be done at every point and if within
+tolerance of the initial value will also be filled (inclusive).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>mask</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">A Boolean array with the same shape as <cite>image</cite> is returned, with True
+values for areas connected to and equal (or within tolerance of) the
+seed point.  All other values are False.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The conceptual analogy of this operation is the ‘paint bucket’ tool in many
+raster graphics programs.  This function returns just the mask
+representing the fill.</p>
+<p>If indices are desired rather than masks for memory reasons, the user can
+simply run <cite>numpy.nonzero</cite> on the result, save the indices, and discard
+this mask.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <span class="n">flood</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span>
+<span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 1, 1, 0, 2, 2, 0],</span>
+<span class="go">       [0, 1, 1, 0, 2, 2, 0],</span>
+<span class="go">       [1, 0, 0, 0, 0, 0, 3]])</span>
+</pre></div>
+</div>
+<p>Fill connected ones with 5, with full connectivity (diagonals included):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span>
+<span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
+<span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
+<span class="go">       [5, 0, 0, 0, 0, 0, 3]])</span>
+</pre></div>
+</div>
+<p>Fill connected ones with 5, excluding diagonal points (connectivity 1):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span>
+<span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 1, 1, 0, 2, 2, 0],</span>
+<span class="go">       [0, 1, 1, 0, 2, 2, 0],</span>
+<span class="go">       [5, 0, 0, 0, 0, 0, 3]])</span>
+</pre></div>
+</div>
+<p>Fill with a tolerance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span>
+<span class="go">array([[5, 5, 5, 5, 5, 5, 5],</span>
+<span class="go">       [5, 5, 5, 5, 2, 2, 5],</span>
+<span class="go">       [5, 5, 5, 5, 2, 2, 5],</span>
+<span class="go">       [5, 5, 5, 5, 5, 5, 3]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="examples-using-skimage-segmentation-flood">
+<h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.segmentation.flood</span></code><a class="headerlink" href="#examples-using-skimage-segmentation-flood" title="Permalink to this headline">¶</a></h3>
+<div class="sphx-glr-thumbcontainer" tooltip="Flood fill is an algorithm to identify and/or change adjacent values in an image based on their..."><div class="figure" id="id47">
+<img alt="../_images/sphx_glr_plot_floodfill_thumb.png" src="../_images/sphx_glr_plot_floodfill_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_floodfill.html#sphx-glr-auto-examples-segmentation-plot-floodfill-py"><span class="std std-ref">Flood Fill</span></a></span></p>
+</div>
+</div></div>
+</div>
+<div class="section" id="flood-fill">
+<h2>flood_fill<a class="headerlink" href="#flood-fill" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.segmentation.flood_fill">
+<code class="descclassname">skimage.segmentation.</code><code class="descname">flood_fill</code><span class="sig-paren">(</span><em>image</em>, <em>seed_point</em>, <em>new_value</em>, <em>*</em>, <em>selem=None</em>, <em>connectivity=None</em>, <em>tolerance=None</em>, <em>inplace=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/_flood_fill.py#L16"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.flood_fill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform flood filling on an image.</p>
+<p>Starting at a specific <cite>seed_point</cite>, connected points equal or within
+<cite>tolerance</cite> of the seed value are found, then set to <cite>new_value</cite>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><dl class="first docutils">
+<dt><strong>image</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">An n-dimensional array.</p>
+</dd>
+<dt><strong>seed_point</strong> <span class="classifier-delimiter">:</span> <span class="classifier">tuple or int</span></dt>
+<dd><p class="first last">The point in <cite>image</cite> used as the starting point for the flood fill.  If
+the image is 1D, this point may be given as an integer.</p>
+</dd>
+<dt><strong>new_value</strong> <span class="classifier-delimiter">:</span> <span class="classifier"><cite>image</cite> type</span></dt>
+<dd><p class="first last">New value to set the entire fill.  This must be chosen in agreement
+with the dtype of <cite>image</cite>.</p>
+</dd>
+<dt><strong>selem</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray, optional</span></dt>
+<dd><p class="first last">A structuring element used to determine the neighborhood of each
+evaluated pixel. It must contain only 1’s and 0’s, have the same number
+of dimensions as <cite>image</cite>. If not given, all adjacent pixels are
+considered as part of the neighborhood (fully connected).</p>
+</dd>
+<dt><strong>connectivity</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd><p class="first last">A number used to determine the neighborhood of each evaluated pixel.
+Adjacent pixels whose squared distance from the center is less than or
+equal to <cite>connectivity</cite> are considered neighbors. Ignored if <cite>selem</cite> is
+not None.</p>
+</dd>
+<dt><strong>tolerance</strong> <span class="classifier-delimiter">:</span> <span class="classifier">float or int, optional</span></dt>
+<dd><p class="first last">If None (default), adjacent values must be strictly equal to the
+value of <cite>image</cite> at <cite>seed_point</cite> to be filled.  This is fastest.
+If a tolerance is provided, adjacent points with values within plus or
+minus tolerance from the seed point are filled (inclusive).</p>
+</dd>
+<dt><strong>inplace</strong> <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">If True, flood filling is applied to <cite>image</cite> inplace.  If False, the
+flood filled result is returned without modifying the input <cite>image</cite>
+(default).</p>
+</dd>
+</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><dl class="first last docutils">
+<dt><strong>filled</strong> <span class="classifier-delimiter">:</span> <span class="classifier">ndarray</span></dt>
+<dd><p class="first last">An array with the same shape as <cite>image</cite> is returned, with values in
+areas connected to and equal (or within tolerance of) the seed point
+replaced with <cite>new_value</cite>.</p>
+</dd>
+</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The conceptual analogy of this operation is the ‘paint bucket’ tool in many
+raster graphics programs.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <span class="n">flood_fill</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span>
+<span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 1, 1, 0, 2, 2, 0],</span>
+<span class="go">       [0, 1, 1, 0, 2, 2, 0],</span>
+<span class="go">       [1, 0, 0, 0, 0, 0, 3]])</span>
+</pre></div>
+</div>
+<p>Fill connected ones with 5, with full connectivity (diagonals included):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flood_fill</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+<span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
+<span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
+<span class="go">       [5, 0, 0, 0, 0, 0, 3]])</span>
+</pre></div>
+</div>
+<p>Fill connected ones with 5, excluding diagonal points (connectivity 1):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flood_fill</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">5</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
+<span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
+<span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
+<span class="go">       [1, 0, 0, 0, 0, 0, 3]])</span>
+</pre></div>
+</div>
+<p>Fill with a tolerance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flood_fill</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">5</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">array([[5, 5, 5, 5, 5, 5, 5],</span>
+<span class="go">       [5, 5, 5, 5, 2, 2, 5],</span>
+<span class="go">       [5, 5, 5, 5, 2, 2, 5],</span>
+<span class="go">       [5, 5, 5, 5, 5, 5, 3]])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="examples-using-skimage-segmentation-flood-fill">
+<h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.segmentation.flood_fill</span></code><a class="headerlink" href="#examples-using-skimage-segmentation-flood-fill" title="Permalink to this headline">¶</a></h3>
+<div class="sphx-glr-thumbcontainer" tooltip="Flood fill is an algorithm to identify and/or change adjacent values in an image based on their..."><div class="figure" id="id48">
+<img alt="../_images/sphx_glr_plot_floodfill_thumb.png" src="../_images/sphx_glr_plot_floodfill_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_floodfill.html#sphx-glr-auto-examples-segmentation-plot-floodfill-py"><span class="std std-ref">Flood Fill</span></a></span></p>
 </div>
 </div></div>
 </div>
