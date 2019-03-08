@@ -2858,8 +2858,9 @@ this mask.</p>
 </div>
 <p>Fill connected ones with 5, with full connectivity (diagonals included):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span>
 <span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
 <span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
 <span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
@@ -2868,18 +2869,20 @@ this mask.</p>
 </div>
 <p>Fill connected ones with 5, excluding diagonal points (connectivity 1):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span>
 <span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
-<span class="go">       [0, 1, 1, 0, 2, 2, 0],</span>
-<span class="go">       [0, 1, 1, 0, 2, 2, 0],</span>
-<span class="go">       [5, 0, 0, 0, 0, 0, 3]])</span>
+<span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
+<span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
+<span class="go">       [1, 0, 0, 0, 0, 0, 3]])</span>
 </pre></div>
 </div>
 <p>Fill with a tolerance:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span>
 <span class="go">array([[5, 5, 5, 5, 5, 5, 5],</span>
 <span class="go">       [5, 5, 5, 5, 2, 2, 5],</span>
 <span class="go">       [5, 5, 5, 5, 2, 2, 5],</span>
