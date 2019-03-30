@@ -95,37 +95,35 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-segmentation-plot-thresholding-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-segmentation-plot-thresholding-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="thresholding">
 <span id="sphx-glr-auto-examples-segmentation-plot-thresholding-py"></span><h1>Thresholding<a class="headerlink" href="#thresholding" title="Permalink to this headline">¶</a></h1>
-<p>Thresholding is used to create a binary image from a grayscale image <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Thresholding_%28image_processing%29">https://en.wikipedia.org/wiki/Thresholding_%28image_processing%29</a></td></tr>
-</tbody>
-</table>
+<p>Thresholding is used to create a binary image from a grayscale image <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Thresholding_%28image_processing%29">https://en.wikipedia.org/wiki/Thresholding_%28image_processing%29</a></p>
+</dd>
+</dl>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">A more comprehensive presentation on
+<p class="admonition-title">See also</p>
+<p>A more comprehensive presentation on
 <a class="reference internal" href="../applications/plot_thresholding.html#sphx-glr-auto-examples-applications-plot-thresholding-py"><span class="std std-ref">Thresholding</span></a></p>
 </div>
 <p>We illustrate how to apply one of these thresholding algorithms.
-Otsu’s method <a class="footnote-reference" href="#id4" id="id3">[2]</a> calculates an “optimal” threshold (marked by a red line in the
+Otsu’s method <a class="footnote-reference brackets" href="#id4" id="id3">2</a> calculates an “optimal” threshold (marked by a red line in the
 histogram below) by maximizing the variance between two classes of pixels,
 which are separated by the threshold. Equivalently, this threshold minimizes
 the intra-class variance.</p>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Otsu's_method">https://en.wikipedia.org/wiki/Otsu’s_method</a></td></tr>
-</tbody>
-</table>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <a href="../../api/skimage.filters.html#skimage.filters.threshold_otsu" title="View documentation for skimage.filters.threshold_otsu"><span class="n">threshold_otsu</span></a>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Otsu's_method">https://en.wikipedia.org/wiki/Otsu’s_method</a></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="k">import</span> <a href="../../api/skimage.filters.html#skimage.filters.threshold_otsu" title="View documentation for skimage.filters.threshold_otsu"><span class="n">threshold_otsu</span></a>
 
 
 <span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">()</span>
@@ -160,23 +158,25 @@ the best results. Therefore, Scikit-image includes a function to evaluate
 thresholding algorithms provided by the library. At a glance, you can select
 the best algorithm for you data without a deep understanding of their
 mechanisms.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <a href="../../api/skimage.filters.html#skimage.filters.try_all_threshold" title="View documentation for skimage.filters.try_all_threshold"><span class="n">try_all_threshold</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="k">import</span> <a href="../../api/skimage.filters.html#skimage.filters.try_all_threshold" title="View documentation for skimage.filters.try_all_threshold"><span class="n">try_all_threshold</span></a>
 
 <span class="n">img</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.page" title="View documentation for skimage.data.page"><span class="n">data</span><span class="o">.</span><span class="n">page</span></a><span class="p">()</span>
 
 <span class="c1"># Here, we specify a radius for local thresholding algorithms.</span>
 <span class="c1"># If it is not specified, only global algorithms are called.</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a href="../../api/skimage.filters.html#skimage.filters.try_all_threshold" title="View documentation for skimage.filters.try_all_threshold"><span class="n">try_all_threshold</span></a><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a href="../../api/skimage.filters.html#skimage.filters.try_all_threshold" title="View documentation for skimage.filters.try_all_threshold"><span class="n">try_all_threshold</span></a><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_thresholding_0021.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_thresholding_0021.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.715 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.013 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-segmentation-plot-thresholding-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/ffc4d2b68778ff5fa887c966e6354468/plot_thresholding.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_thresholding.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/ffc4d2b68778ff5fa887c966e6354468/plot_thresholding.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_thresholding.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/bb9ef32c98c5f127da7d2e9e4847aa36/plot_thresholding.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_thresholding.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/bb9ef32c98c5f127da7d2e9e4847aa36/plot_thresholding.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_thresholding.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

@@ -95,8 +95,8 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-segmentation-plot-rag-boundary-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-segmentation-plot-rag-boundary-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="region-boundary-based-rags">
 <span id="sphx-glr-auto-examples-segmentation-plot-rag-boundary-py"></span><h1>Region Boundary based RAGs<a class="headerlink" href="#region-boundary-based-rags" title="Permalink to this headline">¶</a></h1>
@@ -107,9 +107,9 @@ edges) being present at each pixel. In a region boundary RAG, the edge weight
 between two regions is the average value of the corresponding pixels in
 <code class="docutils literal notranslate"><span class="pre">edge_map</span></code> along their shared boundary.</p>
 <img alt="../../_images/sphx_glr_plot_rag_boundary_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rag_boundary_001.png" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="kn">import</span> <span class="n">graph</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">io</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">io</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 
 <span class="n">img</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.coffee" title="View documentation for skimage.data.coffee"><span class="n">data</span><span class="o">.</span><span class="n">coffee</span></a><span class="p">()</span>
@@ -120,19 +120,21 @@ between two regions is the average value of the corresponding pixels in
 <span class="n">edges_rgb</span> <span class="o">=</span> <a href="../../api/skimage.color.html#skimage.color.gray2rgb" title="View documentation for skimage.color.gray2rgb"><span class="n">color</span><span class="o">.</span><span class="n">gray2rgb</span></a><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
 
 <span class="n">g</span> <span class="o">=</span> <a href="../../api/skimage.future.graph.html#skimage.future.graph.rag_boundary" title="View documentation for skimage.future.graph.rag_boundary"><span class="n">graph</span><span class="o">.</span><span class="n">rag_boundary</span></a><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">edges</span><span class="p">)</span>
-<span class="n">lc</span> <span class="o">=</span> <a href="../../api/skimage.future.graph.html#skimage.future.graph.show_rag" title="View documentation for skimage.future.graph.show_rag"><span class="n">graph</span><span class="o">.</span><span class="n">show_rag</span></a><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">edges_rgb</span><span class="p">,</span> <span class="n">img_cmap</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">edge_cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+<span class="n">lc</span> <span class="o">=</span> <a href="../../api/skimage.future.graph.html#skimage.future.graph.show_rag" title="View documentation for skimage.future.graph.show_rag"><span class="n">graph</span><span class="o">.</span><span class="n">show_rag</span></a><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">edges_rgb</span><span class="p">,</span> <span class="n">img_cmap</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">edge_cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
                     <span class="n">edge_width</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
 
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.colorbar.html#matplotlib.pyplot.colorbar" title="View documentation for matplotlib.pyplot.colorbar"><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span></a><span class="p">(</span><span class="n">lc</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.03</span><span class="p">)</span>
 <a href="../../api/skimage.io.html#skimage.io.show" title="View documentation for skimage.io.show"><span class="n">io</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.633 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.804 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-segmentation-plot-rag-boundary-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/cb5006b82899166e7ac4f299930858e1/plot_rag_boundary.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_rag_boundary.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/cb5006b82899166e7ac4f299930858e1/plot_rag_boundary.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_rag_boundary.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/227f6493969d8add3f46bf92fabff406/plot_rag_boundary.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_rag_boundary.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/227f6493969d8add3f46bf92fabff406/plot_rag_boundary.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_rag_boundary.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

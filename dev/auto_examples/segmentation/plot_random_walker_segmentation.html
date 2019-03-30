@@ -95,12 +95,12 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-segmentation-plot-random-walker-segmentation-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-segmentation-plot-random-walker-segmentation-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="random-walker-segmentation">
 <span id="sphx-glr-auto-examples-segmentation-plot-random-walker-segmentation-py"></span><h1>Random walker segmentation<a class="headerlink" href="#random-walker-segmentation" title="Permalink to this headline">¶</a></h1>
-<p>The random walker algorithm <a class="footnote-reference" href="#id2" id="id1">[1]</a>  determines the segmentation of an image from
+<p>The random walker algorithm <a class="footnote-reference brackets" href="#id2" id="id1">1</a>  determines the segmentation of an image from
 a set of markers labeling several phases (2 or more). An anisotropic diffusion
 equation is solved with tracers initiated at the markers’ position. The local
 diffusivity coefficient is greater if neighboring pixels have similar values,
@@ -111,20 +111,19 @@ probability to be reached first during this diffusion process.</p>
 noisy to perform the segmentation from the histogram only. We determine
 markers of the two phases from the extreme tails of the histogram of gray
 values, and use the random walker for the segmentation.</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><em>Random walks for image segmentation</em>, Leo Grady, IEEE Trans. Pattern
-Anal. Mach. Intell. 2006 Nov; 28(11):1768-83 <a class="reference external" href="https://doi.org/10.1109/TPAMI.2006.233">DOI:10.1109/TPAMI.2006.233</a></td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><em>Random walks for image segmentation</em>, Leo Grady, IEEE Trans. Pattern
+Anal. Mach. Intell. 2006 Nov; 28(11):1768-83 <a class="reference external" href="https://doi.org/10.1109/TPAMI.2006.233">DOI:10.1109/TPAMI.2006.233</a></p>
+</dd>
+</dl>
 <img alt="../../_images/sphx_glr_plot_random_walker_segmentation_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_random_walker_segmentation_001.png" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.random_walker" title="View documentation for skimage.segmentation.random_walker"><span class="n">random_walker</span></a>
-<span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <a href="../../api/skimage.data.html#skimage.data.binary_blobs" title="View documentation for skimage.data.binary_blobs"><span class="n">binary_blobs</span></a>
-<span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="kn">import</span> <a href="../../api/skimage.exposure.html#skimage.exposure.rescale_intensity" title="View documentation for skimage.exposure.rescale_intensity"><span class="n">rescale_intensity</span></a>
+<span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="k">import</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.random_walker" title="View documentation for skimage.segmentation.random_walker"><span class="n">random_walker</span></a>
+<span class="kn">from</span> <span class="nn">skimage.data</span> <span class="k">import</span> <a href="../../api/skimage.data.html#skimage.data.binary_blobs" title="View documentation for skimage.data.binary_blobs"><span class="n">binary_blobs</span></a>
+<span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="k">import</span> <a href="../../api/skimage.exposure.html#skimage.exposure.rescale_intensity" title="View documentation for skimage.exposure.rescale_intensity"><span class="n">rescale_intensity</span></a>
 <span class="kn">import</span> <span class="nn">skimage</span>
 
 <span class="c1"># Generate noisy synthetic data</span>
@@ -145,7 +144,7 @@ Anal. Mach. Intell. 2006 Nov; 28(11):1768-83 <a class="reference external" href=
 
 <span class="c1"># Plot results</span>
 <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="View documentation for matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">),</span>
-                                    <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                                    <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Noisy data&#39;</span><span class="p">)</span>
@@ -160,12 +159,14 @@ Anal. Mach. Intell. 2006 Nov; 28(11):1768-83 <a class="reference external" href=
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.179 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.329 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-segmentation-plot-random-walker-segmentation-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/69da8704446b11417e6db9e20b63b6db/plot_random_walker_segmentation.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_random_walker_segmentation.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/69da8704446b11417e6db9e20b63b6db/plot_random_walker_segmentation.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_random_walker_segmentation.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/6182415733e017d6f462035154398afb/plot_random_walker_segmentation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_random_walker_segmentation.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/6182415733e017d6f462035154398afb/plot_random_walker_segmentation.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_random_walker_segmentation.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

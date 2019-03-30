@@ -109,13 +109,13 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-haar-extraction-selection-classification-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-haar-extraction-selection-classification-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="face-classification-using-haar-like-feature-descriptor">
 <span id="sphx-glr-auto-examples-applications-plot-haar-extraction-selection-classification-py"></span><h1>Face classification using Haar-like feature descriptor<a class="headerlink" href="#face-classification-using-haar-like-feature-descriptor" title="Permalink to this headline">¶</a></h1>
 <p>Haar-like feature descriptors were successfully used to implement the first
-real-time face detector <a class="footnote-reference" href="#id2" id="id1">[1]</a>. Inspired by this application, we propose an
+real-time face detector <a class="footnote-reference brackets" href="#id2" id="id1">1</a>. Inspired by this application, we propose an
 example illustrating the extraction, selection, and classification of Haar-like
 features to detect faces vs. non-faces.</p>
 <div class="section" id="notes">
@@ -124,44 +124,44 @@ features to detect faces vs. non-faces.</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Viola, Paul, and Michael J. Jones. “Robust real-time face
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Viola, Paul, and Michael J. Jones. “Robust real-time face
 detection.” International journal of computer vision 57.2
 (2004): 137-154.
 <a class="reference external" href="http://www.merl.com/publications/docs/TR2004-043.pdf">http://www.merl.com/publications/docs/TR2004-043.pdf</a>
-<a class="reference external" href="https://doi.org/10.1109/CVPR.2001.990517">DOI:10.1109/CVPR.2001.990517</a></td></tr>
-</tbody>
-</table>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">time</span>
+<a class="reference external" href="https://doi.org/10.1109/CVPR.2001.990517">DOI:10.1109/CVPR.2001.990517</a></p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <span class="n">time</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">dask</span> <span class="kn">import</span> <span class="n">delayed</span>
+<span class="kn">from</span> <span class="nn">dask</span> <span class="k">import</span> <span class="n">delayed</span>
 
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score" title="View documentation for sklearn.metrics.roc_auc_score"><span class="n">roc_auc_score</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html#sklearn.model_selection.train_test_split" title="View documentation for sklearn.model_selection.train_test_split"><span class="n">train_test_split</span></a>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score" title="View documentation for sklearn.metrics.roc_auc_score"><span class="n">roc_auc_score</span></a>
 
-<span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <a href="../../api/skimage.data.html#skimage.data.lfw_subset" title="View documentation for skimage.data.lfw_subset"><span class="n">lfw_subset</span></a>
-<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <a href="../../api/skimage.transform.html#skimage.transform.integral_image" title="View documentation for skimage.transform.integral_image"><span class="n">integral_image</span></a>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <a href="../../api/skimage.feature.html#skimage.feature.haar_like_feature" title="View documentation for skimage.feature.haar_like_feature"><span class="n">haar_like_feature</span></a>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <a href="../../api/skimage.feature.html#skimage.feature.haar_like_feature_coord" title="View documentation for skimage.feature.haar_like_feature_coord"><span class="n">haar_like_feature_coord</span></a>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <a href="../../api/skimage.feature.html#skimage.feature.draw_haar_like_feature" title="View documentation for skimage.feature.draw_haar_like_feature"><span class="n">draw_haar_like_feature</span></a>
+<span class="kn">from</span> <span class="nn">skimage.data</span> <span class="k">import</span> <a href="../../api/skimage.data.html#skimage.data.lfw_subset" title="View documentation for skimage.data.lfw_subset"><span class="n">lfw_subset</span></a>
+<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="k">import</span> <a href="../../api/skimage.transform.html#skimage.transform.integral_image" title="View documentation for skimage.transform.integral_image"><span class="n">integral_image</span></a>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <a href="../../api/skimage.feature.html#skimage.feature.haar_like_feature" title="View documentation for skimage.feature.haar_like_feature"><span class="n">haar_like_feature</span></a>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <a href="../../api/skimage.feature.html#skimage.feature.haar_like_feature_coord" title="View documentation for skimage.feature.haar_like_feature_coord"><span class="n">haar_like_feature_coord</span></a>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <a href="../../api/skimage.feature.html#skimage.feature.draw_haar_like_feature" title="View documentation for skimage.feature.draw_haar_like_feature"><span class="n">draw_haar_like_feature</span></a>
 </pre></div>
 </div>
 <div class="section" id="the-usual-feature-extraction-scheme">
 <h3>The usual feature extraction scheme<a class="headerlink" href="#the-usual-feature-extraction-scheme" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div>The procedure to extract the Haar-like feature for an image is quite easy: a
+<div><p>The procedure to extract the Haar-like feature for an image is quite easy: a
 region of interest (ROI) is defined for which all possible feature will be
 extracted. The integral image of this ROI will be computed and all possible
-features will be computed.</div></blockquote>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@delayed</span>
-<span class="k">def</span> <span class="nf">extract_feature_image</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">feature_type</span><span class="p">,</span> <span class="n">feature_coord</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+features will be computed.</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@delayed</span>
+<span class="k">def</span> <span class="nf">extract_feature_image</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">feature_type</span><span class="p">,</span> <span class="n">feature_coord</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Extract the haar feature for the current image&quot;&quot;&quot;</span>
     <span class="n">ii</span> <span class="o">=</span> <a href="../../api/skimage.transform.html#skimage.transform.integral_image" title="View documentation for skimage.transform.integral_image"><span class="n">integral_image</span></a><span class="p">(</span><span class="n">img</span><span class="p">)</span>
     <span class="k">return</span> <a href="../../api/skimage.feature.html#skimage.feature.haar_like_feature" title="View documentation for skimage.feature.haar_like_feature"><span class="n">haar_like_feature</span></a><span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ii</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ii</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -174,7 +174,7 @@ non-face images. Each image has been resized to a ROI of 19 by 19 pixels. We
 will keep 75 images from each group to train a classifier and check which
 extracted features are the most salient, and use the remaining 25 from each
 class to check the performance of the classifier.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">images</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.lfw_subset" title="View documentation for skimage.data.lfw_subset"><span class="n">lfw_subset</span></a><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">images</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.lfw_subset" title="View documentation for skimage.data.lfw_subset"><span class="n">lfw_subset</span></a><span class="p">()</span>
 <span class="c1"># For speed, only extract the two first types of features</span>
 <span class="n">feature_types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;type-2-x&#39;</span><span class="p">,</span> <span class="s1">&#39;type-2-y&#39;</span><span class="p">]</span>
 
@@ -202,8 +202,8 @@ features, specifically for face classification. The idea is to check which
 features are the most often used by the ensemble of trees. By using only
 the most salient features in subsequent steps, we can dramatically speed up
 computation, while retaining accuracy.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train a random forest classifier and check performance</span>
-<span class="n">clf</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Train a random forest classifier and check performance</span>
+<span class="n">clf</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier" title="View documentation for sklearn.ensemble.RandomForestClassifier"><span class="n">RandomForestClassifier</span></a><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                              <span class="n">max_features</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -231,12 +231,12 @@ computation, while retaining accuracy.</p>
 <p>We can select the most important features by checking the cumulative sum of
 the feature importance index; below, we keep features representing 70% of the
 cumulative value which represent only 3% of the total number of features.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cdf_feature_importances</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.cumsum.html#numpy.cumsum" title="View documentation for numpy.cumsum"><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span></a><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">[</span><span class="n">idx_sorted</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cdf_feature_importances</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.cumsum.html#numpy.cumsum" title="View documentation for numpy.cumsum"><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span></a><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">[</span><span class="n">idx_sorted</span><span class="p">])</span>
 <span class="n">cdf_feature_importances</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">cdf_feature_importances</span><span class="p">)</span>
 <span class="n">sig_feature_count</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.count_nonzero.html#numpy.count_nonzero" title="View documentation for numpy.count_nonzero"><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span></a><span class="p">(</span><span class="n">cdf_feature_importances</span> <span class="o">&lt;</span> <span class="mf">0.7</span><span class="p">)</span>
 <span class="n">sig_feature_percent</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">sig_feature_count</span> <span class="o">/</span>
                             <span class="nb">len</span><span class="p">(</span><span class="n">cdf_feature_importances</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="k">print</span><span class="p">((</span><span class="s1">&#39;{} features, or {}%, account for 70</span><span class="si">% o</span><span class="s1">f branch points in the random &#39;</span>
+<span class="nb">print</span><span class="p">((</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> features, or </span><span class="si">{}</span><span class="s1">%, account for 70</span><span class="si">% o</span><span class="s1">f branch points in the random &#39;</span>
        <span class="s1">&#39;forest.&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sig_feature_count</span><span class="p">,</span> <span class="n">sig_feature_percent</span><span class="p">))</span>
 
 <span class="c1"># Select the most informative features</span>
@@ -270,32 +270,34 @@ cumulative value which represent only 3% of the total number of features.</p>
 </pre></div>
 </div>
 <p>Once the features are extracted, we can train and test the a new classifier.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">time_subs_train</span> <span class="o">=</span> <span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t_start</span>
 
 <span class="n">auc_subs_features</span> <span class="o">=</span> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html#sklearn.metrics.roc_auc_score" title="View documentation for sklearn.metrics.roc_auc_score"><span class="n">roc_auc_score</span></a><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">])</span>
 
-<span class="n">summary</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;Computing the full feature set took {:.3f}s, plus {:.3f}s &#39;</span>
-            <span class="s1">&#39;training, for an AUC of {:.2f}. Computing the restricted feature &#39;</span>
-            <span class="s1">&#39;set took {:.3f}s, plus {:.3f}s training, for an AUC of {:.2f}.&#39;</span><span class="p">)</span>
+<span class="n">summary</span> <span class="o">=</span> <span class="p">((</span><span class="s1">&#39;Computing the full feature set took </span><span class="si">{:.3f}</span><span class="s1">s, plus </span><span class="si">{:.3f}</span><span class="s1">s &#39;</span>
+            <span class="s1">&#39;training, for an AUC of </span><span class="si">{:.2f}</span><span class="s1">. Computing the restricted feature &#39;</span>
+            <span class="s1">&#39;set took </span><span class="si">{:.3f}</span><span class="s1">s, plus </span><span class="si">{:.3f}</span><span class="s1">s training, for an AUC of </span><span class="si">{:.2f}</span><span class="s1">.&#39;</span><span class="p">)</span>
            <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time_full_feature_comp</span><span class="p">,</span> <span class="n">time_full_train</span><span class="p">,</span> <span class="n">auc_full_features</span><span class="p">,</span>
                    <span class="n">time_subs_feature_comp</span><span class="p">,</span> <span class="n">time_subs_train</span><span class="p">,</span> <span class="n">auc_subs_features</span><span class="p">))</span>
 
-<span class="k">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Computing the full feature set took 75.235s, plus 2.548s training, for an AUC of 1.00. Computing the restricted feature set took 0.221s, plus 1.803s training, for an AUC of 1.00.
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Computing the full feature set took 74.338s, plus 2.448s training, for an AUC of 1.00. Computing the restricted feature set took 0.209s, plus 1.807s training, for an AUC of 1.00.
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 1 minutes  24.009 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  22.941 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-haar-extraction-selection-classification-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/83c0a2069fb7347d7b7a0cfbd54a671c/plot_haar_extraction_selection_classification.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_haar_extraction_selection_classification.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/83c0a2069fb7347d7b7a0cfbd54a671c/plot_haar_extraction_selection_classification.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_haar_extraction_selection_classification.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/7d64eb4c241b536cfc63f07100d3fde7/plot_haar_extraction_selection_classification.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_haar_extraction_selection_classification.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/7d64eb4c241b536cfc63f07100d3fde7/plot_haar_extraction_selection_classification.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_haar_extraction_selection_classification.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

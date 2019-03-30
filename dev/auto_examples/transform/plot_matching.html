@@ -95,8 +95,8 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-transform-plot-matching-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-transform-plot-matching-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="robust-matching-using-ransac">
 <span id="sphx-glr-auto-examples-transform-plot-matching-py"></span><h1>Robust matching using RANSAC<a class="headerlink" href="#robust-matching-using-ransac" title="Permalink to this headline">¶</a></h1>
@@ -116,24 +116,24 @@ to robustly estimate the parameter set by detecting outliers.</p>
 <img alt="../../_images/sphx_glr_plot_matching_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_matching_001.png" />
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>(0.9, 0.9) [ 20. -10.] 0.19999999999999998
-(0.9014706578601688, 0.8912502648247008) [-9.3136398  14.97675567] -0.1677548948474821
-(0.8999207933418528, 0.9000536710786017) [-10.00053748  19.97439706] -0.19991920832558677
+(0.9014706578601684, 0.8912502648247005) [-9.3136398  14.97675567] -0.16775489484748202
+(0.8999207933418527, 0.9000536710786023) [-10.00053748  19.97439706] -0.199919208325587
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage.util</span> <span class="kn">import</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.util.img_as_float"><span class="n">img_as_float</span></a>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="p">(</span><a href="../../api/skimage.feature.html#skimage.feature.corner_harris" title="View documentation for skimage.feature.corner_harris"><span class="n">corner_harris</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.corner_subpix" title="View documentation for skimage.feature.corner_subpix"><span class="n">corner_subpix</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.corner_peaks" title="View documentation for skimage.feature.corner_peaks"><span class="n">corner_peaks</span></a><span class="p">,</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.util</span> <span class="k">import</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.util.img_as_float"><span class="n">img_as_float</span></a>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <span class="p">(</span><a href="../../api/skimage.feature.html#skimage.feature.corner_harris" title="View documentation for skimage.feature.corner_harris"><span class="n">corner_harris</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.corner_subpix" title="View documentation for skimage.feature.corner_subpix"><span class="n">corner_subpix</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.corner_peaks" title="View documentation for skimage.feature.corner_peaks"><span class="n">corner_peaks</span></a><span class="p">,</span>
                              <a href="../../api/skimage.feature.html#skimage.feature.plot_matches" title="View documentation for skimage.feature.plot_matches"><span class="n">plot_matches</span></a><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <a href="../../api/skimage.transform.html#skimage.transform.warp" title="View documentation for skimage.transform.warp"><span class="n">warp</span></a><span class="p">,</span> <a href="../../api/skimage.transform.html#skimage.transform.AffineTransform" title="View documentation for skimage.transform.AffineTransform"><span class="n">AffineTransform</span></a>
-<span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="kn">import</span> <a href="../../api/skimage.exposure.html#skimage.exposure.rescale_intensity" title="View documentation for skimage.exposure.rescale_intensity"><span class="n">rescale_intensity</span></a>
-<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a>
-<span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <a href="../../api/skimage.measure.html#skimage.measure.ransac" title="View documentation for skimage.measure.ransac"><span class="n">ransac</span></a>
+<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="k">import</span> <a href="../../api/skimage.transform.html#skimage.transform.warp" title="View documentation for skimage.transform.warp"><span class="n">warp</span></a><span class="p">,</span> <a href="../../api/skimage.transform.html#skimage.transform.AffineTransform" title="View documentation for skimage.transform.AffineTransform"><span class="n">AffineTransform</span></a>
+<span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="k">import</span> <a href="../../api/skimage.exposure.html#skimage.exposure.rescale_intensity" title="View documentation for skimage.exposure.rescale_intensity"><span class="n">rescale_intensity</span></a>
+<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="k">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a>
+<span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="k">import</span> <a href="../../api/skimage.measure.html#skimage.measure.ransac" title="View documentation for skimage.measure.ransac"><span class="n">ransac</span></a>
 
 
 <span class="c1"># generate synthetic checkerboard image and add gradient for the later matching</span>
@@ -212,13 +212,13 @@ to robustly estimate the parameter set by detecting outliers.</p>
 <span class="c1"># robustly estimate affine transform model with RANSAC</span>
 <span class="n">model_robust</span><span class="p">,</span> <span class="n">inliers</span> <span class="o">=</span> <a href="../../api/skimage.measure.html#skimage.measure.ransac" title="View documentation for skimage.measure.ransac"><span class="n">ransac</span></a><span class="p">((</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">),</span> <a href="../../api/skimage.transform.html#skimage.transform.AffineTransform" title="View documentation for skimage.transform.AffineTransform"><span class="n">AffineTransform</span></a><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
                                <span class="n">residual_threshold</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">outliers</span> <span class="o">=</span> <span class="n">inliers</span> <span class="o">==</span> <span class="bp">False</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">inliers</span> <span class="o">==</span> <span class="kc">False</span>
 
 
 <span class="c1"># compare &quot;true&quot; and estimated transform parameters</span>
-<span class="k">print</span><span class="p">(</span><span class="n">tform</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">translation</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">translation</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">model_robust</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="n">model_robust</span><span class="o">.</span><span class="n">translation</span><span class="p">,</span> <span class="n">model_robust</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tform</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">translation</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">translation</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_robust</span><span class="o">.</span><span class="n">scale</span><span class="p">,</span> <span class="n">model_robust</span><span class="o">.</span><span class="n">translation</span><span class="p">,</span> <span class="n">model_robust</span><span class="o">.</span><span class="n">rotation</span><span class="p">)</span>
 
 <span class="c1"># visualize correspondence</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="View documentation for matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -240,12 +240,14 @@ to robustly estimate the parameter set by detecting outliers.</p>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.295 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.479 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-transform-plot-matching-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/3c837208e5c863c9868e4e5d01bea2c6/plot_matching.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_matching.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/3c837208e5c863c9868e4e5d01bea2c6/plot_matching.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_matching.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/0c6497ea7661677f97c3d1772cfd28b0/plot_matching.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_matching.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/0c6497ea7661677f97c3d1772cfd28b0/plot_matching.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_matching.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

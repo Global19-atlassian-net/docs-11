@@ -95,8 +95,8 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-segmentation-plot-rag-merge-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-segmentation-plot-rag-merge-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="rag-merging">
 <span id="sphx-glr-auto-examples-segmentation-plot-rag-merge-py"></span><h1>RAG Merging<a class="headerlink" href="#rag-merging" title="Permalink to this headline">¶</a></h1>
@@ -105,9 +105,9 @@ regions that are similar in color. Merging two adjacent regions produces
 a new region with all the pixels from the merged regions. Regions are merged
 until no highly similar region pairs remain.</p>
 <img alt="../../_images/sphx_glr_plot_rag_merge_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rag_merge_001.png" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">color</span>
-<span class="kn">from</span> <span class="nn">skimage.future</span> <span class="kn">import</span> <span class="n">graph</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">color</span>
+<span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <span class="n">graph</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
 <span class="k">def</span> <span class="nf">_weight_mean_color</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -158,8 +158,8 @@ until no highly similar region pairs remain.</p>
 <span class="n">labels</span> <span class="o">=</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.slic" title="View documentation for skimage.segmentation.slic"><span class="n">segmentation</span><span class="o">.</span><span class="n">slic</span></a><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">compactness</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">n_segments</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
 <span class="n">g</span> <span class="o">=</span> <a href="../../api/skimage.future.graph.html#skimage.future.graph.rag_mean_color" title="View documentation for skimage.future.graph.rag_mean_color"><span class="n">graph</span><span class="o">.</span><span class="n">rag_mean_color</span></a><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
 
-<span class="n">labels2</span> <span class="o">=</span> <a href="../../api/skimage.future.graph.html#skimage.future.graph.merge_hierarchical" title="View documentation for skimage.future.graph.merge_hierarchical"><span class="n">graph</span><span class="o">.</span><span class="n">merge_hierarchical</span></a><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">rag_copy</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-                                   <span class="n">in_place_merge</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="n">labels2</span> <span class="o">=</span> <a href="../../api/skimage.future.graph.html#skimage.future.graph.merge_hierarchical" title="View documentation for skimage.future.graph.merge_hierarchical"><span class="n">graph</span><span class="o">.</span><span class="n">merge_hierarchical</span></a><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">rag_copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                   <span class="n">in_place_merge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                    <span class="n">merge_func</span><span class="o">=</span><span class="n">merge_mean_color</span><span class="p">,</span>
                                    <span class="n">weight_func</span><span class="o">=</span><span class="n">_weight_mean_color</span><span class="p">)</span>
 
@@ -169,12 +169,14 @@ until no highly similar region pairs remain.</p>
 <a href="../../api/skimage.io.html#skimage.io.show" title="View documentation for skimage.io.show"><span class="n">io</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  3.196 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  3.097 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-segmentation-plot-rag-merge-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/6258bf84d86fd0319abfefea8c96bb1b/plot_rag_merge.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_rag_merge.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/6258bf84d86fd0319abfefea8c96bb1b/plot_rag_merge.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_rag_merge.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/0935986002df623ebefb76e361aa3150/plot_rag_merge.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_rag_merge.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/0935986002df623ebefb76e361aa3150/plot_rag_merge.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_rag_merge.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

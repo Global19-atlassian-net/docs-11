@@ -105,14 +105,14 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-segmentation-plot-morphsnakes-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-segmentation-plot-morphsnakes-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="morphological-snakes">
 <span id="sphx-glr-auto-examples-segmentation-plot-morphsnakes-py"></span><h1>Morphological Snakes<a class="headerlink" href="#morphological-snakes" title="Permalink to this headline">¶</a></h1>
-<p><em>Morphological Snakes</em> <a class="footnote-reference" href="#id4" id="id1">[1]</a> are a family of methods for image segmentation.
+<p><em>Morphological Snakes</em> <a class="footnote-reference brackets" href="#id4" id="id1">1</a> are a family of methods for image segmentation.
 Their behavior is similar to that of active contours (for example, <em>Geodesic
-Active Contours</em> <a class="footnote-reference" href="#id5" id="id2">[2]</a> or <em>Active Contours without Edges</em> <a class="footnote-reference" href="#id6" id="id3">[3]</a>). However,
+Active Contours</em> <a class="footnote-reference brackets" href="#id5" id="id2">2</a> or <em>Active Contours without Edges</em> <a class="footnote-reference brackets" href="#id6" id="id3">3</a>). However,
 <em>Morphological Snakes</em> use morphological operators (such as dilation or
 erosion) over a binary array instead of solving PDEs over a floating point
 array, which is the standard approach for active contours. This makes
@@ -137,35 +137,28 @@ preceding processing. This makes <strong>MorphACWE</strong> easier to use and tu
 <strong>MorphGAC</strong>.</p>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>A Morphological Approach to Curvature-based Evolution of Curves and
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>A Morphological Approach to Curvature-based Evolution of Curves and
 Surfaces, Pablo Márquez-Neila, Luis Baumela and Luis Álvarez. In IEEE
 Transactions on Pattern Analysis and Machine Intelligence (PAMI),
-2014, <a class="reference external" href="https://doi.org/10.1109/TPAMI.2013.106">DOI:10.1109/TPAMI.2013.106</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Geodesic Active Contours, Vicent Caselles, Ron Kimmel and Guillermo
+2014, <a class="reference external" href="https://doi.org/10.1109/TPAMI.2013.106">DOI:10.1109/TPAMI.2013.106</a></p>
+</dd>
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Geodesic Active Contours, Vicent Caselles, Ron Kimmel and Guillermo
 Sapiro. In International Journal of Computer Vision (IJCV), 1997,
-<a class="reference external" href="https://doi.org/10.1023/A:1007979827043">DOI:10.1023/A:1007979827043</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Active Contours without Edges, Tony Chan and Luminita Vese. In IEEE
-Transactions on Image Processing, 2001, <a class="reference external" href="https://doi.org/10.1109/83.902291">DOI:10.1109/83.902291</a></td></tr>
-</tbody>
-</table>
+<a class="reference external" href="https://doi.org/10.1023/A:1007979827043">DOI:10.1023/A:1007979827043</a></p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Active Contours without Edges, Tony Chan and Luminita Vese. In IEEE
+Transactions on Image Processing, 2001, <a class="reference external" href="https://doi.org/10.1109/83.902291">DOI:10.1109/83.902291</a></p>
+</dd>
+</dl>
 <img alt="../../_images/sphx_glr_plot_morphsnakes_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_morphsnakes_001.png" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.img_as_float"><span class="n">img_as_float</span></a>
-<span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <span class="p">(</span><a href="../../api/skimage.segmentation.html#skimage.segmentation.morphological_chan_vese" title="View documentation for skimage.segmentation.morphological_chan_vese"><span class="n">morphological_chan_vese</span></a><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.img_as_float"><span class="n">img_as_float</span></a>
+<span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="k">import</span> <span class="p">(</span><a href="../../api/skimage.segmentation.html#skimage.segmentation.morphological_chan_vese" title="View documentation for skimage.segmentation.morphological_chan_vese"><span class="n">morphological_chan_vese</span></a><span class="p">,</span>
                                   <a href="../../api/skimage.segmentation.html#skimage.segmentation.morphological_geodesic_active_contour" title="View documentation for skimage.segmentation.morphological_geodesic_active_contour"><span class="n">morphological_geodesic_active_contour</span></a><span class="p">,</span>
                                   <a href="../../api/skimage.segmentation.html#skimage.segmentation.inverse_gaussian_gradient" title="View documentation for skimage.segmentation.inverse_gaussian_gradient"><span class="n">inverse_gaussian_gradient</span></a><span class="p">,</span>
                                   <a href="../../api/skimage.segmentation.html#skimage.segmentation.checkerboard_level_set" title="View documentation for skimage.segmentation.checkerboard_level_set"><span class="n">checkerboard_level_set</span></a><span class="p">)</span>
@@ -250,12 +243,14 @@ Transactions on Image Processing, 2001, <a class="reference external" href="http
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  6.426 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  6.626 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-segmentation-plot-morphsnakes-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/6edd0521b67237143f255e431d20e307/plot_morphsnakes.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_morphsnakes.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/6edd0521b67237143f255e431d20e307/plot_morphsnakes.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_morphsnakes.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/f20759da7af9fe7daae395f1496b41ad/plot_morphsnakes.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_morphsnakes.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/f20759da7af9fe7daae395f1496b41ad/plot_morphsnakes.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_morphsnakes.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

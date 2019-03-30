@@ -95,8 +95,8 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-features-detection-plot-brief-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-features-detection-plot-brief-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="brief-binary-descriptor">
 <span id="sphx-glr-auto-examples-features-detection-plot-brief-py"></span><h1>BRIEF binary descriptor<a class="headerlink" href="#brief-binary-descriptor" title="Permalink to this headline">¶</a></h1>
@@ -107,12 +107,12 @@ and very efficient matching based on the Hamming distance metric. BRIEF does not
 provide rotation-invariance. Scale-invariance can be achieved by detecting and
 extracting features at different scales.</p>
 <img alt="../../_images/sphx_glr_plot_brief_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_brief_001.png" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span> <span class="k">as</span> <span class="n">tf</span>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="p">(</span><a href="../../api/skimage.feature.html#skimage.feature.match_descriptors" title="View documentation for skimage.feature.match_descriptors"><span class="n">match_descriptors</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.corner_peaks" title="View documentation for skimage.feature.corner_peaks"><span class="n">corner_peaks</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.corner_harris" title="View documentation for skimage.feature.corner_harris"><span class="n">corner_harris</span></a><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">transform</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <span class="p">(</span><a href="../../api/skimage.feature.html#skimage.feature.match_descriptors" title="View documentation for skimage.feature.match_descriptors"><span class="n">match_descriptors</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.corner_peaks" title="View documentation for skimage.feature.corner_peaks"><span class="n">corner_peaks</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.corner_harris" title="View documentation for skimage.feature.corner_harris"><span class="n">corner_harris</span></a><span class="p">,</span>
                              <a href="../../api/skimage.feature.html#skimage.feature.plot_matches" title="View documentation for skimage.feature.plot_matches"><span class="n">plot_matches</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.BRIEF" title="View documentation for skimage.feature.BRIEF"><span class="n">BRIEF</span></a><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="k">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 
 <span class="n">img1</span> <span class="o">=</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.astronaut" title="View documentation for skimage.data.astronaut"><span class="n">data</span><span class="o">.</span><span class="n">astronaut</span></a><span class="p">())</span>
@@ -138,8 +138,8 @@ extracting features at different scales.</p>
 <span class="n">keypoints3</span> <span class="o">=</span> <span class="n">keypoints3</span><span class="p">[</span><span class="n">extractor</span><span class="o">.</span><span class="n">mask</span><span class="p">]</span>
 <span class="n">descriptors3</span> <span class="o">=</span> <span class="n">extractor</span><span class="o">.</span><span class="n">descriptors</span>
 
-<span class="n">matches12</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.match_descriptors" title="View documentation for skimage.feature.match_descriptors"><span class="n">match_descriptors</span></a><span class="p">(</span><span class="n">descriptors1</span><span class="p">,</span> <span class="n">descriptors2</span><span class="p">,</span> <span class="n">cross_check</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">matches13</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.match_descriptors" title="View documentation for skimage.feature.match_descriptors"><span class="n">match_descriptors</span></a><span class="p">(</span><span class="n">descriptors1</span><span class="p">,</span> <span class="n">descriptors3</span><span class="p">,</span> <span class="n">cross_check</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">matches12</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.match_descriptors" title="View documentation for skimage.feature.match_descriptors"><span class="n">match_descriptors</span></a><span class="p">(</span><span class="n">descriptors1</span><span class="p">,</span> <span class="n">descriptors2</span><span class="p">,</span> <span class="n">cross_check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">matches13</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.match_descriptors" title="View documentation for skimage.feature.match_descriptors"><span class="n">match_descriptors</span></a><span class="p">(</span><span class="n">descriptors1</span><span class="p">,</span> <span class="n">descriptors3</span><span class="p">,</span> <span class="n">cross_check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="View documentation for matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
@@ -157,12 +157,14 @@ extracting features at different scales.</p>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.299 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.499 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-features-detection-plot-brief-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/250def8080903a8a4b0b4581a5e362a2/plot_brief.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_brief.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/250def8080903a8a4b0b4581a5e362a2/plot_brief.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_brief.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/6bc3086ea9b05b2d23271bd4728ab0e6/plot_brief.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_brief.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/6bc3086ea9b05b2d23271bd4728ab0e6/plot_brief.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_brief.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

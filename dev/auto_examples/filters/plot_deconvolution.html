@@ -95,38 +95,34 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-filters-plot-deconvolution-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-filters-plot-deconvolution-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="image-deconvolution">
 <span id="sphx-glr-auto-examples-filters-plot-deconvolution-py"></span><h1>Image Deconvolution<a class="headerlink" href="#image-deconvolution" title="Permalink to this headline">¶</a></h1>
 <p>In this example, we deconvolve an image using Richardson-Lucy
-deconvolution algorithm (<a class="footnote-reference" href="#id3" id="id1">[1]</a>, <a class="footnote-reference" href="#id4" id="id2">[2]</a>).</p>
+deconvolution algorithm (<a class="footnote-reference brackets" href="#id3" id="id1">1</a>, <a class="footnote-reference brackets" href="#id4" id="id2">2</a>).</p>
 <p>The algorithm is based on a PSF (Point Spread Function),
 where PSF is described as the impulse response of the
 optical system. The blurred image is sharpened through a number of
 iterations, which needs to be hand-tuned.</p>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>William Hadley Richardson, “Bayesian-Based Iterative
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>William Hadley Richardson, “Bayesian-Based Iterative
 Method of Image Restoration”,
-J. Opt. Soc. Am. A 27, 1593-1607 (1972), <a class="reference external" href="https://doi.org/10.1364/JOSA.62.000055">DOI:10.1364/JOSA.62.000055</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution">https://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution</a></td></tr>
-</tbody>
-</table>
+J. Opt. Soc. Am. A 27, 1593-1607 (1972), <a class="reference external" href="https://doi.org/10.1364/JOSA.62.000055">DOI:10.1364/JOSA.62.000055</a></p>
+</dd>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution">https://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution</a></p>
+</dd>
+</dl>
 <img alt="../../_images/sphx_glr_plot_deconvolution_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_deconvolution_001.png" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">convolve2d</span> <span class="k">as</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.convolve2d.html#scipy.signal.convolve2d" title="View documentation for scipy.signal.convolve2d"><span class="n">conv2</span></a>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="k">import</span> <span class="n">convolve2d</span> <span class="k">as</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.convolve2d.html#scipy.signal.convolve2d" title="View documentation for scipy.signal.convolve2d"><span class="n">conv2</span></a>
 
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">color</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">restoration</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">color</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">restoration</span>
 
 <span class="n">astro</span> <span class="o">=</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">color</span><span class="o">.</span><span class="n">rgb2gray</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.astronaut" title="View documentation for skimage.data.astronaut"><span class="n">data</span><span class="o">.</span><span class="n">astronaut</span></a><span class="p">())</span>
 
@@ -160,12 +156,14 @@ J. Opt. Soc. Am. A 27, 1593-1607 (1972), <a class="reference external" href="htt
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  1.624 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.798 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-filters-plot-deconvolution-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/047508b4a8c18c08b9e5fee7413784c9/plot_deconvolution.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_deconvolution.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/047508b4a8c18c08b9e5fee7413784c9/plot_deconvolution.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_deconvolution.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/1cf5fc26fb260f6c825af0540aa9f460/plot_deconvolution.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_deconvolution.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/1cf5fc26fb260f6c825af0540aa9f460/plot_deconvolution.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_deconvolution.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

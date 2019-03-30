@@ -95,8 +95,8 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-features-detection-plot-template-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-features-detection-plot-template-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="template-matching">
 <span id="sphx-glr-auto-examples-features-detection-plot-template-py"></span><h1>Template Matching<a class="headerlink" href="#template-matching" title="Permalink to this headline">¶</a></h1>
@@ -106,23 +106,22 @@ return a single match (the exact same coin), so the maximum value in the
 <code class="docutils literal notranslate"><span class="pre">match_template</span></code> result corresponds to the coin location. The other coins
 look similar, and thus have local maxima; if you expect multiple matches, you
 should use a proper peak-finding function.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">match_template</span></code> function uses fast, normalized cross-correlation <a class="footnote-reference" href="#id2" id="id1">[1]</a>
+<p>The <code class="docutils literal notranslate"><span class="pre">match_template</span></code> function uses fast, normalized cross-correlation <a class="footnote-reference brackets" href="#id2" id="id1">1</a>
 to find instances of the template in the image. Note that the peaks in the
 output of <code class="docutils literal notranslate"><span class="pre">match_template</span></code> correspond to the origin (i.e. top-left corner) of
 the template.</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>J. P. Lewis, “Fast Normalized Cross-Correlation”, Industrial Light and
-Magic.</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>J. P. Lewis, “Fast Normalized Cross-Correlation”, Industrial Light and
+Magic.</p>
+</dd>
+</dl>
 <img alt="../../_images/sphx_glr_plot_template_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_template_001.png" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <a href="../../api/skimage.feature.html#skimage.feature.match_template" title="View documentation for skimage.feature.match_template"><span class="n">match_template</span></a>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <a href="../../api/skimage.feature.html#skimage.feature.match_template" title="View documentation for skimage.feature.match_template"><span class="n">match_template</span></a>
 
 
 <span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.coins" title="View documentation for skimage.data.coins"><span class="n">data</span><span class="o">.</span><span class="n">coins</span></a><span class="p">()</span>
@@ -153,18 +152,20 @@ Magic.</td></tr>
 <span class="n">ax3</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;`match_template`</span><span class="se">\n</span><span class="s1">result&#39;</span><span class="p">)</span>
 <span class="c1"># highlight matched region</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">autoscale</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">autoscale</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax3</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markeredgecolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.074 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.230 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-features-detection-plot-template-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/094b27c244eeeef8cb0618c7d278e244/plot_template.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_template.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/094b27c244eeeef8cb0618c7d278e244/plot_template.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_template.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/c4e5e8d3a7e14bd8ec4bd9c964dbc504/plot_template.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_template.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/c4e5e8d3a7e14bd8ec4bd9c964dbc504/plot_template.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_template.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>
