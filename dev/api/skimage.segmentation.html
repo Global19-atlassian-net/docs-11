@@ -1082,7 +1082,7 @@ to the original ones).</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>label_field</strong><span class="classifier">numpy array of int, arbitrary shape</span></dt><dd><p>An array of labels.</p>
+<dt><strong>label_field</strong><span class="classifier">numpy array of int, arbitrary shape</span></dt><dd><p>An array of labels, which must be non-negative integers.</p>
 </dd>
 <dt><strong>offset</strong><span class="classifier">int, optional</span></dt><dd><p>The return labels will start at <cite>offset</cite>, which should be
 strictly positive.</p>
@@ -1092,15 +1092,17 @@ strictly positive.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl>
 <dt><strong>relabeled</strong><span class="classifier">numpy array of int, same shape as <cite>label_field</cite></span></dt><dd><p>The input label field with labels mapped to
-{offset, …, number_of_labels + offset - 1}.</p>
+{offset, …, number_of_labels + offset - 1}.
+The data type will be the same as <cite>label_field</cite>, except when
+offset + number_of_labels causes overflow of the current data type.</p>
 </dd>
 <dt><strong>forward_map</strong><span class="classifier">numpy array of int, shape <code class="docutils literal notranslate"><span class="pre">(label_field.max()</span> <span class="pre">+</span> <span class="pre">1,)</span></code></span></dt><dd><p>The map from the original label space to the returned label
 space. Can be used to re-apply the same mapping. See examples
-for usage.</p>
+for usage. The data type will be the same as <cite>relabeled</cite>.</p>
 </dd>
 <dt><strong>inverse_map</strong><span class="classifier">1D numpy array of int, of length offset + number of labels</span></dt><dd><p>The map from the new label space to the original space. This
 can be used to reconstruct the original label field from the
-relabeled one.</p>
+relabeled one. The data type will be the same as <cite>relabeled</cite>.</p>
 </dd>
 </dl>
 </dd>
