@@ -151,6 +151,7 @@
 <li><a class="reference internal" href="#examples-using-skimage-filters-rank-windowed-histogram">Examples using <code class="docutils literal notranslate"><span class="pre">skimage.filters.rank.windowed_histogram</span></code></a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#majority-filter">majority_filter</a></li>
 </ul>
 </li>
 </ul>
@@ -283,6 +284,9 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.filters.rank.windowed_histogram" title="skimage.filters.rank.windowed_histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.rank.windowed_histogram</span></code></a>(…)</p></td>
 <td><p>Normalized sliding window histogram</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.filters.rank.majority_filter" title="skimage.filters.rank.majority_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.rank.majority_filter</span></code></a>(image, …)</p></td>
+<td><p>Majority filter assign to each pixel the most occuring value within its neighborhood.</p></td>
 </tr>
 </tbody>
 </table>
@@ -1888,6 +1892,49 @@ case all elements will be 0.</p>
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_windowed_histogram.html#sphx-glr-auto-examples-features-detection-plot-windowed-histogram-py"><span class="std std-ref">Sliding window histogram</span></a></span><a class="headerlink" href="#id27" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
+</div>
+<div class="section" id="majority-filter">
+<h2>majority_filter<a class="headerlink" href="#majority-filter" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.filters.rank.majority_filter">
+<code class="descclassname">skimage.filters.rank.</code><code class="descname">majority_filter</code><span class="sig-paren">(</span><em>image</em>, <em>selem</em>, <em>out=None</em>, <em>mask=None</em>, <em>shift_x=False</em>, <em>shift_y=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/rank/generic.py#L1059"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.rank.majority_filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Majority filter assign to each pixel the most occuring value within
+its neighborhood.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Image array (uint8, uint16 array).</p>
+</dd>
+<dt><strong>selem</strong><span class="classifier">2-D array</span></dt><dd><p>The neighborhood expressed as a 2-D array of 1’s and 0’s.</p>
+</dd>
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>If None, a new array will be allocated.</p>
+</dd>
+<dt><strong>mask</strong><span class="classifier">ndarray</span></dt><dd><p>Mask array that defines (&gt;0) area of the image included in the local
+neighborhood. If None, the complete image is used (default).</p>
+</dd>
+<dt><strong>shift_x, shift_y</strong><span class="classifier">int</span></dt><dd><p>Offset added to the structuring element center point. Shift is bounded
+to the structuring element sizes (center must be inside the given
+structuring element).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">2-D array (same dtype as input image)</span></dt><dd><p>Output image.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <span class="n">majority_filter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <span class="n">disk</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">maj_img</span> <span class="o">=</span> <span class="n">majority_filter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">disk</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 </div>
 
