@@ -151,7 +151,7 @@
 <li><a class="reference internal" href="#examples-using-skimage-filters-rank-windowed-histogram">Examples using <code class="docutils literal notranslate"><span class="pre">skimage.filters.rank.windowed_histogram</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#majority-filter">majority_filter</a></li>
+<li><a class="reference internal" href="#majority">majority</a></li>
 </ul>
 </li>
 </ul>
@@ -285,7 +285,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.filters.rank.windowed_histogram" title="skimage.filters.rank.windowed_histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.rank.windowed_histogram</span></code></a>(…)</p></td>
 <td><p>Normalized sliding window histogram</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.filters.rank.majority_filter" title="skimage.filters.rank.majority_filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.rank.majority_filter</span></code></a>(image, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.filters.rank.majority" title="skimage.filters.rank.majority"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.rank.majority</span></code></a>(image, selem)</p></td>
 <td><p>Majority filter assign to each pixel the most occuring value within its neighborhood.</p></td>
 </tr>
 </tbody>
@@ -1893,11 +1893,11 @@ case all elements will be 0.</p>
 </div>
 </div></div>
 </div>
-<div class="section" id="majority-filter">
-<h2>majority_filter<a class="headerlink" href="#majority-filter" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="majority">
+<h2>majority<a class="headerlink" href="#majority" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="skimage.filters.rank.majority_filter">
-<code class="descclassname">skimage.filters.rank.</code><code class="descname">majority_filter</code><span class="sig-paren">(</span><em>image</em>, <em>selem</em>, <em>out=None</em>, <em>mask=None</em>, <em>shift_x=False</em>, <em>shift_y=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/rank/generic.py#L1059"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.rank.majority_filter" title="Permalink to this definition">¶</a></dt>
+<dt id="skimage.filters.rank.majority">
+<code class="descclassname">skimage.filters.rank.</code><code class="descname">majority</code><span class="sig-paren">(</span><em>image</em>, <em>selem</em>, <em>out=None</em>, <em>mask=None</em>, <em>shift_x=False</em>, <em>shift_y=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/rank/generic.py#L1059"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.rank.majority" title="Permalink to this definition">¶</a></dt>
 <dd><p>Majority filter assign to each pixel the most occuring value within
 its neighborhood.</p>
 <dl class="field-list simple">
@@ -1927,10 +1927,10 @@ structuring element).</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <span class="n">majority_filter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <span class="n">majority</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <span class="n">disk</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">maj_img</span> <span class="o">=</span> <span class="n">majority_filter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">disk</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">maj_img</span> <span class="o">=</span> <span class="n">majority</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">disk</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
 </dd></dl>
