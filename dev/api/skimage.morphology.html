@@ -2897,6 +2897,12 @@ the root which has no parent).</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#skimage.morphology.area_opening" title="skimage.morphology.area_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_opening</span></code></a>, <a class="reference internal" href="#skimage.morphology.diameter_opening" title="skimage.morphology.diameter_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_opening</span></code></a>, <a class="reference internal" href="#skimage.morphology.diameter_closing" title="skimage.morphology.diameter_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_closing</span></code></a>, <a class="reference internal" href="#skimage.morphology.max_tree" title="skimage.morphology.max_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.max_tree</span></code></a>, <a class="reference internal" href="#skimage.morphology.remove_small_objects" title="skimage.morphology.remove_small_objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_objects</span></code></a>, <a class="reference internal" href="#skimage.morphology.remove_small_holes" title="skimage.morphology.remove_small_holes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_holes</span></code></a></p>
 </div>
+<p class="rubric">Notes</p>
+<p>If a max-tree representation (parent and tree_traverser) are given to the
+function, they must be calculated from the inverted image for this
+function, i.e.:
+&gt;&gt;&gt; P, S = max_tree(invert(f))
+&gt;&gt;&gt; closed = diameter_closing(f, 3, parent=P, tree_traverser=S)</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="rce2615f30276-1"><span class="brackets"><a class="fn-backref" href="#id35">1</a></span></dt>
@@ -3083,6 +3089,12 @@ tree_traverser are provided. See Note for further details.</p>
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="#skimage.morphology.area_opening" title="skimage.morphology.area_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_opening</span></code></a>, <a class="reference internal" href="#skimage.morphology.area_closing" title="skimage.morphology.area_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_closing</span></code></a>, <a class="reference internal" href="#skimage.morphology.diameter_opening" title="skimage.morphology.diameter_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_opening</span></code></a>, <a class="reference internal" href="#skimage.morphology.max_tree" title="skimage.morphology.max_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.max_tree</span></code></a></p>
 </div>
+<p class="rubric">Notes</p>
+<p>If a max-tree representation (parent and tree_traverser) are given to the
+function, they must be calculated from the inverted image for this
+function, i.e.:
+&gt;&gt;&gt; P, S = max_tree(invert(f))
+&gt;&gt;&gt; closed = diameter_closing(f, 3, parent=P, tree_traverser=S)</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="r0f793839edcd-1"><span class="brackets"><a class="fn-backref" href="#id42">1</a></span></dt>
