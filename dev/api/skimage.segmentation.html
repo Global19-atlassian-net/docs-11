@@ -233,7 +233,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.checkerboard_level_set</span></code></a>(…)</p></td>
 <td><p>Create a checkerboard level set with binary values.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.segmentation.flood" title="skimage.segmentation.flood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.flood</span></code></a>(image, seed_point, \*)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.segmentation.flood" title="skimage.segmentation.flood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.flood</span></code></a>(image, seed_point, *)</p></td>
 <td><p>Mask corresponding to a flood fill.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.segmentation.flood_fill" title="skimage.segmentation.flood_fill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.flood_fill</span></code></a>(image, …)</p></td>
@@ -251,14 +251,17 @@
 images.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>data</strong><span class="classifier">array_like</span></dt><dd><p>Image to be segmented in phases. Gray-level <cite>data</cite> can be two- or
+<dd class="field-odd"><p><strong>data</strong> : array_like</p>
+<blockquote>
+<div><p>Image to be segmented in phases. Gray-level <cite>data</cite> can be two- or
 three-dimensional; multichannel data can be three- or four-
 dimensional (multichannel=True) with the highest dimension denoting
 channels. Data spacing is assumed isotropic unless the <cite>spacing</cite>
 keyword argument is used.</p>
-</dd>
-<dt><strong>labels</strong><span class="classifier">array of ints, of same shape as <cite>data</cite> without channels dimension</span></dt><dd><p>Array of seed markers labeled with different positive integers
+</div></blockquote>
+<p><strong>labels</strong> : array of ints, of same shape as <cite>data</cite> without channels dimension</p>
+<blockquote>
+<div><p>Array of seed markers labeled with different positive integers
 for different phases. Zero-labeled pixels are unlabeled pixels.
 Negative labels correspond to inactive pixels that are not taken
 into account (they are removed from the graph). If labels are not
@@ -266,11 +269,15 @@ consecutive integers, the labels array will be transformed so that
 labels are consecutive. In the multichannel case, <cite>labels</cite> should have
 the same shape as a single channel of <cite>data</cite>, i.e. without the final
 dimension denoting channels.</p>
-</dd>
-<dt><strong>beta</strong><span class="classifier">float, optional</span></dt><dd><p>Penalization coefficient for the random walker motion
+</div></blockquote>
+<p><strong>beta</strong> : float, optional</p>
+<blockquote>
+<div><p>Penalization coefficient for the random walker motion
 (the greater <cite>beta</cite>, the more difficult the diffusion).</p>
-</dd>
-<dt><strong>mode</strong><span class="classifier">string, available options {‘cg_mg’, ‘cg’, ‘bf’}</span></dt><dd><p>Mode for solving the linear system in the random walker algorithm.
+</div></blockquote>
+<p><strong>mode</strong> : string, available options {‘cg_mg’, ‘cg’, ‘bf’}</p>
+<blockquote>
+<div><p>Mode for solving the linear system in the random walker algorithm.
 If no preference given, automatically attempt to use the fastest
 option available (‘cg_mg’ from pyamg &gt;&gt; ‘cg’ with UMFPACK &gt; ‘bf’).</p>
 <ul class="simple">
@@ -288,28 +295,38 @@ requires that the pyamg module (<a class="reference external" href="http://pyamg
 installed. For images of size &gt; 512x512, this is the recommended
 (fastest) mode.</p></li>
 </ul>
-</dd>
-<dt><strong>tol</strong><span class="classifier">float, optional</span></dt><dd><p>tolerance to achieve when solving the linear system, in
+</div></blockquote>
+<p><strong>tol</strong> : float, optional</p>
+<blockquote>
+<div><p>tolerance to achieve when solving the linear system, in
 cg’ and ‘cg_mg’ modes.</p>
-</dd>
-<dt><strong>copy</strong><span class="classifier">bool, optional</span></dt><dd><p>If copy is False, the <cite>labels</cite> array will be overwritten with
+</div></blockquote>
+<p><strong>copy</strong> : bool, optional</p>
+<blockquote>
+<div><p>If copy is False, the <cite>labels</cite> array will be overwritten with
 the result of the segmentation. Use copy=False if you want to
 save on memory.</p>
-</dd>
-<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, input data is parsed as multichannel data (see ‘data’ above
+</div></blockquote>
+<p><strong>multichannel</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, input data is parsed as multichannel data (see ‘data’ above
 for proper input format in this case).</p>
-</dd>
-<dt><strong>return_full_prob</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the probability that a pixel belongs to each of the labels
+</div></blockquote>
+<p><strong>return_full_prob</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, the probability that a pixel belongs to each of the labels
 will be returned, instead of only the most likely label.</p>
-</dd>
-<dt><strong>spacing</strong><span class="classifier">iterable of floats, optional</span></dt><dd><p>Spacing between voxels in each spatial dimension. If <cite>None</cite>, then
+</div></blockquote>
+<p><strong>spacing</strong> : iterable of floats, optional</p>
+<blockquote>
+<div><p>Spacing between voxels in each spatial dimension. If <cite>None</cite>, then
 the spacing between pixels/voxels in each dimension is assumed 1.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>output</strong><span class="classifier">ndarray</span></dt><dd><ul class="simple">
+<dd class="field-even"><p><strong>output</strong> : ndarray</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>If <cite>return_full_prob</cite> is False, array of ints of same shape as
 <cite>data</cite>, in which each pixel has been labeled according to the marker
 that reached the pixel first by anisotropic diffusion.</p></li>
@@ -317,8 +334,7 @@ that reached the pixel first by anisotropic diffusion.</p></li>
 <cite>(nlabels, data.shape)</cite>. <cite>output[label_nb, i, j]</cite> is the probability
 that label <cite>label_nb</cite> reaches the pixel <cite>(i, j)</cite> first.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -334,7 +350,7 @@ channels are separately normalized prior to running this algorithm.</p>
 <p>The <cite>spacing</cite> argument is specifically for anisotropic datasets, where
 data points are spaced differently in one or more spatial dimensions.
 Anisotropic data is commonly encountered in medical imaging.</p>
-<p>The algorithm was first proposed in <a class="reference internal" href="#raf7f6bdcab09-1" id="id1">[1]</a>.</p>
+<p>The algorithm was first proposed in <a class="reference internal" href="#r510" id="id1"><span>[R510]</span></a>.</p>
 <p>The algorithm solves the diffusion equation at infinite times for
 sources placed on markers of each phase in turn. A pixel is labeled with
 the phase that has the greatest probability to diffuse first to the pixel.</p>
@@ -369,7 +385,7 @@ This linear system is solved in the algorithm using a direct method for
 small images, and an iterative method for larger images.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="raf7f6bdcab09-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dt class="label" id="r510"><span class="brackets">R510</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
 <dd><p>Leo Grady, Random walks for image segmentation, IEEE Trans Pattern
 Anal Mach Intell. 2006 Nov;28(11):1768-83.
 <a class="reference external" href="https://doi.org/10.1109/TPAMI.2006.233">DOI:10.1109/TPAMI.2006.233</a>.</p>
@@ -417,51 +433,71 @@ have fixed and/or free ends.
 The output snake has the same length as the input boundary.
 As the number of points is constant, make sure that the initial snake
 has enough points to capture the details of the final contour.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(N, M) or (N, M, 3) ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>snake</strong><span class="classifier">(N, 2) ndarray</span></dt><dd><p>Initial snake coordinates. For periodic boundary conditions, endpoints
+<dd class="field-odd"><p><strong>image</strong> : (N, M) or (N, M, 3) ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>snake</strong> : (N, 2) ndarray</p>
+<blockquote>
+<div><p>Initial snake coordinates. For periodic boundary conditions, endpoints
 must not be duplicated.</p>
-</dd>
-<dt><strong>alpha</strong><span class="classifier">float, optional</span></dt><dd><p>Snake length shape parameter. Higher values makes snake contract
+</div></blockquote>
+<p><strong>alpha</strong> : float, optional</p>
+<blockquote>
+<div><p>Snake length shape parameter. Higher values makes snake contract
 faster.</p>
-</dd>
-<dt><strong>beta</strong><span class="classifier">float, optional</span></dt><dd><p>Snake smoothness shape parameter. Higher values makes snake smoother.</p>
-</dd>
-<dt><strong>w_line</strong><span class="classifier">float, optional</span></dt><dd><p>Controls attraction to brightness. Use negative values to attract toward
+</div></blockquote>
+<p><strong>beta</strong> : float, optional</p>
+<blockquote>
+<div><p>Snake smoothness shape parameter. Higher values makes snake smoother.</p>
+</div></blockquote>
+<p><strong>w_line</strong> : float, optional</p>
+<blockquote>
+<div><p>Controls attraction to brightness. Use negative values to attract toward
 dark regions.</p>
-</dd>
-<dt><strong>w_edge</strong><span class="classifier">float, optional</span></dt><dd><p>Controls attraction to edges. Use negative values to repel snake from
+</div></blockquote>
+<p><strong>w_edge</strong> : float, optional</p>
+<blockquote>
+<div><p>Controls attraction to edges. Use negative values to repel snake from
 edges.</p>
-</dd>
-<dt><strong>gamma</strong><span class="classifier">float, optional</span></dt><dd><p>Explicit time stepping parameter.</p>
-</dd>
-<dt><strong>bc</strong><span class="classifier">{‘periodic’, ‘free’, ‘fixed’}, optional</span></dt><dd><p>Boundary conditions for worm. ‘periodic’ attaches the two ends of the
+</div></blockquote>
+<p><strong>gamma</strong> : float, optional</p>
+<blockquote>
+<div><p>Explicit time stepping parameter.</p>
+</div></blockquote>
+<p><strong>bc</strong> : {‘periodic’, ‘free’, ‘fixed’}, optional</p>
+<blockquote>
+<div><p>Boundary conditions for worm. ‘periodic’ attaches the two ends of the
 snake, ‘fixed’ holds the end-points in place, and ‘free’ allows free
 movement of the ends. ‘fixed’ and ‘free’ can be combined by parsing
 ‘fixed-free’, ‘free-fixed’. Parsing ‘fixed-fixed’ or ‘free-free’
 yields same behaviour as ‘fixed’ and ‘free’, respectively.</p>
-</dd>
-<dt><strong>max_px_move</strong><span class="classifier">float, optional</span></dt><dd><p>Maximum pixel distance to move per iteration.</p>
-</dd>
-<dt><strong>max_iterations</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum iterations to optimize snake shape.</p>
-</dd>
-<dt><strong>convergence: float, optional</strong></dt><dd><p>Convergence criteria.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>max_px_move</strong> : float, optional</p>
+<blockquote>
+<div><p>Maximum pixel distance to move per iteration.</p>
+</div></blockquote>
+<p><strong>max_iterations</strong> : int, optional</p>
+<blockquote>
+<div><p>Maximum iterations to optimize snake shape.</p>
+</div></blockquote>
+<p><strong>convergence: float, optional</strong></p>
+<blockquote>
+<div><p>Convergence criteria.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>snake</strong><span class="classifier">(N, 2) ndarray</span></dt><dd><p>Optimised snake, same shape as input parameter.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>snake</strong> : (N, 2) ndarray</p>
+<blockquote>
+<div><p>Optimised snake, same shape as input parameter.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r094916d7e45d-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r511"><span class="brackets"><a class="fn-backref" href="#id3">R511</a></span></dt>
 <dd><p>Kass, M.; Witkin, A.; Terzopoulos, D. “Snakes: Active contour
 models”. International Journal of Computer Vision 1 (4): 321
 (1988). DOI:<cite>10.1007/BF00133570</cite></p>
@@ -517,34 +553,42 @@ controlled indirectly through <code class="docutils literal notranslate"><span c
 vary greatly depending on local contrast.</p>
 <p>For RGB images, the algorithm uses the euclidean distance between pixels in
 color space.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(width, height, 3) or (width, height) ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>scale</strong><span class="classifier">float</span></dt><dd><p>Free parameter. Higher means larger clusters.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float</span></dt><dd><p>Width (standard deviation) of Gaussian kernel used in preprocessing.</p>
-</dd>
-<dt><strong>min_size</strong><span class="classifier">int</span></dt><dd><p>Minimum component size. Enforced using postprocessing.</p>
-</dd>
-<dt><strong>multichannel</strong><span class="classifier">bool, optional (default: True)</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
+<dd class="field-odd"><p><strong>image</strong> : (width, height, 3) or (width, height) ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>scale</strong> : float</p>
+<blockquote>
+<div><p>Free parameter. Higher means larger clusters.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float</p>
+<blockquote>
+<div><p>Width (standard deviation) of Gaussian kernel used in preprocessing.</p>
+</div></blockquote>
+<p><strong>min_size</strong> : int</p>
+<blockquote>
+<div><p>Minimum component size. Enforced using postprocessing.</p>
+</div></blockquote>
+<p><strong>multichannel</strong> : bool, optional (default: True)</p>
+<blockquote>
+<div><p>Whether the last axis of the image is to be interpreted as multiple
 channels. A value of False, for a 3D image, is not currently supported.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>segment_mask</strong><span class="classifier">(width, height) ndarray</span></dt><dd><p>Integer mask indicating segment labels.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>segment_mask</strong> : (width, height) ndarray</p>
+<blockquote>
+<div><p>Integer mask indicating segment labels.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <p>The <cite>k</cite> parameter used in the original paper renamed to <cite>scale</cite> here.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r89864356f083-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r512"><span class="brackets"><a class="fn-backref" href="#id4">R512</a></span></dt>
 <dd><p>Efficient graph-based image segmentation, Felzenszwalb, P.F. and
 Huttenlocher, D.P.  International Journal of Computer Vision, 2004</p>
 </dd>
@@ -572,67 +616,89 @@ Huttenlocher, D.P.  International Journal of Computer Vision, 2004</p>
 <dt id="skimage.segmentation.slic">
 <code class="descclassname">skimage.segmentation.</code><code class="descname">slic</code><span class="sig-paren">(</span><em>image</em>, <em>n_segments=100</em>, <em>compactness=10.0</em>, <em>max_iter=10</em>, <em>sigma=0</em>, <em>spacing=None</em>, <em>multichannel=True</em>, <em>convert2lab=None</em>, <em>enforce_connectivity=True</em>, <em>min_size_factor=0.5</em>, <em>max_size_factor=3</em>, <em>slic_zero=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/slic_superpixels.py#L11"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.slic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Segments image using k-means clustering in Color-(x,y,z) space.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">2D, 3D or 4D ndarray</span></dt><dd><p>Input image, which can be 2D or 3D, and grayscale or multichannel
+<dd class="field-odd"><p><strong>image</strong> : 2D, 3D or 4D ndarray</p>
+<blockquote>
+<div><p>Input image, which can be 2D or 3D, and grayscale or multichannel
 (see <cite>multichannel</cite> parameter).</p>
-</dd>
-<dt><strong>n_segments</strong><span class="classifier">int, optional</span></dt><dd><p>The (approximate) number of labels in the segmented output image.</p>
-</dd>
-<dt><strong>compactness</strong><span class="classifier">float, optional</span></dt><dd><p>Balances color proximity and space proximity. Higher values give
+</div></blockquote>
+<p><strong>n_segments</strong> : int, optional</p>
+<blockquote>
+<div><p>The (approximate) number of labels in the segmented output image.</p>
+</div></blockquote>
+<p><strong>compactness</strong> : float, optional</p>
+<blockquote>
+<div><p>Balances color proximity and space proximity. Higher values give
 more weight to space proximity, making superpixel shapes more
 square/cubic. In SLICO mode, this is the initial compactness.
 This parameter depends strongly on image contrast and on the
 shapes of objects in the image. We recommend exploring possible
 values on a log scale, e.g., 0.01, 0.1, 1, 10, 100, before
 refining around a chosen value.</p>
-</dd>
-<dt><strong>max_iter</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of iterations of k-means.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float or (3,) array-like of floats, optional</span></dt><dd><p>Width of Gaussian smoothing kernel for pre-processing for each
+</div></blockquote>
+<p><strong>max_iter</strong> : int, optional</p>
+<blockquote>
+<div><p>Maximum number of iterations of k-means.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float or (3,) array-like of floats, optional</p>
+<blockquote>
+<div><p>Width of Gaussian smoothing kernel for pre-processing for each
 dimension of the image. The same sigma is applied to each dimension in
 case of a scalar value. Zero means no smoothing.
 Note, that <cite>sigma</cite> is automatically scaled if it is scalar and a
 manual voxel spacing is provided (see Notes section).</p>
-</dd>
-<dt><strong>spacing</strong><span class="classifier">(3,) array-like of floats, optional</span></dt><dd><p>The voxel spacing along each image dimension. By default, <cite>slic</cite>
+</div></blockquote>
+<p><strong>spacing</strong> : (3,) array-like of floats, optional</p>
+<blockquote>
+<div><p>The voxel spacing along each image dimension. By default, <cite>slic</cite>
 assumes uniform spacing (same voxel resolution along z, y and x).
 This parameter controls the weights of the distances along z, y,
 and x during k-means clustering.</p>
-</dd>
-<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
+</div></blockquote>
+<p><strong>multichannel</strong> : bool, optional</p>
+<blockquote>
+<div><p>Whether the last axis of the image is to be interpreted as multiple
 channels or another spatial dimension.</p>
-</dd>
-<dt><strong>convert2lab</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the input should be converted to Lab colorspace prior to
+</div></blockquote>
+<p><strong>convert2lab</strong> : bool, optional</p>
+<blockquote>
+<div><p>Whether the input should be converted to Lab colorspace prior to
 segmentation. The input image <em>must</em> be RGB. Highly recommended.
 This option defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code> when <code class="docutils literal notranslate"><span class="pre">multichannel=True</span></code> <em>and</em>
 <code class="docutils literal notranslate"><span class="pre">image.shape[-1]</span> <span class="pre">==</span> <span class="pre">3</span></code>.</p>
-</dd>
-<dt><strong>enforce_connectivity: bool, optional</strong></dt><dd><p>Whether the generated segments are connected or not</p>
-</dd>
-<dt><strong>min_size_factor: float, optional</strong></dt><dd><p>Proportion of the minimum segment size to be removed with respect
+</div></blockquote>
+<p><strong>enforce_connectivity: bool, optional</strong></p>
+<blockquote>
+<div><p>Whether the generated segments are connected or not</p>
+</div></blockquote>
+<p><strong>min_size_factor: float, optional</strong></p>
+<blockquote>
+<div><p>Proportion of the minimum segment size to be removed with respect
 to the supposed segment size <code class="docutils literal notranslate"><span class="pre">`depth*width*height/n_segments`</span></code></p>
-</dd>
-<dt><strong>max_size_factor: float, optional</strong></dt><dd><p>Proportion of the maximum connected segment size. A value of 3 works
+</div></blockquote>
+<p><strong>max_size_factor: float, optional</strong></p>
+<blockquote>
+<div><p>Proportion of the maximum connected segment size. A value of 3 works
 in most of the cases.</p>
-</dd>
-<dt><strong>slic_zero: bool, optional</strong></dt><dd><p>Run SLIC-zero, the zero-parameter mode of SLIC. <a class="reference internal" href="#rbeb231216055-2" id="id5">[2]</a></p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>slic_zero: bool, optional</strong></p>
+<blockquote>
+<div><p>Run SLIC-zero, the zero-parameter mode of SLIC. <a class="reference internal" href="#r514" id="id5"><span>[R514]</span></a></p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>labels</strong><span class="classifier">2D or 3D array</span></dt><dd><p>Integer mask indicating segment labels.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>labels</strong> : 2D or 3D array</p>
+<blockquote>
+<div><p>Integer mask indicating segment labels.</p>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">convert2lab</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> but the last array
+<dd class="field-odd"><p><strong>ValueError</strong></p>
+<blockquote>
+<div><p>If <code class="docutils literal notranslate"><span class="pre">convert2lab</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> but the last array
 dimension is not of length 3.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -650,12 +716,12 @@ interpret them as 3D with the last dimension having length 3, use
 </ul>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rbeb231216055-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r513"><span class="brackets"><a class="fn-backref" href="#id6">R513</a></span></dt>
 <dd><p>Radhakrishna Achanta, Appu Shaji, Kevin Smith, Aurelien Lucchi,
 Pascal Fua, and Sabine Süsstrunk, SLIC Superpixels Compared to
 State-of-the-art Superpixel Methods, TPAMI, May 2012.</p>
 </dd>
-<dt class="label" id="rbeb231216055-2"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
+<dt class="label" id="r514"><span class="brackets">R514</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id7">2</a>)</span></dt>
 <dd><p><a class="reference external" href="http://ivrg.epfl.ch/research/superpixels#SLICO">http://ivrg.epfl.ch/research/superpixels#SLICO</a></p>
 </dd>
 </dl>
@@ -716,36 +782,50 @@ State-of-the-art Superpixel Methods, TPAMI, May 2012.</p>
 <dd><p>Segments image using quickshift clustering in Color-(x,y) space.</p>
 <p>Produces an oversegmentation of the image using the quickshift mode-seeking
 algorithm.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(width, height, channels) ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>ratio</strong><span class="classifier">float, optional, between 0 and 1</span></dt><dd><p>Balances color-space proximity and image-space proximity.
+<dd class="field-odd"><p><strong>image</strong> : (width, height, channels) ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>ratio</strong> : float, optional, between 0 and 1</p>
+<blockquote>
+<div><p>Balances color-space proximity and image-space proximity.
 Higher values give more weight to color-space.</p>
-</dd>
-<dt><strong>kernel_size</strong><span class="classifier">float, optional</span></dt><dd><p>Width of Gaussian kernel used in smoothing the
+</div></blockquote>
+<p><strong>kernel_size</strong> : float, optional</p>
+<blockquote>
+<div><p>Width of Gaussian kernel used in smoothing the
 sample density. Higher means fewer clusters.</p>
-</dd>
-<dt><strong>max_dist</strong><span class="classifier">float, optional</span></dt><dd><p>Cut-off point for data distances.
+</div></blockquote>
+<p><strong>max_dist</strong> : float, optional</p>
+<blockquote>
+<div><p>Cut-off point for data distances.
 Higher means fewer clusters.</p>
-</dd>
-<dt><strong>return_tree</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to return the full segmentation hierarchy tree and distances.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Width for Gaussian smoothing as preprocessing. Zero means no smoothing.</p>
-</dd>
-<dt><strong>convert2lab</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the input should be converted to Lab colorspace prior to
+</div></blockquote>
+<p><strong>return_tree</strong> : bool, optional</p>
+<blockquote>
+<div><p>Whether to return the full segmentation hierarchy tree and distances.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float, optional</p>
+<blockquote>
+<div><p>Width for Gaussian smoothing as preprocessing. Zero means no smoothing.</p>
+</div></blockquote>
+<p><strong>convert2lab</strong> : bool, optional</p>
+<blockquote>
+<div><p>Whether the input should be converted to Lab colorspace prior to
 segmentation. For this purpose, the input is assumed to be RGB.</p>
-</dd>
-<dt><strong>random_seed</strong><span class="classifier">int, optional</span></dt><dd><p>Random seed used for breaking ties.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>random_seed</strong> : int, optional</p>
+<blockquote>
+<div><p>Random seed used for breaking ties.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>segment_mask</strong><span class="classifier">(width, height) ndarray</span></dt><dd><p>Integer mask indicating segment labels.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>segment_mask</strong> : (width, height) ndarray</p>
+<blockquote>
+<div><p>Integer mask indicating segment labels.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -754,7 +834,7 @@ segmentation, though this is not strictly necessary. For this to work, the
 image must be given in RGB format.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r7604e01a2c85-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r515"><span class="brackets"><a class="fn-backref" href="#id8">R515</a></span></dt>
 <dd><p>Quick shift and kernel methods for mode seeking,
 Vedaldi, A. and Soatto, S.
 European Conference on Computer Vision, 2008</p>
@@ -778,18 +858,23 @@ European Conference on Computer Vision, 2008</p>
 <dd><p>Return bool array where boundaries between labeled regions are True.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>label_img</strong><span class="classifier">array of int or bool</span></dt><dd><p>An array in which different regions are labeled with either different
+<dd class="field-odd"><p><strong>label_img</strong> : array of int or bool</p>
+<blockquote>
+<div><p>An array in which different regions are labeled with either different
 integers or boolean values.</p>
-</dd>
-<dt><strong>connectivity: int in {1, …, `label_img.ndim`}, optional</strong></dt><dd><p>A pixel is considered a boundary pixel if any of its neighbors
+</div></blockquote>
+<p><strong>connectivity: int in {1, …, `label_img.ndim`}, optional</strong></p>
+<blockquote>
+<div><p>A pixel is considered a boundary pixel if any of its neighbors
 has a different label. <cite>connectivity</cite> controls which pixels are
 considered neighbors. A connectivity of 1 (default) means
 pixels sharing an edge (in 2D) or a face (in 3D) will be
 considered neighbors. A connectivity of <cite>label_img.ndim</cite> means
 pixels sharing a corner will be considered neighbors.</p>
-</dd>
-<dt><strong>mode: string in {‘thick’, ‘inner’, ‘outer’, ‘subpixel’}</strong></dt><dd><p>How to mark the boundaries:</p>
+</div></blockquote>
+<p><strong>mode: string in {‘thick’, ‘inner’, ‘outer’, ‘subpixel’}</strong></p>
+<blockquote>
+<div><p>How to mark the boundaries:</p>
 <ul class="simple">
 <li><p>thick: any pixel not completely surrounded by pixels of the
 same label (defined by <cite>connectivity</cite>) is marked as a boundary.
@@ -802,20 +887,21 @@ marked.</p></li>
 <li><p>subpixel: return a doubled image, with pixels <em>between</em> the
 original pixels marked as boundary where appropriate.</p></li>
 </ul>
-</dd>
-<dt><strong>background: int, optional</strong></dt><dd><p>For modes ‘inner’ and ‘outer’, a definition of a background
+</div></blockquote>
+<p><strong>background: int, optional</strong></p>
+<blockquote>
+<div><p>For modes ‘inner’ and ‘outer’, a definition of a background
 label is required. See <cite>mode</cite> for descriptions of these two.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>boundaries</strong><span class="classifier">array of bool, same shape as <cite>label_img</cite></span></dt><dd><p>A bool image where <code class="docutils literal notranslate"><span class="pre">True</span></code> represents a boundary pixel. For
+<dd class="field-even"><p><strong>boundaries</strong> : array of bool, same shape as <cite>label_img</cite></p>
+<blockquote>
+<div><p>A bool image where <code class="docutils literal notranslate"><span class="pre">True</span></code> represents a boundary pixel. For
 <cite>mode</cite> equal to ‘subpixel’, <code class="docutils literal notranslate"><span class="pre">boundaries.shape[i]</span></code> is equal
 to <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">label_img.shape[i]</span> <span class="pre">-</span> <span class="pre">1</span></code> for all <code class="docutils literal notranslate"><span class="pre">i</span></code> (a pixel is
 inserted in between all other pairs of pixels).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -897,38 +983,46 @@ inserted in between all other pairs of pixels).</p>
 <dt id="skimage.segmentation.mark_boundaries">
 <code class="descclassname">skimage.segmentation.</code><code class="descname">mark_boundaries</code><span class="sig-paren">(</span><em>image</em>, <em>label_img</em>, <em>color=(1</em>, <em>1</em>, <em>0)</em>, <em>outline_color=None</em>, <em>mode='outer'</em>, <em>background_label=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/boundaries.py#L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.mark_boundaries" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return image with boundaries between labeled regions highlighted.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(M, N[, 3]) array</span></dt><dd><p>Grayscale or RGB image.</p>
-</dd>
-<dt><strong>label_img</strong><span class="classifier">(M, N) array of int</span></dt><dd><p>Label array where regions are marked by different integer values.</p>
-</dd>
-<dt><strong>color</strong><span class="classifier">length-3 sequence, optional</span></dt><dd><p>RGB color of boundaries in the output image.</p>
-</dd>
-<dt><strong>outline_color</strong><span class="classifier">length-3 sequence, optional</span></dt><dd><p>RGB color surrounding boundaries in the output image. If None, no
+<dd class="field-odd"><p><strong>image</strong> : (M, N[, 3]) array</p>
+<blockquote>
+<div><p>Grayscale or RGB image.</p>
+</div></blockquote>
+<p><strong>label_img</strong> : (M, N) array of int</p>
+<blockquote>
+<div><p>Label array where regions are marked by different integer values.</p>
+</div></blockquote>
+<p><strong>color</strong> : length-3 sequence, optional</p>
+<blockquote>
+<div><p>RGB color of boundaries in the output image.</p>
+</div></blockquote>
+<p><strong>outline_color</strong> : length-3 sequence, optional</p>
+<blockquote>
+<div><p>RGB color surrounding boundaries in the output image. If None, no
 outline is drawn.</p>
-</dd>
-<dt><strong>mode</strong><span class="classifier">string in {‘thick’, ‘inner’, ‘outer’, ‘subpixel’}, optional</span></dt><dd><p>The mode for finding boundaries.</p>
-</dd>
-<dt><strong>background_label</strong><span class="classifier">int, optional</span></dt><dd><p>Which label to consider background (this is only useful for
+</div></blockquote>
+<p><strong>mode</strong> : string in {‘thick’, ‘inner’, ‘outer’, ‘subpixel’}, optional</p>
+<blockquote>
+<div><p>The mode for finding boundaries.</p>
+</div></blockquote>
+<p><strong>background_label</strong> : int, optional</p>
+<blockquote>
+<div><p>Which label to consider background (this is only useful for
 modes <code class="docutils literal notranslate"><span class="pre">inner</span></code> and <code class="docutils literal notranslate"><span class="pre">outer</span></code>).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>marked</strong><span class="classifier">(M, N, 3) array of float</span></dt><dd><p>An image in which the boundaries between labels are
+<dd class="field-even"><p><strong>marked</strong> : (M, N, 3) array of float</p>
+<blockquote>
+<div><p>An image in which the boundaries between labels are
 superimposed on the original image.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.segmentation.find_boundaries" title="skimage.segmentation.find_boundaries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_boundaries</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.segmentation.find_boundaries" title="skimage.segmentation.find_boundaries"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_boundaries</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -952,25 +1046,35 @@ superimposed on the original image.</p>
 <dd><p>Clear objects connected to the label image border.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>labels</strong><span class="classifier">(M[, N[, …, P]]) array of int or bool</span></dt><dd><p>Imaging data labels.</p>
-</dd>
-<dt><strong>buffer_size</strong><span class="classifier">int, optional</span></dt><dd><p>The width of the border examined.  By default, only objects
+<dd class="field-odd"><p><strong>labels</strong> : (M[, N[, …, P]]) array of int or bool</p>
+<blockquote>
+<div><p>Imaging data labels.</p>
+</div></blockquote>
+<p><strong>buffer_size</strong> : int, optional</p>
+<blockquote>
+<div><p>The width of the border examined.  By default, only objects
 that touch the outside of the image are removed.</p>
-</dd>
-<dt><strong>bgval</strong><span class="classifier">float or int, optional</span></dt><dd><p>Cleared objects are set to this value.</p>
-</dd>
-<dt><strong>in_place</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether or not to manipulate the labels array in-place.</p>
-</dd>
-<dt><strong>mask</strong><span class="classifier">ndarray of bool, same shape as <cite>image</cite>, optional.</span></dt><dd><p>Image data mask. Objects in labels image overlapping with
+</div></blockquote>
+<p><strong>bgval</strong> : float or int, optional</p>
+<blockquote>
+<div><p>Cleared objects are set to this value.</p>
+</div></blockquote>
+<p><strong>in_place</strong> : bool, optional</p>
+<blockquote>
+<div><p>Whether or not to manipulate the labels array in-place.</p>
+</div></blockquote>
+<p><strong>mask</strong> : ndarray of bool, same shape as <cite>image</cite>, optional.</p>
+<blockquote>
+<div><p>Image data mask. Objects in labels image overlapping with
 False pixels of mask will be removed. If defined, the 
 argument buffer_size will be ignored.</p>
-</dd>
-<dt><strong>Returns</strong></dt><dd></dd>
-<dt><strong>——-</strong></dt><dd></dd>
-<dt><strong>out</strong><span class="classifier">(M[, N[, …, P]]) array</span></dt><dd><p>Imaging data labels with cleared borders</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>Returns</strong></p>
+<p><strong>——-</strong></p>
+<p><strong>out</strong> : (M[, N[, …, P]]) array</p>
+<blockquote>
+<div><p>Imaging data labels with cleared borders</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1023,18 +1127,18 @@ argument buffer_size will be ignored.</p>
 <p>The join J of S1 and S2 is defined as the segmentation in which two
 voxels are in the same segment if and only if they are in the same
 segment in <em>both</em> S1 and S2.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>s1, s2</strong><span class="classifier">numpy arrays</span></dt><dd><p>s1 and s2 are label fields of the same shape.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>s1, s2</strong> : numpy arrays</p>
+<blockquote>
+<div><p>s1 and s2 are label fields of the same shape.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>j</strong><span class="classifier">numpy array</span></dt><dd><p>The join segmentation of s1 and s2.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>j</strong> : numpy array</p>
+<blockquote>
+<div><p>The join segmentation of s1 and s2.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1083,30 +1187,36 @@ the reduced labels) and the inverse map (mapping the reduced labels back
 to the original ones).</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>label_field</strong><span class="classifier">numpy array of int, arbitrary shape</span></dt><dd><p>An array of labels, which must be non-negative integers.</p>
-</dd>
-<dt><strong>offset</strong><span class="classifier">int, optional</span></dt><dd><p>The return labels will start at <cite>offset</cite>, which should be
+<dd class="field-odd"><p><strong>label_field</strong> : numpy array of int, arbitrary shape</p>
+<blockquote>
+<div><p>An array of labels, which must be non-negative integers.</p>
+</div></blockquote>
+<p><strong>offset</strong> : int, optional</p>
+<blockquote>
+<div><p>The return labels will start at <cite>offset</cite>, which should be
 strictly positive.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>relabeled</strong><span class="classifier">numpy array of int, same shape as <cite>label_field</cite></span></dt><dd><p>The input label field with labels mapped to
+<dd class="field-even"><p><strong>relabeled</strong> : numpy array of int, same shape as <cite>label_field</cite></p>
+<blockquote>
+<div><p>The input label field with labels mapped to
 {offset, …, number_of_labels + offset - 1}.
 The data type will be the same as <cite>label_field</cite>, except when
 offset + number_of_labels causes overflow of the current data type.</p>
-</dd>
-<dt><strong>forward_map</strong><span class="classifier">numpy array of int, shape <code class="docutils literal notranslate"><span class="pre">(label_field.max()</span> <span class="pre">+</span> <span class="pre">1,)</span></code></span></dt><dd><p>The map from the original label space to the returned label
+</div></blockquote>
+<p><strong>forward_map</strong> : numpy array of int, shape <code class="docutils literal notranslate"><span class="pre">(label_field.max()</span> <span class="pre">+</span> <span class="pre">1,)</span></code></p>
+<blockquote>
+<div><p>The map from the original label space to the returned label
 space. Can be used to re-apply the same mapping. See examples
 for usage. The data type will be the same as <cite>relabeled</cite>.</p>
-</dd>
-<dt><strong>inverse_map</strong><span class="classifier">1D numpy array of int, of length offset + number of labels</span></dt><dd><p>The map from the new label space to the original space. This
+</div></blockquote>
+<p><strong>inverse_map</strong> : 1D numpy array of int, of length offset + number of labels</p>
+<blockquote>
+<div><p>The map from the new label space to the original space. This
 can be used to reconstruct the original label field from the
 relabeled one. The data type will be the same as <cite>relabeled</cite>.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1148,39 +1258,51 @@ guaranteed to be smaller than either the input or output images.</p>
 <dt id="skimage.segmentation.watershed">
 <code class="descclassname">skimage.segmentation.</code><code class="descname">watershed</code><span class="sig-paren">(</span><em>image</em>, <em>markers=None</em>, <em>connectivity=1</em>, <em>offset=None</em>, <em>mask=None</em>, <em>compactness=0</em>, <em>watershed_line=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/watershed.py#L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.watershed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find watershed basins in <cite>image</cite> flooded from given <cite>markers</cite>.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image: ndarray (2-D, 3-D, …) of integers</strong></dt><dd><p>Data array where the lowest value points are labeled first.</p>
-</dd>
-<dt><strong>markers: int, or ndarray of int, same shape as `image`, optional</strong></dt><dd><p>The desired number of markers, or an array marking the basins with the
+<dd class="field-odd"><p><strong>image: ndarray (2-D, 3-D, …) of integers</strong></p>
+<blockquote>
+<div><p>Data array where the lowest value points are labeled first.</p>
+</div></blockquote>
+<p><strong>markers: int, or ndarray of int, same shape as `image`, optional</strong></p>
+<blockquote>
+<div><p>The desired number of markers, or an array marking the basins with the
 values to be assigned in the label matrix. Zero means not a marker. If
 <code class="docutils literal notranslate"><span class="pre">None</span></code> (no markers given), the local minima of the image are used as
 markers.</p>
-</dd>
-<dt><strong>connectivity: ndarray, optional</strong></dt><dd><p>An array with the same number of dimensions as <cite>image</cite> whose
+</div></blockquote>
+<p><strong>connectivity: ndarray, optional</strong></p>
+<blockquote>
+<div><p>An array with the same number of dimensions as <cite>image</cite> whose
 non-zero elements indicate neighbors for connection.
 Following the scipy convention, default is a one-connected array of
 the dimension of the image.</p>
-</dd>
-<dt><strong>offset: array_like of shape image.ndim, optional</strong></dt><dd><p>offset of the connectivity (one offset per dimension)</p>
-</dd>
-<dt><strong>mask: ndarray of bools or 0s and 1s, optional</strong></dt><dd><p>Array of same shape as <cite>image</cite>. Only points at which mask == True
+</div></blockquote>
+<p><strong>offset: array_like of shape image.ndim, optional</strong></p>
+<blockquote>
+<div><p>offset of the connectivity (one offset per dimension)</p>
+</div></blockquote>
+<p><strong>mask: ndarray of bools or 0s and 1s, optional</strong></p>
+<blockquote>
+<div><p>Array of same shape as <cite>image</cite>. Only points at which mask == True
 will be labeled.</p>
-</dd>
-<dt><strong>compactness</strong><span class="classifier">float, optional</span></dt><dd><p>Use compact watershed <a class="reference internal" href="#rc8002e235889-3" id="id9">[3]</a> with given compactness parameter.
+</div></blockquote>
+<p><strong>compactness</strong> : float, optional</p>
+<blockquote>
+<div><p>Use compact watershed <a class="reference internal" href="#r518" id="id9"><span>[R518]</span></a> with given compactness parameter.
 Higher values result in more regularly-shaped watershed basins.</p>
-</dd>
-<dt><strong>watershed_line</strong><span class="classifier">bool, optional</span></dt><dd><p>If watershed_line is True, a one-pixel wide line separates the regions
+</div></blockquote>
+<p><strong>watershed_line</strong> : bool, optional</p>
+<blockquote>
+<div><p>If watershed_line is True, a one-pixel wide line separates the regions
 obtained by the watershed algorithm. The line has the label 0.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>out: ndarray</dt><dd><p>A labeled matrix of the same type and shape as markers</p>
-</dd>
-</dl>
+<dd class="field-even"><p>out: ndarray</p>
+<blockquote>
+<div><p>A labeled matrix of the same type and shape as markers</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1191,7 +1313,7 @@ obtained by the watershed algorithm. The line has the label 0.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This function implements a watershed algorithm <a class="reference internal" href="#rc8002e235889-1" id="id10">[1]</a> <a class="reference internal" href="#rc8002e235889-2" id="id11">[2]</a> that apportions
+<p>This function implements a watershed algorithm <a class="reference internal" href="#r516" id="id10"><span>[R516]</span></a> <a class="reference internal" href="#r517" id="id11"><span>[R517]</span></a> that apportions
 pixels into marked basins. The algorithm uses a priority queue to hold
 the pixels with the metric for the priority queue being pixel value, then
 the time of entry into the queue - this settles ties in favor of the
@@ -1211,13 +1333,13 @@ distance function to the background for separating overlapping objects
 (see example).</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rc8002e235889-1"><span class="brackets"><a class="fn-backref" href="#id10">1</a></span></dt>
+<dt class="label" id="r516"><span class="brackets">R516</span><span class="fn-backref">(<a href="#id10">1</a>,<a href="#id12">2</a>)</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Watershed_%28image_processing%29">https://en.wikipedia.org/wiki/Watershed_%28image_processing%29</a></p>
 </dd>
-<dt class="label" id="rc8002e235889-2"><span class="brackets"><a class="fn-backref" href="#id11">2</a></span></dt>
+<dt class="label" id="r517"><span class="brackets">R517</span><span class="fn-backref">(<a href="#id11">1</a>,<a href="#id13">2</a>)</span></dt>
 <dd><p><a class="reference external" href="http://cmm.ensmp.fr/~beucher/wtshed.html">http://cmm.ensmp.fr/~beucher/wtshed.html</a></p>
 </dd>
-<dt class="label" id="rc8002e235889-3"><span class="brackets"><a class="fn-backref" href="#id9">3</a></span></dt>
+<dt class="label" id="r518"><span class="brackets">R518</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id14">2</a>)</span></dt>
 <dd><p>Peer Neubert &amp; Peter Protzel (2014). Compact Watershed and
 Preemptive SLIC: On Improving Trade-offs of Superpixel Segmentation
 Algorithms. ICPR 2014, pp 996-1001. <a class="reference external" href="https://doi.org/10.1109/ICPR.2014.181">DOI:10.1109/ICPR.2014.181</a>
@@ -1272,36 +1394,51 @@ separate overlapping spheres.</p>
 segment objects without clearly defined boundaries.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>image</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p>Grayscale image to be segmented.</p>
-</dd>
-<dt><strong>mu</strong><span class="classifier">float, optional</span></dt><dd><p>‘edge length’ weight parameter. Higher <cite>mu</cite> values will
+<dd class="field-odd"><p><strong>image</strong> : (M, N) ndarray</p>
+<blockquote>
+<div><p>Grayscale image to be segmented.</p>
+</div></blockquote>
+<p><strong>mu</strong> : float, optional</p>
+<blockquote>
+<div><p>‘edge length’ weight parameter. Higher <cite>mu</cite> values will
 produce a ‘round’ edge, while values closer to zero will
 detect smaller objects.</p>
-</dd>
-<dt><strong>lambda1</strong><span class="classifier">float, optional</span></dt><dd><p>‘difference from average’ weight parameter for the output
+</div></blockquote>
+<p><strong>lambda1</strong> : float, optional</p>
+<blockquote>
+<div><p>‘difference from average’ weight parameter for the output
 region with value ‘True’. If it is lower than <cite>lambda2</cite>, this
 region will have a larger range of values than the other.</p>
-</dd>
-<dt><strong>lambda2</strong><span class="classifier">float, optional</span></dt><dd><p>‘difference from average’ weight parameter for the output
+</div></blockquote>
+<p><strong>lambda2</strong> : float, optional</p>
+<blockquote>
+<div><p>‘difference from average’ weight parameter for the output
 region with value ‘False’. If it is lower than <cite>lambda1</cite>, this
 region will have a larger range of values than the other.</p>
-</dd>
-<dt><strong>tol</strong><span class="classifier">float, positive, optional</span></dt><dd><p>Level set variation tolerance between iterations. If the
+</div></blockquote>
+<p><strong>tol</strong> : float, positive, optional</p>
+<blockquote>
+<div><p>Level set variation tolerance between iterations. If the
 L2 norm difference between the level sets of successive
 iterations normalized by the area of the image is below this
 value, the algorithm will assume that the solution was
 reached.</p>
-</dd>
-<dt><strong>max_iter</strong><span class="classifier">uint, optional</span></dt><dd><p>Maximum number of iterations allowed before the algorithm
+</div></blockquote>
+<p><strong>max_iter</strong> : uint, optional</p>
+<blockquote>
+<div><p>Maximum number of iterations allowed before the algorithm
 interrupts itself.</p>
-</dd>
-<dt><strong>dt</strong><span class="classifier">float, optional</span></dt><dd><p>A multiplication factor applied at calculations for each step,
+</div></blockquote>
+<p><strong>dt</strong> : float, optional</p>
+<blockquote>
+<div><p>A multiplication factor applied at calculations for each step,
 serves to accelerate the algorithm. While higher values may
 speed up the algorithm, they may also lead to convergence
 problems.</p>
-</dd>
-<dt><strong>init_level_set</strong><span class="classifier">str or (M, N) ndarray, optional</span></dt><dd><p>Defines the starting level set used by the algorithm.
+</div></blockquote>
+<p><strong>init_level_set</strong> : str or (M, N) ndarray, optional</p>
+<blockquote>
+<div><p>Defines the starting level set used by the algorithm.
 If a string is inputted, a level set that matches the image
 size will automatically be generated. Alternatively, it is
 possible to define a custom level set, which should be an
@@ -1325,25 +1462,30 @@ minus a quarter of the minimum value between image width
 and image height.</p>
 </dd>
 </dl>
-</dd>
-<dt><strong>extended_output</strong><span class="classifier">bool, optional</span></dt><dd><p>If set to True, the return value will be a tuple containing
+</div></blockquote>
+<p><strong>extended_output</strong> : bool, optional</p>
+<blockquote>
+<div><p>If set to True, the return value will be a tuple containing
 the three return values (see below). If set to False which
 is the default value, only the ‘segmentation’ array will be
 returned.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>segmentation</strong><span class="classifier">(M, N) ndarray, bool</span></dt><dd><p>Segmentation produced by the algorithm.</p>
-</dd>
-<dt><strong>phi</strong><span class="classifier">(M, N) ndarray of floats</span></dt><dd><p>Final level set computed by the algorithm.</p>
-</dd>
-<dt><strong>energies</strong><span class="classifier">list of floats</span></dt><dd><p>Shows the evolution of the ‘energy’ for each step of the
+<dd class="field-even"><p><strong>segmentation</strong> : (M, N) ndarray, bool</p>
+<blockquote>
+<div><p>Segmentation produced by the algorithm.</p>
+</div></blockquote>
+<p><strong>phi</strong> : (M, N) ndarray of floats</p>
+<blockquote>
+<div><p>Final level set computed by the algorithm.</p>
+</div></blockquote>
+<p><strong>energies</strong> : list of floats</p>
+<blockquote>
+<div><p>Shows the evolution of the ‘energy’ for each step of the
 algorithm. This should allow to check whether the algorithm
 converged.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1357,7 +1499,7 @@ region, and a term which is dependent on the length of the
 boundary of the segmented region.</p>
 <p>This algorithm was first proposed by Tony Chan and Luminita Vese,
 in a publication entitled “An Active Contour Model Without Edges”
-<a class="reference internal" href="#rb5da2c114fc8-1" id="id15">[1]</a>.</p>
+<a class="reference internal" href="#r519" id="id15"><span>[R519]</span></a>.</p>
 <p>This implementation of the algorithm is somewhat simplified in the
 sense that the area factor ‘nu’ described in the original paper is
 not implemented, and is only suitable for grayscale images.</p>
@@ -1377,17 +1519,17 @@ length of the contour multiplied by the ‘mu’ factor.</p>
 term described in the original article.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rb5da2c114fc8-1"><span class="brackets"><a class="fn-backref" href="#id15">1</a></span></dt>
+<dt class="label" id="r519"><span class="brackets">R519</span><span class="fn-backref">(<a href="#id15">1</a>,<a href="#id16">2</a>)</span></dt>
 <dd><p>An Active Contour Model without Edges, Tony Chan and
 Luminita Vese, Scale-Space Theories in Computer Vision,
 1999, <a class="reference external" href="https://doi.org/10.1007/3-540-48236-9_13">DOI:10.1007/3-540-48236-9_13</a></p>
 </dd>
-<dt class="label" id="rb5da2c114fc8-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r520"><span class="brackets"><a class="fn-backref" href="#id17">R520</a></span></dt>
 <dd><p>Chan-Vese Segmentation, Pascal Getreuer Image Processing On
 Line, 2 (2012), pp. 214-224,
 <a class="reference external" href="https://doi.org/10.5201/ipol.2012.g-cv">DOI:10.5201/ipol.2012.g-cv</a></p>
 </dd>
-<dt class="label" id="rb5da2c114fc8-3"><span class="brackets">3</span></dt>
+<dt class="label" id="r521"><span class="brackets"><a class="fn-backref" href="#id18">R521</a></span></dt>
 <dd><p>The Chan-Vese Algorithm - Project Report, Rami Cohen, 2011
 <a class="reference external" href="https://arxiv.org/abs/1107.2782">arXiv:1107.2782</a></p>
 </dd>
@@ -1406,15 +1548,16 @@ Line, 2 (2012), pp. 214-224,
 <h2>morphological_geodesic_active_contour<a class="headerlink" href="#morphological-geodesic-active-contour" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.morphological_geodesic_active_contour">
-<code class="descclassname">skimage.segmentation.</code><code class="descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em>gimage</em>, <em>iterations</em>, <em>init_level_set='circle'</em>, <em>smoothing=1</em>, <em>threshold='auto'</em>, <em>balloon=0</em>, <em>iter_callback=&lt;function &lt;lambda&gt; at 0x2ad6714a9268&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.segmentation.</code><code class="descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em>gimage</em>, <em>iterations</em>, <em>init_level_set='circle'</em>, <em>smoothing=1</em>, <em>threshold='auto'</em>, <em>balloon=0</em>, <em>iter_callback=&lt;function &lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Geodesic Active Contours (MorphGAC).</p>
 <p>Geodesic active contours implemented with morphological operators. It can
 be used to segment objects with visible but noisy, cluttered, broken
 borders.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>gimage</strong><span class="classifier">(M, N) or (L, M, N) array</span></dt><dd><p>Preprocessed image or volume to be segmented. This is very rarely the
+<dd class="field-odd"><p><strong>gimage</strong> : (M, N) or (L, M, N) array</p>
+<blockquote>
+<div><p>Preprocessed image or volume to be segmented. This is very rarely the
 original image. Instead, this is usually a preprocessed version of the
 original image that enhances and highlights the borders (or other
 structures) of the object to segment.
@@ -1424,62 +1567,71 @@ evolution in areas where <cite>gimage</cite> is small. See
 perform this preprocessing. Note that the quality of
 <cite>morphological_geodesic_active_contour</cite> might greatly depend on this
 preprocessing.</p>
-</dd>
-<dt><strong>iterations</strong><span class="classifier">uint</span></dt><dd><p>Number of iterations to run.</p>
-</dd>
-<dt><strong>init_level_set</strong><span class="classifier">str, (M, N) array, or (L, M, N) array</span></dt><dd><p>Initial level set. If an array is given, it will be binarized and used
+</div></blockquote>
+<p><strong>iterations</strong> : uint</p>
+<blockquote>
+<div><p>Number of iterations to run.</p>
+</div></blockquote>
+<p><strong>init_level_set</strong> : str, (M, N) array, or (L, M, N) array</p>
+<blockquote>
+<div><p>Initial level set. If an array is given, it will be binarized and used
 as the initial level set. If a string is given, it defines the method
 to generate a reasonable initial level set with the shape of the
 <cite>image</cite>. Accepted values are ‘checkerboard’ and ‘circle’. See the
 documentation of <cite>checkerboard_level_set</cite> and <cite>circle_level_set</cite>
 respectively for details about how these level sets are created.</p>
-</dd>
-<dt><strong>smoothing</strong><span class="classifier">uint, optional</span></dt><dd><p>Number of times the smoothing operator is applied per iteration.
+</div></blockquote>
+<p><strong>smoothing</strong> : uint, optional</p>
+<blockquote>
+<div><p>Number of times the smoothing operator is applied per iteration.
 Reasonable values are around 1-4. Larger values lead to smoother
 segmentations.</p>
-</dd>
-<dt><strong>threshold</strong><span class="classifier">float, optional</span></dt><dd><p>Areas of the image with a value smaller than this threshold will be
+</div></blockquote>
+<p><strong>threshold</strong> : float, optional</p>
+<blockquote>
+<div><p>Areas of the image with a value smaller than this threshold will be
 considered borders. The evolution of the contour will stop in this
 areas.</p>
-</dd>
-<dt><strong>balloon</strong><span class="classifier">float, optional</span></dt><dd><p>Balloon force to guide the contour in non-informative areas of the
+</div></blockquote>
+<p><strong>balloon</strong> : float, optional</p>
+<blockquote>
+<div><p>Balloon force to guide the contour in non-informative areas of the
 image, i.e., areas where the gradient of the image is too small to push
 the contour towards a border. A negative value will shrink the contour,
 while a positive value will expand the contour in these areas. Setting
 this to zero will disable the balloon force.</p>
-</dd>
-<dt><strong>iter_callback</strong><span class="classifier">function, optional</span></dt><dd><p>If given, this function is called once per iteration with the current
+</div></blockquote>
+<p><strong>iter_callback</strong> : function, optional</p>
+<blockquote>
+<div><p>If given, this function is called once per iteration with the current
 level set as the only argument. This is useful for debugging or for
 plotting intermediate results during the evolution.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>out</strong><span class="classifier">(M, N) or (L, M, N) array</span></dt><dd><p>Final segmentation (i.e., the final level set)</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>out</strong> : (M, N) or (L, M, N) array</p>
+<blockquote>
+<div><p>Final segmentation (i.e., the final level set)</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.segmentation.inverse_gaussian_gradient" title="skimage.segmentation.inverse_gaussian_gradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inverse_gaussian_gradient</span></code></a>, <a class="reference internal" href="#skimage.segmentation.circle_level_set" title="skimage.segmentation.circle_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circle_level_set</span></code></a>, <a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">checkerboard_level_set</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.segmentation.inverse_gaussian_gradient" title="skimage.segmentation.inverse_gaussian_gradient"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inverse_gaussian_gradient</span></code></a>, <a class="reference internal" href="#skimage.segmentation.circle_level_set" title="skimage.segmentation.circle_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circle_level_set</span></code></a>, <a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">checkerboard_level_set</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>This is a version of the Geodesic Active Contours (GAC) algorithm that uses
 morphological operators instead of solving partial differential equations
 (PDEs) for the evolution of the contour. The set of morphological operators
 used in this algorithm are proved to be infinitesimally equivalent to the
-GAC PDEs (see <a class="reference internal" href="#rb6daaf5d7730-1" id="id19">[1]</a>). However, morphological operators are do not suffer
+GAC PDEs (see <a class="reference internal" href="#r522" id="id19"><span>[R522]</span></a>). However, morphological operators are do not suffer
 from the numerical stability issues typically found in PDEs (e.g., it is
 not necessary to find the right time step for the evolution), and are
 computationally faster.</p>
-<p>The algorithm and its theoretical derivation are described in <a class="reference internal" href="#rb6daaf5d7730-1" id="id20">[1]</a>.</p>
+<p>The algorithm and its theoretical derivation are described in <a class="reference internal" href="#r522" id="id20"><span>[R522]</span></a>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rb6daaf5d7730-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id19">1</a>,<a href="#id20">2</a>)</span></dt>
+<dt class="label" id="r522"><span class="brackets">R522</span><span class="fn-backref">(<a href="#id19">1</a>,<a href="#id20">2</a>,<a href="#id21">3</a>)</span></dt>
 <dd><p>A Morphological Approach to Curvature-based Evolution of Curves and
 Surfaces, Pablo Márquez-Neila, Luis Baumela, Luis Álvarez. In IEEE
 Transactions on Pattern Analysis and Machine Intelligence (PAMI),
@@ -1500,71 +1652,81 @@ Transactions on Pattern Analysis and Machine Intelligence (PAMI),
 <h2>morphological_chan_vese<a class="headerlink" href="#morphological-chan-vese" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.morphological_chan_vese">
-<code class="descclassname">skimage.segmentation.</code><code class="descname">morphological_chan_vese</code><span class="sig-paren">(</span><em>image</em>, <em>iterations</em>, <em>init_level_set='checkerboard'</em>, <em>smoothing=1</em>, <em>lambda1=1</em>, <em>lambda2=1</em>, <em>iter_callback=&lt;function &lt;lambda&gt; at 0x2ad6714a9158&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.segmentation.</code><code class="descname">morphological_chan_vese</code><span class="sig-paren">(</span><em>image</em>, <em>iterations</em>, <em>init_level_set='checkerboard'</em>, <em>smoothing=1</em>, <em>lambda1=1</em>, <em>lambda2=1</em>, <em>iter_callback=&lt;function &lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Active Contours without Edges (MorphACWE)</p>
 <p>Active contours without edges implemented with morphological operators. It
 can be used to segment objects in images and volumes without well defined
 borders. It is required that the inside of the object looks different on
 average than the outside (i.e., the inner area of the object should be
 darker or lighter than the outer area on average).</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(M, N) or (L, M, N) array</span></dt><dd><p>Grayscale image or volume to be segmented.</p>
-</dd>
-<dt><strong>iterations</strong><span class="classifier">uint</span></dt><dd><p>Number of iterations to run</p>
-</dd>
-<dt><strong>init_level_set</strong><span class="classifier">str, (M, N) array, or (L, M, N) array</span></dt><dd><p>Initial level set. If an array is given, it will be binarized and used
+<dd class="field-odd"><p><strong>image</strong> : (M, N) or (L, M, N) array</p>
+<blockquote>
+<div><p>Grayscale image or volume to be segmented.</p>
+</div></blockquote>
+<p><strong>iterations</strong> : uint</p>
+<blockquote>
+<div><p>Number of iterations to run</p>
+</div></blockquote>
+<p><strong>init_level_set</strong> : str, (M, N) array, or (L, M, N) array</p>
+<blockquote>
+<div><p>Initial level set. If an array is given, it will be binarized and used
 as the initial level set. If a string is given, it defines the method
 to generate a reasonable initial level set with the shape of the
 <cite>image</cite>. Accepted values are ‘checkerboard’ and ‘circle’. See the
 documentation of <cite>checkerboard_level_set</cite> and <cite>circle_level_set</cite>
 respectively for details about how these level sets are created.</p>
-</dd>
-<dt><strong>smoothing</strong><span class="classifier">uint, optional</span></dt><dd><p>Number of times the smoothing operator is applied per iteration.
+</div></blockquote>
+<p><strong>smoothing</strong> : uint, optional</p>
+<blockquote>
+<div><p>Number of times the smoothing operator is applied per iteration.
 Reasonable values are around 1-4. Larger values lead to smoother
 segmentations.</p>
-</dd>
-<dt><strong>lambda1</strong><span class="classifier">float, optional</span></dt><dd><p>Weight parameter for the outer region. If <cite>lambda1</cite> is larger than
+</div></blockquote>
+<p><strong>lambda1</strong> : float, optional</p>
+<blockquote>
+<div><p>Weight parameter for the outer region. If <cite>lambda1</cite> is larger than
 <cite>lambda2</cite>, the outer region will contain a larger range of values than
 the inner region.</p>
-</dd>
-<dt><strong>lambda2</strong><span class="classifier">float, optional</span></dt><dd><p>Weight parameter for the inner region. If <cite>lambda2</cite> is larger than
+</div></blockquote>
+<p><strong>lambda2</strong> : float, optional</p>
+<blockquote>
+<div><p>Weight parameter for the inner region. If <cite>lambda2</cite> is larger than
 <cite>lambda1</cite>, the inner region will contain a larger range of values than
 the outer region.</p>
-</dd>
-<dt><strong>iter_callback</strong><span class="classifier">function, optional</span></dt><dd><p>If given, this function is called once per iteration with the current
+</div></blockquote>
+<p><strong>iter_callback</strong> : function, optional</p>
+<blockquote>
+<div><p>If given, this function is called once per iteration with the current
 level set as the only argument. This is useful for debugging or for
 plotting intermediate results during the evolution.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>out</strong><span class="classifier">(M, N) or (L, M, N) array</span></dt><dd><p>Final segmentation (i.e., the final level set)</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>out</strong> : (M, N) or (L, M, N) array</p>
+<blockquote>
+<div><p>Final segmentation (i.e., the final level set)</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.segmentation.circle_level_set" title="skimage.segmentation.circle_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circle_level_set</span></code></a>, <a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">checkerboard_level_set</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.segmentation.circle_level_set" title="skimage.segmentation.circle_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circle_level_set</span></code></a>, <a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">checkerboard_level_set</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>This is a version of the Chan-Vese algorithm that uses morphological
 operators instead of solving a partial differential equation (PDE) for the
 evolution of the contour. The set of morphological operators used in this
 algorithm are proved to be infinitesimally equivalent to the Chan-Vese PDE
-(see <a class="reference internal" href="#r81c856a3d0d3-1" id="id22">[1]</a>). However, morphological operators are do not suffer from the
+(see <a class="reference internal" href="#r523" id="id22"><span>[R523]</span></a>). However, morphological operators are do not suffer from the
 numerical stability issues typically found in PDEs (it is not necessary to
 find the right time step for the evolution), and are computationally
 faster.</p>
-<p>The algorithm and its theoretical derivation are described in <a class="reference internal" href="#r81c856a3d0d3-1" id="id23">[1]</a>.</p>
+<p>The algorithm and its theoretical derivation are described in <a class="reference internal" href="#r523" id="id23"><span>[R523]</span></a>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r81c856a3d0d3-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id22">1</a>,<a href="#id23">2</a>)</span></dt>
+<dt class="label" id="r523"><span class="brackets">R523</span><span class="fn-backref">(<a href="#id22">1</a>,<a href="#id23">2</a>,<a href="#id24">3</a>)</span></dt>
 <dd><p>A Morphological Approach to Curvature-based Evolution of Curves and
 Surfaces, Pablo Márquez-Neila, Luis Baumela, Luis Álvarez. In IEEE
 Transactions on Pattern Analysis and Machine Intelligence (PAMI),
@@ -1593,25 +1755,29 @@ while areas close to borders are assigned values close to 0.</p>
 <p>This function or a similar one defined by the user should be applied over
 the image as a preprocessing step before calling
 <cite>morphological_geodesic_active_contour</cite>.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(M, N) or (L, M, N) array</span></dt><dd><p>Grayscale image or volume.</p>
-</dd>
-<dt><strong>alpha</strong><span class="classifier">float, optional</span></dt><dd><p>Controls the steepness of the inversion. A larger value will make the
+<dd class="field-odd"><p><strong>image</strong> : (M, N) or (L, M, N) array</p>
+<blockquote>
+<div><p>Grayscale image or volume.</p>
+</div></blockquote>
+<p><strong>alpha</strong> : float, optional</p>
+<blockquote>
+<div><p>Controls the steepness of the inversion. A larger value will make the
 transition between the flat areas and border areas steeper in the
 resulting array.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Standard deviation of the Gaussian filter applied over the image.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>sigma</strong> : float, optional</p>
+<blockquote>
+<div><p>Standard deviation of the Gaussian filter applied over the image.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>gimage</strong><span class="classifier">(M, N) or (L, M, N) array</span></dt><dd><p>Preprocessed image (or volume) suitable for
+<dd class="field-even"><p><strong>gimage</strong> : (M, N) or (L, M, N) array</p>
+<blockquote>
+<div><p>Preprocessed image (or volume) suitable for
 <cite>morphological_geodesic_active_contour</cite>.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -1632,29 +1798,31 @@ resulting array.</p>
 <dd><p>Create a circle level set with binary values.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image_shape</strong><span class="classifier">tuple of positive integers</span></dt><dd><p>Shape of the image</p>
-</dd>
-<dt><strong>center</strong><span class="classifier">tuple of positive integers, optional</span></dt><dd><p>Coordinates of the center of the circle given in (row, column). If not
+<dd class="field-odd"><p><strong>image_shape</strong> : tuple of positive integers</p>
+<blockquote>
+<div><p>Shape of the image</p>
+</div></blockquote>
+<p><strong>center</strong> : tuple of positive integers, optional</p>
+<blockquote>
+<div><p>Coordinates of the center of the circle given in (row, column). If not
 given, it defaults to the center of the image.</p>
-</dd>
-<dt><strong>radius</strong><span class="classifier">float, optional</span></dt><dd><p>Radius of the circle. If not given, it is set to the 75% of the
+</div></blockquote>
+<p><strong>radius</strong> : float, optional</p>
+<blockquote>
+<div><p>Radius of the circle. If not given, it is set to the 75% of the
 smallest image dimension.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>out</strong><span class="classifier">array with shape <cite>image_shape</cite></span></dt><dd><p>Binary level set of the circle with the given <cite>radius</cite> and <cite>center</cite>.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>out</strong> : array with shape <cite>image_shape</cite></p>
+<blockquote>
+<div><p>Binary level set of the circle with the given <cite>radius</cite> and <cite>center</cite>.</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">checkerboard_level_set</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">checkerboard_level_set</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -1667,25 +1835,25 @@ smallest image dimension.</p>
 <dd><p>Create a checkerboard level set with binary values.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image_shape</strong><span class="classifier">tuple of positive integers</span></dt><dd><p>Shape of the image.</p>
-</dd>
-<dt><strong>square_size</strong><span class="classifier">int, optional</span></dt><dd><p>Size of the squares of the checkerboard. It defaults to 5.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>image_shape</strong> : tuple of positive integers</p>
+<blockquote>
+<div><p>Shape of the image.</p>
+</div></blockquote>
+<p><strong>square_size</strong> : int, optional</p>
+<blockquote>
+<div><p>Size of the squares of the checkerboard. It defaults to 5.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>out</strong><span class="classifier">array with shape <cite>image_shape</cite></span></dt><dd><p>Binary level set of the checkerboard.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>out</strong> : array with shape <cite>image_shape</cite></p>
+<blockquote>
+<div><p>Binary level set of the checkerboard.</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.segmentation.circle_level_set" title="skimage.segmentation.circle_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circle_level_set</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.segmentation.circle_level_set" title="skimage.segmentation.circle_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circle_level_set</span></code></a></p>
 </div>
 </dd></dl>
 
@@ -1705,38 +1873,46 @@ smallest image dimension.</p>
 <dd><p>Mask corresponding to a flood fill.</p>
 <p>Starting at a specific <cite>seed_point</cite>, connected points equal or within
 <cite>tolerance</cite> of the seed value are found.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>An n-dimensional array.</p>
-</dd>
-<dt><strong>seed_point</strong><span class="classifier">tuple or int</span></dt><dd><p>The point in <cite>image</cite> used as the starting point for the flood fill.  If
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>An n-dimensional array.</p>
+</div></blockquote>
+<p><strong>seed_point</strong> : tuple or int</p>
+<blockquote>
+<div><p>The point in <cite>image</cite> used as the starting point for the flood fill.  If
 the image is 1D, this point may be given as an integer.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>A structuring element used to determine the neighborhood of each
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>A structuring element used to determine the neighborhood of each
 evaluated pixel. It must contain only 1’s and 0’s, have the same number
 of dimensions as <cite>image</cite>. If not given, all adjacent pixels are
 considered as part of the neighborhood (fully connected).</p>
-</dd>
-<dt><strong>connectivity</strong><span class="classifier">int, optional</span></dt><dd><p>A number used to determine the neighborhood of each evaluated pixel.
+</div></blockquote>
+<p><strong>connectivity</strong> : int, optional</p>
+<blockquote>
+<div><p>A number used to determine the neighborhood of each evaluated pixel.
 Adjacent pixels whose squared distance from the center is larger or
 equal to <cite>connectivity</cite> are considered neighbors. Ignored if
 <cite>selem</cite> is not None.</p>
-</dd>
-<dt><strong>tolerance</strong><span class="classifier">float or int, optional</span></dt><dd><p>If None (default), adjacent values must be strictly equal to the
+</div></blockquote>
+<p><strong>tolerance</strong> : float or int, optional</p>
+<blockquote>
+<div><p>If None (default), adjacent values must be strictly equal to the
 initial value of <cite>image</cite> at <cite>seed_point</cite>.  This is fastest.  If a value
 is given, a comparison will be done at every point and if within
 tolerance of the initial value will also be filled (inclusive).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>mask</strong><span class="classifier">ndarray</span></dt><dd><p>A Boolean array with the same shape as <cite>image</cite> is returned, with True
+<dd class="field-even"><p><strong>mask</strong> : ndarray</p>
+<blockquote>
+<div><p>A Boolean array with the same shape as <cite>image</cite> is returned, with True
 values for areas connected to and equal (or within tolerance of) the
 seed point.  All other values are False.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1813,43 +1989,55 @@ this mask.</p>
 <cite>tolerance</cite> of the seed value are found, then set to <cite>new_value</cite>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>An n-dimensional array.</p>
-</dd>
-<dt><strong>seed_point</strong><span class="classifier">tuple or int</span></dt><dd><p>The point in <cite>image</cite> used as the starting point for the flood fill.  If
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>An n-dimensional array.</p>
+</div></blockquote>
+<p><strong>seed_point</strong> : tuple or int</p>
+<blockquote>
+<div><p>The point in <cite>image</cite> used as the starting point for the flood fill.  If
 the image is 1D, this point may be given as an integer.</p>
-</dd>
-<dt><strong>new_value</strong><span class="classifier"><cite>image</cite> type</span></dt><dd><p>New value to set the entire fill.  This must be chosen in agreement
+</div></blockquote>
+<p><strong>new_value</strong> : <cite>image</cite> type</p>
+<blockquote>
+<div><p>New value to set the entire fill.  This must be chosen in agreement
 with the dtype of <cite>image</cite>.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>A structuring element used to determine the neighborhood of each
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>A structuring element used to determine the neighborhood of each
 evaluated pixel. It must contain only 1’s and 0’s, have the same number
 of dimensions as <cite>image</cite>. If not given, all adjacent pixels are
 considered as part of the neighborhood (fully connected).</p>
-</dd>
-<dt><strong>connectivity</strong><span class="classifier">int, optional</span></dt><dd><p>A number used to determine the neighborhood of each evaluated pixel.
+</div></blockquote>
+<p><strong>connectivity</strong> : int, optional</p>
+<blockquote>
+<div><p>A number used to determine the neighborhood of each evaluated pixel.
 Adjacent pixels whose squared distance from the center is less than or
 equal to <cite>connectivity</cite> are considered neighbors. Ignored if <cite>selem</cite> is
 not None.</p>
-</dd>
-<dt><strong>tolerance</strong><span class="classifier">float or int, optional</span></dt><dd><p>If None (default), adjacent values must be strictly equal to the
+</div></blockquote>
+<p><strong>tolerance</strong> : float or int, optional</p>
+<blockquote>
+<div><p>If None (default), adjacent values must be strictly equal to the
 value of <cite>image</cite> at <cite>seed_point</cite> to be filled.  This is fastest.
 If a tolerance is provided, adjacent points with values within plus or
 minus tolerance from the seed point are filled (inclusive).</p>
-</dd>
-<dt><strong>inplace</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, flood filling is applied to <cite>image</cite> inplace.  If False, the
+</div></blockquote>
+<p><strong>inplace</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, flood filling is applied to <cite>image</cite> inplace.  If False, the
 flood filled result is returned without modifying the input <cite>image</cite>
 (default).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>filled</strong><span class="classifier">ndarray</span></dt><dd><p>An array with the same shape as <cite>image</cite> is returned, with values in
+<dd class="field-even"><p><strong>filled</strong> : ndarray</p>
+<blockquote>
+<div><p>An array with the same shape as <cite>image</cite> is returned, with values in
 areas connected to and equal (or within tolerance of) the seed point
 replaced with <cite>new_value</cite>.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>

@@ -200,45 +200,55 @@
 <dd><p>Wiener-Hunt deconvolution</p>
 <p>Return the deconvolution with a Wiener-Hunt approach (i.e. with
 Fourier diagonalisation).</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p>Input degraded image</p>
-</dd>
-<dt><strong>psf</strong><span class="classifier">ndarray</span></dt><dd><p>Point Spread Function. This is assumed to be the impulse
+<dd class="field-odd"><p><strong>image</strong> : (M, N) ndarray</p>
+<blockquote>
+<div><p>Input degraded image</p>
+</div></blockquote>
+<p><strong>psf</strong> : ndarray</p>
+<blockquote>
+<div><p>Point Spread Function. This is assumed to be the impulse
 response (input image space) if the data-type is real, or the
 transfer function (Fourier space) if the data-type is
 complex. There is no constraints on the shape of the impulse
 response. The transfer function must be of shape <cite>(M, N)</cite> if
 <cite>is_real is True</cite>, <cite>(M, N // 2 + 1)</cite> otherwise (see
 <cite>np.fft.rfftn</cite>).</p>
-</dd>
-<dt><strong>balance</strong><span class="classifier">float</span></dt><dd><p>The regularisation parameter value that tunes the balance
+</div></blockquote>
+<p><strong>balance</strong> : float</p>
+<blockquote>
+<div><p>The regularisation parameter value that tunes the balance
 between the data adequacy that improve frequency restoration
 and the prior adequacy that reduce frequency restoration (to
 avoid noise artifacts).</p>
-</dd>
-<dt><strong>reg</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The regularisation operator. The Laplacian by default. It can
+</div></blockquote>
+<p><strong>reg</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The regularisation operator. The Laplacian by default. It can
 be an impulse response or a transfer function, as for the
 psf. Shape constraint is the same as for the <cite>psf</cite> parameter.</p>
-</dd>
-<dt><strong>is_real</strong><span class="classifier">boolean, optional</span></dt><dd><p>True by default. Specify if <code class="docutils literal notranslate"><span class="pre">psf</span></code> and <code class="docutils literal notranslate"><span class="pre">reg</span></code> are provided
+</div></blockquote>
+<p><strong>is_real</strong> : boolean, optional</p>
+<blockquote>
+<div><p>True by default. Specify if <code class="docutils literal notranslate"><span class="pre">psf</span></code> and <code class="docutils literal notranslate"><span class="pre">reg</span></code> are provided
 with hermitian hypothesis, that is only half of the frequency
 plane is provided (due to the redundancy of Fourier transform
 of real signal). It’s apply only if <code class="docutils literal notranslate"><span class="pre">psf</span></code> and/or <code class="docutils literal notranslate"><span class="pre">reg</span></code> are
 provided as transfer function.  For the hermitian property see
 <code class="docutils literal notranslate"><span class="pre">uft</span></code> module or <code class="docutils literal notranslate"><span class="pre">np.fft.rfftn</span></code>.</p>
-</dd>
-<dt><strong>clip</strong><span class="classifier">boolean, optional</span></dt><dd><p>True by default. If True, pixel values of the result above 1 or
+</div></blockquote>
+<p><strong>clip</strong> : boolean, optional</p>
+<blockquote>
+<div><p>True by default. If True, pixel values of the result above 1 or
 under -1 are thresholded for skimage pipeline compatibility.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>im_deconv</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p>The deconvolved image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>im_deconv</strong> : (M, N) ndarray</p>
+<blockquote>
+<div><p>The deconvolved image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -270,7 +280,7 @@ amplification or “explosive” solution).</p>
 <span class="math notranslate nohighlight">\(H\)</span>, see [Hunt].</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r78add0113d5e-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r474"><span class="brackets"><a class="fn-backref" href="#id1">R474</a></span></dt>
 <dd><p>François Orieux, Jean-François Giovannelli, and Thomas
 Rodet, “Bayesian estimation of regularization and point
 spread function parameters for Wiener-Hunt deconvolution”,
@@ -278,7 +288,7 @@ J. Opt. Soc. Am. A 27, 1593-1607 (2010)</p>
 <p><a class="reference external" href="https://www.osapublishing.org/josaa/abstract.cfm?URI=josaa-27-7-1593">https://www.osapublishing.org/josaa/abstract.cfm?URI=josaa-27-7-1593</a></p>
 <p><a class="reference external" href="http://research.orieux.fr/files/papers/OGR-JOSA10.pdf">http://research.orieux.fr/files/papers/OGR-JOSA10.pdf</a></p>
 </dd>
-<dt class="label" id="r78add0113d5e-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r475"><span class="brackets"><a class="fn-backref" href="#id2">R475</a></span></dt>
 <dd><p>B. R. Hunt “A matrix theory proof of the discrete
 convolution theorem”, IEEE Trans. on Audio and
 Electroacoustics, vol. au-19, no. 4, pp. 285-288, dec. 1971</p>
@@ -307,57 +317,75 @@ Electroacoustics, vol. au-19, no. 4, pp. 285-288, dec. 1971</p>
 hyperparameters are automatically estimated. The algorithm is a
 stochastic iterative process (Gibbs sampler) described in the
 reference below. See also <code class="docutils literal notranslate"><span class="pre">wiener</span></code> function.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p>The input degraded image.</p>
-</dd>
-<dt><strong>psf</strong><span class="classifier">ndarray</span></dt><dd><p>The impulse response (input image’s space) or the transfer
+<dd class="field-odd"><p><strong>image</strong> : (M, N) ndarray</p>
+<blockquote>
+<div><p>The input degraded image.</p>
+</div></blockquote>
+<p><strong>psf</strong> : ndarray</p>
+<blockquote>
+<div><p>The impulse response (input image’s space) or the transfer
 function (Fourier space). Both are accepted. The transfer
 function is automatically recognized as being complex
 (<code class="docutils literal notranslate"><span class="pre">np.iscomplexobj(psf)</span></code>).</p>
-</dd>
-<dt><strong>reg</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The regularisation operator. The Laplacian by default. It can
+</div></blockquote>
+<p><strong>reg</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The regularisation operator. The Laplacian by default. It can
 be an impulse response or a transfer function, as for the psf.</p>
-</dd>
-<dt><strong>user_params</strong><span class="classifier">dict, optional</span></dt><dd><p>Dictionary of parameters for the Gibbs sampler. See below.</p>
-</dd>
-<dt><strong>clip</strong><span class="classifier">boolean, optional</span></dt><dd><p>True by default. If true, pixel values of the result above 1 or
+</div></blockquote>
+<p><strong>user_params</strong> : dict, optional</p>
+<blockquote>
+<div><p>Dictionary of parameters for the Gibbs sampler. See below.</p>
+</div></blockquote>
+<p><strong>clip</strong> : boolean, optional</p>
+<blockquote>
+<div><p>True by default. If true, pixel values of the result above 1 or
 under -1 are thresholded for skimage pipeline compatibility.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>x_postmean</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p>The deconvolved image (the posterior mean).</p>
-</dd>
-<dt><strong>chains</strong><span class="classifier">dict</span></dt><dd><p>The keys <code class="docutils literal notranslate"><span class="pre">noise</span></code> and <code class="docutils literal notranslate"><span class="pre">prior</span></code> contain the chain list of
+<dd class="field-even"><p><strong>x_postmean</strong> : (M, N) ndarray</p>
+<blockquote>
+<div><p>The deconvolved image (the posterior mean).</p>
+</div></blockquote>
+<p><strong>chains</strong> : dict</p>
+<blockquote>
+<div><p>The keys <code class="docutils literal notranslate"><span class="pre">noise</span></code> and <code class="docutils literal notranslate"><span class="pre">prior</span></code> contain the chain list of
 noise and prior precision respectively.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>The keys of ``user_params`` are:</strong></dt><dd></dd>
-<dt><strong>threshold</strong><span class="classifier">float</span></dt><dd><p>The stopping criterion: the norm of the difference between to
+<dd class="field-odd"><p><strong>The keys of ``user_params`` are:</strong></p>
+<p><strong>threshold</strong> : float</p>
+<blockquote>
+<div><p>The stopping criterion: the norm of the difference between to
 successive approximated solution (empirical mean of object
 samples, see Notes section). 1e-4 by default.</p>
-</dd>
-<dt><strong>burnin</strong><span class="classifier">int</span></dt><dd><p>The number of sample to ignore to start computation of the
+</div></blockquote>
+<p><strong>burnin</strong> : int</p>
+<blockquote>
+<div><p>The number of sample to ignore to start computation of the
 mean. 15 by default.</p>
-</dd>
-<dt><strong>min_iter</strong><span class="classifier">int</span></dt><dd><p>The minimum number of iterations. 30 by default.</p>
-</dd>
-<dt><strong>max_iter</strong><span class="classifier">int</span></dt><dd><p>The maximum number of iterations if <code class="docutils literal notranslate"><span class="pre">threshold</span></code> is not
+</div></blockquote>
+<p><strong>min_iter</strong> : int</p>
+<blockquote>
+<div><p>The minimum number of iterations. 30 by default.</p>
+</div></blockquote>
+<p><strong>max_iter</strong> : int</p>
+<blockquote>
+<div><p>The maximum number of iterations if <code class="docutils literal notranslate"><span class="pre">threshold</span></code> is not
 satisfied. 200 by default.</p>
-</dd>
-<dt><strong>callback</strong><span class="classifier">callable (None by default)</span></dt><dd><p>A user provided callable to which is passed, if the function
+</div></blockquote>
+<p><strong>callback</strong> : callable (None by default)</p>
+<blockquote>
+<div><p>A user provided callable to which is passed, if the function
 exists, the current image sample for whatever purpose. The user
 can store the sample, or compute other moments than the
 mean. It has no influence on the algorithm execution and is
 only for inspection.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -374,7 +402,7 @@ samples give us an estimation of the mean, and an exact
 computation with an infinite sample set.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rc01bcdcadf9b-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r476"><span class="brackets"><a class="fn-backref" href="#id3">R476</a></span></dt>
 <dd><p>François Orieux, Jean-François Giovannelli, and Thomas
 Rodet, “Bayesian estimation of regularization and point
 spread function parameters for Wiener-Hunt deconvolution”,
@@ -409,31 +437,37 @@ J. Opt. Soc. Am. A 27, 1593-1607 (2010)</p>
 <dt id="skimage.restoration.richardson_lucy">
 <code class="descclassname">skimage.restoration.</code><code class="descname">richardson_lucy</code><span class="sig-paren">(</span><em>image</em>, <em>psf</em>, <em>iterations=50</em>, <em>clip=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/deconvolution.py#L329"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.richardson_lucy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Richardson-Lucy deconvolution.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input degraded image (can be N dimensional).</p>
-</dd>
-<dt><strong>psf</strong><span class="classifier">ndarray</span></dt><dd><p>The point spread function.</p>
-</dd>
-<dt><strong>iterations</strong><span class="classifier">int, optional</span></dt><dd><p>Number of iterations. This parameter plays the role of
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Input degraded image (can be N dimensional).</p>
+</div></blockquote>
+<p><strong>psf</strong> : ndarray</p>
+<blockquote>
+<div><p>The point spread function.</p>
+</div></blockquote>
+<p><strong>iterations</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of iterations. This parameter plays the role of
 regularisation.</p>
-</dd>
-<dt><strong>clip</strong><span class="classifier">boolean, optional</span></dt><dd><p>True by default. If true, pixel value of the result above 1 or
+</div></blockquote>
+<p><strong>clip</strong> : boolean, optional</p>
+<blockquote>
+<div><p>True by default. If true, pixel value of the result above 1 or
 under -1 are thresholded for skimage pipeline compatibility.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>im_deconv</strong><span class="classifier">ndarray</span></dt><dd><p>The deconvolved image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>im_deconv</strong> : ndarray</p>
+<blockquote>
+<div><p>The deconvolved image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rbba3d9c89116-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r477"><span class="brackets"><a class="fn-backref" href="#id4">R477</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution">https://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution</a></p>
 </dd>
 </dl>
@@ -465,50 +499,54 @@ under -1 are thresholded for skimage pipeline compatibility.</p>
 <dd><p>Recover the original from a wrapped phase image.</p>
 <p>From an image wrapped to lie in the interval [-pi, pi), recover the
 original, unwrapped image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">1D, 2D or 3D ndarray of floats, optionally a masked array</span></dt><dd><p>The values should be in the range [-pi, pi). If a masked array is
+<dd class="field-odd"><p><strong>image</strong> : 1D, 2D or 3D ndarray of floats, optionally a masked array</p>
+<blockquote>
+<div><p>The values should be in the range [-pi, pi). If a masked array is
 provided, the masked entries will not be changed, and their values
 will not be used to guide the unwrapping of neighboring, unmasked
 values. Masked 1D arrays are not allowed, and will raise a
 <cite>ValueError</cite>.</p>
-</dd>
-<dt><strong>wrap_around</strong><span class="classifier">bool or sequence of bool, optional</span></dt><dd><p>When an element of the sequence is  <cite>True</cite>, the unwrapping process
+</div></blockquote>
+<p><strong>wrap_around</strong> : bool or sequence of bool, optional</p>
+<blockquote>
+<div><p>When an element of the sequence is  <cite>True</cite>, the unwrapping process
 will regard the edges along the corresponding axis of the image to be
 connected and use this connectivity to guide the phase unwrapping
 process. If only a single boolean is given, it will apply to all axes.
 Wrap around is not supported for 1D arrays.</p>
-</dd>
-<dt><strong>seed</strong><span class="classifier">int, optional</span></dt><dd><p>Unwrapping 2D or 3D images uses random initialization. This sets the
+</div></blockquote>
+<p><strong>seed</strong> : int, optional</p>
+<blockquote>
+<div><p>Unwrapping 2D or 3D images uses random initialization. This sets the
 seed of the PRNG to achieve deterministic behavior.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>image_unwrapped</strong><span class="classifier">array_like, double</span></dt><dd><p>Unwrapped image of the same shape as the input. If the input <cite>image</cite>
+<dd class="field-even"><p><strong>image_unwrapped</strong> : array_like, double</p>
+<blockquote>
+<div><p>Unwrapped image of the same shape as the input. If the input <cite>image</cite>
 was a masked array, the mask will be preserved.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If called with a masked 1D array or called with a 1D array and
+<dd class="field-odd"><p><strong>ValueError</strong></p>
+<blockquote>
+<div><p>If called with a masked 1D array or called with a 1D array and
 <code class="docutils literal notranslate"><span class="pre">wrap_around=True</span></code>.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r160444e59583-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r478"><span class="brackets"><a class="fn-backref" href="#id5">R478</a></span></dt>
 <dd><p>Miguel Arevallilo Herraez, David R. Burton, Michael J. Lalor,
 and Munther A. Gdeisat, “Fast two-dimensional phase-unwrapping
 algorithm based on sorting by reliability following a noncontinuous
 path”, Journal Applied Optics, Vol. 41, No. 35 (2002) 7437,</p>
 </dd>
-<dt class="label" id="r160444e59583-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r479"><span class="brackets"><a class="fn-backref" href="#id6">R479</a></span></dt>
 <dd><p>Abdul-Rahman, H., Gdeisat, M., Burton, D., &amp; Lalor, M., “Fast
 three-dimensional phase-unwrapping algorithm based on sorting by
 reliability following a non-continuous path. In W. Osten,
@@ -544,51 +582,59 @@ International Society for Optics and Photonics.</p>
 <p>Total-variation denoising (also know as total-variation regularization)
 tries to find an image with less total-variation under the constraint
 of being similar to the input image, which is controlled by the
-regularization parameter (<a class="reference internal" href="#rc0e3588f2bc3-1" id="id7">[1]</a>, <a class="reference internal" href="#rc0e3588f2bc3-2" id="id8">[2]</a>, <a class="reference internal" href="#rc0e3588f2bc3-3" id="id9">[3]</a>, <a class="reference internal" href="#rc0e3588f2bc3-4" id="id10">[4]</a>).</p>
+regularization parameter (<a class="reference internal" href="#r480" id="id7"><span>[R480]</span></a>, <a class="reference internal" href="#r481" id="id8"><span>[R481]</span></a>, <a class="reference internal" href="#r482" id="id9"><span>[R482]</span></a>, <a class="reference internal" href="#r483" id="id10"><span>[R483]</span></a>).</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input data to be denoised (converted using img_as_float`).</p>
-</dd>
-<dt><strong>weight</strong><span class="classifier">float</span></dt><dd><p>Denoising weight. The smaller the <cite>weight</cite>, the more denoising (at
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Input data to be denoised (converted using img_as_float`).</p>
+</div></blockquote>
+<p><strong>weight</strong> : float</p>
+<blockquote>
+<div><p>Denoising weight. The smaller the <cite>weight</cite>, the more denoising (at
 the expense of less similarity to the <cite>input</cite>). The regularization
 parameter <cite>lambda</cite> is chosen as <cite>2 * weight</cite>.</p>
-</dd>
-<dt><strong>eps</strong><span class="classifier">float, optional</span></dt><dd><p>Relative difference of the value of the cost function that determines
+</div></blockquote>
+<p><strong>eps</strong> : float, optional</p>
+<blockquote>
+<div><p>Relative difference of the value of the cost function that determines
 the stop criterion. The algorithm stops when:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SUM</span><span class="p">((</span><span class="n">u</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">u</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">eps</span>
 </pre></div>
 </div>
-</dd>
-<dt><strong>max_iter</strong><span class="classifier">int, optional</span></dt><dd><p>Maximal number of iterations used for the optimization.</p>
-</dd>
-<dt><strong>isotropic</strong><span class="classifier">boolean, optional</span></dt><dd><p>Switch between isotropic and anisotropic TV denoising.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>max_iter</strong> : int, optional</p>
+<blockquote>
+<div><p>Maximal number of iterations used for the optimization.</p>
+</div></blockquote>
+<p><strong>isotropic</strong> : boolean, optional</p>
+<blockquote>
+<div><p>Switch between isotropic and anisotropic TV denoising.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>u</strong><span class="classifier">ndarray</span></dt><dd><p>Denoised image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>u</strong> : ndarray</p>
+<blockquote>
+<div><p>Denoised image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rc0e3588f2bc3-1"><span class="brackets"><a class="fn-backref" href="#id7">1</a></span></dt>
+<dt class="label" id="r480"><span class="brackets">R480</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id11">2</a>)</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Total_variation_denoising">https://en.wikipedia.org/wiki/Total_variation_denoising</a></p>
 </dd>
-<dt class="label" id="rc0e3588f2bc3-2"><span class="brackets"><a class="fn-backref" href="#id8">2</a></span></dt>
+<dt class="label" id="r481"><span class="brackets">R481</span><span class="fn-backref">(<a href="#id8">1</a>,<a href="#id12">2</a>)</span></dt>
 <dd><p>Tom Goldstein and Stanley Osher, “The Split Bregman Method For L1
 Regularized Problems”,
 <a class="reference external" href="ftp://ftp.math.ucla.edu/pub/camreport/cam08-29.pdf">ftp://ftp.math.ucla.edu/pub/camreport/cam08-29.pdf</a></p>
 </dd>
-<dt class="label" id="rc0e3588f2bc3-3"><span class="brackets"><a class="fn-backref" href="#id9">3</a></span></dt>
+<dt class="label" id="r482"><span class="brackets">R482</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id13">2</a>)</span></dt>
 <dd><p>Pascal Getreuer, “Rudin–Osher–Fatemi Total Variation Denoising
 using Split Bregman” in Image Processing On Line on 2012–05–19,
 <a class="reference external" href="https://www.ipol.im/pub/art/2012/g-tvd/article_lr.pdf">https://www.ipol.im/pub/art/2012/g-tvd/article_lr.pdf</a></p>
 </dd>
-<dt class="label" id="rc0e3588f2bc3-4"><span class="brackets"><a class="fn-backref" href="#id10">4</a></span></dt>
+<dt class="label" id="r483"><span class="brackets">R483</span><span class="fn-backref">(<a href="#id10">1</a>,<a href="#id14">2</a>)</span></dt>
 <dd><p><a class="reference external" href="https://web.math.ucsb.edu/~cgarcia/UGProjects/BregmanAlgorithms_JacquelineBush.pdf">https://web.math.ucsb.edu/~cgarcia/UGProjects/BregmanAlgorithms_JacquelineBush.pdf</a></p>
 </dd>
 </dl>
@@ -603,33 +649,41 @@ using Split Bregman” in Image Processing On Line on 2012–05–19,
 <dd><p>Perform total-variation denoising on n-dimensional images.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>image</strong><span class="classifier">ndarray of ints, uints or floats</span></dt><dd><p>Input data to be denoised. <cite>image</cite> can be of any numeric type,
+<dd class="field-odd"><p><strong>image</strong> : ndarray of ints, uints or floats</p>
+<blockquote>
+<div><p>Input data to be denoised. <cite>image</cite> can be of any numeric type,
 but it is cast into an ndarray of floats for the computation
 of the denoised image.</p>
-</dd>
-<dt><strong>weight</strong><span class="classifier">float, optional</span></dt><dd><p>Denoising weight. The greater <cite>weight</cite>, the more denoising (at
+</div></blockquote>
+<p><strong>weight</strong> : float, optional</p>
+<blockquote>
+<div><p>Denoising weight. The greater <cite>weight</cite>, the more denoising (at
 the expense of fidelity to <cite>input</cite>).</p>
-</dd>
-<dt><strong>eps</strong><span class="classifier">float, optional</span></dt><dd><p>Relative difference of the value of the cost function that
+</div></blockquote>
+<p><strong>eps</strong> : float, optional</p>
+<blockquote>
+<div><p>Relative difference of the value of the cost function that
 determines the stop criterion. The algorithm stops when:</p>
 <blockquote>
 <div><p>(E_(n-1) - E_n) &lt; eps * E_0</p>
 </div></blockquote>
-</dd>
-<dt><strong>n_iter_max</strong><span class="classifier">int, optional</span></dt><dd><p>Maximal number of iterations used for the optimization.</p>
-</dd>
-<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Apply total-variation denoising separately for each channel. This
+</div></blockquote>
+<p><strong>n_iter_max</strong> : int, optional</p>
+<blockquote>
+<div><p>Maximal number of iterations used for the optimization.</p>
+</div></blockquote>
+<p><strong>multichannel</strong> : bool, optional</p>
+<blockquote>
+<div><p>Apply total-variation denoising separately for each channel. This
 option should be true for color images, otherwise the denoising is
 also applied in the channels dimension.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Denoised image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>out</strong> : ndarray</p>
+<blockquote>
+<div><p>Denoised image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -642,10 +696,10 @@ the integral of the norm of the image gradient. Total variation
 denoising tends to produce “cartoon-like” images, that is,
 piecewise-constant images.</p>
 <p>This code is an implementation of the algorithm of Rudin, Fatemi and Osher
-that was proposed by Chambolle in <a class="reference internal" href="#r3f46bb237e10-1" id="id15">[1]</a>.</p>
+that was proposed by Chambolle in <a class="reference internal" href="#r484" id="id15"><span>[R484]</span></a>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r3f46bb237e10-1"><span class="brackets"><a class="fn-backref" href="#id15">1</a></span></dt>
+<dt class="label" id="r484"><span class="brackets">R484</span><span class="fn-backref">(<a href="#id15">1</a>,<a href="#id16">2</a>)</span></dt>
 <dd><p>A. Chambolle, An algorithm for total variation minimization and
 applications, Journal of Mathematical Imaging and Vision,
 Springer, 2004, 20, 89-97.</p>
@@ -684,56 +738,70 @@ Springer, 2004, 20, 89-97.</p>
 <code class="descclassname">skimage.restoration.</code><code class="descname">denoise_bilateral</code><span class="sig-paren">(</span><em>image</em>, <em>win_size=None</em>, <em>sigma_color=None</em>, <em>sigma_spatial=1</em>, <em>bins=10000</em>, <em>mode='constant'</em>, <em>cval=0</em>, <em>multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_bilateral" title="Permalink to this definition">¶</a></dt>
 <dd><p>Denoise image using bilateral filter.</p>
 <p>This is an edge-preserving, denoising filter. It averages pixels based on
-their spatial closeness and radiometric similarity <a class="reference internal" href="#rb832e60bc162-1" id="id17">[1]</a>.</p>
+their spatial closeness and radiometric similarity <a class="reference internal" href="#r485" id="id17"><span>[R485]</span></a>.</p>
 <p>Spatial closeness is measured by the Gaussian function of the Euclidean
 distance between two pixels and a certain standard deviation
 (<cite>sigma_spatial</cite>).</p>
 <p>Radiometric similarity is measured by the Gaussian function of the
 Euclidean distance between two color values and a certain standard
 deviation (<cite>sigma_color</cite>).</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray, shape (M, N[, 3])</span></dt><dd><p>Input image, 2D grayscale or RGB.</p>
-</dd>
-<dt><strong>win_size</strong><span class="classifier">int</span></dt><dd><p>Window size for filtering.
+<dd class="field-odd"><p><strong>image</strong> : ndarray, shape (M, N[, 3])</p>
+<blockquote>
+<div><p>Input image, 2D grayscale or RGB.</p>
+</div></blockquote>
+<p><strong>win_size</strong> : int</p>
+<blockquote>
+<div><p>Window size for filtering.
 If win_size is not specified, it is calculated as
 <code class="docutils literal notranslate"><span class="pre">max(5,</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">ceil(3</span> <span class="pre">*</span> <span class="pre">sigma_spatial)</span> <span class="pre">+</span> <span class="pre">1)</span></code>.</p>
-</dd>
-<dt><strong>sigma_color</strong><span class="classifier">float</span></dt><dd><p>Standard deviation for grayvalue/color distance (radiometric
+</div></blockquote>
+<p><strong>sigma_color</strong> : float</p>
+<blockquote>
+<div><p>Standard deviation for grayvalue/color distance (radiometric
 similarity). A larger value results in averaging of pixels with larger
 radiometric differences. Note, that the image will be converted using
 the <cite>img_as_float</cite> function and thus the standard deviation is in
 respect to the range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>. If the value is <code class="docutils literal notranslate"><span class="pre">None</span></code> the standard
 deviation of the <code class="docutils literal notranslate"><span class="pre">image</span></code> will be used.</p>
-</dd>
-<dt><strong>sigma_spatial</strong><span class="classifier">float</span></dt><dd><p>Standard deviation for range distance. A larger value results in
+</div></blockquote>
+<p><strong>sigma_spatial</strong> : float</p>
+<blockquote>
+<div><p>Standard deviation for range distance. A larger value results in
 averaging of pixels with larger spatial differences.</p>
-</dd>
-<dt><strong>bins</strong><span class="classifier">int</span></dt><dd><p>Number of discrete values for Gaussian weights of color filtering.
+</div></blockquote>
+<p><strong>bins</strong> : int</p>
+<blockquote>
+<div><p>Number of discrete values for Gaussian weights of color filtering.
 A larger value results in improved accuracy.</p>
-</dd>
-<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}</span></dt><dd><p>How to handle values outside the image borders. See
+</div></blockquote>
+<p><strong>mode</strong> : {‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}</p>
+<blockquote>
+<div><p>How to handle values outside the image borders. See
 <cite>numpy.pad</cite> for detail.</p>
-</dd>
-<dt><strong>cval</strong><span class="classifier">string</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
+</div></blockquote>
+<p><strong>cval</strong> : string</p>
+<blockquote>
+<div><p>Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p>
-</dd>
-<dt><strong>multichannel</strong><span class="classifier">bool</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
+</div></blockquote>
+<p><strong>multichannel</strong> : bool</p>
+<blockquote>
+<div><p>Whether the last axis of the image is to be interpreted as multiple
 channels or another spatial dimension.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>denoised</strong><span class="classifier">ndarray</span></dt><dd><p>Denoised image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>denoised</strong> : ndarray</p>
+<blockquote>
+<div><p>Denoised image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rb832e60bc162-1"><span class="brackets"><a class="fn-backref" href="#id17">1</a></span></dt>
+<dt class="label" id="r485"><span class="brackets">R485</span><span class="fn-backref">(<a href="#id17">1</a>,<a href="#id18">2</a>)</span></dt>
 <dd><p><a class="reference external" href="https://users.soe.ucsc.edu/~manduchi/Papers/ICCV98.pdf">https://users.soe.ucsc.edu/~manduchi/Papers/ICCV98.pdf</a></p>
 </dd>
 </dl>
@@ -763,45 +831,59 @@ channels or another spatial dimension.</p>
 <dt id="skimage.restoration.denoise_wavelet">
 <code class="descclassname">skimage.restoration.</code><code class="descname">denoise_wavelet</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=None</em>, <em>wavelet='db1'</em>, <em>mode='soft'</em>, <em>wavelet_levels=None</em>, <em>multichannel=False</em>, <em>convert2ycbcr=False</em>, <em>method='BayesShrink'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L559"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_wavelet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform wavelet denoising on an image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray ([M[, N[, …P]][, C]) of ints, uints or floats</span></dt><dd><p>Input data to be denoised. <cite>image</cite> can be of any numeric type,
+<dd class="field-odd"><p><strong>image</strong> : ndarray ([M[, N[, …P]][, C]) of ints, uints or floats</p>
+<blockquote>
+<div><p>Input data to be denoised. <cite>image</cite> can be of any numeric type,
 but it is cast into an ndarray of floats for the computation
 of the denoised image.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float or list, optional</span></dt><dd><p>The noise standard deviation used when computing the wavelet detail
+</div></blockquote>
+<p><strong>sigma</strong> : float or list, optional</p>
+<blockquote>
+<div><p>The noise standard deviation used when computing the wavelet detail
 coefficient threshold(s). When None (default), the noise standard
-deviation is estimated via the method in <a class="reference internal" href="#r3b8ec6d23a4e-2" id="id19">[2]</a>.</p>
-</dd>
-<dt><strong>wavelet</strong><span class="classifier">string, optional</span></dt><dd><p>The type of wavelet to perform and can be any of the options
+deviation is estimated via the method in <a class="reference internal" href="#r487" id="id19"><span>[R487]</span></a>.</p>
+</div></blockquote>
+<p><strong>wavelet</strong> : string, optional</p>
+<blockquote>
+<div><p>The type of wavelet to perform and can be any of the options
 <code class="docutils literal notranslate"><span class="pre">pywt.wavelist</span></code> outputs. The default is <cite>‘db1’</cite>. For example,
 <code class="docutils literal notranslate"><span class="pre">wavelet</span></code> can be any of <code class="docutils literal notranslate"><span class="pre">{'db2',</span> <span class="pre">'haar',</span> <span class="pre">'sym9'}</span></code> and many more.</p>
-</dd>
-<dt><strong>mode</strong><span class="classifier">{‘soft’, ‘hard’}, optional</span></dt><dd><p>An optional argument to choose the type of denoising performed. It
+</div></blockquote>
+<p><strong>mode</strong> : {‘soft’, ‘hard’}, optional</p>
+<blockquote>
+<div><p>An optional argument to choose the type of denoising performed. It
 noted that choosing soft thresholding given additive noise finds the
 best approximation of the original image.</p>
-</dd>
-<dt><strong>wavelet_levels</strong><span class="classifier">int or None, optional</span></dt><dd><p>The number of wavelet decomposition levels to use.  The default is
+</div></blockquote>
+<p><strong>wavelet_levels</strong> : int or None, optional</p>
+<blockquote>
+<div><p>The number of wavelet decomposition levels to use.  The default is
 three less than the maximum number of possible decomposition levels.</p>
-</dd>
-<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Apply wavelet denoising separately for each channel (where channels
+</div></blockquote>
+<p><strong>multichannel</strong> : bool, optional</p>
+<blockquote>
+<div><p>Apply wavelet denoising separately for each channel (where channels
 correspond to the final axis of the array).</p>
-</dd>
-<dt><strong>convert2ycbcr</strong><span class="classifier">bool, optional</span></dt><dd><p>If True and multichannel True, do the wavelet denoising in the YCbCr
+</div></blockquote>
+<p><strong>convert2ycbcr</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True and multichannel True, do the wavelet denoising in the YCbCr
 colorspace instead of the RGB color space. This typically results in
 better performance for RGB images.</p>
-</dd>
-<dt><strong>method</strong><span class="classifier">{‘BayesShrink’, ‘VisuShrink’}, optional</span></dt><dd><p>Thresholding method to be used. The currently supported methods are
-“BayesShrink” <a class="reference internal" href="#r3b8ec6d23a4e-1" id="id20">[1]</a> and “VisuShrink” <a class="reference internal" href="#r3b8ec6d23a4e-2" id="id21">[2]</a>. Defaults to “BayesShrink”.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>method</strong> : {‘BayesShrink’, ‘VisuShrink’}, optional</p>
+<blockquote>
+<div><p>Thresholding method to be used. The currently supported methods are
+“BayesShrink” <a class="reference internal" href="#r486" id="id20"><span>[R486]</span></a> and “VisuShrink” <a class="reference internal" href="#r487" id="id21"><span>[R487]</span></a>. Defaults to “BayesShrink”.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Denoised image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>out</strong> : ndarray</p>
+<blockquote>
+<div><p>Denoised image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -819,9 +901,9 @@ and 1, and <cite>sigma</cite> values are applied to these scaled color channels.
 <p>Many wavelet coefficient thresholding approaches have been proposed. By
 default, <code class="docutils literal notranslate"><span class="pre">denoise_wavelet</span></code> applies BayesShrink, which is an adaptive
 thresholding method that computes separate thresholds for each wavelet
-sub-band as described in <a class="reference internal" href="#r3b8ec6d23a4e-1" id="id22">[1]</a>.</p>
+sub-band as described in <a class="reference internal" href="#r486" id="id22"><span>[R486]</span></a>.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">method</span> <span class="pre">==</span> <span class="pre">&quot;VisuShrink&quot;</span></code>, a single “universal threshold” is applied to
-all wavelet detail coefficients as described in <a class="reference internal" href="#r3b8ec6d23a4e-2" id="id23">[2]</a>. This threshold
+all wavelet detail coefficients as described in <a class="reference internal" href="#r487" id="id23"><span>[R487]</span></a>. This threshold
 is designed to remove all Gaussian noise at a given <code class="docutils literal notranslate"><span class="pre">sigma</span></code> with high
 probability, but tends to produce images that appear overly smooth.</p>
 <p>Although any of the wavelets from <code class="docutils literal notranslate"><span class="pre">PyWavelets</span></code> can be selected, the
@@ -835,13 +917,13 @@ noise variance of the input. Example orthogonal wavelets are the Daubechies
 (e.g. ‘db2’) or symmlet (e.g. ‘sym2’) families.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r3b8ec6d23a4e-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id20">1</a>,<a href="#id22">2</a>)</span></dt>
+<dt class="label" id="r486"><span class="brackets">R486</span><span class="fn-backref">(<a href="#id20">1</a>,<a href="#id22">2</a>,<a href="#id24">3</a>)</span></dt>
 <dd><p>Chang, S. Grace, Bin Yu, and Martin Vetterli. “Adaptive wavelet
 thresholding for image denoising and compression.” Image Processing,
 IEEE Transactions on 9.9 (2000): 1532-1546.
 <a class="reference external" href="https://doi.org/10.1109/83.862633">DOI:10.1109/83.862633</a></p>
 </dd>
-<dt class="label" id="r3b8ec6d23a4e-2"><span class="brackets">2</span><span class="fn-backref">(<a href="#id19">1</a>,<a href="#id21">2</a>,<a href="#id23">3</a>)</span></dt>
+<dt class="label" id="r487"><span class="brackets">R487</span><span class="fn-backref">(<a href="#id19">1</a>,<a href="#id21">2</a>,<a href="#id23">3</a>,<a href="#id25">4</a>)</span></dt>
 <dd><p>D. L. Donoho and I. M. Johnstone. “Ideal spatial adaptation
 by wavelet shrinkage.” Biometrika 81.3 (1994): 425-455.
 <a class="reference external" href="https://doi.org/10.1093/biomet/81.3.425">DOI:10.1093/biomet/81.3.425</a></p>
@@ -881,40 +963,52 @@ by wavelet shrinkage.” Biometrika 81.3 (1994): 425-455.
 <code class="descclassname">skimage.restoration.</code><code class="descname">denoise_nl_means</code><span class="sig-paren">(</span><em>image</em>, <em>patch_size=7</em>, <em>patch_distance=11</em>, <em>h=0.1</em>, <em>multichannel=False</em>, <em>fast_mode=True</em>, <em>sigma=0.0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/non_local_means.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_nl_means" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform non-local means denoising on 2-D or 3-D grayscale images, and
 2-D RGB images.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">2D or 3D ndarray</span></dt><dd><p>Input image to be denoised, which can be 2D or 3D, and grayscale
+<dd class="field-odd"><p><strong>image</strong> : 2D or 3D ndarray</p>
+<blockquote>
+<div><p>Input image to be denoised, which can be 2D or 3D, and grayscale
 or RGB (for 2D images only, see <code class="docutils literal notranslate"><span class="pre">multichannel</span></code> parameter).</p>
-</dd>
-<dt><strong>patch_size</strong><span class="classifier">int, optional</span></dt><dd><p>Size of patches used for denoising.</p>
-</dd>
-<dt><strong>patch_distance</strong><span class="classifier">int, optional</span></dt><dd><p>Maximal distance in pixels where to search patches used for denoising.</p>
-</dd>
-<dt><strong>h</strong><span class="classifier">float, optional</span></dt><dd><p>Cut-off distance (in gray levels). The higher h, the more permissive
+</div></blockquote>
+<p><strong>patch_size</strong> : int, optional</p>
+<blockquote>
+<div><p>Size of patches used for denoising.</p>
+</div></blockquote>
+<p><strong>patch_distance</strong> : int, optional</p>
+<blockquote>
+<div><p>Maximal distance in pixels where to search patches used for denoising.</p>
+</div></blockquote>
+<p><strong>h</strong> : float, optional</p>
+<blockquote>
+<div><p>Cut-off distance (in gray levels). The higher h, the more permissive
 one is in accepting patches. A higher h results in a smoother image,
 at the expense of blurring features. For a Gaussian noise of standard
 deviation sigma, a rule of thumb is to choose the value of h to be
 sigma of slightly less.</p>
-</dd>
-<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
+</div></blockquote>
+<p><strong>multichannel</strong> : bool, optional</p>
+<blockquote>
+<div><p>Whether the last axis of the image is to be interpreted as multiple
 channels or another spatial dimension.</p>
-</dd>
-<dt><strong>fast_mode</strong><span class="classifier">bool, optional</span></dt><dd><p>If True (default value), a fast version of the non-local means
+</div></blockquote>
+<p><strong>fast_mode</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True (default value), a fast version of the non-local means
 algorithm is used. If False, the original version of non-local means is
 used. See the Notes section for more details about the algorithms.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>The standard deviation of the (Gaussian) noise.  If provided, a more
+</div></blockquote>
+<p><strong>sigma</strong> : float, optional</p>
+<blockquote>
+<div><p>The standard deviation of the (Gaussian) noise.  If provided, a more
 robust computation of patch weights is computed that takes the expected
 noise variance into account (see Notes below).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>result</strong><span class="classifier">ndarray</span></dt><dd><p>Denoised image, of same shape as <cite>image</cite>.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>result</strong> : ndarray</p>
+<blockquote>
+<div><p>Denoised image, of same shape as <cite>image</cite>.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -923,7 +1017,7 @@ specific textures. The principle of the algorithm is to average the value
 of a given pixel with values of other pixels in a limited neighbourhood,
 provided that the <em>patches</em> centered on the other pixels are similar enough
 to the patch centered on the pixel of interest.</p>
-<p>In the original version of the algorithm <a class="reference internal" href="#rc9b3919da938-1" id="id26">[1]</a>, corresponding to
+<p>In the original version of the algorithm <a class="reference internal" href="#r488" id="id26"><span>[R488]</span></a>, corresponding to
 <code class="docutils literal notranslate"><span class="pre">fast=False</span></code>, the computational complexity is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">patch_size</span> <span class="o">**</span> <span class="n">image</span><span class="o">.</span><span class="n">ndim</span> <span class="o">*</span> <span class="n">patch_distance</span> <span class="o">**</span> <span class="n">image</span><span class="o">.</span><span class="n">ndim</span>
 </pre></div>
@@ -931,18 +1025,18 @@ to the patch centered on the pixel of interest.</p>
 <p>Hence, changing the size of patches or their maximal distance has a
 strong effect on computing times, especially for 3-D images.</p>
 <p>However, the default behavior corresponds to <code class="docutils literal notranslate"><span class="pre">fast_mode=True</span></code>, for which
-another version of non-local means <a class="reference internal" href="#rc9b3919da938-2" id="id27">[2]</a> is used, corresponding to a
+another version of non-local means <a class="reference internal" href="#r489" id="id27"><span>[R489]</span></a> is used, corresponding to a
 complexity of:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">image</span><span class="o">.</span><span class="n">size</span> <span class="o">*</span> <span class="n">patch_distance</span> <span class="o">**</span> <span class="n">image</span><span class="o">.</span><span class="n">ndim</span>
 </pre></div>
 </div>
 <p>The computing time depends only weakly on the patch size, thanks to
 the computation of the integral of patches distances for a given
-shift, that reduces the number of operations <a class="reference internal" href="#rc9b3919da938-1" id="id28">[1]</a>. Therefore, this
+shift, that reduces the number of operations <a class="reference internal" href="#r488" id="id28"><span>[R488]</span></a>. Therefore, this
 algorithm executes faster than the classic algorithm
 (<code class="docutils literal notranslate"><span class="pre">fast_mode=False</span></code>), at the expense of using twice as much memory.
 This implementation has been proven to be more efficient compared to
-other alternatives, see e.g. <a class="reference internal" href="#rc9b3919da938-3" id="id29">[3]</a>.</p>
+other alternatives, see e.g. <a class="reference internal" href="#r490" id="id29"><span>[R490]</span></a>.</p>
 <p>Compared to the classic algorithm, all pixels of a patch contribute
 to the distance to another patch with the same weight, no matter
 their distance to the center of the patch. This coarser computation
@@ -955,9 +1049,9 @@ before denoising.</p>
 <p>If the noise standard deviation, <cite>sigma</cite>, is provided a more robust
 computation of patch weights is used.  Subtracting the known noise variance
 from the computed patch distances improves the estimates of patch
-similarity, giving a moderate improvement to denoising performance <a class="reference internal" href="#rc9b3919da938-4" id="id30">[4]</a>.
+similarity, giving a moderate improvement to denoising performance <a class="reference internal" href="#r491" id="id30"><span>[R491]</span></a>.
 It was also mentioned as an option for the fast variant of the algorithm in
-<a class="reference internal" href="#rc9b3919da938-3" id="id31">[3]</a>.</p>
+<a class="reference internal" href="#r490" id="id31"><span>[R490]</span></a>.</p>
 <p>When <cite>sigma</cite> is provided, a smaller <cite>h</cite> should typically be used to
 avoid oversmoothing.  The optimal value for <cite>h</cite> depends on the image
 content and noise level, but a reasonable starting point is
@@ -965,24 +1059,24 @@ content and noise level, but a reasonable starting point is
 <cite>fast_mode</cite> is <cite>False</cite>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rc9b3919da938-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id26">1</a>,<a href="#id28">2</a>)</span></dt>
+<dt class="label" id="r488"><span class="brackets">R488</span><span class="fn-backref">(<a href="#id26">1</a>,<a href="#id28">2</a>,<a href="#id32">3</a>)</span></dt>
 <dd><p>A. Buades, B. Coll, &amp; J-M. Morel. A non-local algorithm for image
 denoising. In CVPR 2005, Vol. 2, pp. 60-65, IEEE.
 <a class="reference external" href="https://doi.org/10.1109/CVPR.2005.38">DOI:10.1109/CVPR.2005.38</a></p>
 </dd>
-<dt class="label" id="rc9b3919da938-2"><span class="brackets"><a class="fn-backref" href="#id27">2</a></span></dt>
+<dt class="label" id="r489"><span class="brackets">R489</span><span class="fn-backref">(<a href="#id27">1</a>,<a href="#id33">2</a>)</span></dt>
 <dd><p>J. Darbon, A. Cunha, T.F. Chan, S. Osher, and G.J. Jensen, Fast
 nonlocal filtering applied to electron cryomicroscopy, in 5th IEEE
 International Symposium on Biomedical Imaging: From Nano to Macro,
 2008, pp. 1331-1334.
 <a class="reference external" href="https://doi.org/10.1109/ISBI.2008.4541250">DOI:10.1109/ISBI.2008.4541250</a></p>
 </dd>
-<dt class="label" id="rc9b3919da938-3"><span class="brackets">3</span><span class="fn-backref">(<a href="#id29">1</a>,<a href="#id31">2</a>)</span></dt>
+<dt class="label" id="r490"><span class="brackets">R490</span><span class="fn-backref">(<a href="#id29">1</a>,<a href="#id31">2</a>,<a href="#id34">3</a>)</span></dt>
 <dd><p>Jacques Froment. Parameter-Free Fast Pixelwise Non-Local Means
 Denoising. Image Processing On Line, 2014, vol. 4, pp. 300-326.
 <a class="reference external" href="https://doi.org/10.5201/ipol.2014.120">DOI:10.5201/ipol.2014.120</a></p>
 </dd>
-<dt class="label" id="rc9b3919da938-4"><span class="brackets"><a class="fn-backref" href="#id30">4</a></span></dt>
+<dt class="label" id="r491"><span class="brackets">R491</span><span class="fn-backref">(<a href="#id30">1</a>,<a href="#id35">2</a>)</span></dt>
 <dd><p>A. Buades, B. Coll, &amp; J-M. Morel. Non-Local Means Denoising.
 Image Processing On Line, 2011, vol. 1, pp. 208-212.
 <a class="reference external" href="https://doi.org/10.5201/ipol.2011.bcm_nlm">DOI:10.5201/ipol.2011.bcm_nlm</a></p>
@@ -1011,35 +1105,39 @@ Image Processing On Line, 2011, vol. 1, pp. 208-212.
 <dt id="skimage.restoration.estimate_sigma">
 <code class="descclassname">skimage.restoration.</code><code class="descname">estimate_sigma</code><span class="sig-paren">(</span><em>image</em>, <em>average_sigmas=False</em>, <em>multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L701"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.estimate_sigma" title="Permalink to this definition">¶</a></dt>
 <dd><p>Robust wavelet-based estimator of the (Gaussian) noise standard deviation.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Image for which to estimate the noise standard deviation.</p>
-</dd>
-<dt><strong>average_sigmas</strong><span class="classifier">bool, optional</span></dt><dd><p>If true, average the channel estimates of <cite>sigma</cite>.  Otherwise return
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Image for which to estimate the noise standard deviation.</p>
+</div></blockquote>
+<p><strong>average_sigmas</strong> : bool, optional</p>
+<blockquote>
+<div><p>If true, average the channel estimates of <cite>sigma</cite>.  Otherwise return
 a list of sigmas corresponding to each channel.</p>
-</dd>
-<dt><strong>multichannel</strong><span class="classifier">bool</span></dt><dd><p>Estimate sigma separately for each channel.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>multichannel</strong> : bool</p>
+<blockquote>
+<div><p>Estimate sigma separately for each channel.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>sigma</strong><span class="classifier">float or list</span></dt><dd><p>Estimated noise standard deviation(s).  If <cite>multichannel</cite> is True and
+<dd class="field-even"><p><strong>sigma</strong> : float or list</p>
+<blockquote>
+<div><p>Estimated noise standard deviation(s).  If <cite>multichannel</cite> is True and
 <cite>average_sigmas</cite> is False, a separate noise estimate for each channel
 is returned.  Otherwise, the average of the individual channel
 estimates is returned.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <p>This function assumes the noise follows a Gaussian distribution. The
 estimation algorithm is based on the median absolute deviation of the
-wavelet detail coefficients as described in section 4.2 of <a class="reference internal" href="#rbc448ac95825-1" id="id36">[1]</a>.</p>
+wavelet detail coefficients as described in section 4.2 of <a class="reference internal" href="#r492" id="id36"><span>[R492]</span></a>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rbc448ac95825-1"><span class="brackets"><a class="fn-backref" href="#id36">1</a></span></dt>
+<dt class="label" id="r492"><span class="brackets">R492</span><span class="fn-backref">(<a href="#id36">1</a>,<a href="#id37">2</a>)</span></dt>
 <dd><p>D. L. Donoho and I. M. Johnstone. “Ideal spatial adaptation
 by wavelet shrinkage.” Biometrika 81.3 (1994): 425-455.
 <a class="reference external" href="https://doi.org/10.1093/biomet/81.3.425">DOI:10.1093/biomet/81.3.425</a></p>
@@ -1078,35 +1176,39 @@ by wavelet shrinkage.” Biometrika 81.3 (1994): 425-455.
 <dt id="skimage.restoration.inpaint_biharmonic">
 <code class="descclassname">skimage.restoration.</code><code class="descname">inpaint_biharmonic</code><span class="sig-paren">(</span><em>image</em>, <em>mask</em>, <em>multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/inpaint.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.inpaint_biharmonic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Inpaint masked points in image with biharmonic equations.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(M[, N[, …, P]][, C]) ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>mask</strong><span class="classifier">(M[, N[, …, P]]) ndarray</span></dt><dd><p>Array of pixels to be inpainted. Have to be the same shape as one
+<dd class="field-odd"><p><strong>image</strong> : (M[, N[, …, P]][, C]) ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>mask</strong> : (M[, N[, …, P]]) ndarray</p>
+<blockquote>
+<div><p>Array of pixels to be inpainted. Have to be the same shape as one
 of the ‘image’ channels. Unknown pixels have to be represented with 1,
 known pixels - with 0.</p>
-</dd>
-<dt><strong>multichannel</strong><span class="classifier">boolean, optional</span></dt><dd><p>If True, the last <cite>image</cite> dimension is considered as a color channel,
+</div></blockquote>
+<p><strong>multichannel</strong> : boolean, optional</p>
+<blockquote>
+<div><p>If True, the last <cite>image</cite> dimension is considered as a color channel,
 otherwise as spatial.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>out</strong><span class="classifier">(M[, N[, …, P]][, C]) ndarray</span></dt><dd><p>Input image with masked pixels inpainted.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>out</strong> : (M[, N[, …, P]][, C]) ndarray</p>
+<blockquote>
+<div><p>Input image with masked pixels inpainted.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r2b3da8fbc807-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r493"><span class="brackets"><a class="fn-backref" href="#id38">R493</a></span></dt>
 <dd><p>N.S.Hoang, S.B.Damelin, “On surface completion and image inpainting
 by biharmonic functions: numerical aspects”,
 <a class="reference external" href="https://arxiv.org/abs/1707.06567">arXiv:1707.06567</a></p>
 </dd>
-<dt class="label" id="r2b3da8fbc807-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r494"><span class="brackets"><a class="fn-backref" href="#id39">R494</a></span></dt>
 <dd><p>C. K. Chui and H. N. Mhaskar, MRA Contextual-Recovery Extension of
 Smooth Functions on Manifolds, Appl. and Comp. Harmonic Anal.,
 28 (2010), 104-113,
@@ -1138,44 +1240,56 @@ Smooth Functions on Manifolds, Appl. and Comp. Harmonic Anal.,
 <dt id="skimage.restoration.cycle_spin">
 <code class="descclassname">skimage.restoration.</code><code class="descname">cycle_spin</code><span class="sig-paren">(</span><em>x</em>, <em>func</em>, <em>max_shifts</em>, <em>shift_steps=1</em>, <em>num_workers=None</em>, <em>multichannel=False</em>, <em>func_kw={}</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_cycle_spin.py#L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.cycle_spin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cycle spinning (repeatedly apply func to shifted versions of x).</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>x</strong><span class="classifier">array-like</span></dt><dd><p>Data for input to <code class="docutils literal notranslate"><span class="pre">func</span></code>.</p>
-</dd>
-<dt><strong>func</strong><span class="classifier">function</span></dt><dd><p>A function to apply to circularly shifted versions of <code class="docutils literal notranslate"><span class="pre">x</span></code>.  Should
+<dd class="field-odd"><p><strong>x</strong> : array-like</p>
+<blockquote>
+<div><p>Data for input to <code class="docutils literal notranslate"><span class="pre">func</span></code>.</p>
+</div></blockquote>
+<p><strong>func</strong> : function</p>
+<blockquote>
+<div><p>A function to apply to circularly shifted versions of <code class="docutils literal notranslate"><span class="pre">x</span></code>.  Should
 take <code class="docutils literal notranslate"><span class="pre">x</span></code> as its first argument. Any additional arguments can be
 supplied via <code class="docutils literal notranslate"><span class="pre">func_kw</span></code>.</p>
-</dd>
-<dt><strong>max_shifts</strong><span class="classifier">int or tuple</span></dt><dd><p>If an integer, shifts in <code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">max_shifts+1)</span></code> will be used along
+</div></blockquote>
+<p><strong>max_shifts</strong> : int or tuple</p>
+<blockquote>
+<div><p>If an integer, shifts in <code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">max_shifts+1)</span></code> will be used along
 each axis of <code class="docutils literal notranslate"><span class="pre">x</span></code>. If a tuple, <code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">max_shifts[i]+1)</span></code> will be
 along axis i.</p>
-</dd>
-<dt><strong>shift_steps</strong><span class="classifier">int or tuple, optional</span></dt><dd><p>The step size for the shifts applied along axis, i, are::
+</div></blockquote>
+<p><strong>shift_steps</strong> : int or tuple, optional</p>
+<blockquote>
+<div><p>The step size for the shifts applied along axis, i, are::
 <code class="docutils literal notranslate"><span class="pre">range((0,</span> <span class="pre">max_shifts[i]+1,</span> <span class="pre">shift_steps[i]))</span></code>. If an integer is
 provided, the same step size is used for all axes.</p>
-</dd>
-<dt><strong>num_workers</strong><span class="classifier">int or None, optional</span></dt><dd><p>The number of parallel threads to use during cycle spinning. If set to
+</div></blockquote>
+<p><strong>num_workers</strong> : int or None, optional</p>
+<blockquote>
+<div><p>The number of parallel threads to use during cycle spinning. If set to
 <code class="docutils literal notranslate"><span class="pre">None</span></code>, the full set of available cores are used.</p>
-</dd>
-<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to treat the final axis as channels (no cycle shifts are
+</div></blockquote>
+<p><strong>multichannel</strong> : bool, optional</p>
+<blockquote>
+<div><p>Whether to treat the final axis as channels (no cycle shifts are
 performed over the channels axis).</p>
-</dd>
-<dt><strong>func_kw</strong><span class="classifier">dict, optional</span></dt><dd><p>Additional keyword arguments to supply to <code class="docutils literal notranslate"><span class="pre">func</span></code>.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>func_kw</strong> : dict, optional</p>
+<blockquote>
+<div><p>Additional keyword arguments to supply to <code class="docutils literal notranslate"><span class="pre">func</span></code>.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>avg_y</strong><span class="classifier">np.ndarray</span></dt><dd><p>The output of <code class="docutils literal notranslate"><span class="pre">func(x,</span> <span class="pre">**func_kw)</span></code> averaged over all combinations of
+<dd class="field-even"><p><strong>avg_y</strong> : np.ndarray</p>
+<blockquote>
+<div><p>The output of <code class="docutils literal notranslate"><span class="pre">func(x,</span> <span class="pre">**func_kw)</span></code> averaged over all combinations of
 the specified axis shifts.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <p>Cycle spinning was proposed as a way to approach shift-invariance via
-performing several circular shifts of a shift-variant transform <a class="reference internal" href="#r67eed921dbd3-1" id="id40">[1]</a>.</p>
+performing several circular shifts of a shift-variant transform <a class="reference internal" href="#r495" id="id40"><span>[R495]</span></a>.</p>
 <p>For a n-level discrete wavelet transforms, one may wish to perform all
 shifts up to <code class="docutils literal notranslate"><span class="pre">max_shifts</span> <span class="pre">=</span> <span class="pre">2**n</span> <span class="pre">-</span> <span class="pre">1</span></code>. In practice, much of the benefit
 can often be realized with only a small number of shifts per axis.</p>
@@ -1183,7 +1297,7 @@ can often be realized with only a small number of shifts per axis.</p>
 wish to evaluate shifts up to the block size used by the transform.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r67eed921dbd3-1"><span class="brackets"><a class="fn-backref" href="#id40">1</a></span></dt>
+<dt class="label" id="r495"><span class="brackets">R495</span><span class="fn-backref">(<a href="#id40">1</a>,<a href="#id41">2</a>)</span></dt>
 <dd><p>R.R. Coifman and D.L. Donoho.  “Translation-Invariant De-Noising”.
 Wavelets and Statistics, Lecture Notes in Statistics, vol.103.
 Springer, New York, 1995, pp.125-150.

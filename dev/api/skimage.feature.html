@@ -347,39 +347,47 @@
 <dt id="skimage.feature.canny">
 <code class="descclassname">skimage.feature.</code><code class="descname">canny</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1.0</em>, <em>low_threshold=None</em>, <em>high_threshold=None</em>, <em>mask=None</em>, <em>use_quantiles=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/_canny.py#L53"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.canny" title="Permalink to this definition">¶</a></dt>
 <dd><p>Edge filter an image using the Canny algorithm.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">2D array</span></dt><dd><p>Grayscale input image to detect edges on; can be of any dtype.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float</span></dt><dd><p>Standard deviation of the Gaussian filter.</p>
-</dd>
-<dt><strong>low_threshold</strong><span class="classifier">float</span></dt><dd><p>Lower bound for hysteresis thresholding (linking edges).
+<dd class="field-odd"><p><strong>image</strong> : 2D array</p>
+<blockquote>
+<div><p>Grayscale input image to detect edges on; can be of any dtype.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float</p>
+<blockquote>
+<div><p>Standard deviation of the Gaussian filter.</p>
+</div></blockquote>
+<p><strong>low_threshold</strong> : float</p>
+<blockquote>
+<div><p>Lower bound for hysteresis thresholding (linking edges).
 If None, low_threshold is set to 10% of dtype’s max.</p>
-</dd>
-<dt><strong>high_threshold</strong><span class="classifier">float</span></dt><dd><p>Upper bound for hysteresis thresholding (linking edges).
+</div></blockquote>
+<p><strong>high_threshold</strong> : float</p>
+<blockquote>
+<div><p>Upper bound for hysteresis thresholding (linking edges).
 If None, high_threshold is set to 20% of dtype’s max.</p>
-</dd>
-<dt><strong>mask</strong><span class="classifier">array, dtype=bool, optional</span></dt><dd><p>Mask to limit the application of Canny to a certain area.</p>
-</dd>
-<dt><strong>use_quantiles</strong><span class="classifier">bool, optional</span></dt><dd><p>If True then treat low_threshold and high_threshold as quantiles of the
+</div></blockquote>
+<p><strong>mask</strong> : array, dtype=bool, optional</p>
+<blockquote>
+<div><p>Mask to limit the application of Canny to a certain area.</p>
+</div></blockquote>
+<p><strong>use_quantiles</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True then treat low_threshold and high_threshold as quantiles of the
 edge magnitude image, rather than absolute edge magnitude values. If True
 then the thresholds must be in the range [0, 1].</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>output</strong><span class="classifier">2D array (image)</span></dt><dd><p>The binary edge map.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>output</strong> : 2D array (image)</p>
+<blockquote>
+<div><p>The binary edge map.</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.sobel</span></code></dt><dd></dd>
-</dl>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.sobel</span></code></p>
 </div>
 <p class="rubric">Notes</p>
 <p>The steps of the algorithm are as follows:</p>
@@ -401,11 +409,11 @@ low threshold that is 8-connected to a labeled point as an edge.</p></li>
 </ul>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r5f5bcbc11495-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r164"><span class="brackets"><a class="fn-backref" href="#id1">R164</a></span></dt>
 <dd><p>Canny, J., A Computational Approach To Edge Detection, IEEE Trans.
 Pattern Analysis and Machine Intelligence, 8:679-714, 1986</p>
 </dd>
-<dt class="label" id="r5f5bcbc11495-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r165"><span class="brackets"><a class="fn-backref" href="#id2">R165</a></span></dt>
 <dd><p>William Green’s Canny tutorial
 <a class="reference external" href="http://dasl.unlv.edu/daslDrexel/alumni/bGreen/www.pages.drexel.edu/_weg22/can_tut.html">http://dasl.unlv.edu/daslDrexel/alumni/bGreen/www.pages.drexel.edu/_weg22/can_tut.html</a></p>
 </dd>
@@ -453,35 +461,48 @@ Pattern Analysis and Machine Intelligence, 8:679-714, 1986</p>
 <p>DAISY is a feature descriptor similar to SIFT formulated in a way that
 allows for fast dense extraction. Typically, this is practical for
 bag-of-features image representations.</p>
-<p>The implementation follows Tola et al. <a class="reference internal" href="#r3f18658b3c6d-1" id="id3">[1]</a> but deviate on the following
+<p>The implementation follows Tola et al. <a class="reference internal" href="#r166" id="id3"><span>[R166]</span></a> but deviate on the following
 points:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Histogram bin contribution are smoothed with a circular Gaussian
 window over the tonal range (the angular range).</p></li>
 <li><p>The sigma values of the spatial Gaussian smoothing in this code do not
-match the sigma values in the original code by Tola et al. <a class="reference internal" href="#r3f18658b3c6d-2" id="id4">[2]</a>. In
+match the sigma values in the original code by Tola et al. <a class="reference internal" href="#r167" id="id4"><span>[R167]</span></a>. In
 their code, spatial smoothing is applied to both the input image and
-the center histogram. However, this smoothing is not documented in <a class="reference internal" href="#r3f18658b3c6d-1" id="id5">[1]</a>
+the center histogram. However, this smoothing is not documented in <a class="reference internal" href="#r166" id="id5"><span>[R166]</span></a>
 and, therefore, it is omitted.</p></li>
 </ul>
 </div></blockquote>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>image</strong><span class="classifier">(M, N) array</span></dt><dd><p>Input image (grayscale).</p>
-</dd>
-<dt><strong>step</strong><span class="classifier">int, optional</span></dt><dd><p>Distance between descriptor sampling points.</p>
-</dd>
-<dt><strong>radius</strong><span class="classifier">int, optional</span></dt><dd><p>Radius (in pixels) of the outermost ring.</p>
-</dd>
-<dt><strong>rings</strong><span class="classifier">int, optional</span></dt><dd><p>Number of rings.</p>
-</dd>
-<dt><strong>histograms</strong><span class="classifier">int, optional</span></dt><dd><p>Number of histograms sampled per ring.</p>
-</dd>
-<dt><strong>orientations</strong><span class="classifier">int, optional</span></dt><dd><p>Number of orientations (bins) per histogram.</p>
-</dd>
-<dt><strong>normalization</strong><span class="classifier">[ ‘l1’ | ‘l2’ | ‘daisy’ | ‘off’ ], optional</span></dt><dd><p>How to normalize the descriptors</p>
+<dd class="field-odd"><p><strong>image</strong> : (M, N) array</p>
+<blockquote>
+<div><p>Input image (grayscale).</p>
+</div></blockquote>
+<p><strong>step</strong> : int, optional</p>
+<blockquote>
+<div><p>Distance between descriptor sampling points.</p>
+</div></blockquote>
+<p><strong>radius</strong> : int, optional</p>
+<blockquote>
+<div><p>Radius (in pixels) of the outermost ring.</p>
+</div></blockquote>
+<p><strong>rings</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of rings.</p>
+</div></blockquote>
+<p><strong>histograms</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of histograms sampled per ring.</p>
+</div></blockquote>
+<p><strong>orientations</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of orientations (bins) per histogram.</p>
+</div></blockquote>
+<p><strong>normalization</strong> : [ ‘l1’ | ‘l2’ | ‘daisy’ | ‘off’ ], optional</p>
+<blockquote>
+<div><p>How to normalize the descriptors</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>‘l1’: L1-normalization of each descriptor.</p></li>
@@ -490,8 +511,10 @@ and, therefore, it is omitted.</p></li>
 <li><p>‘off’: Disable normalization.</p></li>
 </ul>
 </div></blockquote>
-</dd>
-<dt><strong>sigmas</strong><span class="classifier">1D array of float, optional</span></dt><dd><p>Standard deviation of spatial Gaussian smoothing for the center
+</div></blockquote>
+<p><strong>sigmas</strong> : 1D array of float, optional</p>
+<blockquote>
+<div><p>Standard deviation of spatial Gaussian smoothing for the center
 histogram and for each ring of histograms. The array of sigmas should
 be sorted from the center and out. I.e. the first sigma value defines
 the spatial smoothing of the center histogram and the last sigma value
@@ -500,8 +523,10 @@ overrides the following parameter.</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">rings</span> <span class="pre">=</span> <span class="pre">len(sigmas)</span> <span class="pre">-</span> <span class="pre">1</span></code></p>
 </div></blockquote>
-</dd>
-<dt><strong>ring_radii</strong><span class="classifier">1D array of int, optional</span></dt><dd><p>Radius (in pixels) for each ring. Specifying ring_radii overrides the
+</div></blockquote>
+<p><strong>ring_radii</strong> : 1D array of int, optional</p>
+<blockquote>
+<div><p>Radius (in pixels) for each ring. Specifying ring_radii overrides the
 following two parameters.</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">rings</span> <span class="pre">=</span> <span class="pre">len(ring_radii)</span></code>
@@ -513,34 +538,37 @@ histogram.</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">len(ring_radii)</span> <span class="pre">==</span> <span class="pre">len(sigmas)</span> <span class="pre">+</span> <span class="pre">1</span></code></p>
 </div></blockquote>
-</dd>
-<dt><strong>visualize</strong><span class="classifier">bool, optional</span></dt><dd><p>Generate a visualization of the DAISY descriptors</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>visualize</strong> : bool, optional</p>
+<blockquote>
+<div><p>Generate a visualization of the DAISY descriptors</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>descs</strong><span class="classifier">array</span></dt><dd><p>Grid of DAISY descriptors for the given image as an array
+<dd class="field-even"><p><strong>descs</strong> : array</p>
+<blockquote>
+<div><p>Grid of DAISY descriptors for the given image as an array
 dimensionality  (P, Q, R) where</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">=</span> <span class="pre">ceil((M</span> <span class="pre">-</span> <span class="pre">radius*2)</span> <span class="pre">/</span> <span class="pre">step)</span></code>
 <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">=</span> <span class="pre">ceil((N</span> <span class="pre">-</span> <span class="pre">radius*2)</span> <span class="pre">/</span> <span class="pre">step)</span></code>
 <code class="docutils literal notranslate"><span class="pre">R</span> <span class="pre">=</span> <span class="pre">(rings</span> <span class="pre">*</span> <span class="pre">histograms</span> <span class="pre">+</span> <span class="pre">1)</span> <span class="pre">*</span> <span class="pre">orientations</span></code></p>
 </div></blockquote>
-</dd>
-<dt><strong>descs_img</strong><span class="classifier">(M, N, 3) array (only if visualize==True)</span></dt><dd><p>Visualization of the DAISY descriptors.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>descs_img</strong> : (M, N, 3) array (only if visualize==True)</p>
+<blockquote>
+<div><p>Visualization of the DAISY descriptors.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r3f18658b3c6d-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id5">2</a>)</span></dt>
+<dt class="label" id="r166"><span class="brackets">R166</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id5">2</a>,<a href="#id6">3</a>)</span></dt>
 <dd><p>Tola et al. “Daisy: An efficient dense descriptor applied to wide-
 baseline stereo.” Pattern Analysis and Machine Intelligence, IEEE
 Transactions on 32.5 (2010): 815-830.</p>
 </dd>
-<dt class="label" id="r3f18658b3c6d-2"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
+<dt class="label" id="r167"><span class="brackets">R167</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id7">2</a>)</span></dt>
 <dd><p><a class="reference external" href="http://cvlab.epfl.ch/software/daisy">http://cvlab.epfl.ch/software/daisy</a></p>
 </dd>
 </dl>
@@ -572,16 +600,25 @@ Transactions on 32.5 (2010): 815-830.</p>
 </div></blockquote>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>image</strong><span class="classifier">(M, N[, C]) ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>orientations</strong><span class="classifier">int, optional</span></dt><dd><p>Number of orientation bins.</p>
-</dd>
-<dt><strong>pixels_per_cell</strong><span class="classifier">2-tuple (int, int), optional</span></dt><dd><p>Size (in pixels) of a cell.</p>
-</dd>
-<dt><strong>cells_per_block</strong><span class="classifier">2-tuple (int, int), optional</span></dt><dd><p>Number of cells in each block.</p>
-</dd>
-<dt><strong>block_norm</strong><span class="classifier">str {‘L1’, ‘L1-sqrt’, ‘L2’, ‘L2-Hys’}, optional</span></dt><dd><p>Block normalization method:</p>
+<dd class="field-odd"><p><strong>image</strong> : (M, N[, C]) ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>orientations</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of orientation bins.</p>
+</div></blockquote>
+<p><strong>pixels_per_cell</strong> : 2-tuple (int, int), optional</p>
+<blockquote>
+<div><p>Size (in pixels) of a cell.</p>
+</div></blockquote>
+<p><strong>cells_per_block</strong> : 2-tuple (int, int), optional</p>
+<blockquote>
+<div><p>Number of cells in each block.</p>
+</div></blockquote>
+<p><strong>block_norm</strong> : str {‘L1’, ‘L1-sqrt’, ‘L2’, ‘L2-Hys’}, optional</p>
+<blockquote>
+<div><p>Block normalization method:</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">L1</span></code></dt><dd><p>Normalization using L1-norm.</p>
 </dd>
@@ -592,40 +629,49 @@ Transactions on 32.5 (2010): 815-830.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">L2-Hys</span></code></dt><dd><p>Normalization using L2-norm, followed by limiting the
 maximum values to 0.2 (<cite>Hys</cite> stands for <cite>hysteresis</cite>) and
 renormalization using L2-norm. (default)
-For details, see <a class="reference internal" href="#ra159ccd8c91f-3" id="id8">[3]</a>, <a class="reference internal" href="#ra159ccd8c91f-4" id="id9">[4]</a>.</p>
+For details, see <a class="reference internal" href="#r170" id="id8"><span>[R170]</span></a>, <a class="reference internal" href="#r171" id="id9"><span>[R171]</span></a>.</p>
 </dd>
 </dl>
-</dd>
-<dt><strong>visualize</strong><span class="classifier">bool, optional</span></dt><dd><p>Also return an image of the HOG.  For each cell and orientation bin,
+</div></blockquote>
+<p><strong>visualize</strong> : bool, optional</p>
+<blockquote>
+<div><p>Also return an image of the HOG.  For each cell and orientation bin,
 the image contains a line segment that is centered at the cell center,
 is perpendicular to the midpoint of the range of angles spanned by the
 orientation bin, and has intensity proportional to the corresponding
 histogram value.</p>
-</dd>
-<dt><strong>transform_sqrt</strong><span class="classifier">bool, optional</span></dt><dd><p>Apply power law compression to normalize the image before
+</div></blockquote>
+<p><strong>transform_sqrt</strong> : bool, optional</p>
+<blockquote>
+<div><p>Apply power law compression to normalize the image before
 processing. DO NOT use this if the image contains negative
 values. Also see <cite>notes</cite> section below.</p>
-</dd>
-<dt><strong>feature_vector</strong><span class="classifier">bool, optional</span></dt><dd><p>Return the data as a feature vector by calling .ravel() on the result
+</div></blockquote>
+<p><strong>feature_vector</strong> : bool, optional</p>
+<blockquote>
+<div><p>Return the data as a feature vector by calling .ravel() on the result
 just before returning.</p>
-</dd>
-<dt><strong>multichannel</strong><span class="classifier">boolean, optional</span></dt><dd><p>If True, the last <cite>image</cite> dimension is considered as a color channel,
+</div></blockquote>
+<p><strong>multichannel</strong> : boolean, optional</p>
+<blockquote>
+<div><p>If True, the last <cite>image</cite> dimension is considered as a color channel,
 otherwise as spatial.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>out</strong><span class="classifier">(n_blocks_row, n_blocks_col, n_cells_row, n_cells_col, n_orient) ndarray</span></dt><dd><p>HOG descriptor for the image. If <cite>feature_vector</cite> is True, a 1D
+<dd class="field-even"><p><strong>out</strong> : (n_blocks_row, n_blocks_col, n_cells_row, n_cells_col, n_orient) ndarray</p>
+<blockquote>
+<div><p>HOG descriptor for the image. If <cite>feature_vector</cite> is True, a 1D
 (flattened) array is returned.</p>
-</dd>
-<dt><strong>hog_image</strong><span class="classifier">(M, N) ndarray, optional</span></dt><dd><p>A visualisation of the HOG image. Only provided if <cite>visualize</cite> is True.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>hog_image</strong> : (M, N) ndarray, optional</p>
+<blockquote>
+<div><p>A visualisation of the HOG image. Only provided if <cite>visualize</cite> is True.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The presented code implements the HOG extraction method from <a class="reference internal" href="#ra159ccd8c91f-2" id="id10">[2]</a> with
+<p>The presented code implements the HOG extraction method from <a class="reference internal" href="#r169" id="id10"><span>[R169]</span></a> with
 the following changes: (I) blocks of (3, 3) cells are used ((2, 2) in the
 paper; (II) no smoothing within cells (Gaussian spatial window with sigma=8pix
 in the paper); (III) L1 block normalization is used (L2-Hys in the paper).</p>
@@ -636,23 +682,23 @@ the dark regions lighter. When the kwarg <cite>transform_sqrt</cite> is set to
 and then applies the hog algorithm to the image.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="ra159ccd8c91f-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r168"><span class="brackets"><a class="fn-backref" href="#id11">R168</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients">https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients</a></p>
 </dd>
-<dt class="label" id="ra159ccd8c91f-2"><span class="brackets"><a class="fn-backref" href="#id10">2</a></span></dt>
+<dt class="label" id="r169"><span class="brackets">R169</span><span class="fn-backref">(<a href="#id10">1</a>,<a href="#id12">2</a>)</span></dt>
 <dd><p>Dalal, N and Triggs, B, Histograms of Oriented Gradients for
 Human Detection, IEEE Computer Society Conference on Computer
 Vision and Pattern Recognition 2005 San Diego, CA, USA,
 <a class="reference external" href="https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf">https://lear.inrialpes.fr/people/triggs/pubs/Dalal-cvpr05.pdf</a>,
 <a class="reference external" href="https://doi.org/10.1109/CVPR.2005.177">DOI:10.1109/CVPR.2005.177</a></p>
 </dd>
-<dt class="label" id="ra159ccd8c91f-3"><span class="brackets"><a class="fn-backref" href="#id8">3</a></span></dt>
+<dt class="label" id="r170"><span class="brackets">R170</span><span class="fn-backref">(<a href="#id8">1</a>,<a href="#id13">2</a>)</span></dt>
 <dd><p>Lowe, D.G., Distinctive image features from scale-invatiant
 keypoints, International Journal of Computer Vision (2004) 60: 91,
 <a class="reference external" href="http://www.cs.ubc.ca/~lowe/papers/ijcv04.pdf">http://www.cs.ubc.ca/~lowe/papers/ijcv04.pdf</a>,
 <a class="reference external" href="https://doi.org/10.1023/B:VISI.0000029664.99615.94">DOI:10.1023/B:VISI.0000029664.99615.94</a></p>
 </dd>
-<dt class="label" id="ra159ccd8c91f-4"><span class="brackets"><a class="fn-backref" href="#id9">4</a></span></dt>
+<dt class="label" id="r171"><span class="brackets">R171</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id14">2</a>)</span></dt>
 <dd><p>Dalal, N, Finding People in Images and Videos,
 Human-Computer Interaction [cs.HC], Institut National Polytechnique
 de Grenoble - INPG, 2006,
@@ -677,59 +723,69 @@ de Grenoble - INPG, 2006,
 <dd><p>Calculate the grey-level co-occurrence matrix.</p>
 <p>A grey level co-occurrence matrix is a histogram of co-occurring
 greyscale values at a given offset over an image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">array_like</span></dt><dd><p>Integer typed input image. Only positive valued images are supported.
+<dd class="field-odd"><p><strong>image</strong> : array_like</p>
+<blockquote>
+<div><p>Integer typed input image. Only positive valued images are supported.
 If type is other than uint8, the argument <cite>levels</cite> needs to be set.</p>
-</dd>
-<dt><strong>distances</strong><span class="classifier">array_like</span></dt><dd><p>List of pixel pair distance offsets.</p>
-</dd>
-<dt><strong>angles</strong><span class="classifier">array_like</span></dt><dd><p>List of pixel pair angles in radians.</p>
-</dd>
-<dt><strong>levels</strong><span class="classifier">int, optional</span></dt><dd><p>The input image should contain integers in [0, <cite>levels</cite>-1],
+</div></blockquote>
+<p><strong>distances</strong> : array_like</p>
+<blockquote>
+<div><p>List of pixel pair distance offsets.</p>
+</div></blockquote>
+<p><strong>angles</strong> : array_like</p>
+<blockquote>
+<div><p>List of pixel pair angles in radians.</p>
+</div></blockquote>
+<p><strong>levels</strong> : int, optional</p>
+<blockquote>
+<div><p>The input image should contain integers in [0, <cite>levels</cite>-1],
 where levels indicate the number of grey-levels counted
 (typically 256 for an 8-bit image). This argument is required for
 16-bit images or higher and is typically the maximum of the image.
 As the output matrix is at least <cite>levels</cite> x <cite>levels</cite>, it might
 be preferable to use binning of the input image rather than
 large values for <cite>levels</cite>.</p>
-</dd>
-<dt><strong>symmetric</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the output matrix <cite>P[:, :, d, theta]</cite> is symmetric. This
+</div></blockquote>
+<p><strong>symmetric</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, the output matrix <cite>P[:, :, d, theta]</cite> is symmetric. This
 is accomplished by ignoring the order of value pairs, so both
 (i, j) and (j, i) are accumulated when (i, j) is encountered
 for a given offset. The default is False.</p>
-</dd>
-<dt><strong>normed</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, normalize each matrix <cite>P[:, :, d, theta]</cite> by dividing
+</div></blockquote>
+<p><strong>normed</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, normalize each matrix <cite>P[:, :, d, theta]</cite> by dividing
 by the total number of accumulated co-occurrences for the given
 offset. The elements of the resulting matrix sum to 1. The
 default is False.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>P</strong><span class="classifier">4-D ndarray</span></dt><dd><p>The grey-level co-occurrence histogram. The value
+<dd class="field-even"><p><strong>P</strong> : 4-D ndarray</p>
+<blockquote>
+<div><p>The grey-level co-occurrence histogram. The value
 <cite>P[i,j,d,theta]</cite> is the number of times that grey-level <cite>j</cite>
 occurs at a distance <cite>d</cite> and at an angle <cite>theta</cite> from
 grey-level <cite>i</cite>. If <cite>normed</cite> is <cite>False</cite>, the output is of
 type uint32, otherwise it is float64. The dimensions are:
 levels x levels x number of distances x number of angles.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r4810813e96aa-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r172"><span class="brackets"><a class="fn-backref" href="#id15">R172</a></span></dt>
 <dd><p>The GLCM Tutorial Home Page,
 <a class="reference external" href="http://www.fp.ucalgary.ca/mhallbey/tutorial.htm">http://www.fp.ucalgary.ca/mhallbey/tutorial.htm</a></p>
 </dd>
-<dt class="label" id="r4810813e96aa-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r173"><span class="brackets"><a class="fn-backref" href="#id16">R173</a></span></dt>
 <dd><p>Pattern Recognition Engineering, Morton Nadler &amp; Eric P.
 Smith</p>
 </dd>
-<dt class="label" id="r4810813e96aa-3"><span class="brackets">3</span></dt>
+<dt class="label" id="r174"><span class="brackets"><a class="fn-backref" href="#id17">R174</a></span></dt>
 <dd><p>Wikipedia, <a class="reference external" href="https://en.wikipedia.org/wiki/Co-occurrence_matrix">https://en.wikipedia.org/wiki/Co-occurrence_matrix</a></p>
 </dd>
 </dl>
@@ -799,30 +855,32 @@ follows:</p>
 </ul>
 <p>Each GLCM is normalized to have a sum of 1 before the computation of texture
 properties.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>P</strong><span class="classifier">ndarray</span></dt><dd><p>Input array. <cite>P</cite> is the grey-level co-occurrence histogram
+<dd class="field-odd"><p><strong>P</strong> : ndarray</p>
+<blockquote>
+<div><p>Input array. <cite>P</cite> is the grey-level co-occurrence histogram
 for which to compute the specified property. The value
 <cite>P[i,j,d,theta]</cite> is the number of times that grey-level j
 occurs at a distance d and at an angle theta from
 grey-level i.</p>
-</dd>
-<dt><strong>prop</strong><span class="classifier">{‘contrast’, ‘dissimilarity’, ‘homogeneity’, ‘energy’,             ‘correlation’, ‘ASM’}, optional</span></dt><dd><p>The property of the GLCM to compute. The default is ‘contrast’.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>prop</strong> : {‘contrast’, ‘dissimilarity’, ‘homogeneity’, ‘energy’,             ‘correlation’, ‘ASM’}, optional</p>
+<blockquote>
+<div><p>The property of the GLCM to compute. The default is ‘contrast’.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>results</strong><span class="classifier">2-D ndarray</span></dt><dd><p>2-dimensional array. <cite>results[d, a]</cite> is the property ‘prop’ for
+<dd class="field-even"><p><strong>results</strong> : 2-D ndarray</p>
+<blockquote>
+<div><p>2-dimensional array. <cite>results[d, a]</cite> is the property ‘prop’ for
 the d’th distance and the a’th angle.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="ra999ee4f1c5d-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r175"><span class="brackets"><a class="fn-backref" href="#id18">R175</a></span></dt>
 <dd><p>The GLCM Tutorial Home Page,
 <a class="reference external" href="http://www.fp.ucalgary.ca/mhallbey/tutorial.htm">http://www.fp.ucalgary.ca/mhallbey/tutorial.htm</a></p>
 </dd>
@@ -859,17 +917,24 @@ the d’th distance and the a’th angle.</p>
 <code class="descclassname">skimage.feature.</code><code class="descname">local_binary_pattern</code><span class="sig-paren">(</span><em>image</em>, <em>P</em>, <em>R</em>, <em>method='default'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/texture.py#L274"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.local_binary_pattern" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gray scale and rotation invariant LBP (Local Binary Patterns).</p>
 <p>LBP is an invariant descriptor that can be used for texture classification.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(N, M) array</span></dt><dd><p>Graylevel image.</p>
-</dd>
-<dt><strong>P</strong><span class="classifier">int</span></dt><dd><p>Number of circularly symmetric neighbour set points (quantization of
+<dd class="field-odd"><p><strong>image</strong> : (N, M) array</p>
+<blockquote>
+<div><p>Graylevel image.</p>
+</div></blockquote>
+<p><strong>P</strong> : int</p>
+<blockquote>
+<div><p>Number of circularly symmetric neighbour set points (quantization of
 the angular space).</p>
-</dd>
-<dt><strong>R</strong><span class="classifier">float</span></dt><dd><p>Radius of circle (spatial resolution of the operator).</p>
-</dd>
-<dt><strong>method</strong><span class="classifier">{‘default’, ‘ror’, ‘uniform’, ‘var’}</span></dt><dd><p>Method to determine the pattern.</p>
+</div></blockquote>
+<p><strong>R</strong> : float</p>
+<blockquote>
+<div><p>Radius of circle (spatial resolution of the operator).</p>
+</div></blockquote>
+<p><strong>method</strong> : {‘default’, ‘ror’, ‘uniform’, ‘var’}</p>
+<blockquote>
+<div><p>Method to determine the pattern.</p>
 <ul class="simple">
 <li><dl class="simple">
 <dt>‘default’: original local binary pattern which is gray scale but not</dt><dd><p>rotation invariant.</p>
@@ -888,7 +953,7 @@ rotation invariant.</p>
 </dl>
 </li>
 <li><dl class="simple">
-<dt>‘nri_uniform’: non rotation-invariant uniform patterns variant</dt><dd><p>which is only gray scale invariant <a class="reference internal" href="#r648eb9e75080-2" id="id19">[2]</a>.</p>
+<dt>‘nri_uniform’: non rotation-invariant uniform patterns variant</dt><dd><p>which is only gray scale invariant <a class="reference internal" href="#r177" id="id19"><span>[R177]</span></a>.</p>
 </dd>
 </dl>
 </li>
@@ -898,25 +963,24 @@ rotation invariant.</p>
 </dl>
 </li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>output</strong><span class="classifier">(N, M) array</span></dt><dd><p>LBP image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>output</strong> : (N, M) array</p>
+<blockquote>
+<div><p>LBP image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r648eb9e75080-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r176"><span class="brackets"><a class="fn-backref" href="#id20">R176</a></span></dt>
 <dd><p>Multiresolution Gray-Scale and Rotation Invariant Texture
 Classification with Local Binary Patterns.
 Timo Ojala, Matti Pietikainen, Topi Maenpaa.
 <a class="reference external" href="http://www.ee.oulu.fi/research/mvmp/mvg/files/pdf/pdf_94.pdf">http://www.ee.oulu.fi/research/mvmp/mvg/files/pdf/pdf_94.pdf</a>, 2002.</p>
 </dd>
-<dt class="label" id="r648eb9e75080-2"><span class="brackets"><a class="fn-backref" href="#id19">2</a></span></dt>
+<dt class="label" id="r177"><span class="brackets">R177</span><span class="fn-backref">(<a href="#id19">1</a>,<a href="#id21">2</a>)</span></dt>
 <dd><p>Face recognition with local binary patterns.
 Timo Ahonen, Abdenour Hadid, Matti Pietikainen,
 <a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.214.6851">http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.214.6851</a>,
@@ -947,33 +1011,41 @@ in constant time using the integral image. Nine equally-sized rectangles
 are used to compute a feature. For each rectangle, the sum of the pixel
 intensities is computed. Comparisons of these sums to that of the central
 rectangle determine the feature, similarly to LBP.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>int_image</strong><span class="classifier">(N, M) array</span></dt><dd><p>Integral image.</p>
-</dd>
-<dt><strong>r</strong><span class="classifier">int</span></dt><dd><p>Row-coordinate of top left corner of a rectangle containing feature.</p>
-</dd>
-<dt><strong>c</strong><span class="classifier">int</span></dt><dd><p>Column-coordinate of top left corner of a rectangle containing feature.</p>
-</dd>
-<dt><strong>width</strong><span class="classifier">int</span></dt><dd><p>Width of one of the 9 equal rectangles that will be used to compute
+<dd class="field-odd"><p><strong>int_image</strong> : (N, M) array</p>
+<blockquote>
+<div><p>Integral image.</p>
+</div></blockquote>
+<p><strong>r</strong> : int</p>
+<blockquote>
+<div><p>Row-coordinate of top left corner of a rectangle containing feature.</p>
+</div></blockquote>
+<p><strong>c</strong> : int</p>
+<blockquote>
+<div><p>Column-coordinate of top left corner of a rectangle containing feature.</p>
+</div></blockquote>
+<p><strong>width</strong> : int</p>
+<blockquote>
+<div><p>Width of one of the 9 equal rectangles that will be used to compute
 a feature.</p>
-</dd>
-<dt><strong>height</strong><span class="classifier">int</span></dt><dd><p>Height of one of the 9 equal rectangles that will be used to compute
+</div></blockquote>
+<p><strong>height</strong> : int</p>
+<blockquote>
+<div><p>Height of one of the 9 equal rectangles that will be used to compute
 a feature.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>output</strong><span class="classifier">int</span></dt><dd><p>8-bit MB-LBP feature descriptor.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>output</strong> : int</p>
+<blockquote>
+<div><p>8-bit MB-LBP feature descriptor.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="ra36744213751-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r178"><span class="brackets"><a class="fn-backref" href="#id22">R178</a></span></dt>
 <dd><p>Face Detection Based on Multi-Block LBP
 Representation. Lun Zhang, Rufeng Chu, Shiming Xiang, Shengcai Liao,
 Stan Z. Li
@@ -999,48 +1071,64 @@ Stan Z. Li
 <p>Blocks with higher sums are colored with alpha-blended white rectangles,
 whereas blocks with lower sums are colored alpha-blended cyan. Colors
 and the <cite>alpha</cite> parameter can be changed.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray of float or uint</span></dt><dd><p>Image on which to visualize the pattern.</p>
-</dd>
-<dt><strong>r</strong><span class="classifier">int</span></dt><dd><p>Row-coordinate of top left corner of a rectangle containing feature.</p>
-</dd>
-<dt><strong>c</strong><span class="classifier">int</span></dt><dd><p>Column-coordinate of top left corner of a rectangle containing feature.</p>
-</dd>
-<dt><strong>width</strong><span class="classifier">int</span></dt><dd><p>Width of one of 9 equal rectangles that will be used to compute
+<dd class="field-odd"><p><strong>image</strong> : ndarray of float or uint</p>
+<blockquote>
+<div><p>Image on which to visualize the pattern.</p>
+</div></blockquote>
+<p><strong>r</strong> : int</p>
+<blockquote>
+<div><p>Row-coordinate of top left corner of a rectangle containing feature.</p>
+</div></blockquote>
+<p><strong>c</strong> : int</p>
+<blockquote>
+<div><p>Column-coordinate of top left corner of a rectangle containing feature.</p>
+</div></blockquote>
+<p><strong>width</strong> : int</p>
+<blockquote>
+<div><p>Width of one of 9 equal rectangles that will be used to compute
 a feature.</p>
-</dd>
-<dt><strong>height</strong><span class="classifier">int</span></dt><dd><p>Height of one of 9 equal rectangles that will be used to compute
+</div></blockquote>
+<p><strong>height</strong> : int</p>
+<blockquote>
+<div><p>Height of one of 9 equal rectangles that will be used to compute
 a feature.</p>
-</dd>
-<dt><strong>lbp_code</strong><span class="classifier">int</span></dt><dd><p>The descriptor of feature to visualize. If not provided, the
+</div></blockquote>
+<p><strong>lbp_code</strong> : int</p>
+<blockquote>
+<div><p>The descriptor of feature to visualize. If not provided, the
 descriptor with 0 value will be used.</p>
-</dd>
-<dt><strong>color_greater_block</strong><span class="classifier">tuple of 3 floats</span></dt><dd><p>Floats specifying the color for the block that has greater
+</div></blockquote>
+<p><strong>color_greater_block</strong> : tuple of 3 floats</p>
+<blockquote>
+<div><p>Floats specifying the color for the block that has greater
 intensity value. They should be in the range [0, 1].
 Corresponding values define (R, G, B) values. Default value
 is white (1, 1, 1).</p>
-</dd>
-<dt><strong>color_greater_block</strong><span class="classifier">tuple of 3 floats</span></dt><dd><p>Floats specifying the color for the block that has greater intensity
+</div></blockquote>
+<p><strong>color_greater_block</strong> : tuple of 3 floats</p>
+<blockquote>
+<div><p>Floats specifying the color for the block that has greater intensity
 value. They should be in the range [0, 1]. Corresponding values define
 (R, G, B) values. Default value is cyan (0, 0.69, 0.96).</p>
-</dd>
-<dt><strong>alpha</strong><span class="classifier">float</span></dt><dd><p>Value in the range [0, 1] that specifies opacity of visualization.
+</div></blockquote>
+<p><strong>alpha</strong> : float</p>
+<blockquote>
+<div><p>Value in the range [0, 1] that specifies opacity of visualization.
 1 - fully transparent, 0 - opaque.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>output</strong><span class="classifier">ndarray of float</span></dt><dd><p>Image with MB-LBP visualization.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>output</strong> : ndarray of float</p>
+<blockquote>
+<div><p>Image with MB-LBP visualization.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="re2978af1b6c8-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r179"><span class="brackets"><a class="fn-backref" href="#id23">R179</a></span></dt>
 <dd><p>Face Detection Based on Multi-Block LBP
 Representation. Lun Zhang, Rufeng Chu, Shiming Xiang, Shengcai Liao,
 Stan Z. Li
@@ -1070,54 +1158,72 @@ inside the region defined with <cite>min_distance</cite>,
 the coordinates of all such pixels are returned.</p>
 <p>If both <cite>threshold_abs</cite> and <cite>threshold_rel</cite> are provided, the maximum
 of the two is chosen as the minimum intensity threshold of peaks.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>min_distance</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum number of pixels separating peaks in a region of <cite>2 *
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>min_distance</strong> : int, optional</p>
+<blockquote>
+<div><p>Minimum number of pixels separating peaks in a region of <cite>2 *
 min_distance + 1</cite> (i.e. peaks are separated by at least
 <cite>min_distance</cite>).
 To find the maximum number of peaks, use <cite>min_distance=1</cite>.</p>
-</dd>
-<dt><strong>threshold_abs</strong><span class="classifier">float, optional</span></dt><dd><p>Minimum intensity of peaks. By default, the absolute threshold is
+</div></blockquote>
+<p><strong>threshold_abs</strong> : float, optional</p>
+<blockquote>
+<div><p>Minimum intensity of peaks. By default, the absolute threshold is
 the minimum intensity of the image.</p>
-</dd>
-<dt><strong>threshold_rel</strong><span class="classifier">float, optional</span></dt><dd><p>Minimum intensity of peaks, calculated as <cite>max(image) * threshold_rel</cite>.</p>
-</dd>
-<dt><strong>exclude_border</strong><span class="classifier">int or bool, optional</span></dt><dd><p>If nonzero int, <cite>exclude_border</cite> excludes peaks from
+</div></blockquote>
+<p><strong>threshold_rel</strong> : float, optional</p>
+<blockquote>
+<div><p>Minimum intensity of peaks, calculated as <cite>max(image) * threshold_rel</cite>.</p>
+</div></blockquote>
+<p><strong>exclude_border</strong> : int or bool, optional</p>
+<blockquote>
+<div><p>If nonzero int, <cite>exclude_border</cite> excludes peaks from
 within <cite>exclude_border</cite>-pixels of the border of the image.
 If True, takes the <cite>min_distance</cite> parameter as value.
 If zero or False, peaks are identified regardless of their
 distance from the border.</p>
-</dd>
-<dt><strong>indices</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the output will be an array representing peak
+</div></blockquote>
+<p><strong>indices</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, the output will be an array representing peak
 coordinates.  If False, the output will be a boolean array shaped as
 <cite>image.shape</cite> with peaks present at True elements.</p>
-</dd>
-<dt><strong>num_peaks</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of peaks. When the number of peaks exceeds <cite>num_peaks</cite>,
+</div></blockquote>
+<p><strong>num_peaks</strong> : int, optional</p>
+<blockquote>
+<div><p>Maximum number of peaks. When the number of peaks exceeds <cite>num_peaks</cite>,
 return <cite>num_peaks</cite> peaks based on highest peak intensity.</p>
-</dd>
-<dt><strong>footprint</strong><span class="classifier">ndarray of bools, optional</span></dt><dd><p>If provided, <cite>footprint == 1</cite> represents the local region within which
+</div></blockquote>
+<p><strong>footprint</strong> : ndarray of bools, optional</p>
+<blockquote>
+<div><p>If provided, <cite>footprint == 1</cite> represents the local region within which
 to search for peaks at every point in <cite>image</cite>.  Overrides
 <cite>min_distance</cite> (also for <cite>exclude_border</cite>).</p>
-</dd>
-<dt><strong>labels</strong><span class="classifier">ndarray of ints, optional</span></dt><dd><p>If provided, each unique region <cite>labels == value</cite> represents a unique
+</div></blockquote>
+<p><strong>labels</strong> : ndarray of ints, optional</p>
+<blockquote>
+<div><p>If provided, each unique region <cite>labels == value</cite> represents a unique
 region to search for peaks. Zero is reserved for background.</p>
-</dd>
-<dt><strong>num_peaks_per_label</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of peaks for each label.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>num_peaks_per_label</strong> : int, optional</p>
+<blockquote>
+<div><p>Maximum number of peaks for each label.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>output</strong><span class="classifier">ndarray or ndarray of bools</span></dt><dd><ul class="simple">
+<dd class="field-even"><p><strong>output</strong> : ndarray or ndarray of bools</p>
+<blockquote>
+<div><ul class="simple">
 <li><p>If <cite>indices = True</cite>  : (row, column, …) coordinates of peaks.</p></li>
 <li><p>If <cite>indices = False</cite> : Boolean array shaped like <cite>image</cite>, with peaks
 represented by True values.</p></li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1182,30 +1288,40 @@ peaks where the dilated image equals the original image.</p>
 </div>
 <p>which is approximated by the weighted sum of squared differences in a local
 window around each pixel in the image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Standard deviation used for the Gaussian kernel, which is used as a
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float, optional</p>
+<blockquote>
+<div><p>Standard deviation used for the Gaussian kernel, which is used as a
 weighting function for the local summation of squared differences.</p>
-</dd>
-<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘reflect’, ‘wrap’, ‘nearest’, ‘mirror’}, optional</span></dt><dd><p>How to handle values outside the image borders.</p>
-</dd>
-<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
+</div></blockquote>
+<p><strong>mode</strong> : {‘constant’, ‘reflect’, ‘wrap’, ‘nearest’, ‘mirror’}, optional</p>
+<blockquote>
+<div><p>How to handle values outside the image borders.</p>
+</div></blockquote>
+<p><strong>cval</strong> : float, optional</p>
+<blockquote>
+<div><p>Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>Axx</strong><span class="classifier">ndarray</span></dt><dd><p>Element of the structure tensor for each pixel in the input image.</p>
-</dd>
-<dt><strong>Axy</strong><span class="classifier">ndarray</span></dt><dd><p>Element of the structure tensor for each pixel in the input image.</p>
-</dd>
-<dt><strong>Ayy</strong><span class="classifier">ndarray</span></dt><dd><p>Element of the structure tensor for each pixel in the input image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>Axx</strong> : ndarray</p>
+<blockquote>
+<div><p>Element of the structure tensor for each pixel in the input image.</p>
+</div></blockquote>
+<p><strong>Axy</strong> : ndarray</p>
+<blockquote>
+<div><p>Element of the structure tensor for each pixel in the input image.</p>
+</div></blockquote>
+<p><strong>Ayy</strong> : ndarray</p>
+<blockquote>
+<div><p>Element of the structure tensor for each pixel in the input image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1230,24 +1346,30 @@ the image boundaries.</p>
 <dt id="skimage.feature.structure_tensor_eigvals">
 <code class="descclassname">skimage.feature.</code><code class="descname">structure_tensor_eigvals</code><span class="sig-paren">(</span><em>Axx</em>, <em>Axy</em>, <em>Ayy</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L262"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.structure_tensor_eigvals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Eigen values of structure tensor.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>Axx</strong><span class="classifier">ndarray</span></dt><dd><p>Element of the structure tensor for each pixel in the input image.</p>
-</dd>
-<dt><strong>Axy</strong><span class="classifier">ndarray</span></dt><dd><p>Element of the structure tensor for each pixel in the input image.</p>
-</dd>
-<dt><strong>Ayy</strong><span class="classifier">ndarray</span></dt><dd><p>Element of the structure tensor for each pixel in the input image.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>Axx</strong> : ndarray</p>
+<blockquote>
+<div><p>Element of the structure tensor for each pixel in the input image.</p>
+</div></blockquote>
+<p><strong>Axy</strong> : ndarray</p>
+<blockquote>
+<div><p>Element of the structure tensor for each pixel in the input image.</p>
+</div></blockquote>
+<p><strong>Ayy</strong> : ndarray</p>
+<blockquote>
+<div><p>Element of the structure tensor for each pixel in the input image.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>l1</strong><span class="classifier">ndarray</span></dt><dd><p>Larger eigen value for each input matrix.</p>
-</dd>
-<dt><strong>l2</strong><span class="classifier">ndarray</span></dt><dd><p>Smaller eigen value for each input matrix.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>l1</strong> : ndarray</p>
+<blockquote>
+<div><p>Larger eigen value for each input matrix.</p>
+</div></blockquote>
+<p><strong>l2</strong> : ndarray</p>
+<blockquote>
+<div><p>Smaller eigen value for each input matrix.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1279,35 +1401,47 @@ the image boundaries.</p>
 </div>
 <p>which is computed by convolving the image with the second derivatives
 of the Gaussian kernel in the respective x- and y-directions.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float</span></dt><dd><p>Standard deviation used for the Gaussian kernel, which is used as
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float</p>
+<blockquote>
+<div><p>Standard deviation used for the Gaussian kernel, which is used as
 weighting function for the auto-correlation matrix.</p>
-</dd>
-<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘reflect’, ‘wrap’, ‘nearest’, ‘mirror’}, optional</span></dt><dd><p>How to handle values outside the image borders.</p>
-</dd>
-<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
+</div></blockquote>
+<p><strong>mode</strong> : {‘constant’, ‘reflect’, ‘wrap’, ‘nearest’, ‘mirror’}, optional</p>
+<blockquote>
+<div><p>How to handle values outside the image borders.</p>
+</div></blockquote>
+<p><strong>cval</strong> : float, optional</p>
+<blockquote>
+<div><p>Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p>
-</dd>
-<dt><strong>order</strong><span class="classifier">{‘xy’, ‘rc’}, optional</span></dt><dd><p>This parameter allows for the use of reverse or forward order of
+</div></blockquote>
+<p><strong>order</strong> : {‘xy’, ‘rc’}, optional</p>
+<blockquote>
+<div><p>This parameter allows for the use of reverse or forward order of
 the image axes in gradient computation. ‘xy’ indicates the usage
 of the last axis initially (Hxx, Hxy, Hyy), whilst ‘rc’ indicates
 the use of the first axis initially (Hrr, Hrc, Hcc).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>Hrr</strong><span class="classifier">ndarray</span></dt><dd><p>Element of the Hessian matrix for each pixel in the input image.</p>
-</dd>
-<dt><strong>Hrc</strong><span class="classifier">ndarray</span></dt><dd><p>Element of the Hessian matrix for each pixel in the input image.</p>
-</dd>
-<dt><strong>Hcc</strong><span class="classifier">ndarray</span></dt><dd><p>Element of the Hessian matrix for each pixel in the input image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>Hrr</strong> : ndarray</p>
+<blockquote>
+<div><p>Element of the Hessian matrix for each pixel in the input image.</p>
+</div></blockquote>
+<p><strong>Hrc</strong> : ndarray</p>
+<blockquote>
+<div><p>Element of the Hessian matrix for each pixel in the input image.</p>
+</div></blockquote>
+<p><strong>Hcc</strong> : ndarray</p>
+<blockquote>
+<div><p>Element of the Hessian matrix for each pixel in the input image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1333,25 +1467,29 @@ the use of the first axis initially (Hrr, Hrc, Hcc).</p>
 <code class="descclassname">skimage.feature.</code><code class="descname">hessian_matrix_det</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>approximate=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L211"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.hessian_matrix_det" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the approximate Hessian Determinant over an image.</p>
 <p>The 2D approximate method uses box filters over integral images to
-compute the approximate Hessian Determinant, as described in <a class="reference internal" href="#r48e33a732c34-1" id="id24">[1]</a>.</p>
-<dl class="field-list simple">
+compute the approximate Hessian Determinant, as described in <a class="reference internal" href="#r180" id="id24"><span>[R180]</span></a>.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">array</span></dt><dd><p>The image over which to compute Hessian Determinant.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Standard deviation used for the Gaussian kernel, used for the Hessian
+<dd class="field-odd"><p><strong>image</strong> : array</p>
+<blockquote>
+<div><p>The image over which to compute Hessian Determinant.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float, optional</p>
+<blockquote>
+<div><p>Standard deviation used for the Gaussian kernel, used for the Hessian
 matrix.</p>
-</dd>
-<dt><strong>approximate</strong><span class="classifier">bool, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> and the image is 2D, use a much faster approximate
+</div></blockquote>
+<p><strong>approximate</strong> : bool, optional</p>
+<blockquote>
+<div><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code> and the image is 2D, use a much faster approximate
 computation. This argument has no effect on 3D and higher images.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>out</strong><span class="classifier">array</span></dt><dd><p>The array of the Determinant of Hessians.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>out</strong> : array</p>
+<blockquote>
+<div><p>The array of the Determinant of Hessians.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1362,7 +1500,7 @@ is not accurate, i.e., not similar to the result obtained if someone
 computed the Hessian and took its determinant.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r48e33a732c34-1"><span class="brackets"><a class="fn-backref" href="#id24">1</a></span></dt>
+<dt class="label" id="r180"><span class="brackets">R180</span><span class="fn-backref">(<a href="#id24">1</a>,<a href="#id25">2</a>)</span></dt>
 <dd><p>Herbert Bay, Andreas Ess, Tinne Tuytelaars, Luc Van Gool,
 “SURF: Speeded Up Robust Features”
 <a class="reference external" href="ftp://ftp.vision.ee.ethz.ch/publications/articles/eth_biwi_00517.pdf">ftp://ftp.vision.ee.ethz.ch/publications/articles/eth_biwi_00517.pdf</a></p>
@@ -1377,27 +1515,33 @@ computed the Hessian and took its determinant.</p>
 <dt id="skimage.feature.hessian_matrix_eigvals">
 <code class="descclassname">skimage.feature.</code><code class="descname">hessian_matrix_eigvals</code><span class="sig-paren">(</span><em>H_elems</em>, <em>Hxy=None</em>, <em>Hyy=None</em>, <em>Hxx=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L299"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.hessian_matrix_eigvals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Eigenvalues of Hessian matrix.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>H_elems</strong><span class="classifier">list of ndarray</span></dt><dd><p>The upper-diagonal elements of the Hessian matrix, as returned
+<dd class="field-odd"><p><strong>H_elems</strong> : list of ndarray</p>
+<blockquote>
+<div><p>The upper-diagonal elements of the Hessian matrix, as returned
 by <cite>hessian_matrix</cite>.</p>
-</dd>
-<dt><strong>Hxy</strong><span class="classifier">ndarray, deprecated</span></dt><dd><p>Element of the Hessian matrix for each pixel in the input image.</p>
-</dd>
-<dt><strong>Hyy</strong><span class="classifier">ndarray, deprecated</span></dt><dd><p>Element of the Hessian matrix for each pixel in the input image.</p>
-</dd>
-<dt><strong>Hxx</strong><span class="classifier">ndarray, deprecated</span></dt><dd><p>Element of the Hessian matrix for each pixel in the input image.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>Hxy</strong> : ndarray, deprecated</p>
+<blockquote>
+<div><p>Element of the Hessian matrix for each pixel in the input image.</p>
+</div></blockquote>
+<p><strong>Hyy</strong> : ndarray, deprecated</p>
+<blockquote>
+<div><p>Element of the Hessian matrix for each pixel in the input image.</p>
+</div></blockquote>
+<p><strong>Hxx</strong> : ndarray, deprecated</p>
+<blockquote>
+<div><p>Element of the Hessian matrix for each pixel in the input image.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>eigs</strong><span class="classifier">ndarray</span></dt><dd><p>The eigenvalues of the Hessian matrix, in decreasing order. The
+<dd class="field-even"><p><strong>eigs</strong> : ndarray</p>
+<blockquote>
+<div><p>The eigenvalues of the Hessian matrix, in decreasing order. The
 eigenvalues are the leading dimension. That is, <code class="docutils literal notranslate"><span class="pre">eigs[i,</span> <span class="pre">j,</span> <span class="pre">k]</span></code>
 contains the ith-largest eigenvalue at position (j, k).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1422,7 +1566,7 @@ contains the ith-largest eigenvalue at position (j, k).</p>
 <dt id="skimage.feature.shape_index">
 <code class="descclassname">skimage.feature.</code><code class="descname">shape_index</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>mode='constant'</em>, <em>cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L352"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.shape_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the shape index.</p>
-<p>The shape index, as defined by Koenderink &amp; van Doorn <a class="reference internal" href="#rc8faae48965f-1" id="id26">[1]</a>, is a
+<p>The shape index, as defined by Koenderink &amp; van Doorn <a class="reference internal" href="#r181" id="id26"><span>[R181]</span></a>, is a
 single valued measure of local curvature, assuming the image as a 3D plane
 with intensities representing heights.</p>
 <p>It is derived from the eigen values of the Hessian, and its
@@ -1469,31 +1613,37 @@ with following ranges representing following shapes:</p>
 </tr>
 </tbody>
 </table>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Standard deviation used for the Gaussian kernel, which is used for
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float, optional</p>
+<blockquote>
+<div><p>Standard deviation used for the Gaussian kernel, which is used for
 smoothing the input data before Hessian eigen value calculation.</p>
-</dd>
-<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘reflect’, ‘wrap’, ‘nearest’, ‘mirror’}, optional</span></dt><dd><p>How to handle values outside the image borders</p>
-</dd>
-<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
+</div></blockquote>
+<p><strong>mode</strong> : {‘constant’, ‘reflect’, ‘wrap’, ‘nearest’, ‘mirror’}, optional</p>
+<blockquote>
+<div><p>How to handle values outside the image borders</p>
+</div></blockquote>
+<p><strong>cval</strong> : float, optional</p>
+<blockquote>
+<div><p>Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">ndarray</span></dt><dd><p>Shape index</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>s</strong> : ndarray</p>
+<blockquote>
+<div><p>Shape index</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rc8faae48965f-1"><span class="brackets"><a class="fn-backref" href="#id26">1</a></span></dt>
+<dt class="label" id="r181"><span class="brackets">R181</span><span class="fn-backref">(<a href="#id26">1</a>,<a href="#id27">2</a>)</span></dt>
 <dd><p>Koenderink, J. J. &amp; van Doorn, A. J.,
 “Surface shape and curvature scales”,
 Image and Vision Computing, 1992, 10, 557-564.
@@ -1536,23 +1686,27 @@ Image and Vision Computing, 1992, 10, 557-564.
 </div>
 <p>Where imx and imy are the first and imxx, imxy, imyy the second
 derivatives.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘reflect’, ‘wrap’, ‘nearest’, ‘mirror’}, optional</span></dt><dd><p>How to handle values outside the image borders.</p>
-</dd>
-<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>mode</strong> : {‘constant’, ‘reflect’, ‘wrap’, ‘nearest’, ‘mirror’}, optional</p>
+<blockquote>
+<div><p>How to handle values outside the image borders.</p>
+</div></blockquote>
+<p><strong>cval</strong> : float, optional</p>
+<blockquote>
+<div><p>Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>response</strong><span class="classifier">ndarray</span></dt><dd><p>Kitchen and Rosenfeld response image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>response</strong> : ndarray</p>
+<blockquote>
+<div><p>Kitchen and Rosenfeld response image.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -1578,33 +1732,41 @@ The corner measure is then defined as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">*</span> <span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">trace</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">+</span> <span class="n">eps</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>method</strong><span class="classifier">{‘k’, ‘eps’}, optional</span></dt><dd><p>Method to compute the response image from the auto-correlation matrix.</p>
-</dd>
-<dt><strong>k</strong><span class="classifier">float, optional</span></dt><dd><p>Sensitivity factor to separate corners from edges, typically in range
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>method</strong> : {‘k’, ‘eps’}, optional</p>
+<blockquote>
+<div><p>Method to compute the response image from the auto-correlation matrix.</p>
+</div></blockquote>
+<p><strong>k</strong> : float, optional</p>
+<blockquote>
+<div><p>Sensitivity factor to separate corners from edges, typically in range
 <cite>[0, 0.2]</cite>. Small values of k result in detection of sharp corners.</p>
-</dd>
-<dt><strong>eps</strong><span class="classifier">float, optional</span></dt><dd><p>Normalisation factor (Noble’s corner measure).</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Standard deviation used for the Gaussian kernel, which is used as
+</div></blockquote>
+<p><strong>eps</strong> : float, optional</p>
+<blockquote>
+<div><p>Normalisation factor (Noble’s corner measure).</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float, optional</p>
+<blockquote>
+<div><p>Standard deviation used for the Gaussian kernel, which is used as
 weighting function for the auto-correlation matrix.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>response</strong><span class="classifier">ndarray</span></dt><dd><p>Harris response image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>response</strong> : ndarray</p>
+<blockquote>
+<div><p>Harris response image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rc19c7843bb6d-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r182"><span class="brackets"><a class="fn-backref" href="#id28">R182</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Corner_detection">https://en.wikipedia.org/wiki/Corner_detection</a></p>
 </dd>
 </dl>
@@ -1664,26 +1826,28 @@ The corner measure is then defined as the smaller eigenvalue of A:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">Axx</span> <span class="o">+</span> <span class="n">Ayy</span><span class="p">)</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">Axx</span> <span class="o">-</span> <span class="n">Ayy</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">Axy</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Standard deviation used for the Gaussian kernel, which is used as
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float, optional</p>
+<blockquote>
+<div><p>Standard deviation used for the Gaussian kernel, which is used as
 weighting function for the auto-correlation matrix.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>response</strong><span class="classifier">ndarray</span></dt><dd><p>Shi-Tomasi response image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>response</strong> : ndarray</p>
+<blockquote>
+<div><p>Shi-Tomasi response image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r26d4c89afc0d-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r183"><span class="brackets"><a class="fn-backref" href="#id29">R183</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Corner_detection">https://en.wikipedia.org/wiki/Corner_detection</a></p>
 </dd>
 </dl>
@@ -1729,31 +1893,35 @@ The corner measure is then defined as:</p>
 <span class="n">q</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="o">/</span> <span class="n">trace</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>    <span class="p">(</span><span class="n">roundness</span> <span class="n">of</span> <span class="n">error</span> <span class="n">ellipse</span><span class="p">)</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Standard deviation used for the Gaussian kernel, which is used as
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>sigma</strong> : float, optional</p>
+<blockquote>
+<div><p>Standard deviation used for the Gaussian kernel, which is used as
 weighting function for the auto-correlation matrix.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>w</strong><span class="classifier">ndarray</span></dt><dd><p>Error ellipse sizes.</p>
-</dd>
-<dt><strong>q</strong><span class="classifier">ndarray</span></dt><dd><p>Roundness of error ellipse.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>w</strong> : ndarray</p>
+<blockquote>
+<div><p>Error ellipse sizes.</p>
+</div></blockquote>
+<p><strong>q</strong> : ndarray</p>
+<blockquote>
+<div><p>Roundness of error ellipse.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r9d429c80f73f-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r184"><span class="brackets"><a class="fn-backref" href="#id30">R184</a></span></dt>
 <dd><p><a class="reference external" href="http://www.ipb.uni-bonn.de/uploads/tx_ikgpublication/foerstner87.fast.pdf">http://www.ipb.uni-bonn.de/uploads/tx_ikgpublication/foerstner87.fast.pdf</a></p>
 </dd>
-<dt class="label" id="r9d429c80f73f-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r185"><span class="brackets"><a class="fn-backref" href="#id31">R185</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Corner_detection">https://en.wikipedia.org/wiki/Corner_detection</a></p>
 </dd>
 </dl>
@@ -1798,32 +1966,38 @@ result, the subpixel corner location is determined based on the local
 covariance of the grey-values. If the significance level for either
 statistical test is not sufficient, the corner cannot be classified, and
 the output subpixel position is set to NaN.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>corners</strong><span class="classifier">(N, 2) ndarray</span></dt><dd><p>Corner coordinates <cite>(row, col)</cite>.</p>
-</dd>
-<dt><strong>window_size</strong><span class="classifier">int, optional</span></dt><dd><p>Search window size for subpixel estimation.</p>
-</dd>
-<dt><strong>alpha</strong><span class="classifier">float, optional</span></dt><dd><p>Significance level for corner classification.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>corners</strong> : (N, 2) ndarray</p>
+<blockquote>
+<div><p>Corner coordinates <cite>(row, col)</cite>.</p>
+</div></blockquote>
+<p><strong>window_size</strong> : int, optional</p>
+<blockquote>
+<div><p>Search window size for subpixel estimation.</p>
+</div></blockquote>
+<p><strong>alpha</strong> : float, optional</p>
+<blockquote>
+<div><p>Significance level for corner classification.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>positions</strong><span class="classifier">(N, 2) ndarray</span></dt><dd><p>Subpixel corner positions. NaN for “not classified” corners.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>positions</strong> : (N, 2) ndarray</p>
+<blockquote>
+<div><p>Subpixel corner positions. NaN for “not classified” corners.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="ra33874b5943a-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r186"><span class="brackets"><a class="fn-backref" href="#id32">R186</a></span></dt>
 <dd><p><a class="reference external" href="http://www.ipb.uni-bonn.de/uploads/tx_ikgpublication/">http://www.ipb.uni-bonn.de/uploads/tx_ikgpublication/</a>           foerstner87.fast.pdf</p>
 </dd>
-<dt class="label" id="ra33874b5943a-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r187"><span class="brackets"><a class="fn-backref" href="#id33">R187</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Corner_detection">https://en.wikipedia.org/wiki/Corner_detection</a></p>
 </dd>
 </dl>
@@ -1871,12 +2045,12 @@ the output subpixel position is set to NaN.</p>
 <dd><p>Find corners in corner measure response image.</p>
 <p>This differs from <cite>skimage.feature.peak_local_max</cite> in that it suppresses
 multiple connected peaks with the same accumulator value.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>*</strong><span class="classifier">*</span></dt><dd><p>See <a class="reference internal" href="#skimage.feature.peak_local_max" title="skimage.feature.peak_local_max"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skimage.feature.peak_local_max()</span></code></a>.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>*</strong> : *</p>
+<blockquote>
+<div><p>See <a class="reference internal" href="#skimage.feature.peak_local_max" title="skimage.feature.peak_local_max"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skimage.feature.peak_local_max()</span></code></a>.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1924,25 +2098,27 @@ multiple connected peaks with the same accumulator value.</p>
 <dd><p>Compute Moravec corner measure response image.</p>
 <p>This is one of the simplest corner detectors and is comparatively fast but
 has several limitations (e.g. not rotation invariant).</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>window_size</strong><span class="classifier">int, optional</span></dt><dd><p>Window size.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>window_size</strong> : int, optional</p>
+<blockquote>
+<div><p>Window size.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>response</strong><span class="classifier">ndarray</span></dt><dd><p>Moravec response image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>response</strong> : ndarray</p>
+<blockquote>
+<div><p>Moravec response image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rdf16f0a1a068-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r188"><span class="brackets"><a class="fn-backref" href="#id34">R188</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Corner_detection">https://en.wikipedia.org/wiki/Corner_detection</a></p>
 </dd>
 </dl>
@@ -1977,38 +2153,42 @@ has several limitations (e.g. not rotation invariant).</p>
 <dt id="skimage.feature.corner_fast">
 <code class="descclassname">skimage.feature.</code><code class="descname">corner_fast</code><span class="sig-paren">(</span><em>image</em>, <em>n=12</em>, <em>threshold=0.15</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L689"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_fast" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract FAST corners for a given image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">2D ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>Minimum number of consecutive pixels out of 16 pixels on the circle
+<dd class="field-odd"><p><strong>image</strong> : 2D ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>n</strong> : int</p>
+<blockquote>
+<div><p>Minimum number of consecutive pixels out of 16 pixels on the circle
 that should all be either brighter or darker w.r.t testpixel.
 A point c on the circle is darker w.r.t test pixel p if
 <cite>Ic &lt; Ip - threshold</cite> and brighter if <cite>Ic &gt; Ip + threshold</cite>. Also
 stands for the n in <cite>FAST-n</cite> corner detector.</p>
-</dd>
-<dt><strong>threshold</strong><span class="classifier">float</span></dt><dd><p>Threshold used in deciding whether the pixels on the circle are
+</div></blockquote>
+<p><strong>threshold</strong> : float</p>
+<blockquote>
+<div><p>Threshold used in deciding whether the pixels on the circle are
 brighter, darker or similar w.r.t. the test pixel. Decrease the
 threshold when more corners are desired and vice-versa.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>response</strong><span class="classifier">ndarray</span></dt><dd><p>FAST corner response image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>response</strong> : ndarray</p>
+<blockquote>
+<div><p>FAST corner response image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r92fff83e7342-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r189"><span class="brackets"><a class="fn-backref" href="#id35">R189</a></span></dt>
 <dd><p>Edward Rosten and Tom Drummond
 “Machine Learning for high-speed corner detection”,
 <a class="reference external" href="http://www.edwardrosten.com/work/rosten_2006_machine.pdf">http://www.edwardrosten.com/work/rosten_2006_machine.pdf</a></p>
 </dd>
-<dt class="label" id="r92fff83e7342-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r190"><span class="brackets"><a class="fn-backref" href="#id36">R190</a></span></dt>
 <dd><p>Wikipedia, “Features from accelerated segment test”,
 <a class="reference external" href="https://en.wikipedia.org/wiki/Features_from_accelerated_segment_test">https://en.wikipedia.org/wiki/Features_from_accelerated_segment_test</a></p>
 </dd>
@@ -2051,33 +2231,37 @@ i.e. the center of mass approach. The corner orientation is the angle of
 the vector from the corner coordinate to the intensity centroid in the
 local neighborhood around the corner calculated using first order central
 moment.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">2D array</span></dt><dd><p>Input grayscale image.</p>
-</dd>
-<dt><strong>corners</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Corner coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p>
-</dd>
-<dt><strong>mask</strong><span class="classifier">2D array</span></dt><dd><p>Mask defining the local neighborhood of the corner used for the
+<dd class="field-odd"><p><strong>image</strong> : 2D array</p>
+<blockquote>
+<div><p>Input grayscale image.</p>
+</div></blockquote>
+<p><strong>corners</strong> : (N, 2) array</p>
+<blockquote>
+<div><p>Corner coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p>
+</div></blockquote>
+<p><strong>mask</strong> : 2D array</p>
+<blockquote>
+<div><p>Mask defining the local neighborhood of the corner used for the
 calculation of the central moment.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>orientations</strong><span class="classifier">(N, 1) array</span></dt><dd><p>Orientations of corners in the range [-pi, pi].</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>orientations</strong> : (N, 1) array</p>
+<blockquote>
+<div><p>Orientations of corners in the range [-pi, pi].</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r0592d7afdba5-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r191"><span class="brackets"><a class="fn-backref" href="#id37">R191</a></span></dt>
 <dd><p>Ethan Rublee, Vincent Rabaud, Kurt Konolige and Gary Bradski
 “ORB : An efficient alternative to SIFT and SURF”
 <a class="reference external" href="http://www.vision.cs.chubu.ac.jp/CV-R/pdf/Rublee_iccv2011.pdf">http://www.vision.cs.chubu.ac.jp/CV-R/pdf/Rublee_iccv2011.pdf</a></p>
 </dd>
-<dt class="label" id="r0592d7afdba5-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r192"><span class="brackets"><a class="fn-backref" href="#id38">R192</a></span></dt>
 <dd><p>Paul L. Rosin, “Measuring Corner Properties”
 <a class="reference external" href="http://users.cs.cf.ac.uk/Paul.Rosin/corner2.pdf">http://users.cs.cf.ac.uk/Paul.Rosin/corner2.pdf</a></p>
 </dd>
@@ -2129,42 +2313,50 @@ top-left corner of the template. To find the best match you must search for
 peaks in the response (output) image.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>image</strong><span class="classifier">(M, N[, D]) array</span></dt><dd><p>2-D or 3-D input image.</p>
-</dd>
-<dt><strong>template</strong><span class="classifier">(m, n[, d]) array</span></dt><dd><p>Template to locate. It must be <cite>(m &lt;= M, n &lt;= N[, d &lt;= D])</cite>.</p>
-</dd>
-<dt><strong>pad_input</strong><span class="classifier">bool</span></dt><dd><p>If True, pad <cite>image</cite> so that output is the same size as the image, and
+<dd class="field-odd"><p><strong>image</strong> : (M, N[, D]) array</p>
+<blockquote>
+<div><p>2-D or 3-D input image.</p>
+</div></blockquote>
+<p><strong>template</strong> : (m, n[, d]) array</p>
+<blockquote>
+<div><p>Template to locate. It must be <cite>(m &lt;= M, n &lt;= N[, d &lt;= D])</cite>.</p>
+</div></blockquote>
+<p><strong>pad_input</strong> : bool</p>
+<blockquote>
+<div><p>If True, pad <cite>image</cite> so that output is the same size as the image, and
 output values correspond to the template center. Otherwise, the output
 is an array with shape <cite>(M - m + 1, N - n + 1)</cite> for an <cite>(M, N)</cite> image
 and an <cite>(m, n)</cite> template, and matches correspond to origin
 (top-left corner) of the template.</p>
-</dd>
-<dt><strong>mode</strong><span class="classifier">see <cite>numpy.pad</cite>, optional</span></dt><dd><p>Padding mode.</p>
-</dd>
-<dt><strong>constant_values</strong><span class="classifier">see <cite>numpy.pad</cite>, optional</span></dt><dd><p>Constant values used in conjunction with <code class="docutils literal notranslate"><span class="pre">mode='constant'</span></code>.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>mode</strong> : see <cite>numpy.pad</cite>, optional</p>
+<blockquote>
+<div><p>Padding mode.</p>
+</div></blockquote>
+<p><strong>constant_values</strong> : see <cite>numpy.pad</cite>, optional</p>
+<blockquote>
+<div><p>Constant values used in conjunction with <code class="docutils literal notranslate"><span class="pre">mode='constant'</span></code>.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>output</strong><span class="classifier">array</span></dt><dd><p>Response image with correlation coefficients.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>output</strong> : array</p>
+<blockquote>
+<div><p>Response image with correlation coefficients.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>Details on the cross-correlation are presented in <a class="reference internal" href="#r7bfca17c0278-1" id="id39">[1]</a>. This implementation
-uses FFT convolutions of the image and the template. Reference <a class="reference internal" href="#r7bfca17c0278-2" id="id40">[2]</a>
+<p>Details on the cross-correlation are presented in <a class="reference internal" href="#r193" id="id39"><span>[R193]</span></a>. This implementation
+uses FFT convolutions of the image and the template. Reference <a class="reference internal" href="#r194" id="id40"><span>[R194]</span></a>
 presents similar derivations but the approximation presented in this
 reference is not used in our implementation.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r7bfca17c0278-1"><span class="brackets"><a class="fn-backref" href="#id39">1</a></span></dt>
+<dt class="label" id="r193"><span class="brackets">R193</span><span class="fn-backref">(<a href="#id39">1</a>,<a href="#id41">2</a>)</span></dt>
 <dd><p>J. P. Lewis, “Fast Normalized Cross-Correlation”, Industrial Light
 and Magic.</p>
 </dd>
-<dt class="label" id="r7bfca17c0278-2"><span class="brackets"><a class="fn-backref" href="#id40">2</a></span></dt>
+<dt class="label" id="r194"><span class="brackets">R194</span><span class="fn-backref">(<a href="#id40">1</a>,<a href="#id42">2</a>)</span></dt>
 <dd><p>Briechle and Hanebeck, “Template Matching using Fast Normalized
 Cross Correlation”, Proceedings of the SPIE (2001).
 <a class="reference external" href="https://doi.org/10.1117/12.421129">DOI:10.1117/12.421129</a></p>
@@ -2224,49 +2416,61 @@ in a fraction of the computation time and with reduced memory requirements.
 It obtains an initial estimate of the cross-correlation peak by an FFT and
 then refines the shift estimation by upsampling the DFT only in a small
 neighborhood of that estimate by means of a matrix-multiply DFT.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>src_image</strong><span class="classifier">array</span></dt><dd><p>Reference image.</p>
-</dd>
-<dt><strong>target_image</strong><span class="classifier">array</span></dt><dd><p>Image to register.  Must be same dimensionality as <code class="docutils literal notranslate"><span class="pre">src_image</span></code>.</p>
-</dd>
-<dt><strong>upsample_factor</strong><span class="classifier">int, optional</span></dt><dd><p>Upsampling factor. Images will be registered to within
+<dd class="field-odd"><p><strong>src_image</strong> : array</p>
+<blockquote>
+<div><p>Reference image.</p>
+</div></blockquote>
+<p><strong>target_image</strong> : array</p>
+<blockquote>
+<div><p>Image to register.  Must be same dimensionality as <code class="docutils literal notranslate"><span class="pre">src_image</span></code>.</p>
+</div></blockquote>
+<p><strong>upsample_factor</strong> : int, optional</p>
+<blockquote>
+<div><p>Upsampling factor. Images will be registered to within
 <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">/</span> <span class="pre">upsample_factor</span></code> of a pixel. For example
 <code class="docutils literal notranslate"><span class="pre">upsample_factor</span> <span class="pre">==</span> <span class="pre">20</span></code> means the images will be registered
 within 1/20th of a pixel.  Default is 1 (no upsampling)</p>
-</dd>
-<dt><strong>space</strong><span class="classifier">string, one of “real” or “fourier”, optional</span></dt><dd><p>Defines how the algorithm interprets input data.  “real” means data
+</div></blockquote>
+<p><strong>space</strong> : string, one of “real” or “fourier”, optional</p>
+<blockquote>
+<div><p>Defines how the algorithm interprets input data.  “real” means data
 will be FFT’d to compute the correlation, while “fourier” data will
 bypass FFT of input data.  Case insensitive.</p>
-</dd>
-<dt><strong>return_error</strong><span class="classifier">bool, optional</span></dt><dd><p>Returns error and phase difference if on,
+</div></blockquote>
+<p><strong>return_error</strong> : bool, optional</p>
+<blockquote>
+<div><p>Returns error and phase difference if on,
 otherwise only shifts are returned</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>shifts</strong><span class="classifier">ndarray</span></dt><dd><p>Shift vector (in pixels) required to register <code class="docutils literal notranslate"><span class="pre">target_image</span></code> with
+<dd class="field-even"><p><strong>shifts</strong> : ndarray</p>
+<blockquote>
+<div><p>Shift vector (in pixels) required to register <code class="docutils literal notranslate"><span class="pre">target_image</span></code> with
 <code class="docutils literal notranslate"><span class="pre">src_image</span></code>.  Axis ordering is consistent with numpy (e.g. Z, Y, X)</p>
-</dd>
-<dt><strong>error</strong><span class="classifier">float</span></dt><dd><p>Translation invariant normalized RMS error between <code class="docutils literal notranslate"><span class="pre">src_image</span></code> and
+</div></blockquote>
+<p><strong>error</strong> : float</p>
+<blockquote>
+<div><p>Translation invariant normalized RMS error between <code class="docutils literal notranslate"><span class="pre">src_image</span></code> and
 <code class="docutils literal notranslate"><span class="pre">target_image</span></code>.</p>
-</dd>
-<dt><strong>phasediff</strong><span class="classifier">float</span></dt><dd><p>Global phase difference between the two images (should be
+</div></blockquote>
+<p><strong>phasediff</strong> : float</p>
+<blockquote>
+<div><p>Global phase difference between the two images (should be
 zero if images are non-negative).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r690c39d932a8-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r195"><span class="brackets"><a class="fn-backref" href="#id43">R195</a></span></dt>
 <dd><p>Manuel Guizar-Sicairos, Samuel T. Thurman, and James R. Fienup,
 “Efficient subpixel image registration algorithms,”
 Optics Letters 33, 156-158 (2008). <a class="reference external" href="https://doi.org/10.1364/OL.33.000156">DOI:10.1364/OL.33.000156</a></p>
 </dd>
-<dt class="label" id="r690c39d932a8-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r196"><span class="brackets"><a class="fn-backref" href="#id44">R196</a></span></dt>
 <dd><p>James R. Fienup, “Invariant error metrics for image reconstruction”
 Optics Letters 36, 8352-8357 (1997). <a class="reference external" href="https://doi.org/10.1364/AO.36.008352">DOI:10.1364/AO.36.008352</a></p>
 </dd>
@@ -2288,47 +2492,55 @@ Optics Letters 36, 8352-8357 (1997). <a class="reference external" href="https:/
 <code class="descclassname">skimage.feature.</code><code class="descname">masked_register_translation</code><span class="sig-paren">(</span><em>src_image</em>, <em>target_image</em>, <em>src_mask</em>, <em>target_mask=None</em>, <em>overlap_ratio=0.3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/masked_register_translation.py#L23"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.masked_register_translation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Masked image translation registration by masked normalized
 cross-correlation.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>src_image</strong><span class="classifier">ndarray</span></dt><dd><p>Reference image.</p>
-</dd>
-<dt><strong>target_image</strong><span class="classifier">ndarray</span></dt><dd><p>Image to register.  Must be same dimensionality as <code class="docutils literal notranslate"><span class="pre">src_image</span></code>,
+<dd class="field-odd"><p><strong>src_image</strong> : ndarray</p>
+<blockquote>
+<div><p>Reference image.</p>
+</div></blockquote>
+<p><strong>target_image</strong> : ndarray</p>
+<blockquote>
+<div><p>Image to register.  Must be same dimensionality as <code class="docutils literal notranslate"><span class="pre">src_image</span></code>,
 but not necessarily the same size.</p>
-</dd>
-<dt><strong>src_mask</strong><span class="classifier">ndarray</span></dt><dd><p>Boolean mask for <code class="docutils literal notranslate"><span class="pre">src_image</span></code>. The mask should evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code>
+</div></blockquote>
+<p><strong>src_mask</strong> : ndarray</p>
+<blockquote>
+<div><p>Boolean mask for <code class="docutils literal notranslate"><span class="pre">src_image</span></code>. The mask should evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code>
 (or 1) on valid pixels. <code class="docutils literal notranslate"><span class="pre">src_mask</span></code> should have the same shape
 as <code class="docutils literal notranslate"><span class="pre">src_mask</span></code>.</p>
-</dd>
-<dt><strong>target_mask</strong><span class="classifier">ndarray or None, optional</span></dt><dd><p>Boolean mask for <code class="docutils literal notranslate"><span class="pre">target_image</span></code>. The mask should evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code>
+</div></blockquote>
+<p><strong>target_mask</strong> : ndarray or None, optional</p>
+<blockquote>
+<div><p>Boolean mask for <code class="docutils literal notranslate"><span class="pre">target_image</span></code>. The mask should evaluate to <code class="docutils literal notranslate"><span class="pre">True</span></code>
 (or 1) on valid pixels. <code class="docutils literal notranslate"><span class="pre">target_mask</span></code> should have the same shape
 as <code class="docutils literal notranslate"><span class="pre">target_image</span></code>. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, <code class="docutils literal notranslate"><span class="pre">src_mask</span></code> will be used.</p>
-</dd>
-<dt><strong>overlap_ratio</strong><span class="classifier">float, optional</span></dt><dd><p>Minimum allowed overlap ratio between images. The correlation for
+</div></blockquote>
+<p><strong>overlap_ratio</strong> : float, optional</p>
+<blockquote>
+<div><p>Minimum allowed overlap ratio between images. The correlation for
 translations corresponding with an overlap ratio lower than this 
 threshold will be ignored. A lower <cite>overlap_ratio</cite> leads to smaller 
 maximum translation, while a higher <cite>overlap_ratio</cite> leads to greater 
 robustness against spurious matches due to small overlap between 
 masked images.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>shifts</strong><span class="classifier">ndarray</span></dt><dd><p>Shift vector (in pixels) required to register <code class="docutils literal notranslate"><span class="pre">target_image</span></code> with
+<dd class="field-even"><p><strong>shifts</strong> : ndarray</p>
+<blockquote>
+<div><p>Shift vector (in pixels) required to register <code class="docutils literal notranslate"><span class="pre">target_image</span></code> with
 <code class="docutils literal notranslate"><span class="pre">src_image</span></code>. Axis ordering is consistent with numpy (e.g. Z, Y, X)</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="ra353c37068de-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r197"><span class="brackets"><a class="fn-backref" href="#id45">R197</a></span></dt>
 <dd><p>Dirk Padfield. Masked Object Registration in the Fourier Domain.
 IEEE Transactions on Image Processing, vol. 21(5), 
 pp. 2706-2718 (2012). <a class="reference external" href="https://doi.org/10.1109/TIP.2011.2181402">DOI:10.1109/TIP.2011.2181402</a></p>
 </dd>
-<dt class="label" id="ra353c37068de-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r198"><span class="brackets"><a class="fn-backref" href="#id46">R198</a></span></dt>
 <dd><p>D. Padfield. “Masked FFT registration”. In Proc. Computer Vision and 
 Pattern Recognition, pp. 2918-2925 (2010).  
 <a class="reference external" href="https://doi.org/10.1109/CVPR.2010.5540032">DOI:10.1109/CVPR.2010.5540032</a></p>
@@ -2353,46 +2565,58 @@ Pattern Recognition, pp. 2918-2925 (2010).
 <p>For each descriptor in the first set this matcher finds the closest
 descriptor in the second set (and vice-versa in the case of enabled
 cross-checking).</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>descriptors1</strong><span class="classifier">(M, P) array</span></dt><dd><p>Binary descriptors of size P about M keypoints in the first image.</p>
-</dd>
-<dt><strong>descriptors2</strong><span class="classifier">(N, P) array</span></dt><dd><p>Binary descriptors of size P about N keypoints in the second image.</p>
-</dd>
-<dt><strong>metric</strong><span class="classifier">{‘euclidean’, ‘cityblock’, ‘minkowski’, ‘hamming’, …} , optional</span></dt><dd><p>The metric to compute the distance between two descriptors. See
+<dd class="field-odd"><p><strong>descriptors1</strong> : (M, P) array</p>
+<blockquote>
+<div><p>Binary descriptors of size P about M keypoints in the first image.</p>
+</div></blockquote>
+<p><strong>descriptors2</strong> : (N, P) array</p>
+<blockquote>
+<div><p>Binary descriptors of size P about N keypoints in the second image.</p>
+</div></blockquote>
+<p><strong>metric</strong> : {‘euclidean’, ‘cityblock’, ‘minkowski’, ‘hamming’, …} , optional</p>
+<blockquote>
+<div><p>The metric to compute the distance between two descriptors. See
 <cite>scipy.spatial.distance.cdist</cite> for all possible types. The hamming
 distance should be used for binary descriptors. By default the L2-norm
 is used for all descriptors of dtype float or double and the Hamming
 distance is used for binary descriptors automatically.</p>
-</dd>
-<dt><strong>p</strong><span class="classifier">int, optional</span></dt><dd><p>The p-norm to apply for <code class="docutils literal notranslate"><span class="pre">metric='minkowski'</span></code>.</p>
-</dd>
-<dt><strong>max_distance</strong><span class="classifier">float, optional</span></dt><dd><p>Maximum allowed distance between descriptors of two keypoints
+</div></blockquote>
+<p><strong>p</strong> : int, optional</p>
+<blockquote>
+<div><p>The p-norm to apply for <code class="docutils literal notranslate"><span class="pre">metric='minkowski'</span></code>.</p>
+</div></blockquote>
+<p><strong>max_distance</strong> : float, optional</p>
+<blockquote>
+<div><p>Maximum allowed distance between descriptors of two keypoints
 in separate images to be regarded as a match.</p>
-</dd>
-<dt><strong>cross_check</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the matched keypoints are returned after cross checking i.e. a
+</div></blockquote>
+<p><strong>cross_check</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, the matched keypoints are returned after cross checking i.e. a
 matched pair (keypoint1, keypoint2) is returned if keypoint2 is the
 best match for keypoint1 in second image and keypoint1 is the best
 match for keypoint2 in first image.</p>
-</dd>
-<dt><strong>max_ratio</strong><span class="classifier">float, optional</span></dt><dd><p>Maximum ratio of distances between first and second closest descriptor
+</div></blockquote>
+<p><strong>max_ratio</strong> : float, optional</p>
+<blockquote>
+<div><p>Maximum ratio of distances between first and second closest descriptor
 in the second set of descriptors. This threshold is useful to filter
 ambiguous matches between the two descriptor sets. The choice of this
 value depends on the statistics of the chosen descriptor, e.g.,
 for SIFT descriptors a value of 0.8 is usually chosen, see
 D.G. Lowe, “Distinctive Image Features from Scale-Invariant Keypoints”,
 International Journal of Computer Vision, 2004.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>matches</strong><span class="classifier">(Q, 2) array</span></dt><dd><p>Indices of corresponding matches in first and second set of
+<dd class="field-even"><p><strong>matches</strong> : (Q, 2) array</p>
+<blockquote>
+<div><p>Indices of corresponding matches in first and second set of
 descriptors, where <code class="docutils literal notranslate"><span class="pre">matches[:,</span> <span class="pre">0]</span></code> denote the indices in the first
 and <code class="docutils literal notranslate"><span class="pre">matches[:,</span> <span class="pre">1]</span></code> the indices in the second set of descriptors.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -2419,34 +2643,52 @@ and <code class="docutils literal notranslate"><span class="pre">matches[:,</spa
 <dt id="skimage.feature.plot_matches">
 <code class="descclassname">skimage.feature.</code><code class="descname">plot_matches</code><span class="sig-paren">(</span><em>ax</em>, <em>image1</em>, <em>image2</em>, <em>keypoints1</em>, <em>keypoints2</em>, <em>matches</em>, <em>keypoints_color='k'</em>, <em>matches_color=None</em>, <em>only_matches=False</em>, <em>alignment='horizontal'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/util.py#L43"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.plot_matches" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot matched features.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>ax</strong><span class="classifier">matplotlib.axes.Axes</span></dt><dd><p>Matches and image are drawn in this ax.</p>
-</dd>
-<dt><strong>image1</strong><span class="classifier">(N, M [, 3]) array</span></dt><dd><p>First grayscale or color image.</p>
-</dd>
-<dt><strong>image2</strong><span class="classifier">(N, M [, 3]) array</span></dt><dd><p>Second grayscale or color image.</p>
-</dd>
-<dt><strong>keypoints1</strong><span class="classifier">(K1, 2) array</span></dt><dd><p>First keypoint coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p>
-</dd>
-<dt><strong>keypoints2</strong><span class="classifier">(K2, 2) array</span></dt><dd><p>Second keypoint coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p>
-</dd>
-<dt><strong>matches</strong><span class="classifier">(Q, 2) array</span></dt><dd><p>Indices of corresponding matches in first and second set of
+<dd class="field-odd"><p><strong>ax</strong> : matplotlib.axes.Axes</p>
+<blockquote>
+<div><p>Matches and image are drawn in this ax.</p>
+</div></blockquote>
+<p><strong>image1</strong> : (N, M [, 3]) array</p>
+<blockquote>
+<div><p>First grayscale or color image.</p>
+</div></blockquote>
+<p><strong>image2</strong> : (N, M [, 3]) array</p>
+<blockquote>
+<div><p>Second grayscale or color image.</p>
+</div></blockquote>
+<p><strong>keypoints1</strong> : (K1, 2) array</p>
+<blockquote>
+<div><p>First keypoint coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p>
+</div></blockquote>
+<p><strong>keypoints2</strong> : (K2, 2) array</p>
+<blockquote>
+<div><p>Second keypoint coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p>
+</div></blockquote>
+<p><strong>matches</strong> : (Q, 2) array</p>
+<blockquote>
+<div><p>Indices of corresponding matches in first and second set of
 descriptors, where <code class="docutils literal notranslate"><span class="pre">matches[:,</span> <span class="pre">0]</span></code> denote the indices in the first
 and <code class="docutils literal notranslate"><span class="pre">matches[:,</span> <span class="pre">1]</span></code> the indices in the second set of descriptors.</p>
-</dd>
-<dt><strong>keypoints_color</strong><span class="classifier">matplotlib color, optional</span></dt><dd><p>Color for keypoint locations.</p>
-</dd>
-<dt><strong>matches_color</strong><span class="classifier">matplotlib color, optional</span></dt><dd><p>Color for lines which connect keypoint matches. By default the
+</div></blockquote>
+<p><strong>keypoints_color</strong> : matplotlib color, optional</p>
+<blockquote>
+<div><p>Color for keypoint locations.</p>
+</div></blockquote>
+<p><strong>matches_color</strong> : matplotlib color, optional</p>
+<blockquote>
+<div><p>Color for lines which connect keypoint matches. By default the
 color is chosen randomly.</p>
-</dd>
-<dt><strong>only_matches</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to only plot matches and not plot the keypoint locations.</p>
-</dd>
-<dt><strong>alignment</strong><span class="classifier">{‘horizontal’, ‘vertical’}, optional</span></dt><dd><p>Whether to show images side by side, <code class="docutils literal notranslate"><span class="pre">'horizontal'</span></code>, or one above
+</div></blockquote>
+<p><strong>only_matches</strong> : bool, optional</p>
+<blockquote>
+<div><p>Whether to only plot matches and not plot the keypoint locations.</p>
+</div></blockquote>
+<p><strong>alignment</strong> : {‘horizontal’, ‘vertical’}, optional</p>
+<blockquote>
+<div><p>Whether to show images side by side, <code class="docutils literal notranslate"><span class="pre">'horizontal'</span></code>, or one above
 the other, <code class="docutils literal notranslate"><span class="pre">'vertical'</span></code>.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -2477,43 +2719,56 @@ the other, <code class="docutils literal notranslate"><span class="pre">'vertica
 <dt id="skimage.feature.blob_dog">
 <code class="descclassname">skimage.feature.</code><code class="descname">blob_dog</code><span class="sig-paren">(</span><em>image</em>, <em>min_sigma=1</em>, <em>max_sigma=50</em>, <em>sigma_ratio=1.6</em>, <em>threshold=2.0</em>, <em>overlap=0.5</em>, <em>*</em>, <em>exclude_border=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L168"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_dog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds blobs in the given grayscale image.</p>
-<p>Blobs are found using the Difference of Gaussian (DoG) method <a class="reference internal" href="#rf5218630e229-1" id="id47">[1]</a>.
+<p>Blobs are found using the Difference of Gaussian (DoG) method <a class="reference internal" href="#r199" id="id47"><span>[R199]</span></a>.
 For each blob found, the method returns its coordinates and the standard
 deviation of the Gaussian kernel that detected the blob.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">2D or 3D ndarray</span></dt><dd><p>Input grayscale image, blobs are assumed to be light on dark
+<dd class="field-odd"><p><strong>image</strong> : 2D or 3D ndarray</p>
+<blockquote>
+<div><p>Input grayscale image, blobs are assumed to be light on dark
 background (white on black).</p>
-</dd>
-<dt><strong>min_sigma</strong><span class="classifier">scalar or sequence of scalars, optional</span></dt><dd><p>The minimum standard deviation for Gaussian kernel. Keep this low to
+</div></blockquote>
+<p><strong>min_sigma</strong> : scalar or sequence of scalars, optional</p>
+<blockquote>
+<div><p>The minimum standard deviation for Gaussian kernel. Keep this low to
 detect smaller blobs. The standard deviations of the Gaussian filter
 are given for each axis as a sequence, or as a single number, in
 which case it is equal for all axes.</p>
-</dd>
-<dt><strong>max_sigma</strong><span class="classifier">scalar or sequence of scalars, optional</span></dt><dd><p>The maximum standard deviation for Gaussian kernel. Keep this high to
+</div></blockquote>
+<p><strong>max_sigma</strong> : scalar or sequence of scalars, optional</p>
+<blockquote>
+<div><p>The maximum standard deviation for Gaussian kernel. Keep this high to
 detect larger blobs. The standard deviations of the Gaussian filter
 are given for each axis as a sequence, or as a single number, in
 which case it is equal for all axes.</p>
-</dd>
-<dt><strong>sigma_ratio</strong><span class="classifier">float, optional</span></dt><dd><p>The ratio between the standard deviation of Gaussian Kernels used for
+</div></blockquote>
+<p><strong>sigma_ratio</strong> : float, optional</p>
+<blockquote>
+<div><p>The ratio between the standard deviation of Gaussian Kernels used for
 computing the Difference of Gaussians</p>
-</dd>
-<dt><strong>threshold</strong><span class="classifier">float, optional.</span></dt><dd><p>The absolute lower bound for scale space maxima. Local maxima smaller
+</div></blockquote>
+<p><strong>threshold</strong> : float, optional.</p>
+<blockquote>
+<div><p>The absolute lower bound for scale space maxima. Local maxima smaller
 than thresh are ignored. Reduce this to detect blobs with less
 intensities.</p>
-</dd>
-<dt><strong>overlap</strong><span class="classifier">float, optional</span></dt><dd><p>A value between 0 and 1. If the area of two blobs overlaps by a
+</div></blockquote>
+<p><strong>overlap</strong> : float, optional</p>
+<blockquote>
+<div><p>A value between 0 and 1. If the area of two blobs overlaps by a
 fraction greater than <cite>threshold</cite>, the smaller blob is eliminated.</p>
-</dd>
-<dt><strong>exclude_border</strong><span class="classifier">int or bool, optional</span></dt><dd><p>If nonzero int, <cite>exclude_border</cite> excludes blobs from
+</div></blockquote>
+<p><strong>exclude_border</strong> : int or bool, optional</p>
+<blockquote>
+<div><p>If nonzero int, <cite>exclude_border</cite> excludes blobs from
 within <cite>exclude_border</cite>-pixels of the border of the image.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>A</strong><span class="classifier">(n, image.ndim + sigma) ndarray</span></dt><dd><p>A 2d array with each row representing 2 coordinate values for a 2D
+<dd class="field-even"><p><strong>A</strong> : (n, image.ndim + sigma) ndarray</p>
+<blockquote>
+<div><p>A 2d array with each row representing 2 coordinate values for a 2D
 image, and 3 coordinate values for a 3D image, plus the sigma(s) used.
 When a single sigma is passed, outputs are:
 <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">c,</span> <span class="pre">sigma)</span></code> or <code class="docutils literal notranslate"><span class="pre">(p,</span> <span class="pre">r,</span> <span class="pre">c,</span> <span class="pre">sigma)</span></code> where <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">c)</span></code> or
@@ -2521,8 +2776,7 @@ When a single sigma is passed, outputs are:
 deviation of the Gaussian kernel which detected the blob. When an
 anisotropic gaussian is used (sigmas per dimension), the detected sigma
 is returned for each dimension.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -2530,7 +2784,7 @@ is returned for each dimension.</p>
 a 2-D image and <span class="math notranslate nohighlight">\(\sqrt{3}\sigma\)</span> for a 3-D image.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rf5218630e229-1"><span class="brackets"><a class="fn-backref" href="#id47">1</a></span></dt>
+<dt class="label" id="r199"><span class="brackets">R199</span><span class="fn-backref">(<a href="#id47">1</a>,<a href="#id48">2</a>)</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Blob_detection#The_difference_of_Gaussians_approach">https://en.wikipedia.org/wiki/Blob_detection#The_difference_of_Gaussians_approach</a></p>
 </dd>
 </dl>
@@ -2579,44 +2833,56 @@ a 2-D image and <span class="math notranslate nohighlight">\(\sqrt{3}\sigma\)</s
 <dt id="skimage.feature.blob_doh">
 <code class="descclassname">skimage.feature.</code><code class="descname">blob_doh</code><span class="sig-paren">(</span><em>image</em>, <em>min_sigma=1</em>, <em>max_sigma=30</em>, <em>num_sigma=10</em>, <em>threshold=0.01</em>, <em>overlap=0.5</em>, <em>log_scale=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L459"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_doh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds blobs in the given grayscale image.</p>
-<p>Blobs are found using the Determinant of Hessian method <a class="reference internal" href="#ra19a7aed16ca-1" id="id49">[1]</a>. For each blob
+<p>Blobs are found using the Determinant of Hessian method <a class="reference internal" href="#r200" id="id49"><span>[R200]</span></a>. For each blob
 found, the method returns its coordinates and the standard deviation
 of the Gaussian Kernel used for the Hessian matrix whose determinant
-detected the blob. Determinant of Hessians is approximated using <a class="reference internal" href="#ra19a7aed16ca-2" id="id50">[2]</a>.</p>
-<dl class="field-list simple">
+detected the blob. Determinant of Hessians is approximated using <a class="reference internal" href="#r201" id="id50"><span>[R201]</span></a>.</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">2D ndarray</span></dt><dd><p>Input grayscale image.Blobs can either be light on dark or vice versa.</p>
-</dd>
-<dt><strong>min_sigma</strong><span class="classifier">float, optional</span></dt><dd><p>The minimum standard deviation for Gaussian Kernel used to compute
+<dd class="field-odd"><p><strong>image</strong> : 2D ndarray</p>
+<blockquote>
+<div><p>Input grayscale image.Blobs can either be light on dark or vice versa.</p>
+</div></blockquote>
+<p><strong>min_sigma</strong> : float, optional</p>
+<blockquote>
+<div><p>The minimum standard deviation for Gaussian Kernel used to compute
 Hessian matrix. Keep this low to detect smaller blobs.</p>
-</dd>
-<dt><strong>max_sigma</strong><span class="classifier">float, optional</span></dt><dd><p>The maximum standard deviation for Gaussian Kernel used to compute
+</div></blockquote>
+<p><strong>max_sigma</strong> : float, optional</p>
+<blockquote>
+<div><p>The maximum standard deviation for Gaussian Kernel used to compute
 Hessian matrix. Keep this high to detect larger blobs.</p>
-</dd>
-<dt><strong>num_sigma</strong><span class="classifier">int, optional</span></dt><dd><p>The number of intermediate values of standard deviations to consider
+</div></blockquote>
+<p><strong>num_sigma</strong> : int, optional</p>
+<blockquote>
+<div><p>The number of intermediate values of standard deviations to consider
 between <cite>min_sigma</cite> and <cite>max_sigma</cite>.</p>
-</dd>
-<dt><strong>threshold</strong><span class="classifier">float, optional.</span></dt><dd><p>The absolute lower bound for scale space maxima. Local maxima smaller
+</div></blockquote>
+<p><strong>threshold</strong> : float, optional.</p>
+<blockquote>
+<div><p>The absolute lower bound for scale space maxima. Local maxima smaller
 than thresh are ignored. Reduce this to detect less prominent blobs.</p>
-</dd>
-<dt><strong>overlap</strong><span class="classifier">float, optional</span></dt><dd><p>A value between 0 and 1. If the area of two blobs overlaps by a
+</div></blockquote>
+<p><strong>overlap</strong> : float, optional</p>
+<blockquote>
+<div><p>A value between 0 and 1. If the area of two blobs overlaps by a
 fraction greater than <cite>threshold</cite>, the smaller blob is eliminated.</p>
-</dd>
-<dt><strong>log_scale</strong><span class="classifier">bool, optional</span></dt><dd><p>If set intermediate values of standard deviations are interpolated
+</div></blockquote>
+<p><strong>log_scale</strong> : bool, optional</p>
+<blockquote>
+<div><p>If set intermediate values of standard deviations are interpolated
 using a logarithmic scale to the base <cite>10</cite>. If not, linear
 interpolation is used.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>A</strong><span class="classifier">(n, 3) ndarray</span></dt><dd><p>A 2d array with each row representing 3 values, <code class="docutils literal notranslate"><span class="pre">(y,x,sigma)</span></code>
+<dd class="field-even"><p><strong>A</strong> : (n, 3) ndarray</p>
+<blockquote>
+<div><p>A 2d array with each row representing 3 values, <code class="docutils literal notranslate"><span class="pre">(y,x,sigma)</span></code>
 where <code class="docutils literal notranslate"><span class="pre">(y,x)</span></code> are coordinates of the blob and <code class="docutils literal notranslate"><span class="pre">sigma</span></code> is the
 standard deviation of the Gaussian kernel of the Hessian Matrix whose
 determinant detected the blob.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -2629,10 +2895,10 @@ this method can’t be used for detecting blobs of radius less than <cite>3px</c
 due to the box filters used in the approximation of Hessian Determinant.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="ra19a7aed16ca-1"><span class="brackets"><a class="fn-backref" href="#id49">1</a></span></dt>
+<dt class="label" id="r200"><span class="brackets">R200</span><span class="fn-backref">(<a href="#id49">1</a>,<a href="#id51">2</a>)</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Blob_detection#The_determinant_of_the_Hessian">https://en.wikipedia.org/wiki/Blob_detection#The_determinant_of_the_Hessian</a></p>
 </dd>
-<dt class="label" id="ra19a7aed16ca-2"><span class="brackets"><a class="fn-backref" href="#id50">2</a></span></dt>
+<dt class="label" id="r201"><span class="brackets">R201</span><span class="fn-backref">(<a href="#id50">1</a>,<a href="#id52">2</a>)</span></dt>
 <dd><p>Herbert Bay, Andreas Ess, Tinne Tuytelaars, Luc Van Gool,
 “SURF: Speeded Up Robust Features”
 <a class="reference external" href="ftp://ftp.vision.ee.ethz.ch/publications/articles/eth_biwi_00517.pdf">ftp://ftp.vision.ee.ethz.ch/publications/articles/eth_biwi_00517.pdf</a></p>
@@ -2677,47 +2943,62 @@ due to the box filters used in the approximation of Hessian Determinant.</p>
 <dt id="skimage.feature.blob_log">
 <code class="descclassname">skimage.feature.</code><code class="descname">blob_log</code><span class="sig-paren">(</span><em>image</em>, <em>min_sigma=1</em>, <em>max_sigma=50</em>, <em>num_sigma=10</em>, <em>threshold=0.2</em>, <em>overlap=0.5</em>, <em>log_scale=False</em>, <em>*</em>, <em>exclude_border=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L313"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_log" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds blobs in the given grayscale image.</p>
-<p>Blobs are found using the Laplacian of Gaussian (LoG) method <a class="reference internal" href="#r520e53dd5fa2-1" id="id53">[1]</a>.
+<p>Blobs are found using the Laplacian of Gaussian (LoG) method <a class="reference internal" href="#r202" id="id53"><span>[R202]</span></a>.
 For each blob found, the method returns its coordinates and the standard
 deviation of the Gaussian kernel that detected the blob.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">2D or 3D ndarray</span></dt><dd><p>Input grayscale image, blobs are assumed to be light on dark
+<dd class="field-odd"><p><strong>image</strong> : 2D or 3D ndarray</p>
+<blockquote>
+<div><p>Input grayscale image, blobs are assumed to be light on dark
 background (white on black).</p>
-</dd>
-<dt><strong>min_sigma</strong><span class="classifier">scalar or sequence of scalars, optional</span></dt><dd><p>the minimum standard deviation for Gaussian kernel. Keep this low to
+</div></blockquote>
+<p><strong>min_sigma</strong> : scalar or sequence of scalars, optional</p>
+<blockquote>
+<div><p>the minimum standard deviation for Gaussian kernel. Keep this low to
 detect smaller blobs. The standard deviations of the Gaussian filter
 are given for each axis as a sequence, or as a single number, in
 which case it is equal for all axes.</p>
-</dd>
-<dt><strong>max_sigma</strong><span class="classifier">scalar or sequence of scalars, optional</span></dt><dd><p>The maximum standard deviation for Gaussian kernel. Keep this high to
+</div></blockquote>
+<p><strong>max_sigma</strong> : scalar or sequence of scalars, optional</p>
+<blockquote>
+<div><p>The maximum standard deviation for Gaussian kernel. Keep this high to
 detect larger blobs. The standard deviations of the Gaussian filter
 are given for each axis as a sequence, or as a single number, in
 which case it is equal for all axes.</p>
-</dd>
-<dt><strong>num_sigma</strong><span class="classifier">int, optional</span></dt><dd><p>The number of intermediate values of standard deviations to consider
+</div></blockquote>
+<p><strong>num_sigma</strong> : int, optional</p>
+<blockquote>
+<div><p>The number of intermediate values of standard deviations to consider
 between <cite>min_sigma</cite> and <cite>max_sigma</cite>.</p>
-</dd>
-<dt><strong>threshold</strong><span class="classifier">float, optional.</span></dt><dd><p>The absolute lower bound for scale space maxima. Local maxima smaller
+</div></blockquote>
+<p><strong>threshold</strong> : float, optional.</p>
+<blockquote>
+<div><p>The absolute lower bound for scale space maxima. Local maxima smaller
 than thresh are ignored. Reduce this to detect blobs with less
 intensities.</p>
-</dd>
-<dt><strong>overlap</strong><span class="classifier">float, optional</span></dt><dd><p>A value between 0 and 1. If the area of two blobs overlaps by a
+</div></blockquote>
+<p><strong>overlap</strong> : float, optional</p>
+<blockquote>
+<div><p>A value between 0 and 1. If the area of two blobs overlaps by a
 fraction greater than <cite>threshold</cite>, the smaller blob is eliminated.</p>
-</dd>
-<dt><strong>log_scale</strong><span class="classifier">bool, optional</span></dt><dd><p>If set intermediate values of standard deviations are interpolated
+</div></blockquote>
+<p><strong>log_scale</strong> : bool, optional</p>
+<blockquote>
+<div><p>If set intermediate values of standard deviations are interpolated
 using a logarithmic scale to the base <cite>10</cite>. If not, linear
 interpolation is used.</p>
-</dd>
-<dt><strong>exclude_border</strong><span class="classifier">int or bool, optional</span></dt><dd><p>If nonzero int, <cite>exclude_border</cite> excludes blobs from
+</div></blockquote>
+<p><strong>exclude_border</strong> : int or bool, optional</p>
+<blockquote>
+<div><p>If nonzero int, <cite>exclude_border</cite> excludes blobs from
 within <cite>exclude_border</cite>-pixels of the border of the image.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>A</strong><span class="classifier">(n, image.ndim + sigma) ndarray</span></dt><dd><p>A 2d array with each row representing 2 coordinate values for a 2D
+<dd class="field-even"><p><strong>A</strong> : (n, image.ndim + sigma) ndarray</p>
+<blockquote>
+<div><p>A 2d array with each row representing 2 coordinate values for a 2D
 image, and 3 coordinate values for a 3D image, plus the sigma(s) used.
 When a single sigma is passed, outputs are:
 <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">c,</span> <span class="pre">sigma)</span></code> or <code class="docutils literal notranslate"><span class="pre">(p,</span> <span class="pre">r,</span> <span class="pre">c,</span> <span class="pre">sigma)</span></code> where <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">c)</span></code> or
@@ -2725,8 +3006,7 @@ When a single sigma is passed, outputs are:
 deviation of the Gaussian kernel which detected the blob. When an
 anisotropic gaussian is used (sigmas per dimension), the detected sigma
 is returned for each dimension.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -2734,7 +3014,7 @@ is returned for each dimension.</p>
 a 2-D image and <span class="math notranslate nohighlight">\(\sqrt{3}\sigma\)</span> for a 3-D image.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r520e53dd5fa2-1"><span class="brackets"><a class="fn-backref" href="#id53">1</a></span></dt>
+<dt class="label" id="r202"><span class="brackets">R202</span><span class="fn-backref">(<a href="#id53">1</a>,<a href="#id54">2</a>)</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Blob_detection#The_Laplacian_of_Gaussian">https://en.wikipedia.org/wiki/Blob_detection#The_Laplacian_of_Gaussian</a></p>
 </dd>
 </dl>
@@ -2780,22 +3060,33 @@ a 2-D image and <span class="math notranslate nohighlight">\(\sqrt{3}\sigma\)</s
 <dd><p>Compute the Haar-like features for a region of interest (ROI) of an
 integral image.</p>
 <p>Haar-like features have been successfully used for image classification and
-object detection <a class="reference internal" href="#rbcb83f52fce4-1" id="id55">[1]</a>. It has been used for real-time face detection
-algorithm proposed in <a class="reference internal" href="#rbcb83f52fce4-2" id="id56">[2]</a>.</p>
+object detection <a class="reference internal" href="#r203" id="id55"><span>[R203]</span></a>. It has been used for real-time face detection
+algorithm proposed in <a class="reference internal" href="#r204" id="id56"><span>[R204]</span></a>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>int_image</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p>Integral image for which the features need to be computed.</p>
-</dd>
-<dt><strong>r</strong><span class="classifier">int</span></dt><dd><p>Row-coordinate of top left corner of the detection window.</p>
-</dd>
-<dt><strong>c</strong><span class="classifier">int</span></dt><dd><p>Column-coordinate of top left corner of the detection window.</p>
-</dd>
-<dt><strong>width</strong><span class="classifier">int</span></dt><dd><p>Width of the detection window.</p>
-</dd>
-<dt><strong>height</strong><span class="classifier">int</span></dt><dd><p>Height of the detection window.</p>
-</dd>
-<dt><strong>feature_type</strong><span class="classifier">str or list of str or None, optional</span></dt><dd><p>The type of feature to consider:</p>
+<dd class="field-odd"><p><strong>int_image</strong> : (M, N) ndarray</p>
+<blockquote>
+<div><p>Integral image for which the features need to be computed.</p>
+</div></blockquote>
+<p><strong>r</strong> : int</p>
+<blockquote>
+<div><p>Row-coordinate of top left corner of the detection window.</p>
+</div></blockquote>
+<p><strong>c</strong> : int</p>
+<blockquote>
+<div><p>Column-coordinate of top left corner of the detection window.</p>
+</div></blockquote>
+<p><strong>width</strong> : int</p>
+<blockquote>
+<div><p>Width of the detection window.</p>
+</div></blockquote>
+<p><strong>height</strong> : int</p>
+<blockquote>
+<div><p>Height of the detection window.</p>
+</div></blockquote>
+<p><strong>feature_type</strong> : str or list of str or None, optional</p>
+<blockquote>
+<div><p>The type of feature to consider:</p>
 <ul class="simple">
 <li><p>‘type-2-x’: 2 rectangles varying along the x axis;</p></li>
 <li><p>‘type-2-y’: 2 rectangles varying along the y axis;</p></li>
@@ -2806,24 +3097,25 @@ algorithm proposed in <a class="reference internal" href="#rbcb83f52fce4-2" id="
 <p>By default all features are extracted.</p>
 <p>If using with <cite>feature_coord</cite>, it should correspond to the feature
 type of each associated coordinate feature.</p>
-</dd>
-<dt><strong>feature_coord</strong><span class="classifier">ndarray of list of tuples or None, optional</span></dt><dd><p>The array of coordinates to be extracted. This is useful when you want
+</div></blockquote>
+<p><strong>feature_coord</strong> : ndarray of list of tuples or None, optional</p>
+<blockquote>
+<div><p>The array of coordinates to be extracted. This is useful when you want
 to recompute only a subset of features. In this case <cite>feature_type</cite>
 needs to be an array containing the type of each feature, as returned
 by <a class="reference internal" href="#skimage.feature.haar_like_feature_coord" title="skimage.feature.haar_like_feature_coord"><code class="xref py py-func docutils literal notranslate"><span class="pre">haar_like_feature_coord()</span></code></a>. By default, all coordinates are
 computed.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>haar_features</strong><span class="classifier">(n_features,) ndarray of int or float</span></dt><dd><p>Resulting Haar-like features. Each value is equal to the subtraction of
+<dd class="field-even"><p><strong>haar_features</strong> : (n_features,) ndarray of int or float</p>
+<blockquote>
+<div><p>Resulting Haar-like features. Each value is equal to the subtraction of
 sums of the positive and negative rectangles. The data type depends of
 the data type of <cite>int_image</cite>: <cite>int</cite> when the data type of <cite>int_image</cite>
 is <cite>uint</cite> or <cite>int</cite> and <cite>float</cite> when the data type of <cite>int_image</cite> is
 <cite>float</cite>.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -2837,10 +3129,10 @@ Refer to the example
 for more insights.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rbcb83f52fce4-1"><span class="brackets"><a class="fn-backref" href="#id55">1</a></span></dt>
+<dt class="label" id="r203"><span class="brackets">R203</span><span class="fn-backref">(<a href="#id55">1</a>,<a href="#id57">2</a>)</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Haar-like_feature">https://en.wikipedia.org/wiki/Haar-like_feature</a></p>
 </dd>
-<dt class="label" id="rbcb83f52fce4-2"><span class="brackets"><a class="fn-backref" href="#id56">2</a></span></dt>
+<dt class="label" id="r204"><span class="brackets">R204</span><span class="fn-backref">(<a href="#id56">1</a>,<a href="#id58">2</a>)</span></dt>
 <dd><p>Oren, M., Papageorgiou, C., Sinha, P., Osuna, E., &amp; Poggio, T.
 (1997, June). Pedestrian detection using wavelet templates.
 In Computer Vision and Pattern Recognition, 1997. Proceedings.,
@@ -2848,7 +3140,7 @@ In Computer Vision and Pattern Recognition, 1997. Proceedings.,
 <a class="reference external" href="http://tinyurl.com/y6ulxfta">http://tinyurl.com/y6ulxfta</a>
 <a class="reference external" href="https://doi.org/10.1109/CVPR.1997.609319">DOI:10.1109/CVPR.1997.609319</a></p>
 </dd>
-<dt class="label" id="rbcb83f52fce4-3"><span class="brackets">3</span></dt>
+<dt class="label" id="r205"><span class="brackets"><a class="fn-backref" href="#id59">R205</a></span></dt>
 <dd><p>Viola, Paul, and Michael J. Jones. “Robust real-time face
 detection.” International journal of computer vision 57.2
 (2004): 137-154.
@@ -2905,12 +3197,17 @@ detection.” International journal of computer vision 57.2
 <dd><p>Compute the coordinates of Haar-like features.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>width</strong><span class="classifier">int</span></dt><dd><p>Width of the detection window.</p>
-</dd>
-<dt><strong>height</strong><span class="classifier">int</span></dt><dd><p>Height of the detection window.</p>
-</dd>
-<dt><strong>feature_type</strong><span class="classifier">str or list of str or None, optional</span></dt><dd><p>The type of feature to consider:</p>
+<dd class="field-odd"><p><strong>width</strong> : int</p>
+<blockquote>
+<div><p>Width of the detection window.</p>
+</div></blockquote>
+<p><strong>height</strong> : int</p>
+<blockquote>
+<div><p>Height of the detection window.</p>
+</div></blockquote>
+<p><strong>feature_type</strong> : str or list of str or None, optional</p>
+<blockquote>
+<div><p>The type of feature to consider:</p>
 <ul class="simple">
 <li><p>‘type-2-x’: 2 rectangles varying along the x axis;</p></li>
 <li><p>‘type-2-y’: 2 rectangles varying along the y axis;</p></li>
@@ -2919,16 +3216,17 @@ detection.” International journal of computer vision 57.2
 <li><p>‘type-4’: 4 rectangles varying along x and y axis.</p></li>
 </ul>
 <p>By default all features are extracted.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>feature_coord</strong><span class="classifier">(n_features, n_rectangles, 2, 2), ndarray of list of tuple coord</span></dt><dd><p>Coordinates of the rectangles for each feature.</p>
-</dd>
-<dt><strong>feature_type</strong><span class="classifier">(n_features,), ndarray of str</span></dt><dd><p>The corresponding type for each feature.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>feature_coord</strong> : (n_features, n_rectangles, 2, 2), ndarray of list of tuple coord</p>
+<blockquote>
+<div><p>Coordinates of the rectangles for each feature.</p>
+</div></blockquote>
+<p><strong>feature_type</strong> : (n_features,), ndarray of str</p>
+<blockquote>
+<div><p>The corresponding type for each feature.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -2963,51 +3261,71 @@ detection.” International journal of computer vision 57.2
 <dt id="skimage.feature.draw_haar_like_feature">
 <code class="descclassname">skimage.feature.</code><code class="descname">draw_haar_like_feature</code><span class="sig-paren">(</span><em>image</em>, <em>r</em>, <em>c</em>, <em>width</em>, <em>height</em>, <em>feature_coord</em>, <em>color_positive_block=(1.0</em>, <em>0.0</em>, <em>0.0)</em>, <em>color_negative_block=(0.0</em>, <em>1.0</em>, <em>0.0)</em>, <em>alpha=0.5</em>, <em>max_n_features=None</em>, <em>random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/haar.py#L222"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.draw_haar_like_feature" title="Permalink to this definition">¶</a></dt>
 <dd><p>Visualization of Haar-like features.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p>The region of an integral image for which the features need to be
+<dd class="field-odd"><p><strong>image</strong> : (M, N) ndarray</p>
+<blockquote>
+<div><p>The region of an integral image for which the features need to be
 computed.</p>
-</dd>
-<dt><strong>r</strong><span class="classifier">int</span></dt><dd><p>Row-coordinate of top left corner of the detection window.</p>
-</dd>
-<dt><strong>c</strong><span class="classifier">int</span></dt><dd><p>Column-coordinate of top left corner of the detection window.</p>
-</dd>
-<dt><strong>width</strong><span class="classifier">int</span></dt><dd><p>Width of the detection window.</p>
-</dd>
-<dt><strong>height</strong><span class="classifier">int</span></dt><dd><p>Height of the detection window.</p>
-</dd>
-<dt><strong>feature_coord</strong><span class="classifier">ndarray of list of tuples or None, optional</span></dt><dd><p>The array of coordinates to be extracted. This is useful when you want
+</div></blockquote>
+<p><strong>r</strong> : int</p>
+<blockquote>
+<div><p>Row-coordinate of top left corner of the detection window.</p>
+</div></blockquote>
+<p><strong>c</strong> : int</p>
+<blockquote>
+<div><p>Column-coordinate of top left corner of the detection window.</p>
+</div></blockquote>
+<p><strong>width</strong> : int</p>
+<blockquote>
+<div><p>Width of the detection window.</p>
+</div></blockquote>
+<p><strong>height</strong> : int</p>
+<blockquote>
+<div><p>Height of the detection window.</p>
+</div></blockquote>
+<p><strong>feature_coord</strong> : ndarray of list of tuples or None, optional</p>
+<blockquote>
+<div><p>The array of coordinates to be extracted. This is useful when you want
 to recompute only a subset of features. In this case <cite>feature_type</cite>
 needs to be an array containing the type of each feature, as returned
 by <a class="reference internal" href="#skimage.feature.haar_like_feature_coord" title="skimage.feature.haar_like_feature_coord"><code class="xref py py-func docutils literal notranslate"><span class="pre">haar_like_feature_coord()</span></code></a>. By default, all coordinates are
 computed.</p>
-</dd>
-<dt><strong>color_positive_rectangle</strong><span class="classifier">tuple of 3 floats</span></dt><dd><p>Floats specifying the color for the positive block. Corresponding
+</div></blockquote>
+<p><strong>color_positive_rectangle</strong> : tuple of 3 floats</p>
+<blockquote>
+<div><p>Floats specifying the color for the positive block. Corresponding
 values define (R, G, B) values. Default value is red (1, 0, 0).</p>
-</dd>
-<dt><strong>color_negative_block</strong><span class="classifier">tuple of 3 floats</span></dt><dd><p>Floats specifying the color for the negative block Corresponding values
+</div></blockquote>
+<p><strong>color_negative_block</strong> : tuple of 3 floats</p>
+<blockquote>
+<div><p>Floats specifying the color for the negative block Corresponding values
 define (R, G, B) values. Default value is blue (0, 1, 0).</p>
-</dd>
-<dt><strong>alpha</strong><span class="classifier">float</span></dt><dd><p>Value in the range [0, 1] that specifies opacity of visualization. 1 -
+</div></blockquote>
+<p><strong>alpha</strong> : float</p>
+<blockquote>
+<div><p>Value in the range [0, 1] that specifies opacity of visualization. 1 -
 fully transparent, 0 - opaque.</p>
-</dd>
-<dt><strong>max_n_features</strong><span class="classifier">int, default=None</span></dt><dd><p>The maximum number of features to be returned.
+</div></blockquote>
+<p><strong>max_n_features</strong> : int, default=None</p>
+<blockquote>
+<div><p>The maximum number of features to be returned.
 By default, all features are returned.</p>
-</dd>
-<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional</span></dt><dd><p>If int, random_state is the seed used by the random number generator;
+</div></blockquote>
+<p><strong>random_state</strong> : int, RandomState instance or None, optional</p>
+<blockquote>
+<div><p>If int, random_state is the seed used by the random number generator;
 If RandomState instance, random_state is the random number generator;
 If None, the random number generator is the RandomState instance used
 by <cite>np.random</cite>. The random state is used when generating a set of
 features smaller than the total number of available features.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>features</strong><span class="classifier">(M, N), ndarray</span></dt><dd><p>An image in which the different features will be added.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>features</strong> : (M, N), ndarray</p>
+<blockquote>
+<div><p>An image in which the different features will be added.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -3054,51 +3372,58 @@ instead of just creating a strong one. The second advantage of cascade
 classifier is that easy examples can be classified only by evaluating
 some of the classifiers in the cascade, making the process much faster
 than the process of evaluating a one strong classifier.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>eps</strong><span class="classifier">float</span></dt><dd><p>Accuracy parameter. Increasing it, makes the classifier detect less
-false positives but at the same time the false negative score increases.</p>
-</dd>
-<dt><strong>stages_number</strong><span class="classifier">Py_ssize_t</span></dt><dd><p>Amount of stages in a cascade. Each cascade consists of stumps i.e.
-trained features.</p>
-</dd>
-<dt><strong>stumps_number</strong><span class="classifier">Py_ssize_t</span></dt><dd><p>The overall amount of stumps in all the stages of cascade.</p>
-</dd>
-<dt><strong>features_number</strong><span class="classifier">Py_ssize_t</span></dt><dd><p>The overall amount of different features used by cascade.
-Two stumps can use the same features but has different trained
-values.</p>
-</dd>
-<dt><strong>window_width</strong><span class="classifier">Py_ssize_t</span></dt><dd><p>The width of a detection window that is used. Objects smaller than
-this window can’t be detected.</p>
-</dd>
-<dt><strong>window_height</strong><span class="classifier">Py_ssize_t</span></dt><dd><p>The height of a detection window.</p>
-</dd>
-<dt><strong>stages</strong><span class="classifier">Stage*</span></dt><dd><p>A link to the c array that stores stages information using
-Stage struct.</p>
-</dd>
-<dt><strong>features</strong><span class="classifier">MBLBP*</span></dt><dd><p>Link to the c array that stores MBLBP features using MBLBP struct.</p>
-</dd>
-<dt><strong>LUTs</strong><span class="classifier">cnp.uint32_t*</span></dt><dd><p>The ling to the array with look-up tables that are used by trained
-MBLBP features (MBLBPStumps) to evaluate a particular region.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<p class="rubric">Attributes</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 89%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>eps</strong></p></td>
+<td><p>(float) Accuracy parameter. Increasing it, makes the classifier detect less false positives but at the same time the false negative score increases.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>stages_number</strong></p></td>
+<td><p>(Py_ssize_t) Amount of stages in a cascade. Each cascade consists of stumps i.e. trained features.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>stumps_number</strong></p></td>
+<td><p>(Py_ssize_t) The overall amount of stumps in all the stages of cascade.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>features_number</strong></p></td>
+<td><p>(Py_ssize_t) The overall amount of different features used by cascade. Two stumps can use the same features but has different trained values.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>window_width</strong></p></td>
+<td><p>(Py_ssize_t) The width of a detection window that is used. Objects smaller than this window can’t be detected.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>window_height</strong></p></td>
+<td><p>(Py_ssize_t) The height of a detection window.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>stages</strong></p></td>
+<td><p>(Stage*) A link to the c array that stores stages information using Stage struct.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>features</strong></p></td>
+<td><p>(MBLBP*) Link to the c array that stores MBLBP features using MBLBP struct.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LUTs</strong></p></td>
+<td><p>(cnp.uint32_t*) The ling to the array with look-up tables that are used by trained MBLBP features (MBLBPStumps) to evaluate a particular region.</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="skimage.feature.Cascade.__init__">
 <code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skimage.feature.Cascade.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize cascade classifier.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>xml_file</strong><span class="classifier">file’s path or file’s object</span></dt><dd><p>A file in a OpenCv format from which all the cascade classifier’s
+<dd class="field-odd"><p><strong>xml_file</strong> : file’s path or file’s object</p>
+<blockquote>
+<div><p>A file in a OpenCv format from which all the cascade classifier’s
 parameters are loaded.</p>
-</dd>
-<dt><strong>eps</strong><span class="classifier">float</span></dt><dd><p>Accuracy parameter. Increasing it, makes the classifier detect less
+</div></blockquote>
+<p><strong>eps</strong> : float</p>
+<blockquote>
+<div><p>Accuracy parameter. Increasing it, makes the classifier detect less
 false positives but at the same time the false negative score increases.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -3111,40 +3436,52 @@ false positives but at the same time the false negative score increases.</p>
 searching window is multiplied on each step, minimum window size
 and maximum window size that specify the interval for the search
 windows that are applied to the input image to detect objects.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>img</strong><span class="classifier">2-D or 3-D ndarray</span></dt><dd><p>Ndarray that represents the input image.</p>
-</dd>
-<dt><strong>scale_factor</strong><span class="classifier">float</span></dt><dd><p>The scale by which searching window is multiplied on each step.</p>
-</dd>
-<dt><strong>step_ratio</strong><span class="classifier">float</span></dt><dd><p>The ratio by which the search step in multiplied on each scale
+<dd class="field-odd"><p><strong>img</strong> : 2-D or 3-D ndarray</p>
+<blockquote>
+<div><p>Ndarray that represents the input image.</p>
+</div></blockquote>
+<p><strong>scale_factor</strong> : float</p>
+<blockquote>
+<div><p>The scale by which searching window is multiplied on each step.</p>
+</div></blockquote>
+<p><strong>step_ratio</strong> : float</p>
+<blockquote>
+<div><p>The ratio by which the search step in multiplied on each scale
 of the image. 1 represents the exaustive search and usually is
 slow. By setting this parameter to higher values the results will
 be worse but the computation will be much faster. Usually, values
 in the interval [1, 1.5] give good results.</p>
-</dd>
-<dt><strong>min_size</strong><span class="classifier">typle (int, int)</span></dt><dd><p>Minimum size of the search window.</p>
-</dd>
-<dt><strong>max_size</strong><span class="classifier">typle (int, int)</span></dt><dd><p>Maximum size of the search window.</p>
-</dd>
-<dt><strong>min_neighbour_number</strong><span class="classifier">int</span></dt><dd><p>Minimum amount of intersecting detections in order for detection
+</div></blockquote>
+<p><strong>min_size</strong> : typle (int, int)</p>
+<blockquote>
+<div><p>Minimum size of the search window.</p>
+</div></blockquote>
+<p><strong>max_size</strong> : typle (int, int)</p>
+<blockquote>
+<div><p>Maximum size of the search window.</p>
+</div></blockquote>
+<p><strong>min_neighbour_number</strong> : int</p>
+<blockquote>
+<div><p>Minimum amount of intersecting detections in order for detection
 to be approved by the function.</p>
-</dd>
-<dt><strong>intersection_score_threshold</strong><span class="classifier">float</span></dt><dd><p>The minimum value of value of ratio
+</div></blockquote>
+<p><strong>intersection_score_threshold</strong> : float</p>
+<blockquote>
+<div><p>The minimum value of value of ratio
 (intersection area) / (small rectangle ratio) in order to merge
 two detections into one.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>output</strong><span class="classifier">list of dicts</span></dt><dd><p>Dict have form {‘r’: int, ‘c’: int, ‘width’: int, ‘height’: int},
+<dd class="field-even"><p><strong>output</strong> : list of dicts</p>
+<blockquote>
+<div><p>Dict have form {‘r’: int, ‘c’: int, ‘width’: int, ‘height’: int},
 where ‘r’ represents row position of top left corner of detected
 window, ‘c’ - col position, ‘width’ - width of detected window,
 ‘height’ - height of detected window.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -3198,29 +3535,37 @@ distributed number N of pixel-pairs resulting in a binary descriptor of
 length N. For binary descriptors the Hamming distance can be used for
 feature matching, which leads to lower computational cost in comparison to
 the L2 norm.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>descriptor_size</strong><span class="classifier">int, optional</span></dt><dd><p>Size of BRIEF descriptor for each keypoint. Sizes 128, 256 and 512
+<dd class="field-odd"><p><strong>descriptor_size</strong> : int, optional</p>
+<blockquote>
+<div><p>Size of BRIEF descriptor for each keypoint. Sizes 128, 256 and 512
 recommended by the authors. Default is 256.</p>
-</dd>
-<dt><strong>patch_size</strong><span class="classifier">int, optional</span></dt><dd><p>Length of the two dimensional square patch sampling region around
+</div></blockquote>
+<p><strong>patch_size</strong> : int, optional</p>
+<blockquote>
+<div><p>Length of the two dimensional square patch sampling region around
 the keypoints. Default is 49.</p>
-</dd>
-<dt><strong>mode</strong><span class="classifier">{‘normal’, ‘uniform’}, optional</span></dt><dd><p>Probability distribution for sampling location of decision pixel-pairs
+</div></blockquote>
+<p><strong>mode</strong> : {‘normal’, ‘uniform’}, optional</p>
+<blockquote>
+<div><p>Probability distribution for sampling location of decision pixel-pairs
 around keypoints.</p>
-</dd>
-<dt><strong>sample_seed</strong><span class="classifier">int, optional</span></dt><dd><p>Seed for the random sampling of the decision pixel-pairs. From a square
+</div></blockquote>
+<p><strong>sample_seed</strong> : int, optional</p>
+<blockquote>
+<div><p>Seed for the random sampling of the decision pixel-pairs. From a square
 window with length <cite>patch_size</cite>, pixel pairs are sampled using the
 <cite>mode</cite> parameter to build the descriptors using intensity comparison.
 The value of <cite>sample_seed</cite> must be the same for the images to be
 matched while building the descriptors.</p>
-</dd>
-<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Standard deviation of the Gaussian low-pass filter applied to the image
+</div></blockquote>
+<p><strong>sigma</strong> : float, optional</p>
+<blockquote>
+<div><p>Standard deviation of the Gaussian low-pass filter applied to the image
 to alleviate noise sensitivity, which is strongly recommended to obtain
 discriminative and good descriptors.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -3275,39 +3620,41 @@ discriminative and good descriptors.</p>
 <span class="go">       [6, 6]])</span>
 </pre></div>
 </div>
-<dl class="field-list">
-<dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl>
-<dt><strong>descriptors</strong><span class="classifier">(Q, <cite>descriptor_size</cite>) array of dtype bool</span></dt><dd><p>2D ndarray of binary descriptors of size <cite>descriptor_size</cite> for Q
-keypoints after filtering out border keypoints with value at an
-index <code class="docutils literal notranslate"><span class="pre">(i,</span> <span class="pre">j)</span></code> either being <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> representing
-the outcome of the intensity comparison for i-th keypoint on j-th
-decision pixel-pair. It is <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">==</span> <span class="pre">np.sum(mask)</span></code>.</p>
-</dd>
-<dt><strong>mask</strong><span class="classifier">(N, ) array of dtype bool</span></dt><dd><p>Mask indicating whether a keypoint has been filtered out
-(<code class="docutils literal notranslate"><span class="pre">False</span></code>) or is described in the <cite>descriptors</cite> array (<code class="docutils literal notranslate"><span class="pre">True</span></code>).</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<p class="rubric">Attributes</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 96%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>descriptors</strong></p></td>
+<td><p>((Q, <cite>descriptor_size</cite>) array of dtype bool) 2D ndarray of binary descriptors of size <cite>descriptor_size</cite> for Q keypoints after filtering out border keypoints with value at an index <code class="docutils literal notranslate"><span class="pre">(i,</span> <span class="pre">j)</span></code> either being <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> representing the outcome of the intensity comparison for i-th keypoint on j-th decision pixel-pair. It is <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">==</span> <span class="pre">np.sum(mask)</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>mask</strong></p></td>
+<td><p>((N, ) array of dtype bool) Mask indicating whether a keypoint has been filtered out (<code class="docutils literal notranslate"><span class="pre">False</span></code>) or is described in the <cite>descriptors</cite> array (<code class="docutils literal notranslate"><span class="pre">True</span></code>).</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="skimage.feature.BRIEF.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>self</em>, <em>descriptor_size=256</em>, <em>patch_size=49</em>, <em>mode='normal'</em>, <em>sigma=1</em>, <em>sample_seed=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/brief.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.BRIEF.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>descriptor_size=256</em>, <em>patch_size=49</em>, <em>mode='normal'</em>, <em>sigma=1</em>, <em>sample_seed=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/brief.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.BRIEF.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.feature.BRIEF.extract">
-<code class="descname">extract</code><span class="sig-paren">(</span><em>self</em>, <em>image</em>, <em>keypoints</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/brief.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.BRIEF.extract" title="Permalink to this definition">¶</a></dt>
+<code class="descname">extract</code><span class="sig-paren">(</span><em>image</em>, <em>keypoints</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/brief.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.BRIEF.extract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract BRIEF binary descriptors for given keypoints in image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">2D array</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>keypoints</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Keypoint coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>image</strong> : 2D array</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>keypoints</strong> : (N, 2) array</p>
+<blockquote>
+<div><p>Keypoint coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -3349,14 +3696,14 @@ curvatures greater than this value.</p>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="recc8560c357f-1"><span class="brackets">Recc8560c357f-1</span></dt>
+<dt class="label" id="r206"><span class="brackets"><a class="fn-backref" href="#id60">R206</a></span></dt>
 <dd><p>Motilal Agrawal, Kurt Konolige and Morten Rufus Blas
 “CENSURE: Center Surround Extremas for Realtime Feature
 Detection and Matching”,
 <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-3-540-88693-8_8">https://link.springer.com/chapter/10.1007/978-3-540-88693-8_8</a>
 <a class="reference external" href="https://doi.org/10.1007/978-3-540-88693-8_8">DOI:10.1007/978-3-540-88693-8_8</a></p>
 </dd>
-<dt class="label" id="recc8560c357f-2"><span class="brackets">Recc8560c357f-2</span></dt>
+<dt class="label" id="r207"><span class="brackets"><a class="fn-backref" href="#id61">R207</a></span></dt>
 <dd><p>Adam Schmidt, Marek Kraft, Michal Fularz and Zuzanna Domagala
 “Comparative Assessment of Point Feature Detectors and
 Descriptors in the Context of Robot Navigation”
@@ -3399,32 +3746,37 @@ Descriptors in the Context of Robot Navigation”
 <span class="go">array([2, 6, 6, 2, 4, 3, 2, 3, 2, 6, 3, 2, 2, 3, 2, 2, 2, 3, 2, 2, 4, 2, 2])</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>keypoints</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Keypoint coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p>
-</dd>
-<dt><strong>scales</strong><span class="classifier">(N, ) array</span></dt><dd><p>Corresponding scales.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<p class="rubric">Attributes</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 81%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>keypoints</strong></p></td>
+<td><p>((N, 2) array) Keypoint coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>scales</strong></p></td>
+<td><p>((N, ) array) Corresponding scales.</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="skimage.feature.CENSURE.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>self</em>, <em>min_scale=1</em>, <em>max_scale=7</em>, <em>mode='DoB'</em>, <em>non_max_threshold=0.15</em>, <em>line_threshold=10</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/censure.py#L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.CENSURE.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>min_scale=1</em>, <em>max_scale=7</em>, <em>mode='DoB'</em>, <em>non_max_threshold=0.15</em>, <em>line_threshold=10</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/censure.py#L197"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.CENSURE.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.feature.CENSURE.detect">
-<code class="descname">detect</code><span class="sig-paren">(</span><em>self</em>, <em>image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/censure.py#L217"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.CENSURE.detect" title="Permalink to this definition">¶</a></dt>
+<code class="descname">detect</code><span class="sig-paren">(</span><em>image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/censure.py#L217"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.CENSURE.detect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Detect CENSURE keypoints along with the corresponding scale.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">2D ndarray</span></dt><dd><p>Input image.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>image</strong> : 2D ndarray</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -3440,43 +3792,53 @@ Descriptors in the Context of Robot Navigation”
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">skimage.feature.util.FeatureDetector</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">skimage.feature.util.DescriptorExtractor</span></code></p>
 <p>Oriented FAST and rotated BRIEF feature detector and binary descriptor
 extractor.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>n_keypoints</strong><span class="classifier">int, optional</span></dt><dd><p>Number of keypoints to be returned. The function will return the best
+<dd class="field-odd"><p><strong>n_keypoints</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of keypoints to be returned. The function will return the best
 <cite>n_keypoints</cite> according to the Harris corner response if more than
 <cite>n_keypoints</cite> are detected. If not, then all the detected keypoints
 are returned.</p>
-</dd>
-<dt><strong>fast_n</strong><span class="classifier">int, optional</span></dt><dd><p>The <cite>n</cite> parameter in <cite>skimage.feature.corner_fast</cite>. Minimum number of
+</div></blockquote>
+<p><strong>fast_n</strong> : int, optional</p>
+<blockquote>
+<div><p>The <cite>n</cite> parameter in <cite>skimage.feature.corner_fast</cite>. Minimum number of
 consecutive pixels out of 16 pixels on the circle that should all be
 either brighter or darker w.r.t test-pixel. A point c on the circle is
 darker w.r.t test pixel p if <code class="docutils literal notranslate"><span class="pre">Ic</span> <span class="pre">&lt;</span> <span class="pre">Ip</span> <span class="pre">-</span> <span class="pre">threshold</span></code> and brighter if
 <code class="docutils literal notranslate"><span class="pre">Ic</span> <span class="pre">&gt;</span> <span class="pre">Ip</span> <span class="pre">+</span> <span class="pre">threshold</span></code>. Also stands for the n in <code class="docutils literal notranslate"><span class="pre">FAST-n</span></code> corner
 detector.</p>
-</dd>
-<dt><strong>fast_threshold</strong><span class="classifier">float, optional</span></dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">threshold</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">feature.corner_fast</span></code>. Threshold used
+</div></blockquote>
+<p><strong>fast_threshold</strong> : float, optional</p>
+<blockquote>
+<div><p>The <code class="docutils literal notranslate"><span class="pre">threshold</span></code> parameter in <code class="docutils literal notranslate"><span class="pre">feature.corner_fast</span></code>. Threshold used
 to decide whether the pixels on the circle are brighter, darker or
 similar w.r.t. the test pixel. Decrease the threshold when more
 corners are desired and vice-versa.</p>
-</dd>
-<dt><strong>harris_k</strong><span class="classifier">float, optional</span></dt><dd><p>The <cite>k</cite> parameter in <cite>skimage.feature.corner_harris</cite>. Sensitivity
+</div></blockquote>
+<p><strong>harris_k</strong> : float, optional</p>
+<blockquote>
+<div><p>The <cite>k</cite> parameter in <cite>skimage.feature.corner_harris</cite>. Sensitivity
 factor to separate corners from edges, typically in range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">0.2]</span></code>.
 Small values of <cite>k</cite> result in detection of sharp corners.</p>
-</dd>
-<dt><strong>downscale</strong><span class="classifier">float, optional</span></dt><dd><p>Downscale factor for the image pyramid. Default value 1.2 is chosen so
+</div></blockquote>
+<p><strong>downscale</strong> : float, optional</p>
+<blockquote>
+<div><p>Downscale factor for the image pyramid. Default value 1.2 is chosen so
 that there are more dense scales which enable robust scale invariance
 for a subsequent feature description.</p>
-</dd>
-<dt><strong>n_scales</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of scales from the bottom of the image pyramid to
+</div></blockquote>
+<p><strong>n_scales</strong> : int, optional</p>
+<blockquote>
+<div><p>Maximum number of scales from the bottom of the image pyramid to
 extract the features from.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rb3ecaf5c48ec-1"><span class="brackets">Rb3ecaf5c48ec-1</span></dt>
+<dt class="label" id="r208"><span class="brackets"><a class="fn-backref" href="#id62">R208</a></span></dt>
 <dd><p>Ethan Rublee, Vincent Rabaud, Kurt Konolige and Gary Bradski
 “ORB: An efficient alternative to SIFT and SURF”
 <a class="reference external" href="http://www.vision.cs.chubu.ac.jp/CV-R/pdf/Rublee_iccv2011.pdf">http://www.vision.cs.chubu.ac.jp/CV-R/pdf/Rublee_iccv2011.pdf</a></p>
@@ -3516,82 +3878,92 @@ extract the features from.</p>
 <span class="go">       [ 58.,  57.]])</span>
 </pre></div>
 </div>
-<dl class="field-list">
-<dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl>
-<dt><strong>keypoints</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Keypoint coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p>
-</dd>
-<dt><strong>scales</strong><span class="classifier">(N, ) array</span></dt><dd><p>Corresponding scales.</p>
-</dd>
-<dt><strong>orientations</strong><span class="classifier">(N, ) array</span></dt><dd><p>Corresponding orientations in radians.</p>
-</dd>
-<dt><strong>responses</strong><span class="classifier">(N, ) array</span></dt><dd><p>Corresponding Harris corner responses.</p>
-</dd>
-<dt><strong>descriptors</strong><span class="classifier">(Q, <cite>descriptor_size</cite>) array of dtype bool</span></dt><dd><p>2D array of binary descriptors of size <cite>descriptor_size</cite> for Q
-keypoints after filtering out border keypoints with value at an
-index <code class="docutils literal notranslate"><span class="pre">(i,</span> <span class="pre">j)</span></code> either being <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> representing
-the outcome of the intensity comparison for i-th keypoint on j-th
-decision pixel-pair. It is <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">==</span> <span class="pre">np.sum(mask)</span></code>.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<p class="rubric">Attributes</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 96%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>keypoints</strong></p></td>
+<td><p>((N, 2) array) Keypoint coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>scales</strong></p></td>
+<td><p>((N, ) array) Corresponding scales.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>orientations</strong></p></td>
+<td><p>((N, ) array) Corresponding orientations in radians.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>responses</strong></p></td>
+<td><p>((N, ) array) Corresponding Harris corner responses.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>descriptors</strong></p></td>
+<td><p>((Q, <cite>descriptor_size</cite>) array of dtype bool) 2D array of binary descriptors of size <cite>descriptor_size</cite> for Q keypoints after filtering out border keypoints with value at an index <code class="docutils literal notranslate"><span class="pre">(i,</span> <span class="pre">j)</span></code> either being <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> representing the outcome of the intensity comparison for i-th keypoint on j-th decision pixel-pair. It is <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">==</span> <span class="pre">np.sum(mask)</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="skimage.feature.ORB.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>self</em>, <em>downscale=1.2</em>, <em>n_scales=8</em>, <em>n_keypoints=500</em>, <em>fast_n=9</em>, <em>fast_threshold=0.08</em>, <em>harris_k=0.04</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>downscale=1.2</em>, <em>n_scales=8</em>, <em>n_keypoints=500</em>, <em>fast_n=9</em>, <em>fast_threshold=0.08</em>, <em>harris_k=0.04</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L117"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.feature.ORB.detect">
-<code class="descname">detect</code><span class="sig-paren">(</span><em>self</em>, <em>image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L162"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.detect" title="Permalink to this definition">¶</a></dt>
+<code class="descname">detect</code><span class="sig-paren">(</span><em>image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L162"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.detect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Detect oriented FAST keypoints along with the corresponding scale.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">2D array</span></dt><dd><p>Input image.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>image</strong> : 2D array</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.feature.ORB.detect_and_extract">
-<code class="descname">detect_and_extract</code><span class="sig-paren">(</span><em>self</em>, <em>image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.detect_and_extract" title="Permalink to this definition">¶</a></dt>
+<code class="descname">detect_and_extract</code><span class="sig-paren">(</span><em>image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.detect_and_extract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Detect oriented FAST keypoints and extract rBRIEF descriptors.</p>
 <p>Note that this is faster than first calling <cite>detect</cite> and then
 <cite>extract</cite>.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">2D array</span></dt><dd><p>Input image.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>image</strong> : 2D array</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.feature.ORB.extract">
-<code class="descname">extract</code><span class="sig-paren">(</span><em>self</em>, <em>image</em>, <em>keypoints</em>, <em>scales</em>, <em>orientations</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.extract" title="Permalink to this definition">¶</a></dt>
+<code class="descname">extract</code><span class="sig-paren">(</span><em>image</em>, <em>keypoints</em>, <em>scales</em>, <em>orientations</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.extract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract rBRIEF binary descriptors for given keypoints in image.</p>
 <p>Note that the keypoints must be extracted using the same <cite>downscale</cite>
 and <cite>n_scales</cite> parameters. Additionally, if you want to extract both
 keypoints and descriptors you should use the faster
 <cite>detect_and_extract</cite>.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">2D array</span></dt><dd><p>Input image.</p>
-</dd>
-<dt><strong>keypoints</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Keypoint coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p>
-</dd>
-<dt><strong>scales</strong><span class="classifier">(N, ) array</span></dt><dd><p>Corresponding scales.</p>
-</dd>
-<dt><strong>orientations</strong><span class="classifier">(N, ) array</span></dt><dd><p>Corresponding orientations in radians.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>image</strong> : 2D array</p>
+<blockquote>
+<div><p>Input image.</p>
+</div></blockquote>
+<p><strong>keypoints</strong> : (N, 2) array</p>
+<blockquote>
+<div><p>Keypoint coordinates as <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code>.</p>
+</div></blockquote>
+<p><strong>scales</strong> : (N, ) array</p>
+<blockquote>
+<div><p>Corresponding scales.</p>
+</div></blockquote>
+<p><strong>orientations</strong> : (N, ) array</p>
+<blockquote>
+<div><p>Corresponding orientations in radians.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>

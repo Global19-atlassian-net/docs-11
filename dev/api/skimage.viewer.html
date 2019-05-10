@@ -172,22 +172,24 @@ middle (i.e. 50%) of the collection.</p>
 </dd>
 </dl>
 </div></blockquote>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image_collection</strong><span class="classifier">list of images</span></dt><dd><p>List of images to be displayed.</p>
-</dd>
-<dt><strong>update_on</strong><span class="classifier">{‘move’ | ‘release’}</span></dt><dd><p>Control whether image is updated on slide or release of the image
+<dd class="field-odd"><p><strong>image_collection</strong> : list of images</p>
+<blockquote>
+<div><p>List of images to be displayed.</p>
+</div></blockquote>
+<p><strong>update_on</strong> : {‘move’ | ‘release’}</p>
+<blockquote>
+<div><p>Control whether image is updated on slide or release of the image
 slider. Using ‘on_release’ will give smoother behavior when displaying
 large images or when writing a plugin/subclass that requires heavy
 computation.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <dl class="method">
 <dt id="skimage.viewer.CollectionViewer.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>self</em>, <em>image_collection</em>, <em>update_on='move'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L349"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.CollectionViewer.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>image_collection</em>, <em>update_on='move'</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L349"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.CollectionViewer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
@@ -198,7 +200,7 @@ computation.</p>
 
 <dl class="method">
 <dt id="skimage.viewer.CollectionViewer.update_index">
-<code class="descname">update_index</code><span class="sig-paren">(</span><em>self</em>, <em>name</em>, <em>index</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.CollectionViewer.update_index" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update_index</code><span class="sig-paren">(</span><em>name</em>, <em>index</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.CollectionViewer.update_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Select image on display using index into image collection.</p>
 </dd></dl>
 
@@ -217,12 +219,12 @@ for showing images. <cite>ImageViewer</cite> doesn’t subclass the Matplotlib a
 figure) because of the high probability of name collisions.</p>
 <p>Subclasses and plugins will likely extend the <cite>update_image</cite> method to add
 custom overlays or filter the displayed image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">array</span></dt><dd><p>Image being viewed.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>image</strong> : array</p>
+<blockquote>
+<div><p>Image being viewed.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -232,29 +234,36 @@ custom overlays or filter the displayed image.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">viewer</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>               <span class="c1"># doctest: +SKIP</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
-<dt class="field-odd">Attributes</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>canvas, fig, ax</strong><span class="classifier">Matplotlib canvas, figure, and axes</span></dt><dd><p>Matplotlib canvas, figure, and axes used to display image.</p>
-</dd>
-<dt><strong>image</strong><span class="classifier">array</span></dt><dd><p>Image being viewed. Setting this value will update the displayed frame.</p>
-</dd>
-<dt><strong>original_image</strong><span class="classifier">array</span></dt><dd><p>Plugins typically operate on (but don’t change) the <em>original</em> image.</p>
-</dd>
-<dt><strong>plugins</strong><span class="classifier">list</span></dt><dd><p>List of attached plugins.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<p class="rubric">Attributes</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 83%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>canvas, fig, ax</strong></p></td>
+<td><p>(Matplotlib canvas, figure, and axes) Matplotlib canvas, figure, and axes used to display image.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>image</strong></p></td>
+<td><p>(array) Image being viewed. Setting this value will update the displayed frame.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>original_image</strong></p></td>
+<td><p>(array) Plugins typically operate on (but don’t change) the <em>original</em> image.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>plugins</strong></p></td>
+<td><p>(list) List of attached plugins.</p></td>
+</tr>
+</tbody>
+</table>
 <dl class="method">
 <dt id="skimage.viewer.ImageViewer.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>self</em>, <em>image</em>, <em>useblit=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>image</em>, <em>useblit=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L91"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.viewer.ImageViewer.add_tool">
-<code class="descname">add_tool</code><span class="sig-paren">(</span><em>self</em>, <em>tool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L300"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.add_tool" title="Permalink to this definition">¶</a></dt>
+<code class="descname">add_tool</code><span class="sig-paren">(</span><em>tool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L300"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.add_tool" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -264,13 +273,13 @@ custom overlays or filter the displayed image.</p>
 
 <dl class="method">
 <dt id="skimage.viewer.ImageViewer.connect_event">
-<code class="descname">connect_event</code><span class="sig-paren">(</span><em>self</em>, <em>event</em>, <em>callback</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L285"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.connect_event" title="Permalink to this definition">¶</a></dt>
+<code class="descname">connect_event</code><span class="sig-paren">(</span><em>event</em>, <em>callback</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L285"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.connect_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>Connect callback function to matplotlib event and return id.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.viewer.ImageViewer.disconnect_event">
-<code class="descname">disconnect_event</code><span class="sig-paren">(</span><em>self</em>, <em>callback_id</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L290"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.disconnect_event" title="Permalink to this definition">¶</a></dt>
+<code class="descname">disconnect_event</code><span class="sig-paren">(</span><em>callback_id</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L290"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.disconnect_event" title="Permalink to this definition">¶</a></dt>
 <dd><p>Disconnect callback by its id (returned by <cite>connect_event</cite>).</p>
 </dd></dl>
 
@@ -286,7 +295,7 @@ custom overlays or filter the displayed image.</p>
 
 <dl class="method">
 <dt id="skimage.viewer.ImageViewer.open_file">
-<code class="descname">open_file</code><span class="sig-paren">(</span><em>self</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L179"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.open_file" title="Permalink to this definition">¶</a></dt>
+<code class="descname">open_file</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L179"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.open_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open image file and display in viewer.</p>
 </dd></dl>
 
@@ -297,22 +306,22 @@ custom overlays or filter the displayed image.</p>
 
 <dl class="method">
 <dt id="skimage.viewer.ImageViewer.redraw">
-<code class="descname">redraw</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L251"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.redraw" title="Permalink to this definition">¶</a></dt>
+<code class="descname">redraw</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L251"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.redraw" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="skimage.viewer.ImageViewer.remove_tool">
-<code class="descname">remove_tool</code><span class="sig-paren">(</span><em>self</em>, <em>tool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L306"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.remove_tool" title="Permalink to this definition">¶</a></dt>
+<code class="descname">remove_tool</code><span class="sig-paren">(</span><em>tool</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L306"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.remove_tool" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="skimage.viewer.ImageViewer.reset_image">
-<code class="descname">reset_image</code><span class="sig-paren">(</span><em>self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L282"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.reset_image" title="Permalink to this definition">¶</a></dt>
+<code class="descname">reset_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L282"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.reset_image" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="skimage.viewer.ImageViewer.save_to_file">
-<code class="descname">save_to_file</code><span class="sig-paren">(</span><em>self</em>, <em>filename=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.save_to_file" title="Permalink to this definition">¶</a></dt>
+<code class="descname">save_to_file</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.save_to_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save current image to file.</p>
 <p>The current behavior is not ideal: It saves the image displayed on
 screen, so all images will be converted to RGB, and the image size is
@@ -322,14 +331,14 @@ saved image).</p>
 
 <dl class="method">
 <dt id="skimage.viewer.ImageViewer.show">
-<code class="descname">show</code><span class="sig-paren">(</span><em>self</em>, <em>main_window=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L241"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.show" title="Permalink to this definition">¶</a></dt>
+<code class="descname">show</code><span class="sig-paren">(</span><em>main_window=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L241"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.show" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show ImageViewer and attached plugins.</p>
 <p>This behaves much like <cite>matplotlib.pyplot.show</cite> and <cite>QWidget.show</cite>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.viewer.ImageViewer.update_image">
-<code class="descname">update_image</code><span class="sig-paren">(</span><em>self</em>, <em>image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.update_image" title="Permalink to this definition">¶</a></dt>
+<code class="descname">update_image</code><span class="sig-paren">(</span><em>image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/viewer/viewers/core.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.viewer.ImageViewer.update_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Update displayed image.</p>
 <p>This method can be overridden or extended in subclasses and plugins to
 react to image changes.</p>

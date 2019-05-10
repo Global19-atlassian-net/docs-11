@@ -315,7 +315,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.morphology.local_minima" title="skimage.morphology.local_minima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.local_minima</span></code></a>(image[, …])</p></td>
 <td><p>Find local minima of n-dimensional array.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.morphology.flood" title="skimage.morphology.flood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.flood</span></code></a>(image, seed_point, \*)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.morphology.flood" title="skimage.morphology.flood"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.flood</span></code></a>(image, seed_point, *)</p></td>
 <td><p>Mask corresponding to a flood fill.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.morphology.flood_fill" title="skimage.morphology.flood_fill"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.flood_fill</span></code></a>(image, …[, …])</p></td>
@@ -352,25 +352,29 @@ faster for binary images.</p>
 <p>Morphological erosion sets a pixel at <code class="docutils literal notranslate"><span class="pre">(i,j)</span></code> to the minimum over all
 pixels in the neighborhood centered at <code class="docutils literal notranslate"><span class="pre">(i,j)</span></code>. Erosion shrinks bright
 regions and enlarges dark regions.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Binary input image.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The neighborhood expressed as a 2-D array of 1’s and 0’s.
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Binary input image.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as a 2-D array of 1’s and 0’s.
 If None, use cross-shaped structuring element (connectivity=1).</p>
-</dd>
-<dt><strong>out</strong><span class="classifier">ndarray of bool, optional</span></dt><dd><p>The array to store the result of the morphology. If None is
+</div></blockquote>
+<p><strong>out</strong> : ndarray of bool, optional</p>
+<blockquote>
+<div><p>The array to store the result of the morphology. If None is
 passed, a new array will be allocated.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>eroded</strong><span class="classifier">ndarray of bool or uint</span></dt><dd><p>The result of the morphological erosion taking values in
+<dd class="field-even"><p><strong>eroded</strong> : ndarray of bool or uint</p>
+<blockquote>
+<div><p>The result of the morphological erosion taking values in
 <code class="docutils literal notranslate"><span class="pre">[False,</span> <span class="pre">True]</span></code>.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -387,25 +391,29 @@ faster for binary images.</p>
 <p>Morphological dilation sets a pixel at <code class="docutils literal notranslate"><span class="pre">(i,j)</span></code> to the maximum over all
 pixels in the neighborhood centered at <code class="docutils literal notranslate"><span class="pre">(i,j)</span></code>. Dilation enlarges bright
 regions and shrinks dark regions.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Binary input image.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The neighborhood expressed as a 2-D array of 1’s and 0’s.
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Binary input image.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as a 2-D array of 1’s and 0’s.
 If None, use cross-shaped structuring element (connectivity=1).</p>
-</dd>
-<dt><strong>out</strong><span class="classifier">ndarray of bool, optional</span></dt><dd><p>The array to store the result of the morphology. If None, is
+</div></blockquote>
+<p><strong>out</strong> : ndarray of bool, optional</p>
+<blockquote>
+<div><p>The array to store the result of the morphology. If None, is
 passed, a new array will be allocated.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>dilated</strong><span class="classifier">ndarray of bool or uint</span></dt><dd><p>The result of the morphological dilation with values in
+<dd class="field-even"><p><strong>dilated</strong> : ndarray of bool or uint</p>
+<blockquote>
+<div><p>The result of the morphological dilation with values in
 <code class="docutils literal notranslate"><span class="pre">[False,</span> <span class="pre">True]</span></code>.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -423,24 +431,28 @@ faster for binary images.</p>
 a dilation. Opening can remove small bright spots (i.e. “salt”) and connect
 small dark cracks. This tends to “open” up (dark) gaps between (bright)
 features.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Binary input image.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The neighborhood expressed as a 2-D array of 1’s and 0’s.
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Binary input image.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as a 2-D array of 1’s and 0’s.
 If None, use cross-shaped structuring element (connectivity=1).</p>
-</dd>
-<dt><strong>out</strong><span class="classifier">ndarray of bool, optional</span></dt><dd><p>The array to store the result of the morphology. If None
+</div></blockquote>
+<p><strong>out</strong> : ndarray of bool, optional</p>
+<blockquote>
+<div><p>The array to store the result of the morphology. If None
 is passed, a new array will be allocated.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>opening</strong><span class="classifier">ndarray of bool</span></dt><dd><p>The result of the morphological opening.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>opening</strong> : ndarray of bool</p>
+<blockquote>
+<div><p>The result of the morphological opening.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -458,24 +470,28 @@ faster for binary images.</p>
 an erosion. Closing can remove small dark spots (i.e. “pepper”) and connect
 small bright cracks. This tends to “close” up (dark) gaps between (bright)
 features.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Binary input image.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The neighborhood expressed as a 2-D array of 1’s and 0’s.
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Binary input image.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as a 2-D array of 1’s and 0’s.
 If None, use cross-shaped structuring element (connectivity=1).</p>
-</dd>
-<dt><strong>out</strong><span class="classifier">ndarray of bool, optional</span></dt><dd><p>The array to store the result of the morphology. If None,
+</div></blockquote>
+<p><strong>out</strong> : ndarray of bool, optional</p>
+<blockquote>
+<div><p>The array to store the result of the morphology. If None,
 is passed, a new array will be allocated.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>closing</strong><span class="classifier">ndarray of bool</span></dt><dd><p>The result of the morphological closing.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>closing</strong> : ndarray of bool</p>
+<blockquote>
+<div><p>The result of the morphological closing.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -492,25 +508,31 @@ in the neighborhood centered at (i,j). Erosion shrinks bright regions and
 enlarges dark regions.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Image array.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The neighborhood expressed as an array of 1’s and 0’s.
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Image array.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as an array of 1’s and 0’s.
 If None, use cross-shaped structuring element (connectivity=1).</p>
-</dd>
-<dt><strong>out</strong><span class="classifier">ndarrays, optional</span></dt><dd><p>The array to store the result of the morphology. If None is
+</div></blockquote>
+<p><strong>out</strong> : ndarrays, optional</p>
+<blockquote>
+<div><p>The array to store the result of the morphology. If None is
 passed, a new array will be allocated.</p>
-</dd>
-<dt><strong>shift_x, shift_y</strong><span class="classifier">bool, optional</span></dt><dd><p>shift structuring element about center point. This only affects
+</div></blockquote>
+<p><strong>shift_x, shift_y</strong> : bool, optional</p>
+<blockquote>
+<div><p>shift structuring element about center point. This only affects
 eccentric structuring elements (i.e. selem with even numbered sides).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>eroded</strong><span class="classifier">array, same shape as <cite>image</cite></span></dt><dd><p>The result of the morphological erosion.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>eroded</strong> : array, same shape as <cite>image</cite></p>
+<blockquote>
+<div><p>The result of the morphological erosion.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -555,25 +577,31 @@ in the neighborhood centered at (i,j). Dilation enlarges bright regions
 and shrinks dark regions.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Image array.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The neighborhood expressed as a 2-D array of 1’s and 0’s.
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Image array.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as a 2-D array of 1’s and 0’s.
 If None, use cross-shaped structuring element (connectivity=1).</p>
-</dd>
-<dt><strong>out</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The array to store the result of the morphology. If None, is
+</div></blockquote>
+<p><strong>out</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The array to store the result of the morphology. If None, is
 passed, a new array will be allocated.</p>
-</dd>
-<dt><strong>shift_x, shift_y</strong><span class="classifier">bool, optional</span></dt><dd><p>shift structuring element about center point. This only affects
+</div></blockquote>
+<p><strong>shift_x, shift_y</strong> : bool, optional</p>
+<blockquote>
+<div><p>shift structuring element about center point. This only affects
 eccentric structuring elements (i.e. selem with even numbered sides).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>dilated</strong><span class="classifier">uint8 array, same shape and type as <cite>image</cite></span></dt><dd><p>The result of the morphological dilation.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>dilated</strong> : uint8 array, same shape and type as <cite>image</cite></p>
+<blockquote>
+<div><p>The result of the morphological dilation.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -623,22 +651,26 @@ small dark cracks. This tends to “open” up (dark) gaps between (bright)
 features.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Image array.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The neighborhood expressed as an array of 1’s and 0’s.
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Image array.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as an array of 1’s and 0’s.
 If None, use cross-shaped structuring element (connectivity=1).</p>
-</dd>
-<dt><strong>out</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The array to store the result of the morphology. If None
+</div></blockquote>
+<p><strong>out</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The array to store the result of the morphology. If None
 is passed, a new array will be allocated.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>opening</strong><span class="classifier">array, same shape and type as <cite>image</cite></span></dt><dd><p>The result of the morphological opening.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>opening</strong> : array, same shape and type as <cite>image</cite></p>
+<blockquote>
+<div><p>The result of the morphological opening.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -680,22 +712,26 @@ small bright cracks. This tends to “close” up (dark) gaps between (bright)
 features.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Image array.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The neighborhood expressed as an array of 1’s and 0’s.
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Image array.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as an array of 1’s and 0’s.
 If None, use cross-shaped structuring element (connectivity=1).</p>
-</dd>
-<dt><strong>out</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The array to store the result of the morphology. If None,
+</div></blockquote>
+<p><strong>out</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The array to store the result of the morphology. If None,
 is passed, a new array will be allocated.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>closing</strong><span class="classifier">array, same shape and type as <cite>image</cite></span></dt><dd><p>The result of the morphological closing.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>closing</strong> : array, same shape and type as <cite>image</cite></p>
+<blockquote>
+<div><p>The result of the morphological closing.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -744,22 +780,26 @@ morphological opening. This operation returns the bright spots of the image
 that are smaller than the structuring element.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Image array.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The neighborhood expressed as an array of 1’s and 0’s.
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Image array.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as an array of 1’s and 0’s.
 If None, use cross-shaped structuring element (connectivity=1).</p>
-</dd>
-<dt><strong>out</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The array to store the result of the morphology. If None
+</div></blockquote>
+<p><strong>out</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The array to store the result of the morphology. If None
 is passed, a new array will be allocated.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>out</strong><span class="classifier">array, same shape and type as <cite>image</cite></span></dt><dd><p>The result of the morphological white top hat.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>out</strong> : array, same shape and type as <cite>image</cite></p>
+<blockquote>
+<div><p>The result of the morphological white top hat.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -801,22 +841,26 @@ are smaller than the structuring element. Note that dark spots in the
 original image are bright spots after the black top hat.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Image array.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The neighborhood expressed as a 2-D array of 1’s and 0’s.
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>Image array.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as a 2-D array of 1’s and 0’s.
 If None, use cross-shaped structuring element (connectivity=1).</p>
-</dd>
-<dt><strong>out</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The array to store the result of the morphology. If None
+</div></blockquote>
+<p><strong>out</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The array to store the result of the morphology. If None
 is passed, a new array will be allocated.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>out</strong><span class="classifier">array, same shape and type as <cite>image</cite></span></dt><dd><p>The result of the morphological black top hat.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>out</strong> : array, same shape and type as <cite>image</cite></p>
+<blockquote>
+<div><p>The result of the morphological black top hat.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -854,25 +898,25 @@ is passed, a new array will be allocated.</p>
 <dd><p>Generates a flat, square-shaped structuring element.</p>
 <p>Every pixel along the perimeter has a chessboard distance
 no greater than radius (radius=floor(width/2)) pixels.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>width</strong><span class="classifier">int</span></dt><dd><p>The width and height of the square.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>width</strong> : int</p>
+<blockquote>
+<div><p>The width and height of the square.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>selem</strong><span class="classifier">ndarray</span></dt><dd><p>A structuring element consisting only of ones, i.e. every
+<dd class="field-even"><p><strong>selem</strong> : ndarray</p>
+<blockquote>
+<div><p>A structuring element consisting only of ones, i.e. every
 pixel belongs to the neighborhood.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>dtype</strong><span class="classifier">data-type</span></dt><dd><p>The data type of the structuring element.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>dtype</strong> : data-type</p>
+<blockquote>
+<div><p>The data type of the structuring element.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -897,27 +941,29 @@ pixel belongs to the neighborhood.</p>
 <dd><p>Generates a flat, rectangular-shaped structuring element.</p>
 <p>Every pixel in the rectangle generated for a given width and given height
 belongs to the neighborhood.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>width</strong><span class="classifier">int</span></dt><dd><p>The width of the rectangle.</p>
-</dd>
-<dt><strong>height</strong><span class="classifier">int</span></dt><dd><p>The height of the rectangle.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>width</strong> : int</p>
+<blockquote>
+<div><p>The width of the rectangle.</p>
+</div></blockquote>
+<p><strong>height</strong> : int</p>
+<blockquote>
+<div><p>The height of the rectangle.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>selem</strong><span class="classifier">ndarray</span></dt><dd><p>A structuring element consisting only of ones, i.e. every
+<dd class="field-even"><p><strong>selem</strong> : ndarray</p>
+<blockquote>
+<div><p>A structuring element consisting only of ones, i.e. every
 pixel belongs to the neighborhood.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>dtype</strong><span class="classifier">data-type</span></dt><dd><p>The data type of the structuring element.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>dtype</strong> : data-type</p>
+<blockquote>
+<div><p>The data type of the structuring element.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -932,25 +978,25 @@ pixel belongs to the neighborhood.</p>
 <p>A pixel is part of the neighborhood (i.e. labeled 1) if
 the city block/Manhattan distance between it and the center of
 the neighborhood is no greater than radius.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>radius</strong><span class="classifier">int</span></dt><dd><p>The radius of the diamond-shaped structuring element.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>radius</strong> : int</p>
+<blockquote>
+<div><p>The radius of the diamond-shaped structuring element.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>selem</strong><span class="classifier">ndarray</span></dt><dd><p>The structuring element where elements of the neighborhood
+<dd class="field-even"><p><strong>selem</strong> : ndarray</p>
+<blockquote>
+<div><p>The structuring element where elements of the neighborhood
 are 1 and 0 otherwise.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>dtype</strong><span class="classifier">data-type</span></dt><dd><p>The data type of the structuring element.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>dtype</strong> : data-type</p>
+<blockquote>
+<div><p>The data type of the structuring element.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -964,25 +1010,25 @@ are 1 and 0 otherwise.</p>
 <dd><p>Generates a flat, disk-shaped structuring element.</p>
 <p>A pixel is within the neighborhood if the euclidean distance between
 it and the origin is no greater than radius.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>radius</strong><span class="classifier">int</span></dt><dd><p>The radius of the disk-shaped structuring element.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>radius</strong> : int</p>
+<blockquote>
+<div><p>The radius of the disk-shaped structuring element.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>selem</strong><span class="classifier">ndarray</span></dt><dd><p>The structuring element where elements of the neighborhood
+<dd class="field-even"><p><strong>selem</strong> : ndarray</p>
+<blockquote>
+<div><p>The structuring element where elements of the neighborhood
 are 1 and 0 otherwise.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>dtype</strong><span class="classifier">data-type</span></dt><dd><p>The data type of the structuring element.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>dtype</strong> : data-type</p>
+<blockquote>
+<div><p>The data type of the structuring element.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -1032,25 +1078,25 @@ are 1 and 0 otherwise.</p>
 <p>This is the 3D equivalent of a square.
 Every pixel along the perimeter has a chessboard distance
 no greater than radius (radius=floor(width/2)) pixels.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>width</strong><span class="classifier">int</span></dt><dd><p>The width, height and depth of the cube.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>width</strong> : int</p>
+<blockquote>
+<div><p>The width, height and depth of the cube.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>selem</strong><span class="classifier">ndarray</span></dt><dd><p>A structuring element consisting only of ones, i.e. every
+<dd class="field-even"><p><strong>selem</strong> : ndarray</p>
+<blockquote>
+<div><p>A structuring element consisting only of ones, i.e. every
 pixel belongs to the neighborhood.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>dtype</strong><span class="classifier">data-type</span></dt><dd><p>The data type of the structuring element.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>dtype</strong> : data-type</p>
+<blockquote>
+<div><p>The data type of the structuring element.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -1066,25 +1112,25 @@ pixel belongs to the neighborhood.</p>
 A pixel is part of the neighborhood (i.e. labeled 1) if
 the city block/Manhattan distance between it and the center of
 the neighborhood is no greater than radius.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>radius</strong><span class="classifier">int</span></dt><dd><p>The radius of the octahedron-shaped structuring element.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>radius</strong> : int</p>
+<blockquote>
+<div><p>The radius of the octahedron-shaped structuring element.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>selem</strong><span class="classifier">ndarray</span></dt><dd><p>The structuring element where elements of the neighborhood
+<dd class="field-even"><p><strong>selem</strong> : ndarray</p>
+<blockquote>
+<div><p>The structuring element where elements of the neighborhood
 are 1 and 0 otherwise.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>dtype</strong><span class="classifier">data-type</span></dt><dd><p>The data type of the structuring element.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>dtype</strong> : data-type</p>
+<blockquote>
+<div><p>The data type of the structuring element.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -1099,25 +1145,25 @@ are 1 and 0 otherwise.</p>
 <p>This is the 3D equivalent of a disk.
 A pixel is within the neighborhood if the euclidean distance between
 it and the origin is no greater than radius.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>radius</strong><span class="classifier">int</span></dt><dd><p>The radius of the ball-shaped structuring element.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>radius</strong> : int</p>
+<blockquote>
+<div><p>The radius of the ball-shaped structuring element.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>selem</strong><span class="classifier">ndarray</span></dt><dd><p>The structuring element where elements of the neighborhood
+<dd class="field-even"><p><strong>selem</strong> : ndarray</p>
+<blockquote>
+<div><p>The structuring element where elements of the neighborhood
 are 1 and 0 otherwise.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>dtype</strong><span class="classifier">data-type</span></dt><dd><p>The data type of the structuring element.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>dtype</strong> : data-type</p>
+<blockquote>
+<div><p>The data type of the structuring element.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -1133,27 +1179,29 @@ are 1 and 0 otherwise.</p>
 and a given (n) height or width of slanted sides octagon is generated.
 The slanted sides are 45 or 135 degrees to the horizontal axis
 and hence the widths and heights are equal.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>m</strong><span class="classifier">int</span></dt><dd><p>The size of the horizontal and vertical sides.</p>
-</dd>
-<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>The height or width of the slanted sides.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>m</strong> : int</p>
+<blockquote>
+<div><p>The size of the horizontal and vertical sides.</p>
+</div></blockquote>
+<p><strong>n</strong> : int</p>
+<blockquote>
+<div><p>The height or width of the slanted sides.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>selem</strong><span class="classifier">ndarray</span></dt><dd><p>The structuring element where elements of the neighborhood
+<dd class="field-even"><p><strong>selem</strong> : ndarray</p>
+<blockquote>
+<div><p>The structuring element where elements of the neighborhood
 are 1 and 0 otherwise.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>dtype</strong><span class="classifier">data-type</span></dt><dd><p>The data type of the structuring element.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>dtype</strong> : data-type</p>
+<blockquote>
+<div><p>The data type of the structuring element.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -1168,26 +1216,26 @@ are 1 and 0 otherwise.</p>
 <p>Start has 8 vertices and is an overlap of square of size <cite>2*a + 1</cite>
 with its 45 degree rotated version.
 The slanted sides are 45 or 135 degrees to the horizontal axis.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>a</strong><span class="classifier">int</span></dt><dd><p>Parameter deciding the size of the star structural element. The side
+<dd class="field-odd"><p><strong>a</strong> : int</p>
+<blockquote>
+<div><p>Parameter deciding the size of the star structural element. The side
 of the square array returned is <cite>2*a + 1 + 2*floor(a / 2)</cite>.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>selem</strong><span class="classifier">ndarray</span></dt><dd><p>The structuring element where elements of the neighborhood
+<dd class="field-even"><p><strong>selem</strong> : ndarray</p>
+<blockquote>
+<div><p>The structuring element where elements of the neighborhood
 are 1 and 0 otherwise.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>dtype</strong><span class="classifier">data-type</span></dt><dd><p>The data type of the structuring element.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>dtype</strong> : data-type</p>
+<blockquote>
+<div><p>The data type of the structuring element.</p>
+</div></blockquote>
 </dd>
 </dl>
 </dd></dl>
@@ -1212,54 +1260,62 @@ pixel/voxel a neighbor:</p>
      <span class="p">[</span> <span class="p">]</span>           <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>
 </pre></div>
 </div>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>input</strong><span class="classifier">ndarray of dtype int</span></dt><dd><p>Image to label.</p>
-</dd>
-<dt><strong>neighbors</strong><span class="classifier">{4, 8}, int, optional</span></dt><dd><p>Whether to use 4- or 8-“connectivity”.
+<dd class="field-odd"><p><strong>input</strong> : ndarray of dtype int</p>
+<blockquote>
+<div><p>Image to label.</p>
+</div></blockquote>
+<p><strong>neighbors</strong> : {4, 8}, int, optional</p>
+<blockquote>
+<div><p>Whether to use 4- or 8-“connectivity”.
 In 3D, 4-“connectivity” means connected pixels have to share face,
 whereas with 8-“connectivity”, they have to share only edge or vertex.
 <strong>Deprecated, use ``connectivity`` instead.</strong></p>
-</dd>
-<dt><strong>background</strong><span class="classifier">int, optional</span></dt><dd><p>Consider all pixels with this value as background pixels, and label
+</div></blockquote>
+<p><strong>background</strong> : int, optional</p>
+<blockquote>
+<div><p>Consider all pixels with this value as background pixels, and label
 them as 0. By default, 0-valued pixels are considered as background
 pixels.</p>
-</dd>
-<dt><strong>return_num</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to return the number of assigned labels.</p>
-</dd>
-<dt><strong>connectivity</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of orthogonal hops to consider a pixel/voxel
+</div></blockquote>
+<p><strong>return_num</strong> : bool, optional</p>
+<blockquote>
+<div><p>Whether to return the number of assigned labels.</p>
+</div></blockquote>
+<p><strong>connectivity</strong> : int, optional</p>
+<blockquote>
+<div><p>Maximum number of orthogonal hops to consider a pixel/voxel
 as a neighbor.
 Accepted values are ranging from  1 to input.ndim. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, a full
 connectivity of <code class="docutils literal notranslate"><span class="pre">input.ndim</span></code> is used.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>labels</strong><span class="classifier">ndarray of dtype int</span></dt><dd><p>Labeled array, where all connected regions are assigned the
+<dd class="field-even"><p><strong>labels</strong> : ndarray of dtype int</p>
+<blockquote>
+<div><p>Labeled array, where all connected regions are assigned the
 same integer value.</p>
-</dd>
-<dt><strong>num</strong><span class="classifier">int, optional</span></dt><dd><p>Number of labels, which equals the maximum label index and is only
+</div></blockquote>
+<p><strong>num</strong> : int, optional</p>
+<blockquote>
+<div><p>Number of labels, which equals the maximum label index and is only
 returned if return_num is <cite>True</cite>.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">regionprops</span></code></dt><dd></dd>
-</dl>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">regionprops</span></code></p>
 </div>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rfdcb8fe18c0f-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r414"><span class="brackets"><a class="fn-backref" href="#id1">R414</a></span></dt>
 <dd><p>Christophe Fiorio and Jens Gustedt, “Two linear time Union-Find
 strategies for image processing”, Theoretical Computer Science
 154 (1996), pp. 165-181.</p>
 </dd>
-<dt class="label" id="rfdcb8fe18c0f-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r415"><span class="brackets"><a class="fn-backref" href="#id2">R415</a></span></dt>
 <dd><p>Kensheng Wu, Ekow Otoo and Arie Shoshani, “Optimizing connected
 component labeling algorithms”, Paper LBNL-56864, 2005,
 Lawrence Berkeley National Laboratory (University of California),
@@ -1303,39 +1359,51 @@ Lawrence Berkeley National Laboratory (University of California),
 <dt id="skimage.morphology.watershed">
 <code class="descclassname">skimage.morphology.</code><code class="descname">watershed</code><span class="sig-paren">(</span><em>image</em>, <em>markers=None</em>, <em>connectivity=1</em>, <em>offset=None</em>, <em>mask=None</em>, <em>compactness=0</em>, <em>watershed_line=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/watershed.py#L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.watershed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find watershed basins in <cite>image</cite> flooded from given <cite>markers</cite>.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image: ndarray (2-D, 3-D, …) of integers</strong></dt><dd><p>Data array where the lowest value points are labeled first.</p>
-</dd>
-<dt><strong>markers: int, or ndarray of int, same shape as `image`, optional</strong></dt><dd><p>The desired number of markers, or an array marking the basins with the
+<dd class="field-odd"><p><strong>image: ndarray (2-D, 3-D, …) of integers</strong></p>
+<blockquote>
+<div><p>Data array where the lowest value points are labeled first.</p>
+</div></blockquote>
+<p><strong>markers: int, or ndarray of int, same shape as `image`, optional</strong></p>
+<blockquote>
+<div><p>The desired number of markers, or an array marking the basins with the
 values to be assigned in the label matrix. Zero means not a marker. If
 <code class="docutils literal notranslate"><span class="pre">None</span></code> (no markers given), the local minima of the image are used as
 markers.</p>
-</dd>
-<dt><strong>connectivity: ndarray, optional</strong></dt><dd><p>An array with the same number of dimensions as <cite>image</cite> whose
+</div></blockquote>
+<p><strong>connectivity: ndarray, optional</strong></p>
+<blockquote>
+<div><p>An array with the same number of dimensions as <cite>image</cite> whose
 non-zero elements indicate neighbors for connection.
 Following the scipy convention, default is a one-connected array of
 the dimension of the image.</p>
-</dd>
-<dt><strong>offset: array_like of shape image.ndim, optional</strong></dt><dd><p>offset of the connectivity (one offset per dimension)</p>
-</dd>
-<dt><strong>mask: ndarray of bools or 0s and 1s, optional</strong></dt><dd><p>Array of same shape as <cite>image</cite>. Only points at which mask == True
+</div></blockquote>
+<p><strong>offset: array_like of shape image.ndim, optional</strong></p>
+<blockquote>
+<div><p>offset of the connectivity (one offset per dimension)</p>
+</div></blockquote>
+<p><strong>mask: ndarray of bools or 0s and 1s, optional</strong></p>
+<blockquote>
+<div><p>Array of same shape as <cite>image</cite>. Only points at which mask == True
 will be labeled.</p>
-</dd>
-<dt><strong>compactness</strong><span class="classifier">float, optional</span></dt><dd><p>Use compact watershed <a class="reference internal" href="#r91cba7b06893-3" id="id3">[3]</a> with given compactness parameter.
+</div></blockquote>
+<p><strong>compactness</strong> : float, optional</p>
+<blockquote>
+<div><p>Use compact watershed <a class="reference internal" href="#r418" id="id3"><span>[R418]</span></a> with given compactness parameter.
 Higher values result in more regularly-shaped watershed basins.</p>
-</dd>
-<dt><strong>watershed_line</strong><span class="classifier">bool, optional</span></dt><dd><p>If watershed_line is True, a one-pixel wide line separates the regions
+</div></blockquote>
+<p><strong>watershed_line</strong> : bool, optional</p>
+<blockquote>
+<div><p>If watershed_line is True, a one-pixel wide line separates the regions
 obtained by the watershed algorithm. The line has the label 0.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>out: ndarray</dt><dd><p>A labeled matrix of the same type and shape as markers</p>
-</dd>
-</dl>
+<dd class="field-even"><p>out: ndarray</p>
+<blockquote>
+<div><p>A labeled matrix of the same type and shape as markers</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1346,7 +1414,7 @@ obtained by the watershed algorithm. The line has the label 0.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>This function implements a watershed algorithm <a class="reference internal" href="#r91cba7b06893-1" id="id4">[1]</a> <a class="reference internal" href="#r91cba7b06893-2" id="id5">[2]</a> that apportions
+<p>This function implements a watershed algorithm <a class="reference internal" href="#r416" id="id4"><span>[R416]</span></a> <a class="reference internal" href="#r417" id="id5"><span>[R417]</span></a> that apportions
 pixels into marked basins. The algorithm uses a priority queue to hold
 the pixels with the metric for the priority queue being pixel value, then
 the time of entry into the queue - this settles ties in favor of the
@@ -1366,13 +1434,13 @@ distance function to the background for separating overlapping objects
 (see example).</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r91cba7b06893-1"><span class="brackets"><a class="fn-backref" href="#id4">1</a></span></dt>
+<dt class="label" id="r416"><span class="brackets">R416</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id6">2</a>)</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Watershed_%28image_processing%29">https://en.wikipedia.org/wiki/Watershed_%28image_processing%29</a></p>
 </dd>
-<dt class="label" id="r91cba7b06893-2"><span class="brackets"><a class="fn-backref" href="#id5">2</a></span></dt>
+<dt class="label" id="r417"><span class="brackets">R417</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id7">2</a>)</span></dt>
 <dd><p><a class="reference external" href="http://cmm.ensmp.fr/~beucher/wtshed.html">http://cmm.ensmp.fr/~beucher/wtshed.html</a></p>
 </dd>
-<dt class="label" id="r91cba7b06893-3"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dt class="label" id="r418"><span class="brackets">R418</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id8">2</a>)</span></dt>
 <dd><p>Peer Neubert &amp; Peter Protzel (2014). Compact Watershed and
 Preemptive SLIC: On Improving Trade-offs of Superpixel Segmentation
 Algorithms. ICPR 2014, pp 996-1001. <a class="reference external" href="https://doi.org/10.1109/ICPR.2014.181">DOI:10.1109/ICPR.2014.181</a>
@@ -1441,30 +1509,28 @@ separate overlapping spheres.</p>
 <dd><p>Return the skeleton of a binary image.</p>
 <p>Thinning is used to reduce each connected component in a binary image
 to a single-pixel wide skeleton.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">numpy.ndarray</span></dt><dd><p>A binary image containing the objects to be skeletonized. ‘1’
+<dd class="field-odd"><p><strong>image</strong> : numpy.ndarray</p>
+<blockquote>
+<div><p>A binary image containing the objects to be skeletonized. ‘1’
 represents foreground, and ‘0’ represents background. It
 also accepts arrays of boolean values where True is foreground.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>skeleton</strong><span class="classifier">ndarray</span></dt><dd><p>A matrix containing the thinned image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>skeleton</strong> : ndarray</p>
+<blockquote>
+<div><p>A matrix containing the thinned image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.morphology.medial_axis" title="skimage.morphology.medial_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">medial_axis</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.morphology.medial_axis" title="skimage.morphology.medial_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">medial_axis</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The algorithm <a class="reference internal" href="#rc75910d539e3-zha84" id="id9">[Zha84]</a> works by making successive passes of the image,
+<p>The algorithm <a class="reference internal" href="#zha84418" id="id9"><span>[Zha84418]</span></a> works by making successive passes of the image,
 removing pixels on object borders. This continues until no
 more pixels can be removed.  The image is correlated with a
 mask that assigns each pixel a number in the range [0…255]
@@ -1477,7 +1543,7 @@ medial axis transform, which is also often referred to as
 “skeletonization”.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rc75910d539e3-zha84"><span class="brackets"><a class="fn-backref" href="#id9">Zha84</a></span></dt>
+<dt class="label" id="zha84418"><span class="brackets">Zha84418</span><span class="fn-backref">(<a href="#id9">1</a>,<a href="#id10">2</a>)</span></dt>
 <dd><p>A fast parallel algorithm for thinning digital patterns,
 T. Y. Zhang and C. Y. Suen, Communications of the ACM,
 March 1984, Volume 27, Number 3.</p>
@@ -1531,29 +1597,27 @@ March 1984, Volume 27, Number 3.</p>
 <dd><p>Compute the skeleton of a binary image.</p>
 <p>Thinning is used to reduce each connected component in a binary image
 to a single-pixel wide skeleton.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>img</strong><span class="classifier">ndarray, 2D or 3D</span></dt><dd><p>A binary image containing the objects to be skeletonized. Zeros
+<dd class="field-odd"><p><strong>img</strong> : ndarray, 2D or 3D</p>
+<blockquote>
+<div><p>A binary image containing the objects to be skeletonized. Zeros
 represent background, nonzero values are foreground.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>skeleton</strong><span class="classifier">ndarray</span></dt><dd><p>The thinned image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>skeleton</strong> : ndarray</p>
+<blockquote>
+<div><p>The thinned image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.morphology.skeletonize" title="skimage.morphology.skeletonize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skeletonize</span></code></a>, <a class="reference internal" href="#skimage.morphology.medial_axis" title="skimage.morphology.medial_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">medial_axis</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.morphology.skeletonize" title="skimage.morphology.skeletonize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skeletonize</span></code></a>, <a class="reference internal" href="#skimage.morphology.medial_axis" title="skimage.morphology.medial_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">medial_axis</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>The method of <a class="reference internal" href="#rc9cdb497d267-lee94" id="id11">[Lee94]</a> uses an octree data structure to examine a 3x3x3
+<p>The method of <a class="reference internal" href="#lee94419" id="id11"><span>[Lee94419]</span></a> uses an octree data structure to examine a 3x3x3
 neighborhood of a pixel. The algorithm proceeds by iteratively sweeping
 over the image, and removing pixels at each iteration until the image
 stops changing. Each iteration consists of two steps: first, a list of
@@ -1564,7 +1628,7 @@ used by either <cite>skeletonize</cite> or <cite>medial_axis</cite>, thus for 2D
 results produced by this function are generally different.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rc9cdb497d267-lee94"><span class="brackets"><a class="fn-backref" href="#id11">Lee94</a></span></dt>
+<dt class="label" id="lee94419"><span class="brackets">Lee94419</span><span class="fn-backref">(<a href="#id11">1</a>,<a href="#id12">2</a>)</span></dt>
 <dd><p>T.-C. Lee, R.L. Kashyap and C.-N. Chu, Building skeleton models
 via 3-D medial surface/axis thinning algorithms.
 Computer Vision, Graphics, and Image Processing, 56(6):462-478, 1994.</p>
@@ -1586,47 +1650,47 @@ Computer Vision, Graphics, and Image Processing, 56(6):462-478, 1994.</p>
 <dt id="skimage.morphology.thin">
 <code class="descclassname">skimage.morphology.</code><code class="descname">thin</code><span class="sig-paren">(</span><em>image</em>, <em>max_iter=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/_skeletonize.py#L183"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.thin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform morphological thinning of a binary image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">binary (M, N) ndarray</span></dt><dd><p>The image to be thinned.</p>
-</dd>
-<dt><strong>max_iter</strong><span class="classifier">int, number of iterations, optional</span></dt><dd><p>Regardless of the value of this parameter, the thinned image
+<dd class="field-odd"><p><strong>image</strong> : binary (M, N) ndarray</p>
+<blockquote>
+<div><p>The image to be thinned.</p>
+</div></blockquote>
+<p><strong>max_iter</strong> : int, number of iterations, optional</p>
+<blockquote>
+<div><p>Regardless of the value of this parameter, the thinned image
 is returned immediately if an iteration produces no change.
 If this parameter is specified it thus sets an upper bound on
 the number of iterations performed.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>out</strong><span class="classifier">ndarray of bool</span></dt><dd><p>Thinned image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>out</strong> : ndarray of bool</p>
+<blockquote>
+<div><p>Thinned image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.morphology.skeletonize" title="skimage.morphology.skeletonize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skeletonize</span></code></a>, <a class="reference internal" href="#skimage.morphology.skeletonize_3d" title="skimage.morphology.skeletonize_3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skeletonize_3d</span></code></a>, <a class="reference internal" href="#skimage.morphology.medial_axis" title="skimage.morphology.medial_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">medial_axis</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.morphology.skeletonize" title="skimage.morphology.skeletonize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skeletonize</span></code></a>, <a class="reference internal" href="#skimage.morphology.skeletonize_3d" title="skimage.morphology.skeletonize_3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skeletonize_3d</span></code></a>, <a class="reference internal" href="#skimage.morphology.medial_axis" title="skimage.morphology.medial_axis"><code class="xref py py-obj docutils literal notranslate"><span class="pre">medial_axis</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
-<p>This algorithm <a class="reference internal" href="#r2b353e29d473-1" id="id13">[1]</a> works by making multiple passes over the image,
+<p>This algorithm <a class="reference internal" href="#r421" id="id13"><span>[R421]</span></a> works by making multiple passes over the image,
 removing pixels matching a set of criteria designed to thin
 connected regions while preserving eight-connected components and
-2 x 2 squares <a class="reference internal" href="#r2b353e29d473-2" id="id14">[2]</a>. In each of the two sub-iterations the algorithm
+2 x 2 squares <a class="reference internal" href="#r422" id="id14"><span>[R422]</span></a>. In each of the two sub-iterations the algorithm
 correlates the intermediate skeleton image with a neighborhood mask,
 then looks up each neighborhood in a lookup table indicating whether
 the central pixel should be deleted in that sub-iteration.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r2b353e29d473-1"><span class="brackets"><a class="fn-backref" href="#id13">1</a></span></dt>
+<dt class="label" id="r421"><span class="brackets">R421</span><span class="fn-backref">(<a href="#id13">1</a>,<a href="#id15">2</a>)</span></dt>
 <dd><p>Z. Guo and R. W. Hall, “Parallel thinning with
 two-subiteration algorithms,” Comm. ACM, vol. 32, no. 3,
 pp. 359-373, 1989. <a class="reference external" href="https://doi.org/10.1145/62065.62074">DOI:10.1145/62065.62074</a></p>
 </dd>
-<dt class="label" id="r2b353e29d473-2"><span class="brackets"><a class="fn-backref" href="#id14">2</a></span></dt>
+<dt class="label" id="r422"><span class="brackets">R422</span><span class="fn-backref">(<a href="#id14">1</a>,<a href="#id16">2</a>)</span></dt>
 <dd><p>Lam, L., Seong-Whan Lee, and Ching Y. Suen, “Thinning
 Methodologies-A Comprehensive Survey,” IEEE Transactions on
 Pattern Analysis and Machine Intelligence, Vol 14, No. 9,
@@ -1672,33 +1736,37 @@ p. 879, 1992. <a class="reference external" href="https://doi.org/10.1109/34.161
 <dt id="skimage.morphology.medial_axis">
 <code class="descclassname">skimage.morphology.</code><code class="descname">medial_axis</code><span class="sig-paren">(</span><em>image</em>, <em>mask=None</em>, <em>return_distance=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/_skeletonize.py#L288"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.medial_axis" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the medial axis transform of a binary image</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">binary ndarray, shape (M, N)</span></dt><dd><p>The image of the shape to be skeletonized.</p>
-</dd>
-<dt><strong>mask</strong><span class="classifier">binary ndarray, shape (M, N), optional</span></dt><dd><p>If a mask is given, only those elements in <cite>image</cite> with a true
+<dd class="field-odd"><p><strong>image</strong> : binary ndarray, shape (M, N)</p>
+<blockquote>
+<div><p>The image of the shape to be skeletonized.</p>
+</div></blockquote>
+<p><strong>mask</strong> : binary ndarray, shape (M, N), optional</p>
+<blockquote>
+<div><p>If a mask is given, only those elements in <cite>image</cite> with a true
 value in <cite>mask</cite> are used for computing the medial axis.</p>
-</dd>
-<dt><strong>return_distance</strong><span class="classifier">bool, optional</span></dt><dd><p>If true, the distance transform is returned as well as the skeleton.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>return_distance</strong> : bool, optional</p>
+<blockquote>
+<div><p>If true, the distance transform is returned as well as the skeleton.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>out</strong><span class="classifier">ndarray of bools</span></dt><dd><p>Medial axis transform of the image</p>
-</dd>
-<dt><strong>dist</strong><span class="classifier">ndarray of ints, optional</span></dt><dd><p>Distance transform of the image (only returned if <cite>return_distance</cite>
+<dd class="field-even"><p><strong>out</strong> : ndarray of bools</p>
+<blockquote>
+<div><p>Medial axis transform of the image</p>
+</div></blockquote>
+<p><strong>dist</strong> : ndarray of ints, optional</p>
+<blockquote>
+<div><p>Distance transform of the image (only returned if <cite>return_distance</cite>
 is True)</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.morphology.skeletonize" title="skimage.morphology.skeletonize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skeletonize</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.morphology.skeletonize" title="skimage.morphology.skeletonize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skeletonize</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>This algorithm computes the medial axis transform of an image
@@ -1760,31 +1828,35 @@ pass.</p></li>
 <dd><p>Compute the convex hull image of a binary image.</p>
 <p>The convex hull is the set of pixels included in the smallest convex
 polygon that surround all white pixels in the input image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">array</span></dt><dd><p>Binary input image. This array is cast to bool before processing.</p>
-</dd>
-<dt><strong>offset_coordinates</strong><span class="classifier">bool, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, a pixel at coordinate, e.g., (4, 7) will be represented
+<dd class="field-odd"><p><strong>image</strong> : array</p>
+<blockquote>
+<div><p>Binary input image. This array is cast to bool before processing.</p>
+</div></blockquote>
+<p><strong>offset_coordinates</strong> : bool, optional</p>
+<blockquote>
+<div><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, a pixel at coordinate, e.g., (4, 7) will be represented
 by coordinates (3.5, 7), (4.5, 7), (4, 6.5), and (4, 7.5). This adds
 some “extent” to a pixel when computing the hull.</p>
-</dd>
-<dt><strong>tolerance</strong><span class="classifier">float, optional</span></dt><dd><p>Tolerance when determining whether a point is inside the hull. Due
+</div></blockquote>
+<p><strong>tolerance</strong> : float, optional</p>
+<blockquote>
+<div><p>Tolerance when determining whether a point is inside the hull. Due
 to numerical floating point errors, a tolerance of 0 can result in
 some points erroneously being classified as being outside the hull.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>hull</strong><span class="classifier">(M, N) array of bool</span></dt><dd><p>Binary image with pixels in convex hull set to True.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>hull</strong> : (M, N) array of bool</p>
+<blockquote>
+<div><p>Binary image with pixels in convex hull set to True.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rf22b92a8225f-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r423"><span class="brackets"><a class="fn-backref" href="#id17">R423</a></span></dt>
 <dd><p><a class="reference external" href="https://blogs.mathworks.com/steve/2011/10/04/binary-image-convex-hull-algorithm-notes/">https://blogs.mathworks.com/steve/2011/10/04/binary-image-convex-hull-algorithm-notes/</a></p>
 </dd>
 </dl>
@@ -1810,20 +1882,22 @@ some points erroneously being classified as being outside the hull.</p>
 <dd><p>Compute the convex hull image of individual objects in a binary image.</p>
 <p>The convex hull is the set of pixels included in the smallest convex
 polygon that surround all white pixels in the input image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(M, N) array</span></dt><dd><p>Binary input image.</p>
-</dd>
-<dt><strong>neighbors</strong><span class="classifier">{4, 8}, int</span></dt><dd><p>Whether to use 4- or 8-connectivity.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>image</strong> : (M, N) array</p>
+<blockquote>
+<div><p>Binary input image.</p>
+</div></blockquote>
+<p><strong>neighbors</strong> : {4, 8}, int</p>
+<blockquote>
+<div><p>Whether to use 4- or 8-connectivity.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>hull</strong><span class="classifier">ndarray of bool</span></dt><dd><p>Binary image with pixels in convex hull set to True.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>hull</strong> : ndarray of bool</p>
+<blockquote>
+<div><p>Binary image with pixels in convex hull set to True.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1857,52 +1931,60 @@ regions marked by local maxima in the seed image: neighboring pixels
 less-than-or-equal-to those seeds are connected to the seeded region.
 Local maxima with values larger than the seed image will get truncated to
 the seed value.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>seed</strong><span class="classifier">ndarray</span></dt><dd><p>The seed image (a.k.a. marker image), which specifies the values that
+<dd class="field-odd"><p><strong>seed</strong> : ndarray</p>
+<blockquote>
+<div><p>The seed image (a.k.a. marker image), which specifies the values that
 are dilated or eroded.</p>
-</dd>
-<dt><strong>mask</strong><span class="classifier">ndarray</span></dt><dd><p>The maximum (dilation) / minimum (erosion) allowed value at each pixel.</p>
-</dd>
-<dt><strong>method</strong><span class="classifier">{‘dilation’|’erosion’}, optional</span></dt><dd><p>Perform reconstruction by dilation or erosion. In dilation (or
+</div></blockquote>
+<p><strong>mask</strong> : ndarray</p>
+<blockquote>
+<div><p>The maximum (dilation) / minimum (erosion) allowed value at each pixel.</p>
+</div></blockquote>
+<p><strong>method</strong> : {‘dilation’|’erosion’}, optional</p>
+<blockquote>
+<div><p>Perform reconstruction by dilation or erosion. In dilation (or
 erosion), the seed image is dilated (or eroded) until limited by the
 mask image. For dilation, each seed value must be less than or equal
 to the corresponding mask value; for erosion, the reverse is true.
 Default is ‘dilation’.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The neighborhood expressed as an n-D array of 1’s and 0’s.
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as an n-D array of 1’s and 0’s.
 Default is the n-D square of radius equal to 1 (i.e. a 3x3 square
 for 2D images, a 3x3x3 cube for 3D images, etc.)</p>
-</dd>
-<dt><strong>offset</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The coordinates of the center of the structuring element.
+</div></blockquote>
+<p><strong>offset</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The coordinates of the center of the structuring element.
 Default is located on the geometrical center of the selem, in that case
 selem dimensions must be odd.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>reconstructed</strong><span class="classifier">ndarray</span></dt><dd><p>The result of morphological reconstruction.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>reconstructed</strong> : ndarray</p>
+<blockquote>
+<div><p>The result of morphological reconstruction.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The algorithm is taken from <a class="reference internal" href="#r4e1a5d6f491d-1" id="id18">[1]</a>. Applications for greyscale reconstruction
-are discussed in <a class="reference internal" href="#r4e1a5d6f491d-2" id="id19">[2]</a> and <a class="reference internal" href="#r4e1a5d6f491d-3" id="id20">[3]</a>.</p>
+<p>The algorithm is taken from <a class="reference internal" href="#r424" id="id18"><span>[R424]</span></a>. Applications for greyscale reconstruction
+are discussed in <a class="reference internal" href="#r425" id="id19"><span>[R425]</span></a> and <a class="reference internal" href="#r426" id="id20"><span>[R426]</span></a>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r4e1a5d6f491d-1"><span class="brackets"><a class="fn-backref" href="#id18">1</a></span></dt>
+<dt class="label" id="r424"><span class="brackets">R424</span><span class="fn-backref">(<a href="#id18">1</a>,<a href="#id21">2</a>)</span></dt>
 <dd><p>Robinson, “Efficient morphological reconstruction: a downhill
 filter”, Pattern Recognition Letters 25 (2004) 1759-1767.</p>
 </dd>
-<dt class="label" id="r4e1a5d6f491d-2"><span class="brackets"><a class="fn-backref" href="#id19">2</a></span></dt>
+<dt class="label" id="r425"><span class="brackets">R425</span><span class="fn-backref">(<a href="#id19">1</a>,<a href="#id22">2</a>)</span></dt>
 <dd><p>Vincent, L., “Morphological Grayscale Reconstruction in Image
 Analysis: Applications and Efficient Algorithms”, IEEE Transactions
 on Image Processing (1993)</p>
 </dd>
-<dt class="label" id="r4e1a5d6f491d-3"><span class="brackets"><a class="fn-backref" href="#id20">3</a></span></dt>
+<dt class="label" id="r426"><span class="brackets">R426</span><span class="fn-backref">(<a href="#id20">1</a>,<a href="#id23">2</a>)</span></dt>
 <dd><p>Soille, P., “Morphological Image Analysis: Principles and
 Applications”, Chapter 6, 2nd edition (2003), ISBN 3540429883.</p>
 </dd>
@@ -1977,33 +2059,41 @@ This leads to potentially different behavior for bool and 0-and-1
 arrays.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>ar</strong><span class="classifier">ndarray (arbitrary shape, int or bool type)</span></dt><dd><p>The array containing the objects of interest. If the array type is
+<dd class="field-odd"><p><strong>ar</strong> : ndarray (arbitrary shape, int or bool type)</p>
+<blockquote>
+<div><p>The array containing the objects of interest. If the array type is
 int, the ints must be non-negative.</p>
-</dd>
-<dt><strong>min_size</strong><span class="classifier">int, optional (default: 64)</span></dt><dd><p>The smallest allowable object size.</p>
-</dd>
-<dt><strong>connectivity</strong><span class="classifier">int, {1, 2, …, ar.ndim}, optional (default: 1)</span></dt><dd><p>The connectivity defining the neighborhood of a pixel. Used during
+</div></blockquote>
+<p><strong>min_size</strong> : int, optional (default: 64)</p>
+<blockquote>
+<div><p>The smallest allowable object size.</p>
+</div></blockquote>
+<p><strong>connectivity</strong> : int, {1, 2, …, ar.ndim}, optional (default: 1)</p>
+<blockquote>
+<div><p>The connectivity defining the neighborhood of a pixel. Used during
 labelling if <cite>ar</cite> is bool.</p>
-</dd>
-<dt><strong>in_place</strong><span class="classifier">bool, optional (default: False)</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, remove the objects in the input array itself.
+</div></blockquote>
+<p><strong>in_place</strong> : bool, optional (default: False)</p>
+<blockquote>
+<div><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, remove the objects in the input array itself.
 Otherwise, make a copy.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>out</strong><span class="classifier">ndarray, same shape and type as input <cite>ar</cite></span></dt><dd><p>The input array with small connected components removed.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>out</strong> : ndarray, same shape and type as input <cite>ar</cite></p>
+<blockquote>
+<div><p>The input array with small connected components removed.</p>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>TypeError</dt><dd><p>If the input array is of an invalid type, such as float or string.</p>
-</dd>
-<dt>ValueError</dt><dd><p>If the input array contains negative values.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>TypeError</strong></p>
+<blockquote>
+<div><p>If the input array is of an invalid type, such as float or string.</p>
+</div></blockquote>
+<p><strong>ValueError</strong></p>
+<blockquote>
+<div><p>If the input array contains negative values.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -2044,32 +2134,40 @@ Otherwise, make a copy.</p>
 <dd><p>Remove contiguous holes smaller than the specified size.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>ar</strong><span class="classifier">ndarray (arbitrary shape, int or bool type)</span></dt><dd><p>The array containing the connected components of interest.</p>
-</dd>
-<dt><strong>area_threshold</strong><span class="classifier">int, optional (default: 64)</span></dt><dd><p>The maximum area, in pixels, of a contiguous hole that will be filled.
+<dd class="field-odd"><p><strong>ar</strong> : ndarray (arbitrary shape, int or bool type)</p>
+<blockquote>
+<div><p>The array containing the connected components of interest.</p>
+</div></blockquote>
+<p><strong>area_threshold</strong> : int, optional (default: 64)</p>
+<blockquote>
+<div><p>The maximum area, in pixels, of a contiguous hole that will be filled.
 Replaces <cite>min_size</cite>.</p>
-</dd>
-<dt><strong>connectivity</strong><span class="classifier">int, {1, 2, …, ar.ndim}, optional (default: 1)</span></dt><dd><p>The connectivity defining the neighborhood of a pixel.</p>
-</dd>
-<dt><strong>in_place</strong><span class="classifier">bool, optional (default: False)</span></dt><dd><p>If <cite>True</cite>, remove the connected components in the input array itself.
+</div></blockquote>
+<p><strong>connectivity</strong> : int, {1, 2, …, ar.ndim}, optional (default: 1)</p>
+<blockquote>
+<div><p>The connectivity defining the neighborhood of a pixel.</p>
+</div></blockquote>
+<p><strong>in_place</strong> : bool, optional (default: False)</p>
+<blockquote>
+<div><p>If <cite>True</cite>, remove the connected components in the input array itself.
 Otherwise, make a copy.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl>
-<dt><strong>out</strong><span class="classifier">ndarray, same shape and type as input <cite>ar</cite></span></dt><dd><p>The input array with small holes within connected components removed.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>out</strong> : ndarray, same shape and type as input <cite>ar</cite></p>
+<blockquote>
+<div><p>The input array with small holes within connected components removed.</p>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>TypeError</dt><dd><p>If the input array is of an invalid type, such as float or string.</p>
-</dd>
-<dt>ValueError</dt><dd><p>If the input array contains negative values.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>TypeError</strong></p>
+<blockquote>
+<div><p>If the input array is of an invalid type, such as float or string.</p>
+</div></blockquote>
+<p><strong>ValueError</strong></p>
+<blockquote>
+<div><p>If the input array contains negative values.</p>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -2117,39 +2215,39 @@ there is at least one path joining M with a deeper minimum on which the
 maximal value is f(M) + h (i.e. the values along the path are not
 increasing by more than h with respect to the minimum’s value) and no
 path for which the maximal value is smaller.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>The input image for which the minima are to be calculated.</p>
-</dd>
-<dt><strong>h</strong><span class="classifier">unsigned integer</span></dt><dd><p>The minimal depth of all extracted minima.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The neighborhood expressed as an n-D array of 1’s and 0’s.
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>The input image for which the minima are to be calculated.</p>
+</div></blockquote>
+<p><strong>h</strong> : unsigned integer</p>
+<blockquote>
+<div><p>The minimal depth of all extracted minima.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as an n-D array of 1’s and 0’s.
 Default is the ball of radius 1 according to the maximum norm
 (i.e. a 3x3 square for 2D images, a 3x3x3 cube for 3D images, etc.)</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>h_min</strong><span class="classifier">ndarray</span></dt><dd><p>The minima of depth &gt;= h. The result image is a binary image, where
+<dd class="field-even"><p><strong>h_min</strong> : ndarray</p>
+<blockquote>
+<div><p>The minima of depth &gt;= h. The result image is a binary image, where
 pixels belonging to the selected minima take value 1, the other pixels
 take value 0.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.extrema.h_maxima</span></code></dt><dd></dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.extrema.local_maxima</span></code></dt><dd></dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.extrema.local_minima</span></code></dt><dd></dd>
-</dl>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.extrema.h_maxima</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.extrema.local_maxima</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.extrema.local_minima</span></code></p>
 </div>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rb2b2b247b9a8-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r427"><span class="brackets"><a class="fn-backref" href="#id24">R427</a></span></dt>
 <dd><p>Soille, P., “Morphological Image Analysis: Principles and
 Applications” (Chapter 6), 2nd edition (2003), ISBN 3540429883.</p>
 </dd>
@@ -2191,39 +2289,39 @@ there is at least one path joining M with a higher maximum on which the
 minimal value is f(M) - h (i.e. the values along the path are not
 decreasing by more than h with respect to the maximum’s value) and no
 path for which the minimal value is greater.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>The input image for which the maxima are to be calculated.</p>
-</dd>
-<dt><strong>h</strong><span class="classifier">unsigned integer</span></dt><dd><p>The minimal height of all extracted maxima.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The neighborhood expressed as an n-D array of 1’s and 0’s.
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>The input image for which the maxima are to be calculated.</p>
+</div></blockquote>
+<p><strong>h</strong> : unsigned integer</p>
+<blockquote>
+<div><p>The minimal height of all extracted maxima.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>The neighborhood expressed as an n-D array of 1’s and 0’s.
 Default is the ball of radius 1 according to the maximum norm
 (i.e. a 3x3 square for 2D images, a 3x3x3 cube for 3D images, etc.)</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>h_max</strong><span class="classifier">ndarray</span></dt><dd><p>The maxima of height &gt;= h. The result image is a binary image, where
+<dd class="field-even"><p><strong>h_max</strong> : ndarray</p>
+<blockquote>
+<div><p>The maxima of height &gt;= h. The result image is a binary image, where
 pixels belonging to the selected maxima take value 1, the others
 take value 0.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.extrema.h_minima</span></code></dt><dd></dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.extrema.local_maxima</span></code></dt><dd></dd>
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.extrema.local_minima</span></code></dt><dd></dd>
-</dl>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.extrema.h_minima</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.extrema.local_maxima</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.extrema.local_minima</span></code></p>
 </div>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="reab74d5f60e7-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r428"><span class="brackets"><a class="fn-backref" href="#id25">R428</a></span></dt>
 <dd><p>Soille, P., “Morphological Image Analysis: Principles and
 Applications” (Chapter 6), 2nd edition (2003), ISBN 3540429883.</p>
 </dd>
@@ -2267,54 +2365,58 @@ The heights of the maxima are: 1, 21, 41, 61, 81, 101</p>
 <p>The local maxima are defined as connected sets of pixels with equal gray
 level (plateaus) strictly greater than the gray levels of all pixels in the
 neighborhood.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>An n-dimensional array.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>A structuring element used to determine the neighborhood of each
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>An n-dimensional array.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>A structuring element used to determine the neighborhood of each
 evaluated pixel (<code class="docutils literal notranslate"><span class="pre">True</span></code> denotes a connected pixel). It must be a
 boolean array and have the same number of dimensions as <cite>image</cite>. If
 neither <cite>selem</cite> nor <cite>connectivity</cite> are given, all adjacent pixels are
 considered as part of the neighborhood.</p>
-</dd>
-<dt><strong>connectivity</strong><span class="classifier">int, optional</span></dt><dd><p>A number used to determine the neighborhood of each evaluated pixel.
+</div></blockquote>
+<p><strong>connectivity</strong> : int, optional</p>
+<blockquote>
+<div><p>A number used to determine the neighborhood of each evaluated pixel.
 Adjacent pixels whose squared distance from the center is less than or
 equal to <cite>connectivity</cite> are considered neighbors. Ignored if
 <cite>selem</cite> is not None.</p>
-</dd>
-<dt><strong>indices</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the output will be a tuple of one-dimensional arrays
+</div></blockquote>
+<p><strong>indices</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, the output will be a tuple of one-dimensional arrays
 representing the indices of local maxima in each dimension. If False,
 the output will be a boolean array with the same shape as <cite>image</cite>.</p>
-</dd>
-<dt><strong>allow_borders</strong><span class="classifier">bool, optional</span></dt><dd><p>If true, plateaus that touch the image border are valid maxima.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>allow_borders</strong> : bool, optional</p>
+<blockquote>
+<div><p>If true, plateaus that touch the image border are valid maxima.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>maxima</strong><span class="classifier">ndarray or tuple[ndarray]</span></dt><dd><p>If <cite>indices</cite> is false, a boolean array with the same shape as <cite>image</cite>
+<dd class="field-even"><p><strong>maxima</strong> : ndarray or tuple[ndarray]</p>
+<blockquote>
+<div><p>If <cite>indices</cite> is false, a boolean array with the same shape as <cite>image</cite>
 is returned with <code class="docutils literal notranslate"><span class="pre">True</span></code> indicating the position of local maxima
 (<code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise). If <cite>indices</cite> is true, a tuple of one-dimensional
 arrays containing the coordinates (indices) of all found maxima.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-odd">Warns</dt>
-<dd class="field-odd"><dl class="simple">
-<dt>UserWarning</dt><dd><p>If <cite>allow_borders</cite> is false and any dimension of the given <cite>image</cite> is
+<dd class="field-odd"><p><strong>UserWarning</strong></p>
+<blockquote>
+<div><p>If <cite>allow_borders</cite> is false and any dimension of the given <cite>image</cite> is
 shorter than 3 samples, maxima can’t exist and a warning is shown.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.morphology.local_minima" title="skimage.morphology.local_minima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.local_minima</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.h_maxima" title="skimage.morphology.h_maxima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.h_maxima</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.h_minima" title="skimage.morphology.h_minima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.h_minima</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.morphology.local_minima" title="skimage.morphology.local_minima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.local_minima</span></code></a>, <a class="reference internal" href="#skimage.morphology.h_maxima" title="skimage.morphology.h_maxima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.h_maxima</span></code></a>, <a class="reference internal" href="#skimage.morphology.h_minima" title="skimage.morphology.h_minima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.h_minima</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>This function operates on the following ideas:</p>
@@ -2391,47 +2493,51 @@ connectivity):</p>
 <p>The local minima are defined as connected sets of pixels with equal gray
 level (plateaus) strictly smaller than the gray levels of all pixels in the
 neighborhood.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>An n-dimensional array.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>A structuring element used to determine the neighborhood of each
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>An n-dimensional array.</p>
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>A structuring element used to determine the neighborhood of each
 evaluated pixel (<code class="docutils literal notranslate"><span class="pre">True</span></code> denotes a connected pixel). It must be a
 boolean array and have the same number of dimensions as <cite>image</cite>. If
 neither <cite>selem</cite> nor <cite>connectivity</cite> are given, all adjacent pixels are
 considered as part of the neighborhood.</p>
-</dd>
-<dt><strong>connectivity</strong><span class="classifier">int, optional</span></dt><dd><p>A number used to determine the neighborhood of each evaluated pixel.
+</div></blockquote>
+<p><strong>connectivity</strong> : int, optional</p>
+<blockquote>
+<div><p>A number used to determine the neighborhood of each evaluated pixel.
 Adjacent pixels whose squared distance from the center is less than or
 equal to <cite>connectivity</cite> are considered neighbors. Ignored if
 <cite>selem</cite> is not None.</p>
-</dd>
-<dt><strong>indices</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the output will be a tuple of one-dimensional arrays
+</div></blockquote>
+<p><strong>indices</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, the output will be a tuple of one-dimensional arrays
 representing the indices of local minima in each dimension. If False,
 the output will be a boolean array with the same shape as <cite>image</cite>.</p>
-</dd>
-<dt><strong>allow_borders</strong><span class="classifier">bool, optional</span></dt><dd><p>If true, plateaus that touch the image border are valid minima.</p>
-</dd>
-</dl>
+</div></blockquote>
+<p><strong>allow_borders</strong> : bool, optional</p>
+<blockquote>
+<div><p>If true, plateaus that touch the image border are valid minima.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>minima</strong><span class="classifier">ndarray or tuple[ndarray]</span></dt><dd><p>If <cite>indices</cite> is false, a boolean array with the same shape as <cite>image</cite>
+<dd class="field-even"><p><strong>minima</strong> : ndarray or tuple[ndarray]</p>
+<blockquote>
+<div><p>If <cite>indices</cite> is false, a boolean array with the same shape as <cite>image</cite>
 is returned with <code class="docutils literal notranslate"><span class="pre">True</span></code> indicating the position of local minima
 (<code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise). If <cite>indices</cite> is true, a tuple of one-dimensional
 arrays containing the coordinates (indices) of all found minima.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.morphology.local_maxima" title="skimage.morphology.local_maxima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.local_maxima</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.h_maxima" title="skimage.morphology.h_maxima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.h_maxima</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.h_minima" title="skimage.morphology.h_minima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.h_minima</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.morphology.local_maxima" title="skimage.morphology.local_maxima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.local_maxima</span></code></a>, <a class="reference internal" href="#skimage.morphology.h_maxima" title="skimage.morphology.h_maxima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.h_maxima</span></code></a>, <a class="reference internal" href="#skimage.morphology.h_minima" title="skimage.morphology.h_minima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.h_minima</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>This function operates on the following ideas:</p>
@@ -2500,38 +2606,46 @@ connectivity):</p>
 <dd><p>Mask corresponding to a flood fill.</p>
 <p>Starting at a specific <cite>seed_point</cite>, connected points equal or within
 <cite>tolerance</cite> of the seed value are found.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>An n-dimensional array.</p>
-</dd>
-<dt><strong>seed_point</strong><span class="classifier">tuple or int</span></dt><dd><p>The point in <cite>image</cite> used as the starting point for the flood fill.  If
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>An n-dimensional array.</p>
+</div></blockquote>
+<p><strong>seed_point</strong> : tuple or int</p>
+<blockquote>
+<div><p>The point in <cite>image</cite> used as the starting point for the flood fill.  If
 the image is 1D, this point may be given as an integer.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>A structuring element used to determine the neighborhood of each
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>A structuring element used to determine the neighborhood of each
 evaluated pixel. It must contain only 1’s and 0’s, have the same number
 of dimensions as <cite>image</cite>. If not given, all adjacent pixels are
 considered as part of the neighborhood (fully connected).</p>
-</dd>
-<dt><strong>connectivity</strong><span class="classifier">int, optional</span></dt><dd><p>A number used to determine the neighborhood of each evaluated pixel.
+</div></blockquote>
+<p><strong>connectivity</strong> : int, optional</p>
+<blockquote>
+<div><p>A number used to determine the neighborhood of each evaluated pixel.
 Adjacent pixels whose squared distance from the center is larger or
 equal to <cite>connectivity</cite> are considered neighbors. Ignored if
 <cite>selem</cite> is not None.</p>
-</dd>
-<dt><strong>tolerance</strong><span class="classifier">float or int, optional</span></dt><dd><p>If None (default), adjacent values must be strictly equal to the
+</div></blockquote>
+<p><strong>tolerance</strong> : float or int, optional</p>
+<blockquote>
+<div><p>If None (default), adjacent values must be strictly equal to the
 initial value of <cite>image</cite> at <cite>seed_point</cite>.  This is fastest.  If a value
 is given, a comparison will be done at every point and if within
 tolerance of the initial value will also be filled (inclusive).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>mask</strong><span class="classifier">ndarray</span></dt><dd><p>A Boolean array with the same shape as <cite>image</cite> is returned, with True
+<dd class="field-even"><p><strong>mask</strong> : ndarray</p>
+<blockquote>
+<div><p>A Boolean array with the same shape as <cite>image</cite> is returned, with True
 values for areas connected to and equal (or within tolerance of) the
 seed point.  All other values are False.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -2601,43 +2715,55 @@ this mask.</p>
 <cite>tolerance</cite> of the seed value are found, then set to <cite>new_value</cite>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>An n-dimensional array.</p>
-</dd>
-<dt><strong>seed_point</strong><span class="classifier">tuple or int</span></dt><dd><p>The point in <cite>image</cite> used as the starting point for the flood fill.  If
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>An n-dimensional array.</p>
+</div></blockquote>
+<p><strong>seed_point</strong> : tuple or int</p>
+<blockquote>
+<div><p>The point in <cite>image</cite> used as the starting point for the flood fill.  If
 the image is 1D, this point may be given as an integer.</p>
-</dd>
-<dt><strong>new_value</strong><span class="classifier"><cite>image</cite> type</span></dt><dd><p>New value to set the entire fill.  This must be chosen in agreement
+</div></blockquote>
+<p><strong>new_value</strong> : <cite>image</cite> type</p>
+<blockquote>
+<div><p>New value to set the entire fill.  This must be chosen in agreement
 with the dtype of <cite>image</cite>.</p>
-</dd>
-<dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>A structuring element used to determine the neighborhood of each
+</div></blockquote>
+<p><strong>selem</strong> : ndarray, optional</p>
+<blockquote>
+<div><p>A structuring element used to determine the neighborhood of each
 evaluated pixel. It must contain only 1’s and 0’s, have the same number
 of dimensions as <cite>image</cite>. If not given, all adjacent pixels are
 considered as part of the neighborhood (fully connected).</p>
-</dd>
-<dt><strong>connectivity</strong><span class="classifier">int, optional</span></dt><dd><p>A number used to determine the neighborhood of each evaluated pixel.
+</div></blockquote>
+<p><strong>connectivity</strong> : int, optional</p>
+<blockquote>
+<div><p>A number used to determine the neighborhood of each evaluated pixel.
 Adjacent pixels whose squared distance from the center is less than or
 equal to <cite>connectivity</cite> are considered neighbors. Ignored if <cite>selem</cite> is
 not None.</p>
-</dd>
-<dt><strong>tolerance</strong><span class="classifier">float or int, optional</span></dt><dd><p>If None (default), adjacent values must be strictly equal to the
+</div></blockquote>
+<p><strong>tolerance</strong> : float or int, optional</p>
+<blockquote>
+<div><p>If None (default), adjacent values must be strictly equal to the
 value of <cite>image</cite> at <cite>seed_point</cite> to be filled.  This is fastest.
 If a tolerance is provided, adjacent points with values within plus or
 minus tolerance from the seed point are filled (inclusive).</p>
-</dd>
-<dt><strong>inplace</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, flood filling is applied to <cite>image</cite> inplace.  If False, the
+</div></blockquote>
+<p><strong>inplace</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, flood filling is applied to <cite>image</cite> inplace.  If False, the
 flood filled result is returned without modifying the input <cite>image</cite>
 (default).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>filled</strong><span class="classifier">ndarray</span></dt><dd><p>An array with the same shape as <cite>image</cite> is returned, with values in
+<dd class="field-even"><p><strong>filled</strong> : ndarray</p>
+<blockquote>
+<div><p>An array with the same shape as <cite>image</cite> is returned, with values in
 areas connected to and equal (or within tolerance of) the seed point
 replaced with <cite>new_value</cite>.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -2699,52 +2825,56 @@ one level is represented by one reference pixel at this level, which is
 parent to all other pixels at that level and to the reference pixel at the
 level above. The max-tree is the basis for many morphological operators,
 namely connected operators.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image: ndarray</strong></dt><dd><p>The input image for which the max-tree is to be calculated.
+<dd class="field-odd"><p><strong>image: ndarray</strong></p>
+<blockquote>
+<div><p>The input image for which the max-tree is to be calculated.
 This image can be of any type.</p>
-</dd>
-<dt><strong>connectivity: unsigned int, optional</strong></dt><dd><p>The neighborhood connectivity. The integer represents the maximum
+</div></blockquote>
+<p><strong>connectivity: unsigned int, optional</strong></p>
+<blockquote>
+<div><p>The neighborhood connectivity. The integer represents the maximum
 number of orthogonal steps to reach a neighbor. In 2D, it is 1 for
 a 4-neighborhood and 2 for a 8-neighborhood. Default value is 1.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>parent: ndarray, int64</dt><dd><p>Array of same shape as image. The value of each pixel is the index of
+<dd class="field-even"><p>parent: ndarray, int64</p>
+<blockquote>
+<div><p>Array of same shape as image. The value of each pixel is the index of
 its parent in the ravelled array.</p>
-</dd>
-<dt>tree_traverser: 1D array, int64</dt><dd><p>The ordered pixel indices (referring to the ravelled array). The pixels
+</div></blockquote>
+<p>tree_traverser: 1D array, int64</p>
+<blockquote>
+<div><p>The ordered pixel indices (referring to the ravelled array). The pixels
 are ordered such that every pixel is preceded by its parent (except for
 the root which has no parent).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rd26fa56f6eaa-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r429"><span class="brackets"><a class="fn-backref" href="#id26">R429</a></span></dt>
 <dd><p>Salembier, P., Oliveras, A., &amp; Garrido, L. (1998). Antiextensive
 Connected Operators for Image and Sequence Processing.
 IEEE Transactions on Image Processing, 7(4), 555-570.
 <a class="reference external" href="https://doi.org/10.1109/83.663500">DOI:10.1109/83.663500</a></p>
 </dd>
-<dt class="label" id="rd26fa56f6eaa-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r430"><span class="brackets"><a class="fn-backref" href="#id27">R430</a></span></dt>
 <dd><p>Berger, C., Geraud, T., Levillain, R., Widynski, N., Baillard, A.,
 Bertin, E. (2007). Effective Component Tree Computation with
 Application to Pattern Recognition in Astronomical Imaging.
 In International Conference on Image Processing (ICIP) (pp. 41-44).
 <a class="reference external" href="https://doi.org/10.1109/ICIP.2007.4379949">DOI:10.1109/ICIP.2007.4379949</a></p>
 </dd>
-<dt class="label" id="rd26fa56f6eaa-3"><span class="brackets">3</span></dt>
+<dt class="label" id="r431"><span class="brackets"><a class="fn-backref" href="#id28">R431</a></span></dt>
 <dd><p>Najman, L., &amp; Couprie, M. (2006). Building the component tree in
 quasi-linear time. IEEE Transactions on Image Processing, 15(11),
 3531-3539.
 <a class="reference external" href="https://doi.org/10.1109/TIP.2006.877518">DOI:10.1109/TIP.2006.877518</a></p>
 </dd>
-<dt class="label" id="rd26fa56f6eaa-4"><span class="brackets">4</span></dt>
+<dt class="label" id="r432"><span class="brackets"><a class="fn-backref" href="#id29">R432</a></span></dt>
 <dd><p>Carlinet, E., &amp; Geraud, T. (2014). A Comparative Review of
 Component Tree Computation Algorithms. IEEE Transactions on Image
 Processing, 23(9), 3885-3895.
@@ -2786,73 +2916,74 @@ with area_threshold=1 is the identity.</p>
 remove_small_objects; this operator is thus extended to gray-level images.</p>
 <p>Technically, this operator is based on the max-tree representation of
 the image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image: ndarray</strong></dt><dd><p>The input image for which the area_opening is to be calculated.
+<dd class="field-odd"><p><strong>image: ndarray</strong></p>
+<blockquote>
+<div><p>The input image for which the area_opening is to be calculated.
 This image can be of any type.</p>
-</dd>
-<dt><strong>area_threshold: unsigned int</strong></dt><dd><p>The size parameter (number of pixels). The default value is arbitrarily
+</div></blockquote>
+<p><strong>area_threshold: unsigned int</strong></p>
+<blockquote>
+<div><p>The size parameter (number of pixels). The default value is arbitrarily
 chosen to be 64.</p>
-</dd>
-<dt><strong>connectivity: unsigned int, optional</strong></dt><dd><p>The neighborhood connectivity. The integer represents the maximum
+</div></blockquote>
+<p><strong>connectivity: unsigned int, optional</strong></p>
+<blockquote>
+<div><p>The neighborhood connectivity. The integer represents the maximum
 number of orthogonal steps to reach a neighbor. In 2D, it is 1 for
 a 4-neighborhood and 2 for a 8-neighborhood. Default value is 1.</p>
-</dd>
-<dt><strong>parent: ndarray, int64, optional</strong></dt><dd><p>Parent image representing the max tree of the image. The
+</div></blockquote>
+<p><strong>parent: ndarray, int64, optional</strong></p>
+<blockquote>
+<div><p>Parent image representing the max tree of the image. The
 value of each pixel is the index of its parent in the ravelled array.</p>
-</dd>
-<dt><strong>tree_traverser: 1D array, int64, optional</strong></dt><dd><p>The ordered pixel indices (referring to the ravelled array). The pixels
+</div></blockquote>
+<p><strong>tree_traverser: 1D array, int64, optional</strong></p>
+<blockquote>
+<div><p>The ordered pixel indices (referring to the ravelled array). The pixels
 are ordered such that every pixel is preceded by its parent (except for
 the root which has no parent).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>output: ndarray</dt><dd><p>Output image of the same shape and type as the input image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p>output: ndarray</p>
+<blockquote>
+<div><p>Output image of the same shape and type as the input image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.morphology.area_closing" title="skimage.morphology.area_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_closing</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.diameter_opening" title="skimage.morphology.diameter_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_opening</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.diameter_closing" title="skimage.morphology.diameter_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_closing</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.max_tree" title="skimage.morphology.max_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.max_tree</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.remove_small_objects" title="skimage.morphology.remove_small_objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_objects</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.remove_small_holes" title="skimage.morphology.remove_small_holes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_holes</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.morphology.area_closing" title="skimage.morphology.area_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_closing</span></code></a>, <a class="reference internal" href="#skimage.morphology.diameter_opening" title="skimage.morphology.diameter_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_opening</span></code></a>, <a class="reference internal" href="#skimage.morphology.diameter_closing" title="skimage.morphology.diameter_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_closing</span></code></a>, <a class="reference internal" href="#skimage.morphology.max_tree" title="skimage.morphology.max_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.max_tree</span></code></a>, <a class="reference internal" href="#skimage.morphology.remove_small_objects" title="skimage.morphology.remove_small_objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_objects</span></code></a>, <a class="reference internal" href="#skimage.morphology.remove_small_holes" title="skimage.morphology.remove_small_holes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_holes</span></code></a></p>
 </div>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rab8157de4f2f-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r433"><span class="brackets"><a class="fn-backref" href="#id30">R433</a></span></dt>
 <dd><p>Vincent L., Proc. “Grayscale area openings and closings,
 their efficient implementation and applications”,
 EURASIP Workshop on Mathematical Morphology and its
 Applications to Signal Processing, Barcelona, Spain, pp.22-27,
 May 1993.</p>
 </dd>
-<dt class="label" id="rab8157de4f2f-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r434"><span class="brackets"><a class="fn-backref" href="#id31">R434</a></span></dt>
 <dd><p>Soille, P., “Morphological Image Analysis: Principles and
 Applications” (Chapter 6), 2nd edition (2003), ISBN 3540429883.
 DOI:10.1007/978-3-662-05088-0</p>
 </dd>
-<dt class="label" id="rab8157de4f2f-3"><span class="brackets">3</span></dt>
+<dt class="label" id="r435"><span class="brackets"><a class="fn-backref" href="#id32">R435</a></span></dt>
 <dd><p>Salembier, P., Oliveras, A., &amp; Garrido, L. (1998). Antiextensive
 Connected Operators for Image and Sequence Processing.
 IEEE Transactions on Image Processing, 7(4), 555-570.
 DOI:10.1109/83.663500</p>
 </dd>
-<dt class="label" id="rab8157de4f2f-4"><span class="brackets">4</span></dt>
+<dt class="label" id="r436"><span class="brackets"><a class="fn-backref" href="#id33">R436</a></span></dt>
 <dd><p>Najman, L., &amp; Couprie, M. (2006). Building the component tree in
 quasi-linear time. IEEE Transactions on Image Processing, 15(11),
 3531-3539.
 DOI:10.1109/TIP.2006.877518</p>
 </dd>
-<dt class="label" id="rab8157de4f2f-5"><span class="brackets">5</span></dt>
+<dt class="label" id="r437"><span class="brackets"><a class="fn-backref" href="#id34">R437</a></span></dt>
 <dd><p>Carlinet, E., &amp; Geraud, T. (2014). A Comparative Review of
 Component Tree Computation Algorithms. IEEE Transactions on Image
 Processing, 23(9), 3885-3895.
@@ -2896,46 +3027,47 @@ one, with surface = area_threshold.</p>
 remove_small_holes; this operator is thus extended to gray-level images.</p>
 <p>Technically, this operator is based on the max-tree representation of
 the image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image: ndarray</strong></dt><dd><p>The input image for which the area_closing is to be calculated.
+<dd class="field-odd"><p><strong>image: ndarray</strong></p>
+<blockquote>
+<div><p>The input image for which the area_closing is to be calculated.
 This image can be of any type.</p>
-</dd>
-<dt><strong>area_threshold: unsigned int</strong></dt><dd><p>The size parameter (number of pixels). The default value is arbitrarily
+</div></blockquote>
+<p><strong>area_threshold: unsigned int</strong></p>
+<blockquote>
+<div><p>The size parameter (number of pixels). The default value is arbitrarily
 chosen to be 64.</p>
-</dd>
-<dt><strong>connectivity: unsigned int, optional</strong></dt><dd><p>The neighborhood connectivity. The integer represents the maximum
+</div></blockquote>
+<p><strong>connectivity: unsigned int, optional</strong></p>
+<blockquote>
+<div><p>The neighborhood connectivity. The integer represents the maximum
 number of orthogonal steps to reach a neighbor. In 2D, it is 1 for
 a 4-neighborhood and 2 for a 8-neighborhood. Default value is 1.</p>
-</dd>
-<dt><strong>parent: ndarray, int64, optional</strong></dt><dd><p>Parent image representing the max tree of the inverted image. The
+</div></blockquote>
+<p><strong>parent: ndarray, int64, optional</strong></p>
+<blockquote>
+<div><p>Parent image representing the max tree of the inverted image. The
 value of each pixel is the index of its parent in the ravelled array.
 See Note for further details.</p>
-</dd>
-<dt><strong>tree_traverser: 1D array, int64, optional</strong></dt><dd><p>The ordered pixel indices (referring to the ravelled array). The pixels
+</div></blockquote>
+<p><strong>tree_traverser: 1D array, int64, optional</strong></p>
+<blockquote>
+<div><p>The ordered pixel indices (referring to the ravelled array). The pixels
 are ordered such that every pixel is preceded by its parent (except for
 the root which has no parent).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>output: ndarray</dt><dd><p>Output image of the same shape and type as input image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p>output: ndarray</p>
+<blockquote>
+<div><p>Output image of the same shape and type as input image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.morphology.area_opening" title="skimage.morphology.area_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_opening</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.diameter_opening" title="skimage.morphology.diameter_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_opening</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.diameter_closing" title="skimage.morphology.diameter_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_closing</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.max_tree" title="skimage.morphology.max_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.max_tree</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.remove_small_objects" title="skimage.morphology.remove_small_objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_objects</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.remove_small_holes" title="skimage.morphology.remove_small_holes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_holes</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.morphology.area_opening" title="skimage.morphology.area_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_opening</span></code></a>, <a class="reference internal" href="#skimage.morphology.diameter_opening" title="skimage.morphology.diameter_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_opening</span></code></a>, <a class="reference internal" href="#skimage.morphology.diameter_closing" title="skimage.morphology.diameter_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_closing</span></code></a>, <a class="reference internal" href="#skimage.morphology.max_tree" title="skimage.morphology.max_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.max_tree</span></code></a>, <a class="reference internal" href="#skimage.morphology.remove_small_objects" title="skimage.morphology.remove_small_objects"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_objects</span></code></a>, <a class="reference internal" href="#skimage.morphology.remove_small_holes" title="skimage.morphology.remove_small_holes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_holes</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>If a max-tree representation (parent and tree_traverser) are given to the
@@ -2945,31 +3077,31 @@ function, i.e.:
 &gt;&gt;&gt; closed = diameter_closing(f, 3, parent=P, tree_traverser=S)</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rce2615f30276-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r438"><span class="brackets"><a class="fn-backref" href="#id35">R438</a></span></dt>
 <dd><p>Vincent L., Proc. “Grayscale area openings and closings,
 their efficient implementation and applications”,
 EURASIP Workshop on Mathematical Morphology and its
 Applications to Signal Processing, Barcelona, Spain, pp.22-27,
 May 1993.</p>
 </dd>
-<dt class="label" id="rce2615f30276-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r439"><span class="brackets"><a class="fn-backref" href="#id36">R439</a></span></dt>
 <dd><p>Soille, P., “Morphological Image Analysis: Principles and
 Applications” (Chapter 6), 2nd edition (2003), ISBN 3540429883.
 <a class="reference external" href="https://doi.org/10.1007/978-3-662-05088-0">DOI:10.1007/978-3-662-05088-0</a></p>
 </dd>
-<dt class="label" id="rce2615f30276-3"><span class="brackets">3</span></dt>
+<dt class="label" id="r440"><span class="brackets"><a class="fn-backref" href="#id37">R440</a></span></dt>
 <dd><p>Salembier, P., Oliveras, A., &amp; Garrido, L. (1998). Antiextensive
 Connected Operators for Image and Sequence Processing.
 IEEE Transactions on Image Processing, 7(4), 555-570.
 <a class="reference external" href="https://doi.org/10.1109/83.663500">DOI:10.1109/83.663500</a></p>
 </dd>
-<dt class="label" id="rce2615f30276-4"><span class="brackets">4</span></dt>
+<dt class="label" id="r441"><span class="brackets"><a class="fn-backref" href="#id38">R441</a></span></dt>
 <dd><p>Najman, L., &amp; Couprie, M. (2006). Building the component tree in
 quasi-linear time. IEEE Transactions on Image Processing, 15(11),
 3531-3539.
 <a class="reference external" href="https://doi.org/10.1109/TIP.2006.877518">DOI:10.1109/TIP.2006.877518</a></p>
 </dd>
-<dt class="label" id="rce2615f30276-5"><span class="brackets">5</span></dt>
+<dt class="label" id="r442"><span class="brackets"><a class="fn-backref" href="#id39">R442</a></span></dt>
 <dd><p>Carlinet, E., &amp; Geraud, T. (2014). A Comparative Review of
 Component Tree Computation Algorithms. IEEE Transactions on Image
 Processing, 23(9), 3885-3895.
@@ -3010,47 +3142,50 @@ the result is similar to a morphological opening, but long and thin
 structures are not removed.</p>
 <p>Technically, this operator is based on the max-tree representation of
 the image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image: ndarray</strong></dt><dd><p>The input image for which the area_opening is to be calculated.
+<dd class="field-odd"><p><strong>image: ndarray</strong></p>
+<blockquote>
+<div><p>The input image for which the area_opening is to be calculated.
 This image can be of any type.</p>
-</dd>
-<dt><strong>diameter_threshold: unsigned int</strong></dt><dd><p>The maximal extension parameter (number of pixels). The default value
+</div></blockquote>
+<p><strong>diameter_threshold: unsigned int</strong></p>
+<blockquote>
+<div><p>The maximal extension parameter (number of pixels). The default value
 is 8.</p>
-</dd>
-<dt><strong>connectivity: unsigned int, optional</strong></dt><dd><p>The neighborhood connectivity. The integer represents the maximum
+</div></blockquote>
+<p><strong>connectivity: unsigned int, optional</strong></p>
+<blockquote>
+<div><p>The neighborhood connectivity. The integer represents the maximum
 number of orthogonal steps to reach a neighbor. In 2D, it is 1 for
 a 4-neighborhood and 2 for a 8-neighborhood. Default value is 1.</p>
-</dd>
-<dt><strong>parent: ndarray, int64, optional</strong></dt><dd><p>Parent image representing the max tree of the image. The
+</div></blockquote>
+<p><strong>parent: ndarray, int64, optional</strong></p>
+<blockquote>
+<div><p>Parent image representing the max tree of the image. The
 value of each pixel is the index of its parent in the ravelled array.</p>
-</dd>
-<dt><strong>tree_traverser: 1D array, int64, optional</strong></dt><dd><p>The ordered pixel indices (referring to the ravelled array). The pixels
+</div></blockquote>
+<p><strong>tree_traverser: 1D array, int64, optional</strong></p>
+<blockquote>
+<div><p>The ordered pixel indices (referring to the ravelled array). The pixels
 are ordered such that every pixel is preceded by its parent (except for
 the root which has no parent).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>output: ndarray</dt><dd><p>Output image of the same shape and type as the input image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p>output: ndarray</p>
+<blockquote>
+<div><p>Output image of the same shape and type as the input image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.morphology.area_opening" title="skimage.morphology.area_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_opening</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.area_closing" title="skimage.morphology.area_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_closing</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.diameter_closing" title="skimage.morphology.diameter_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_closing</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.max_tree" title="skimage.morphology.max_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.max_tree</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.morphology.area_opening" title="skimage.morphology.area_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_opening</span></code></a>, <a class="reference internal" href="#skimage.morphology.area_closing" title="skimage.morphology.area_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_closing</span></code></a>, <a class="reference internal" href="#skimage.morphology.diameter_closing" title="skimage.morphology.diameter_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_closing</span></code></a>, <a class="reference internal" href="#skimage.morphology.max_tree" title="skimage.morphology.max_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.max_tree</span></code></a></p>
 </div>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rff2b90016d8e-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r443"><span class="brackets"><a class="fn-backref" href="#id40">R443</a></span></dt>
 <dd><p>Walter, T., &amp; Klein, J.-C. (2002). Automatic Detection of
 Microaneurysms in Color Fundus Images of the Human Retina by Means
 of the Bounding Box Closing. In A. Colosimo, P. Sirabella,
@@ -3058,7 +3193,7 @@ A. Giuliani (Eds.), Medical Data Analysis. Lecture Notes in Computer
 Science, vol 2526, pp. 210-220. Springer Berlin Heidelberg.
 <a class="reference external" href="https://doi.org/10.1007/3-540-36104-9_23">DOI:10.1007/3-540-36104-9_23</a></p>
 </dd>
-<dt class="label" id="rff2b90016d8e-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r444"><span class="brackets"><a class="fn-backref" href="#id41">R444</a></span></dt>
 <dd><p>Carlinet, E., &amp; Geraud, T. (2014). A Comparative Review of
 Component Tree Computation Algorithms. IEEE Transactions on Image
 Processing, 23(9), 3885-3895.
@@ -3099,45 +3234,48 @@ the result is similar to a morphological closing, but long and thin
 structures are not removed.</p>
 <p>Technically, this operator is based on the max-tree representation of
 the image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image: ndarray</strong></dt><dd><p>The input image for which the diameter_closing is to be calculated.
+<dd class="field-odd"><p><strong>image: ndarray</strong></p>
+<blockquote>
+<div><p>The input image for which the diameter_closing is to be calculated.
 This image can be of any type.</p>
-</dd>
-<dt><strong>diameter_threshold: unsigned int</strong></dt><dd><p>The maximal extension parameter (number of pixels). The default value
+</div></blockquote>
+<p><strong>diameter_threshold: unsigned int</strong></p>
+<blockquote>
+<div><p>The maximal extension parameter (number of pixels). The default value
 is 8.</p>
-</dd>
-<dt><strong>connectivity: unsigned int, optional</strong></dt><dd><p>The neighborhood connectivity. The integer represents the maximum
+</div></blockquote>
+<p><strong>connectivity: unsigned int, optional</strong></p>
+<blockquote>
+<div><p>The neighborhood connectivity. The integer represents the maximum
 number of orthogonal steps to reach a neighbor. In 2D, it is 1 for
 a 4-neighborhood and 2 for a 8-neighborhood. Default value is 1.</p>
-</dd>
-<dt><strong>parent: ndarray, int64, optional</strong></dt><dd><p>Precomputed parent image representing the max tree of the inverted
+</div></blockquote>
+<p><strong>parent: ndarray, int64, optional</strong></p>
+<blockquote>
+<div><p>Precomputed parent image representing the max tree of the inverted
 image. This function is fast, if precomputed parent and tree_traverser
 are provided. See Note for further details.</p>
-</dd>
-<dt><strong>tree_traverser: 1D array, int64, optional</strong></dt><dd><p>Precomputed traverser, where the pixels are ordered such that every
+</div></blockquote>
+<p><strong>tree_traverser: 1D array, int64, optional</strong></p>
+<blockquote>
+<div><p>Precomputed traverser, where the pixels are ordered such that every
 pixel is preceded by its parent (except for the root which has no
 parent). This function is fast, if precomputed parent and
 tree_traverser are provided. See Note for further details.</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt>output: ndarray</dt><dd><p>Output image of the same shape and type as input image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p>output: ndarray</p>
+<blockquote>
+<div><p>Output image of the same shape and type as input image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.morphology.area_opening" title="skimage.morphology.area_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_opening</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.area_closing" title="skimage.morphology.area_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_closing</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.diameter_opening" title="skimage.morphology.diameter_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_opening</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.max_tree" title="skimage.morphology.max_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.max_tree</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.morphology.area_opening" title="skimage.morphology.area_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_opening</span></code></a>, <a class="reference internal" href="#skimage.morphology.area_closing" title="skimage.morphology.area_closing"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.area_closing</span></code></a>, <a class="reference internal" href="#skimage.morphology.diameter_opening" title="skimage.morphology.diameter_opening"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.diameter_opening</span></code></a>, <a class="reference internal" href="#skimage.morphology.max_tree" title="skimage.morphology.max_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.max_tree</span></code></a></p>
 </div>
 <p class="rubric">Notes</p>
 <p>If a max-tree representation (parent and tree_traverser) are given to the
@@ -3147,7 +3285,7 @@ function, i.e.:
 &gt;&gt;&gt; closed = diameter_closing(f, 3, parent=P, tree_traverser=S)</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r0f793839edcd-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r445"><span class="brackets"><a class="fn-backref" href="#id42">R445</a></span></dt>
 <dd><p>Walter, T., &amp; Klein, J.-C. (2002). Automatic Detection of
 Microaneurysms in Color Fundus Images of the Human Retina by Means
 of the Bounding Box Closing. In A. Colosimo, P. Sirabella,
@@ -3155,7 +3293,7 @@ A. Giuliani (Eds.), Medical Data Analysis. Lecture Notes in Computer
 Science, vol 2526, pp. 210-220. Springer Berlin Heidelberg.
 <a class="reference external" href="https://doi.org/10.1007/3-540-36104-9_23">DOI:10.1007/3-540-36104-9_23</a></p>
 </dd>
-<dt class="label" id="r0f793839edcd-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r446"><span class="brackets"><a class="fn-backref" href="#id43">R446</a></span></dt>
 <dd><p>Carlinet, E., &amp; Geraud, T. (2014). A Comparative Review of
 Component Tree Computation Algorithms. IEEE Transactions on Image
 Processing, 23(9), 3885-3895.
@@ -3202,65 +3340,68 @@ neighborhood of the set. The function labels the local maxima.</p>
 of an image. The function is very efficient if the max-tree representation
 has already been computed. Otherwise, it is preferable to use
 the function local_maxima.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>The input image for which the maxima are to be calculated.</p>
-</dd>
-<dt><strong>connectivity: unsigned int, optional</strong></dt><dd><p>The neighborhood connectivity. The integer represents the maximum
+<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
+<blockquote>
+<div><p>The input image for which the maxima are to be calculated.</p>
+</div></blockquote>
+<p><strong>connectivity: unsigned int, optional</strong></p>
+<blockquote>
+<div><p>The neighborhood connectivity. The integer represents the maximum
 number of orthogonal steps to reach a neighbor. In 2D, it is 1 for
 a 4-neighborhood and 2 for a 8-neighborhood. Default value is 1.</p>
-</dd>
-<dt><strong>parent: ndarray, int64, optional</strong></dt><dd><p>The value of each pixel is the index of its parent in the ravelled
+</div></blockquote>
+<p><strong>parent: ndarray, int64, optional</strong></p>
+<blockquote>
+<div><p>The value of each pixel is the index of its parent in the ravelled
 array.</p>
-</dd>
-<dt><strong>tree_traverser: 1D array, int64, optional</strong></dt><dd><p>The ordered pixel indices (referring to the ravelled array). The pixels
+</div></blockquote>
+<p><strong>tree_traverser: 1D array, int64, optional</strong></p>
+<blockquote>
+<div><p>The ordered pixel indices (referring to the ravelled array). The pixels
 are ordered such that every pixel is preceded by its parent (except for
 the root which has no parent).</p>
-</dd>
-</dl>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>local_max</strong><span class="classifier">ndarray, uint64</span></dt><dd><p>Labeled local maxima of the image.</p>
-</dd>
-</dl>
+<dd class="field-even"><p><strong>local_max</strong> : ndarray, uint64</p>
+<blockquote>
+<div><p>Labeled local maxima of the image.</p>
+</div></blockquote>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><a class="reference internal" href="#skimage.morphology.local_maxima" title="skimage.morphology.local_maxima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.local_maxima</span></code></a></dt><dd></dd>
-<dt><a class="reference internal" href="#skimage.morphology.max_tree" title="skimage.morphology.max_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.max_tree</span></code></a></dt><dd></dd>
-</dl>
+<p><a class="reference internal" href="#skimage.morphology.local_maxima" title="skimage.morphology.local_maxima"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.local_maxima</span></code></a>, <a class="reference internal" href="#skimage.morphology.max_tree" title="skimage.morphology.max_tree"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.max_tree</span></code></a></p>
 </div>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r3593ae75839c-1"><span class="brackets">1</span></dt>
+<dt class="label" id="r447"><span class="brackets"><a class="fn-backref" href="#id44">R447</a></span></dt>
 <dd><p>Vincent L., Proc. “Grayscale area openings and closings,
 their efficient implementation and applications”,
 EURASIP Workshop on Mathematical Morphology and its
 Applications to Signal Processing, Barcelona, Spain, pp.22-27,
 May 1993.</p>
 </dd>
-<dt class="label" id="r3593ae75839c-2"><span class="brackets">2</span></dt>
+<dt class="label" id="r448"><span class="brackets"><a class="fn-backref" href="#id45">R448</a></span></dt>
 <dd><p>Soille, P., “Morphological Image Analysis: Principles and
 Applications” (Chapter 6), 2nd edition (2003), ISBN 3540429883.
 <a class="reference external" href="https://doi.org/10.1007/978-3-662-05088-0">DOI:10.1007/978-3-662-05088-0</a></p>
 </dd>
-<dt class="label" id="r3593ae75839c-3"><span class="brackets">3</span></dt>
+<dt class="label" id="r449"><span class="brackets"><a class="fn-backref" href="#id46">R449</a></span></dt>
 <dd><p>Salembier, P., Oliveras, A., &amp; Garrido, L. (1998). Antiextensive
 Connected Operators for Image and Sequence Processing.
 IEEE Transactions on Image Processing, 7(4), 555-570.
 <a class="reference external" href="https://doi.org/10.1109/83.663500">DOI:10.1109/83.663500</a></p>
 </dd>
-<dt class="label" id="r3593ae75839c-4"><span class="brackets">4</span></dt>
+<dt class="label" id="r450"><span class="brackets"><a class="fn-backref" href="#id47">R450</a></span></dt>
 <dd><p>Najman, L., &amp; Couprie, M. (2006). Building the component tree in
 quasi-linear time. IEEE Transactions on Image Processing, 15(11),
 3531-3539.
 <a class="reference external" href="https://doi.org/10.1109/TIP.2006.877518">DOI:10.1109/TIP.2006.877518</a></p>
 </dd>
-<dt class="label" id="r3593ae75839c-5"><span class="brackets">5</span></dt>
+<dt class="label" id="r451"><span class="brackets"><a class="fn-backref" href="#id48">R451</a></span></dt>
 <dd><p>Carlinet, E., &amp; Geraud, T. (2014). A Comparative Review of
 Component Tree Computation Algorithms. IEEE Transactions on Image
 Processing, 23(9), 3885-3895.
