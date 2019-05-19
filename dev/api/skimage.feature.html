@@ -1340,7 +1340,7 @@ the image boundaries.</p>
 <h2>structure_tensor_eigvals<a class="headerlink" href="#structure-tensor-eigvals" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.structure_tensor_eigvals">
-<code class="descclassname">skimage.feature.</code><code class="descname">structure_tensor_eigvals</code><span class="sig-paren">(</span><em>Axx</em>, <em>Axy</em>, <em>Ayy</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L262"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.structure_tensor_eigvals" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">structure_tensor_eigvals</code><span class="sig-paren">(</span><em>Axx</em>, <em>Axy</em>, <em>Ayy</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L250"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.structure_tensor_eigvals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Eigen values of structure tensor.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1388,7 +1388,7 @@ the image boundaries.</p>
 <h2>hessian_matrix<a class="headerlink" href="#hessian-matrix" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.hessian_matrix">
-<code class="descclassname">skimage.feature.</code><code class="descname">hessian_matrix</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>mode='constant'</em>, <em>cval=0</em>, <em>order=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L106"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.hessian_matrix" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">hessian_matrix</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>mode='constant'</em>, <em>cval=0</em>, <em>order='rc'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L106"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.hessian_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Hessian matrix.</p>
 <p>The Hessian matrix is defined as:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">H</span> <span class="o">=</span> <span class="p">[</span><span class="n">Hrr</span> <span class="n">Hrc</span><span class="p">]</span>
@@ -1396,7 +1396,7 @@ the image boundaries.</p>
 </pre></div>
 </div>
 <p>which is computed by convolving the image with the second derivatives
-of the Gaussian kernel in the respective x- and y-directions.</p>
+of the Gaussian kernel in the respective r- and c-directions.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>image</strong> : ndarray</p>
@@ -1417,12 +1417,12 @@ weighting function for the auto-correlation matrix.</p>
 <div><p>Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p>
 </div></blockquote>
-<p><strong>order</strong> : {‘xy’, ‘rc’}, optional</p>
+<p><strong>order</strong> : {‘rc’, ‘xy’}, optional</p>
 <blockquote>
 <div><p>This parameter allows for the use of reverse or forward order of
-the image axes in gradient computation. ‘xy’ indicates the usage
-of the last axis initially (Hxx, Hxy, Hyy), whilst ‘rc’ indicates
-the use of the first axis initially (Hrr, Hrc, Hcc).</p>
+the image axes in gradient computation. ‘rc’ indicates the use of
+the first axis initially (Hrr, Hrc, Hcc), whilst ‘xy’ indicates the
+usage of the last axis initially (Hxx, Hxy, Hyy)</p>
 </div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1444,7 +1444,7 @@ the use of the first axis initially (Hrr, Hrc, Hcc).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <span class="n">hessian_matrix</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">square</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">square</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">Hrr</span><span class="p">,</span> <span class="n">Hrc</span><span class="p">,</span> <span class="n">Hcc</span> <span class="o">=</span> <span class="n">hessian_matrix</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">order</span> <span class="o">=</span> <span class="s1">&#39;rc&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Hrr</span><span class="p">,</span> <span class="n">Hrc</span><span class="p">,</span> <span class="n">Hcc</span> <span class="o">=</span> <span class="n">hessian_matrix</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;rc&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">Hrc</span>
 <span class="go">array([[ 0.,  0.,  0.,  0.,  0.],</span>
 <span class="go">       [ 0.,  1.,  0., -1.,  0.],</span>
@@ -1460,7 +1460,7 @@ the use of the first axis initially (Hrr, Hrc, Hcc).</p>
 <h2>hessian_matrix_det<a class="headerlink" href="#hessian-matrix-det" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.hessian_matrix_det">
-<code class="descclassname">skimage.feature.</code><code class="descname">hessian_matrix_det</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>approximate=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L211"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.hessian_matrix_det" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">hessian_matrix_det</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>approximate=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L199"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.hessian_matrix_det" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the approximate Hessian Determinant over an image.</p>
 <p>The 2D approximate method uses box filters over integral images to
 compute the approximate Hessian Determinant, as described in <a class="reference internal" href="#r180" id="id24"><span>[R180]</span></a>.</p>
@@ -1509,7 +1509,7 @@ computed the Hessian and took its determinant.</p>
 <h2>hessian_matrix_eigvals<a class="headerlink" href="#hessian-matrix-eigvals" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.hessian_matrix_eigvals">
-<code class="descclassname">skimage.feature.</code><code class="descname">hessian_matrix_eigvals</code><span class="sig-paren">(</span><em>H_elems</em>, <em>Hxy=None</em>, <em>Hyy=None</em>, <em>Hxx=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L299"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.hessian_matrix_eigvals" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">hessian_matrix_eigvals</code><span class="sig-paren">(</span><em>H_elems</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L287"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.hessian_matrix_eigvals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Eigenvalues of Hessian matrix.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1517,18 +1517,6 @@ computed the Hessian and took its determinant.</p>
 <blockquote>
 <div><p>The upper-diagonal elements of the Hessian matrix, as returned
 by <cite>hessian_matrix</cite>.</p>
-</div></blockquote>
-<p><strong>Hxy</strong> : ndarray, deprecated</p>
-<blockquote>
-<div><p>Element of the Hessian matrix for each pixel in the input image.</p>
-</div></blockquote>
-<p><strong>Hyy</strong> : ndarray, deprecated</p>
-<blockquote>
-<div><p>Element of the Hessian matrix for each pixel in the input image.</p>
-</div></blockquote>
-<p><strong>Hxx</strong> : ndarray, deprecated</p>
-<blockquote>
-<div><p>Element of the Hessian matrix for each pixel in the input image.</p>
 </div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1560,7 +1548,7 @@ contains the ith-largest eigenvalue at position (j, k).</p>
 <h2>shape_index<a class="headerlink" href="#shape-index" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.shape_index">
-<code class="descclassname">skimage.feature.</code><code class="descname">shape_index</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>mode='constant'</em>, <em>cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L352"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.shape_index" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">shape_index</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em>, <em>mode='constant'</em>, <em>cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L327"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.shape_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the shape index.</p>
 <p>The shape index, as defined by Koenderink &amp; van Doorn <a class="reference internal" href="#r181" id="id26"><span>[R181]</span></a>, is a
 single valued measure of local curvature, assuming the image as a 3D plane
@@ -1673,7 +1661,7 @@ Image and Vision Computing, 1992, 10, 557-564.
 <h2>corner_kitchen_rosenfeld<a class="headerlink" href="#corner-kitchen-rosenfeld" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_kitchen_rosenfeld">
-<code class="descclassname">skimage.feature.</code><code class="descname">corner_kitchen_rosenfeld</code><span class="sig-paren">(</span><em>image</em>, <em>mode='constant'</em>, <em>cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L424"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_kitchen_rosenfeld" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">corner_kitchen_rosenfeld</code><span class="sig-paren">(</span><em>image</em>, <em>mode='constant'</em>, <em>cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L399"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_kitchen_rosenfeld" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Kitchen and Rosenfeld corner measure response image.</p>
 <p>The corner measure is calculated as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">imxx</span> <span class="o">*</span> <span class="n">imy</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">imyy</span> <span class="o">*</span> <span class="n">imx</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">imxy</span> <span class="o">*</span> <span class="n">imx</span> <span class="o">*</span> <span class="n">imy</span><span class="p">)</span>
@@ -1712,7 +1700,7 @@ the image boundaries.</p>
 <h2>corner_harris<a class="headerlink" href="#corner-harris" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_harris">
-<code class="descclassname">skimage.feature.</code><code class="descname">corner_harris</code><span class="sig-paren">(</span><em>image</em>, <em>method='k'</em>, <em>k=0.05</em>, <em>eps=1e-06</em>, <em>sigma=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L467"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_harris" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">corner_harris</code><span class="sig-paren">(</span><em>image</em>, <em>method='k'</em>, <em>k=0.05</em>, <em>eps=1e-06</em>, <em>sigma=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L442"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_harris" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Harris corner measure response image.</p>
 <p>This corner detector uses information from the auto-correlation matrix A:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[(</span><span class="n">imx</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>   <span class="p">(</span><span class="n">imx</span><span class="o">*</span><span class="n">imy</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="n">Axx</span> <span class="n">Axy</span><span class="p">]</span>
@@ -1810,7 +1798,7 @@ weighting function for the auto-correlation matrix.</p>
 <h2>corner_shi_tomasi<a class="headerlink" href="#corner-shi-tomasi" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_shi_tomasi">
-<code class="descclassname">skimage.feature.</code><code class="descname">corner_shi_tomasi</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L547"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_shi_tomasi" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">corner_shi_tomasi</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L522"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_shi_tomasi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Shi-Tomasi (Kanade-Tomasi) corner measure response image.</p>
 <p>This corner detector uses information from the auto-correlation matrix A:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[(</span><span class="n">imx</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>   <span class="p">(</span><span class="n">imx</span><span class="o">*</span><span class="n">imy</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="n">Axx</span> <span class="n">Axy</span><span class="p">]</span>
@@ -1876,7 +1864,7 @@ weighting function for the auto-correlation matrix.</p>
 <h2>corner_foerstner<a class="headerlink" href="#corner-foerstner" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_foerstner">
-<code class="descclassname">skimage.feature.</code><code class="descname">corner_foerstner</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L609"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_foerstner" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">corner_foerstner</code><span class="sig-paren">(</span><em>image</em>, <em>sigma=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L584"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_foerstner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Foerstner corner measure response image.</p>
 <p>This corner detector uses information from the auto-correlation matrix A:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[(</span><span class="n">imx</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>   <span class="p">(</span><span class="n">imx</span><span class="o">*</span><span class="n">imy</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="n">Axx</span> <span class="n">Axy</span><span class="p">]</span>
@@ -1954,7 +1942,7 @@ weighting function for the auto-correlation matrix.</p>
 <h2>corner_subpix<a class="headerlink" href="#corner-subpix" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_subpix">
-<code class="descclassname">skimage.feature.</code><code class="descname">corner_subpix</code><span class="sig-paren">(</span><em>image</em>, <em>corners</em>, <em>window_size=11</em>, <em>alpha=0.99</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L752"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_subpix" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">corner_subpix</code><span class="sig-paren">(</span><em>image</em>, <em>corners</em>, <em>window_size=11</em>, <em>alpha=0.99</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L727"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_subpix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine subpixel position of corners.</p>
 <p>A statistical test decides whether the corner is defined as the
 intersection of two edges or a single peak. Depending on the classification
@@ -2037,7 +2025,7 @@ the output subpixel position is set to NaN.</p>
 <h2>corner_peaks<a class="headerlink" href="#corner-peaks" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_peaks">
-<code class="descclassname">skimage.feature.</code><code class="descname">corner_peaks</code><span class="sig-paren">(</span><em>image</em>, <em>min_distance=1</em>, <em>threshold_abs=None</em>, <em>threshold_rel=0.1</em>, <em>exclude_border=True</em>, <em>indices=True</em>, <em>num_peaks=inf</em>, <em>footprint=None</em>, <em>labels=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L927"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_peaks" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">corner_peaks</code><span class="sig-paren">(</span><em>image</em>, <em>min_distance=1</em>, <em>threshold_abs=None</em>, <em>threshold_rel=0.1</em>, <em>exclude_border=True</em>, <em>indices=True</em>, <em>num_peaks=inf</em>, <em>footprint=None</em>, <em>labels=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L902"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_peaks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find corners in corner measure response image.</p>
 <p>This differs from <cite>skimage.feature.peak_local_max</cite> in that it suppresses
 multiple connected peaks with the same accumulator value.</p>
@@ -2090,7 +2078,7 @@ multiple connected peaks with the same accumulator value.</p>
 <h2>corner_moravec<a class="headerlink" href="#corner-moravec" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_moravec">
-<code class="descclassname">skimage.feature.</code><code class="descname">corner_moravec</code><span class="sig-paren">(</span><em>image</em>, <em>window_size=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L981"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_moravec" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">corner_moravec</code><span class="sig-paren">(</span><em>image</em>, <em>window_size=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L956"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_moravec" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Moravec corner measure response image.</p>
 <p>This is one of the simplest corner detectors and is comparatively fast but
 has several limitations (e.g. not rotation invariant).</p>
@@ -2147,7 +2135,7 @@ has several limitations (e.g. not rotation invariant).</p>
 <h2>corner_fast<a class="headerlink" href="#corner-fast" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_fast">
-<code class="descclassname">skimage.feature.</code><code class="descname">corner_fast</code><span class="sig-paren">(</span><em>image</em>, <em>n=12</em>, <em>threshold=0.15</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L689"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_fast" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">corner_fast</code><span class="sig-paren">(</span><em>image</em>, <em>n=12</em>, <em>threshold=0.15</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L664"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_fast" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract FAST corners for a given image.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2220,7 +2208,7 @@ threshold when more corners are desired and vice-versa.</p>
 <h2>corner_orientations<a class="headerlink" href="#corner-orientations" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_orientations">
-<code class="descclassname">skimage.feature.</code><code class="descname">corner_orientations</code><span class="sig-paren">(</span><em>image</em>, <em>corners</em>, <em>mask</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L1028"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_orientations" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.feature.</code><code class="descname">corner_orientations</code><span class="sig-paren">(</span><em>image</em>, <em>corners</em>, <em>mask</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L1003"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_orientations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the orientation of corners.</p>
 <p>The orientation of corners is computed using the first order central moment
 i.e. the center of mass approach. The corner orientation is the angle of

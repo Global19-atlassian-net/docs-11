@@ -374,7 +374,7 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 <h2>regionprops<a class="headerlink" href="#regionprops" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.regionprops">
-<code class="descclassname">skimage.measure.</code><code class="descname">regionprops</code><span class="sig-paren">(</span><em>label_image</em>, <em>intensity_image=None</em>, <em>cache=True</em>, <em>coordinates=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L361"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">regionprops</code><span class="sig-paren">(</span><em>label_image</em>, <em>intensity_image=None</em>, <em>cache=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L326"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
 <dd><p>Measure properties of labeled image regions.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -399,11 +399,6 @@ Default is None.</p>
 <div><p>Determine whether to cache calculated properties. The computation is
 much faster for cached properties, whereas the memory consumption
 increases.</p>
-</div></blockquote>
-<p><strong>coordinates</strong> : ‘rc’ or ‘xy’, optional</p>
-<blockquote>
-<div><p>Coordinate conventions for 2D images. (Only ‘rc’ coordinates are
-supported for 3D images.)</p>
 </div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -484,31 +479,29 @@ normalized second central moments as the region.</p>
 normalized second central moments as the region.</p>
 </dd>
 <dt><strong>moments</strong><span class="classifier">(3, 3) ndarray</span></dt><dd><p>Spatial moments up to 3rd order:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m_ji</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="n">j</span> <span class="o">*</span> <span class="n">y</span><span class="o">^</span><span class="n">i</span> <span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m_ij</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="o">*</span> <span class="n">row</span><span class="o">^</span><span class="n">i</span> <span class="o">*</span> <span class="n">col</span><span class="o">^</span><span class="n">j</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>where the sum is over the <cite>x</cite>, <cite>y</cite> coordinates of the region.</p>
+<p>where the sum is over the <cite>row</cite>, <cite>col</cite> coordinates of the region.</p>
 </dd>
 <dt><strong>moments_central</strong><span class="classifier">(3, 3) ndarray</span></dt><dd><p>Central moments (translation invariant) up to 3rd order:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mu_ji</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_c</span><span class="p">)</span><span class="o">^</span><span class="n">j</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_c</span><span class="p">)</span><span class="o">^</span><span class="n">i</span> <span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mu_ij</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">row</span> <span class="o">-</span> <span class="n">row_c</span><span class="p">)</span><span class="o">^</span><span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">col</span> <span class="o">-</span> <span class="n">col_c</span><span class="p">)</span><span class="o">^</span><span class="n">j</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>where the sum is over the <cite>x</cite>, <cite>y</cite> coordinates of the region,
-and <cite>x_c</cite> and <cite>y_c</cite> are the coordinates of the region’s centroid.</p>
+<p>where the sum is over the <cite>row</cite>, <cite>col</cite> coordinates of the region,
+and <cite>row_c</cite> and <cite>col_c</cite> are the coordinates of the region’s centroid.</p>
 </dd>
 <dt><strong>moments_hu</strong><span class="classifier">tuple</span></dt><dd><p>Hu moments (translation, scale and rotation invariant).</p>
 </dd>
 <dt><strong>moments_normalized</strong><span class="classifier">(3, 3) ndarray</span></dt><dd><p>Normalized moments (translation and scale invariant) up to 3rd order:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nu_ji</span> <span class="o">=</span> <span class="n">mu_ji</span> <span class="o">/</span> <span class="n">m_00</span><span class="o">^</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nu_ij</span> <span class="o">=</span> <span class="n">mu_ij</span> <span class="o">/</span> <span class="n">m_00</span><span class="o">^</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>where <cite>m_00</cite> is the zeroth spatial moment.</p>
 </dd>
-<dt><strong>orientation</strong><span class="classifier">float</span></dt><dd><p>In ‘rc’ coordinates, angle between the 0th axis (rows) and the major
+<dt><strong>orientation</strong><span class="classifier">float</span></dt><dd><p>Angle between the 0th axis (rows) and the major
 axis of the ellipse that has the same second moments as the region,
 ranging from <cite>-pi/2</cite> to <cite>pi/2</cite> counter-clockwise.</p>
-<p>In <cite>xy</cite> coordinates, as above but the angle is now measured from the
-“x” or horizontal axis.</p>
 </dd>
 <dt><strong>perimeter</strong><span class="classifier">float</span></dt><dd><p>Perimeter of object which approximates the contour as a line
 through the centers of border pixels using a 4-connectivity.</p>
@@ -524,18 +517,18 @@ image.</p>
 box, weighted with intensity image.</p>
 </dd>
 <dt><strong>weighted_moments</strong><span class="classifier">(3, 3) ndarray</span></dt><dd><p>Spatial moments of intensity image up to 3rd order:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wm_ji</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="o">^</span><span class="n">j</span> <span class="o">*</span> <span class="n">y</span><span class="o">^</span><span class="n">i</span> <span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wm_ij</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="o">*</span> <span class="n">row</span><span class="o">^</span><span class="n">i</span> <span class="o">*</span> <span class="n">col</span><span class="o">^</span><span class="n">j</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>where the sum is over the <cite>x</cite>, <cite>y</cite> coordinates of the region.</p>
+<p>where the sum is over the <cite>row</cite>, <cite>col</cite> coordinates of the region.</p>
 </dd>
 <dt><strong>weighted_moments_central</strong><span class="classifier">(3, 3) ndarray</span></dt><dd><p>Central moments (translation invariant) of intensity image up to
 3rd order:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmu_ji</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_c</span><span class="p">)</span><span class="o">^</span><span class="n">j</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_c</span><span class="p">)</span><span class="o">^</span><span class="n">i</span> <span class="p">}</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmu_ij</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">row</span> <span class="o">-</span> <span class="n">row_c</span><span class="p">)</span><span class="o">^</span><span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">col</span> <span class="o">-</span> <span class="n">col_c</span><span class="p">)</span><span class="o">^</span><span class="n">j</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>where the sum is over the <cite>x</cite>, <cite>y</cite> coordinates of the region,
-and <cite>x_c</cite> and <cite>y_c</cite> are the coordinates of the region’s weighted
+<p>where the sum is over the <cite>row</cite>, <cite>col</cite> coordinates of the region,
+and <cite>row_c</cite> and <cite>col_c</cite> are the coordinates of the region’s weighted
 centroid.</p>
 </dd>
 <dt><strong>weighted_moments_hu</strong><span class="classifier">tuple</span></dt><dd><p>Hu moments (translation, scale and rotation invariant) of intensity
@@ -543,7 +536,7 @@ image.</p>
 </dd>
 <dt><strong>weighted_moments_normalized</strong><span class="classifier">(3, 3) ndarray</span></dt><dd><p>Normalized moments (translation and scale invariant) of intensity
 image up to 3rd order:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wnu_ji</span> <span class="o">=</span> <span class="n">wmu_ji</span> <span class="o">/</span> <span class="n">wm_00</span><span class="o">^</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wnu_ij</span> <span class="o">=</span> <span class="n">wmu_ij</span> <span class="o">/</span> <span class="n">wm_00</span><span class="o">^</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">wm_00</span></code> is the zeroth spatial moment (intensity-weighted area).</p>
@@ -605,7 +598,7 @@ Berlin, 1993.</p>
 <h2>perimeter<a class="headerlink" href="#perimeter" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.perimeter">
-<code class="descclassname">skimage.measure.</code><code class="descname">perimeter</code><span class="sig-paren">(</span><em>image</em>, <em>neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L584"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">perimeter</code><span class="sig-paren">(</span><em>image</em>, <em>neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L542"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate total perimeter of all objects in binary image.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1013,7 +1006,7 @@ block size.</p>
 <h2>moments<a class="headerlink" href="#moments" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.moments">
-<code class="descclassname">skimage.measure.</code><code class="descname">moments</code><span class="sig-paren">(</span><em>image</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L150"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">moments</code><span class="sig-paren">(</span><em>image</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate all raw image moments up to a certain order.</p>
 <dl class="simple">
 <dt>The following properties can be calculated from raw image moments:</dt><dd><ul class="simple">
@@ -1065,9 +1058,8 @@ Berlin, 1993.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">M</span> <span class="o">=</span> <span class="n">moments</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cr</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cr</span><span class="p">,</span> <span class="n">cc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centroid</span> <span class="o">=</span> <span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centroid</span>
 <span class="go">(14.5, 14.5)</span>
 </pre></div>
 </div>
@@ -1078,7 +1070,7 @@ Berlin, 1993.</p>
 <h2>moments_central<a class="headerlink" href="#moments-central" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.moments_central">
-<code class="descclassname">skimage.measure.</code><code class="descname">moments_central</code><span class="sig-paren">(</span><em>image</em>, <em>center=None</em>, <em>cc=None</em>, <em>order=3</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L196"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_central" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">moments_central</code><span class="sig-paren">(</span><em>image</em>, <em>center=None</em>, <em>order=3</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L193"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_central" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate all central image moments up to a certain order.</p>
 <p>The center coordinates (cr, cc) can be calculated from the raw moments as:
 {<code class="docutils literal notranslate"><span class="pre">M[1,</span> <span class="pre">0]</span> <span class="pre">/</span> <span class="pre">M[0,</span> <span class="pre">0]</span></code>, <code class="docutils literal notranslate"><span class="pre">M[0,</span> <span class="pre">1]</span> <span class="pre">/</span> <span class="pre">M[0,</span> <span class="pre">0]</span></code>}.</p>
@@ -1106,16 +1098,6 @@ is not provided.</p>
 <div><p>Central image moments.</p>
 </div></blockquote>
 </dd>
-<dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><p><strong>cr</strong> : double</p>
-<blockquote>
-<div><p>DEPRECATED: Center row coordinate for 2D image.</p>
-</div></blockquote>
-<p><strong>cc</strong> : double</p>
-<blockquote>
-<div><p>DEPRECATED: Center column coordinate for 2D image.</p>
-</div></blockquote>
-</dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
@@ -1140,9 +1122,8 @@ Berlin, 1993.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">M</span> <span class="o">=</span> <span class="n">moments</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cr</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">moments_central</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">cr</span><span class="p">,</span> <span class="n">cc</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centroid</span> <span class="o">=</span> <span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moments_central</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">centroid</span><span class="p">)</span>
 <span class="go">array([[ 16.,   0.,  20.,   0.],</span>
 <span class="go">       [  0.,   0.,   0.,   0.],</span>
 <span class="go">       [ 20.,   0.,  25.,   0.],</span>
@@ -1156,7 +1137,7 @@ Berlin, 1993.</p>
 <h2>moments_coords<a class="headerlink" href="#moments-coords" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.moments_coords">
-<code class="descclassname">skimage.measure.</code><code class="descname">moments_coords</code><span class="sig-paren">(</span><em>coords</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L8"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_coords" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">moments_coords</code><span class="sig-paren">(</span><em>coords</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L7"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_coords" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate all raw image moments up to a certain order.</p>
 <dl class="simple">
 <dt>The following properties can be calculated from raw image moments:</dt><dd><ul class="simple">
@@ -1198,9 +1179,8 @@ University, version 0.2, Durham, 2001.</p>
 <span class="gp">... </span>                   <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
 <span class="gp">... </span>                   <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">M</span> <span class="o">=</span> <span class="n">moments_coords</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">centroid_row</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">centroid_col</span> <span class="o">=</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">centroid_row</span><span class="p">,</span> <span class="n">centroid_col</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centroid</span> <span class="o">=</span> <span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centroid</span>
 <span class="go">(14.5, 15.5)</span>
 </pre></div>
 </div>
@@ -1211,7 +1191,7 @@ University, version 0.2, Durham, 2001.</p>
 <h2>moments_coords_central<a class="headerlink" href="#moments-coords-central" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.moments_coords_central">
-<code class="descclassname">skimage.measure.</code><code class="descname">moments_coords_central</code><span class="sig-paren">(</span><em>coords</em>, <em>center=None</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_coords_central" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">moments_coords_central</code><span class="sig-paren">(</span><em>coords</em>, <em>center=None</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L48"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_coords_central" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate all central image moments up to a certain order.</p>
 <dl class="simple">
 <dt>The following properties can be calculated from raw image moments:</dt><dd><ul class="simple">
@@ -1291,7 +1271,7 @@ when the center is (0, 0):</p>
 <h2>moments_normalized<a class="headerlink" href="#moments-normalized" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.moments_normalized">
-<code class="descclassname">skimage.measure.</code><code class="descname">moments_normalized</code><span class="sig-paren">(</span><em>mu</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L274"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_normalized" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">moments_normalized</code><span class="sig-paren">(</span><em>mu</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L252"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_normalized" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate all normalized central image moments up to a certain order.</p>
 <p>Note that normalized central moments are translation and scale invariant
 but not rotation invariant.</p>
@@ -1337,9 +1317,8 @@ Berlin, 1993.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span><span class="mi">17</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">m</span> <span class="o">=</span> <span class="n">moments</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cr</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cc</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mu</span> <span class="o">=</span> <span class="n">moments_central</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cr</span><span class="p">,</span> <span class="n">cc</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">centroid</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mu</span> <span class="o">=</span> <span class="n">moments_central</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">centroid</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">moments_normalized</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
 <span class="go">array([[        nan,         nan,  0.078125  ,  0.        ],</span>
 <span class="go">       [        nan,  0.        ,  0.        ,  0.        ],</span>
@@ -1354,7 +1333,7 @@ Berlin, 1993.</p>
 <h2>moments_hu<a class="headerlink" href="#moments-hu" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.moments_hu">
-<code class="descclassname">skimage.measure.</code><code class="descname">moments_hu</code><span class="sig-paren">(</span><em>nu</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L331"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_hu" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">skimage.measure.</code><code class="descname">moments_hu</code><span class="sig-paren">(</span><em>nu</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L308"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_hu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate Hu’s set of image moments (2D-only).</p>
 <p>Note that this set of moments is proofed to be translation, scale and
 rotation invariant.</p>
