@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>A crash course on NumPy for images &mdash; skimage v0.14.2 docs</title>
+        <title>A crash course on NumPy for images &mdash; skimage v0.14.3 docs</title>
     
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.14.2',
+        VERSION:     '0.14.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,11 @@
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../genindex.html" />
         <link rel="search" title="Search" href="../search.html" />
-        <link rel="top" title="skimage v0.14.2 docs" href="../index.html" />
+        <link rel="top" title="skimage v0.14.3 docs" href="../index.html" />
         <link rel="up" title="User Guide" href="../user_guide.html" />
         <link rel="next" title="Image data types and what they mean" href="data_types.html" />
         <link rel="prev" title="Getting started" href="getting_started.html" />
@@ -83,7 +84,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.14.2<br></strong>
+    <strong>Docs for 0.14.3<br></strong>
 
     <a id="other">All versions</a>
 
@@ -223,7 +224,7 @@ the grayscale image above:</p>
 </pre></div>
 </div>
 <p>(<a class="reference external" href="../user_guide/numpy_images-1.py">Source code</a>, <a class="reference external" href="../user_guide/numpy_images-1.png">png</a>, <a class="reference external" href="../user_guide/numpy_images-1.pdf">pdf</a>)</p>
-<div class="figure">
+<div class="figure align-default">
 <img alt="../_images/numpy_images-1.png" src="../_images/numpy_images-1.png" />
 </div>
 </div>
@@ -245,29 +246,29 @@ contains the color information and is denoted <code class="docutils literal notr
 (MRI) scans, or confocal microscopy, we refer to the leading dimension
 as <code class="docutils literal notranslate"><span class="pre">plane</span></code>, abbreviated as <code class="docutils literal notranslate"><span class="pre">pln</span></code> or <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
 <p>These conventions are summarized below:</p>
-<table border="1" class="docutils" id="id1">
+<table class="docutils align-default" id="id1">
 <caption><span class="caption-text">Dimension name and order conventions in scikit-image</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="38%" />
-<col width="62%" />
+<col style="width: 38%" />
+<col style="width: 62%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Image type</th>
-<th class="head">coordinates</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Image type</p></th>
+<th class="head"><p>coordinates</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>2D grayscale</td>
-<td>(row, col)</td>
+<tbody>
+<tr class="row-even"><td><p>2D grayscale</p></td>
+<td><p>(row, col)</p></td>
 </tr>
-<tr class="row-odd"><td>2D multichannel (eg. RGB)</td>
-<td>(row, col, ch)</td>
+<tr class="row-odd"><td><p>2D multichannel (eg. RGB)</p></td>
+<td><p>(row, col, ch)</p></td>
 </tr>
-<tr class="row-even"><td>3D grayscale</td>
-<td>(pln, row, col)</td>
+<tr class="row-even"><td><p>3D grayscale</p></td>
+<td><p>(pln, row, col)</p></td>
 </tr>
-<tr class="row-odd"><td>3D multichannel</td>
-<td>(pln, row, col, ch)</td>
+<tr class="row-odd"><td><p>3D multichannel</p></td>
+<td><p>(pln, row, col, ch)</p></td>
 </tr>
 </tbody>
 </table>
@@ -349,23 +350,23 @@ shape (t, pln, row, col, ch):</p>
 </pre></div>
 </div>
 <p>We can then supplement the above table as follows:</p>
-<table border="1" class="docutils" id="id2">
+<table class="docutils align-default" id="id2">
 <caption><span class="caption-text">Addendum to dimension names and orders in scikit-image</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="38%" />
-<col width="63%" />
+<col style="width: 38%" />
+<col style="width: 63%" />
 </colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">Image type</th>
-<th class="head">coordinates</th>
+<thead>
+<tr class="row-odd"><th class="head"><p>Image type</p></th>
+<th class="head"><p>coordinates</p></th>
 </tr>
 </thead>
-<tbody valign="top">
-<tr class="row-even"><td>2D color video</td>
-<td>(t, row, col, ch)</td>
+<tbody>
+<tr class="row-even"><td><p>2D color video</p></td>
+<td><p>(t, row, col, ch)</p></td>
 </tr>
-<tr class="row-odd"><td>3D multichannel video</td>
-<td>(t, pln, row, col, ch)</td>
+<tr class="row-odd"><td><p>3D multichannel video</p></td>
+<td><p>(t, pln, row, col, ch)</p></td>
 </tr>
 </tbody>
 </table>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Build image pyramids &mdash; skimage v0.14.2 docs</title>
+        <title>Build image pyramids &mdash; skimage v0.14.3 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14.2',
+        VERSION:     '0.14.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,11 @@
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.14.2 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.14.3 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Interpolation: Edge Modes" href="plot_edge_modes.html" />
         <link rel="prev" title="Swirl" href="plot_swirl.html" />
@@ -69,7 +70,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.14.2<br></strong>
+    <strong>Docs for 0.14.3<br></strong>
 
     <a id="other">All versions</a>
 
@@ -91,8 +92,8 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-transform-plot-pyramid-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-transform-plot-pyramid-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="build-image-pyramids">
 <span id="sphx-glr-auto-examples-transform-plot-pyramid-py"></span><h1>Build image pyramids<a class="headerlink" href="#build-image-pyramids" title="Permalink to this headline">¶</a></h1>
@@ -101,18 +102,18 @@ shrunk by a constant scale factor. Image pyramids are often used, e.g., to
 implement algorithms for denoising, texture discrimination, and scale-invariant
 detection.</p>
 <img alt="../../_images/sphx_glr_plot_pyramid_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_pyramid_001.png" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <a href="../../api/skimage.transform.html#skimage.transform.pyramid_gaussian" title="View documentation for skimage.transform.pyramid_gaussian"><span class="n">pyramid_gaussian</span></a>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="k">import</span> <a href="../../api/skimage.transform.html#skimage.transform.pyramid_gaussian" title="View documentation for skimage.transform.pyramid_gaussian"><span class="n">pyramid_gaussian</span></a>
 
 
 <span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.astronaut" title="View documentation for skimage.data.astronaut"><span class="n">data</span><span class="o">.</span><span class="n">astronaut</span></a><span class="p">()</span>
 <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span>
-<span class="n">pyramid</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><a href="../../api/skimage.transform.html#skimage.transform.pyramid_gaussian" title="View documentation for skimage.transform.pyramid_gaussian"><span class="n">pyramid_gaussian</span></a><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">downscale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">multichannel</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+<span class="n">pyramid</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><a href="../../api/skimage.transform.html#skimage.transform.pyramid_gaussian" title="View documentation for skimage.transform.pyramid_gaussian"><span class="n">pyramid_gaussian</span></a><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">downscale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">multichannel</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 
-<span class="n">composite_image</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html#numpy.zeros" title="View documentation for numpy.zeros"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">((</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">+</span> <span class="n">cols</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="n">composite_image</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.zeros.html#numpy.zeros" title="View documentation for numpy.zeros"><span class="n">np</span><span class="o">.</span><span class="n">zeros</span></a><span class="p">((</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">+</span> <span class="n">cols</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 
 <span class="n">composite_image</span><span class="p">[:</span><span class="n">rows</span><span class="p">,</span> <span class="p">:</span><span class="n">cols</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">pyramid</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
@@ -127,12 +128,14 @@ detection.</p>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.052 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.206 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-transform-plot-pyramid-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/073691c98ec68195aa0ca91185aec789/plot_pyramid.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_pyramid.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/047aa0b19e178feb5e90eaa0a119734c/plot_pyramid.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_pyramid.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/f76f992a5cc48e7d3fdcbbe10c47542f/plot_pyramid.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_pyramid.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/edbc9e80511e48c2ae97ec77014d3045/plot_pyramid.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_pyramid.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

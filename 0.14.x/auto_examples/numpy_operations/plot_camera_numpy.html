@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Using simple NumPy operations for manipulating images &mdash; skimage v0.14.2 docs</title>
+        <title>Using simple NumPy operations for manipulating images &mdash; skimage v0.14.3 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14.2',
+        VERSION:     '0.14.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,11 @@
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.14.2 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.14.3 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Block views on images/arrays" href="plot_view_as_blocks.html" />
         <link rel="prev" title="Wavelet denoising" href="../filters/plot_denoise_wavelet.html" />
@@ -69,7 +70,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.14.2<br></strong>
+    <strong>Docs for 0.14.3<br></strong>
 
     <a id="other">All versions</a>
 
@@ -91,28 +92,28 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-numpy-operations-plot-camera-numpy-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-numpy-operations-plot-camera-numpy-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="using-simple-numpy-operations-for-manipulating-images">
 <span id="sphx-glr-auto-examples-numpy-operations-plot-camera-numpy-py"></span><h1>Using simple NumPy operations for manipulating images<a class="headerlink" href="#using-simple-numpy-operations-for-manipulating-images" title="Permalink to this headline">¶</a></h1>
 <p>This script illustrates how to use basic NumPy operations, such as slicing,
 masking and fancy indexing, in order to modify the pixel values of an image.</p>
 <img alt="../../_images/sphx_glr_plot_camera_numpy_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_camera_numpy_001.png" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="n">camera</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">()</span>
 <span class="n">camera</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">camera</span> <span class="o">&lt;</span> <span class="mi">87</span>
 <span class="n">camera</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
-<span class="n">inds_x</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html#numpy.arange" title="View documentation for numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">camera</span><span class="p">))</span>
+<span class="n">inds_x</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html#numpy.arange" title="View documentation for numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">camera</span><span class="p">))</span>
 <span class="n">inds_y</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">inds_x</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">camera</span><span class="p">)</span>
 <span class="n">camera</span><span class="p">[</span><span class="n">inds_x</span><span class="p">,</span> <span class="n">inds_y</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="n">l_x</span><span class="p">,</span> <span class="n">l_y</span> <span class="o">=</span> <span class="n">camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">camera</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ogrid.html#numpy.ogrid" title="View documentation for numpy.ogrid"><span class="n">np</span><span class="o">.</span><span class="n">ogrid</span></a><span class="p">[:</span><span class="n">l_x</span><span class="p">,</span> <span class="p">:</span><span class="n">l_y</span><span class="p">]</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ogrid.html#numpy.ogrid" title="View documentation for numpy.ogrid"><span class="n">np</span><span class="o">.</span><span class="n">ogrid</span></a><span class="p">[:</span><span class="n">l_x</span><span class="p">,</span> <span class="p">:</span><span class="n">l_y</span><span class="p">]</span>
 <span class="n">outer_disk_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">-</span> <span class="n">l_x</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">Y</span> <span class="o">-</span> <span class="n">l_y</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">&gt;</span> <span class="p">(</span><span class="n">l_x</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 <span class="n">camera</span><span class="p">[</span><span class="n">outer_disk_mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
@@ -122,12 +123,14 @@ masking and fancy indexing, in order to modify the pixel values of an image.</p>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.016 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.087 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-numpy-operations-plot-camera-numpy-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/0d1ea32731596acb4bd58a6c91d6fbda/plot_camera_numpy.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_camera_numpy.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/60fd4cad5955f29c37c5ba16ab1625e8/plot_camera_numpy.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_camera_numpy.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/b84bf683599d152e5b5889a5aca65625/plot_camera_numpy.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_camera_numpy.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/bb41f22c4988a0bec76f6419f738ab92/plot_camera_numpy.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_camera_numpy.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

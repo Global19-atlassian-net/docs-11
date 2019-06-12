@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Fundamental matrix estimation &mdash; skimage v0.14.2 docs</title>
+        <title>Fundamental matrix estimation &mdash; skimage v0.14.3 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14.2',
+        VERSION:     '0.14.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,11 @@
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.14.2 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.14.3 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Radon transform" href="plot_radon_transform.html" />
         <link rel="prev" title="Cross-Correlation (Phase Correlation)" href="plot_register_translation.html" />
@@ -69,7 +70,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.14.2<br></strong>
+    <strong>Docs for 0.14.3<br></strong>
 
     <a id="other">All versions</a>
 
@@ -91,8 +92,8 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-transform-plot-fundamental-matrix-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-transform-plot-fundamental-matrix-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="fundamental-matrix-estimation">
 <span id="sphx-glr-auto-examples-transform-plot-fundamental-matrix-py"></span><h1>Fundamental matrix estimation<a class="headerlink" href="#fundamental-matrix-estimation" title="Permalink to this headline">¶</a></h1>
@@ -109,21 +110,21 @@ the captured scene.</p>
 <img alt="../../_images/sphx_glr_plot_fundamental_matrix_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_fundamental_matrix_001.png" />
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Number of matches: 223
-Number of inliers: 163
+Number of inliers: 164
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <a href="../../api/skimage.feature.html#skimage.feature.match_descriptors" title="View documentation for skimage.feature.match_descriptors"><span class="n">match_descriptors</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.ORB" title="View documentation for skimage.feature.ORB"><span class="n">ORB</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.plot_matches" title="View documentation for skimage.feature.plot_matches"><span class="n">plot_matches</span></a>
-<span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="kn">import</span> <a href="../../api/skimage.measure.html#skimage.measure.ransac" title="View documentation for skimage.measure.ransac"><span class="n">ransac</span></a>
-<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <a href="../../api/skimage.transform.html#skimage.transform.FundamentalMatrixTransform" title="View documentation for skimage.transform.FundamentalMatrixTransform"><span class="n">FundamentalMatrixTransform</span></a>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="k">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <a href="../../api/skimage.feature.html#skimage.feature.match_descriptors" title="View documentation for skimage.feature.match_descriptors"><span class="n">match_descriptors</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.ORB" title="View documentation for skimage.feature.ORB"><span class="n">ORB</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.plot_matches" title="View documentation for skimage.feature.plot_matches"><span class="n">plot_matches</span></a>
+<span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="k">import</span> <a href="../../api/skimage.measure.html#skimage.measure.ransac" title="View documentation for skimage.measure.ransac"><span class="n">ransac</span></a>
+<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="k">import</span> <a href="../../api/skimage.transform.html#skimage.transform.FundamentalMatrixTransform" title="View documentation for skimage.transform.FundamentalMatrixTransform"><span class="n">FundamentalMatrixTransform</span></a>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.random.seed.html#numpy.random.seed" title="View documentation for numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.random.seed.html#numpy.random.seed" title="View documentation for numpy.random.seed"><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span></a><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">img_left</span><span class="p">,</span> <span class="n">img_right</span><span class="p">,</span> <span class="n">groundtruth_disp</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.stereo_motorcycle" title="View documentation for skimage.data.stereo_motorcycle"><span class="n">data</span><span class="o">.</span><span class="n">stereo_motorcycle</span></a><span class="p">()</span>
 <span class="n">img_left</span><span class="p">,</span> <span class="n">img_right</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a><span class="p">,</span> <span class="p">(</span><span class="n">img_left</span><span class="p">,</span> <span class="n">img_right</span><span class="p">))</span>
@@ -141,7 +142,7 @@ Number of inliers: 163
 <span class="n">descriptors_right</span> <span class="o">=</span> <span class="n">descriptor_extractor</span><span class="o">.</span><span class="n">descriptors</span>
 
 <span class="n">matches</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.match_descriptors" title="View documentation for skimage.feature.match_descriptors"><span class="n">match_descriptors</span></a><span class="p">(</span><span class="n">descriptors_left</span><span class="p">,</span> <span class="n">descriptors_right</span><span class="p">,</span>
-                            <span class="n">cross_check</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                            <span class="n">cross_check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># Estimate the epipolar geometry between the left and right image.</span>
 
@@ -153,16 +154,16 @@ Number of inliers: 163
 <span class="n">inlier_keypoints_left</span> <span class="o">=</span> <span class="n">keypoints_left</span><span class="p">[</span><span class="n">matches</span><span class="p">[</span><span class="n">inliers</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
 <span class="n">inlier_keypoints_right</span> <span class="o">=</span> <span class="n">keypoints_right</span><span class="p">[</span><span class="n">matches</span><span class="p">[</span><span class="n">inliers</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Number of matches:&quot;</span><span class="p">,</span> <span class="n">matches</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Number of inliers:&quot;</span><span class="p">,</span> <span class="n">inliers</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of matches:&quot;</span><span class="p">,</span> <span class="n">matches</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of inliers:&quot;</span><span class="p">,</span> <span class="n">inliers</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 
 <span class="c1"># Compare estimated sparse disparities to the dense ground-truth disparities.</span>
 
 <span class="n">disp</span> <span class="o">=</span> <span class="n">inlier_keypoints_left</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">inlier_keypoints_right</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
 <span class="n">disp_coords</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">inlier_keypoints_left</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
-<span class="n">disp_idxs</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel_multi_index.html#numpy.ravel_multi_index" title="View documentation for numpy.ravel_multi_index"><span class="n">np</span><span class="o">.</span><span class="n">ravel_multi_index</span></a><span class="p">(</span><span class="n">disp_coords</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">groundtruth_disp</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">disp_idxs</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ravel_multi_index.html#numpy.ravel_multi_index" title="View documentation for numpy.ravel_multi_index"><span class="n">np</span><span class="o">.</span><span class="n">ravel_multi_index</span></a><span class="p">(</span><span class="n">disp_coords</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">groundtruth_disp</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">disp_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">groundtruth_disp</span><span class="o">.</span><span class="n">ravel</span><span class="p">()[</span><span class="n">disp_idxs</span><span class="p">]</span> <span class="o">-</span> <span class="n">disp</span><span class="p">)</span>
-<span class="n">disp_error</span> <span class="o">=</span> <span class="n">disp_error</span><span class="p">[</span><a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.isfinite.html#numpy.isfinite" title="View documentation for numpy.isfinite"><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span></a><span class="p">(</span><span class="n">disp_error</span><span class="p">)]</span>
+<span class="n">disp_error</span> <span class="o">=</span> <span class="n">disp_error</span><span class="p">[</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.isfinite.html#numpy.isfinite" title="View documentation for numpy.isfinite"><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span></a><span class="p">(</span><span class="n">disp_error</span><span class="p">)]</span>
 
 <span class="c1"># Visualize the results.</span>
 
@@ -171,7 +172,7 @@ Number of inliers: 163
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.gray.html#matplotlib.pyplot.gray" title="View documentation for matplotlib.pyplot.gray"><span class="n">plt</span><span class="o">.</span><span class="n">gray</span></a><span class="p">()</span>
 
 <a href="../../api/skimage.feature.html#skimage.feature.plot_matches" title="View documentation for skimage.feature.plot_matches"><span class="n">plot_matches</span></a><span class="p">(</span><span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">img_left</span><span class="p">,</span> <span class="n">img_right</span><span class="p">,</span> <span class="n">keypoints_left</span><span class="p">,</span> <span class="n">keypoints_right</span><span class="p">,</span>
-             <span class="n">matches</span><span class="p">[</span><span class="n">inliers</span><span class="p">],</span> <span class="n">only_matches</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+             <span class="n">matches</span><span class="p">[</span><span class="n">inliers</span><span class="p">],</span> <span class="n">only_matches</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Inlier correspondences&quot;</span><span class="p">)</span>
 
@@ -181,12 +182,14 @@ Number of inliers: 163
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  2.515 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  2.763 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-transform-plot-fundamental-matrix-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/a6920c2ca2db5160efe82e66febdc18c/plot_fundamental_matrix.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_fundamental_matrix.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/2759244ec20f8e7dad98ebb19da5bd96/plot_fundamental_matrix.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_fundamental_matrix.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/9514066e9cb19c8a023f09c90bb8ca39/plot_fundamental_matrix.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_fundamental_matrix.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/473936b330c5cd359fc19621fb2d4bdd/plot_fundamental_matrix.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_fundamental_matrix.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

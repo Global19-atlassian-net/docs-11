@@ -15,9 +15,7 @@ In this example, we will see how to segment objects from a background. We use
 the ``coins`` image from ``skimage.data``, which shows several coins outlined
 against a darker background.
 
-
-
-.. code-block:: python
+.. code-block:: default
 
 
     import numpy as np
@@ -52,8 +50,7 @@ binary image that either misses significant parts of the coins or merges
 parts of the background with the coins:
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     fig, axes = plt.subplots(1, 2, figsize=(8, 3), sharey=True)
@@ -86,8 +83,7 @@ segmentation. To do this, we first get the edges of features using the
 Canny edge-detector.
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     from skimage.feature import canny
@@ -111,8 +107,7 @@ Canny edge-detector.
 These contours are then filled using mathematical morphology.
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     from scipy import ndimage as ndi
@@ -138,8 +133,7 @@ Small spurious objects are easily removed by setting a minimum size for
 valid objects.
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     from skimage import morphology
@@ -171,8 +165,7 @@ We therefore try a region-based method using the watershed transform.
 First, we find an elevation map using the Sobel gradient of the image.
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     from skimage.filters import sobel
@@ -197,8 +190,7 @@ Next we find markers of the background and the coins based on the extreme
 parts of the histogram of gray values.
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     markers = np.zeros_like(coins)
@@ -223,8 +215,7 @@ Finally, we use the watershed transform to fill regions of the elevation
 map starting from the markers determined above:
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     segmentation = morphology.watershed(elevation_map, markers)
@@ -247,8 +238,7 @@ This last method works even better, and the coins can be segmented and
 labeled individually.
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     from skimage.color import label2rgb
@@ -277,7 +267,10 @@ labeled individually.
 
 
 
-**Total running time of the script:** ( 0 minutes  0.282 seconds)
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** ( 0 minutes  0.493 seconds)
 
 
 .. _sphx_glr_download_auto_examples_xx_applications_plot_coins_segmentation.py:

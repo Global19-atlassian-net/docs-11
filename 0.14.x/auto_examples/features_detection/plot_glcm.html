@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>GLCM Texture Features &mdash; skimage v0.14.2 docs</title>
+        <title>GLCM Texture Features &mdash; skimage v0.14.3 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14.2',
+        VERSION:     '0.14.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,11 @@
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.14.2 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.14.3 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Shape Index" href="plot_shape_index.html" />
         <link rel="prev" title="Gabors / Primary Visual Cortex “Simple Cells” from an Image" href="plot_gabors_from_astronaut.html" />
@@ -69,7 +70,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.14.2<br></strong>
+    <strong>Docs for 0.14.3<br></strong>
 
     <a id="other">All versions</a>
 
@@ -91,8 +92,8 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-features-detection-plot-glcm-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-features-detection-plot-glcm-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="glcm-texture-features">
 <span id="sphx-glr-auto-examples-features-detection-plot-glcm-py"></span><h1>GLCM Texture Features<a class="headerlink" href="#glcm-texture-features" title="Permalink to this headline">¶</a></h1>
@@ -108,10 +109,10 @@ plotted to illustrate that the classes form clusters in feature space.</p>
 this example) would be to train a classifier, such as logistic
 regression, to label image patches from new images.</p>
 <img alt="../../_images/sphx_glr_plot_glcm_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_glcm_001.png" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <a href="../../api/skimage.feature.html#skimage.feature.greycomatrix" title="View documentation for skimage.feature.greycomatrix"><span class="n">greycomatrix</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.greycoprops" title="View documentation for skimage.feature.greycoprops"><span class="n">greycoprops</span></a>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <a href="../../api/skimage.feature.html#skimage.feature.greycomatrix" title="View documentation for skimage.feature.greycomatrix"><span class="n">greycomatrix</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.greycoprops" title="View documentation for skimage.feature.greycoprops"><span class="n">greycoprops</span></a>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
 
 
 <span class="n">PATCH_SIZE</span> <span class="o">=</span> <span class="mi">21</span>
@@ -137,7 +138,7 @@ regression, to label image patches from new images.</p>
 <span class="n">xs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">ys</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">patch</span> <span class="ow">in</span> <span class="p">(</span><span class="n">grass_patches</span> <span class="o">+</span> <span class="n">sky_patches</span><span class="p">):</span>
-    <span class="n">glcm</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.greycomatrix" title="View documentation for skimage.feature.greycomatrix"><span class="n">greycomatrix</span></a><span class="p">(</span><span class="n">patch</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">256</span><span class="p">,</span> <span class="n">symmetric</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">glcm</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.greycomatrix" title="View documentation for skimage.feature.greycomatrix"><span class="n">greycomatrix</span></a><span class="p">(</span><span class="n">patch</span><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">256</span><span class="p">,</span> <span class="n">symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">xs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><a href="../../api/skimage.feature.html#skimage.feature.greycoprops" title="View documentation for skimage.feature.greycoprops"><span class="n">greycoprops</span></a><span class="p">(</span><span class="n">glcm</span><span class="p">,</span> <span class="s1">&#39;dissimilarity&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
     <span class="n">ys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><a href="../../api/skimage.feature.html#skimage.feature.greycoprops" title="View documentation for skimage.feature.greycoprops"><span class="n">greycoprops</span></a><span class="p">(</span><span class="n">glcm</span><span class="p">,</span> <span class="s1">&#39;correlation&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 
@@ -186,12 +187,14 @@ regression, to label image patches from new images.</p>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.141 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.341 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-features-detection-plot-glcm-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/9ee177d4aa4e46efdf654db80bfc8aa1/plot_glcm.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_glcm.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/8727a21b49353719b1196ec9fabfa1b2/plot_glcm.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_glcm.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/523118be5ed32493a97a5f1a163344f2/plot_glcm.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_glcm.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/21116b7da736e7af4cb216fae11b8a8c/plot_glcm.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_glcm.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Active Contour Model &mdash; skimage v0.14.2 docs</title>
+        <title>Active Contour Model &mdash; skimage v0.14.3 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14.2',
+        VERSION:     '0.14.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,11 @@
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.14.2 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.14.3 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Edge operators" href="plot_edge_filter.html" />
         <link rel="prev" title="Marching Cubes" href="plot_marching_cubes.html" />
@@ -69,7 +70,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.14.2<br></strong>
+    <strong>Docs for 0.14.3<br></strong>
 
     <a id="other">All versions</a>
 
@@ -91,13 +92,13 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-edges-plot-active-contours-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-edges-plot-active-contours-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="active-contour-model">
 <span id="sphx-glr-auto-examples-edges-plot-active-contours-py"></span><h1>Active Contour Model<a class="headerlink" href="#active-contour-model" title="Permalink to this headline">¶</a></h1>
 <p>The active contour model is a method to fit open or closed splines to lines or
-edges in an image <a class="footnote-reference" href="#id2" id="id1">[1]</a>. It works by minimising an energy that is in part
+edges in an image <a class="footnote-reference brackets" href="#id2" id="id1">1</a>. It works by minimising an energy that is in part
 defined by the image and part by the spline’s shape: length and smoothness. The
 minimization is done implicitly in the shape energy and explicitly in the
 image energy.</p>
@@ -110,28 +111,27 @@ smooth images a bit before analyzing, as done in the following examples.</p>
 condition <code class="docutils literal notranslate"><span class="pre">bc='periodic'</span></code> to fit a closed curve. The default parameters
 <code class="docutils literal notranslate"><span class="pre">w_line=0,</span> <span class="pre">w_edge=1</span></code> will make the curve search towards edges, such as the
 boundaries of the face.</p>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><em>Snakes: Active contour models</em>. Kass, M.; Witkin, A.; Terzopoulos, D.
-International Journal of Computer Vision 1 (4): 321 (1988).</td></tr>
-</tbody>
-</table>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <a href="../../api/skimage.filters.html#skimage.filters.gaussian" title="View documentation for skimage.filters.gaussian"><span class="n">gaussian</span></a>
-<span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.active_contour" title="View documentation for skimage.segmentation.active_contour"><span class="n">active_contour</span></a>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><em>Snakes: Active contour models</em>. Kass, M.; Witkin, A.; Terzopoulos, D.
+International Journal of Computer Vision 1 (4): 321 (1988).</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="k">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="k">import</span> <a href="../../api/skimage.filters.html#skimage.filters.gaussian" title="View documentation for skimage.filters.gaussian"><span class="n">gaussian</span></a>
+<span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="k">import</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.active_contour" title="View documentation for skimage.segmentation.active_contour"><span class="n">active_contour</span></a>
 
 
 <span class="n">img</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.astronaut" title="View documentation for skimage.data.astronaut"><span class="n">data</span><span class="o">.</span><span class="n">astronaut</span></a><span class="p">()</span>
 <span class="n">img</span> <span class="o">=</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 
-<span class="n">s</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html#numpy.linspace" title="View documentation for numpy.linspace"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">220</span> <span class="o">+</span> <span class="mi">100</span><span class="o">*</span><a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.cos.html#numpy.cos" title="View documentation for numpy.cos"><span class="n">np</span><span class="o">.</span><span class="n">cos</span></a><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">100</span><span class="o">*</span><a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.sin.html#numpy.sin" title="View documentation for numpy.sin"><span class="n">np</span><span class="o">.</span><span class="n">sin</span></a><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="n">init</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="View documentation for numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">s</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html#numpy.linspace" title="View documentation for numpy.linspace"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><a href="https://docs.scipy.org/doc/numpy/reference/constants.html#numpy.pi" title="View documentation for numpy.pi"><span class="n">np</span><span class="o">.</span><span class="n">pi</span></a><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">220</span> <span class="o">+</span> <span class="mi">100</span><span class="o">*</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.cos.html#numpy.cos" title="View documentation for numpy.cos"><span class="n">np</span><span class="o">.</span><span class="n">cos</span></a><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">+</span> <span class="mi">100</span><span class="o">*</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.sin.html#numpy.sin" title="View documentation for numpy.sin"><span class="n">np</span><span class="o">.</span><span class="n">sin</span></a><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">init</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="View documentation for numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
 
 <span class="n">snake</span> <span class="o">=</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.active_contour" title="View documentation for skimage.segmentation.active_contour"><span class="n">active_contour</span></a><span class="p">(</span><a href="../../api/skimage.filters.html#skimage.filters.gaussian" title="View documentation for skimage.filters.gaussian"><span class="n">gaussian</span></a><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
                        <span class="n">init</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.015</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
@@ -149,11 +149,11 @@ International Journal of Computer Vision 1 (4): 321 (1988).</td></tr>
 <cite>(424, 50)</cite>, and require that the spline has its end points there by giving
 the boundary condition <cite>bc=’fixed’</cite>. We furthermore make the algorithm
 search for dark lines by giving a negative <cite>w_line</cite> value.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.text" title="View documentation for skimage.data.text"><span class="n">data</span><span class="o">.</span><span class="n">text</span></a><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.text" title="View documentation for skimage.data.text"><span class="n">data</span><span class="o">.</span><span class="n">text</span></a><span class="p">()</span>
 
-<span class="n">x</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html#numpy.linspace" title="View documentation for numpy.linspace"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">424</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html#numpy.linspace" title="View documentation for numpy.linspace"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="mi">136</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">init</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="View documentation for numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">x</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html#numpy.linspace" title="View documentation for numpy.linspace"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">424</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html#numpy.linspace" title="View documentation for numpy.linspace"><span class="n">np</span><span class="o">.</span><span class="n">linspace</span></a><span class="p">(</span><span class="mi">136</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">init</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html#numpy.array" title="View documentation for numpy.array"><span class="n">np</span><span class="o">.</span><span class="n">array</span></a><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
 
 <span class="n">snake</span> <span class="o">=</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.active_contour" title="View documentation for skimage.segmentation.active_contour"><span class="n">active_contour</span></a><span class="p">(</span><a href="../../api/skimage.filters.html#skimage.filters.gaussian" title="View documentation for skimage.filters.gaussian"><span class="n">gaussian</span></a><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">init</span><span class="p">,</span> <span class="n">bc</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">,</span>
                        <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">w_line</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="n">w_edge</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
@@ -169,12 +169,14 @@ search for dark lines by giving a negative <cite>w_line</cite> value.</p>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_active_contours_002.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_active_contours_002.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.372 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.650 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-edges-plot-active-contours-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/d9e3bc72c1cb965756890a1a66d59c8c/plot_active_contours.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_active_contours.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/f3a8fcc7bf26d5d5324518f22de147de/plot_active_contours.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_active_contours.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/0843eb36d7522dd8547cf92ce054639b/plot_active_contours.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_active_contours.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/a7123798a141876f58eec93602d5a30a/plot_active_contours.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_active_contours.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

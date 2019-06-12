@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Hierarchical Merging of Region Boundary RAGs &mdash; skimage v0.14.2 docs</title>
+        <title>Hierarchical Merging of Region Boundary RAGs &mdash; skimage v0.14.3 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14.2',
+        VERSION:     '0.14.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,11 @@
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.14.2 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.14.3 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Extrema" href="plot_extrema.html" />
         <link rel="prev" title="RAG Merging" href="plot_rag_merge.html" />
@@ -69,7 +70,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.14.2<br></strong>
+    <strong>Docs for 0.14.3<br></strong>
 
     <a id="other">All versions</a>
 
@@ -91,8 +92,8 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-segmentation-plot-boundary-merge-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-segmentation-plot-boundary-merge-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="hierarchical-merging-of-region-boundary-rags">
 <span id="sphx-glr-auto-examples-segmentation-plot-boundary-merge-py"></span><h1>Hierarchical Merging of Region Boundary RAGs<a class="headerlink" href="#hierarchical-merging-of-region-boundary-rags" title="Permalink to this headline">¶</a></h1>
@@ -105,16 +106,16 @@ through the <a class="reference internal" href="../../api/skimage.future.graph.h
 For an example of how to construct region boundary based RAGs, see
 <a class="reference internal" href="plot_rag_boundary.html"><span class="doc">Region Boundary based RAGs</span></a>.</p>
 <ul class="sphx-glr-horizontal">
-<li><img alt="../../_images/sphx_glr_plot_boundary_merge_001.png" class="sphx-glr-multi-img first" src="../../_images/sphx_glr_plot_boundary_merge_001.png" />
+<li><img alt="../../_images/sphx_glr_plot_boundary_merge_001.png" class="sphx-glr-multi-img" src="../../_images/sphx_glr_plot_boundary_merge_001.png" />
 </li>
-<li><img alt="../../_images/sphx_glr_plot_boundary_merge_002.png" class="sphx-glr-multi-img first" src="../../_images/sphx_glr_plot_boundary_merge_002.png" />
+<li><img alt="../../_images/sphx_glr_plot_boundary_merge_002.png" class="sphx-glr-multi-img" src="../../_images/sphx_glr_plot_boundary_merge_002.png" />
 </li>
-<li><img alt="../../_images/sphx_glr_plot_boundary_merge_003.png" class="sphx-glr-multi-img first" src="../../_images/sphx_glr_plot_boundary_merge_003.png" />
+<li><img alt="../../_images/sphx_glr_plot_boundary_merge_003.png" class="sphx-glr-multi-img" src="../../_images/sphx_glr_plot_boundary_merge_003.png" />
 </li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">color</span>
-<span class="kn">from</span> <span class="nn">skimage.future</span> <span class="kn">import</span> <a href="../../api/skimage.future.graph.html#module-skimage.future.graph" title="View documentation for skimage.future.graph"><span class="n">graph</span></a>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">segmentation</span><span class="p">,</span> <span class="n">filters</span><span class="p">,</span> <span class="n">color</span>
+<span class="kn">from</span> <span class="nn">skimage.future</span> <span class="k">import</span> <a href="../../api/skimage.future.graph.html#module-skimage.future.graph" title="View documentation for skimage.future.graph"><span class="n">graph</span></a>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 
 <span class="k">def</span> <span class="nf">weight_boundary</span><span class="p">(</span><a href="../../api/skimage.future.graph.html#module-skimage.future.graph" title="View documentation for skimage.future.graph"><span class="n">graph</span></a><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
@@ -172,8 +173,8 @@ For an example of how to construct region boundary based RAGs, see
 <a href="../../api/skimage.future.graph.html#skimage.future.graph.show_rag" title="View documentation for skimage.future.graph.show_rag"><span class="n">graph</span><span class="o">.</span><span class="n">show_rag</span></a><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.title.html#matplotlib.pyplot.title" title="View documentation for matplotlib.pyplot.title"><span class="n">plt</span><span class="o">.</span><span class="n">title</span></a><span class="p">(</span><span class="s1">&#39;Initial RAG&#39;</span><span class="p">)</span>
 
-<span class="n">labels2</span> <span class="o">=</span> <a href="../../api/skimage.future.graph.html#skimage.future.graph.merge_hierarchical" title="View documentation for skimage.future.graph.merge_hierarchical"><span class="n">graph</span><span class="o">.</span><span class="n">merge_hierarchical</span></a><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">rag_copy</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-                                   <span class="n">in_place_merge</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="n">labels2</span> <span class="o">=</span> <a href="../../api/skimage.future.graph.html#skimage.future.graph.merge_hierarchical" title="View documentation for skimage.future.graph.merge_hierarchical"><span class="n">graph</span><span class="o">.</span><span class="n">merge_hierarchical</span></a><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">rag_copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                                   <span class="n">in_place_merge</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                                    <span class="n">merge_func</span><span class="o">=</span><span class="n">merge_boundary</span><span class="p">,</span>
                                    <span class="n">weight_func</span><span class="o">=</span><span class="n">weight_boundary</span><span class="p">)</span>
 
@@ -188,12 +189,14 @@ For an example of how to construct region boundary based RAGs, see
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.662 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.909 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-segmentation-plot-boundary-merge-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/400826318ea096939be599ead19d0ea8/plot_boundary_merge.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_boundary_merge.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/49c32b10351f4f81094d85799f5d753a/plot_boundary_merge.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_boundary_merge.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/97914a4b2e2683f4088adc81603dfb84/plot_boundary_merge.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_boundary_merge.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/f32de76013f9159d7029dd9a82fb803a/plot_boundary_merge.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_boundary_merge.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Making a patch &mdash; skimage v0.14.2 docs</title>
+        <title>Making a patch &mdash; skimage v0.14.3 docs</title>
     
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.14.2',
+        VERSION:     '0.14.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,11 @@
         <script type="text/javascript" src="../_static/jquery.js"></script>
         <script type="text/javascript" src="../_static/underscore.js"></script>
         <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../genindex.html" />
         <link rel="search" title="Search" href="../search.html" />
-        <link rel="top" title="skimage v0.14.2 docs" href="../index.html" />
+        <link rel="top" title="skimage v0.14.3 docs" href="../index.html" />
         <link rel="up" title="Working with scikit-image source code" href="index.html" />
         <link rel="next" title="Git for development" href="git_development.html" />
         <link rel="prev" title="Following the latest source" href="following_latest.html" />
@@ -84,7 +85,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.14.2<br></strong>
+    <strong>Docs for 0.14.3<br></strong>
 
     <a id="other">All versions</a>
 
@@ -146,21 +147,21 @@ mailing list</a> — where we will thank you warmly.</p>
 <div class="section" id="in-detail">
 <h3>In detail<a class="headerlink" href="#in-detail" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
-<li><p class="first">Tell git who you are so it can label the commits you’ve
+<li><p>Tell git who you are so it can label the commits you’ve
 made:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="n">you</span><span class="nd">@yourdomain</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
 <span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="s2">&quot;Your Name Comes Here&quot;</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">If you don’t already have one, clone a copy of the
+<li><p>If you don’t already have one, clone a copy of the
 <a class="reference external" href="http://scikit-image.org">scikit-image</a> repository:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">image</span><span class="o">/</span><span class="n">scikit</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cd</span> <span class="n">scikit</span><span class="o">-</span><span class="n">image</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Make a ‘feature branch’.  This will be where you work on
+<li><p>Make a ‘feature branch’.  This will be where you work on
 your bug fix.  It’s nice and safe and leaves you with
 access to an unmodified copy of the code in the main
 branch:</p>
@@ -169,7 +170,7 @@ branch:</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Do some edits, and commit them as you go:</p>
+<li><p>Do some edits, and commit them as you go:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># hack, hack, hack</span>
 <span class="c1"># Tell git about any new files you&#39;ve made</span>
 <span class="n">git</span> <span class="n">add</span> <span class="n">somewhere</span><span class="o">/</span><span class="n">tests</span><span class="o">/</span><span class="n">test_my_bug</span><span class="o">.</span><span class="n">py</span>
@@ -184,13 +185,13 @@ signals that you’re going to type a message on the command
 line.  The <code class="docutils literal notranslate"><span class="pre">a</span></code> flag — you can just take on faith —
 or see <a class="reference external" href="http://www.gitready.com/beginner/2009/01/18/the-staging-area.html">why the -a flag?</a>.</p>
 </li>
-<li><p class="first">When you have finished, check you have committed all your
+<li><p>When you have finished, check you have committed all your
 changes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">status</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Finally, make your commits into patches.  You want all the
+<li><p>Finally, make your commits into patches.  You want all the
 commits since you branched from the <code class="docutils literal notranslate"><span class="pre">master</span></code> branch:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="nb">format</span><span class="o">-</span><span class="n">patch</span> <span class="o">-</span><span class="n">M</span> <span class="o">-</span><span class="n">C</span> <span class="n">master</span>
 </pre></div>

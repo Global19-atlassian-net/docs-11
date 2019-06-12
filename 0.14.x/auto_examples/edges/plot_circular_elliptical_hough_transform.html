@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Circular and Elliptical Hough Transforms &mdash; skimage v0.14.2 docs</title>
+        <title>Circular and Elliptical Hough Transforms &mdash; skimage v0.14.3 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14.2',
+        VERSION:     '0.14.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,11 @@
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.14.2 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.14.3 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Skeletonize" href="plot_skeleton.html" />
         <link rel="prev" title="Approximate and subdivide polygons" href="plot_polygon.html" />
@@ -87,7 +88,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.14.2<br></strong>
+    <strong>Docs for 0.14.3<br></strong>
 
     <a id="other">All versions</a>
 
@@ -109,8 +110,8 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-edges-plot-circular-elliptical-hough-transform-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-edges-plot-circular-elliptical-hough-transform-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="circular-and-elliptical-hough-transforms">
 <span id="sphx-glr-auto-examples-edges-plot-circular-elliptical-hough-transform-py"></span><h1>Circular and Elliptical Hough Transforms<a class="headerlink" href="#circular-and-elliptical-hough-transforms" title="Permalink to this headline">¶</a></h1>
@@ -137,14 +138,14 @@ position receives the highest score.</p>
 <p>Note that the accumulator size is built to be larger than the
 original picture in order to detect centers outside the frame.
 Its size is extended by two times the larger radius.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">color</span>
-<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <a href="../../api/skimage.transform.html#skimage.transform.hough_circle" title="View documentation for skimage.transform.hough_circle"><span class="n">hough_circle</span></a><span class="p">,</span> <a href="../../api/skimage.transform.html#skimage.transform.hough_circle_peaks" title="View documentation for skimage.transform.hough_circle_peaks"><span class="n">hough_circle_peaks</span></a>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <a href="../../api/skimage.feature.html#skimage.feature.canny" title="View documentation for skimage.feature.canny"><span class="n">canny</span></a>
-<span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <a href="../../api/skimage.draw.html#skimage.draw.circle_perimeter" title="View documentation for skimage.draw.circle_perimeter"><span class="n">circle_perimeter</span></a>
-<span class="kn">from</span> <span class="nn">skimage.util</span> <span class="kn">import</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">color</span>
+<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="k">import</span> <a href="../../api/skimage.transform.html#skimage.transform.hough_circle" title="View documentation for skimage.transform.hough_circle"><span class="n">hough_circle</span></a><span class="p">,</span> <a href="../../api/skimage.transform.html#skimage.transform.hough_circle_peaks" title="View documentation for skimage.transform.hough_circle_peaks"><span class="n">hough_circle_peaks</span></a>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <a href="../../api/skimage.feature.html#skimage.feature.canny" title="View documentation for skimage.feature.canny"><span class="n">canny</span></a>
+<span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="k">import</span> <a href="../../api/skimage.draw.html#skimage.draw.circle_perimeter" title="View documentation for skimage.draw.circle_perimeter"><span class="n">circle_perimeter</span></a>
+<span class="kn">from</span> <span class="nn">skimage.util</span> <span class="k">import</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a>
 
 
 <span class="c1"># Load picture and detect edges</span>
@@ -153,7 +154,7 @@ Its size is extended by two times the larger radius.</p>
 
 
 <span class="c1"># Detect two radii</span>
-<span class="n">hough_radii</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html#numpy.arange" title="View documentation for numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">hough_radii</span> <span class="o">=</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.arange.html#numpy.arange" title="View documentation for numpy.arange"><span class="n">np</span><span class="o">.</span><span class="n">arange</span></a><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">hough_res</span> <span class="o">=</span> <a href="../../api/skimage.transform.html#skimage.transform.hough_circle" title="View documentation for skimage.transform.hough_circle"><span class="n">hough_circle</span></a><span class="p">(</span><span class="n">edges</span><span class="p">,</span> <span class="n">hough_radii</span><span class="p">)</span>
 
 <span class="c1"># Select the most prominent 5 circles</span>
@@ -186,24 +187,23 @@ determined, instead of three for circles.</p>
 assumes that it is the main axis. A loop on all the other points determines
 how much an ellipse passes to them. A good match corresponds to high
 accumulator values.</p>
-<p>A full description of the algorithm can be found in reference <a class="footnote-reference" href="#id3" id="id2">[1]</a>.</p>
+<p>A full description of the algorithm can be found in reference <a class="footnote-reference brackets" href="#id3" id="id2">1</a>.</p>
 </div>
 <div class="section" id="references">
 <h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Xie, Yonghong, and Qiang Ji. “A new efficient
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p>Xie, Yonghong, and Qiang Ji. “A new efficient
 ellipse detection method.” Pattern Recognition, 2002. Proceedings.
-16th International Conference on. Vol. 2. IEEE, 2002</td></tr>
-</tbody>
-</table>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+16th International Conference on. Vol. 2. IEEE, 2002</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <a href="../../api/skimage.feature.html#skimage.feature.canny" title="View documentation for skimage.feature.canny"><span class="n">canny</span></a>
-<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <a href="../../api/skimage.transform.html#skimage.transform.hough_ellipse" title="View documentation for skimage.transform.hough_ellipse"><span class="n">hough_ellipse</span></a>
-<span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <a href="../../api/skimage.draw.html#skimage.draw.ellipse_perimeter" title="View documentation for skimage.draw.ellipse_perimeter"><span class="n">ellipse_perimeter</span></a>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <a href="../../api/skimage.feature.html#skimage.feature.canny" title="View documentation for skimage.feature.canny"><span class="n">canny</span></a>
+<span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="k">import</span> <a href="../../api/skimage.transform.html#skimage.transform.hough_ellipse" title="View documentation for skimage.transform.hough_ellipse"><span class="n">hough_ellipse</span></a>
+<span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="k">import</span> <a href="../../api/skimage.draw.html#skimage.draw.ellipse_perimeter" title="View documentation for skimage.draw.ellipse_perimeter"><span class="n">ellipse_perimeter</span></a>
 
 <span class="c1"># Load picture, convert to grayscale and detect edges</span>
 <span class="n">image_rgb</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.coffee" title="View documentation for skimage.data.coffee"><span class="n">data</span><span class="o">.</span><span class="n">coffee</span></a><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">220</span><span class="p">,</span> <span class="mi">160</span><span class="p">:</span><span class="mi">420</span><span class="p">]</span>
@@ -232,7 +232,7 @@ ellipse detection method.” Pattern Recognition, 2002. Proceedings.
 <span class="n">edges</span><span class="p">[</span><span class="n">cy</span><span class="p">,</span> <span class="n">cx</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">fig2</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="View documentation for matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>
-                                <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                                <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original picture&#39;</span><span class="p">)</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image_rgb</span><span class="p">)</span>
@@ -244,12 +244,14 @@ ellipse detection method.” Pattern Recognition, 2002. Proceedings.
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_circular_elliptical_hough_transform_002.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_circular_elliptical_hough_transform_002.png" />
-<p><strong>Total running time of the script:</strong> ( 0 minutes  6.192 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  6.301 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-edges-plot-circular-elliptical-hough-transform-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/e7e3e071c2c3b5c5c42a964c7336624d/plot_circular_elliptical_hough_transform.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_circular_elliptical_hough_transform.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/a2a6c9cb34e119034cf764b4687ebd54/plot_circular_elliptical_hough_transform.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_circular_elliptical_hough_transform.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/e24ecc84cd5047124fd84d45ea19c58d/plot_circular_elliptical_hough_transform.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_circular_elliptical_hough_transform.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/dd26aea4a5c61ad5877719c6e1a0c6b5/plot_circular_elliptical_hough_transform.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_circular_elliptical_hough_transform.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Random Shapes &mdash; skimage v0.14.2 docs</title>
+        <title>Random Shapes &mdash; skimage v0.14.3 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14.2',
+        VERSION:     '0.14.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,11 @@
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.14.2 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.14.3 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Straight line Hough transform" href="plot_line_hough_transform.html" />
         <link rel="prev" title="Shapes" href="plot_shapes.html" />
@@ -69,7 +70,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.14.2<br></strong>
+    <strong>Docs for 0.14.3<br></strong>
 
     <a id="other">All versions</a>
 
@@ -91,8 +92,8 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-edges-plot-random-shapes-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-edges-plot-random-shapes-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="random-shapes">
 <span id="sphx-glr-auto-examples-edges-plot-random-shapes-py"></span><h1>Random Shapes<a class="headerlink" href="#random-shapes" title="Permalink to this headline">¶</a></h1>
@@ -100,26 +101,26 @@
 <img alt="../../_images/sphx_glr_plot_random_shapes_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_random_shapes_001.png" />
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Image shape: (128, 128)
-Labels: [(&#39;rectangle&#39;, ((16, 117), (32, 62)))]
+Labels: [(&#39;rectangle&#39;, ((78, 115), (66, 121)))]
 </pre></div>
 </div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <a href="../../api/skimage.draw.html#skimage.draw.random_shapes" title="View documentation for skimage.draw.random_shapes"><span class="n">random_shapes</span></a>
+<span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="k">import</span> <a href="../../api/skimage.draw.html#skimage.draw.random_shapes" title="View documentation for skimage.draw.random_shapes"><span class="n">random_shapes</span></a>
 
 <span class="c1"># Let&#39;s start simple and generate a 128x128 image</span>
 <span class="c1"># with a single grayscale rectangle.</span>
 <span class="n">result</span> <span class="o">=</span> <a href="../../api/skimage.draw.html#skimage.draw.random_shapes" title="View documentation for skimage.draw.random_shapes"><span class="n">random_shapes</span></a><span class="p">((</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> <span class="n">max_shapes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="s1">&#39;rectangle&#39;</span><span class="p">,</span>
-                       <span class="n">multichannel</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+                       <span class="n">multichannel</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># We get back a tuple consisting of (1) the image with the generated shapes</span>
 <span class="c1"># and (2) a list of label tuples with the kind of shape (e.g. circle,</span>
 <span class="c1"># rectangle) and ((r0, r1), (c0, c1)) coordinates.</span>
 <span class="n">image</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">result</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Image shape: {}</span><span class="se">\n</span><span class="s1">Labels: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Image shape: </span><span class="si">{}</span><span class="se">\n</span><span class="s1">Labels: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
 
 <span class="c1"># We can visualize the images.</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="View documentation for matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -143,12 +144,12 @@ Labels: [(&#39;rectangle&#39;, ((16, 117), (32, 62)))]
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">image</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">image1</span><span class="p">,</span> <span class="n">image2</span><span class="p">,</span> <span class="n">image3</span><span class="p">,</span> <span class="n">image4</span><span class="p">],</span> <span class="mi">1</span><span class="p">):</span>
     <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
-    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Colored shapes, #{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Colored shapes, #</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="c1"># These shapes are well suited to test segmentation algorithms. Often, we</span>
 <span class="c1"># want shapes to overlap to test the algorithm. This is also possible:</span>
 <span class="n">image</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <a href="../../api/skimage.draw.html#skimage.draw.random_shapes" title="View documentation for skimage.draw.random_shapes"><span class="n">random_shapes</span></a><span class="p">((</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span> <span class="n">min_shapes</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">max_shapes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-                         <span class="n">min_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">allow_overlap</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+                         <span class="n">min_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">allow_overlap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Overlapping shapes&#39;</span><span class="p">)</span>
 
@@ -159,12 +160,14 @@ Labels: [(&#39;rectangle&#39;, ((16, 117), (32, 62)))]
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.088 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.208 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-edges-plot-random-shapes-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/9019a1a1c6081b9135e6b58e9e7ec066/plot_random_shapes.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_random_shapes.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/88780d7d970ed088ed677976565d6e8e/plot_random_shapes.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_random_shapes.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/4193854dc66265863f1d8c1b0cb2091e/plot_random_shapes.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_random_shapes.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/4a03568fb93b65c79054c4ced40f2ec2/plot_random_shapes.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_random_shapes.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

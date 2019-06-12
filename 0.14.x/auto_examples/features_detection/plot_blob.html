@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Blob Detection &mdash; skimage v0.14.2 docs</title>
+        <title>Blob Detection &mdash; skimage v0.14.3 docs</title>
     
     
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.14.2',
+        VERSION:     '0.14.3',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -27,10 +27,11 @@
         <script type="text/javascript" src="../../_static/jquery.js"></script>
         <script type="text/javascript" src="../../_static/underscore.js"></script>
         <script type="text/javascript" src="../../_static/doctools.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.14.2 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.14.3 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="ORB feature detector and binary descriptor" href="plot_orb.html" />
         <link rel="prev" title="Haar-like feature descriptor" href="plot_haar.html" />
@@ -81,7 +82,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.14.2<br></strong>
+    <strong>Docs for 0.14.3<br></strong>
 
     <a id="other">All versions</a>
 
@@ -103,8 +104,8 @@
         <div class="span9">
             
   <div class="sphx-glr-download-link-note admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Click <a class="reference internal" href="#sphx-glr-download-auto-examples-features-detection-plot-blob-py"><span class="std std-ref">here</span></a> to download the full example code</p>
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-features-detection-plot-blob-py"><span class="std std-ref">here</span></a> to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="blob-detection">
 <span id="sphx-glr-auto-examples-features-detection-plot-blob-py"></span><h1>Blob Detection<a class="headerlink" href="#blob-detection" title="Permalink to this headline">¶</a></h1>
@@ -139,12 +140,12 @@ box filters instead of convolutions. Bright on dark as well as dark on
 bright blobs are detected. The downside is that small blobs (&lt;3px) are not
 detected accurately. See <a class="reference internal" href="../../api/skimage.feature.html#skimage.feature.blob_doh" title="skimage.feature.blob_doh"><code class="xref py py-meth docutils literal notranslate"><span class="pre">skimage.feature.blob_doh()</span></code></a> for usage.</p>
 <img alt="../../_images/sphx_glr_plot_blob_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_blob_001.png" />
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <a href="../../api/skimage.feature.html#skimage.feature.blob_dog" title="View documentation for skimage.feature.blob_dog"><span class="n">blob_dog</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.blob_log" title="View documentation for skimage.feature.blob_log"><span class="n">blob_log</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.blob_doh" title="View documentation for skimage.feature.blob_doh"><span class="n">blob_doh</span></a>
-<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="k">import</span> <span class="n">sqrt</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <a href="../../api/skimage.feature.html#skimage.feature.blob_dog" title="View documentation for skimage.feature.blob_dog"><span class="n">blob_dog</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.blob_log" title="View documentation for skimage.feature.blob_log"><span class="n">blob_log</span></a><span class="p">,</span> <a href="../../api/skimage.feature.html#skimage.feature.blob_doh" title="View documentation for skimage.feature.blob_doh"><span class="n">blob_doh</span></a>
+<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="k">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">rgb2gray</span></a>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 
 <span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.hubble_deep_field" title="View documentation for skimage.data.hubble_deep_field"><span class="n">data</span><span class="o">.</span><span class="n">hubble_deep_field</span></a><span class="p">()[</span><span class="mi">0</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">500</span><span class="p">]</span>
@@ -158,7 +159,7 @@ detected accurately. See <a class="reference internal" href="../../api/skimage.f
 <span class="n">blobs_dog</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.blob_dog" title="View documentation for skimage.feature.blob_dog"><span class="n">blob_dog</span></a><span class="p">(</span><span class="n">image_gray</span><span class="p">,</span> <span class="n">max_sigma</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=.</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">blobs_dog</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">blobs_dog</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="n">blobs_doh</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.blob_doh" title="View documentation for skimage.feature.blob_doh"><span class="n">blob_doh</span></a><span class="p">(</span><span class="n">image_gray</span><span class="p">,</span> <span class="n">max_sigma</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=.</span><span class="mo">01</span><span class="p">)</span>
+<span class="n">blobs_doh</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.blob_doh" title="View documentation for skimage.feature.blob_doh"><span class="n">blob_doh</span></a><span class="p">(</span><span class="n">image_gray</span><span class="p">,</span> <span class="n">max_sigma</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=.</span><span class="mi">01</span><span class="p">)</span>
 
 <span class="n">blobs_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">blobs_log</span><span class="p">,</span> <span class="n">blobs_dog</span><span class="p">,</span> <span class="n">blobs_doh</span><span class="p">]</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span>
@@ -166,7 +167,7 @@ detected accurately. See <a class="reference internal" href="../../api/skimage.f
           <span class="s1">&#39;Determinant of Hessian&#39;</span><span class="p">]</span>
 <span class="n">sequence</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">blobs_list</span><span class="p">,</span> <span class="n">colors</span><span class="p">,</span> <span class="n">titles</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="View documentation for matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="View documentation for matplotlib.pyplot.subplots"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="p">(</span><span class="n">blobs</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sequence</span><span class="p">):</span>
@@ -174,7 +175,7 @@ detected accurately. See <a class="reference internal" href="../../api/skimage.f
     <span class="n">ax</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">blob</span> <span class="ow">in</span> <span class="n">blobs</span><span class="p">:</span>
         <span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">blob</span>
-        <span class="n">c</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">ax</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
 
@@ -182,12 +183,14 @@ detected accurately. See <a class="reference internal" href="../../api/skimage.f
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  1.708 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.824 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-features-detection-plot-blob-py">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/8dd2fb96b091d38525ffd7c35c944115/plot_blob.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_blob.py</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/0e4238c4f8073fb6567f8cac6d2f8d9d/plot_blob.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_blob.py</span></code></a></p>
+</div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" download="" href="../../_downloads/b7b84c477ec80b2198a9454c102bab25/plot_blob.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_blob.ipynb</span></code></a></div>
+<p><a class="reference download internal" download="" href="../../_downloads/5fd5afc2b79029fd209f4b05ad325e35/plot_blob.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_blob.ipynb</span></code></a></p>
+</div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.readthedocs.io">Gallery generated by Sphinx-Gallery</a></p>
 </div>

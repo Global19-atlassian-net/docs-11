@@ -32,9 +32,7 @@ In this document we outline the following basic morphological operations:
 To get started, let's load an image using ``io.imread``. Note that morphology
 functions only work on gray-scale or binary images, so we set ``as_gray=True``.
 
-
-
-.. code-block:: python
+.. code-block:: default
 
 
     import os
@@ -60,8 +58,7 @@ functions only work on gray-scale or binary images, so we set ``as_gray=True``.
 Let's also define a convenience function for plotting comparisons:
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
 
@@ -92,8 +89,7 @@ neighborhood. Below, we use ``disk`` to create a circular structuring
 element, which we use for most of the following examples.
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     from skimage.morphology import erosion, dilation, opening, closing, white_tophat
@@ -126,8 +122,7 @@ pixels in the neighborhood centered at (i, j)*. Dilation enlarges bright
 regions and shrinks dark regions.
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     dilated = dilation(orig_phantom, selem)
@@ -155,8 +150,7 @@ a dilation*. Opening can remove small bright spots (i.e. "salt") and
 connect small dark cracks.
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     opened = opening(orig_phantom, selem)
@@ -192,8 +186,7 @@ To illustrate this more clearly, let's add a small crack to the white
 border:
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     phantom = orig_phantom.copy()
@@ -229,8 +222,7 @@ image that are smaller than the structuring element.
 To make things interesting, we'll add bright and dark spots to the image:
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     phantom = orig_phantom.copy()
@@ -262,8 +254,7 @@ minus the original image**. This operation returns the *dark spots of the
 image that are smaller than the structuring element*.
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     b_tophat = black_tophat(phantom, selem)
@@ -300,8 +291,7 @@ Thinning is used to reduce each connected component in a binary image to a
 performed on binary images only.
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     horse = io.imread(os.path.join(data_dir, "horse.png"), as_gray=True)
@@ -329,8 +319,7 @@ convex polygon that surround all white pixels in the input image*. Again
 note that this is also performed on binary images.
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     hull1 = convex_hull_image(horse == 0)
@@ -352,8 +341,7 @@ If we add a small grain to the image, we can see how the convex hull adapts
 to enclose that grain:
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     import numpy as np
@@ -387,8 +375,7 @@ Processing <http://www.cs.auckland.ac.nz/courses/compsci773s1c/lectures
 3. http://en.wikipedia.org/wiki/Mathematical_morphology
 
 
-
-.. code-block:: python
+.. code-block:: default
 
 
     plt.show()
@@ -398,7 +385,10 @@ Processing <http://www.cs.auckland.ac.nz/courses/compsci773s1c/lectures
 
 
 
-**Total running time of the script:** ( 0 minutes  0.715 seconds)
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** ( 0 minutes  0.731 seconds)
 
 
 .. _sphx_glr_download_auto_examples_xx_applications_plot_morphology.py:
