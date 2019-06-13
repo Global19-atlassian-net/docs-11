@@ -2521,11 +2521,12 @@ Journal of Histochemistry and Cytochemistry 25 (7), pp. 741-753
 <p><strong>classes</strong> : int, optional</p>
 <blockquote>
 <div><p>Number of classes to be thresholded, i.e. the number of resulting
-regions. Accepts an integer from 2 to 5.</p>
+regions.</p>
 </div></blockquote>
 <p><strong>nbins</strong> : int, optional</p>
 <blockquote>
-<div><p>Number of bins used to calculate the histogram.</p>
+<div><p>Number of bins used to calculate the histogram. This value is ignored
+for integer arrays.</p>
 </div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2539,6 +2540,10 @@ regions. Accepts an integer from 2 to 5.</p>
 <p>The threshold values are chosen in a way that maximizes the variance
 between the desired classes. Based on the Multi-Otsu approach by
 Liao, Chen and Chung.</p>
+<p>This implementation relies on a Cython function whose complexity
+if <span class="math notranslate nohighlight">\(O\left(\frac{Ch^{C-1}}{(C-1)!}\right)\)</span>, where <span class="math notranslate nohighlight">\(h\)</span>
+is the number of histogram bins and <span class="math notranslate nohighlight">\(C\)</span> is the number of
+classes desired.</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="r284"><span class="brackets"><a class="fn-backref" href="#id43">R284</a></span></dt>
