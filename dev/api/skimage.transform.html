@@ -314,39 +314,35 @@
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">match_histograms</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">reference</em>, <em class="sig-param">multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/histogram_matching.py#L23"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.match_histograms" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adjust an image so that its cumulative histogram matches that of another.</p>
 <p>The adjustment is applied separately for each channel.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Input image. Can be gray-scale or in color.</p>
-</div></blockquote>
-<p><strong>reference</strong> : ndarray</p>
-<blockquote>
-<div><p>Image to match histogram of. Must have the same number of channels as
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image. Can be gray-scale or in color.</p>
+</dd>
+<dt><strong>reference</strong><span class="classifier">ndarray</span></dt><dd><p>Image to match histogram of. Must have the same number of channels as
 image.</p>
-</div></blockquote>
-<p><strong>multichannel</strong> : bool, optional</p>
-<blockquote>
-<div><p>Apply the matching separately for each channel.</p>
-</div></blockquote>
+</dd>
+<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Apply the matching separately for each channel.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>matched</strong> : ndarray</p>
-<blockquote>
-<div><p>Transformed input image.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>matched</strong><span class="classifier">ndarray</span></dt><dd><p>Transformed input image.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>ValueError</strong></p>
-<blockquote>
-<div><p>Thrown when the number of channels in the input image and the reference
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>Thrown when the number of channels in the input image and the reference
 differ.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r556"><span class="brackets"><a class="fn-backref" href="#id1">R556</a></span></dt>
+<dt class="label" id="r8b243700b8a3-1"><span class="brackets">1</span></dt>
 <dd><p><a class="reference external" href="http://paulbourke.net/miscellaneous/equalisation/">http://paulbourke.net/miscellaneous/equalisation/</a></p>
 </dd>
 </dl>
@@ -366,36 +362,30 @@ differ.</p>
 <dt id="skimage.transform.hough_circle">
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">hough_circle</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">radius</em>, <em class="sig-param">normalize=True</em>, <em class="sig-param">full_output=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L70"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.hough_circle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a circular Hough transform.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : (M, N) ndarray</p>
-<blockquote>
-<div><p>Input image with nonzero values representing edges.</p>
-</div></blockquote>
-<p><strong>radius</strong> : scalar or sequence of scalars</p>
-<blockquote>
-<div><p>Radii at which to compute the Hough transform.
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p>Input image with nonzero values representing edges.</p>
+</dd>
+<dt><strong>radius</strong><span class="classifier">scalar or sequence of scalars</span></dt><dd><p>Radii at which to compute the Hough transform.
 Floats are converted to integers.</p>
-</div></blockquote>
-<p><strong>normalize</strong> : boolean, optional (default True)</p>
-<blockquote>
-<div><p>Normalize the accumulator with the number
+</dd>
+<dt><strong>normalize</strong><span class="classifier">boolean, optional (default True)</span></dt><dd><p>Normalize the accumulator with the number
 of pixels used to draw the radius.</p>
-</div></blockquote>
-<p><strong>full_output</strong> : boolean, optional (default False)</p>
-<blockquote>
-<div><p>Extend the output size by twice the largest
+</dd>
+<dt><strong>full_output</strong><span class="classifier">boolean, optional (default False)</span></dt><dd><p>Extend the output size by twice the largest
 radius in order to detect centers outside the
 input picture.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>H</strong> : 3D ndarray (radius index, (M + 2R, N + 2R) ndarray)</p>
-<blockquote>
-<div><p>Hough transform accumulator for each radius.
+<dd class="field-even"><dl class="simple">
+<dt><strong>H</strong><span class="classifier">3D ndarray (radius index, (M + 2R, N + 2R) ndarray)</span></dt><dd><p>Hough transform accumulator for each radius.
 R designates the larger radius if full_output is True.
 Otherwise, R = 0.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -427,38 +417,30 @@ Otherwise, R = 0.</p>
 <dt id="skimage.transform.hough_ellipse">
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">hough_ellipse</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">threshold=4</em>, <em class="sig-param">accuracy=1</em>, <em class="sig-param">min_size=4</em>, <em class="sig-param">max_size=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.hough_ellipse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform an elliptical Hough transform.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : (M, N) ndarray</p>
-<blockquote>
-<div><p>Input image with nonzero values representing edges.</p>
-</div></blockquote>
-<p><strong>threshold: int, optional</strong></p>
-<blockquote>
-<div><p>Accumulator threshold value.</p>
-</div></blockquote>
-<p><strong>accuracy</strong> : double, optional</p>
-<blockquote>
-<div><p>Bin size on the minor axis used in the accumulator.</p>
-</div></blockquote>
-<p><strong>min_size</strong> : int, optional</p>
-<blockquote>
-<div><p>Minimal major axis length.</p>
-</div></blockquote>
-<p><strong>max_size</strong> : int, optional</p>
-<blockquote>
-<div><p>Maximal minor axis length.
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p>Input image with nonzero values representing edges.</p>
+</dd>
+<dt><strong>threshold: int, optional</strong></dt><dd><p>Accumulator threshold value.</p>
+</dd>
+<dt><strong>accuracy</strong><span class="classifier">double, optional</span></dt><dd><p>Bin size on the minor axis used in the accumulator.</p>
+</dd>
+<dt><strong>min_size</strong><span class="classifier">int, optional</span></dt><dd><p>Minimal major axis length.</p>
+</dd>
+<dt><strong>max_size</strong><span class="classifier">int, optional</span></dt><dd><p>Maximal minor axis length.
 If None, the value is set to the half of the smaller
 image dimension.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>result</strong> : ndarray with fields [(accumulator, yc, xc, a, b, orientation)].</p>
-<blockquote>
-<div><p>Where <code class="docutils literal notranslate"><span class="pre">(yc,</span> <span class="pre">xc)</span></code> is the center, <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b)</span></code> the major and minor
+<dd class="field-even"><dl class="simple">
+<dt><strong>result</strong><span class="classifier">ndarray with fields [(accumulator, yc, xc, a, b, orientation)].</span></dt><dd><p>Where <code class="docutils literal notranslate"><span class="pre">(yc,</span> <span class="pre">xc)</span></code> is the center, <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b)</span></code> the major and minor
 axes, respectively. The <cite>orientation</cite> value follows
 <cite>skimage.draw.ellipse_perimeter</cite> convention.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -467,7 +449,7 @@ distribution. In other words, a flat accumulator distribution with low
 values may be caused by a too low bin size.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r557"><span class="brackets"><a class="fn-backref" href="#id2">R557</a></span></dt>
+<dt class="label" id="rf2ef66e2ec1f-1"><span class="brackets">1</span></dt>
 <dd><p>Xie, Yonghong, and Qiang Ji. “A new efficient ellipse detection
 method.” Pattern Recognition, 2002. Proceedings. 16th International
 Conference on. Vol. 2. IEEE, 2002</p>
@@ -500,31 +482,25 @@ Conference on. Vol. 2. IEEE, 2002</p>
 <dt id="skimage.transform.hough_line">
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">hough_line</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">theta=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L166"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.hough_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a straight line Hough transform.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : (M, N) ndarray</p>
-<blockquote>
-<div><p>Input image with nonzero values representing edges.</p>
-</div></blockquote>
-<p><strong>theta</strong> : 1D ndarray of double, optional</p>
-<blockquote>
-<div><p>Angles at which to compute the transform, in radians.
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p>Input image with nonzero values representing edges.</p>
+</dd>
+<dt><strong>theta</strong><span class="classifier">1D ndarray of double, optional</span></dt><dd><p>Angles at which to compute the transform, in radians.
 Defaults to a vector of 180 angles evenly spaced from -pi/2 to pi/2.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>hspace</strong> : 2-D ndarray of uint64</p>
-<blockquote>
-<div><p>Hough transform accumulator.</p>
-</div></blockquote>
-<p><strong>angles</strong> : ndarray</p>
-<blockquote>
-<div><p>Angles at which the transform is computed, in radians.</p>
-</div></blockquote>
-<p><strong>distances</strong> : ndarray</p>
-<blockquote>
-<div><p>Distance values.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>hspace</strong><span class="classifier">2-D ndarray of uint64</span></dt><dd><p>Hough transform accumulator.</p>
+</dd>
+<dt><strong>angles</strong><span class="classifier">ndarray</span></dt><dd><p>Angles at which the transform is computed, in radians.</p>
+</dd>
+<dt><strong>distances</strong><span class="classifier">ndarray</span></dt><dd><p>Distance values.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -601,47 +577,37 @@ the <cite>theta</cite> array.</p>
 <dt id="skimage.transform.probabilistic_hough_line">
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">probabilistic_hough_line</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">threshold=10</em>, <em class="sig-param">line_length=50</em>, <em class="sig-param">line_gap=10</em>, <em class="sig-param">theta=None</em>, <em class="sig-param">seed=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/hough_transform.py#L224"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.probabilistic_hough_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return lines from a progressive probabilistic line Hough transform.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : (M, N) ndarray</p>
-<blockquote>
-<div><p>Input image with nonzero values representing edges.</p>
-</div></blockquote>
-<p><strong>threshold</strong> : int, optional</p>
-<blockquote>
-<div><p>Threshold</p>
-</div></blockquote>
-<p><strong>line_length</strong> : int, optional</p>
-<blockquote>
-<div><p>Minimum accepted length of detected lines.
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p>Input image with nonzero values representing edges.</p>
+</dd>
+<dt><strong>threshold</strong><span class="classifier">int, optional</span></dt><dd><p>Threshold</p>
+</dd>
+<dt><strong>line_length</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum accepted length of detected lines.
 Increase the parameter to extract longer lines.</p>
-</div></blockquote>
-<p><strong>line_gap</strong> : int, optional</p>
-<blockquote>
-<div><p>Maximum gap between pixels to still form a line.
+</dd>
+<dt><strong>line_gap</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum gap between pixels to still form a line.
 Increase the parameter to merge broken lines more aggressively.</p>
-</div></blockquote>
-<p><strong>theta</strong> : 1D ndarray, dtype=double, optional</p>
-<blockquote>
-<div><p>Angles at which to compute the transform, in radians.
+</dd>
+<dt><strong>theta</strong><span class="classifier">1D ndarray, dtype=double, optional</span></dt><dd><p>Angles at which to compute the transform, in radians.
 If None, use a range from -pi/2 to pi/2.</p>
-</div></blockquote>
-<p><strong>seed</strong> : int, optional</p>
-<blockquote>
-<div><p>Seed to initialize the random number generator.</p>
-</div></blockquote>
+</dd>
+<dt><strong>seed</strong><span class="classifier">int, optional</span></dt><dd><p>Seed to initialize the random number generator.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>lines</strong> : list</p>
-<blockquote>
-<div><p>List of lines identified, lines in format ((x0, y0), (x1, y1)),
+<dd class="field-even"><dl class="simple">
+<dt><strong>lines</strong><span class="classifier">list</span></dt><dd><p>List of lines identified, lines in format ((x0, y0), (x1, y1)),
 indicating line start and end.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r558"><span class="brackets"><a class="fn-backref" href="#id3">R558</a></span></dt>
+<dt class="label" id="rd9a46cdb16bc-1"><span class="brackets">1</span></dt>
 <dd><p>C. Galamhos, J. Matas and J. Kittler, “Progressive probabilistic
 Hough transform for line detection”, in IEEE Computer Society
 Conference on Computer Vision and Pattern Recognition, 1999.</p>
@@ -667,52 +633,38 @@ Conference on Computer Vision and Pattern Recognition, 1999.</p>
 Hough space. Non-maximum suppression with different sizes is applied
 separately in the first and second dimension of the Hough space to
 identify peaks.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hspaces</strong> : (N, M) array</p>
-<blockquote>
-<div><p>Hough spaces returned by the <cite>hough_circle</cite> function.</p>
-</div></blockquote>
-<p><strong>radii</strong> : (M,) array</p>
-<blockquote>
-<div><p>Radii corresponding to Hough spaces.</p>
-</div></blockquote>
-<p><strong>min_xdistance</strong> : int, optional</p>
-<blockquote>
-<div><p>Minimum distance separating centers in the x dimension.</p>
-</div></blockquote>
-<p><strong>min_ydistance</strong> : int, optional</p>
-<blockquote>
-<div><p>Minimum distance separating centers in the y dimension.</p>
-</div></blockquote>
-<p><strong>threshold</strong> : float, optional</p>
-<blockquote>
-<div><p>Minimum intensity of peaks in each Hough space.
+<dd class="field-odd"><dl class="simple">
+<dt><strong>hspaces</strong><span class="classifier">(N, M) array</span></dt><dd><p>Hough spaces returned by the <cite>hough_circle</cite> function.</p>
+</dd>
+<dt><strong>radii</strong><span class="classifier">(M,) array</span></dt><dd><p>Radii corresponding to Hough spaces.</p>
+</dd>
+<dt><strong>min_xdistance</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum distance separating centers in the x dimension.</p>
+</dd>
+<dt><strong>min_ydistance</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum distance separating centers in the y dimension.</p>
+</dd>
+<dt><strong>threshold</strong><span class="classifier">float, optional</span></dt><dd><p>Minimum intensity of peaks in each Hough space.
 Default is <cite>0.5 * max(hspace)</cite>.</p>
-</div></blockquote>
-<p><strong>num_peaks</strong> : int, optional</p>
-<blockquote>
-<div><p>Maximum number of peaks in each Hough space. When the
+</dd>
+<dt><strong>num_peaks</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of peaks in each Hough space. When the
 number of peaks exceeds <cite>num_peaks</cite>, only <cite>num_peaks</cite>
 coordinates based on peak intensity are considered for the
 corresponding radius.</p>
-</div></blockquote>
-<p><strong>total_num_peaks</strong> : int, optional</p>
-<blockquote>
-<div><p>Maximum number of peaks. When the number of peaks exceeds <cite>num_peaks</cite>,
+</dd>
+<dt><strong>total_num_peaks</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of peaks. When the number of peaks exceeds <cite>num_peaks</cite>,
 return <cite>num_peaks</cite> coordinates based on peak intensity.</p>
-</div></blockquote>
-<p><strong>normalize</strong> : bool, optional</p>
-<blockquote>
-<div><p>If True, normalize the accumulator by the radius to sort the prominent
+</dd>
+<dt><strong>normalize</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, normalize the accumulator by the radius to sort the prominent
 peaks.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>accum, cx, cy, rad</strong> : tuple of array</p>
-<blockquote>
-<div><p>Peak values in Hough space, x and y center coordinates and radii.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>accum, cx, cy, rad</strong><span class="classifier">tuple of array</span></dt><dd><p>Peak values in Hough space, x and y center coordinates and radii.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -745,46 +697,34 @@ peaks.</p>
 in a Hough transform. Non-maximum suppression with different sizes is
 applied separately in the first (distances) and second (angles) dimension
 of the Hough space to identify peaks.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>hspace</strong> : (N, M) array</p>
-<blockquote>
-<div><p>Hough space returned by the <cite>hough_line</cite> function.</p>
-</div></blockquote>
-<p><strong>angles</strong> : (M,) array</p>
-<blockquote>
-<div><p>Angles returned by the <cite>hough_line</cite> function. Assumed to be continuous.
+<dd class="field-odd"><dl class="simple">
+<dt><strong>hspace</strong><span class="classifier">(N, M) array</span></dt><dd><p>Hough space returned by the <cite>hough_line</cite> function.</p>
+</dd>
+<dt><strong>angles</strong><span class="classifier">(M,) array</span></dt><dd><p>Angles returned by the <cite>hough_line</cite> function. Assumed to be continuous.
 (<cite>angles[-1] - angles[0] == PI</cite>).</p>
-</div></blockquote>
-<p><strong>dists</strong> : (N, ) array</p>
-<blockquote>
-<div><p>Distances returned by the <cite>hough_line</cite> function.</p>
-</div></blockquote>
-<p><strong>min_distance</strong> : int, optional</p>
-<blockquote>
-<div><p>Minimum distance separating lines (maximum filter size for first
+</dd>
+<dt><strong>dists</strong><span class="classifier">(N, ) array</span></dt><dd><p>Distances returned by the <cite>hough_line</cite> function.</p>
+</dd>
+<dt><strong>min_distance</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum distance separating lines (maximum filter size for first
 dimension of hough space).</p>
-</div></blockquote>
-<p><strong>min_angle</strong> : int, optional</p>
-<blockquote>
-<div><p>Minimum angle separating lines (maximum filter size for second
+</dd>
+<dt><strong>min_angle</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum angle separating lines (maximum filter size for second
 dimension of hough space).</p>
-</div></blockquote>
-<p><strong>threshold</strong> : float, optional</p>
-<blockquote>
-<div><p>Minimum intensity of peaks. Default is <cite>0.5 * max(hspace)</cite>.</p>
-</div></blockquote>
-<p><strong>num_peaks</strong> : int, optional</p>
-<blockquote>
-<div><p>Maximum number of peaks. When the number of peaks exceeds <cite>num_peaks</cite>,
+</dd>
+<dt><strong>threshold</strong><span class="classifier">float, optional</span></dt><dd><p>Minimum intensity of peaks. Default is <cite>0.5 * max(hspace)</cite>.</p>
+</dd>
+<dt><strong>num_peaks</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of peaks. When the number of peaks exceeds <cite>num_peaks</cite>,
 return <cite>num_peaks</cite> coordinates based on peak intensity.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>accum, angles, dists</strong> : tuple of array</p>
-<blockquote>
-<div><p>Peak values in Hough space, angles and distances.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>accum, angles, dists</strong><span class="classifier">tuple of array</span></dt><dd><p>Peak values in Hough space, angles and distances.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -818,32 +758,28 @@ return <cite>num_peaks</cite> coordinates based on peak intensity.</p>
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">radon</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">theta=None</em>, <em class="sig-param">circle=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.radon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculates the radon transform of an image given specified
 projection angles.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : array_like, dtype=float</p>
-<blockquote>
-<div><p>Input image. The rotation axis will be located in the pixel with
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">array_like, dtype=float</span></dt><dd><p>Input image. The rotation axis will be located in the pixel with
 indices <code class="docutils literal notranslate"><span class="pre">(image.shape[0]</span> <span class="pre">//</span> <span class="pre">2,</span> <span class="pre">image.shape[1]</span> <span class="pre">//</span> <span class="pre">2)</span></code>.</p>
-</div></blockquote>
-<p><strong>theta</strong> : array_like, dtype=float, optional</p>
-<blockquote>
-<div><p>Projection angles (in degrees). If <cite>None</cite>, the value is set to
+</dd>
+<dt><strong>theta</strong><span class="classifier">array_like, dtype=float, optional</span></dt><dd><p>Projection angles (in degrees). If <cite>None</cite>, the value is set to
 np.arange(180).</p>
-</div></blockquote>
-<p><strong>circle</strong> : boolean, optional</p>
-<blockquote>
-<div><p>Assume image is zero outside the inscribed circle, making the
+</dd>
+<dt><strong>circle</strong><span class="classifier">boolean, optional</span></dt><dd><p>Assume image is zero outside the inscribed circle, making the
 width of each projection (the first dimension of the sinogram)
 equal to <code class="docutils literal notranslate"><span class="pre">min(image.shape)</span></code>.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>radon_image</strong> : ndarray</p>
-<blockquote>
-<div><p>Radon transform (sinogram).  The tomography rotation axis will lie
+<dd class="field-even"><dl class="simple">
+<dt><strong>radon_image</strong><span class="classifier">ndarray</span></dt><dd><p>Radon transform (sinogram).  The tomography rotation axis will lie
 at the pixel index <code class="docutils literal notranslate"><span class="pre">radon_image.shape[0]</span> <span class="pre">//</span> <span class="pre">2</span></code> along the 0th
 dimension of <code class="docutils literal notranslate"><span class="pre">radon_image</span></code>.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -851,11 +787,11 @@ dimension of <code class="docutils literal notranslate"><span class="pre">radon_
 (<a class="reference external" href="https://www.clear.rice.edu/elec431/projects96/DSP/bpanalysis.html">https://www.clear.rice.edu/elec431/projects96/DSP/bpanalysis.html</a>)</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r559"><span class="brackets"><a class="fn-backref" href="#id4">R559</a></span></dt>
+<dt class="label" id="r0eb755fc1fae-1"><span class="brackets">1</span></dt>
 <dd><p>AC Kak, M Slaney, “Principles of Computerized Tomographic
 Imaging”, IEEE Press 1988.</p>
 </dd>
-<dt class="label" id="r560"><span class="brackets"><a class="fn-backref" href="#id5">R560</a></span></dt>
+<dt class="label" id="r0eb755fc1fae-2"><span class="brackets">2</span></dt>
 <dd><p>B.R. Ramesh, N. Srinivasa, K. Rajgopal, “An Algorithm for Computing
 the Discrete Radon Transform With Some Applications”, Proceedings of
 the Fourth IEEE Region 10 International Conference, TENCON ‘89, 1989</p>
@@ -879,50 +815,40 @@ the Fourth IEEE Region 10 International Conference, TENCON ‘89, 1989</p>
 <dd><p>Inverse radon transform.</p>
 <p>Reconstruct an image from the radon transform, using the filtered
 back projection algorithm.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>radon_image</strong> : array_like, dtype=float</p>
-<blockquote>
-<div><p>Image containing radon transform (sinogram). Each column of
+<dd class="field-odd"><dl class="simple">
+<dt><strong>radon_image</strong><span class="classifier">array_like, dtype=float</span></dt><dd><p>Image containing radon transform (sinogram). Each column of
 the image corresponds to a projection along a different angle. The
 tomography rotation axis should lie at the pixel index
 <code class="docutils literal notranslate"><span class="pre">radon_image.shape[0]</span> <span class="pre">//</span> <span class="pre">2</span></code> along the 0th dimension of
 <code class="docutils literal notranslate"><span class="pre">radon_image</span></code>.</p>
-</div></blockquote>
-<p><strong>theta</strong> : array_like, dtype=float, optional</p>
-<blockquote>
-<div><p>Reconstruction angles (in degrees). Default: m angles evenly spaced
+</dd>
+<dt><strong>theta</strong><span class="classifier">array_like, dtype=float, optional</span></dt><dd><p>Reconstruction angles (in degrees). Default: m angles evenly spaced
 between 0 and 180 (if the shape of <cite>radon_image</cite> is (N, M)).</p>
-</div></blockquote>
-<p><strong>output_size</strong> : int, optional</p>
-<blockquote>
-<div><p>Number of rows and columns in the reconstruction.</p>
-</div></blockquote>
-<p><strong>filter</strong> : str, optional</p>
-<blockquote>
-<div><p>Filter used in frequency domain filtering. Ramp filter used by default.
+</dd>
+<dt><strong>output_size</strong><span class="classifier">int, optional</span></dt><dd><p>Number of rows and columns in the reconstruction.</p>
+</dd>
+<dt><strong>filter</strong><span class="classifier">str, optional</span></dt><dd><p>Filter used in frequency domain filtering. Ramp filter used by default.
 Filters available: ramp, shepp-logan, cosine, hamming, hann.
 Assign None to use no filter.</p>
-</div></blockquote>
-<p><strong>interpolation</strong> : str, optional</p>
-<blockquote>
-<div><p>Interpolation method used in reconstruction. Methods available:
+</dd>
+<dt><strong>interpolation</strong><span class="classifier">str, optional</span></dt><dd><p>Interpolation method used in reconstruction. Methods available:
 ‘linear’, ‘nearest’, and ‘cubic’ (‘cubic’ is slow).</p>
-</div></blockquote>
-<p><strong>circle</strong> : boolean, optional</p>
-<blockquote>
-<div><p>Assume the reconstructed image is zero outside the inscribed circle.
+</dd>
+<dt><strong>circle</strong><span class="classifier">boolean, optional</span></dt><dd><p>Assume the reconstructed image is zero outside the inscribed circle.
 Also changes the default output_size to match the behaviour of
 <code class="docutils literal notranslate"><span class="pre">radon</span></code> called with <code class="docutils literal notranslate"><span class="pre">circle=True</span></code>.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>reconstructed</strong> : ndarray</p>
-<blockquote>
-<div><p>Reconstructed image. The rotation axis will be located in the pixel
+<dd class="field-even"><dl class="simple">
+<dt><strong>reconstructed</strong><span class="classifier">ndarray</span></dt><dd><p>Reconstructed image. The rotation axis will be located in the pixel
 with indices
 <code class="docutils literal notranslate"><span class="pre">(reconstructed.shape[0]</span> <span class="pre">//</span> <span class="pre">2,</span> <span class="pre">reconstructed.shape[1]</span> <span class="pre">//</span> <span class="pre">2)</span></code>.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -931,11 +857,11 @@ multiplying the frequency domain of the filter with the FFT of the
 projection data. This algorithm is called filtered back projection.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r561"><span class="brackets"><a class="fn-backref" href="#id6">R561</a></span></dt>
+<dt class="label" id="r19c92af887b5-1"><span class="brackets">1</span></dt>
 <dd><p>AC Kak, M Slaney, “Principles of Computerized Tomographic
 Imaging”, IEEE Press 1988.</p>
 </dd>
-<dt class="label" id="r562"><span class="brackets"><a class="fn-backref" href="#id7">R562</a></span></dt>
+<dt class="label" id="r19c92af887b5-2"><span class="brackets">2</span></dt>
 <dd><p>B.R. Ramesh, N. Srinivasa, K. Rajgopal, “An Algorithm for Computing
 the Discrete Radon Transform With Some Applications”, Proceedings of
 the Fourth IEEE Region 10 International Conference, TENCON ‘89, 1989</p>
@@ -959,52 +885,42 @@ the Fourth IEEE Region 10 International Conference, TENCON ‘89, 1989</p>
 <dd><p>Inverse radon transform</p>
 <p>Reconstruct an image from the radon transform, using a single iteration of
 the Simultaneous Algebraic Reconstruction Technique (SART) algorithm.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>radon_image</strong> : 2D array, dtype=float</p>
-<blockquote>
-<div><p>Image containing radon transform (sinogram). Each column of
+<dd class="field-odd"><dl class="simple">
+<dt><strong>radon_image</strong><span class="classifier">2D array, dtype=float</span></dt><dd><p>Image containing radon transform (sinogram). Each column of
 the image corresponds to a projection along a different angle. The
 tomography rotation axis should lie at the pixel index
 <code class="docutils literal notranslate"><span class="pre">radon_image.shape[0]</span> <span class="pre">//</span> <span class="pre">2</span></code> along the 0th dimension of
 <code class="docutils literal notranslate"><span class="pre">radon_image</span></code>.</p>
-</div></blockquote>
-<p><strong>theta</strong> : 1D array, dtype=float, optional</p>
-<blockquote>
-<div><p>Reconstruction angles (in degrees). Default: m angles evenly spaced
+</dd>
+<dt><strong>theta</strong><span class="classifier">1D array, dtype=float, optional</span></dt><dd><p>Reconstruction angles (in degrees). Default: m angles evenly spaced
 between 0 and 180 (if the shape of <cite>radon_image</cite> is (N, M)).</p>
-</div></blockquote>
-<p><strong>image</strong> : 2D array, dtype=float, optional</p>
-<blockquote>
-<div><p>Image containing an initial reconstruction estimate. Shape of this
+</dd>
+<dt><strong>image</strong><span class="classifier">2D array, dtype=float, optional</span></dt><dd><p>Image containing an initial reconstruction estimate. Shape of this
 array should be <code class="docutils literal notranslate"><span class="pre">(radon_image.shape[0],</span> <span class="pre">radon_image.shape[0])</span></code>. The
 default is an array of zeros.</p>
-</div></blockquote>
-<p><strong>projection_shifts</strong> : 1D array, dtype=float, optional</p>
-<blockquote>
-<div><p>Shift the projections contained in <code class="docutils literal notranslate"><span class="pre">radon_image</span></code> (the sinogram) by
+</dd>
+<dt><strong>projection_shifts</strong><span class="classifier">1D array, dtype=float, optional</span></dt><dd><p>Shift the projections contained in <code class="docutils literal notranslate"><span class="pre">radon_image</span></code> (the sinogram) by
 this many pixels before reconstructing the image. The i’th value
 defines the shift of the i’th column of <code class="docutils literal notranslate"><span class="pre">radon_image</span></code>.</p>
-</div></blockquote>
-<p><strong>clip</strong> : length-2 sequence of floats, optional</p>
-<blockquote>
-<div><p>Force all values in the reconstructed tomogram to lie in the range
+</dd>
+<dt><strong>clip</strong><span class="classifier">length-2 sequence of floats, optional</span></dt><dd><p>Force all values in the reconstructed tomogram to lie in the range
 <code class="docutils literal notranslate"><span class="pre">[clip[0],</span> <span class="pre">clip[1]]</span></code></p>
-</div></blockquote>
-<p><strong>relaxation</strong> : float, optional</p>
-<blockquote>
-<div><p>Relaxation parameter for the update step. A higher value can
+</dd>
+<dt><strong>relaxation</strong><span class="classifier">float, optional</span></dt><dd><p>Relaxation parameter for the update step. A higher value can
 improve the convergence rate, but one runs the risk of instabilities.
 Values close to or higher than 1 are not recommended.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>reconstructed</strong> : ndarray</p>
-<blockquote>
-<div><p>Reconstructed image. The rotation axis will be located in the pixel
+<dd class="field-even"><dl class="simple">
+<dt><strong>reconstructed</strong><span class="classifier">ndarray</span></dt><dd><p>Reconstructed image. The rotation axis will be located in the pixel
 with indices
 <code class="docutils literal notranslate"><span class="pre">(reconstructed.shape[0]</span> <span class="pre">//</span> <span class="pre">2,</span> <span class="pre">reconstructed.shape[1]</span> <span class="pre">//</span> <span class="pre">2)</span></code>.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1021,26 +937,26 @@ reconstruction. Further iterations will tend to enhance high-frequency
 information, but will also often increase the noise.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r563"><span class="brackets"><a class="fn-backref" href="#id8">R563</a></span></dt>
+<dt class="label" id="r5a4015ea6a92-1"><span class="brackets">1</span></dt>
 <dd><p>AC Kak, M Slaney, “Principles of Computerized Tomographic
 Imaging”, IEEE Press 1988.</p>
 </dd>
-<dt class="label" id="r564"><span class="brackets"><a class="fn-backref" href="#id9">R564</a></span></dt>
+<dt class="label" id="r5a4015ea6a92-2"><span class="brackets">2</span></dt>
 <dd><p>AH Andersen, AC Kak, “Simultaneous algebraic reconstruction
 technique (SART): a superior implementation of the ART algorithm”,
 Ultrasonic Imaging 6 pp 81–94 (1984)</p>
 </dd>
-<dt class="label" id="r565"><span class="brackets"><a class="fn-backref" href="#id10">R565</a></span></dt>
+<dt class="label" id="r5a4015ea6a92-3"><span class="brackets">3</span></dt>
 <dd><p>S Kaczmarz, “Angenäherte auflösung von systemen linearer
 gleichungen”, Bulletin International de l’Academie Polonaise des
 Sciences et des Lettres 35 pp 355–357 (1937)</p>
 </dd>
-<dt class="label" id="r566"><span class="brackets"><a class="fn-backref" href="#id11">R566</a></span></dt>
+<dt class="label" id="r5a4015ea6a92-4"><span class="brackets">4</span></dt>
 <dd><p>Kohler, T. “A projection access scheme for iterative
 reconstruction based on the golden section.” Nuclear Science
 Symposium Conference Record, 2004 IEEE. Vol. 6. IEEE, 2004.</p>
 </dd>
-<dt class="label" id="r567"><span class="brackets"><a class="fn-backref" href="#id12">R567</a></span></dt>
+<dt class="label" id="r5a4015ea6a92-5"><span class="brackets">5</span></dt>
 <dd><p>Kaczmarz’ method, Wikipedia,
 <a class="reference external" href="https://en.wikipedia.org/wiki/Kaczmarz_method">https://en.wikipedia.org/wiki/Kaczmarz_method</a></p>
 </dd>
@@ -1062,21 +978,21 @@ Symposium Conference Record, 2004 IEEE. Vol. 6. IEEE, 2004.</p>
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">order_angles_golden_ratio</code><span class="sig-paren">(</span><em class="sig-param">theta</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/radon_transform.py#L275"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.order_angles_golden_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Order angles to reduce the amount of correlated information
 in subsequent projections.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>theta</strong> : 1D array of floats</p>
-<blockquote>
-<div><p>Projection angles in degrees. Duplicate angles are not allowed.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>theta</strong><span class="classifier">1D array of floats</span></dt><dd><p>Projection angles in degrees. Duplicate angles are not allowed.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>indices_generator</strong> : generator yielding unsigned integers</p>
-<blockquote>
-<div><p>The returned generator yields indices into <code class="docutils literal notranslate"><span class="pre">theta</span></code> such that
+<dd class="field-even"><dl class="simple">
+<dt><strong>indices_generator</strong><span class="classifier">generator yielding unsigned integers</span></dt><dd><p>The returned generator yields indices into <code class="docutils literal notranslate"><span class="pre">theta</span></code> such that
 <code class="docutils literal notranslate"><span class="pre">theta[indices]</span></code> gives the approximate golden ratio ordering
 of the projections. In total, <code class="docutils literal notranslate"><span class="pre">len(theta)</span></code> indices are yielded.
 All non-negative integers &lt; <code class="docutils literal notranslate"><span class="pre">len(theta)</span></code> are yielded exactly once.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1084,12 +1000,12 @@ All non-negative integers &lt; <code class="docutils literal notranslate"><span 
 by T. Kohler.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r568"><span class="brackets"><a class="fn-backref" href="#id13">R568</a></span></dt>
+<dt class="label" id="r88d6c0557044-1"><span class="brackets">1</span></dt>
 <dd><p>Kohler, T. “A projection access scheme for iterative
 reconstruction based on the golden section.” Nuclear Science
 Symposium Conference Record, 2004 IEEE. Vol. 6. IEEE, 2004.</p>
 </dd>
-<dt class="label" id="r569"><span class="brackets"><a class="fn-backref" href="#id14">R569</a></span></dt>
+<dt class="label" id="r88d6c0557044-2"><span class="brackets">2</span></dt>
 <dd><p>Winkelmann, Stefanie, et al. “An optimal radial profile order
 based on the Golden Ratio for time-resolved MRI.”
 Medical Imaging, IEEE Transactions on 26.1 (2007): 68-76.</p>
@@ -1105,18 +1021,18 @@ Medical Imaging, IEEE Transactions on 26.1 (2007): 68-76.</p>
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">frt2</code><span class="sig-paren">(</span><em class="sig-param">a</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/finite_radon_transform.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.frt2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the 2-dimensional finite radon transform (FRT) for an n x n
 integer array.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>a</strong> : array_like</p>
-<blockquote>
-<div><p>A 2-D square n x n integer array.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">array_like</span></dt><dd><p>A 2-D square n x n integer array.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>FRT</strong> : 2-D ndarray</p>
-<blockquote>
-<div><p>Finite Radon Transform array of (n+1) x n integer coefficients.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>FRT</strong><span class="classifier">2-D ndarray</span></dt><dd><p>Finite Radon Transform array of (n+1) x n integer coefficients.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1131,7 +1047,7 @@ integer array.</p>
 The idea for this algorithm is due to Vlad Negnevitski.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="frt569"><span class="brackets"><a class="fn-backref" href="#id15">FRT569</a></span></dt>
+<dt class="label" id="rdb433381c1a5-frt"><span class="brackets">FRT</span></dt>
 <dd><p>A. Kingston and I. Svalbe, “Projective transforms on periodic
 discrete image arrays,” in P. Hawkes (Ed), Advances in Imaging
 and Electron Physics, 139 (2006)</p>
@@ -1158,18 +1074,18 @@ Use a prime number for the array dimensions</p>
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">ifrt2</code><span class="sig-paren">(</span><em class="sig-param">a</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/finite_radon_transform.py#L71"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ifrt2" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the 2-dimensional inverse finite radon transform (iFRT) for
 an (n+1) x n integer array.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>a</strong> : array_like</p>
-<blockquote>
-<div><p>A 2-D (n+1) row x n column integer array.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>a</strong><span class="classifier">array_like</span></dt><dd><p>A 2-D (n+1) row x n column integer array.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>iFRT</strong> : 2-D n x n ndarray</p>
-<blockquote>
-<div><p>Inverse Finite Radon Transform array of n x n integer coefficients.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>iFRT</strong><span class="classifier">2-D n x n ndarray</span></dt><dd><p>Inverse Finite Radon Transform array of n x n integer coefficients.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <div class="admonition seealso">
@@ -1181,11 +1097,11 @@ an (n+1) x n integer array.</p>
 </div>
 <p class="rubric">Notes</p>
 <p>The FRT has a unique inverse if and only if n is prime.
-See <a class="reference internal" href="#r571" id="id16"><span>[R571]</span></a> for an overview.
+See <a class="reference internal" href="#r3b76f892cb20-1" id="id16">[1]</a> for an overview.
 The idea for this algorithm is due to Vlad Negnevitski.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r571"><span class="brackets">R571</span><span class="fn-backref">(<a href="#id16">1</a>,<a href="#id17">2</a>)</span></dt>
+<dt class="label" id="r3b76f892cb20-1"><span class="brackets"><a class="fn-backref" href="#id16">1</a></span></dt>
 <dd><p>A. Kingston and I. Svalbe, “Projective transforms on periodic
 discrete image arrays,” in P. Hawkes (Ed), Advances in Imaging
 and Electron Physics, 139 (2006)</p>
@@ -1221,23 +1137,23 @@ and Electron Physics, 139 (2006)</p>
 left of it, i.e.:</p>
 <div class="math notranslate nohighlight">
 \[S[m, n] = \sum_{i \leq m} \sum_{j \leq n} X[i, j]\]</div>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Input image.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>S</strong> : ndarray</p>
-<blockquote>
-<div><p>Integral image/summed area table of same shape as input image.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>S</strong><span class="classifier">ndarray</span></dt><dd><p>Integral image/summed area table of same shape as input image.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r572"><span class="brackets"><a class="fn-backref" href="#id18">R572</a></span></dt>
+<dt class="label" id="rd91ebd979f08-1"><span class="brackets">1</span></dt>
 <dd><p>F.C. Crow, “Summed-area tables for texture mapping,”
 ACM SIGGRAPH Computer Graphics, vol. 18, 1984, pp. 207-212.</p>
 </dd>
@@ -1264,28 +1180,24 @@ ACM SIGGRAPH Computer Graphics, vol. 18, 1984, pp. 207-212.</p>
 <dd><p>Use an integral image to integrate over a given window.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ii</strong> : ndarray</p>
-<blockquote>
-<div><p>Integral image.</p>
-</div></blockquote>
-<p><strong>start</strong> : List of tuples, each tuple of length equal to dimension of <cite>ii</cite></p>
-<blockquote>
-<div><p>Coordinates of top left corner of window(s).
+<dd class="field-odd"><dl>
+<dt><strong>ii</strong><span class="classifier">ndarray</span></dt><dd><p>Integral image.</p>
+</dd>
+<dt><strong>start</strong><span class="classifier">List of tuples, each tuple of length equal to dimension of <cite>ii</cite></span></dt><dd><p>Coordinates of top left corner of window(s).
 Each tuple in the list contains the starting row, col, … index
 i.e <cite>[(row_win1, col_win1, …), (row_win2, col_win2,…), …]</cite>.</p>
-</div></blockquote>
-<p><strong>end</strong> : List of tuples, each tuple of length equal to dimension of <cite>ii</cite></p>
-<blockquote>
-<div><p>Coordinates of bottom right corner of window(s).
+</dd>
+<dt><strong>end</strong><span class="classifier">List of tuples, each tuple of length equal to dimension of <cite>ii</cite></span></dt><dd><p>Coordinates of bottom right corner of window(s).
 Each tuple in the list containing the end row, col, … index i.e
 <cite>[(row_win1, col_win1, …), (row_win2, col_win2, …), …]</cite>.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>S</strong> : scalar or ndarray</p>
-<blockquote>
-<div><p>Integral (sum) over the given window(s).</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>S</strong><span class="classifier">scalar or ndarray</span></dt><dd><p>Integral (sum) over the given window(s).</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1311,13 +1223,10 @@ Each tuple in the list containing the end row, col, … index i.e
 <dd><p>Warp an image according to a given coordinate transformation.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Input image.</p>
-</div></blockquote>
-<p><strong>inverse_map</strong> : transformation object, callable <code class="docutils literal notranslate"><span class="pre">cr</span> <span class="pre">=</span> <span class="pre">f(cr,</span> <span class="pre">**kwargs)</span></code>, or ndarray</p>
-<blockquote>
-<div><p>Inverse coordinate map, which transforms coordinates in the output
+<dd class="field-odd"><dl>
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
+</dd>
+<dt><strong>inverse_map</strong><span class="classifier">transformation object, callable <code class="docutils literal notranslate"><span class="pre">cr</span> <span class="pre">=</span> <span class="pre">f(cr,</span> <span class="pre">**kwargs)</span></code>, or ndarray</span></dt><dd><p>Inverse coordinate map, which transforms coordinates in the output
 images into their corresponding coordinates in the input image.</p>
 <p>There are a number of different options to define this map, depending
 on the dimensionality of the input image. A 2-D image can have 2
@@ -1348,20 +1257,14 @@ See <cite>scipy.ndimage.map_coordinates</cite> for further documentation.</p></l
 transformation matrix, so you cannot interpolate values from a 3-D
 input, if the output is of shape <code class="docutils literal notranslate"><span class="pre">(3,)</span></code>.</p>
 <p>See example section for usage.</p>
-</div></blockquote>
-<p><strong>map_args</strong> : dict, optional</p>
-<blockquote>
-<div><p>Keyword arguments passed to <cite>inverse_map</cite>.</p>
-</div></blockquote>
-<p><strong>output_shape</strong> : tuple (rows, cols), optional</p>
-<blockquote>
-<div><p>Shape of the output image generated. By default the shape of the input
+</dd>
+<dt><strong>map_args</strong><span class="classifier">dict, optional</span></dt><dd><p>Keyword arguments passed to <cite>inverse_map</cite>.</p>
+</dd>
+<dt><strong>output_shape</strong><span class="classifier">tuple (rows, cols), optional</span></dt><dd><p>Shape of the output image generated. By default the shape of the input
 image is preserved.  Note that, even for multi-band images, only rows
 and columns need to be specified.</p>
-</div></blockquote>
-<p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><dl class="simple">
+</dd>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><dl class="simple">
 <dt>The order of interpolation. The order has to be in the range 0-5:</dt><dd><ul class="simple">
 <li><p>0: Nearest-neighbor</p></li>
 <li><p>1: Bi-linear (default)</p></li>
@@ -1372,36 +1275,29 @@ and columns need to be specified.</p>
 </ul>
 </dd>
 </dl>
-</div></blockquote>
-<p><strong>mode</strong> : {‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</p>
-<blockquote>
-<div><p>Points outside the boundaries of the input are filled according
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</span></dt><dd><p>Points outside the boundaries of the input are filled according
 to the given mode.  Modes match the behaviour of <cite>numpy.pad</cite>.</p>
-</div></blockquote>
-<p><strong>cval</strong> : float, optional</p>
-<blockquote>
-<div><p>Used in conjunction with mode ‘constant’, the value outside
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p>
-</div></blockquote>
-<p><strong>clip</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether to clip the output to the range of values of the input image.
+</dd>
+<dt><strong>clip</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to clip the output to the range of values of the input image.
 This is enabled by default, since higher order interpolation may
 produce values outside the given input range.</p>
-</div></blockquote>
-<p><strong>preserve_range</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether to keep the original range of values. Otherwise, the input
+</dd>
+<dt><strong>preserve_range</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to keep the original range of values. Otherwise, the input
 image is converted according to the conventions of <cite>img_as_float</cite>.
 Also see
 <a class="reference external" href="https://scikit-image.org/docs/dev/user_guide/data_types.html">https://scikit-image.org/docs/dev/user_guide/data_types.html</a></p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>warped</strong> : double ndarray</p>
-<blockquote>
-<div><p>The warped input image.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>warped</strong><span class="classifier">double ndarray</span></dt><dd><p>The warped input image.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1512,28 +1408,24 @@ account for this extra offset when scaling the image:</p>
 <dd><p>Build the source coordinates for the output of a 2-D image warp.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>coord_map</strong> : callable like GeometricTransform.inverse</p>
-<blockquote>
-<div><p>Return input coordinates for given output coordinates.
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coord_map</strong><span class="classifier">callable like GeometricTransform.inverse</span></dt><dd><p>Return input coordinates for given output coordinates.
 Coordinates are in the shape (P, 2), where P is the number
 of coordinates and each element is a <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code> pair.</p>
-</div></blockquote>
-<p><strong>shape</strong> : tuple</p>
-<blockquote>
-<div><p>Shape of output image <code class="docutils literal notranslate"><span class="pre">(rows,</span> <span class="pre">cols[,</span> <span class="pre">bands])</span></code>.</p>
-</div></blockquote>
-<p><strong>dtype</strong> : np.dtype or string</p>
-<blockquote>
-<div><p>dtype for return value (sane choices: float32 or float64).</p>
-</div></blockquote>
+</dd>
+<dt><strong>shape</strong><span class="classifier">tuple</span></dt><dd><p>Shape of output image <code class="docutils literal notranslate"><span class="pre">(rows,</span> <span class="pre">cols[,</span> <span class="pre">bands])</span></code>.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">np.dtype or string</span></dt><dd><p>dtype for return value (sane choices: float32 or float64).</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>coords</strong> : (ndim, rows, cols[, bands]) array of dtype <cite>dtype</cite></p>
-<blockquote>
-<div><p>Coordinates for <cite>scipy.ndimage.map_coordinates</cite>, that will yield
+<dd class="field-even"><dl>
+<dt><strong>coords</strong><span class="classifier">(ndim, rows, cols[, bands]) array of dtype <cite>dtype</cite></span></dt><dd><p>Coordinates for <cite>scipy.ndimage.map_coordinates</cite>, that will yield
 an image of shape (orows, ocols, bands) by drawing from source
 points according to the <cite>coord_transform_fn</cite>.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1571,13 +1463,10 @@ with the total least-squares method.</p>
 <p>Number of source and destination coordinates must match.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ttype</strong> : {‘euclidean’, similarity’, ‘affine’, ‘piecewise-affine’,              ‘projective’, ‘polynomial’}</p>
-<blockquote>
-<div><p>Type of transform.</p>
-</div></blockquote>
-<p><strong>kwargs</strong> : array or int</p>
-<blockquote>
-<div><p>Function parameters (src, dst, n, angle):</p>
+<dd class="field-odd"><dl>
+<dt><strong>ttype</strong><span class="classifier">{‘euclidean’, similarity’, ‘affine’, ‘piecewise-affine’,              ‘projective’, ‘polynomial’}</span></dt><dd><p>Type of transform.</p>
+</dd>
+<dt><strong>kwargs</strong><span class="classifier">array or int</span></dt><dd><p>Function parameters (src, dst, n, angle):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>NAME / TTYPE        FUNCTION PARAMETERS
 &#39;euclidean&#39;         `src, `dst`
 &#39;similarity&#39;        `src, `dst`
@@ -1589,14 +1478,15 @@ with the total least-squares method.</p>
 </pre></div>
 </div>
 <p>Also see examples below.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>tform</strong> : <code class="xref py py-class docutils literal notranslate"><span class="pre">GeometricTransform</span></code></p>
-<blockquote>
-<div><p>Transform object containing the transformation parameters and providing
+<dd class="field-even"><dl>
+<dt><strong>tform</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">GeometricTransform</span></code></span></dt><dd><p>Transform object containing the transformation parameters and providing
 access to forward and inverse transformation functions.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1644,22 +1534,20 @@ access to forward and inverse transformation functions.</p>
 <dt id="skimage.transform.matrix_transform">
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">matrix_transform</code><span class="sig-paren">(</span><em class="sig-param">coords</em>, <em class="sig-param">matrix</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1410"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.matrix_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply 2D matrix transform.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>coords</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>x, y coordinates to transform</p>
-</div></blockquote>
-<p><strong>matrix</strong> : (3, 3) array</p>
-<blockquote>
-<div><p>Homogeneous transformation matrix.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, 2) array</span></dt><dd><p>x, y coordinates to transform</p>
+</dd>
+<dt><strong>matrix</strong><span class="classifier">(3, 3) array</span></dt><dd><p>Homogeneous transformation matrix.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>coords</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Transformed coordinates.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Transformed coordinates.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -1671,71 +1559,53 @@ access to forward and inverse transformation functions.</p>
 <dt id="skimage.transform.swirl">
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">swirl</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">center=None</em>, <em class="sig-param">strength=1</em>, <em class="sig-param">radius=100</em>, <em class="sig-param">rotation=0</em>, <em class="sig-param">output_shape=None</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">clip=True</em>, <em class="sig-param">preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L450"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.swirl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a swirl transformation.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Input image.</p>
-</div></blockquote>
-<p><strong>center</strong> : (column, row) tuple or (2,) ndarray, optional</p>
-<blockquote>
-<div><p>Center coordinate of transformation.</p>
-</div></blockquote>
-<p><strong>strength</strong> : float, optional</p>
-<blockquote>
-<div><p>The amount of swirling applied.</p>
-</div></blockquote>
-<p><strong>radius</strong> : float, optional</p>
-<blockquote>
-<div><p>The extent of the swirl in pixels.  The effect dies out
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
+</dd>
+<dt><strong>center</strong><span class="classifier">(column, row) tuple or (2,) ndarray, optional</span></dt><dd><p>Center coordinate of transformation.</p>
+</dd>
+<dt><strong>strength</strong><span class="classifier">float, optional</span></dt><dd><p>The amount of swirling applied.</p>
+</dd>
+<dt><strong>radius</strong><span class="classifier">float, optional</span></dt><dd><p>The extent of the swirl in pixels.  The effect dies out
 rapidly beyond <cite>radius</cite>.</p>
-</div></blockquote>
-<p><strong>rotation</strong> : float, optional</p>
-<blockquote>
-<div><p>Additional rotation applied to the image.</p>
-</div></blockquote>
+</dd>
+<dt><strong>rotation</strong><span class="classifier">float, optional</span></dt><dd><p>Additional rotation applied to the image.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>swirled</strong> : ndarray</p>
-<blockquote>
-<div><p>Swirled version of the input.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>swirled</strong><span class="classifier">ndarray</span></dt><dd><p>Swirled version of the input.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><p><strong>output_shape</strong> : tuple (rows, cols), optional</p>
-<blockquote>
-<div><p>Shape of the output image generated. By default the shape of the input
+<dd class="field-odd"><dl class="simple">
+<dt><strong>output_shape</strong><span class="classifier">tuple (rows, cols), optional</span></dt><dd><p>Shape of the output image generated. By default the shape of the input
 image is preserved.</p>
-</div></blockquote>
-<p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>The order of the spline interpolation, default is 1. The order has to
+</dd>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>The order of the spline interpolation, default is 1. The order has to
 be in the range 0-5. See <cite>skimage.transform.warp</cite> for detail.</p>
-</div></blockquote>
-<p><strong>mode</strong> : {‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</p>
-<blockquote>
-<div><p>Points outside the boundaries of the input are filled according
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</span></dt><dd><p>Points outside the boundaries of the input are filled according
 to the given mode, with ‘constant’ used as the default. Modes match
 the behaviour of <cite>numpy.pad</cite>.</p>
-</div></blockquote>
-<p><strong>cval</strong> : float, optional</p>
-<blockquote>
-<div><p>Used in conjunction with mode ‘constant’, the value outside
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p>
-</div></blockquote>
-<p><strong>clip</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether to clip the output to the range of values of the input image.
+</dd>
+<dt><strong>clip</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to clip the output to the range of values of the input image.
 This is enabled by default, since higher order interpolation may
 produce values outside the given input range.</p>
-</div></blockquote>
-<p><strong>preserve_range</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether to keep the original range of values. Otherwise, the input
+</dd>
+<dt><strong>preserve_range</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to keep the original range of values. Otherwise, the input
 image is converted according to the conventions of <cite>img_as_float</cite>.
 Also see
 <a class="reference external" href="https://scikit-image.org/docs/dev/user_guide/data_types.html">https://scikit-image.org/docs/dev/user_guide/data_types.html</a></p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -1758,67 +1628,53 @@ Also see
 aliasing should be enabled when down-sizing images to avoid aliasing
 artifacts. For down-sampling N-dimensional images with an integer factor
 also see <cite>skimage.transform.downscale_local_mean</cite>.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Input image.</p>
-</div></blockquote>
-<p><strong>output_shape</strong> : tuple or ndarray</p>
-<blockquote>
-<div><p>Size of the generated output image <cite>(rows, cols[, …][, dim])</cite>. If
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
+</dd>
+<dt><strong>output_shape</strong><span class="classifier">tuple or ndarray</span></dt><dd><p>Size of the generated output image <cite>(rows, cols[, …][, dim])</cite>. If
 <cite>dim</cite> is not provided, the number of channels is preserved. In case the
 number of input channels does not equal the number of output channels a
 n-dimensional interpolation is applied.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>resized</strong> : ndarray</p>
-<blockquote>
-<div><p>Resized version of the input.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>resized</strong><span class="classifier">ndarray</span></dt><dd><p>Resized version of the input.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>The order of the spline interpolation, default is 1. The order has to
+<dd class="field-odd"><dl class="simple">
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>The order of the spline interpolation, default is 1. The order has to
 be in the range 0-5. See <cite>skimage.transform.warp</cite> for detail.</p>
-</div></blockquote>
-<p><strong>mode</strong> : {‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</p>
-<blockquote>
-<div><p>Points outside the boundaries of the input are filled according
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</span></dt><dd><p>Points outside the boundaries of the input are filled according
 to the given mode.  Modes match the behaviour of <cite>numpy.pad</cite>.</p>
-</div></blockquote>
-<p><strong>cval</strong> : float, optional</p>
-<blockquote>
-<div><p>Used in conjunction with mode ‘constant’, the value outside
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p>
-</div></blockquote>
-<p><strong>clip</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether to clip the output to the range of values of the input image.
+</dd>
+<dt><strong>clip</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to clip the output to the range of values of the input image.
 This is enabled by default, since higher order interpolation may
 produce values outside the given input range.</p>
-</div></blockquote>
-<p><strong>preserve_range</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether to keep the original range of values. Otherwise, the input
+</dd>
+<dt><strong>preserve_range</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to keep the original range of values. Otherwise, the input
 image is converted according to the conventions of <cite>img_as_float</cite>.
 Also see <a class="reference external" href="https://scikit-image.org/docs/dev/user_guide/data_types.html">https://scikit-image.org/docs/dev/user_guide/data_types.html</a></p>
-</div></blockquote>
-<p><strong>anti_aliasing</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether to apply a Gaussian filter to smooth the image prior to
+</dd>
+<dt><strong>anti_aliasing</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to apply a Gaussian filter to smooth the image prior to
 down-scaling. It is crucial to filter when down-sampling the image to
 avoid aliasing artifacts.</p>
-</div></blockquote>
-<p><strong>anti_aliasing_sigma</strong> : {float, tuple of floats}, optional</p>
-<blockquote>
-<div><p>Standard deviation for Gaussian filtering to avoid aliasing artifacts.
+</dd>
+<dt><strong>anti_aliasing_sigma</strong><span class="classifier">{float, tuple of floats}, optional</span></dt><dd><p>Standard deviation for Gaussian filtering to avoid aliasing artifacts.
 By default, this value is chosen as (s - 1) / 2 where s is the
 down-scaling factor, where s &gt; 1. For the up-size case, s &lt; 1, no
 anti-aliasing is performed prior to rescaling.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1855,65 +1711,51 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <dt id="skimage.transform.rotate">
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">rotate</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">angle</em>, <em class="sig-param">resize=False</em>, <em class="sig-param">center=None</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='constant'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">clip=True</em>, <em class="sig-param">preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L280"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.rotate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rotate image by a certain angle around its center.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Input image.</p>
-</div></blockquote>
-<p><strong>angle</strong> : float</p>
-<blockquote>
-<div><p>Rotation angle in degrees in counter-clockwise direction.</p>
-</div></blockquote>
-<p><strong>resize</strong> : bool, optional</p>
-<blockquote>
-<div><p>Determine whether the shape of the output image will be automatically
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
+</dd>
+<dt><strong>angle</strong><span class="classifier">float</span></dt><dd><p>Rotation angle in degrees in counter-clockwise direction.</p>
+</dd>
+<dt><strong>resize</strong><span class="classifier">bool, optional</span></dt><dd><p>Determine whether the shape of the output image will be automatically
 calculated, so the complete rotated image exactly fits. Default is
 False.</p>
-</div></blockquote>
-<p><strong>center</strong> : iterable of length 2</p>
-<blockquote>
-<div><p>The rotation center. If <code class="docutils literal notranslate"><span class="pre">center=None</span></code>, the image is rotated around
+</dd>
+<dt><strong>center</strong><span class="classifier">iterable of length 2</span></dt><dd><p>The rotation center. If <code class="docutils literal notranslate"><span class="pre">center=None</span></code>, the image is rotated around
 its center, i.e. <code class="docutils literal notranslate"><span class="pre">center=(cols</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">-</span> <span class="pre">0.5,</span> <span class="pre">rows</span> <span class="pre">/</span> <span class="pre">2</span> <span class="pre">-</span> <span class="pre">0.5)</span></code>.  Please
 note that this parameter is (cols, rows), contrary to normal skimage
 ordering.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>rotated</strong> : ndarray</p>
-<blockquote>
-<div><p>Rotated version of the input.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>rotated</strong><span class="classifier">ndarray</span></dt><dd><p>Rotated version of the input.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>The order of the spline interpolation, default is 1. The order has to
+<dd class="field-odd"><dl class="simple">
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>The order of the spline interpolation, default is 1. The order has to
 be in the range 0-5. See <cite>skimage.transform.warp</cite> for detail.</p>
-</div></blockquote>
-<p><strong>mode</strong> : {‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</p>
-<blockquote>
-<div><p>Points outside the boundaries of the input are filled according
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</span></dt><dd><p>Points outside the boundaries of the input are filled according
 to the given mode.  Modes match the behaviour of <cite>numpy.pad</cite>.</p>
-</div></blockquote>
-<p><strong>cval</strong> : float, optional</p>
-<blockquote>
-<div><p>Used in conjunction with mode ‘constant’, the value outside
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p>
-</div></blockquote>
-<p><strong>clip</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether to clip the output to the range of values of the input image.
+</dd>
+<dt><strong>clip</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to clip the output to the range of values of the input image.
 This is enabled by default, since higher order interpolation may
 produce values outside the given input range.</p>
-</div></blockquote>
-<p><strong>preserve_range</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether to keep the original range of values. Otherwise, the input
+</dd>
+<dt><strong>preserve_range</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to keep the original range of values. Otherwise, the input
 image is converted according to the conventions of <cite>img_as_float</cite>.
 Also see
 <a class="reference external" href="https://scikit-image.org/docs/dev/user_guide/data_types.html">https://scikit-image.org/docs/dev/user_guide/data_types.html</a></p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1970,70 +1812,54 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 aliasing should be enabled when down-sizing images to avoid aliasing
 artifacts. For down-sampling N-dimensional images with an integer factor
 also see <cite>skimage.transform.downscale_local_mean</cite>.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Input image.</p>
-</div></blockquote>
-<p><strong>scale</strong> : {float, tuple of floats}</p>
-<blockquote>
-<div><p>Scale factors. Separate scale factors can be defined as
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
+</dd>
+<dt><strong>scale</strong><span class="classifier">{float, tuple of floats}</span></dt><dd><p>Scale factors. Separate scale factors can be defined as
 <cite>(rows, cols[, …][, dim])</cite>.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>scaled</strong> : ndarray</p>
-<blockquote>
-<div><p>Scaled version of the input.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>scaled</strong><span class="classifier">ndarray</span></dt><dd><p>Scaled version of the input.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>The order of the spline interpolation, default is 1. The order has to
+<dd class="field-odd"><dl class="simple">
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>The order of the spline interpolation, default is 1. The order has to
 be in the range 0-5. See <cite>skimage.transform.warp</cite> for detail.</p>
-</div></blockquote>
-<p><strong>mode</strong> : {‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</p>
-<blockquote>
-<div><p>Points outside the boundaries of the input are filled according
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</span></dt><dd><p>Points outside the boundaries of the input are filled according
 to the given mode.  Modes match the behaviour of <cite>numpy.pad</cite>.</p>
-</div></blockquote>
-<p><strong>cval</strong> : float, optional</p>
-<blockquote>
-<div><p>Used in conjunction with mode ‘constant’, the value outside
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p>
-</div></blockquote>
-<p><strong>clip</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether to clip the output to the range of values of the input image.
+</dd>
+<dt><strong>clip</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to clip the output to the range of values of the input image.
 This is enabled by default, since higher order interpolation may
 produce values outside the given input range.</p>
-</div></blockquote>
-<p><strong>preserve_range</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether to keep the original range of values. Otherwise, the input
+</dd>
+<dt><strong>preserve_range</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to keep the original range of values. Otherwise, the input
 image is converted according to the conventions of <cite>img_as_float</cite>.
 Also see
 <a class="reference external" href="https://scikit-image.org/docs/dev/user_guide/data_types.html">https://scikit-image.org/docs/dev/user_guide/data_types.html</a></p>
-</div></blockquote>
-<p><strong>multichannel</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether the last axis of the image is to be interpreted as multiple
+</dd>
+<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
 channels or another spatial dimension.</p>
-</div></blockquote>
-<p><strong>anti_aliasing</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether to apply a Gaussian filter to smooth the image prior to
+</dd>
+<dt><strong>anti_aliasing</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to apply a Gaussian filter to smooth the image prior to
 down-scaling. It is crucial to filter when down-sampling the image to
 avoid aliasing artifacts.</p>
-</div></blockquote>
-<p><strong>anti_aliasing_sigma</strong> : {float, tuple of floats}, optional</p>
-<blockquote>
-<div><p>Standard deviation for Gaussian filtering to avoid aliasing artifacts.
+</dd>
+<dt><strong>anti_aliasing_sigma</strong><span class="classifier">{float, tuple of floats}, optional</span></dt><dd><p>Standard deviation for Gaussian filtering to avoid aliasing artifacts.
 By default, this value is chosen as (1 - s) / 2 where s is the
 down-scaling factor.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -2082,27 +1908,23 @@ integer factors.</p>
 <cite>skimage.transform.rescale</cite> this function may be applied to N-dimensional
 images and calculates the local mean of elements in each block of size
 <cite>factors</cite> in the input image.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>N-dimensional input image.</p>
-</div></blockquote>
-<p><strong>factors</strong> : array_like</p>
-<blockquote>
-<div><p>Array containing down-sampling integer factor along each axis.</p>
-</div></blockquote>
-<p><strong>cval</strong> : float, optional</p>
-<blockquote>
-<div><p>Constant padding value if image is not perfectly divisible by the
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>N-dimensional input image.</p>
+</dd>
+<dt><strong>factors</strong><span class="classifier">array_like</span></dt><dd><p>Array containing down-sampling integer factor along each axis.</p>
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Constant padding value if image is not perfectly divisible by the
 integer factors.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Down-sampled image with same number of dimensions as input image.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Down-sampled image with same number of dimensions as input image.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -2132,52 +1954,40 @@ integer factors.</p>
 <dt id="skimage.transform.pyramid_reduce">
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">pyramid_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">downscale=2</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/pyramids.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.pyramid_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Smooth and then downsample image.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Input image.</p>
-</div></blockquote>
-<p><strong>downscale</strong> : float, optional</p>
-<blockquote>
-<div><p>Downscale factor.</p>
-</div></blockquote>
-<p><strong>sigma</strong> : float, optional</p>
-<blockquote>
-<div><p>Sigma for Gaussian filter. Default is <cite>2 * downscale / 6.0</cite> which
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
+</dd>
+<dt><strong>downscale</strong><span class="classifier">float, optional</span></dt><dd><p>Downscale factor.</p>
+</dd>
+<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Sigma for Gaussian filter. Default is <cite>2 * downscale / 6.0</cite> which
 corresponds to a filter mask twice the size of the scale factor that
 covers more than 99% of the Gaussian distribution.</p>
-</div></blockquote>
-<p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>Order of splines used in interpolation of downsampling. See
+</dd>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>Order of splines used in interpolation of downsampling. See
 <cite>skimage.transform.warp</cite> for detail.</p>
-</div></blockquote>
-<p><strong>mode</strong> : {‘reflect’, ‘constant’, ‘edge’, ‘symmetric’, ‘wrap’}, optional</p>
-<blockquote>
-<div><p>The mode parameter determines how the array borders are handled, where
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘reflect’, ‘constant’, ‘edge’, ‘symmetric’, ‘wrap’}, optional</span></dt><dd><p>The mode parameter determines how the array borders are handled, where
 cval is the value when mode is equal to ‘constant’.</p>
-</div></blockquote>
-<p><strong>cval</strong> : float, optional</p>
-<blockquote>
-<div><p>Value to fill past edges of input if mode is ‘constant’.</p>
-</div></blockquote>
-<p><strong>multichannel</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether the last axis of the image is to be interpreted as multiple
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Value to fill past edges of input if mode is ‘constant’.</p>
+</dd>
+<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
 channels or another spatial dimension.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>out</strong> : array</p>
-<blockquote>
-<div><p>Smoothed and downsampled float image.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">array</span></dt><dd><p>Smoothed and downsampled float image.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r573"><span class="brackets"><a class="fn-backref" href="#id19">R573</a></span></dt>
+<dt class="label" id="r4f51c9e42c4a-1"><span class="brackets">1</span></dt>
 <dd><p><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></p>
 </dd>
 </dl>
@@ -2190,52 +2000,40 @@ channels or another spatial dimension.</p>
 <dt id="skimage.transform.pyramid_expand">
 <code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">pyramid_expand</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">upscale=2</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/pyramids.py#L80"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.pyramid_expand" title="Permalink to this definition">¶</a></dt>
 <dd><p>Upsample and then smooth image.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Input image.</p>
-</div></blockquote>
-<p><strong>upscale</strong> : float, optional</p>
-<blockquote>
-<div><p>Upscale factor.</p>
-</div></blockquote>
-<p><strong>sigma</strong> : float, optional</p>
-<blockquote>
-<div><p>Sigma for Gaussian filter. Default is <cite>2 * upscale / 6.0</cite> which
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
+</dd>
+<dt><strong>upscale</strong><span class="classifier">float, optional</span></dt><dd><p>Upscale factor.</p>
+</dd>
+<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Sigma for Gaussian filter. Default is <cite>2 * upscale / 6.0</cite> which
 corresponds to a filter mask twice the size of the scale factor that
 covers more than 99% of the Gaussian distribution.</p>
-</div></blockquote>
-<p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>Order of splines used in interpolation of upsampling. See
+</dd>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>Order of splines used in interpolation of upsampling. See
 <cite>skimage.transform.warp</cite> for detail.</p>
-</div></blockquote>
-<p><strong>mode</strong> : {‘reflect’, ‘constant’, ‘edge’, ‘symmetric’, ‘wrap’}, optional</p>
-<blockquote>
-<div><p>The mode parameter determines how the array borders are handled, where
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘reflect’, ‘constant’, ‘edge’, ‘symmetric’, ‘wrap’}, optional</span></dt><dd><p>The mode parameter determines how the array borders are handled, where
 cval is the value when mode is equal to ‘constant’.</p>
-</div></blockquote>
-<p><strong>cval</strong> : float, optional</p>
-<blockquote>
-<div><p>Value to fill past edges of input if mode is ‘constant’.</p>
-</div></blockquote>
-<p><strong>multichannel</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether the last axis of the image is to be interpreted as multiple
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Value to fill past edges of input if mode is ‘constant’.</p>
+</dd>
+<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
 channels or another spatial dimension.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>out</strong> : array</p>
-<blockquote>
-<div><p>Upsampled and smoothed float image.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>out</strong><span class="classifier">array</span></dt><dd><p>Upsampled and smoothed float image.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r574"><span class="brackets"><a class="fn-backref" href="#id20">R574</a></span></dt>
+<dt class="label" id="r53df52222c6d-1"><span class="brackets">1</span></dt>
 <dd><p><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></p>
 </dd>
 </dl>
@@ -2254,57 +2052,43 @@ the downscaled images.</p>
 image. The total number of images is <cite>max_layer + 1</cite>. In case all layers
 are computed, the last image is either a one-pixel image or the image where
 the reduction does not change its shape.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Input image.</p>
-</div></blockquote>
-<p><strong>max_layer</strong> : int, optional</p>
-<blockquote>
-<div><p>Number of layers for the pyramid. 0th layer is the original image.
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
+</dd>
+<dt><strong>max_layer</strong><span class="classifier">int, optional</span></dt><dd><p>Number of layers for the pyramid. 0th layer is the original image.
 Default is -1 which builds all possible layers.</p>
-</div></blockquote>
-<p><strong>downscale</strong> : float, optional</p>
-<blockquote>
-<div><p>Downscale factor.</p>
-</div></blockquote>
-<p><strong>sigma</strong> : float, optional</p>
-<blockquote>
-<div><p>Sigma for Gaussian filter. Default is <cite>2 * downscale / 6.0</cite> which
+</dd>
+<dt><strong>downscale</strong><span class="classifier">float, optional</span></dt><dd><p>Downscale factor.</p>
+</dd>
+<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Sigma for Gaussian filter. Default is <cite>2 * downscale / 6.0</cite> which
 corresponds to a filter mask twice the size of the scale factor that
 covers more than 99% of the Gaussian distribution.</p>
-</div></blockquote>
-<p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>Order of splines used in interpolation of downsampling. See
+</dd>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>Order of splines used in interpolation of downsampling. See
 <cite>skimage.transform.warp</cite> for detail.</p>
-</div></blockquote>
-<p><strong>mode</strong> : {‘reflect’, ‘constant’, ‘edge’, ‘symmetric’, ‘wrap’}, optional</p>
-<blockquote>
-<div><p>The mode parameter determines how the array borders are handled, where
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘reflect’, ‘constant’, ‘edge’, ‘symmetric’, ‘wrap’}, optional</span></dt><dd><p>The mode parameter determines how the array borders are handled, where
 cval is the value when mode is equal to ‘constant’.</p>
-</div></blockquote>
-<p><strong>cval</strong> : float, optional</p>
-<blockquote>
-<div><p>Value to fill past edges of input if mode is ‘constant’.</p>
-</div></blockquote>
-<p><strong>multichannel</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether the last axis of the image is to be interpreted as multiple
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Value to fill past edges of input if mode is ‘constant’.</p>
+</dd>
+<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
 channels or another spatial dimension.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>pyramid</strong> : generator</p>
-<blockquote>
-<div><p>Generator yielding pyramid layers as float images.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pyramid</strong><span class="classifier">generator</span></dt><dd><p>Generator yielding pyramid layers as float images.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r575"><span class="brackets"><a class="fn-backref" href="#id21">R575</a></span></dt>
+<dt class="label" id="r4f1da659b730-1"><span class="brackets">1</span></dt>
 <dd><p><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></p>
 </dd>
 </dl>
@@ -2334,60 +2118,46 @@ original, unscaled image and its smoothed version. The total number of
 images is <cite>max_layer + 1</cite>. In case all layers are computed, the last image
 is either a one-pixel image or the image where the reduction does not
 change its shape.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Input image.</p>
-</div></blockquote>
-<p><strong>max_layer</strong> : int, optional</p>
-<blockquote>
-<div><p>Number of layers for the pyramid. 0th layer is the original image.
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
+</dd>
+<dt><strong>max_layer</strong><span class="classifier">int, optional</span></dt><dd><p>Number of layers for the pyramid. 0th layer is the original image.
 Default is -1 which builds all possible layers.</p>
-</div></blockquote>
-<p><strong>downscale</strong> : float, optional</p>
-<blockquote>
-<div><p>Downscale factor.</p>
-</div></blockquote>
-<p><strong>sigma</strong> : float, optional</p>
-<blockquote>
-<div><p>Sigma for Gaussian filter. Default is <cite>2 * downscale / 6.0</cite> which
+</dd>
+<dt><strong>downscale</strong><span class="classifier">float, optional</span></dt><dd><p>Downscale factor.</p>
+</dd>
+<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Sigma for Gaussian filter. Default is <cite>2 * downscale / 6.0</cite> which
 corresponds to a filter mask twice the size of the scale factor that
 covers more than 99% of the Gaussian distribution.</p>
-</div></blockquote>
-<p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>Order of splines used in interpolation of downsampling. See
+</dd>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>Order of splines used in interpolation of downsampling. See
 <cite>skimage.transform.warp</cite> for detail.</p>
-</div></blockquote>
-<p><strong>mode</strong> : {‘reflect’, ‘constant’, ‘edge’, ‘symmetric’, ‘wrap’}, optional</p>
-<blockquote>
-<div><p>The mode parameter determines how the array borders are handled, where
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘reflect’, ‘constant’, ‘edge’, ‘symmetric’, ‘wrap’}, optional</span></dt><dd><p>The mode parameter determines how the array borders are handled, where
 cval is the value when mode is equal to ‘constant’.</p>
-</div></blockquote>
-<p><strong>cval</strong> : float, optional</p>
-<blockquote>
-<div><p>Value to fill past edges of input if mode is ‘constant’.</p>
-</div></blockquote>
-<p><strong>multichannel</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether the last axis of the image is to be interpreted as multiple
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Value to fill past edges of input if mode is ‘constant’.</p>
+</dd>
+<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
 channels or another spatial dimension.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>pyramid</strong> : generator</p>
-<blockquote>
-<div><p>Generator yielding pyramid layers as float images.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>pyramid</strong><span class="classifier">generator</span></dt><dd><p>Generator yielding pyramid layers as float images.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r576"><span class="brackets"><a class="fn-backref" href="#id22">R576</a></span></dt>
+<dt class="label" id="r64565393f7ed-1"><span class="brackets">1</span></dt>
 <dd><p><a class="reference external" href="http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf">http://web.mit.edu/persci/people/adelson/pub_pdfs/pyramid83.pdf</a></p>
 </dd>
-<dt class="label" id="r577"><span class="brackets"><a class="fn-backref" href="#id23">R577</a></span></dt>
+<dt class="label" id="r64565393f7ed-2"><span class="brackets">2</span></dt>
 <dd><p><a class="reference external" href="http://sepwww.stanford.edu/data/media/public/sep/morgan/texturematch/paper_html/node3.html">http://sepwww.stanford.edu/data/media/public/sep/morgan/texturematch/paper_html/node3.html</a></p>
 </dd>
 </dl>
@@ -2418,63 +2188,51 @@ channels or another spatial dimension.</p>
 <p>The Euclidean transformation is a rigid transformation with rotation and
 translation parameters. The similarity transformation extends the Euclidean
 transformation with a single scaling factor.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>matrix</strong> : (3, 3) array, optional</p>
-<blockquote>
-<div><p>Homogeneous transformation matrix.</p>
-</div></blockquote>
-<p><strong>rotation</strong> : float, optional</p>
-<blockquote>
-<div><p>Rotation angle in counter-clockwise direction as radians.</p>
-</div></blockquote>
-<p><strong>translation</strong> : (tx, ty) as array, list or tuple, optional</p>
-<blockquote>
-<div><p>x, y translation parameters.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>matrix</strong><span class="classifier">(3, 3) array, optional</span></dt><dd><p>Homogeneous transformation matrix.</p>
+</dd>
+<dt><strong>rotation</strong><span class="classifier">float, optional</span></dt><dd><p>Rotation angle in counter-clockwise direction as radians.</p>
+</dd>
+<dt><strong>translation</strong><span class="classifier">(tx, ty) as array, list or tuple, optional</span></dt><dd><p>x, y translation parameters.</p>
 </dd>
 </dl>
-<p class="rubric">Attributes</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 83%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>params</strong></p></td>
-<td><p>((3, 3) array) Homogeneous transformation matrix.</p></td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">(3, 3) array</span></dt><dd><p>Homogeneous transformation matrix.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="method">
 <dt id="skimage.transform.EuclideanTransform.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">matrix=None</em>, <em class="sig-param">rotation=None</em>, <em class="sig-param">translation=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1008"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EuclideanTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">matrix=None</em>, <em class="sig-param">rotation=None</em>, <em class="sig-param">translation=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1008"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EuclideanTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.EuclideanTransform.estimate">
-<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1035"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EuclideanTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1035"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EuclideanTransform.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate the transformation from a set of corresponding points.</p>
 <p>You can determine the over-, well- and under-determined parameters
 with the total least-squares method.</p>
 <p>Number of source and destination coordinates must match.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>src</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Source coordinates.</p>
-</div></blockquote>
-<p><strong>dst</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Destination coordinates.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>src</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Source coordinates.</p>
+</dd>
+<dt><strong>dst</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Destination coordinates.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>success</strong> : bool</p>
-<blockquote>
-<div><p>True, if model estimation succeeds.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>success</strong><span class="classifier">bool</span></dt><dd><p>True, if model estimation succeeds.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -2516,67 +2274,53 @@ with the total least-squares method.</p>
 <p>The similarity transformation extends the Euclidean transformation with a
 single scaling factor in addition to the rotation and translation
 parameters.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>matrix</strong> : (3, 3) array, optional</p>
-<blockquote>
-<div><p>Homogeneous transformation matrix.</p>
-</div></blockquote>
-<p><strong>scale</strong> : float, optional</p>
-<blockquote>
-<div><p>Scale factor.</p>
-</div></blockquote>
-<p><strong>rotation</strong> : float, optional</p>
-<blockquote>
-<div><p>Rotation angle in counter-clockwise direction as radians.</p>
-</div></blockquote>
-<p><strong>translation</strong> : (tx, ty) as array, list or tuple, optional</p>
-<blockquote>
-<div><p>x, y translation parameters.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>matrix</strong><span class="classifier">(3, 3) array, optional</span></dt><dd><p>Homogeneous transformation matrix.</p>
+</dd>
+<dt><strong>scale</strong><span class="classifier">float, optional</span></dt><dd><p>Scale factor.</p>
+</dd>
+<dt><strong>rotation</strong><span class="classifier">float, optional</span></dt><dd><p>Rotation angle in counter-clockwise direction as radians.</p>
+</dd>
+<dt><strong>translation</strong><span class="classifier">(tx, ty) as array, list or tuple, optional</span></dt><dd><p>x, y translation parameters.</p>
 </dd>
 </dl>
-<p class="rubric">Attributes</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 83%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>params</strong></p></td>
-<td><p>((3, 3) array) Homogeneous transformation matrix.</p></td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">(3, 3) array</span></dt><dd><p>Homogeneous transformation matrix.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="method">
 <dt id="skimage.transform.SimilarityTransform.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">matrix=None</em>, <em class="sig-param">scale=None</em>, <em class="sig-param">rotation=None</em>, <em class="sig-param">translation=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.SimilarityTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">matrix=None</em>, <em class="sig-param">scale=None</em>, <em class="sig-param">rotation=None</em>, <em class="sig-param">translation=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.SimilarityTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.SimilarityTransform.estimate">
-<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.SimilarityTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1140"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.SimilarityTransform.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate the transformation from a set of corresponding points.</p>
 <p>You can determine the over-, well- and under-determined parameters
 with the total least-squares method.</p>
 <p>Number of source and destination coordinates must match.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>src</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Source coordinates.</p>
-</div></blockquote>
-<p><strong>dst</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Destination coordinates.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>src</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Source coordinates.</p>
+</dd>
+<dt><strong>dst</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Destination coordinates.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>success</strong> : bool</p>
-<blockquote>
-<div><p>True, if model estimation succeeds.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>success</strong><span class="classifier">bool</span></dt><dd><p>True, if model estimation succeeds.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -2611,45 +2355,31 @@ and the homogeneous transformation matrix is:</p>
  <span class="p">[</span><span class="mi">0</span>   <span class="mi">0</span>    <span class="mi">1</span><span class="p">]]</span>
 </pre></div>
 </div>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>matrix</strong> : (3, 3) array, optional</p>
-<blockquote>
-<div><p>Homogeneous transformation matrix.</p>
-</div></blockquote>
-<p><strong>scale</strong> : (sx, sy) as array, list or tuple, optional</p>
-<blockquote>
-<div><p>Scale factors.</p>
-</div></blockquote>
-<p><strong>rotation</strong> : float, optional</p>
-<blockquote>
-<div><p>Rotation angle in counter-clockwise direction as radians.</p>
-</div></blockquote>
-<p><strong>shear</strong> : float, optional</p>
-<blockquote>
-<div><p>Shear angle in counter-clockwise direction as radians.</p>
-</div></blockquote>
-<p><strong>translation</strong> : (tx, ty) as array, list or tuple, optional</p>
-<blockquote>
-<div><p>Translation parameters.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>matrix</strong><span class="classifier">(3, 3) array, optional</span></dt><dd><p>Homogeneous transformation matrix.</p>
+</dd>
+<dt><strong>scale</strong><span class="classifier">(sx, sy) as array, list or tuple, optional</span></dt><dd><p>Scale factors.</p>
+</dd>
+<dt><strong>rotation</strong><span class="classifier">float, optional</span></dt><dd><p>Rotation angle in counter-clockwise direction as radians.</p>
+</dd>
+<dt><strong>shear</strong><span class="classifier">float, optional</span></dt><dd><p>Shear angle in counter-clockwise direction as radians.</p>
+</dd>
+<dt><strong>translation</strong><span class="classifier">(tx, ty) as array, list or tuple, optional</span></dt><dd><p>Translation parameters.</p>
 </dd>
 </dl>
-<p class="rubric">Attributes</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 83%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>params</strong></p></td>
-<td><p>((3, 3) array) Homogeneous transformation matrix.</p></td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">(3, 3) array</span></dt><dd><p>Homogeneous transformation matrix.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="method">
 <dt id="skimage.transform.AffineTransform.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">matrix=None</em>, <em class="sig-param">scale=None</em>, <em class="sig-param">rotation=None</em>, <em class="sig-param">shear=None</em>, <em class="sig-param">translation=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L784"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.AffineTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">matrix=None</em>, <em class="sig-param">scale=None</em>, <em class="sig-param">rotation=None</em>, <em class="sig-param">shear=None</em>, <em class="sig-param">translation=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L784"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.AffineTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
@@ -2704,35 +2434,29 @@ target position is calculated by multiplying with the given matrix,
  <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="p">]]</span><span class="o">.</span>
 </pre></div>
 </div>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>matrix</strong> : (3, 3) array, optional</p>
-<blockquote>
-<div><p>Homogeneous transformation matrix.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>matrix</strong><span class="classifier">(3, 3) array, optional</span></dt><dd><p>Homogeneous transformation matrix.</p>
 </dd>
 </dl>
-<p class="rubric">Attributes</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 83%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>params</strong></p></td>
-<td><p>((3, 3) array) Homogeneous transformation matrix.</p></td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">(3, 3) array</span></dt><dd><p>Homogeneous transformation matrix.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="method">
 <dt id="skimage.transform.ProjectiveTransform.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L534"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L534"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.ProjectiveTransform.estimate">
-<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L594"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L594"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate the transformation from a set of corresponding points.</p>
 <p>You can determine the over-, well- and under-determined parameters
 with the total least-squares method.</p>
@@ -2771,42 +2495,40 @@ Thus the system of equations is:</p>
 <span class="n">x</span><span class="o">.</span><span class="n">T</span> <span class="o">=</span> <span class="p">[</span><span class="n">a0</span> <span class="n">a1</span> <span class="n">a2</span> <span class="n">b0</span> <span class="n">b1</span> <span class="n">b2</span> <span class="n">c3</span><span class="p">]</span>
 </pre></div>
 </div>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>src</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Source coordinates.</p>
-</div></blockquote>
-<p><strong>dst</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Destination coordinates.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>src</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Source coordinates.</p>
+</dd>
+<dt><strong>dst</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Destination coordinates.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>success</strong> : bool</p>
-<blockquote>
-<div><p>True, if model estimation succeeds.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>success</strong><span class="classifier">bool</span></dt><dd><p>True, if model estimation succeeds.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.ProjectiveTransform.inverse">
-<code class="sig-name descname">inverse</code><span class="sig-paren">(</span><em class="sig-param">coords</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L578"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform.inverse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">inverse</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">coords</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L578"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.ProjectiveTransform.inverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply inverse transformation.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>coords</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Destination coordinates.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Destination coordinates.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>coords</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Source coordinates.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Source coordinates.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -2830,71 +2552,61 @@ homography describes the geometric relation between two images
 (<cite>ProjectiveTransform</cite>). If the intrinsic calibration of the images is
 unknown, the fundamental matrix describes the projective relation between
 the two images (<cite>FundamentalMatrixTransform</cite>).</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>rotation</strong> : (3, 3) array, optional</p>
-<blockquote>
-<div><p>Rotation matrix of the relative camera motion.</p>
-</div></blockquote>
-<p><strong>translation</strong> : (3, 1) array, optional</p>
-<blockquote>
-<div><p>Translation vector of the relative camera motion. The vector must
+<dd class="field-odd"><dl class="simple">
+<dt><strong>rotation</strong><span class="classifier">(3, 3) array, optional</span></dt><dd><p>Rotation matrix of the relative camera motion.</p>
+</dd>
+<dt><strong>translation</strong><span class="classifier">(3, 1) array, optional</span></dt><dd><p>Translation vector of the relative camera motion. The vector must
 have unit length.</p>
-</div></blockquote>
-<p><strong>matrix</strong> : (3, 3) array, optional</p>
-<blockquote>
-<div><p>Essential matrix.</p>
-</div></blockquote>
+</dd>
+<dt><strong>matrix</strong><span class="classifier">(3, 3) array, optional</span></dt><dd><p>Essential matrix.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r578"><span class="brackets"><a class="fn-backref" href="#id24">R578</a></span></dt>
+<dt class="label" id="r2fbde33858f1-1"><span class="brackets">R2fbde33858f1-1</span></dt>
 <dd><p>Hartley, Richard, and Andrew Zisserman. Multiple view geometry in
 computer vision. Cambridge university press, 2003.</p>
 </dd>
 </dl>
-<p class="rubric">Attributes</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 24%" />
-<col style="width: 76%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>params</strong></p></td>
-<td><p>((3, 3) array) Essential matrix.</p></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">(3, 3) array</span></dt><dd><p>Essential matrix.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="method">
 <dt id="skimage.transform.EssentialMatrixTransform.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">rotation=None</em>, <em class="sig-param">translation=None</em>, <em class="sig-param">matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L433"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EssentialMatrixTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">rotation=None</em>, <em class="sig-param">translation=None</em>, <em class="sig-param">matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L433"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EssentialMatrixTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.EssentialMatrixTransform.estimate">
-<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L458"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EssentialMatrixTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L458"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.EssentialMatrixTransform.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate essential matrix using 8-point algorithm.</p>
 <p>The 8-point algorithm requires at least 8 corresponding point pairs for
 a well-conditioned solution, otherwise the over-determined solution is
 estimated.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>src</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Source coordinates.</p>
-</div></blockquote>
-<p><strong>dst</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Destination coordinates.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>src</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Source coordinates.</p>
+</dd>
+<dt><strong>dst</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Destination coordinates.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>success</strong> : bool</p>
-<blockquote>
-<div><p>True, if model estimation succeeds.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>success</strong><span class="classifier">bool</span></dt><dd><p>True, if model estimation succeeds.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -2917,107 +2629,99 @@ case of pure rotation or planar scenes, the homography describes the
 geometric relation between two images (<cite>ProjectiveTransform</cite>). If the
 intrinsic calibration of the images is known, the essential matrix describes
 the metric relation between the two images (<cite>EssentialMatrixTransform</cite>).</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>matrix</strong> : (3, 3) array, optional</p>
-<blockquote>
-<div><p>Fundamental matrix.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>matrix</strong><span class="classifier">(3, 3) array, optional</span></dt><dd><p>Fundamental matrix.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r579"><span class="brackets"><a class="fn-backref" href="#id25">R579</a></span></dt>
+<dt class="label" id="r725e3a484348-1"><span class="brackets">R725e3a484348-1</span></dt>
 <dd><p>Hartley, Richard, and Andrew Zisserman. Multiple view geometry in
 computer vision. Cambridge university press, 2003.</p>
 </dd>
 </dl>
-<p class="rubric">Attributes</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 23%" />
-<col style="width: 77%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>params</strong></p></td>
-<td><p>((3, 3) array) Fundamental matrix.</p></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">(3, 3) array</span></dt><dd><p>Fundamental matrix.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="method">
 <dt id="skimage.transform.FundamentalMatrixTransform.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L241"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.FundamentalMatrixTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">matrix=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L241"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.FundamentalMatrixTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.FundamentalMatrixTransform.estimate">
-<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L333"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.FundamentalMatrixTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L333"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.FundamentalMatrixTransform.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate fundamental matrix using 8-point algorithm.</p>
 <p>The 8-point algorithm requires at least 8 corresponding point pairs for
 a well-conditioned solution, otherwise the over-determined solution is
 estimated.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>src</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Source coordinates.</p>
-</div></blockquote>
-<p><strong>dst</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Destination coordinates.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>src</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Source coordinates.</p>
+</dd>
+<dt><strong>dst</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Destination coordinates.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>success</strong> : bool</p>
-<blockquote>
-<div><p>True, if model estimation succeeds.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>success</strong><span class="classifier">bool</span></dt><dd><p>True, if model estimation succeeds.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.FundamentalMatrixTransform.inverse">
-<code class="sig-name descname">inverse</code><span class="sig-paren">(</span><em class="sig-param">coords</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L266"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.FundamentalMatrixTransform.inverse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">inverse</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">coords</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L266"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.FundamentalMatrixTransform.inverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply inverse transformation.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>coords</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Destination coordinates.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Destination coordinates.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>coords</strong> : (N, 3) array</p>
-<blockquote>
-<div><p>Epipolar lines in the source image.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, 3) array</span></dt><dd><p>Epipolar lines in the source image.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.FundamentalMatrixTransform.residuals">
-<code class="sig-name descname">residuals</code><span class="sig-paren">(</span><em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L367"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.FundamentalMatrixTransform.residuals" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">residuals</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L367"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.FundamentalMatrixTransform.residuals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the Sampson distance.</p>
 <p>The Sampson distance is the first approximation to the geometric error.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>src</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Source coordinates.</p>
-</div></blockquote>
-<p><strong>dst</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Destination coordinates.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>src</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Source coordinates.</p>
+</dd>
+<dt><strong>dst</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Destination coordinates.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>residuals</strong> : (N, ) array</p>
-<blockquote>
-<div><p>Sampson distance.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>residuals</strong><span class="classifier">(N, ) array</span></dt><dd><p>Sampson distance.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -3037,36 +2741,31 @@ estimated.</p>
 <span class="n">Y</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">[</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">:</span><span class="n">order</span><span class="p">](</span> <span class="nb">sum</span><span class="p">[</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">:</span><span class="n">j</span><span class="p">](</span> <span class="n">b_ji</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="p">(</span><span class="n">j</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="n">i</span> <span class="p">))</span>
 </pre></div>
 </div>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>params</strong> : (2, N) array, optional</p>
-<blockquote>
-<div><p>Polynomial coefficients where <cite>N * 2 = (order + 1) * (order + 2)</cite>. So,
+<dd class="field-odd"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">(2, N) array, optional</span></dt><dd><p>Polynomial coefficients where <cite>N * 2 = (order + 1) * (order + 2)</cite>. So,
 a_ji is defined in <cite>params[0, :]</cite> and b_ji in <cite>params[1, :]</cite>.</p>
-</div></blockquote>
 </dd>
 </dl>
-<p class="rubric">Attributes</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 94%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>params</strong></p></td>
-<td><p>((2, N) array) Polynomial coefficients where <cite>N * 2 = (order + 1) * (order + 2)</cite>. So, a_ji is defined in <cite>params[0, :]</cite> and b_ji in <cite>params[1, :]</cite>.</p></td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">(2, N) array</span></dt><dd><p>Polynomial coefficients where <cite>N * 2 = (order + 1) * (order + 2)</cite>. So,
+a_ji is defined in <cite>params[0, :]</cite> and b_ji in <cite>params[1, :]</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="method">
 <dt id="skimage.transform.PolynomialTransform.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1198"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.PolynomialTransform.estimate">
-<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">src</em>, <em class="sig-param">dst</em>, <em class="sig-param">order=2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1206"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em>, <em class="sig-param">order=2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1206"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate the transformation from a set of corresponding points.</p>
 <p>You can determine the over-, well- and under-determined parameters
 with the total least-squares method.</p>
@@ -3096,46 +2795,42 @@ A x = 0, where:</p>
 <p>In case of total least-squares the solution of this homogeneous system
 of equations is the right singular vector of A which corresponds to the
 smallest singular value normed by the coefficient c3.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>src</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Source coordinates.</p>
-</div></blockquote>
-<p><strong>dst</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Destination coordinates.</p>
-</div></blockquote>
-<p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>Polynomial order (number of coefficients is order + 1).</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>src</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Source coordinates.</p>
+</dd>
+<dt><strong>dst</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Destination coordinates.</p>
+</dd>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>Polynomial order (number of coefficients is order + 1).</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>success</strong> : bool</p>
-<blockquote>
-<div><p>True, if model estimation succeeds.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>success</strong><span class="classifier">bool</span></dt><dd><p>True, if model estimation succeeds.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.PolynomialTransform.inverse">
-<code class="sig-name descname">inverse</code><span class="sig-paren">(</span><em class="sig-param">coords</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform.inverse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">inverse</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">coords</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L1316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PolynomialTransform.inverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply inverse transformation.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>coords</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Destination coordinates.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Destination coordinates.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>coords</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Source coordinates.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Source coordinates.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -3153,69 +2848,62 @@ smallest singular value normed by the coefficient c3.</p>
 <p>Control points are used to define the mapping. The transform is based on
 a Delaunay triangulation of the points to form a mesh. Each triangle is
 used to find a local affine transform.</p>
-<p class="rubric">Attributes</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 17%" />
-<col style="width: 83%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>affines</strong></p></td>
-<td><p>(list of AffineTransform objects) Affine transformations for each triangle in the mesh.</p></td>
-</tr>
-<tr class="row-even"><td><p><strong>inverse_affines</strong></p></td>
-<td><p>(list of AffineTransform objects) Inverse affine transformations for each triangle in the mesh.</p></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>affines</strong><span class="classifier">list of AffineTransform objects</span></dt><dd><p>Affine transformations for each triangle in the mesh.</p>
+</dd>
+<dt><strong>inverse_affines</strong><span class="classifier">list of AffineTransform objects</span></dt><dd><p>Inverse affine transformations for each triangle in the mesh.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="method">
 <dt id="skimage.transform.PiecewiseAffineTransform.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L853"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L853"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.PiecewiseAffineTransform.estimate">
-<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L859"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L859"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate the transformation from a set of corresponding points.</p>
 <p>Number of source and destination coordinates must match.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>src</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Source coordinates.</p>
-</div></blockquote>
-<p><strong>dst</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Destination coordinates.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>src</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Source coordinates.</p>
+</dd>
+<dt><strong>dst</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Destination coordinates.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>success</strong> : bool</p>
-<blockquote>
-<div><p>True, if model estimation succeeds.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>success</strong><span class="classifier">bool</span></dt><dd><p>True, if model estimation succeeds.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.transform.PiecewiseAffineTransform.inverse">
-<code class="sig-name descname">inverse</code><span class="sig-paren">(</span><em class="sig-param">coords</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L935"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform.inverse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">inverse</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">coords</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_geometric.py#L935"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.PiecewiseAffineTransform.inverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Apply inverse transformation.</p>
 <p>Coordinates outside of the mesh will be set to <cite>- 1</cite>.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>coords</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Source coordinates.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Source coordinates.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>coords</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Transformed coordinates.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Transformed coordinates.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>

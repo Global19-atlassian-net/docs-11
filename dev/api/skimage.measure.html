@@ -261,42 +261,36 @@
 <p>Uses the “marching squares” method to compute a the iso-valued contours of
 the input 2D array for a particular level value. Array values are linearly
 interpolated to provide better precision for the output contours.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>array</strong> : 2D ndarray of double</p>
-<blockquote>
-<div><p>Input data in which to find contours.</p>
-</div></blockquote>
-<p><strong>level</strong> : float</p>
-<blockquote>
-<div><p>Value along which to find contours in the array.</p>
-</div></blockquote>
-<p><strong>fully_connected</strong> : str, {‘low’, ‘high’}</p>
-<blockquote>
-<div><p>Indicates whether array elements below the given level value are to be
+<dd class="field-odd"><dl class="simple">
+<dt><strong>array</strong><span class="classifier">2D ndarray of double</span></dt><dd><p>Input data in which to find contours.</p>
+</dd>
+<dt><strong>level</strong><span class="classifier">float</span></dt><dd><p>Value along which to find contours in the array.</p>
+</dd>
+<dt><strong>fully_connected</strong><span class="classifier">str, {‘low’, ‘high’}</span></dt><dd><p>Indicates whether array elements below the given level value are to be
 considered fully-connected (and hence elements above the value will
 only be face connected), or vice-versa. (See notes below for details.)</p>
-</div></blockquote>
-<p><strong>positive_orientation</strong> : either ‘low’ or ‘high’</p>
-<blockquote>
-<div><p>Indicates whether the output contours will produce positively-oriented
+</dd>
+<dt><strong>positive_orientation</strong><span class="classifier">either ‘low’ or ‘high’</span></dt><dd><p>Indicates whether the output contours will produce positively-oriented
 polygons around islands of low- or high-valued elements. If ‘low’ then
 contours will wind counter- clockwise around elements below the
 iso-value. Alternately, this means that low-valued elements are always
 on the left of the contour. (See below for details.)</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>contours</strong> : list of (n,2)-ndarrays</p>
-<blockquote>
-<div><p>Each contour is an ndarray of shape <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">2)</span></code>,
+<dd class="field-even"><dl class="simple">
+<dt><strong>contours</strong><span class="classifier">list of (n,2)-ndarrays</span></dt><dd><p>Each contour is an ndarray of shape <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">2)</span></code>,
 consisting of n <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">column)</span></code> coordinates along the contour.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
 <p>The marching squares algorithm is a special case of the marching cubes
-algorithm <a class="reference internal" href="#r343" id="id1"><span>[R343]</span></a>.  A simple explanation is available here:</p>
+algorithm <a class="reference internal" href="#r8ed60f468bf9-1" id="id1">[1]</a>.  A simple explanation is available here:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">essi</span><span class="o">.</span><span class="n">fr</span><span class="o">/~</span><span class="n">lingrand</span><span class="o">/</span><span class="n">MarchingCubes</span><span class="o">/</span><span class="n">algo</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
@@ -342,7 +336,7 @@ especially around structures that are a single array element wide. Instead
 choose a middle value, as above.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r343"><span class="brackets">R343</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dt class="label" id="r8ed60f468bf9-1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Lorensen, William and Harvey E. Cline. Marching Cubes: A High
 Resolution 3D Surface Construction Algorithm. Computer Graphics
 (SIGGRAPH 87 Proceedings) 21(4) July 1987, p. 163-170).</p>
@@ -382,9 +376,8 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 <dd><p>Measure properties of labeled image regions.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>label_image</strong> : (N, M) ndarray</p>
-<blockquote>
-<div><p>Labeled input image. Labels with value 0 are ignored.</p>
+<dd class="field-odd"><dl>
+<dt><strong>label_image</strong><span class="classifier">(N, M) ndarray</span></dt><dd><p>Labeled input image. Labels with value 0 are ignored.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.14.1: </span>Previously, <code class="docutils literal notranslate"><span class="pre">label_image</span></code> was processed by <code class="docutils literal notranslate"><span class="pre">numpy.squeeze</span></code> and
 so any number of singleton dimensions was allowed. This resulted in
@@ -392,30 +385,29 @@ inconsistent handling of images with singleton dimensions. To
 recover the old behaviour, use
 <code class="docutils literal notranslate"><span class="pre">regionprops(np.squeeze(label_image),</span> <span class="pre">...)</span></code>.</p>
 </div>
-</div></blockquote>
-<p><strong>intensity_image</strong> : (N, M) ndarray, optional</p>
-<blockquote>
-<div><p>Intensity (i.e., input) image with same size as labeled image.
+</dd>
+<dt><strong>intensity_image</strong><span class="classifier">(N, M) ndarray, optional</span></dt><dd><p>Intensity (i.e., input) image with same size as labeled image.
 Default is None.</p>
-</div></blockquote>
-<p><strong>cache</strong> : bool, optional</p>
-<blockquote>
-<div><p>Determine whether to cache calculated properties. The computation is
+</dd>
+<dt><strong>cache</strong><span class="classifier">bool, optional</span></dt><dd><p>Determine whether to cache calculated properties. The computation is
 much faster for cached properties, whereas the memory consumption
 increases.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>properties</strong> : list of RegionProperties</p>
-<blockquote>
-<div><p>Each item describes one labeled region, and can be accessed using the
+<dd class="field-even"><dl class="simple">
+<dt><strong>properties</strong><span class="classifier">list of RegionProperties</span></dt><dd><p>Each item describes one labeled region, and can be accessed using the
 attributes listed below.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#skimage.measure.label" title="skimage.measure.label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label</span></code></a></p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skimage.measure.label" title="skimage.measure.label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label</span></code></a></dt><dd></dd>
+</dl>
 </div>
 <p class="rubric">Notes</p>
 <p>The following properties can be accessed as attributes or keys:</p>
@@ -553,20 +545,20 @@ image up to 3rd order:</p>
 </div>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r344"><span class="brackets"><a class="fn-backref" href="#id3">R344</a></span></dt>
+<dt class="label" id="r4a29d8446b4f-1"><span class="brackets">1</span></dt>
 <dd><p>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
 Core Algorithms. Springer-Verlag, London, 2009.</p>
 </dd>
-<dt class="label" id="r345"><span class="brackets"><a class="fn-backref" href="#id4">R345</a></span></dt>
+<dt class="label" id="r4a29d8446b4f-2"><span class="brackets">2</span></dt>
 <dd><p>B. Jähne. Digital Image Processing. Springer-Verlag,
 Berlin-Heidelberg, 6. edition, 2005.</p>
 </dd>
-<dt class="label" id="r346"><span class="brackets"><a class="fn-backref" href="#id5">R346</a></span></dt>
+<dt class="label" id="r4a29d8446b4f-3"><span class="brackets">3</span></dt>
 <dd><p>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
 Features, from Lecture notes in computer science, p. 676. Springer,
 Berlin, 1993.</p>
 </dd>
-<dt class="label" id="r347"><span class="brackets"><a class="fn-backref" href="#id6">R347</a></span></dt>
+<dt class="label" id="r4a29d8446b4f-4"><span class="brackets">4</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Image_moment">https://en.wikipedia.org/wiki/Image_moment</a></p>
 </dd>
 </dl>
@@ -606,36 +598,25 @@ Berlin, 1993.</p>
 <dd><p>Find image properties and convert them into a dictionary</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>label_image</strong> : (N, M) ndarray</p>
-<blockquote>
-<div><p>Labeled input image. Labels with value 0 are ignored.</p>
-</div></blockquote>
-<p><strong>intensity_image</strong> : (N, M) ndarray, optional</p>
-<blockquote>
-<div><p>Intensity (i.e., input) image with same size as labeled image.
+<dd class="field-odd"><dl>
+<dt><strong>label_image</strong><span class="classifier">(N, M) ndarray</span></dt><dd><p>Labeled input image. Labels with value 0 are ignored.</p>
+</dd>
+<dt><strong>intensity_image</strong><span class="classifier">(N, M) ndarray, optional</span></dt><dd><p>Intensity (i.e., input) image with same size as labeled image.
 Default is None.</p>
-</div></blockquote>
-<p><strong>cache</strong> : bool, optional</p>
-<blockquote>
-<div><p>Determine whether to cache calculated properties. The computation is
+</dd>
+<dt><strong>cache</strong><span class="classifier">bool, optional</span></dt><dd><p>Determine whether to cache calculated properties. The computation is
 much faster for cached properties, whereas the memory consumption
 increases.</p>
-</div></blockquote>
-<p><strong>coordinates</strong> : ‘rc’ or ‘xy’, optional</p>
-<blockquote>
-<div><p>Coordinate conventions for 2D images. (Only ‘rc’ coordinates are
+</dd>
+<dt><strong>coordinates</strong><span class="classifier">‘rc’ or ‘xy’, optional</span></dt><dd><p>Coordinate conventions for 2D images. (Only ‘rc’ coordinates are
 supported for 3D images.)</p>
-</div></blockquote>
-<p><strong>properties</strong> : tuple or list of str, optional</p>
-<blockquote>
-<div><p>Properties that will be included in the resulting dictionary
+</dd>
+<dt><strong>properties</strong><span class="classifier">tuple or list of str, optional</span></dt><dd><p>Properties that will be included in the resulting dictionary
 For a list of available properties, please see <a class="reference internal" href="#skimage.measure.regionprops" title="skimage.measure.regionprops"><code class="xref py py-func docutils literal notranslate"><span class="pre">regionprops()</span></code></a>.
 Users should remember to add “label” to keep track of region
 identities.</p>
-</div></blockquote>
-<p><strong>separator</strong> : str, optional</p>
-<blockquote>
-<div><p>For non-scalar properties not listed in OBJECT_COLUMNS, each element
+</dd>
+<dt><strong>separator</strong><span class="classifier">str, optional</span></dt><dd><p>For non-scalar properties not listed in OBJECT_COLUMNS, each element
 will appear in its own column, with the index of that element separated
 from the property name by this separator. For example, the inertia
 tensor of a 2D region will appear in four columns:
@@ -644,16 +625,17 @@ and <code class="docutils literal notranslate"><span class="pre">inertia_tensor-
 <p>Object columns are those that cannot be split in this way because the
 number of columns would change depending on the object. For example,
 <code class="docutils literal notranslate"><span class="pre">image</span></code> and <code class="docutils literal notranslate"><span class="pre">coords</span></code>.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>out_dict</strong> : dict</p>
-<blockquote>
-<div><p>Dictionary mapping property names to an array of values of that
+<dd class="field-even"><dl class="simple">
+<dt><strong>out_dict</strong><span class="classifier">dict</span></dt><dd><p>Dictionary mapping property names to an array of values of that
 property, one value per region. This dictionary can be used as input to
 pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> to map property names to columns in the frame and
 regions to rows.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -708,29 +690,27 @@ obtain a clean DataFrame:</p>
 <dt id="skimage.measure.perimeter">
 <code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">perimeter</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L805"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate total perimeter of all objects in binary image.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : (N, M) ndarray</p>
-<blockquote>
-<div><p>2D binary image.</p>
-</div></blockquote>
-<p><strong>neighbourhood</strong> : 4 or 8, optional</p>
-<blockquote>
-<div><p>Neighborhood connectivity for border pixel determination. It is used to
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">(N, M) ndarray</span></dt><dd><p>2D binary image.</p>
+</dd>
+<dt><strong>neighbourhood</strong><span class="classifier">4 or 8, optional</span></dt><dd><p>Neighborhood connectivity for border pixel determination. It is used to
 compute the contour. A higher neighbourhood widens the border on which
 the perimeter is computed.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>perimeter</strong> : float</p>
-<blockquote>
-<div><p>Total perimeter of all objects in binary image.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>perimeter</strong><span class="classifier">float</span></dt><dd><p>Total perimeter of all objects in binary image.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r348"><span class="brackets"><a class="fn-backref" href="#id7">R348</a></span></dt>
+<dt class="label" id="r5745cfa18943-1"><span class="brackets">1</span></dt>
 <dd><p>K. Benkrid, D. Crookes. Design and FPGA Implementation of
 a Perimeter Estimator. The Queen’s University of Belfast.
 <a class="reference external" href="http://www.cs.qub.ac.uk/~d.crookes/webpubs/papers/perimeter.doc">http://www.cs.qub.ac.uk/~d.crookes/webpubs/papers/perimeter.doc</a></p>
@@ -760,29 +740,27 @@ a Perimeter Estimator. The Queen’s University of Belfast.
 <p>It is based on the Douglas-Peucker algorithm.</p>
 <p>Note that the approximated polygon is always within the convex hull of the
 original polygon.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>coords</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Coordinate array.</p>
-</div></blockquote>
-<p><strong>tolerance</strong> : float</p>
-<blockquote>
-<div><p>Maximum distance from original points of polygon to approximated
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Coordinate array.</p>
+</dd>
+<dt><strong>tolerance</strong><span class="classifier">float</span></dt><dd><p>Maximum distance from original points of polygon to approximated
 polygonal chain. If tolerance is 0, the original coordinate array
 is returned.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>coords</strong> : (M, 2) array</p>
-<blockquote>
-<div><p>Approximated polygonal chain where M &lt;= N.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(M, 2) array</span></dt><dd><p>Approximated polygonal chain where M &lt;= N.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r349"><span class="brackets"><a class="fn-backref" href="#id8">R349</a></span></dt>
+<dt class="label" id="rb46d085928c9-1"><span class="brackets">1</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm">https://en.wikipedia.org/wiki/Ramer-Douglas-Peucker_algorithm</a></p>
 </dd>
 </dl>
@@ -804,32 +782,28 @@ is returned.</p>
 <dd><p>Subdivision of polygonal curves using B-Splines.</p>
 <p>Note that the resulting curve is always within the convex hull of the
 original polygon. Circular polygons stay closed after subdivision.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>coords</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Coordinate array.</p>
-</div></blockquote>
-<p><strong>degree</strong> : {1, 2, 3, 4, 5, 6, 7}, optional</p>
-<blockquote>
-<div><p>Degree of B-Spline. Default is 2.</p>
-</div></blockquote>
-<p><strong>preserve_ends</strong> : bool, optional</p>
-<blockquote>
-<div><p>Preserve first and last coordinate of non-circular polygon. Default is
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Coordinate array.</p>
+</dd>
+<dt><strong>degree</strong><span class="classifier">{1, 2, 3, 4, 5, 6, 7}, optional</span></dt><dd><p>Degree of B-Spline. Default is 2.</p>
+</dd>
+<dt><strong>preserve_ends</strong><span class="classifier">bool, optional</span></dt><dd><p>Preserve first and last coordinate of non-circular polygon. Default is
 False.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>coords</strong> : (M, 2) array</p>
-<blockquote>
-<div><p>Subdivided coordinate array.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(M, 2) array</span></dt><dd><p>Subdivided coordinate array.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r350"><span class="brackets"><a class="fn-backref" href="#id9">R350</a></span></dt>
+<dt class="label" id="r13f3ce062a97-1"><span class="brackets">1</span></dt>
 <dd><p><a class="reference external" href="http://mrl.nyu.edu/publications/subdiv-course2000/coursenotes00.pdf">http://mrl.nyu.edu/publications/subdiv-course2000/coursenotes00.pdf</a></p>
 </dd>
 </dl>
@@ -872,9 +846,8 @@ the special stop criteria are met. The final model is estimated using all
 inlier samples of the previously determined best model.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> : [list, tuple of] (N, D) array</p>
-<blockquote>
-<div><p>Data set to which the model is fitted, where N is the number of data
+<dd class="field-odd"><dl>
+<dt><strong>data</strong><span class="classifier">[list, tuple of] (N, D) array</span></dt><dd><p>Data set to which the model is fitted, where N is the number of data
 points and D the dimensionality of the data.
 If the model class requires multiple input data arrays (e.g. source and
 destination coordinates of  <code class="docutils literal notranslate"><span class="pre">skimage.transform.AffineTransform</span></code>),
@@ -883,10 +856,8 @@ the functions <code class="docutils literal notranslate"><span class="pre">estim
 <code class="docutils literal notranslate"><span class="pre">is_model_valid(model,</span> <span class="pre">*random_data)</span></code> and
 <code class="docutils literal notranslate"><span class="pre">is_data_valid(*random_data)</span></code> must all take each data array as
 separate arguments.</p>
-</div></blockquote>
-<p><strong>model_class</strong> : object</p>
-<blockquote>
-<div><p>Object with the following object methods:</p>
+</dd>
+<dt><strong>model_class</strong><span class="classifier">object</span></dt><dd><p>Object with the following object methods:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">success</span> <span class="pre">=</span> <span class="pre">estimate(*data)</span></code></p></li>
@@ -895,41 +866,25 @@ separate arguments.</p>
 </div></blockquote>
 <p>where <cite>success</cite> indicates whether the model estimation succeeded
 (<cite>True</cite> or <cite>None</cite> for success, <cite>False</cite> for failure).</p>
-</div></blockquote>
-<p><strong>min_samples</strong> : int</p>
-<blockquote>
-<div><p>The minimum number of data points to fit a model to.</p>
-</div></blockquote>
-<p><strong>residual_threshold</strong> : float</p>
-<blockquote>
-<div><p>Maximum distance for a data point to be classified as an inlier.</p>
-</div></blockquote>
-<p><strong>is_data_valid</strong> : function, optional</p>
-<blockquote>
-<div><p>This function is called with the randomly selected data before the
+</dd>
+<dt><strong>min_samples</strong><span class="classifier">int</span></dt><dd><p>The minimum number of data points to fit a model to.</p>
+</dd>
+<dt><strong>residual_threshold</strong><span class="classifier">float</span></dt><dd><p>Maximum distance for a data point to be classified as an inlier.</p>
+</dd>
+<dt><strong>is_data_valid</strong><span class="classifier">function, optional</span></dt><dd><p>This function is called with the randomly selected data before the
 model is fitted to it: <cite>is_data_valid(*random_data)</cite>.</p>
-</div></blockquote>
-<p><strong>is_model_valid</strong> : function, optional</p>
-<blockquote>
-<div><p>This function is called with the estimated model and the randomly
+</dd>
+<dt><strong>is_model_valid</strong><span class="classifier">function, optional</span></dt><dd><p>This function is called with the estimated model and the randomly
 selected data: <cite>is_model_valid(model, *random_data)</cite>, .</p>
-</div></blockquote>
-<p><strong>max_trials</strong> : int, optional</p>
-<blockquote>
-<div><p>Maximum number of iterations for random sample selection.</p>
-</div></blockquote>
-<p><strong>stop_sample_num</strong> : int, optional</p>
-<blockquote>
-<div><p>Stop iteration if at least this number of inliers are found.</p>
-</div></blockquote>
-<p><strong>stop_residuals_sum</strong> : float, optional</p>
-<blockquote>
-<div><p>Stop iteration if sum of residuals is less than or equal to this
+</dd>
+<dt><strong>max_trials</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of iterations for random sample selection.</p>
+</dd>
+<dt><strong>stop_sample_num</strong><span class="classifier">int, optional</span></dt><dd><p>Stop iteration if at least this number of inliers are found.</p>
+</dd>
+<dt><strong>stop_residuals_sum</strong><span class="classifier">float, optional</span></dt><dd><p>Stop iteration if sum of residuals is less than or equal to this
 threshold.</p>
-</div></blockquote>
-<p><strong>stop_probability</strong> : float in range [0, 1], optional</p>
-<blockquote>
-<div><p>RANSAC iteration stops if at least one outlier-free set of the
+</dd>
+<dt><strong>stop_probability</strong><span class="classifier">float in range [0, 1], optional</span></dt><dd><p>RANSAC iteration stops if at least one outlier-free set of the
 training data is sampled with <code class="docutils literal notranslate"><span class="pre">probability</span> <span class="pre">&gt;=</span> <span class="pre">stop_probability</span></code>,
 depending on the current best model’s inlier ratio and the number
 of trials. This requires to generate at least N samples (trials):</p>
@@ -939,29 +894,26 @@ of trials. This requires to generate at least N samples (trials):</p>
 <p>where the probability (confidence) is typically set to a high value
 such as 0.99, and e is the current fraction of inliers w.r.t. the
 total number of samples.</p>
-</div></blockquote>
-<p><strong>random_state</strong> : int, RandomState instance or None, optional</p>
-<blockquote>
-<div><p>If int, random_state is the seed used by the random number generator;
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional</span></dt><dd><p>If int, random_state is the seed used by the random number generator;
 If RandomState instance, random_state is the random number generator;
 If None, the random number generator is the RandomState instance used
 by <cite>np.random</cite>.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>model</strong> : object</p>
-<blockquote>
-<div><p>Best model with largest consensus set.</p>
-</div></blockquote>
-<p><strong>inliers</strong> : (N, ) array</p>
-<blockquote>
-<div><p>Boolean mask of inliers classified as <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>model</strong><span class="classifier">object</span></dt><dd><p>Best model with largest consensus set.</p>
+</dd>
+<dt><strong>inliers</strong><span class="classifier">(N, ) array</span></dt><dd><p>Boolean mask of inliers classified as <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r351"><span class="brackets"><a class="fn-backref" href="#id10">R351</a></span></dt>
+<dt class="label" id="radbaf2717b1f-1"><span class="brackets">1</span></dt>
 <dd><p>“RANSAC”, Wikipedia, <a class="reference external" href="https://en.wikipedia.org/wiki/RANSAC">https://en.wikipedia.org/wiki/RANSAC</a></p>
 </dd>
 </dl>
@@ -1049,35 +1001,29 @@ by <cite>np.random</cite>.</p>
 <h2>block_reduce<a class="headerlink" href="#block-reduce" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.block_reduce">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x2b548140e378&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Down-sample image by applying function to local blocks.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>N-dimensional input image.</p>
-</div></blockquote>
-<p><strong>block_size</strong> : array_like</p>
-<blockquote>
-<div><p>Array containing down-sampling integer factor along each axis.</p>
-</div></blockquote>
-<p><strong>func</strong> : callable</p>
-<blockquote>
-<div><p>Function object which is used to calculate the return value for each
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>N-dimensional input image.</p>
+</dd>
+<dt><strong>block_size</strong><span class="classifier">array_like</span></dt><dd><p>Array containing down-sampling integer factor along each axis.</p>
+</dd>
+<dt><strong>func</strong><span class="classifier">callable</span></dt><dd><p>Function object which is used to calculate the return value for each
 local block. This function must implement an <code class="docutils literal notranslate"><span class="pre">axis</span></code> parameter such
 as <code class="docutils literal notranslate"><span class="pre">numpy.sum</span></code> or <code class="docutils literal notranslate"><span class="pre">numpy.min</span></code>.</p>
-</div></blockquote>
-<p><strong>cval</strong> : float</p>
-<blockquote>
-<div><p>Constant padding value if image is not perfectly divisible by the
+</dd>
+<dt><strong>cval</strong><span class="classifier">float</span></dt><dd><p>Constant padding value if image is not perfectly divisible by the
 block size.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>image</strong> : ndarray</p>
-<blockquote>
-<div><p>Down-sampled image with same number of dimensions as input image.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Down-sampled image with same number of dimensions as input image.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1127,38 +1073,36 @@ block size.</p>
 invariant.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : nD double or uint8 array</p>
-<blockquote>
-<div><p>Rasterized shape as image.</p>
-</div></blockquote>
-<p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>Maximum order of moments. Default is 3.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">nD double or uint8 array</span></dt><dd><p>Rasterized shape as image.</p>
+</dd>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum order of moments. Default is 3.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>m</strong> : (<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>) array</p>
-<blockquote>
-<div><p>Raw image moments.</p>
-</div></blockquote>
+<dd class="field-even"><dl>
+<dt><strong>m</strong><span class="classifier">(<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>) array</span></dt><dd><p>Raw image moments.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r352"><span class="brackets"><a class="fn-backref" href="#id11">R352</a></span></dt>
+<dt class="label" id="r3012f4679c28-1"><span class="brackets">1</span></dt>
 <dd><p>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
 Core Algorithms. Springer-Verlag, London, 2009.</p>
 </dd>
-<dt class="label" id="r353"><span class="brackets"><a class="fn-backref" href="#id12">R353</a></span></dt>
+<dt class="label" id="r3012f4679c28-2"><span class="brackets">2</span></dt>
 <dd><p>B. Jähne. Digital Image Processing. Springer-Verlag,
 Berlin-Heidelberg, 6. edition, 2005.</p>
 </dd>
-<dt class="label" id="r354"><span class="brackets"><a class="fn-backref" href="#id13">R354</a></span></dt>
+<dt class="label" id="r3012f4679c28-3"><span class="brackets">3</span></dt>
 <dd><p>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
 Features, from Lecture notes in computer science, p. 676. Springer,
 Berlin, 1993.</p>
 </dd>
-<dt class="label" id="r355"><span class="brackets"><a class="fn-backref" href="#id14">R355</a></span></dt>
+<dt class="label" id="r3012f4679c28-4"><span class="brackets">4</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Image_moment">https://en.wikipedia.org/wiki/Image_moment</a></p>
 </dd>
 </dl>
@@ -1186,43 +1130,39 @@ Berlin, 1993.</p>
 rotation invariant.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : nD double or uint8 array</p>
-<blockquote>
-<div><p>Rasterized shape as image.</p>
-</div></blockquote>
-<p><strong>center</strong> : tuple of float, optional</p>
-<blockquote>
-<div><p>Coordinates of the image centroid. This will be computed if it
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">nD double or uint8 array</span></dt><dd><p>Rasterized shape as image.</p>
+</dd>
+<dt><strong>center</strong><span class="classifier">tuple of float, optional</span></dt><dd><p>Coordinates of the image centroid. This will be computed if it
 is not provided.</p>
-</div></blockquote>
-<p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>The maximum order of moments computed.</p>
-</div></blockquote>
+</dd>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>The maximum order of moments computed.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>mu</strong> : (<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>) array</p>
-<blockquote>
-<div><p>Central image moments.</p>
-</div></blockquote>
+<dd class="field-even"><dl>
+<dt><strong>mu</strong><span class="classifier">(<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>) array</span></dt><dd><p>Central image moments.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r356"><span class="brackets"><a class="fn-backref" href="#id15">R356</a></span></dt>
+<dt class="label" id="re30db7550969-1"><span class="brackets">1</span></dt>
 <dd><p>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
 Core Algorithms. Springer-Verlag, London, 2009.</p>
 </dd>
-<dt class="label" id="r357"><span class="brackets"><a class="fn-backref" href="#id16">R357</a></span></dt>
+<dt class="label" id="re30db7550969-2"><span class="brackets">2</span></dt>
 <dd><p>B. Jähne. Digital Image Processing. Springer-Verlag,
 Berlin-Heidelberg, 6. edition, 2005.</p>
 </dd>
-<dt class="label" id="r358"><span class="brackets"><a class="fn-backref" href="#id17">R358</a></span></dt>
+<dt class="label" id="re30db7550969-3"><span class="brackets">3</span></dt>
 <dd><p>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
 Features, from Lecture notes in computer science, p. 676. Springer,
 Berlin, 1993.</p>
 </dd>
-<dt class="label" id="r359"><span class="brackets"><a class="fn-backref" href="#id18">R359</a></span></dt>
+<dt class="label" id="re30db7550969-4"><span class="brackets">4</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Image_moment">https://en.wikipedia.org/wiki/Image_moment</a></p>
 </dd>
 </dl>
@@ -1258,26 +1198,24 @@ Berlin, 1993.</p>
 invariant.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>coords</strong> : (N, D) double or uint8 array</p>
-<blockquote>
-<div><p>Array of N points that describe an image of D dimensionality in
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, D) double or uint8 array</span></dt><dd><p>Array of N points that describe an image of D dimensionality in
 Cartesian space.</p>
-</div></blockquote>
-<p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>Maximum order of moments. Default is 3.</p>
-</div></blockquote>
+</dd>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum order of moments. Default is 3.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>M</strong> : (<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, …) array</p>
-<blockquote>
-<div><p>Raw image moments. (D dimensions)</p>
-</div></blockquote>
+<dd class="field-even"><dl>
+<dt><strong>M</strong><span class="classifier">(<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, …) array</span></dt><dd><p>Raw image moments. (D dimensions)</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r360"><span class="brackets"><a class="fn-backref" href="#id19">R360</a></span></dt>
+<dt class="label" id="r1906bd878ddc-1"><span class="brackets">1</span></dt>
 <dd><p>Johannes Kilian. Simple Image Analysis By Moments. Durham
 University, version 0.2, Durham, 2001.</p>
 </dd>
@@ -1312,32 +1250,28 @@ University, version 0.2, Durham, 2001.</p>
 invariant.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>coords</strong> : (N, D) double or uint8 array</p>
-<blockquote>
-<div><p>Array of N points that describe an image of D dimensionality in
+<dd class="field-odd"><dl class="simple">
+<dt><strong>coords</strong><span class="classifier">(N, D) double or uint8 array</span></dt><dd><p>Array of N points that describe an image of D dimensionality in
 Cartesian space. A tuple of coordinates as returned by
 <code class="docutils literal notranslate"><span class="pre">np.nonzero</span></code> is also accepted as input.</p>
-</div></blockquote>
-<p><strong>center</strong> : tuple of float, optional</p>
-<blockquote>
-<div><p>Coordinates of the image centroid. This will be computed if it
+</dd>
+<dt><strong>center</strong><span class="classifier">tuple of float, optional</span></dt><dd><p>Coordinates of the image centroid. This will be computed if it
 is not provided.</p>
-</div></blockquote>
-<p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>Maximum order of moments. Default is 3.</p>
-</div></blockquote>
+</dd>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum order of moments. Default is 3.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>Mc</strong> : (<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, …) array</p>
-<blockquote>
-<div><p>Central image moments. (D dimensions)</p>
-</div></blockquote>
+<dd class="field-even"><dl>
+<dt><strong>Mc</strong><span class="classifier">(<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>, …) array</span></dt><dd><p>Central image moments. (D dimensions)</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r361"><span class="brackets"><a class="fn-backref" href="#id20">R361</a></span></dt>
+<dt class="label" id="rdba8c2d58a27-1"><span class="brackets">1</span></dt>
 <dd><p>Johannes Kilian. Simple Image Analysis By Moments. Durham
 University, version 0.2, Durham, 2001.</p>
 </dd>
@@ -1385,39 +1319,37 @@ when the center is (0, 0):</p>
 but not rotation invariant.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mu</strong> : (M,[ …,] M) array</p>
-<blockquote>
-<div><p>Central image moments, where M must be greater than or equal
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mu</strong><span class="classifier">(M,[ …,] M) array</span></dt><dd><p>Central image moments, where M must be greater than or equal
 to <code class="docutils literal notranslate"><span class="pre">order</span></code>.</p>
-</div></blockquote>
-<p><strong>order</strong> : int, optional</p>
-<blockquote>
-<div><p>Maximum order of moments. Default is 3.</p>
-</div></blockquote>
+</dd>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum order of moments. Default is 3.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>nu</strong> : (<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>,[ …,] <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>) array</p>
-<blockquote>
-<div><p>Normalized central image moments.</p>
-</div></blockquote>
+<dd class="field-even"><dl>
+<dt><strong>nu</strong><span class="classifier">(<code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>,[ …,] <code class="docutils literal notranslate"><span class="pre">order</span> <span class="pre">+</span> <span class="pre">1</span></code>) array</span></dt><dd><p>Normalized central image moments.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r362"><span class="brackets"><a class="fn-backref" href="#id21">R362</a></span></dt>
+<dt class="label" id="rc5867b15e1bf-1"><span class="brackets">1</span></dt>
 <dd><p>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
 Core Algorithms. Springer-Verlag, London, 2009.</p>
 </dd>
-<dt class="label" id="r363"><span class="brackets"><a class="fn-backref" href="#id22">R363</a></span></dt>
+<dt class="label" id="rc5867b15e1bf-2"><span class="brackets">2</span></dt>
 <dd><p>B. Jähne. Digital Image Processing. Springer-Verlag,
 Berlin-Heidelberg, 6. edition, 2005.</p>
 </dd>
-<dt class="label" id="r364"><span class="brackets"><a class="fn-backref" href="#id23">R364</a></span></dt>
+<dt class="label" id="rc5867b15e1bf-3"><span class="brackets">3</span></dt>
 <dd><p>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
 Features, from Lecture notes in computer science, p. 676. Springer,
 Berlin, 1993.</p>
 </dd>
-<dt class="label" id="r365"><span class="brackets"><a class="fn-backref" href="#id24">R365</a></span></dt>
+<dt class="label" id="rc5867b15e1bf-4"><span class="brackets">4</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Image_moment">https://en.wikipedia.org/wiki/Image_moment</a></p>
 </dd>
 </dl>
@@ -1445,40 +1377,40 @@ Berlin, 1993.</p>
 <dd><p>Calculate Hu’s set of image moments (2D-only).</p>
 <p>Note that this set of moments is proofed to be translation, scale and
 rotation invariant.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>nu</strong> : (M, M) array</p>
-<blockquote>
-<div><p>Normalized central image moments, where M must be &gt; 4.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>nu</strong><span class="classifier">(M, M) array</span></dt><dd><p>Normalized central image moments, where M must be &gt; 4.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>nu</strong> : (7,) array</p>
-<blockquote>
-<div><p>Hu’s set of image moments.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>nu</strong><span class="classifier">(7,) array</span></dt><dd><p>Hu’s set of image moments.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r366"><span class="brackets"><a class="fn-backref" href="#id25">R366</a></span></dt>
+<dt class="label" id="r8f5f4137a534-1"><span class="brackets">1</span></dt>
 <dd><p>M. K. Hu, “Visual Pattern Recognition by Moment Invariants”,
 IRE Trans. Info. Theory, vol. IT-8, pp. 179-187, 1962</p>
 </dd>
-<dt class="label" id="r367"><span class="brackets"><a class="fn-backref" href="#id26">R367</a></span></dt>
+<dt class="label" id="r8f5f4137a534-2"><span class="brackets">2</span></dt>
 <dd><p>Wilhelm Burger, Mark Burge. Principles of Digital Image Processing:
 Core Algorithms. Springer-Verlag, London, 2009.</p>
 </dd>
-<dt class="label" id="r368"><span class="brackets"><a class="fn-backref" href="#id27">R368</a></span></dt>
+<dt class="label" id="r8f5f4137a534-3"><span class="brackets">3</span></dt>
 <dd><p>B. Jähne. Digital Image Processing. Springer-Verlag,
 Berlin-Heidelberg, 6. edition, 2005.</p>
 </dd>
-<dt class="label" id="r369"><span class="brackets"><a class="fn-backref" href="#id28">R369</a></span></dt>
+<dt class="label" id="r8f5f4137a534-4"><span class="brackets">4</span></dt>
 <dd><p>T. H. Reiss. Recognizing Planar Objects Using Invariant Image
 Features, from Lecture notes in computer science, p. 676. Springer,
 Berlin, 1993.</p>
 </dd>
-<dt class="label" id="r370"><span class="brackets"><a class="fn-backref" href="#id29">R370</a></span></dt>
+<dt class="label" id="r8f5f4137a534-5"><span class="brackets">5</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Image_moment">https://en.wikipedia.org/wiki/Image_moment</a></p>
 </dd>
 </dl>
@@ -1495,82 +1427,67 @@ Berlin, 1993.</p>
 resolves ambiguities, and guarantees topologically correct results.
 Therefore, this algorithm generally a better choice, unless there
 is a specific need for the classic algorithm.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>volume</strong> : (M, N, P) array</p>
-<blockquote>
-<div><p>Input data volume to find isosurfaces. Will internally be
+<dd class="field-odd"><dl class="simple">
+<dt><strong>volume</strong><span class="classifier">(M, N, P) array</span></dt><dd><p>Input data volume to find isosurfaces. Will internally be
 converted to float32 if necessary.</p>
-</div></blockquote>
-<p><strong>level</strong> : float</p>
-<blockquote>
-<div><p>Contour value to search for isosurfaces in <cite>volume</cite>. If not
+</dd>
+<dt><strong>level</strong><span class="classifier">float</span></dt><dd><p>Contour value to search for isosurfaces in <cite>volume</cite>. If not
 given or None, the average of the min and max of vol is used.</p>
-</div></blockquote>
-<p><strong>spacing</strong> : length-3 tuple of floats</p>
-<blockquote>
-<div><p>Voxel spacing in spatial dimensions corresponding to numpy array
+</dd>
+<dt><strong>spacing</strong><span class="classifier">length-3 tuple of floats</span></dt><dd><p>Voxel spacing in spatial dimensions corresponding to numpy array
 indexing dimensions (M, N, P) as in <cite>volume</cite>.</p>
-</div></blockquote>
-<p><strong>gradient_direction</strong> : string</p>
-<blockquote>
-<div><p>Controls if the mesh was generated from an isosurface with gradient
+</dd>
+<dt><strong>gradient_direction</strong><span class="classifier">string</span></dt><dd><p>Controls if the mesh was generated from an isosurface with gradient
 descent toward objects of interest (the default), or the opposite,
 considering the <em>left-hand</em> rule.
 The two options are:
 * descent : Object was greater than exterior
 * ascent : Exterior was greater than object</p>
-</div></blockquote>
-<p><strong>step_size</strong> : int</p>
-<blockquote>
-<div><p>Step size in voxels. Default 1. Larger steps yield faster but
+</dd>
+<dt><strong>step_size</strong><span class="classifier">int</span></dt><dd><p>Step size in voxels. Default 1. Larger steps yield faster but
 coarser results. The result will always be topologically correct
 though.</p>
-</div></blockquote>
-<p><strong>allow_degenerate</strong> : bool</p>
-<blockquote>
-<div><p>Whether to allow degenerate (i.e. zero-area) triangles in the
+</dd>
+<dt><strong>allow_degenerate</strong><span class="classifier">bool</span></dt><dd><p>Whether to allow degenerate (i.e. zero-area) triangles in the
 end-result. Default True. If False, degenerate triangles are
 removed, at the cost of making the algorithm slower.</p>
-</div></blockquote>
-<p><strong>use_classic</strong> : bool</p>
-<blockquote>
-<div><p>If given and True, the classic marching cubes by Lorensen (1987)
+</dd>
+<dt><strong>use_classic</strong><span class="classifier">bool</span></dt><dd><p>If given and True, the classic marching cubes by Lorensen (1987)
 is used. This option is included for reference purposes. Note
 that this algorithm has ambiguities and is not guaranteed to
 produce a topologically correct result. The results with using
 this option are <em>not</em> generally the same as the
 <code class="docutils literal notranslate"><span class="pre">marching_cubes_classic()</span></code> function.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>verts</strong> : (V, 3) array</p>
-<blockquote>
-<div><p>Spatial coordinates for V unique mesh vertices. Coordinate order
+<dd class="field-even"><dl class="simple">
+<dt><strong>verts</strong><span class="classifier">(V, 3) array</span></dt><dd><p>Spatial coordinates for V unique mesh vertices. Coordinate order
 matches input <cite>volume</cite> (M, N, P).</p>
-</div></blockquote>
-<p><strong>faces</strong> : (F, 3) array</p>
-<blockquote>
-<div><p>Define triangular faces via referencing vertex indices from <code class="docutils literal notranslate"><span class="pre">verts</span></code>.
+</dd>
+<dt><strong>faces</strong><span class="classifier">(F, 3) array</span></dt><dd><p>Define triangular faces via referencing vertex indices from <code class="docutils literal notranslate"><span class="pre">verts</span></code>.
 This algorithm specifically outputs triangles, so each face has
 exactly three indices.</p>
-</div></blockquote>
-<p><strong>normals</strong> : (V, 3) array</p>
-<blockquote>
-<div><p>The normal direction at each vertex, as calculated from the
+</dd>
+<dt><strong>normals</strong><span class="classifier">(V, 3) array</span></dt><dd><p>The normal direction at each vertex, as calculated from the
 data.</p>
-</div></blockquote>
-<p><strong>values</strong> : (V, ) array</p>
-<blockquote>
-<div><p>Gives a measure for the maximum value of the data in the local region
+</dd>
+<dt><strong>values</strong><span class="classifier">(V, ) array</span></dt><dd><p>Gives a measure for the maximum value of the data in the local region
 near each vertex. This can be used by visualization tools to apply
 a colormap to the mesh.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#skimage.measure.marching_cubes_classic" title="skimage.measure.marching_cubes_classic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.marching_cubes_classic</span></code></a>, <a class="reference internal" href="#skimage.measure.mesh_surface_area" title="skimage.measure.mesh_surface_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.mesh_surface_area</span></code></a></p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skimage.measure.marching_cubes_classic" title="skimage.measure.marching_cubes_classic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.marching_cubes_classic</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#skimage.measure.mesh_surface_area" title="skimage.measure.mesh_surface_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.mesh_surface_area</span></code></a></dt><dd></dd>
+</dl>
 </div>
 <p class="rubric">Notes</p>
 <p>The algorithm [1] is an improved version of Chernyaev’s Marching
@@ -1600,7 +1517,7 @@ named <cite>myvolume</cite> about the level 0.0, using the <code class="docutils
 </div>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r371"><span class="brackets"><a class="fn-backref" href="#id30">R371</a></span></dt>
+<dt class="label" id="rda8f856612d5-1"><span class="brackets">1</span></dt>
 <dd><p>Thomas Lewiner, Helio Lopes, Antonio Wilson Vieira and Geovan
 Tavares. Efficient implementation of Marching Cubes’ cases with
 topological guarantees. Journal of Graphics Tools 8(2)
@@ -1626,57 +1543,52 @@ pp. 1-15 (december 2003).
 <dd><p>Classic marching cubes algorithm to find surfaces in 3d volumetric data.</p>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">marching_cubes()</span></code> algorithm is recommended over
 this algorithm, because it’s faster and produces better results.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>volume</strong> : (M, N, P) array of doubles</p>
-<blockquote>
-<div><p>Input data volume to find isosurfaces. Will be cast to <cite>np.float64</cite>.</p>
-</div></blockquote>
-<p><strong>level</strong> : float</p>
-<blockquote>
-<div><p>Contour value to search for isosurfaces in <cite>volume</cite>. If not
+<dd class="field-odd"><dl class="simple">
+<dt><strong>volume</strong><span class="classifier">(M, N, P) array of doubles</span></dt><dd><p>Input data volume to find isosurfaces. Will be cast to <cite>np.float64</cite>.</p>
+</dd>
+<dt><strong>level</strong><span class="classifier">float</span></dt><dd><p>Contour value to search for isosurfaces in <cite>volume</cite>. If not
 given or None, the average of the min and max of vol is used.</p>
-</div></blockquote>
-<p><strong>spacing</strong> : length-3 tuple of floats</p>
-<blockquote>
-<div><p>Voxel spacing in spatial dimensions corresponding to numpy array
+</dd>
+<dt><strong>spacing</strong><span class="classifier">length-3 tuple of floats</span></dt><dd><p>Voxel spacing in spatial dimensions corresponding to numpy array
 indexing dimensions (M, N, P) as in <cite>volume</cite>.</p>
-</div></blockquote>
-<p><strong>gradient_direction</strong> : string</p>
-<blockquote>
-<div><p>Controls if the mesh was generated from an isosurface with gradient
+</dd>
+<dt><strong>gradient_direction</strong><span class="classifier">string</span></dt><dd><p>Controls if the mesh was generated from an isosurface with gradient
 descent toward objects of interest (the default), or the opposite.
 The two options are:
 * descent : Object was greater than exterior
 * ascent : Exterior was greater than object</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>verts</strong> : (V, 3) array</p>
-<blockquote>
-<div><p>Spatial coordinates for V unique mesh vertices. Coordinate order
+<dd class="field-even"><dl class="simple">
+<dt><strong>verts</strong><span class="classifier">(V, 3) array</span></dt><dd><p>Spatial coordinates for V unique mesh vertices. Coordinate order
 matches input <cite>volume</cite> (M, N, P).</p>
-</div></blockquote>
-<p><strong>faces</strong> : (F, 3) array</p>
-<blockquote>
-<div><p>Define triangular faces via referencing vertex indices from <code class="docutils literal notranslate"><span class="pre">verts</span></code>.
+</dd>
+<dt><strong>faces</strong><span class="classifier">(F, 3) array</span></dt><dd><p>Define triangular faces via referencing vertex indices from <code class="docutils literal notranslate"><span class="pre">verts</span></code>.
 This algorithm specifically outputs triangles, so each face has
 exactly three indices.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.marching_cubes</span></code>, <a class="reference internal" href="#skimage.measure.mesh_surface_area" title="skimage.measure.mesh_surface_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.mesh_surface_area</span></code></a></p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.marching_cubes</span></code></dt><dd></dd>
+<dt><a class="reference internal" href="#skimage.measure.mesh_surface_area" title="skimage.measure.mesh_surface_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.mesh_surface_area</span></code></a></dt><dd></dd>
+</dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The marching cubes algorithm is implemented as described in <a class="reference internal" href="#r372" id="id31"><span>[R372]</span></a>.
+<p>The marching cubes algorithm is implemented as described in <a class="reference internal" href="#r1e43a330a523-1" id="id31">[1]</a>.
 A simple explanation is available here:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">essi</span><span class="o">.</span><span class="n">fr</span><span class="o">/~</span><span class="n">lingrand</span><span class="o">/</span><span class="n">MarchingCubes</span><span class="o">/</span><span class="n">algo</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
 <p>There are several known ambiguous cases in the marching cubes algorithm.
-Using point labeling as in <a class="reference internal" href="#r372" id="id32"><span>[R372]</span></a>, Figure 4, as shown:</p>
+Using point labeling as in <a class="reference internal" href="#r1e43a330a523-1" id="id32">[1]</a>, Figure 4, as shown:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    v8 ------ v7
    / |       / |        y
   /  |      /  |        ^  z
@@ -1693,7 +1605,7 @@ algorithm, separating v4 and v8 from v2 and v6. An equally valid
 interpretation would be a single connected thin surface enclosing all
 four points. This is the best known ambiguity, though there are others.</p>
 <p>This algorithm does not attempt to resolve such ambiguities; it is a naive
-implementation of marching cubes as in <a class="reference internal" href="#r372" id="id33"><span>[R372]</span></a>, but may be a good beginning
+implementation of marching cubes as in <a class="reference internal" href="#r1e43a330a523-1" id="id33">[1]</a>, but may be a good beginning
 for work with more recent techniques (Dual Marching Cubes, Extended
 Marching Cubes, Cubic Marching Squares, etc.).</p>
 <p>Because of interactions between neighboring cubes, the isosurface(s)
@@ -1711,7 +1623,7 @@ of how the input array is traversed, but can be relied upon.</p>
 outputs directly into <cite>skimage.measure.mesh_surface_area</cite>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r372"><span class="brackets">R372</span><span class="fn-backref">(<a href="#id31">1</a>,<a href="#id32">2</a>,<a href="#id33">3</a>,<a href="#id34">4</a>)</span></dt>
+<dt class="label" id="r1e43a330a523-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id31">1</a>,<a href="#id32">2</a>,<a href="#id33">3</a>)</span></dt>
 <dd><p>Lorensen, William and Harvey E. Cline. Marching Cubes: A High
 Resolution 3D Surface Construction Algorithm. Computer Graphics
 (SIGGRAPH 87 Proceedings) 21(4) July 1987, p. 163-170).
@@ -1727,28 +1639,29 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 <dt id="skimage.measure.mesh_surface_area">
 <code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">mesh_surface_area</code><span class="sig-paren">(</span><em class="sig-param">verts</em>, <em class="sig-param">faces</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_classic.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.mesh_surface_area" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute surface area, given vertices &amp; triangular faces</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>verts</strong> : (V, 3) array of floats</p>
-<blockquote>
-<div><p>Array containing (x, y, z) coordinates for V unique mesh vertices.</p>
-</div></blockquote>
-<p><strong>faces</strong> : (F, 3) array of ints</p>
-<blockquote>
-<div><p>List of length-3 lists of integers, referencing vertex coordinates as
+<dd class="field-odd"><dl class="simple">
+<dt><strong>verts</strong><span class="classifier">(V, 3) array of floats</span></dt><dd><p>Array containing (x, y, z) coordinates for V unique mesh vertices.</p>
+</dd>
+<dt><strong>faces</strong><span class="classifier">(F, 3) array of ints</span></dt><dd><p>List of length-3 lists of integers, referencing vertex coordinates as
 provided in <cite>verts</cite></p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>area</strong> : float</p>
-<blockquote>
-<div><p>Surface area of mesh. Units now [coordinate units] ** 2.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>area</strong><span class="classifier">float</span></dt><dd><p>Surface area of mesh. Units now [coordinate units] ** 2.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.marching_cubes</span></code>, <a class="reference internal" href="#skimage.measure.marching_cubes_classic" title="skimage.measure.marching_cubes_classic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.marching_cubes_classic</span></code></a></p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.marching_cubes</span></code></dt><dd></dd>
+<dt><a class="reference internal" href="#skimage.measure.marching_cubes_classic" title="skimage.measure.marching_cubes_classic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.marching_cubes_classic</span></code></a></dt><dd></dd>
+</dl>
 </div>
 <p class="rubric">Notes</p>
 <p>The arguments expected by this function are the first two outputs from
@@ -1765,47 +1678,35 @@ triangles.</p>
 <dt id="skimage.measure.profile_line">
 <code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">profile_line</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em>, <em class="sig-param">linewidth=1</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='constant'</em>, <em class="sig-param">cval=0.0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/profile.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.profile_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the intensity profile of an image measured along a scan line.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : numeric array, shape (M, N[, C])</p>
-<blockquote>
-<div><p>The image, either grayscale (2D array) or multichannel
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">numeric array, shape (M, N[, C])</span></dt><dd><p>The image, either grayscale (2D array) or multichannel
 (3D array, where the final axis contains the channel
 information).</p>
-</div></blockquote>
-<p><strong>src</strong> : 2-tuple of numeric scalar (float or int)</p>
-<blockquote>
-<div><p>The start point of the scan line.</p>
-</div></blockquote>
-<p><strong>dst</strong> : 2-tuple of numeric scalar (float or int)</p>
-<blockquote>
-<div><p>The end point of the scan line. The destination point is <em>included</em>
+</dd>
+<dt><strong>src</strong><span class="classifier">2-tuple of numeric scalar (float or int)</span></dt><dd><p>The start point of the scan line.</p>
+</dd>
+<dt><strong>dst</strong><span class="classifier">2-tuple of numeric scalar (float or int)</span></dt><dd><p>The end point of the scan line. The destination point is <em>included</em>
 in the profile, in contrast to standard numpy indexing.</p>
-</div></blockquote>
-<p><strong>linewidth</strong> : int, optional</p>
-<blockquote>
-<div><p>Width of the scan, perpendicular to the line</p>
-</div></blockquote>
-<p><strong>order</strong> : int in {0, 1, 2, 3, 4, 5}, optional</p>
-<blockquote>
-<div><p>The order of the spline interpolation to compute image values at
+</dd>
+<dt><strong>linewidth</strong><span class="classifier">int, optional</span></dt><dd><p>Width of the scan, perpendicular to the line</p>
+</dd>
+<dt><strong>order</strong><span class="classifier">int in {0, 1, 2, 3, 4, 5}, optional</span></dt><dd><p>The order of the spline interpolation to compute image values at
 non-integer coordinates. 0 means nearest-neighbor interpolation.</p>
-</div></blockquote>
-<p><strong>mode</strong> : {‘constant’, ‘nearest’, ‘reflect’, ‘mirror’, ‘wrap’}, optional</p>
-<blockquote>
-<div><p>How to compute any values falling outside of the image.</p>
-</div></blockquote>
-<p><strong>cval</strong> : float, optional</p>
-<blockquote>
-<div><p>If <cite>mode</cite> is ‘constant’, what constant value to use outside the image.</p>
-</div></blockquote>
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘nearest’, ‘reflect’, ‘mirror’, ‘wrap’}, optional</span></dt><dd><p>How to compute any values falling outside of the image.</p>
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>If <cite>mode</cite> is ‘constant’, what constant value to use outside the image.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>return_value</strong> : array</p>
-<blockquote>
-<div><p>The intensity profile along the scan line. The length of the profile
+<dd class="field-even"><dl class="simple">
+<dt><strong>return_value</strong><span class="classifier">array</span></dt><dd><p>The intensity profile along the scan line. The length of the profile
 is the ceil of the computed length of the scan line.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -1854,62 +1755,54 @@ pixel/voxel a neighbor:</p>
      <span class="p">[</span> <span class="p">]</span>           <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>
 </pre></div>
 </div>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>input</strong> : ndarray of dtype int</p>
-<blockquote>
-<div><p>Image to label.</p>
-</div></blockquote>
-<p><strong>neighbors</strong> : {4, 8}, int, optional</p>
-<blockquote>
-<div><p>Whether to use 4- or 8-“connectivity”.
+<dd class="field-odd"><dl class="simple">
+<dt><strong>input</strong><span class="classifier">ndarray of dtype int</span></dt><dd><p>Image to label.</p>
+</dd>
+<dt><strong>neighbors</strong><span class="classifier">{4, 8}, int, optional</span></dt><dd><p>Whether to use 4- or 8-“connectivity”.
 In 3D, 4-“connectivity” means connected pixels have to share face,
 whereas with 8-“connectivity”, they have to share only edge or vertex.
 <strong>Deprecated, use ``connectivity`` instead.</strong></p>
-</div></blockquote>
-<p><strong>background</strong> : int, optional</p>
-<blockquote>
-<div><p>Consider all pixels with this value as background pixels, and label
+</dd>
+<dt><strong>background</strong><span class="classifier">int, optional</span></dt><dd><p>Consider all pixels with this value as background pixels, and label
 them as 0. By default, 0-valued pixels are considered as background
 pixels.</p>
-</div></blockquote>
-<p><strong>return_num</strong> : bool, optional</p>
-<blockquote>
-<div><p>Whether to return the number of assigned labels.</p>
-</div></blockquote>
-<p><strong>connectivity</strong> : int, optional</p>
-<blockquote>
-<div><p>Maximum number of orthogonal hops to consider a pixel/voxel
+</dd>
+<dt><strong>return_num</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to return the number of assigned labels.</p>
+</dd>
+<dt><strong>connectivity</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of orthogonal hops to consider a pixel/voxel
 as a neighbor.
 Accepted values are ranging from  1 to input.ndim. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, a full
 connectivity of <code class="docutils literal notranslate"><span class="pre">input.ndim</span></code> is used.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>labels</strong> : ndarray of dtype int</p>
-<blockquote>
-<div><p>Labeled array, where all connected regions are assigned the
+<dd class="field-even"><dl class="simple">
+<dt><strong>labels</strong><span class="classifier">ndarray of dtype int</span></dt><dd><p>Labeled array, where all connected regions are assigned the
 same integer value.</p>
-</div></blockquote>
-<p><strong>num</strong> : int, optional</p>
-<blockquote>
-<div><p>Number of labels, which equals the maximum label index and is only
+</dd>
+<dt><strong>num</strong><span class="classifier">int, optional</span></dt><dd><p>Number of labels, which equals the maximum label index and is only
 returned if return_num is <cite>True</cite>.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#skimage.measure.regionprops" title="skimage.measure.regionprops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regionprops</span></code></a></p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skimage.measure.regionprops" title="skimage.measure.regionprops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regionprops</span></code></a></dt><dd></dd>
+</dl>
 </div>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r373"><span class="brackets"><a class="fn-backref" href="#id35">R373</a></span></dt>
+<dt class="label" id="r4c017a27ed0c-1"><span class="brackets">1</span></dt>
 <dd><p>Christophe Fiorio and Jens Gustedt, “Two linear time Union-Find
 strategies for image processing”, Theoretical Computer Science
 154 (1996), pp. 165-181.</p>
 </dd>
-<dt class="label" id="r374"><span class="brackets"><a class="fn-backref" href="#id36">R374</a></span></dt>
+<dt class="label" id="r4c017a27ed0c-2"><span class="brackets">2</span></dt>
 <dd><p>Kensheng Wu, Ekow Otoo and Arie Shoshani, “Optimizing connected
 component labeling algorithms”, Paper LBNL-56864, 2005,
 Lawrence Berkeley National Laboratory (University of California),
@@ -1972,28 +1865,28 @@ Lawrence Berkeley National Laboratory (University of California),
 <dt id="skimage.measure.points_in_poly">
 <code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">points_in_poly</code><span class="sig-paren">(</span><em class="sig-param">points</em>, <em class="sig-param">verts</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/pnpoly.py#L32"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.points_in_poly" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test whether points lie inside a polygon.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>points</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>Input points, <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code>.</p>
-</div></blockquote>
-<p><strong>verts</strong> : (M, 2) array</p>
-<blockquote>
-<div><p>Vertices of the polygon, sorted either clockwise or anti-clockwise.
+<dd class="field-odd"><dl class="simple">
+<dt><strong>points</strong><span class="classifier">(N, 2) array</span></dt><dd><p>Input points, <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code>.</p>
+</dd>
+<dt><strong>verts</strong><span class="classifier">(M, 2) array</span></dt><dd><p>Vertices of the polygon, sorted either clockwise or anti-clockwise.
 The first point may (but does not need to be) duplicated.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>mask</strong> : (N,) array of bool</p>
-<blockquote>
-<div><p>True if corresponding point is inside the polygon.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>mask</strong><span class="classifier">(N,) array of bool</span></dt><dd><p>True if corresponding point is inside the polygon.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#skimage.measure.grid_points_in_poly" title="skimage.measure.grid_points_in_poly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grid_points_in_poly</span></code></a></p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skimage.measure.grid_points_in_poly" title="skimage.measure.grid_points_in_poly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">grid_points_in_poly</span></code></a></dt><dd></dd>
+</dl>
 </div>
 </dd></dl>
 
@@ -2006,29 +1899,29 @@ The first point may (but does not need to be) duplicated.</p>
 <dd><p>Test whether points on a specified grid are inside a polygon.</p>
 <p>For each <code class="docutils literal notranslate"><span class="pre">(r,</span> <span class="pre">c)</span></code> coordinate on a grid, i.e. <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code>, <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">1)</span></code> etc.,
 test whether that point lies inside a polygon.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>shape</strong> : tuple (M, N)</p>
-<blockquote>
-<div><p>Shape of the grid.</p>
-</div></blockquote>
-<p><strong>verts</strong> : (V, 2) array</p>
-<blockquote>
-<div><p>Specify the V vertices of the polygon, sorted either clockwise
+<dd class="field-odd"><dl class="simple">
+<dt><strong>shape</strong><span class="classifier">tuple (M, N)</span></dt><dd><p>Shape of the grid.</p>
+</dd>
+<dt><strong>verts</strong><span class="classifier">(V, 2) array</span></dt><dd><p>Specify the V vertices of the polygon, sorted either clockwise
 or anti-clockwise. The first point may (but does not need to be)
 duplicated.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>mask</strong> : (M, N) ndarray of bool</p>
-<blockquote>
-<div><p>True where the grid falls inside the polygon.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>mask</strong><span class="classifier">(M, N) ndarray of bool</span></dt><dd><p>True where the grid falls inside the polygon.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="#skimage.measure.points_in_poly" title="skimage.measure.points_in_poly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">points_in_poly</span></code></a></p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skimage.measure.points_in_poly" title="skimage.measure.points_in_poly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">points_in_poly</span></code></a></dt><dd></dd>
+</dl>
 </div>
 </dd></dl>
 
@@ -2039,84 +1932,62 @@ duplicated.</p>
 <dt id="skimage.measure.compare_ssim">
 <code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">compare_ssim</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em>, <em class="sig-param">win_size=None</em>, <em class="sig-param">gradient=False</em>, <em class="sig-param">data_range=None</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">gaussian_weights=False</em>, <em class="sig-param">full=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_structural_similarity.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.compare_ssim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the mean structural similarity index between two images.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>X, Y</strong> : ndarray</p>
-<blockquote>
-<div><p>Image. Any dimensionality.</p>
-</div></blockquote>
-<p><strong>win_size</strong> : int or None</p>
-<blockquote>
-<div><p>The side-length of the sliding window used in comparison. Must be an
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X, Y</strong><span class="classifier">ndarray</span></dt><dd><p>Image. Any dimensionality.</p>
+</dd>
+<dt><strong>win_size</strong><span class="classifier">int or None</span></dt><dd><p>The side-length of the sliding window used in comparison. Must be an
 odd value. If <cite>gaussian_weights</cite> is True, this is ignored and the
 window size will depend on <cite>sigma</cite>.</p>
-</div></blockquote>
-<p><strong>gradient</strong> : bool, optional</p>
-<blockquote>
-<div><p>If True, also return the gradient with respect to Y.</p>
-</div></blockquote>
-<p><strong>data_range</strong> : float, optional</p>
-<blockquote>
-<div><p>The data range of the input image (distance between minimum and
+</dd>
+<dt><strong>gradient</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, also return the gradient with respect to Y.</p>
+</dd>
+<dt><strong>data_range</strong><span class="classifier">float, optional</span></dt><dd><p>The data range of the input image (distance between minimum and
 maximum possible values). By default, this is estimated from the image
 data-type.</p>
-</div></blockquote>
-<p><strong>multichannel</strong> : bool, optional</p>
-<blockquote>
-<div><p>If True, treat the last dimension of the array as channels. Similarity
+</dd>
+<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, treat the last dimension of the array as channels. Similarity
 calculations are done independently for each channel then averaged.</p>
-</div></blockquote>
-<p><strong>gaussian_weights</strong> : bool, optional</p>
-<blockquote>
-<div><p>If True, each patch has its mean and variance spatially weighted by a
+</dd>
+<dt><strong>gaussian_weights</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, each patch has its mean and variance spatially weighted by a
 normalized Gaussian kernel of width sigma=1.5.</p>
-</div></blockquote>
-<p><strong>full</strong> : bool, optional</p>
-<blockquote>
-<div><p>If True, also return the full structural similarity image.</p>
-</div></blockquote>
+</dd>
+<dt><strong>full</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, also return the full structural similarity image.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>mssim</strong> : float</p>
-<blockquote>
-<div><p>The mean structural similarity over the image.</p>
-</div></blockquote>
-<p><strong>grad</strong> : ndarray</p>
-<blockquote>
-<div><p>The gradient of the structural similarity index between X and Y <a class="reference internal" href="#r376" id="id37"><span>[R376]</span></a>.
+<dd class="field-even"><dl class="simple">
+<dt><strong>mssim</strong><span class="classifier">float</span></dt><dd><p>The mean structural similarity over the image.</p>
+</dd>
+<dt><strong>grad</strong><span class="classifier">ndarray</span></dt><dd><p>The gradient of the structural similarity index between X and Y <a class="reference internal" href="#rccea9a164d3e-2" id="id37">[2]</a>.
 This is only returned if <cite>gradient</cite> is set to True.</p>
-</div></blockquote>
-<p><strong>S</strong> : ndarray</p>
-<blockquote>
-<div><p>The full SSIM image.  This is only returned if <cite>full</cite> is set to True.</p>
-</div></blockquote>
+</dd>
+<dt><strong>S</strong><span class="classifier">ndarray</span></dt><dd><p>The full SSIM image.  This is only returned if <cite>full</cite> is set to True.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
-<dd class="field-odd"><p><strong>use_sample_covariance</strong> : bool</p>
-<blockquote>
-<div><p>If True, normalize covariances by N-1 rather than, N where N is the
+<dd class="field-odd"><dl class="simple">
+<dt><strong>use_sample_covariance</strong><span class="classifier">bool</span></dt><dd><p>If True, normalize covariances by N-1 rather than, N where N is the
 number of pixels within the sliding window.</p>
-</div></blockquote>
-<p><strong>K1</strong> : float</p>
-<blockquote>
-<div><p>Algorithm parameter, K1 (small constant, see <a class="reference internal" href="#r375" id="id38"><span>[R375]</span></a>).</p>
-</div></blockquote>
-<p><strong>K2</strong> : float</p>
-<blockquote>
-<div><p>Algorithm parameter, K2 (small constant, see <a class="reference internal" href="#r375" id="id39"><span>[R375]</span></a>).</p>
-</div></blockquote>
-<p><strong>sigma</strong> : float</p>
-<blockquote>
-<div><p>Standard deviation for the Gaussian when <cite>gaussian_weights</cite> is True.</p>
-</div></blockquote>
+</dd>
+<dt><strong>K1</strong><span class="classifier">float</span></dt><dd><p>Algorithm parameter, K1 (small constant, see <a class="reference internal" href="#rccea9a164d3e-1" id="id38">[1]</a>).</p>
+</dd>
+<dt><strong>K2</strong><span class="classifier">float</span></dt><dd><p>Algorithm parameter, K2 (small constant, see <a class="reference internal" href="#rccea9a164d3e-1" id="id39">[1]</a>).</p>
+</dd>
+<dt><strong>sigma</strong><span class="classifier">float</span></dt><dd><p>Standard deviation for the Gaussian when <cite>gaussian_weights</cite> is True.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>To match the implementation of Wang et. al. <a class="reference internal" href="#r375" id="id40"><span>[R375]</span></a>, set <cite>gaussian_weights</cite>
+<p>To match the implementation of Wang et. al. <a class="reference internal" href="#rccea9a164d3e-1" id="id40">[1]</a>, set <cite>gaussian_weights</cite>
 to True, <cite>sigma</cite> to 1.5, and <cite>use_sample_covariance</cite> to False.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r375"><span class="brackets">R375</span><span class="fn-backref">(<a href="#id38">1</a>,<a href="#id39">2</a>,<a href="#id40">3</a>,<a href="#id41">4</a>)</span></dt>
+<dt class="label" id="rccea9a164d3e-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id38">1</a>,<a href="#id39">2</a>,<a href="#id40">3</a>)</span></dt>
 <dd><p>Wang, Z., Bovik, A. C., Sheikh, H. R., &amp; Simoncelli, E. P.
 (2004). Image quality assessment: From error visibility to
 structural similarity. IEEE Transactions on Image Processing,
@@ -2124,7 +1995,7 @@ structural similarity. IEEE Transactions on Image Processing,
 <a class="reference external" href="https://ece.uwaterloo.ca/~z70wang/publications/ssim.pdf">https://ece.uwaterloo.ca/~z70wang/publications/ssim.pdf</a>,
 <a class="reference external" href="https://doi.org/10.1109/TIP.2003.819861">DOI:10.1109/TIP.2003.819861</a></p>
 </dd>
-<dt class="label" id="r376"><span class="brackets">R376</span><span class="fn-backref">(<a href="#id37">1</a>,<a href="#id42">2</a>)</span></dt>
+<dt class="label" id="rccea9a164d3e-2"><span class="brackets"><a class="fn-backref" href="#id37">2</a></span></dt>
 <dd><p>Avanaki, A. N. (2009). Exact global histogram specification
 optimized for structural similarity. Optical Review, 16, 613-621.
 <a class="reference external" href="https://arxiv.org/abs/0901.0065">arXiv:0901.0065</a>
@@ -2147,18 +2018,18 @@ optimized for structural similarity. Optical Review, 16, 613-621.
 <dt id="skimage.measure.compare_mse">
 <code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">compare_mse</code><span class="sig-paren">(</span><em class="sig-param">im1</em>, <em class="sig-param">im2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/simple_metrics.py#L27"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.compare_mse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the mean-squared error between two images.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>im1, im2</strong> : ndarray</p>
-<blockquote>
-<div><p>Image.  Any dimensionality.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>im1, im2</strong><span class="classifier">ndarray</span></dt><dd><p>Image.  Any dimensionality.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>mse</strong> : float</p>
-<blockquote>
-<div><p>The mean-squared error (MSE) metric.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>mse</strong><span class="classifier">float</span></dt><dd><p>The mean-squared error (MSE) metric.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -2173,19 +2044,14 @@ optimized for structural similarity. Optical Review, 16, 613-621.
 images.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>im_true</strong> : ndarray</p>
-<blockquote>
-<div><p>Ground-truth image.</p>
-</div></blockquote>
-<p><strong>im_test</strong> : ndarray</p>
-<blockquote>
-<div><p>Test image.</p>
-</div></blockquote>
-<p><strong>norm_type</strong> : {‘Euclidean’, ‘min-max’, ‘mean’}</p>
-<blockquote>
-<div><p>Controls the normalization method to use in the denominator of the
+<dd class="field-odd"><dl>
+<dt><strong>im_true</strong><span class="classifier">ndarray</span></dt><dd><p>Ground-truth image.</p>
+</dd>
+<dt><strong>im_test</strong><span class="classifier">ndarray</span></dt><dd><p>Test image.</p>
+</dd>
+<dt><strong>norm_type</strong><span class="classifier">{‘Euclidean’, ‘min-max’, ‘mean’}</span></dt><dd><p>Controls the normalization method to use in the denominator of the
 NRMSE.  There is no standard method of normalization across the
-literature <a class="reference internal" href="#r377" id="id43"><span>[R377]</span></a>.  The methods available here are as follows:</p>
+literature <a class="reference internal" href="#rb7f5201e5e31-1" id="id43">[1]</a>.  The methods available here are as follows:</p>
 <ul>
 <li><p>‘Euclidean’ : normalize by the averaged Euclidean norm of
 <code class="docutils literal notranslate"><span class="pre">im_true</span></code>:</p>
@@ -2201,18 +2067,19 @@ This result is equivalent to:</p>
 <li><p>‘min-max’   : normalize by the intensity range of <code class="docutils literal notranslate"><span class="pre">im_true</span></code>.</p></li>
 <li><p>‘mean’      : normalize by the mean of <code class="docutils literal notranslate"><span class="pre">im_true</span></code></p></li>
 </ul>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>nrmse</strong> : float</p>
-<blockquote>
-<div><p>The NRMSE metric.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>nrmse</strong><span class="classifier">float</span></dt><dd><p>The NRMSE metric.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r377"><span class="brackets">R377</span><span class="fn-backref">(<a href="#id43">1</a>,<a href="#id44">2</a>)</span></dt>
+<dt class="label" id="rb7f5201e5e31-1"><span class="brackets"><a class="fn-backref" href="#id43">1</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Root-mean-square_deviation">https://en.wikipedia.org/wiki/Root-mean-square_deviation</a></p>
 </dd>
 </dl>
@@ -2225,33 +2092,29 @@ This result is equivalent to:</p>
 <dt id="skimage.measure.compare_psnr">
 <code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">compare_psnr</code><span class="sig-paren">(</span><em class="sig-param">im_true</em>, <em class="sig-param">im_test</em>, <em class="sig-param">data_range=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/simple_metrics.py#L99"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.compare_psnr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the peak signal to noise ratio (PSNR) for an image.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>im_true</strong> : ndarray</p>
-<blockquote>
-<div><p>Ground-truth image.</p>
-</div></blockquote>
-<p><strong>im_test</strong> : ndarray</p>
-<blockquote>
-<div><p>Test image.</p>
-</div></blockquote>
-<p><strong>data_range</strong> : int</p>
-<blockquote>
-<div><p>The data range of the input image (distance between minimum and
+<dd class="field-odd"><dl class="simple">
+<dt><strong>im_true</strong><span class="classifier">ndarray</span></dt><dd><p>Ground-truth image.</p>
+</dd>
+<dt><strong>im_test</strong><span class="classifier">ndarray</span></dt><dd><p>Test image.</p>
+</dd>
+<dt><strong>data_range</strong><span class="classifier">int</span></dt><dd><p>The data range of the input image (distance between minimum and
 maximum possible values).  By default, this is estimated from the image
 data-type.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>psnr</strong> : float</p>
-<blockquote>
-<div><p>The PSNR metric.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>psnr</strong><span class="classifier">float</span></dt><dd><p>The PSNR metric.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r378"><span class="brackets"><a class="fn-backref" href="#id45">R378</a></span></dt>
+<dt class="label" id="rc30fc0f79907-1"><span class="brackets">1</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio">https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio</a></p>
 </dd>
 </dl>
@@ -2281,19 +2144,19 @@ data-type.</p>
 <dd><p>Calculate the Shannon entropy of an image.</p>
 <p>The Shannon entropy is defined as S = -sum(pk * log(pk)),
 where pk are frequency/probability of pixels of value k.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>image</strong> : (N, M) ndarray</p>
-<blockquote>
-<div><p>Grayscale input image.</p>
-</div></blockquote>
-<p><strong>base</strong> : float, optional</p>
-<blockquote>
-<div><p>The logarithmic base to use.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">(N, M) ndarray</span></dt><dd><p>Grayscale input image.</p>
+</dd>
+<dt><strong>base</strong><span class="classifier">float, optional</span></dt><dd><p>The logarithmic base to use.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>entropy</strong> : float</p>
+<dd class="field-even"><dl class="simple">
+<dt><strong>entropy</strong><span class="classifier">float</span></dt><dd></dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -2301,10 +2164,10 @@ where pk are frequency/probability of pixels of value k.</p>
 unit (nat) for base=np.e and hartley (Hart) for base=10.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r379"><span class="brackets"><a class="fn-backref" href="#id46">R379</a></span></dt>
+<dt class="label" id="rd3de3b6e4b40-1"><span class="brackets">1</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Entropy_(information_theory">https://en.wikipedia.org/wiki/Entropy_(information_theory</a>)</p>
 </dd>
-<dt class="label" id="r380"><span class="brackets"><a class="fn-backref" href="#id47">R380</a></span></dt>
+<dt class="label" id="rd3de3b6e4b40-2"><span class="brackets">2</span></dt>
 <dd><p><a class="reference external" href="https://en.wiktionary.org/wiki/Shannon_entropy">https://en.wiktionary.org/wiki/Shannon_entropy</a></p>
 </dd>
 </dl>
@@ -2349,159 +2212,145 @@ according to the following vector equation:</p>
 <span class="go">array([ 1.   ,  1.042,  1.083,  1.125,  1.167])</span>
 </pre></div>
 </div>
-<p class="rubric">Attributes</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 88%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>params</strong></p></td>
-<td><p>(tuple) Line model parameters in the following order <cite>origin</cite>, <cite>direction</cite>.</p></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">tuple</span></dt><dd><p>Line model parameters in the following order <cite>origin</cite>, <cite>direction</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="method">
 <dt id="skimage.measure.LineModelND.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.measure.LineModelND.estimate">
-<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L65"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate line model from data.</p>
 <p>This minimizes the sum of shortest (orthogonal) distances
 from the given data points to the estimated line.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> : (N, dim) array</p>
-<blockquote>
-<div><p>N points in a space of dimensionality dim &gt;= 2.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">(N, dim) array</span></dt><dd><p>N points in a space of dimensionality dim &gt;= 2.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>success</strong> : bool</p>
-<blockquote>
-<div><p>True, if model estimation succeeds.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>success</strong><span class="classifier">bool</span></dt><dd><p>True, if model estimation succeeds.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.measure.LineModelND.predict">
-<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">axis=0</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L132"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.predict" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">x</em>, <em class="sig-param">axis=0</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L132"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.predict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict intersection of the estimated line model with a hyperplane
 orthogonal to a given axis.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : (n, 1) array</p>
-<blockquote>
-<div><p>Coordinates along an axis.</p>
-</div></blockquote>
-<p><strong>axis</strong> : int</p>
-<blockquote>
-<div><p>Axis orthogonal to the hyperplane intersecting the line.</p>
-</div></blockquote>
-<p><strong>params</strong> : (2, ) array, optional</p>
-<blockquote>
-<div><p>Optional custom parameter set in the form (<cite>origin</cite>, <cite>direction</cite>).</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">(n, 1) array</span></dt><dd><p>Coordinates along an axis.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">int</span></dt><dd><p>Axis orthogonal to the hyperplane intersecting the line.</p>
+</dd>
+<dt><strong>params</strong><span class="classifier">(2, ) array, optional</span></dt><dd><p>Optional custom parameter set in the form (<cite>origin</cite>, <cite>direction</cite>).</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>data</strong> : (n, m) array</p>
-<blockquote>
-<div><p>Predicted coordinates.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">(n, m) array</span></dt><dd><p>Predicted coordinates.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-odd">Raises</dt>
-<dd class="field-odd"><p><strong>ValueError</strong></p>
-<blockquote>
-<div><p>If the line is parallel to the given axis.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If the line is parallel to the given axis.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.measure.LineModelND.predict_x">
-<code class="sig-name descname">predict_x</code><span class="sig-paren">(</span><em class="sig-param">y</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L171"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.predict_x" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict_x</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">y</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L171"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.predict_x" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict x-coordinates for 2D lines using the estimated model.</p>
 <p>Alias for:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">predict</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>y</strong> : array</p>
-<blockquote>
-<div><p>y-coordinates.</p>
-</div></blockquote>
-<p><strong>params</strong> : (2, ) array, optional</p>
-<blockquote>
-<div><p>Optional custom parameter set in the form (<cite>origin</cite>, <cite>direction</cite>).</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">array</span></dt><dd><p>y-coordinates.</p>
+</dd>
+<dt><strong>params</strong><span class="classifier">(2, ) array, optional</span></dt><dd><p>Optional custom parameter set in the form (<cite>origin</cite>, <cite>direction</cite>).</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>x</strong> : array</p>
-<blockquote>
-<div><p>Predicted x-coordinates.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">array</span></dt><dd><p>Predicted x-coordinates.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.measure.LineModelND.predict_y">
-<code class="sig-name descname">predict_y</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.predict_y" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict_y</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">x</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.predict_y" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict y-coordinates for 2D lines using the estimated model.</p>
 <p>Alias for:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array</p>
-<blockquote>
-<div><p>x-coordinates.</p>
-</div></blockquote>
-<p><strong>params</strong> : (2, ) array, optional</p>
-<blockquote>
-<div><p>Optional custom parameter set in the form (<cite>origin</cite>, <cite>direction</cite>).</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>x</strong><span class="classifier">array</span></dt><dd><p>x-coordinates.</p>
+</dd>
+<dt><strong>params</strong><span class="classifier">(2, ) array, optional</span></dt><dd><p>Optional custom parameter set in the form (<cite>origin</cite>, <cite>direction</cite>).</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>y</strong> : array</p>
-<blockquote>
-<div><p>Predicted y-coordinates.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>y</strong><span class="classifier">array</span></dt><dd><p>Predicted y-coordinates.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.measure.LineModelND.residuals">
-<code class="sig-name descname">residuals</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.residuals" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">residuals</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L102"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.LineModelND.residuals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine residuals of data to model.</p>
 <p>For each point, the shortest (orthogonal) distance to the line is
 returned. It is obtained by projecting the data onto the line.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> : (N, dim) array</p>
-<blockquote>
-<div><p>N points in a space of dimension dim.</p>
-</div></blockquote>
-<p><strong>params</strong> : (2, ) array, optional</p>
-<blockquote>
-<div><p>Optional custom parameter set in the form (<cite>origin</cite>, <cite>direction</cite>).</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">(N, dim) array</span></dt><dd><p>N points in a space of dimension dim.</p>
+</dd>
+<dt><strong>params</strong><span class="classifier">(2, ) array, optional</span></dt><dd><p>Optional custom parameter set in the form (<cite>origin</cite>, <cite>direction</cite>).</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>residuals</strong> : (N, ) array</p>
-<blockquote>
-<div><p>Residual for each data point.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>residuals</strong><span class="classifier">(N, ) array</span></dt><dd><p>Residual for each data point.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -2540,86 +2389,80 @@ circle:</p>
 <span class="go">        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])</span>
 </pre></div>
 </div>
-<p class="rubric">Attributes</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 12%" />
-<col style="width: 88%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>params</strong></p></td>
-<td><p>(tuple) Circle model parameters in the following order <cite>xc</cite>, <cite>yc</cite>, <cite>r</cite>.</p></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">tuple</span></dt><dd><p>Circle model parameters in the following order <cite>xc</cite>, <cite>yc</cite>, <cite>r</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="method">
 <dt id="skimage.measure.CircleModel.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.measure.CircleModel.estimate">
-<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L254"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L254"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate circle model from data using total least squares.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>N points with <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code> coordinates, respectively.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">(N, 2) array</span></dt><dd><p>N points with <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code> coordinates, respectively.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>success</strong> : bool</p>
-<blockquote>
-<div><p>True, if model estimation succeeds.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>success</strong><span class="classifier">bool</span></dt><dd><p>True, if model estimation succeeds.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.measure.CircleModel.predict_xy">
-<code class="sig-name descname">predict_xy</code><span class="sig-paren">(</span><em class="sig-param">t</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L321"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.predict_xy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict_xy</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">t</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L321"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.predict_xy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict x- and y-coordinates using the estimated model.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>t</strong> : array</p>
-<blockquote>
-<div><p>Angles in circle in radians. Angles start to count from positive
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array</span></dt><dd><p>Angles in circle in radians. Angles start to count from positive
 x-axis to positive y-axis in a right-handed system.</p>
-</div></blockquote>
-<p><strong>params</strong> : (3, ) array, optional</p>
-<blockquote>
-<div><p>Optional custom parameter set.</p>
-</div></blockquote>
+</dd>
+<dt><strong>params</strong><span class="classifier">(3, ) array, optional</span></dt><dd><p>Optional custom parameter set.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>xy</strong> : (…, 2) array</p>
-<blockquote>
-<div><p>Predicted x- and y-coordinates.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>xy</strong><span class="classifier">(…, 2) array</span></dt><dd><p>Predicted x- and y-coordinates.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.measure.CircleModel.residuals">
-<code class="sig-name descname">residuals</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L295"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.residuals" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">residuals</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L295"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.residuals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine residuals of data to model.</p>
 <p>For each point the shortest distance to the circle is returned.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>N points with <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code> coordinates, respectively.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">(N, 2) array</span></dt><dd><p>N points with <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code> coordinates, respectively.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>residuals</strong> : (N, ) array</p>
-<blockquote>
-<div><p>Residual for each data point.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>residuals</strong><span class="classifier">(N, ) array</span></dt><dd><p>Residual for each data point.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
@@ -2662,45 +2505,42 @@ to a simple, stable and robust fitting method.</p>
 <span class="go">        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])</span>
 </pre></div>
 </div>
-<p class="rubric">Attributes</p>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><td><p><strong>params</strong></p></td>
-<td><p>(tuple) Ellipse model parameters in the following order <cite>xc</cite>, <cite>yc</cite>, <cite>a</cite>, <cite>b</cite>, <cite>theta</cite>.</p></td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>params</strong><span class="classifier">tuple</span></dt><dd><p>Ellipse model parameters in the following order <cite>xc</cite>, <cite>yc</cite>, <cite>a</cite>, <cite>b</cite>,
+<cite>theta</cite>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="method">
 <dt id="skimage.measure.EllipseModel.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.measure.EllipseModel.estimate">
-<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L389"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L389"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate circle model from data using total least squares.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>N points with <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code> coordinates, respectively.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">(N, 2) array</span></dt><dd><p>N points with <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code> coordinates, respectively.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>success</strong> : bool</p>
-<blockquote>
-<div><p>True, if model estimation succeeds.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>success</strong><span class="classifier">bool</span></dt><dd><p>True, if model estimation succeeds.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r381"><span class="brackets"><a class="fn-backref" href="#id48">R381</a></span></dt>
+<dt class="label" id="rb82f40f15f1b-1"><span class="brackets">1</span></dt>
 <dd><p>Halir, R.; Flusser, J. “Numerically stable direct least squares
 fitting of ellipses”. In Proc. 6th International Conference in
 Central Europe on Computer Graphics and Visualization.
@@ -2711,46 +2551,44 @@ WSCG (Vol. 98, pp. 125-132).</p>
 
 <dl class="method">
 <dt id="skimage.measure.EllipseModel.predict_xy">
-<code class="sig-name descname">predict_xy</code><span class="sig-paren">(</span><em class="sig-param">t</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L545"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.predict_xy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict_xy</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">t</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L545"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.predict_xy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict x- and y-coordinates using the estimated model.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>t</strong> : array</p>
-<blockquote>
-<div><p>Angles in circle in radians. Angles start to count from positive
+<dd class="field-odd"><dl class="simple">
+<dt><strong>t</strong><span class="classifier">array</span></dt><dd><p>Angles in circle in radians. Angles start to count from positive
 x-axis to positive y-axis in a right-handed system.</p>
-</div></blockquote>
-<p><strong>params</strong> : (5, ) array, optional</p>
-<blockquote>
-<div><p>Optional custom parameter set.</p>
-</div></blockquote>
+</dd>
+<dt><strong>params</strong><span class="classifier">(5, ) array, optional</span></dt><dd><p>Optional custom parameter set.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>xy</strong> : (…, 2) array</p>
-<blockquote>
-<div><p>Predicted x- and y-coordinates.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>xy</strong><span class="classifier">(…, 2) array</span></dt><dd><p>Predicted x- and y-coordinates.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.measure.EllipseModel.residuals">
-<code class="sig-name descname">residuals</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L483"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.residuals" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">residuals</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L483"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.residuals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine residuals of data to model.</p>
 <p>For each point the shortest distance to the ellipse is returned.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> : (N, 2) array</p>
-<blockquote>
-<div><p>N points with <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code> coordinates, respectively.</p>
-</div></blockquote>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">(N, 2) array</span></dt><dd><p>N points with <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code> coordinates, respectively.</p>
+</dd>
+</dl>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>residuals</strong> : (N, ) array</p>
-<blockquote>
-<div><p>Residual for each data point.</p>
-</div></blockquote>
+<dd class="field-even"><dl class="simple">
+<dt><strong>residuals</strong><span class="classifier">(N, ) array</span></dt><dd><p>Residual for each data point.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd></dl>
