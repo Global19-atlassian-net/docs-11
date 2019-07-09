@@ -32,8 +32,8 @@
         <link rel="search" title="Search" href="../../search.html" />
         <link rel="top" title="skimage v0.16.dev0 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
-        <link rel="next" title="Marching Cubes" href="plot_marching_cubes.html" />
-        <link rel="prev" title="Canny edge detector" href="plot_canny.html" />
+        <link rel="next" title="Shapes" href="plot_shapes.html" />
+        <link rel="prev" title="Active Contour Model" href="plot_active_contours.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../../_static/favicon.ico">
 </head>
@@ -113,6 +113,8 @@ e.g., depending on contrast or noise level.</p>
 <p>The present class of ridge filters relies on the eigenvalues of
 the Hessian matrix of image intensities to detect ridge structures where the
 intensity changes perpendicular but not along the structure.</p>
+<p>Note that, due to edge effects, results for Meijering and Frangi filters
+are cropped by 4 pixels on each edge to get a proper rendering.</p>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <dl class="footnote brackets">
@@ -145,7 +147,8 @@ Computer Vision (pp. 609-622). Springer International Publishing.
 </dd>
 </dl>
 <img alt="../../_images/sphx_glr_plot_ridge_filter_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_ridge_filter_001.png" />
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.data</span> <span class="k">import</span> <a href="../../api/skimage.data.html#skimage.data.page" title="View documentation for skimage.data.page"><span class="n">page</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">color</span>
 <span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="k">import</span> <a href="../../api/skimage.filters.html#skimage.filters.meijering" title="View documentation for skimage.filters.meijering"><span class="n">meijering</span></a><span class="p">,</span> <a href="../../api/skimage.filters.html#skimage.filters.sato" title="View documentation for skimage.filters.sato"><span class="n">sato</span></a><span class="p">,</span> <a href="../../api/skimage.filters.html#skimage.filters.frangi" title="View documentation for skimage.filters.frangi"><span class="n">frangi</span></a><span class="p">,</span> <a href="../../api/skimage.filters.html#skimage.filters.hessian" title="View documentation for skimage.filters.hessian"><span class="n">hessian</span></a>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -155,7 +158,7 @@ Computer Vision (pp. 609-622). Springer International Publishing.
     <span class="k">return</span> <span class="n">image</span>
 
 
-<span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.page" title="View documentation for skimage.data.page"><span class="n">page</span></a><span class="p">()</span>
+<span class="n">image</span> <span class="o">=</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="View documentation for skimage.color.rgb2gray"><span class="n">color</span><span class="o">.</span><span class="n">rgb2gray</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.retina" title="View documentation for skimage.data.retina"><span class="n">data</span><span class="o">.</span><span class="n">retina</span></a><span class="p">())[</span><span class="mi">300</span><span class="p">:</span><span class="mi">700</span><span class="p">,</span> <span class="mi">700</span><span class="p">:</span><span class="mi">900</span><span class="p">]</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span>
 
 <span class="n">kwargs</span> <span class="o">=</span> <span class="p">{}</span>
@@ -165,7 +168,11 @@ Computer Vision (pp. 609-622). Springer International Publishing.
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">black_ridges</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]):</span>
     <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="n">identity</span><span class="p">,</span> <a href="../../api/skimage.filters.html#skimage.filters.meijering" title="View documentation for skimage.filters.meijering"><span class="n">meijering</span></a><span class="p">,</span> <a href="../../api/skimage.filters.html#skimage.filters.sato" title="View documentation for skimage.filters.sato"><span class="n">sato</span></a><span class="p">,</span> <a href="../../api/skimage.filters.html#skimage.filters.frangi" title="View documentation for skimage.filters.frangi"><span class="n">frangi</span></a><span class="p">,</span> <a href="../../api/skimage.filters.html#skimage.filters.hessian" title="View documentation for skimage.filters.hessian"><span class="n">hessian</span></a><span class="p">]):</span>
         <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;black_ridges&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">black_ridges</span>
-        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">func</span> <span class="ow">in</span> <span class="p">(</span><a href="../../api/skimage.filters.html#skimage.filters.meijering" title="View documentation for skimage.filters.meijering"><span class="n">meijering</span></a><span class="p">,</span> <a href="../../api/skimage.filters.html#skimage.filters.frangi" title="View documentation for skimage.filters.frangi"><span class="n">frangi</span></a><span class="p">):</span>
+            <span class="c1"># Crop by 4 pixels for rendering purpose.</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">([</span><span class="s1">&#39;Original</span><span class="se">\n</span><span class="s1">image&#39;</span><span class="p">,</span> <span class="s1">&#39;Meijering</span><span class="se">\n</span><span class="s1">neuriteness&#39;</span><span class="p">,</span>
                                   <span class="s1">&#39;Sato</span><span class="se">\n</span><span class="s1">tubeness&#39;</span><span class="p">,</span> <span class="s1">&#39;Frangi</span><span class="se">\n</span><span class="s1">vesselness&#39;</span><span class="p">,</span>
@@ -179,7 +186,7 @@ Computer Vision (pp. 609-622). Springer International Publishing.
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.520 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.636 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-edges-plot-ridge-filter-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/a7935f33db9e11cdd0313d83150d7449/plot_ridge_filter.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_ridge_filter.py</span></code></a></p>
