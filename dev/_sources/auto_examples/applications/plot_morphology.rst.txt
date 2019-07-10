@@ -36,14 +36,12 @@ functions only work on gray-scale or binary images, so we set ``as_gray=True``.
 .. code-block:: default
 
 
-    import os
     import matplotlib.pyplot as plt
-    from skimage.data import data_dir
+    from skimage import data
     from skimage.util import img_as_ubyte
     from skimage import io
 
-    orig_phantom = img_as_ubyte(io.imread(os.path.join(data_dir, "phantom.png"),
-                                          as_gray=True))
+    orig_phantom = img_as_ubyte(data.shepp_logan_phantom())
     fig, ax = plt.subplots()
     ax.imshow(orig_phantom, cmap=plt.cm.gray)
 
@@ -295,7 +293,7 @@ performed on binary images only.
 .. code-block:: default
 
 
-    horse = io.imread(os.path.join(data_dir, "horse.png"), as_gray=True)
+    horse = data.horse()
 
     sk = skeletonize(horse == 0)
     plot_comparison(horse, sk, 'skeletonize')
@@ -389,7 +387,7 @@ Processing <http://www.cs.auckland.ac.nz/courses/compsci773s1c/lectures
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.562 seconds)
+   **Total running time of the script:** ( 0 minutes  1.590 seconds)
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_morphology.py:

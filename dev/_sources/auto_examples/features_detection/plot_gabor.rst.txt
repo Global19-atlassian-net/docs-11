@@ -35,7 +35,7 @@ for classification, which is based on the least squared error for simplicity.
     Rotated images matched against references using Gabor filter banks:
     original: brick, rotated: 30deg, match result: brick
     original: brick, rotated: 70deg, match result: brick
-    original: grass, rotated: 145deg, match result: grass
+    original: grass, rotated: 145deg, match result: brick
 
 
 
@@ -88,17 +88,17 @@ for classification, which is based on the least squared error for simplicity.
 
 
     shrink = (slice(0, None, 3), slice(0, None, 3))
-    brick = img_as_float(data.load('brick.png'))[shrink]
-    grass = img_as_float(data.load('grass.png'))[shrink]
-    wall = img_as_float(data.load('rough-wall.png'))[shrink]
-    image_names = ('brick', 'grass', 'wall')
-    images = (brick, grass, wall)
+    brick = img_as_float(data.brick())[shrink]
+    grass = img_as_float(data.grass())[shrink]
+    gravel = img_as_float(data.gravel())[shrink]
+    image_names = ('brick', 'grass', 'gravel')
+    images = (brick, grass, gravel)
 
     # prepare reference features
     ref_feats = np.zeros((3, len(kernels), 2), dtype=np.double)
     ref_feats[0, :, :] = compute_feats(brick, kernels)
     ref_feats[1, :, :] = compute_feats(grass, kernels)
-    ref_feats[2, :, :] = compute_feats(wall, kernels)
+    ref_feats[2, :, :] = compute_feats(gravel, kernels)
 
     print('Rotated images matched against references using Gabor filter banks:')
 
@@ -166,7 +166,7 @@ for classification, which is based on the least squared error for simplicity.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.843 seconds)
+   **Total running time of the script:** ( 0 minutes  1.891 seconds)
 
 
 .. _sphx_glr_download_auto_examples_features_detection_plot_gabor.py:

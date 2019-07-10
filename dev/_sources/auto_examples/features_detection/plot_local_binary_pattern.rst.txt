@@ -124,7 +124,7 @@ brick texture.
             bars[i].set_facecolor('r')
 
 
-    image = data.load('brick.png')
+    image = data.brick()
     lbp = local_binary_pattern(image, n_points, radius, METHOD)
 
 
@@ -222,14 +222,14 @@ Kullback-Leibler-Divergence.
         return best_name
 
 
-    brick = data.load('brick.png')
-    grass = data.load('grass.png')
-    wall = data.load('rough-wall.png')
+    brick = data.brick()
+    grass = data.grass()
+    gravel = data.gravel()
 
     refs = {
         'brick': local_binary_pattern(brick, n_points, radius, METHOD),
         'grass': local_binary_pattern(grass, n_points, radius, METHOD),
-        'wall': local_binary_pattern(wall, n_points, radius, METHOD)
+        'gravel': local_binary_pattern(gravel, n_points, radius, METHOD)
     }
 
     # classify rotated textures
@@ -256,9 +256,9 @@ Kullback-Leibler-Divergence.
     hist(ax5, refs['grass'])
     ax5.set_xlabel('Uniform LBP values')
 
-    ax3.imshow(wall)
+    ax3.imshow(gravel)
     ax3.axis('off')
-    hist(ax6, refs['wall'])
+    hist(ax6, refs['gravel'])
 
     plt.show()
 
@@ -284,7 +284,7 @@ Kullback-Leibler-Divergence.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.017 seconds)
+   **Total running time of the script:** ( 0 minutes  2.047 seconds)
 
 
 .. _sphx_glr_download_auto_examples_features_detection_plot_local_binary_pattern.py:
