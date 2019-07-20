@@ -89,6 +89,14 @@
 </li>
 <li><a class="reference internal" href="#deprecation-cycle">Deprecation cycle</a></li>
 <li><a class="reference internal" href="#bugs">Bugs</a></li>
+<li><a class="reference internal" href="#benchmarks">Benchmarks</a><ul class="nav nav-list">
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li><a class="reference internal" href="#writing-a-benchmark">Writing a benchmark</a></li>
+<li><a class="reference internal" href="#testing-the-benchmarks-locally">Testing the benchmarks locally</a></li>
+<li><a class="reference internal" href="#running-your-benchmark">Running your benchmark</a></li>
+<li><a class="reference internal" href="#comparing-results-to-master">Comparing results to master</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -602,6 +610,116 @@ entire function for example).</p>
 <div class="section" id="bugs">
 <h2>Bugs<a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h2>
 <p>Please <a class="reference external" href="https://github.com/scikit-image/scikit-image/issues">report bugs on GitHub</a>.</p>
+</div>
+<div class="section" id="benchmarks">
+<h2>Benchmarks<a class="headerlink" href="#benchmarks" title="Permalink to this headline">¶</a></h2>
+<p>While not mandatory for most pull requests, we ask that performance related
+PRs include a benchmark in order to clearly depict the use-case that is being
+optimized for. A historical view of our snapshots can be found on
+at the following <a class="reference external" href="https://pandas.pydata.org/speed/scikit-image/">website</a>.</p>
+<p>In this section we will review how to setup the benchmarks,
+and three commands <code class="docutils literal notranslate"><span class="pre">asv</span> <span class="pre">dev</span></code>, <code class="docutils literal notranslate"><span class="pre">asv</span> <span class="pre">run</span></code> and <code class="docutils literal notranslate"><span class="pre">asv</span> <span class="pre">continuous</span></code>.</p>
+<div class="section" id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
+<p>Begin by installing <a class="reference external" href="https://asv.readthedocs.io/en/stable/">airspeed velocity</a>
+in your development environment. Prior to installation, be sure to activate your
+development environment, then if using <code class="docutils literal notranslate"><span class="pre">venv</span></code> you may install the requirement with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">skimage</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">asv</span>
+</pre></div>
+</div>
+<p>If you are using conda, then the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">skimage</span><span class="o">-</span><span class="n">dev</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">asv</span>
+</pre></div>
+</div>
+<p>is more appropriate. Once installed, it is useful to run the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asv</span> <span class="n">machine</span>
+</pre></div>
+</div>
+<p>To let airspeed velocity know more information about your machine.</p>
+</div>
+<div class="section" id="writing-a-benchmark">
+<h3>Writing a benchmark<a class="headerlink" href="#writing-a-benchmark" title="Permalink to this headline">¶</a></h3>
+<p>To write  benchmark, add a file in the <code class="docutils literal notranslate"><span class="pre">benchmarks</span></code> directory which contains a
+a class with one <code class="docutils literal notranslate"><span class="pre">setup</span></code> method and at least one method prefixed with <code class="docutils literal notranslate"><span class="pre">time_</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">time_</span></code> method should only contain code you wish to benchmark.
+Therefore it is useful to move everything that prepares the benchmark scenario
+into the <code class="docutils literal notranslate"><span class="pre">setup</span></code> method. This function is called before calling a <code class="docutils literal notranslate"><span class="pre">time_</span></code>
+method and its execution time is not factored into the benchmarks.</p>
+<p>Take for example the <code class="docutils literal notranslate"><span class="pre">TransformSuite</span></code> benchmark:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span>
+
+<span class="k">class</span> <span class="nc">TransformSuite</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Benchmark for transform routines in scikit-image.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">))</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1500</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">[</span><span class="n">idx</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">255</span>
+
+    <span class="k">def</span> <span class="nf">time_hough_line</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">result1</span><span class="p">,</span> <span class="n">result2</span><span class="p">,</span> <span class="n">result3</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">hough_line</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here, the creation of the image is completed in the <code class="docutils literal notranslate"><span class="pre">setup</span></code> method, and not
+included in the reported time of the benchmark.</p>
+<p>It is also possible to benchmark features such as peak memory usage. To learn
+more about the features of <cite>asv</cite>, please refer to the official
+<a class="reference external" href="http://asv.readthedocs.io/en/latest/writing_benchmarks.html">airpseed velocity documentation</a>.</p>
+</div>
+<div class="section" id="testing-the-benchmarks-locally">
+<h3>Testing the benchmarks locally<a class="headerlink" href="#testing-the-benchmarks-locally" title="Permalink to this headline">¶</a></h3>
+<p>Prior to running the true benchmark, it is often worthwhile to test that the
+code is free of typos. To do so, you may use the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asv</span> <span class="n">dev</span> <span class="o">-</span><span class="n">b</span> <span class="n">TransformSuite</span>
+</pre></div>
+</div>
+<p>Where the <code class="docutils literal notranslate"><span class="pre">TransformSuite</span></code> above will be run once in your current environment
+to test that everything is in order.</p>
+</div>
+<div class="section" id="running-your-benchmark">
+<h3>Running your benchmark<a class="headerlink" href="#running-your-benchmark" title="Permalink to this headline">¶</a></h3>
+<p>The command above is fast, but doesn’t test the performance of the code
+adequately. To do that you may want to run the benchmark in your current
+environment to see the performance of your change as you are developing new
+features. The command <code class="docutils literal notranslate"><span class="pre">asv</span> <span class="pre">run</span> <span class="pre">-E</span> <span class="pre">existing</span></code> will specify that you wish to run
+the benchmark in your existing environment. This will save a significant amount
+of time since building scikit-image can be a time consuming task:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asv</span> <span class="n">run</span> <span class="o">-</span><span class="n">E</span> <span class="n">existing</span> <span class="o">-</span><span class="n">b</span> <span class="n">TransformSuite</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="comparing-results-to-master">
+<h3>Comparing results to master<a class="headerlink" href="#comparing-results-to-master" title="Permalink to this headline">¶</a></h3>
+<p>Often, the goal of a PR is to compare the results of the modifications in terms
+speed to a snapshot of the code that is in the master branch of the
+<code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> repository. The command <code class="docutils literal notranslate"><span class="pre">asv</span> <span class="pre">continuous</span></code> is of help here:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">asv</span> <span class="n">continuous</span> <span class="n">master</span> <span class="o">-</span><span class="n">b</span> <span class="n">TransformSuite</span>
+</pre></div>
+</div>
+<p>This call will build out the environments specified in the <code class="docutils literal notranslate"><span class="pre">asv.conf.json</span></code>
+file and compare the performance of the benchmark between your current commit
+and the code in the master branch.</p>
+<p>The output may look something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ asv continuous master -b TransformSuite
+· Creating environments
+· Discovering benchmarks
+·· Uninstalling from conda-py3.7-cython-numpy1.15-scipy
+·· Installing 544c0fe3 &lt;benchmark_docs&gt; into conda-py3.7-cython-numpy1.15-scipy.
+· Running 4 total benchmarks (2 commits * 2 environments * 1 benchmarks)
+[  0.00%] · For scikit-image commit 37c764cb &lt;benchmark_docs~1&gt; (round 1/2):
+[...]
+[100.00%] ··· ...ansform.TransformSuite.time_hough_line           33.2±2ms
+
+BENCHMARKS NOT SIGNIFICANTLY CHANGED.
+</pre></div>
+</div>
+<p>In this case, the differences between HEAD and master are not significant
+enough for airspeed velocity to report.</p>
+</div>
 </div>
 </div>
 
