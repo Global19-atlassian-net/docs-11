@@ -51,8 +51,6 @@ of each variant.
  .. code-block:: none
 
     estimated noise standard deviation = 0.07745432275132114
-    /home/travis/venv/lib/python3.6/site-packages/skimage/measure/simple_metrics.py:112: UserWarning: DEPRECATED: skimage.measure.compare_psnr has been moved to skimage.metrics.peak_signal_noise_ratio. It will be removed from skimage.measure in version 0.18.
-      warn('DEPRECATED: skimage.measure.compare_psnr has been moved to '
     PSNR (noisy) = 22.15
     PSNR (slow) = 29.48
     PSNR (slow, using sigma) = 29.80
@@ -73,7 +71,7 @@ of each variant.
 
     from skimage import data, img_as_float
     from skimage.restoration import denoise_nl_means, estimate_sigma
-    from skimage.measure import compare_psnr
+    from skimage.metrics import peak_signal_noise_ratio
     from skimage.util import random_noise
 
 
@@ -132,11 +130,11 @@ of each variant.
     fig.tight_layout()
 
     # print PSNR metric for each case
-    psnr_noisy = compare_psnr(astro, noisy)
-    psnr = compare_psnr(astro, denoise)
-    psnr2 = compare_psnr(astro, denoise2)
-    psnr_fast = compare_psnr(astro, denoise_fast)
-    psnr2_fast = compare_psnr(astro, denoise2_fast)
+    psnr_noisy = peak_signal_noise_ratio(astro, noisy)
+    psnr = peak_signal_noise_ratio(astro, denoise)
+    psnr2 = peak_signal_noise_ratio(astro, denoise2)
+    psnr_fast = peak_signal_noise_ratio(astro, denoise_fast)
+    psnr2_fast = peak_signal_noise_ratio(astro, denoise2_fast)
 
     print("PSNR (noisy) = {:0.2f}".format(psnr_noisy))
     print("PSNR (slow) = {:0.2f}".format(psnr))
@@ -149,7 +147,7 @@ of each variant.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.093 seconds)
+   **Total running time of the script:** ( 0 minutes  2.173 seconds)
 
 
 .. _sphx_glr_download_auto_examples_filters_plot_nonlocal_means.py:

@@ -36,20 +36,7 @@ achieved simply by averaging shifts of only n=0 and n=1 on each axis.
     :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
 
- Out:
-
- .. code-block:: none
-
-    /home/travis/venv/lib/python3.6/site-packages/skimage/measure/simple_metrics.py:112: UserWarning: DEPRECATED: skimage.measure.compare_psnr has been moved to skimage.metrics.peak_signal_noise_ratio. It will be removed from skimage.measure in version 0.18.
-      warn('DEPRECATED: skimage.measure.compare_psnr has been moved to '
-
-
-
-
-
-|
 
 
 .. code-block:: default
@@ -59,7 +46,7 @@ achieved simply by averaging shifts of only n=0 and n=1 on each axis.
     from skimage.restoration import denoise_wavelet, cycle_spin
     from skimage import data, img_as_float
     from skimage.util import random_noise
-    from skimage.measure import compare_psnr
+    from skimage.metrics import peak_signal_noise_ratio
 
 
     original = img_as_float(data.chelsea()[100:250, 50:300])
@@ -71,7 +58,7 @@ achieved simply by averaging shifts of only n=0 and n=1 on each axis.
                            sharex=False, sharey=False)
     ax = ax.ravel()
 
-    psnr_noisy = compare_psnr(original, noisy)
+    psnr_noisy = peak_signal_noise_ratio(original, noisy)
     ax[0].imshow(noisy)
     ax[0].axis('off')
     ax[0].set_title('Noisy\nPSNR={:0.4g}'.format(psnr_noisy))
@@ -92,7 +79,7 @@ achieved simply by averaging shifts of only n=0 and n=1 on each axis.
                                 func_kw=denoise_kwargs, multichannel=True)
         ax[n+1].imshow(im_bayescs)
         ax[n+1].axis('off')
-        psnr = compare_psnr(original, im_bayescs)
+        psnr = peak_signal_noise_ratio(original, im_bayescs)
         if s == 0:
             ax[n+1].set_title(
                 "Denoised: no cycle shifts\nPSNR={:0.4g}".format(psnr))
@@ -123,7 +110,7 @@ achieved simply by averaging shifts of only n=0 and n=1 on each axis.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.302 seconds)
+   **Total running time of the script:** ( 0 minutes  1.439 seconds)
 
 
 .. _sphx_glr_download_auto_examples_filters_plot_cycle_spinning.py:

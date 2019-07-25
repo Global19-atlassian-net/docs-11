@@ -113,20 +113,12 @@ shifts, n:</p>
 provide a substantial increase in quality, with much of the gain being
 achieved simply by averaging shifts of only n=0 and n=1 on each axis.</p>
 <img alt="../../_images/sphx_glr_plot_cycle_spinning_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_cycle_spinning_001.png" />
-<p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/travis/venv/lib/python3.6/site-packages/skimage/measure/simple_metrics.py:112: UserWarning: DEPRECATED: skimage.measure.compare_psnr has been moved to skimage.metrics.peak_signal_noise_ratio. It will be removed from skimage.measure in version 0.18.
-  warn(&#39;DEPRECATED: skimage.measure.compare_psnr has been moved to &#39;
-</pre></div>
-</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="kn">from</span> <span class="nn">skimage.restoration</span> <span class="k">import</span> <a href="../../api/skimage.restoration.html#skimage.restoration.denoise_wavelet" title="View documentation for skimage.restoration.denoise_wavelet"><span class="n">denoise_wavelet</span></a><span class="p">,</span> <a href="../../api/skimage.restoration.html#skimage.restoration.cycle_spin" title="View documentation for skimage.restoration.cycle_spin"><span class="n">cycle_spin</span></a>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.img_as_float"><span class="n">img_as_float</span></a>
 <span class="kn">from</span> <span class="nn">skimage.util</span> <span class="k">import</span> <a href="../../api/skimage.util.html#skimage.util.random_noise" title="View documentation for skimage.util.random_noise"><span class="n">random_noise</span></a>
-<span class="kn">from</span> <span class="nn">skimage.measure</span> <span class="k">import</span> <a href="../../api/skimage.measure.html#skimage.measure.compare_psnr" title="View documentation for skimage.measure.compare_psnr"><span class="n">compare_psnr</span></a>
+<span class="kn">from</span> <span class="nn">skimage.metrics</span> <span class="k">import</span> <a href="../../api/skimage.metrics.html#skimage.metrics.peak_signal_noise_ratio" title="View documentation for skimage.metrics.peak_signal_noise_ratio"><span class="n">peak_signal_noise_ratio</span></a>
 
 
 <span class="n">original</span> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.img_as_float"><span class="n">img_as_float</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.chelsea" title="View documentation for skimage.data.chelsea"><span class="n">data</span><span class="o">.</span><span class="n">chelsea</span></a><span class="p">()[</span><span class="mi">100</span><span class="p">:</span><span class="mi">250</span><span class="p">,</span> <span class="mi">50</span><span class="p">:</span><span class="mi">300</span><span class="p">])</span>
@@ -138,7 +130,7 @@ achieved simply by averaging shifts of only n=0 and n=1 on each axis.</p>
                        <span class="n">sharex</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
-<span class="n">psnr_noisy</span> <span class="o">=</span> <a href="../../api/skimage.measure.html#skimage.measure.compare_psnr" title="View documentation for skimage.measure.compare_psnr"><span class="n">compare_psnr</span></a><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="n">noisy</span><span class="p">)</span>
+<span class="n">psnr_noisy</span> <span class="o">=</span> <a href="../../api/skimage.metrics.html#skimage.metrics.peak_signal_noise_ratio" title="View documentation for skimage.metrics.peak_signal_noise_ratio"><span class="n">peak_signal_noise_ratio</span></a><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="n">noisy</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">noisy</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Noisy</span><span class="se">\n</span><span class="s1">PSNR=</span><span class="si">{:0.4g}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">psnr_noisy</span><span class="p">))</span>
@@ -159,7 +151,7 @@ achieved simply by averaging shifts of only n=0 and n=1 on each axis.</p>
                             <span class="n">func_kw</span><span class="o">=</span><span class="n">denoise_kwargs</span><span class="p">,</span> <span class="n">multichannel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im_bayescs</span><span class="p">)</span>
     <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
-    <span class="n">psnr</span> <span class="o">=</span> <a href="../../api/skimage.measure.html#skimage.measure.compare_psnr" title="View documentation for skimage.measure.compare_psnr"><span class="n">compare_psnr</span></a><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="n">im_bayescs</span><span class="p">)</span>
+    <span class="n">psnr</span> <span class="o">=</span> <a href="../../api/skimage.metrics.html#skimage.metrics.peak_signal_noise_ratio" title="View documentation for skimage.metrics.peak_signal_noise_ratio"><span class="n">peak_signal_noise_ratio</span></a><span class="p">(</span><span class="n">original</span><span class="p">,</span> <span class="n">im_bayescs</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">ax</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
             <span class="s2">&quot;Denoised: no cycle shifts</span><span class="se">\n</span><span class="s2">PSNR=</span><span class="si">{:0.4g}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">psnr</span><span class="p">))</span>
@@ -188,7 +180,7 @@ achieved simply by averaging shifts of only n=0 and n=1 on each axis.</p>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.302 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.439 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-filters-plot-cycle-spinning-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/2eca0819937e8f74af29b32855c30453/plot_cycle_spinning.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_cycle_spinning.py</span></code></a></p>
