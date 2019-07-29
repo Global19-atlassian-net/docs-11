@@ -820,7 +820,7 @@ False.</p>
 <h2>ransac<a class="headerlink" href="#ransac" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.ransac">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">ransac</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">model_class</em>, <em class="sig-param">min_samples</em>, <em class="sig-param">residual_threshold</em>, <em class="sig-param">is_data_valid=None</em>, <em class="sig-param">is_model_valid=None</em>, <em class="sig-param">max_trials=100</em>, <em class="sig-param">stop_sample_num=inf</em>, <em class="sig-param">stop_residuals_sum=0</em>, <em class="sig-param">stop_probability=1</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L621"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.ransac" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">ransac</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">model_class</em>, <em class="sig-param">min_samples</em>, <em class="sig-param">residual_threshold</em>, <em class="sig-param">is_data_valid=None</em>, <em class="sig-param">is_model_valid=None</em>, <em class="sig-param">max_trials=100</em>, <em class="sig-param">stop_sample_num=inf</em>, <em class="sig-param">stop_residuals_sum=0</em>, <em class="sig-param">stop_probability=1</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">initial_inliers=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L621"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.ransac" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit a model to data with the RANSAC (random sample consensus) algorithm.</p>
 <p>RANSAC is an iterative algorithm for the robust estimation of parameters
 from a subset of inliers from the complete data set. Each iteration
@@ -846,8 +846,8 @@ inlier samples of the previously determined best model.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>data</strong><span class="classifier">[list, tuple of] (N, D) array</span></dt><dd><p>Data set to which the model is fitted, where N is the number of data
-points and D the dimensionality of the data.
+<dt><strong>data</strong><span class="classifier">[list, tuple of] (N, …) array</span></dt><dd><p>Data set to which the model is fitted, where N is the number of data
+points and the remaining dimension are depending on model requirements.
 If the model class requires multiple input data arrays (e.g. source and
 destination coordinates of  <code class="docutils literal notranslate"><span class="pre">skimage.transform.AffineTransform</span></code>),
 they can be optionally passed as tuple or list. Note, that in this case
@@ -866,9 +866,9 @@ separate arguments.</p>
 <p>where <cite>success</cite> indicates whether the model estimation succeeded
 (<cite>True</cite> or <cite>None</cite> for success, <cite>False</cite> for failure).</p>
 </dd>
-<dt><strong>min_samples</strong><span class="classifier">int</span></dt><dd><p>The minimum number of data points to fit a model to.</p>
+<dt><strong>min_samples</strong><span class="classifier">int in range (0, N)</span></dt><dd><p>The minimum number of data points to fit a model to.</p>
 </dd>
-<dt><strong>residual_threshold</strong><span class="classifier">float</span></dt><dd><p>Maximum distance for a data point to be classified as an inlier.</p>
+<dt><strong>residual_threshold</strong><span class="classifier">float larger than 0</span></dt><dd><p>Maximum distance for a data point to be classified as an inlier.</p>
 </dd>
 <dt><strong>is_data_valid</strong><span class="classifier">function, optional</span></dt><dd><p>This function is called with the randomly selected data before the
 model is fitted to it: <cite>is_data_valid(*random_data)</cite>.</p>
@@ -898,6 +898,8 @@ total number of samples.</p>
 If RandomState instance, random_state is the random number generator;
 If None, the random number generator is the RandomState instance used
 by <cite>np.random</cite>.</p>
+</dd>
+<dt><strong>initial_inliers</strong><span class="classifier">array-like of bool, shape (N,), optional</span></dt><dd><p>Initial samples selection for model estimation</p>
 </dd>
 </dl>
 </dd>
@@ -958,17 +960,20 @@ by <cite>np.random</cite>.</p>
 <span class="go">True</span>
 </pre></div>
 </div>
-<p>Robustly estimate geometric transformation:</p>
+<p>RANSAC can be used to robustly estimate a geometric transformation. In this section,
+we also show how to use a proportion of the total samples, rather than an absolute number.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="k">import</span> <span class="n">SimilarityTransform</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">src</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model0</span> <span class="o">=</span> <span class="n">SimilarityTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="gp">... </span>                             <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model0</span> <span class="o">=</span> <span class="n">SimilarityTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dst</span> <span class="o">=</span> <span class="n">model0</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dst</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dst</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dst</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="p">,</span> <span class="n">inliers</span> <span class="o">=</span> <span class="n">ransac</span><span class="p">((</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">),</span> <span class="n">SimilarityTransform</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ratio</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># use half of the samples</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">min_samples</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ratio</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">src</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="p">,</span> <span class="n">inliers</span> <span class="o">=</span> <span class="n">ransac</span><span class="p">((</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">),</span> <span class="n">SimilarityTransform</span><span class="p">,</span> <span class="n">min_samples</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span>                        <span class="n">initial_inliers</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">src</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">inliers</span>
 <span class="go">array([False, False, False,  True,  True,  True,  True,  True,  True,</span>
 <span class="go">        True,  True,  True,  True,  True,  True,  True,  True,  True,</span>
@@ -1000,7 +1005,7 @@ by <cite>np.random</cite>.</p>
 <h2>block_reduce<a class="headerlink" href="#block-reduce" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.block_reduce">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x2b6c748a7400&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x2b5baea9a400&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Down-sample image by applying function to local blocks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
