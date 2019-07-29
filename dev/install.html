@@ -80,6 +80,7 @@
 <li><a class="reference internal" href="#runtime-requirements">Runtime Requirements</a></li>
 <li><a class="reference internal" href="#optional-requirements">Optional Requirements</a></li>
 <li><a class="reference internal" href="#testing-requirements">Testing Requirements</a></li>
+<li><a class="reference internal" href="#warnings-during-testing-phase">Warnings during testing phase</a></li>
 </ul>
 </li>
 </ul>
@@ -271,6 +272,20 @@ including specialized formats using in medical imaging.</p>
 <span class="n">pytest</span><span class="o">-</span><span class="n">localserver</span>
 <span class="n">flake8</span>
 <span class="n">codecov</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="warnings-during-testing-phase">
+<h2>Warnings during testing phase<a class="headerlink" href="#warnings-during-testing-phase" title="Permalink to this headline">¶</a></h2>
+<p>Scikit-image tries to catch all warnings in its development builds to ensure
+that crucial warnings from dependencies are not missed.  This might cause
+certain tests to fail if you are building scikit-image with versions of
+dependencies that were not tested at the time of the release. To disable
+failures on warnings, export the environment variable
+<code class="docutils literal notranslate"><span class="pre">SKIMAGE_TEST_STRICT_WARNINGS</span></code> with a value of <cite>0</cite> or <cite>False</cite> and run the
+tests:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">SKIMAGE_TEST_STRICT_WARNINGS</span><span class="o">=</span><span class="kc">False</span>
+<span class="n">pytest</span> <span class="o">--</span><span class="n">pyargs</span> <span class="n">skimage</span>
 </pre></div>
 </div>
 </div>
