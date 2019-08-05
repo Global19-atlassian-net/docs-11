@@ -535,7 +535,7 @@ International Society for Optics and Photonics.</p>
 <h2>denoise_tv_bregman<a class="headerlink" href="#denoise-tv-bregman" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.restoration.denoise_tv_bregman">
-<code class="sig-prename descclassname">skimage.restoration.</code><code class="sig-name descname">denoise_tv_bregman</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">weight</em>, <em class="sig-param">max_iter=100</em>, <em class="sig-param">eps=0.001</em>, <em class="sig-param">isotropic=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L171"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_tv_bregman" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.restoration.</code><code class="sig-name descname">denoise_tv_bregman</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">weight</em>, <em class="sig-param">max_iter=100</em>, <em class="sig-param">eps=0.001</em>, <em class="sig-param">isotropic=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L234"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_tv_bregman" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform total-variation denoising using split-Bregman optimization.</p>
 <p>Total-variation denoising (also know as total-variation regularization)
 tries to find an image with less total-variation under the constraint
@@ -595,7 +595,7 @@ using Split Bregman” in Image Processing On Line on 2012–05–19,
 <h2>denoise_tv_chambolle<a class="headerlink" href="#denoise-tv-chambolle" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.restoration.denoise_tv_chambolle">
-<code class="sig-prename descclassname">skimage.restoration.</code><code class="sig-name descname">denoise_tv_chambolle</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">weight=0.1</em>, <em class="sig-param">eps=0.0002</em>, <em class="sig-param">n_iter_max=200</em>, <em class="sig-param">multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L312"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_tv_chambolle" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.restoration.</code><code class="sig-name descname">denoise_tv_chambolle</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">weight=0.1</em>, <em class="sig-param">eps=0.0002</em>, <em class="sig-param">n_iter_max=200</em>, <em class="sig-param">multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L374"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_tv_chambolle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform total-variation denoising on n-dimensional images.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -677,16 +677,8 @@ Springer, 2004, 20, 89-97.</p>
 <h2>denoise_bilateral<a class="headerlink" href="#denoise-bilateral" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.restoration.denoise_bilateral">
-<code class="sig-prename descclassname">skimage.restoration.</code><code class="sig-name descname">denoise_bilateral</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">win_size=None</em>, <em class="sig-param">sigma_color=None</em>, <em class="sig-param">sigma_spatial=1</em>, <em class="sig-param">bins=10000</em>, <em class="sig-param">mode='constant'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_bilateral" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.restoration.</code><code class="sig-name descname">denoise_bilateral</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">win_size=None</em>, <em class="sig-param">sigma_color=None</em>, <em class="sig-param">sigma_spatial=1</em>, <em class="sig-param">bins=10000</em>, <em class="sig-param">mode='constant'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L90"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_bilateral" title="Permalink to this definition">¶</a></dt>
 <dd><p>Denoise image using bilateral filter.</p>
-<p>This is an edge-preserving, denoising filter. It averages pixels based on
-their spatial closeness and radiometric similarity <a class="reference internal" href="#rb832e60bc162-1" id="id17">[1]</a>.</p>
-<p>Spatial closeness is measured by the Gaussian function of the Euclidean
-distance between two pixels and a certain standard deviation
-(<cite>sigma_spatial</cite>).</p>
-<p>Radiometric similarity is measured by the Gaussian function of the
-Euclidean distance between two color values and a certain standard
-deviation (<cite>sigma_color</cite>).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -727,10 +719,21 @@ channels or another spatial dimension.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>This is an edge-preserving, denoising filter. It averages pixels based on
+their spatial closeness and radiometric similarity <a class="reference internal" href="#rb832e60bc162-1" id="id17">[1]</a>.</p>
+<p>Spatial closeness is measured by the Gaussian function of the Euclidean
+distance between two pixels and a certain standard deviation
+(<cite>sigma_spatial</cite>).</p>
+<p>Radiometric similarity is measured by the Gaussian function of the
+Euclidean distance between two color values and a certain standard
+deviation (<cite>sigma_color</cite>).</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="rb832e60bc162-1"><span class="brackets"><a class="fn-backref" href="#id17">1</a></span></dt>
-<dd><p><a class="reference external" href="https://users.soe.ucsc.edu/~manduchi/Papers/ICCV98.pdf">https://users.soe.ucsc.edu/~manduchi/Papers/ICCV98.pdf</a></p>
+<dd><p>C. Tomasi and R. Manduchi. “Bilateral Filtering for Gray and Color
+Images.” IEEE International Conference on Computer Vision (1998)
+839-846. <a class="reference external" href="https://doi.org/10.1109/ICCV.1998.710815">DOI:10.1109/ICCV.1998.710815</a></p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -757,7 +760,7 @@ channels or another spatial dimension.</p>
 <h2>denoise_wavelet<a class="headerlink" href="#denoise-wavelet" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.restoration.denoise_wavelet">
-<code class="sig-prename descclassname">skimage.restoration.</code><code class="sig-name descname">denoise_wavelet</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">wavelet='db1'</em>, <em class="sig-param">mode='soft'</em>, <em class="sig-param">wavelet_levels=None</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">convert2ycbcr=False</em>, <em class="sig-param">method='BayesShrink'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L561"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_wavelet" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.restoration.</code><code class="sig-name descname">denoise_wavelet</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">wavelet='db1'</em>, <em class="sig-param">mode='soft'</em>, <em class="sig-param">wavelet_levels=None</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">convert2ycbcr=False</em>, <em class="sig-param">method='BayesShrink'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L622"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_wavelet" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform wavelet denoising on an image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1005,7 +1008,7 @@ Image Processing On Line, 2011, vol. 1, pp. 208-212.
 <h2>estimate_sigma<a class="headerlink" href="#estimate-sigma" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.restoration.estimate_sigma">
-<code class="sig-prename descclassname">skimage.restoration.</code><code class="sig-name descname">estimate_sigma</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">average_sigmas=False</em>, <em class="sig-param">multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L703"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.estimate_sigma" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.restoration.</code><code class="sig-name descname">estimate_sigma</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">average_sigmas=False</em>, <em class="sig-param">multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/_denoise.py#L764"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.estimate_sigma" title="Permalink to this definition">¶</a></dt>
 <dd><p>Robust wavelet-based estimator of the (Gaussian) noise standard deviation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
