@@ -1005,7 +1005,7 @@ we also show how to use a proportion of the total samples, rather than an absolu
 <h2>block_reduce<a class="headerlink" href="#block-reduce" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.block_reduce">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x2b7d86a7f510&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x2aad095c1510&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Down-sample image by applying function to local blocks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2018,16 +2018,16 @@ duplicated.</p>
 <dt id="skimage.measure.compare_ssim">
 <code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">compare_ssim</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em>, <em class="sig-param">win_size=None</em>, <em class="sig-param">gradient=False</em>, <em class="sig-param">data_range=None</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">gaussian_weights=False</em>, <em class="sig-param">full=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_structural_similarity.py#L7"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.compare_ssim" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the mean structural similarity index between two images.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>X, Y</strong><span class="classifier">ndarray</span></dt><dd><p>Image. Any dimensionality.</p>
+<dt><strong>im1, im2</strong><span class="classifier">ndarray</span></dt><dd><p>Images. Any dimensionality with same shape.</p>
 </dd>
-<dt><strong>win_size</strong><span class="classifier">int or None</span></dt><dd><p>The side-length of the sliding window used in comparison. Must be an
+<dt><strong>win_size</strong><span class="classifier">int or None, optional</span></dt><dd><p>The side-length of the sliding window used in comparison. Must be an
 odd value. If <cite>gaussian_weights</cite> is True, this is ignored and the
 window size will depend on <cite>sigma</cite>.</p>
 </dd>
-<dt><strong>gradient</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, also return the gradient with respect to Y.</p>
+<dt><strong>gradient</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, also return the gradient with respect to im2.</p>
 </dd>
 <dt><strong>data_range</strong><span class="classifier">float, optional</span></dt><dd><p>The data range of the input image (distance between minimum and
 maximum possible values). By default, this is estimated from the image
@@ -2045,9 +2045,9 @@ normalized Gaussian kernel of width sigma=1.5.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mssim</strong><span class="classifier">float</span></dt><dd><p>The mean structural similarity over the image.</p>
+<dt><strong>mssim</strong><span class="classifier">float</span></dt><dd><p>The mean structural similarity index over the image.</p>
 </dd>
-<dt><strong>grad</strong><span class="classifier">ndarray</span></dt><dd><p>The gradient of the structural similarity index between X and Y <a class="reference internal" href="#rccea9a164d3e-2" id="id39">[2]</a>.
+<dt><strong>grad</strong><span class="classifier">ndarray</span></dt><dd><p>The gradient of the structural similarity between im1 and im2 <a class="reference internal" href="#rccea9a164d3e-2" id="id39">[2]</a>.
 This is only returned if <cite>gradient</cite> is set to True.</p>
 </dd>
 <dt><strong>S</strong><span class="classifier">ndarray</span></dt><dd><p>The full SSIM image.  This is only returned if <cite>full</cite> is set to True.</p>
@@ -2067,10 +2067,31 @@ number of pixels within the sliding window.</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-even">Warns</dt>
+<dd class="field-even"><dl>
+<dt>Deprecated:</dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 0.16.</span></p>
+</div>
+<p>This function is deprecated and will be
+removed in scikit-image 0.18. Please use the function named
+<code class="docutils literal notranslate"><span class="pre">structural_similarity</span></code> from the <code class="docutils literal notranslate"><span class="pre">metrics</span></code> module instead.</p>
+</dd>
 </dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skimage.metrics.html#skimage.metrics.structural_similarity" title="skimage.metrics.structural_similarity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.metrics.structural_similarity</span></code></a></dt><dd></dd>
+</dl>
+</div>
 <p class="rubric">Notes</p>
 <p>To match the implementation of Wang et. al. <a class="reference internal" href="#rccea9a164d3e-1" id="id42">[1]</a>, set <cite>gaussian_weights</cite>
 to True, <cite>sigma</cite> to 1.5, and <cite>use_sample_covariance</cite> to False.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.16: </span>This function was renamed from <code class="docutils literal notranslate"><span class="pre">skimage.measure.compare_ssim</span></code> to
+<code class="docutils literal notranslate"><span class="pre">skimage.metrics.structural_similarity</span></code>.</p>
+</div>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="rccea9a164d3e-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id40">1</a>,<a href="#id41">2</a>,<a href="#id42">3</a>)</span></dt>
@@ -2095,14 +2116,12 @@ optimized for structural similarity. Optical Review, 16, 613-621.
 <h2>compare_mse<a class="headerlink" href="#compare-mse" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.compare_mse">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">compare_mse</code><span class="sig-paren">(</span><em class="sig-param">im1</em>, <em class="sig-param">im2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/simple_metrics.py#L22"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.compare_mse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">compare_mse</code><span class="sig-paren">(</span><em class="sig-param">im1</em>, <em class="sig-param">im2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/simple_metrics.py#L13"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.compare_mse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the mean-squared error between two images.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>im_true</strong><span class="classifier">ndarray</span></dt><dd><p>Ground-truth image, same shape as im_test.</p>
-</dd>
-<dt><strong>im_test</strong><span class="classifier">ndarray</span></dt><dd><p>Test image.</p>
+<dt><strong>im1, im2</strong><span class="classifier">ndarray</span></dt><dd><p>Images.  Any dimensionality, must have same shape.</p>
 </dd>
 </dl>
 </dd>
@@ -2112,7 +2131,29 @@ optimized for structural similarity. Optical Review, 16, 613-621.
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">Warns</dt>
+<dd class="field-odd"><dl>
+<dt>Deprecated:</dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 0.16.</span></p>
+</div>
+<p>This function is deprecated and will be removed in scikit-image 0.18.
+Please use the function named <code class="docutils literal notranslate"><span class="pre">mean_squared_error</span></code> from the
+<code class="docutils literal notranslate"><span class="pre">metrics</span></code> module instead.</p>
+</dd>
 </dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skimage.metrics.html#skimage.metrics.mean_squared_error" title="skimage.metrics.mean_squared_error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.metrics.mean_squared_error</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.16: </span>This function was renamed from <code class="docutils literal notranslate"><span class="pre">skimage.measure.compare_mse</span></code> to
+<code class="docutils literal notranslate"><span class="pre">skimage.metrics.mean_squared_error</span></code>.</p>
+</div>
 </dd></dl>
 
 </div>
@@ -2120,7 +2161,7 @@ optimized for structural similarity. Optical Review, 16, 613-621.
 <h2>compare_nrmse<a class="headerlink" href="#compare-nrmse" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.compare_nrmse">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">compare_nrmse</code><span class="sig-paren">(</span><em class="sig-param">im_true</em>, <em class="sig-param">im_test</em>, <em class="sig-param">norm_type='euclidean'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/simple_metrics.py#L44"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.compare_nrmse" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">compare_nrmse</code><span class="sig-paren">(</span><em class="sig-param">im_true</em>, <em class="sig-param">im_test</em>, <em class="sig-param">norm_type='euclidean'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/simple_metrics.py#L37"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.compare_nrmse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the normalized root mean-squared error (NRMSE) between two
 images.</p>
 <dl class="field-list">
@@ -2130,7 +2171,7 @@ images.</p>
 </dd>
 <dt><strong>im_test</strong><span class="classifier">ndarray</span></dt><dd><p>Test image.</p>
 </dd>
-<dt><strong>norm_type</strong><span class="classifier">{‘euclidean’, ‘min-max’, ‘mean’}</span></dt><dd><p>Controls the normalization method to use in the denominator of the
+<dt><strong>norm_type</strong><span class="classifier">{‘euclidean’, ‘min-max’, ‘mean’}, optional</span></dt><dd><p>Controls the normalization method to use in the denominator of the
 NRMSE.  There is no standard method of normalization across the
 literature <a class="reference internal" href="#rb7f5201e5e31-1" id="id45">[1]</a>.  The methods available here are as follows:</p>
 <ul>
@@ -2157,7 +2198,29 @@ This result is equivalent to:</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">Warns</dt>
+<dd class="field-odd"><dl>
+<dt>Deprecated:</dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 0.16.</span></p>
+</div>
+<p>This function is deprecated and will be removed in scikit-image 0.18.
+Please use the function named <code class="docutils literal notranslate"><span class="pre">normalized_root_mse</span></code> from the
+<code class="docutils literal notranslate"><span class="pre">metrics</span></code> module instead.</p>
+</dd>
 </dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skimage.metrics.html#skimage.metrics.normalized_root_mse" title="skimage.metrics.normalized_root_mse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.metrics.normalized_root_mse</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.16: </span>This function was renamed from <code class="docutils literal notranslate"><span class="pre">skimage.measure.compare_nrmse</span></code> to
+<code class="docutils literal notranslate"><span class="pre">skimage.metrics.normalized_root_mse</span></code>.</p>
+</div>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="rb7f5201e5e31-1"><span class="brackets"><a class="fn-backref" href="#id45">1</a></span></dt>
@@ -2171,16 +2234,16 @@ This result is equivalent to:</p>
 <h2>compare_psnr<a class="headerlink" href="#compare-psnr" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.compare_psnr">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">compare_psnr</code><span class="sig-paren">(</span><em class="sig-param">im_true</em>, <em class="sig-param">im_test</em>, <em class="sig-param">data_range=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/simple_metrics.py#L88"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.compare_psnr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">compare_psnr</code><span class="sig-paren">(</span><em class="sig-param">im_true</em>, <em class="sig-param">im_test</em>, <em class="sig-param">data_range=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/simple_metrics.py#L61"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.compare_psnr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the peak signal to noise ratio (PSNR) for an image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>im_true</strong><span class="classifier">ndarray</span></dt><dd><p>Ground-truth image, same shape as im_test.</p>
 </dd>
 <dt><strong>im_test</strong><span class="classifier">ndarray</span></dt><dd><p>Test image.</p>
 </dd>
-<dt><strong>data_range</strong><span class="classifier">int</span></dt><dd><p>The data range of the input image (distance between minimum and
+<dt><strong>data_range</strong><span class="classifier">int, optional</span></dt><dd><p>The data range of the input image (distance between minimum and
 maximum possible values).  By default, this is estimated from the image
 data-type.</p>
 </dd>
@@ -2192,7 +2255,29 @@ data-type.</p>
 </dd>
 </dl>
 </dd>
+<dt class="field-odd">Warns</dt>
+<dd class="field-odd"><dl>
+<dt>Deprecated:</dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 0.16.</span></p>
+</div>
+<p>This function is deprecated and will be removed in scikit-image 0.18.
+Please use the function named <code class="docutils literal notranslate"><span class="pre">peak_signal_noise_ratio</span></code> from the
+<code class="docutils literal notranslate"><span class="pre">metrics</span></code> module instead.</p>
+</dd>
 </dl>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="skimage.metrics.html#skimage.metrics.peak_signal_noise_ratio" title="skimage.metrics.peak_signal_noise_ratio"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.metrics.peak_signal_noise_ratio</span></code></a></dt><dd></dd>
+</dl>
+</div>
+<p class="rubric">Notes</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.16: </span>This function was renamed from <code class="docutils literal notranslate"><span class="pre">skimage.measure.compare_psnr</span></code> to
+<code class="docutils literal notranslate"><span class="pre">skimage.metrics.peak_singal_noise_ratio</span></code>.</p>
+</div>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="rc30fc0f79907-1"><span class="brackets">1</span></dt>
