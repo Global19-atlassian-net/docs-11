@@ -123,6 +123,10 @@
 </ul>
 </li>
 <li><a class="reference internal" href="#warp-coords">warp_coords</a></li>
+<li><a class="reference internal" href="#warp-polar">warp_polar</a><ul class="nav nav-list">
+<li><a class="reference internal" href="#examples-using-skimage-transform-warp-polar">Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.warp_polar</span></code></a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#estimate-transform">estimate_transform</a></li>
 <li><a class="reference internal" href="#matrix-transform">matrix_transform</a></li>
 <li><a class="reference internal" href="#swirl">swirl</a><ul class="nav nav-list">
@@ -248,61 +252,64 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.warp_coords" title="skimage.transform.warp_coords"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.warp_coords</span></code></a>(coord_map, shape)</p></td>
 <td><p>Build the source coordinates for the output of a 2-D image warp.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.estimate_transform" title="skimage.transform.estimate_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.estimate_transform</span></code></a>(ttype, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.warp_polar" title="skimage.transform.warp_polar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.warp_polar</span></code></a>(image[, …])</p></td>
+<td><p>Remap image to polor or log-polar coordinates space.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.estimate_transform" title="skimage.transform.estimate_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.estimate_transform</span></code></a>(ttype, …)</p></td>
 <td><p>Estimate 2D geometric transformation parameters.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.matrix_transform" title="skimage.transform.matrix_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.matrix_transform</span></code></a>(coords, …)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.matrix_transform" title="skimage.transform.matrix_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.matrix_transform</span></code></a>(coords, …)</p></td>
 <td><p>Apply 2D matrix transform.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.swirl" title="skimage.transform.swirl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.swirl</span></code></a>(image[, center, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.swirl" title="skimage.transform.swirl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.swirl</span></code></a>(image[, center, …])</p></td>
 <td><p>Perform a swirl transformation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.resize" title="skimage.transform.resize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.resize</span></code></a>(image, output_shape)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.resize" title="skimage.transform.resize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.resize</span></code></a>(image, output_shape)</p></td>
 <td><p>Resize image to match a certain size.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.rotate" title="skimage.transform.rotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.rotate</span></code></a>(image, angle[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.rotate" title="skimage.transform.rotate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.rotate</span></code></a>(image, angle[, …])</p></td>
 <td><p>Rotate image by a certain angle around its center.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.rescale" title="skimage.transform.rescale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.rescale</span></code></a>(image, scale[, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.rescale" title="skimage.transform.rescale"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.rescale</span></code></a>(image, scale[, …])</p></td>
 <td><p>Scale image by a certain factor.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.downscale_local_mean" title="skimage.transform.downscale_local_mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.downscale_local_mean</span></code></a>(…)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.downscale_local_mean" title="skimage.transform.downscale_local_mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.downscale_local_mean</span></code></a>(…)</p></td>
 <td><p>Down-sample N-dimensional image by local averaging.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.pyramid_reduce" title="skimage.transform.pyramid_reduce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.pyramid_reduce</span></code></a>(image[, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.pyramid_reduce" title="skimage.transform.pyramid_reduce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.pyramid_reduce</span></code></a>(image[, …])</p></td>
 <td><p>Smooth and then downsample image.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.pyramid_expand" title="skimage.transform.pyramid_expand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.pyramid_expand</span></code></a>(image[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.pyramid_expand" title="skimage.transform.pyramid_expand"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.pyramid_expand</span></code></a>(image[, …])</p></td>
 <td><p>Upsample and then smooth image.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.pyramid_gaussian" title="skimage.transform.pyramid_gaussian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.pyramid_gaussian</span></code></a>(image[, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.pyramid_gaussian" title="skimage.transform.pyramid_gaussian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.pyramid_gaussian</span></code></a>(image[, …])</p></td>
 <td><p>Yield images of the Gaussian pyramid formed by the input image.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.pyramid_laplacian" title="skimage.transform.pyramid_laplacian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.pyramid_laplacian</span></code></a>(image[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.pyramid_laplacian" title="skimage.transform.pyramid_laplacian"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.pyramid_laplacian</span></code></a>(image[, …])</p></td>
 <td><p>Yield images of the laplacian pyramid formed by the input image.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.EuclideanTransform" title="skimage.transform.EuclideanTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.EuclideanTransform</span></code></a>([…])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.EuclideanTransform" title="skimage.transform.EuclideanTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.EuclideanTransform</span></code></a>([…])</p></td>
 <td><p>2D Euclidean transformation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.SimilarityTransform" title="skimage.transform.SimilarityTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.SimilarityTransform</span></code></a>([…])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.SimilarityTransform" title="skimage.transform.SimilarityTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.SimilarityTransform</span></code></a>([…])</p></td>
 <td><p>2D similarity transformation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.AffineTransform" title="skimage.transform.AffineTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.AffineTransform</span></code></a>([matrix, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.AffineTransform" title="skimage.transform.AffineTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.AffineTransform</span></code></a>([matrix, …])</p></td>
 <td><p>2D affine transformation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.ProjectiveTransform" title="skimage.transform.ProjectiveTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.ProjectiveTransform</span></code></a>([matrix])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.ProjectiveTransform" title="skimage.transform.ProjectiveTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.ProjectiveTransform</span></code></a>([matrix])</p></td>
 <td><p>Projective transformation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.EssentialMatrixTransform" title="skimage.transform.EssentialMatrixTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.EssentialMatrixTransform</span></code></a>([…])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.EssentialMatrixTransform" title="skimage.transform.EssentialMatrixTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.EssentialMatrixTransform</span></code></a>([…])</p></td>
 <td><p>Essential matrix transformation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.FundamentalMatrixTransform" title="skimage.transform.FundamentalMatrixTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.FundamentalMatrixTransform</span></code></a>([…])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.FundamentalMatrixTransform" title="skimage.transform.FundamentalMatrixTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.FundamentalMatrixTransform</span></code></a>([…])</p></td>
 <td><p>Fundamental matrix transformation.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.PolynomialTransform" title="skimage.transform.PolynomialTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.PolynomialTransform</span></code></a>([params])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.PolynomialTransform" title="skimage.transform.PolynomialTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.PolynomialTransform</span></code></a>([params])</p></td>
 <td><p>2D polynomial transformation.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.transform.PiecewiseAffineTransform" title="skimage.transform.PiecewiseAffineTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.PiecewiseAffineTransform</span></code></a>()</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.transform.PiecewiseAffineTransform" title="skimage.transform.PiecewiseAffineTransform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.PiecewiseAffineTransform</span></code></a>()</p></td>
 <td><p>2D piecewise affine transformation.</p></td>
 </tr>
 </tbody>
@@ -1452,6 +1459,78 @@ than <cite>warp</cite> performs after the call to <cite>ndi.map_coordinates</cit
 </dd></dl>
 
 </div>
+<div class="section" id="warp-polar">
+<h2>warp_polar<a class="headerlink" href="#warp-polar" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.transform.warp_polar">
+<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">warp_polar</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">center=None</em>, <em class="sig-param">*</em>, <em class="sig-param">radius=None</em>, <em class="sig-param">output_shape=None</em>, <em class="sig-param">scaling='linear'</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L965"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.warp_polar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remap image to polor or log-polar coordinates space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image. Only 2-D arrays are accepted by default. If
+<cite>multichannel=True</cite>, 3-D arrays are accepted and the last axis is
+interpreted as multiple channels.</p>
+</dd>
+<dt><strong>center</strong><span class="classifier">tuple (row, col), optional</span></dt><dd><p>Point in image that represents the center of the transformation (i.e.,
+the origin in cartesian space). Values can be of type <cite>float</cite>.
+If no value is given, the center is assumed to be the center point
+of the image.</p>
+</dd>
+<dt><strong>radius</strong><span class="classifier">float, optional</span></dt><dd><p>Radius of the circle that bounds the area to be transformed.</p>
+</dd>
+<dt><strong>output_shape</strong><span class="classifier">tuple (row, col), optional</span></dt><dd></dd>
+<dt><strong>scaling</strong><span class="classifier">{‘linear’, ‘log’}, optional</span></dt><dd><p>Specify whether the image warp is polar or log-polar. Defaults to
+‘linear’.</p>
+</dd>
+<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the image is a 3-D array in which the third axis is to be
+interpreted as multiple channels. If set to <cite>False</cite> (default), only 2-D
+arrays are accepted.</p>
+</dd>
+<dt><strong>**kwargs</strong><span class="classifier">keyword arguments</span></dt><dd><p>Passed to <cite>transform.warp</cite>.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>warped</strong><span class="classifier">ndarray</span></dt><dd><p>The polar or log-polar warped image.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Perform a basic polar warp on a grayscale image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="k">import</span> <span class="n">warp_polar</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">checkerboard</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp_polar</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Perform a log-polar warp on a grayscale image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp_polar</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Perform a log-polar warp on a grayscale image while specifying center,
+radius, and output shape:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp_polar</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<span class="gp">... </span>                    <span class="n">output_shape</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Perform a log-polar warp on a color image:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp_polar</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">multichannel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="examples-using-skimage-transform-warp-polar">
+<h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.warp_polar</span></code><a class="headerlink" href="#examples-using-skimage-transform-warp-polar" title="Permalink to this headline">¶</a></h3>
+<div class="sphx-glr-thumbcontainer" tooltip="Rotation differences between two images can be converted to translation differences along the a..."><div class="figure align-default" id="id46">
+<img alt="../_images/sphx_glr_plot_register_rotation_thumb.png" src="../_images/sphx_glr_plot_register_rotation_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_register_rotation.html#sphx-glr-auto-examples-transform-plot-register-rotation-py"><span class="std std-ref">Polar and Log-Polar Transformations</span></a></span><a class="headerlink" href="#id46" title="Permalink to this image">¶</a></p>
+</div>
+</div></div>
+</div>
 <div class="section" id="estimate-transform">
 <h2>estimate_transform<a class="headerlink" href="#estimate-transform" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -1612,9 +1691,9 @@ Also see
 
 <div class="section" id="examples-using-skimage-transform-swirl">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.swirl</span></code><a class="headerlink" href="#examples-using-skimage-transform-swirl" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="Image swirling is a non-linear image deformation that creates a whirlpool effect.  This example..."><div class="figure align-default" id="id46">
+<div class="sphx-glr-thumbcontainer" tooltip="Image swirling is a non-linear image deformation that creates a whirlpool effect.  This example..."><div class="figure align-default" id="id47">
 <img alt="../_images/sphx_glr_plot_swirl_thumb.png" src="../_images/sphx_glr_plot_swirl_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_swirl.html#sphx-glr-auto-examples-transform-plot-swirl-py"><span class="std std-ref">Swirl</span></a></span><a class="headerlink" href="#id46" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_swirl.html#sphx-glr-auto-examples-transform-plot-swirl-py"><span class="std std-ref">Swirl</span></a></span><a class="headerlink" href="#id47" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -1695,13 +1774,13 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 
 <div class="section" id="examples-using-skimage-transform-resize">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.resize</span></code><a class="headerlink" href="#examples-using-skimage-transform-resize" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the different edge modes available during interpolation in routines su..."><div class="figure align-default" id="id47">
+<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the different edge modes available during interpolation in routines su..."><div class="figure align-default" id="id48">
 <img alt="../_images/sphx_glr_plot_edge_modes_thumb.png" src="../_images/sphx_glr_plot_edge_modes_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_edge_modes.html#sphx-glr-auto-examples-transform-plot-edge-modes-py"><span class="std std-ref">Interpolation: Edge Modes</span></a></span><a class="headerlink" href="#id47" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_edge_modes.html#sphx-glr-auto-examples-transform-plot-edge-modes-py"><span class="std std-ref">Interpolation: Edge Modes</span></a></span><a class="headerlink" href="#id48" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Rescale operation resizes an image by a given scaling factor. The scaling factor can either be ..."><div class="figure align-default" id="id48">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Rescale operation resizes an image by a given scaling factor. The scaling factor can either be ..."><div class="figure align-default" id="id49">
 <img alt="../_images/sphx_glr_plot_rescale_thumb.png" src="../_images/sphx_glr_plot_rescale_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_rescale.html#sphx-glr-auto-examples-transform-plot-rescale-py"><span class="std std-ref">Rescale, resize, and downscale</span></a></span><a class="headerlink" href="#id48" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_rescale.html#sphx-glr-auto-examples-transform-plot-rescale-py"><span class="std std-ref">Rescale, resize, and downscale</span></a></span><a class="headerlink" href="#id49" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -1780,29 +1859,33 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 
 <div class="section" id="examples-using-skimage-transform-rotate">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.rotate</span></code><a class="headerlink" href="#examples-using-skimage-transform-rotate" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the ORB feature detection and binary description algorithm. It uses a..."><div class="figure align-default" id="id49">
+<div class="sphx-glr-thumbcontainer" tooltip="Rotation differences between two images can be converted to translation differences along the a..."><div class="figure align-default" id="id50">
+<img alt="../_images/sphx_glr_plot_register_rotation_thumb.png" src="../_images/sphx_glr_plot_register_rotation_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_register_rotation.html#sphx-glr-auto-examples-transform-plot-register-rotation-py"><span class="std std-ref">Polar and Log-Polar Transformations</span></a></span><a class="headerlink" href="#id50" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the ORB feature detection and binary description algorithm. It uses a..."><div class="figure align-default" id="id51">
 <img alt="../_images/sphx_glr_plot_orb_thumb.png" src="../_images/sphx_glr_plot_orb_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_orb.html#sphx-glr-auto-examples-features-detection-plot-orb-py"><span class="std std-ref">ORB feature detector and binary descriptor</span></a></span><a class="headerlink" href="#id49" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_orb.html#sphx-glr-auto-examples-features-detection-plot-orb-py"><span class="std std-ref">ORB feature detector and binary descriptor</span></a></span><a class="headerlink" href="#id51" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the BRIEF binary description algorithm. The descriptor consists of re..."><div class="figure align-default" id="id50">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the BRIEF binary description algorithm. The descriptor consists of re..."><div class="figure align-default" id="id52">
 <img alt="../_images/sphx_glr_plot_brief_thumb.png" src="../_images/sphx_glr_plot_brief_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_brief.html#sphx-glr-auto-examples-features-detection-plot-brief-py"><span class="std std-ref">BRIEF binary descriptor</span></a></span><a class="headerlink" href="#id50" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_brief.html#sphx-glr-auto-examples-features-detection-plot-brief-py"><span class="std std-ref">BRIEF binary descriptor</span></a></span><a class="headerlink" href="#id52" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Histogram matching can be used for object detection in images [1]_. This example extracts a sin..."><div class="figure align-default" id="id51">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Histogram matching can be used for object detection in images [1]_. This example extracts a sin..."><div class="figure align-default" id="id53">
 <img alt="../_images/sphx_glr_plot_windowed_histogram_thumb.png" src="../_images/sphx_glr_plot_windowed_histogram_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_windowed_histogram.html#sphx-glr-auto-examples-features-detection-plot-windowed-histogram-py"><span class="std std-ref">Sliding window histogram</span></a></span><a class="headerlink" href="#id51" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_windowed_histogram.html#sphx-glr-auto-examples-features-detection-plot-windowed-histogram-py"><span class="std std-ref">Sliding window histogram</span></a></span><a class="headerlink" href="#id53" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to classify textures based on LBP (Local Binary Pattern). LBP ..."><div class="figure align-default" id="id52">
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to classify textures based on LBP (Local Binary Pattern). LBP ..."><div class="figure align-default" id="id54">
 <img alt="../_images/sphx_glr_plot_local_binary_pattern_thumb.png" src="../_images/sphx_glr_plot_local_binary_pattern_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_local_binary_pattern.html#sphx-glr-auto-examples-features-detection-plot-local-binary-pattern-py"><span class="std std-ref">Local Binary Pattern for texture classification</span></a></span><a class="headerlink" href="#id52" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_local_binary_pattern.html#sphx-glr-auto-examples-features-detection-plot-local-binary-pattern-py"><span class="std std-ref">Local Binary Pattern for texture classification</span></a></span><a class="headerlink" href="#id54" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to measure properties of labelled image regions."><div class="figure align-default" id="id53">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to measure properties of labelled image regions."><div class="figure align-default" id="id55">
 <img alt="../_images/sphx_glr_plot_regionprops_thumb.png" src="../_images/sphx_glr_plot_regionprops_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_regionprops.html#sphx-glr-auto-examples-segmentation-plot-regionprops-py"><span class="std std-ref">Measure region properties</span></a></span><a class="headerlink" href="#id53" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_regionprops.html#sphx-glr-auto-examples-segmentation-plot-regionprops-py"><span class="std std-ref">Measure region properties</span></a></span><a class="headerlink" href="#id55" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Image comparison is particularly useful when performing image processing tasks such as exposure..."><div class="figure align-default" id="id54">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Image comparison is particularly useful when performing image processing tasks such as exposure..."><div class="figure align-default" id="id56">
 <img alt="../_images/sphx_glr_plot_image_comparison_thumb.png" src="../_images/sphx_glr_plot_image_comparison_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/applications/plot_image_comparison.html#sphx-glr-auto-examples-applications-plot-image-comparison-py"><span class="std std-ref">Visual image comparison</span></a></span><a class="headerlink" href="#id54" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/applications/plot_image_comparison.html#sphx-glr-auto-examples-applications-plot-image-comparison-py"><span class="std std-ref">Visual image comparison</span></a></span><a class="headerlink" href="#id56" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -1886,17 +1969,21 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 
 <div class="section" id="examples-using-skimage-transform-rescale">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.rescale</span></code><a class="headerlink" href="#examples-using-skimage-transform-rescale" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the different edge modes available during interpolation in routines su..."><div class="figure align-default" id="id55">
+<div class="sphx-glr-thumbcontainer" tooltip="This example illustrates the different edge modes available during interpolation in routines su..."><div class="figure align-default" id="id57">
 <img alt="../_images/sphx_glr_plot_edge_modes_thumb.png" src="../_images/sphx_glr_plot_edge_modes_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_edge_modes.html#sphx-glr-auto-examples-transform-plot-edge-modes-py"><span class="std std-ref">Interpolation: Edge Modes</span></a></span><a class="headerlink" href="#id55" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_edge_modes.html#sphx-glr-auto-examples-transform-plot-edge-modes-py"><span class="std std-ref">Interpolation: Edge Modes</span></a></span><a class="headerlink" href="#id57" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Rescale operation resizes an image by a given scaling factor. The scaling factor can either be ..."><div class="figure align-default" id="id56">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Rescale operation resizes an image by a given scaling factor. The scaling factor can either be ..."><div class="figure align-default" id="id58">
 <img alt="../_images/sphx_glr_plot_rescale_thumb.png" src="../_images/sphx_glr_plot_rescale_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_rescale.html#sphx-glr-auto-examples-transform-plot-rescale-py"><span class="std std-ref">Rescale, resize, and downscale</span></a></span><a class="headerlink" href="#id56" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_rescale.html#sphx-glr-auto-examples-transform-plot-rescale-py"><span class="std std-ref">Rescale, resize, and downscale</span></a></span><a class="headerlink" href="#id58" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In computed tomography, the tomography reconstruction problem is to obtain a tomographic slice ..."><div class="figure align-default" id="id57">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Rotation differences between two images can be converted to translation differences along the a..."><div class="figure align-default" id="id59">
+<img alt="../_images/sphx_glr_plot_register_rotation_thumb.png" src="../_images/sphx_glr_plot_register_rotation_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_register_rotation.html#sphx-glr-auto-examples-transform-plot-register-rotation-py"><span class="std std-ref">Polar and Log-Polar Transformations</span></a></span><a class="headerlink" href="#id59" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="In computed tomography, the tomography reconstruction problem is to obtain a tomographic slice ..."><div class="figure align-default" id="id60">
 <img alt="../_images/sphx_glr_plot_radon_transform_thumb.png" src="../_images/sphx_glr_plot_radon_transform_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_radon_transform.html#sphx-glr-auto-examples-transform-plot-radon-transform-py"><span class="std std-ref">Radon transform</span></a></span><a class="headerlink" href="#id57" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_radon_transform.html#sphx-glr-auto-examples-transform-plot-radon-transform-py"><span class="std std-ref">Radon transform</span></a></span><a class="headerlink" href="#id60" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -1945,9 +2032,9 @@ integer factors.</p>
 
 <div class="section" id="examples-using-skimage-transform-downscale-local-mean">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.downscale_local_mean</span></code><a class="headerlink" href="#examples-using-skimage-transform-downscale-local-mean" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="Rescale operation resizes an image by a given scaling factor. The scaling factor can either be ..."><div class="figure align-default" id="id58">
+<div class="sphx-glr-thumbcontainer" tooltip="Rescale operation resizes an image by a given scaling factor. The scaling factor can either be ..."><div class="figure align-default" id="id61">
 <img alt="../_images/sphx_glr_plot_rescale_thumb.png" src="../_images/sphx_glr_plot_rescale_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_rescale.html#sphx-glr-auto-examples-transform-plot-rescale-py"><span class="std std-ref">Rescale, resize, and downscale</span></a></span><a class="headerlink" href="#id58" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_rescale.html#sphx-glr-auto-examples-transform-plot-rescale-py"><span class="std std-ref">Rescale, resize, and downscale</span></a></span><a class="headerlink" href="#id61" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -2099,9 +2186,9 @@ channels or another spatial dimension.</p>
 
 <div class="section" id="examples-using-skimage-transform-pyramid-gaussian">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.pyramid_gaussian</span></code><a class="headerlink" href="#examples-using-skimage-transform-pyramid-gaussian" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="The pyramid_gaussian function takes an image and yields successive images shrunk by a constant ..."><div class="figure align-default" id="id59">
+<div class="sphx-glr-thumbcontainer" tooltip="The pyramid_gaussian function takes an image and yields successive images shrunk by a constant ..."><div class="figure align-default" id="id62">
 <img alt="../_images/sphx_glr_plot_pyramid_thumb.png" src="../_images/sphx_glr_plot_pyramid_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_pyramid.html#sphx-glr-auto-examples-transform-plot-pyramid-py"><span class="std std-ref">Build image pyramids</span></a></span><a class="headerlink" href="#id59" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_pyramid.html#sphx-glr-auto-examples-transform-plot-pyramid-py"><span class="std std-ref">Build image pyramids</span></a></span><a class="headerlink" href="#id62" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
