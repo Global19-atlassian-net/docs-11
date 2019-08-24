@@ -126,7 +126,7 @@ few different options for the filter.
 
     reconstruction_fbp = iradon(sinogram, theta=theta, circle=True)
     error = reconstruction_fbp - image
-    print('FBP rms reconstruction error: %.3g' % np.sqrt(np.mean(error**2)))
+    print(f"FBP rms reconstruction error: {np.sqrt(np.mean(error**2)):.3g}")
 
     imkwargs = dict(vmin=-0.2, vmax=0.2)
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 4.5),
@@ -194,8 +194,8 @@ threshold on the reconstructed values to be supplied to the reconstruction.
 
     reconstruction_sart = iradon_sart(sinogram, theta=theta)
     error = reconstruction_sart - image
-    print('SART (1 iteration) rms reconstruction error: %.3g'
-          % np.sqrt(np.mean(error**2)))
+    print("SART (1 iteration) rms reconstruction error: "
+          f"{np.sqrt(np.mean(error**2)):.3g}")
 
     fig, axes = plt.subplots(2, 2, figsize=(8, 8.5), sharex=True, sharey=True)
     ax = axes.ravel()
@@ -211,8 +211,8 @@ threshold on the reconstructed values to be supplied to the reconstruction.
     reconstruction_sart2 = iradon_sart(sinogram, theta=theta,
                                        image=reconstruction_sart)
     error = reconstruction_sart2 - image
-    print('SART (2 iterations) rms reconstruction error: %.3g'
-          % np.sqrt(np.mean(error**2)))
+    print("SART (2 iterations) rms reconstruction error: "
+          f"{np.sqrt(np.mean(error**2)):.3g}")
 
     ax[2].set_title("Reconstruction\nSART, 2 iterations")
     ax[2].imshow(reconstruction_sart2, cmap=plt.cm.Greys_r)
@@ -241,7 +241,7 @@ threshold on the reconstructed values to be supplied to the reconstruction.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.183 seconds)
+   **Total running time of the script:** ( 0 minutes  2.184 seconds)
 
 
 .. _sphx_glr_download_auto_examples_transform_plot_radon_transform.py:

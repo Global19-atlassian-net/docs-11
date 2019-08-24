@@ -70,7 +70,7 @@ arbitrary subpixel precision [1]_.
     # The shift corresponds to the pixel offset relative to the reference image
     offset_image = fourier_shift(np.fft.fftn(image), shift)
     offset_image = np.fft.ifftn(offset_image)
-    print("Known offset (y, x): {}".format(shift))
+    print(f"Known offset (y, x): {shift}")
 
     # pixel precision first
     shift, error, diffphase = register_translation(image, offset_image)
@@ -98,7 +98,7 @@ arbitrary subpixel precision [1]_.
 
     plt.show()
 
-    print("Detected pixel offset (y, x): {}".format(shift))
+    print(f"Detected pixel offset (y, x): {shift}")
 
     # subpixel precision
     shift, error, diffphase = register_translation(image, offset_image, 100)
@@ -127,12 +127,12 @@ arbitrary subpixel precision [1]_.
 
     plt.show()
 
-    print("Detected subpixel offset (y, x): {}".format(shift))
+    print(f"Detected subpixel offset (y, x): {shift}")
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.598 seconds)
+   **Total running time of the script:** ( 0 minutes  0.633 seconds)
 
 
 .. _sphx_glr_download_auto_examples_transform_plot_register_translation.py:

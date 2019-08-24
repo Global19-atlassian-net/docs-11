@@ -32,8 +32,8 @@
         <link rel="search" title="Search" href="../../search.html" />
         <link rel="top" title="skimage v0.16.dev0 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
-        <link rel="next" title="Radon transform" href="plot_radon_transform.html" />
-        <link rel="prev" title="Robust line model estimation using RANSAC" href="plot_ransac.html" />
+        <link rel="next" title="Robust line model estimation using RANSAC" href="plot_ransac.html" />
+        <link rel="prev" title="Masked Normalized Cross-Correlation" href="plot_masked_register_translation.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../../_static/favicon.ico">
 </head>
@@ -147,9 +147,9 @@ center point.</p>
 
 <span class="n">shifts</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">phasediff</span> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.register_translation" title="View documentation for skimage.feature.register_translation"><span class="n">register_translation</span></a><span class="p">(</span><span class="n">image_polar</span><span class="p">,</span> <span class="n">rotated_polar</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected value for counterclockwise rotation in degrees: &quot;</span>
-      <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span>
+      <span class="n">f</span><span class="s2">&quot;</span><span class="si">{angle}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recovered value for counterclockwise rotation: &quot;</span>
-      <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">shifts</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+      <span class="n">f</span><span class="s2">&quot;</span><span class="si">{shifts[0]}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_register_rotation_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_register_rotation_001.png" />
@@ -197,11 +197,11 @@ Recovered value for counterclockwise rotation: 35.0
 <span class="n">klog</span> <span class="o">=</span> <span class="n">radius</span> <span class="o">/</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.log.html#numpy.log" title="View documentation for numpy.log"><span class="n">np</span><span class="o">.</span><span class="n">log</span></a><span class="p">(</span><span class="n">radius</span><span class="p">)</span>
 <span class="n">shift_scale</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.exp.html#numpy.exp" title="View documentation for numpy.exp"><span class="n">np</span><span class="o">.</span><span class="n">exp</span></a><span class="p">(</span><span class="n">shiftc</span> <span class="o">/</span> <span class="n">klog</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected value for cc rotation in degrees: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">angle</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recovered value for cc rotation: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">shiftr</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Expected value for cc rotation in degrees: </span><span class="si">{angle}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Recovered value for cc rotation: </span><span class="si">{shiftr}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Expected value for scaling difference: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">scale</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Recovered value for scaling difference: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">shift_scale</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Expected value for scaling difference: </span><span class="si">{scale}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Recovered value for scaling difference: </span><span class="si">{shift_scale}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_register_rotation_002.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_register_rotation_002.png" />
@@ -213,7 +213,7 @@ Expected value for scaling difference: 2.2
 Recovered value for scaling difference: 2.1981889915232165
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  6.975 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  7.522 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-transform-plot-register-rotation-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/c31879ea98f0fa26855f3e5a6b6fef1c/plot_register_rotation.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_register_rotation.py</span></code></a></p>
