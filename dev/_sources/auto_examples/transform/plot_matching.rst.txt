@@ -39,9 +39,12 @@ to robustly estimate the parameter set by detecting outliers.
 
  .. code-block:: none
 
-    (0.9, 0.9) [ 20. -10.] 0.19999999999999998
-    (0.9014706578601688, 0.8912502648247008) [-9.3136398  14.97675567] -0.1677548948474821
-    (0.8999207933418528, 0.9000536710786017) [-10.00053748  19.97439706] -0.19991920832558677
+    Ground truth:
+    Scale: (0.9000, 0.9000), Translation: (-10.0000, 20.0000), Rotation: -0.2000
+    Affine transform:
+    Scale: (0.9015, 0.8913), Translation: (-9.3136, 14.9768), Rotation: -0.1678
+    RANSAC:
+    Scale: (0.8999, 0.9001), Translation: (-10.0005, 19.9744), Rotation: -0.1999
 
 
 
@@ -146,9 +149,21 @@ to robustly estimate the parameter set by detecting outliers.
 
 
     # compare "true" and estimated transform parameters
-    print(tform.scale, tform.translation, tform.rotation)
-    print(model.scale, model.translation, model.rotation)
-    print(model_robust.scale, model_robust.translation, model_robust.rotation)
+    print("Ground truth:")
+    print(f"Scale: ({tform.scale[1]:.4f}, {tform.scale[0]:.4f}), "
+          f"Translation: ({tform.translation[1]:.4f}, "
+          f"{tform.translation[0]:.4f}), "
+          f"Rotation: {-tform.rotation:.4f}")
+    print("Affine transform:")
+    print(f"Scale: ({model.scale[0]:.4f}, {model.scale[1]:.4f}), "
+          f"Translation: ({model.translation[0]:.4f}, "
+          f"{model.translation[1]:.4f}), "
+          f"Rotation: {model.rotation:.4f}")
+    print("RANSAC:")
+    print(f"Scale: ({model_robust.scale[0]:.4f}, {model_robust.scale[1]:.4f}), "
+          f"Translation: ({model_robust.translation[0]:.4f}, "
+          f"{model_robust.translation[1]:.4f}), "
+          f"Rotation: {model_robust.rotation:.4f}")
 
     # visualize correspondence
     fig, ax = plt.subplots(nrows=2, ncols=1)
@@ -172,7 +187,7 @@ to robustly estimate the parameter set by detecting outliers.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.519 seconds)
+   **Total running time of the script:** ( 0 minutes  0.550 seconds)
 
 
 .. _sphx_glr_download_auto_examples_transform_plot_matching.py:
