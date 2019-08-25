@@ -1196,12 +1196,12 @@ are 1 and 0 otherwise.</p>
 In 2D, they can be neighbors either in a 1- or 2-connected sense.
 The value refers to the maximum number of orthogonal hops to consider a
 pixel/voxel a neighbor:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">-</span><span class="n">connectivity</span>      <span class="mi">2</span><span class="o">-</span><span class="n">connectivity</span>     <span class="n">diagonal</span> <span class="n">connection</span> <span class="n">close</span><span class="o">-</span><span class="n">up</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">-</span><span class="n">connectivity</span>     <span class="mi">2</span><span class="o">-</span><span class="n">connectivity</span>     <span class="n">diagonal</span> <span class="n">connection</span> <span class="n">close</span><span class="o">-</span><span class="n">up</span>
 
-     <span class="p">[</span> <span class="p">]</span>           <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>         <span class="p">[</span> <span class="p">]</span>
-      <span class="o">|</span>               \  <span class="o">|</span>  <span class="o">/</span>             <span class="o">|</span>  <span class="o">&lt;-</span> <span class="n">hop</span> <span class="mi">2</span>
-<span class="p">[</span> <span class="p">]</span><span class="o">--</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">--</span><span class="p">[</span> <span class="p">]</span>      <span class="p">[</span> <span class="p">]</span><span class="o">--</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">--</span><span class="p">[</span> <span class="p">]</span>    <span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">--</span><span class="p">[</span> <span class="p">]</span>
-      <span class="o">|</span>               <span class="o">/</span>  <span class="o">|</span>  \         <span class="n">hop</span> <span class="mi">1</span>
+     <span class="p">[</span> <span class="p">]</span>           <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>             <span class="p">[</span> <span class="p">]</span>
+      <span class="o">|</span>               \  <span class="o">|</span>  <span class="o">/</span>                 <span class="o">|</span>  <span class="o">&lt;-</span> <span class="n">hop</span> <span class="mi">2</span>
+<span class="p">[</span> <span class="p">]</span><span class="o">--</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">--</span><span class="p">[</span> <span class="p">]</span>      <span class="p">[</span> <span class="p">]</span><span class="o">--</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">--</span><span class="p">[</span> <span class="p">]</span>        <span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">--</span><span class="p">[</span> <span class="p">]</span>
+      <span class="o">|</span>               <span class="o">/</span>  <span class="o">|</span>  \             <span class="n">hop</span> <span class="mi">1</span>
      <span class="p">[</span> <span class="p">]</span>           <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>
 </pre></div>
 </div>
@@ -1213,7 +1213,7 @@ pixel/voxel a neighbor:</p>
 <dt><strong>neighbors</strong><span class="classifier">{4, 8}, int, optional</span></dt><dd><p>Whether to use 4- or 8-“connectivity”.
 In 3D, 4-“connectivity” means connected pixels have to share face,
 whereas with 8-“connectivity”, they have to share only edge or vertex.
-<strong>Deprecated, use ``connectivity`` instead.</strong></p>
+<strong>Deprecated, use</strong> <code class="docutils literal notranslate"><span class="pre">connectivity</span></code> <strong>instead.</strong></p>
 </dd>
 <dt><strong>background</strong><span class="classifier">int, optional</span></dt><dd><p>Consider all pixels with this value as background pixels, and label
 them as 0. By default, 0-valued pixels are considered as background
@@ -1788,32 +1788,45 @@ some points erroneously being classified as being outside the hull.</p>
 <h2>convex_hull_object<a class="headerlink" href="#convex-hull-object" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.convex_hull_object">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">convex_hull_object</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">neighbors=8</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/convex_hull.py#L96"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.convex_hull_object" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">convex_hull_object</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">neighbors=None</em>, <em class="sig-param">*</em>, <em class="sig-param">connectivity=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/convex_hull.py#L96"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.convex_hull_object" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the convex hull image of individual objects in a binary image.</p>
 <p>The convex hull is the set of pixels included in the smallest convex
 polygon that surround all white pixels in the input image.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(M, N) array</span></dt><dd><p>Binary input image.</p>
+<dd class="field-odd"><dl>
+<dt><strong>image</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p>Binary input image.</p>
 </dd>
-<dt><strong>neighbors</strong><span class="classifier">{4, 8}, int</span></dt><dd><p>Whether to use 4- or 8-connectivity.</p>
+<dt><strong>neighbors</strong><span class="classifier">{4, 8}, int, optional</span></dt><dd><p>Whether to use 4 or 8 adjacent pixels as neighbors.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, set to 8. <strong>Deprecated, use</strong> <code class="docutils literal notranslate"><span class="pre">connectivity</span></code> <strong>instead.</strong></p>
+</dd>
+<dt><strong>connectivity</strong><span class="classifier">{1, 2}, int, optional</span></dt><dd><p>Determines the neighbors of each pixel. Adjacent elements
+within a squared distance of <code class="docutils literal notranslate"><span class="pre">connectivity</span></code> from pixel center
+are considered neighbors. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, set to 2:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">-</span><span class="n">connectivity</span>      <span class="mi">2</span><span class="o">-</span><span class="n">connectivity</span>
+      <span class="p">[</span> <span class="p">]</span>           <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>
+       <span class="o">|</span>               \  <span class="o">|</span>  <span class="o">/</span>
+ <span class="p">[</span> <span class="p">]</span><span class="o">--</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">--</span><span class="p">[</span> <span class="p">]</span>      <span class="p">[</span> <span class="p">]</span><span class="o">--</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">--</span><span class="p">[</span> <span class="p">]</span>
+       <span class="o">|</span>               <span class="o">/</span>  <span class="o">|</span>  \
+      <span class="p">[</span> <span class="p">]</span>           <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>  <span class="p">[</span> <span class="p">]</span>
+</pre></div>
+</div>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>hull</strong><span class="classifier">ndarray of bool</span></dt><dd><p>Binary image with pixels in convex hull set to True.</p>
+<dt><strong>hull</strong><span class="classifier">ndarray of bool</span></dt><dd><p>Binary image with pixels inside convex hull set to <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>This function uses skimage.morphology.label to define unique objects,
-finds the convex hull of each using convex_hull_image, and combines
+<p>This function uses <code class="docutils literal notranslate"><span class="pre">skimage.morphology.label</span></code> to define unique objects,
+finds the convex hull of each using <code class="docutils literal notranslate"><span class="pre">convex_hull_image</span></code>, and combines
 these regions with logical OR. Be aware the convex hulls of unconnected
 objects may overlap in the result. If this is suspected, consider using
-convex_hull_image separately on each object.</p>
+convex_hull_image separately on each object or adjust <code class="docutils literal notranslate"><span class="pre">connectivity</span></code>.</p>
 </dd></dl>
 
 </div>
