@@ -279,7 +279,7 @@
 <td><p>Find the edges of an image using the Laplace operator.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.filters.rank_order" title="skimage.filters.rank_order"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.rank_order</span></code></a>(image)</p></td>
-<td><p>Return an image of the same shape where each pixel is the index of the pixel value in the ascending order of the unique values of <cite>image</cite>, aka the rank-order value.</p></td>
+<td><p>Return an image of the same shape where each pixel is the index of the pixel value in the ascending order of the unique values of <code class="docutils literal notranslate"><span class="pre">image</span></code>, aka the rank-order value.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skimage.filters.gabor_kernel" title="skimage.filters.gabor_kernel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.gabor_kernel</span></code></a>(frequency[, …])</p></td>
 <td><p>Return complex 2D Gabor filter kernel.</p></td>
@@ -336,7 +336,7 @@
 <td><p>Generates multiple thresholds for an input image.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skimage.filters.apply_hysteresis_threshold" title="skimage.filters.apply_hysteresis_threshold"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.apply_hysteresis_threshold</span></code></a>(…)</p></td>
-<td><p>Apply hysteresis thresholding to <cite>image</cite>.</p></td>
+<td><p>Apply hysteresis thresholding to <code class="docutils literal notranslate"><span class="pre">image</span></code>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.filters.unsharp_mask" title="skimage.filters.unsharp_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.unsharp_mask</span></code></a>(image[, …])</p></td>
 <td><p>Unsharp masking filter.</p></td>
@@ -431,21 +431,21 @@ all axes.</p>
 <dt><strong>output</strong><span class="classifier">array, optional</span></dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">output</span></code> parameter passes an array in which to store the
 filter output.</p>
 </dd>
-<dt><strong>mode</strong><span class="classifier">{‘reflect’, ‘constant’, ‘nearest’, ‘mirror’, ‘wrap’}, optional</span></dt><dd><p>The <cite>mode</cite> parameter determines how the array borders are
-handled, where <cite>cval</cite> is the value when mode is equal to
+<dt><strong>mode</strong><span class="classifier">{‘reflect’, ‘constant’, ‘nearest’, ‘mirror’, ‘wrap’}, optional</span></dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">mode</span></code> parameter determines how the array borders are
+handled, where <code class="docutils literal notranslate"><span class="pre">cval</span></code> is the value when mode is equal to
 ‘constant’. Default is ‘nearest’.</p>
 </dd>
-<dt><strong>cval</strong><span class="classifier">scalar, optional</span></dt><dd><p>Value to fill past edges of input if <cite>mode</cite> is ‘constant’. Default
+<dt><strong>cval</strong><span class="classifier">scalar, optional</span></dt><dd><p>Value to fill past edges of input if <code class="docutils literal notranslate"><span class="pre">mode</span></code> is ‘constant’. Default
 is 0.0</p>
 </dd>
 <dt><strong>multichannel</strong><span class="classifier">bool, optional (default: None)</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
 channels. If True, each channel is filtered separately (channels are
-not mixed together). Only 3 channels are supported. If <cite>None</cite>,
+not mixed together). Only 3 channels are supported. If <code class="docutils literal notranslate"><span class="pre">None</span></code>,
 the function will attempt to guess this, and raise a warning if
 ambiguous, when the array has shape (M, N, 3).</p>
 </dd>
 <dt><strong>preserve_range</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to keep the original range of values. Otherwise, the input
-image is converted according to the conventions of <cite>img_as_float</cite>.
+image is converted according to the conventions of <code class="docutils literal notranslate"><span class="pre">img_as_float</span></code>.
 Also see
 <a class="reference external" href="https://scikit-image.org/docs/dev/user_guide/data_types.html">https://scikit-image.org/docs/dev/user_guide/data_types.html</a></p>
 </dd>
@@ -1222,21 +1222,21 @@ skimage.restoration.uft.laplacian().</p>
 <code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">rank_order</code><span class="sig-paren">(</span><em class="sig-param">image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_rank_order.py#L14"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.rank_order" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an image of the same shape where each pixel is the
 index of the pixel value in the ascending order of the unique
-values of <cite>image</cite>, aka the rank-order value.</p>
+values of <code class="docutils literal notranslate"><span class="pre">image</span></code>, aka the rank-order value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>image: ndarray</strong></dt><dd></dd>
+<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd></dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>labels: ndarray of type np.uint32, of shape image.shape</dt><dd><p>New array where each pixel has the rank-order value of the
-corresponding pixel in <cite>image</cite>. Pixel values are between 0 and
+<dt><strong>labels</strong><span class="classifier">ndarray of type np.uint32, of shape image.shape</span></dt><dd><p>New array where each pixel has the rank-order value of the
+corresponding pixel in <code class="docutils literal notranslate"><span class="pre">image</span></code>. Pixel values are between 0 and
 n - 1, where n is the number of distinct unique values in
-<cite>image</cite>.</p>
+<code class="docutils literal notranslate"><span class="pre">image</span></code>.</p>
 </dd>
-<dt>original_values: 1-D ndarray</dt><dd><p>Unique original values of <cite>image</cite></p>
+<dt><strong>original_values</strong><span class="classifier">1-D ndarray</span></dt><dd><p>Unique original values of <code class="docutils literal notranslate"><span class="pre">image</span></code></p>
 </dd>
 </dl>
 </dd>
@@ -1278,13 +1278,14 @@ deviation.</p>
 </dd>
 <dt><strong>theta</strong><span class="classifier">float, optional</span></dt><dd><p>Orientation in radians. If 0, the harmonic is in the x-direction.</p>
 </dd>
-<dt><strong>bandwidth</strong><span class="classifier">float, optional</span></dt><dd><p>The bandwidth captured by the filter. For fixed bandwidth, <cite>sigma_x</cite>
-and <cite>sigma_y</cite> will decrease with increasing frequency. This value is
-ignored if <cite>sigma_x</cite> and <cite>sigma_y</cite> are set by the user.</p>
+<dt><strong>bandwidth</strong><span class="classifier">float, optional</span></dt><dd><p>The bandwidth captured by the filter. For fixed bandwidth, <code class="docutils literal notranslate"><span class="pre">sigma_x</span></code>
+and <code class="docutils literal notranslate"><span class="pre">sigma_y</span></code> will decrease with increasing frequency. This value is
+ignored if <code class="docutils literal notranslate"><span class="pre">sigma_x</span></code> and <code class="docutils literal notranslate"><span class="pre">sigma_y</span></code> are set by the user.</p>
 </dd>
 <dt><strong>sigma_x, sigma_y</strong><span class="classifier">float, optional</span></dt><dd><p>Standard deviation in x- and y-directions. These directions apply to
 the kernel <em>before</em> rotation. If <cite>theta = pi/2</cite>, then the kernel is
-rotated 90 degrees so that <cite>sigma_x</cite> controls the <em>vertical</em> direction.</p>
+rotated 90 degrees so that <code class="docutils literal notranslate"><span class="pre">sigma_x</span></code> controls the <em>vertical</em>
+direction.</p>
 </dd>
 <dt><strong>n_stds</strong><span class="classifier">scalar, optional</span></dt><dd><p>The linear size of the kernel is n_stds (3 by default) standard
 deviations</p>
@@ -1343,7 +1344,7 @@ deviations</p>
 <h2>gabor<a class="headerlink" href="#gabor" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.gabor">
-<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">gabor</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">frequency</em>, <em class="sig-param">theta=0</em>, <em class="sig-param">bandwidth=1</em>, <em class="sig-param">sigma_x=None</em>, <em class="sig-param">sigma_y=None</em>, <em class="sig-param">n_stds=3</em>, <em class="sig-param">offset=0</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_gabor.py#L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gabor" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">gabor</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">frequency</em>, <em class="sig-param">theta=0</em>, <em class="sig-param">bandwidth=1</em>, <em class="sig-param">sigma_x=None</em>, <em class="sig-param">sigma_y=None</em>, <em class="sig-param">n_stds=3</em>, <em class="sig-param">offset=0</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/_gabor.py#L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.gabor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return real and imaginary responses to Gabor filter.</p>
 <p>The real and imaginary parts of the Gabor filter kernel are applied to the
 image and the response is returned as a pair of arrays.</p>
@@ -1362,13 +1363,14 @@ classification.</p>
 </dd>
 <dt><strong>theta</strong><span class="classifier">float, optional</span></dt><dd><p>Orientation in radians. If 0, the harmonic is in the x-direction.</p>
 </dd>
-<dt><strong>bandwidth</strong><span class="classifier">float, optional</span></dt><dd><p>The bandwidth captured by the filter. For fixed bandwidth, <cite>sigma_x</cite>
-and <cite>sigma_y</cite> will decrease with increasing frequency. This value is
-ignored if <cite>sigma_x</cite> and <cite>sigma_y</cite> are set by the user.</p>
+<dt><strong>bandwidth</strong><span class="classifier">float, optional</span></dt><dd><p>The bandwidth captured by the filter. For fixed bandwidth, <code class="docutils literal notranslate"><span class="pre">sigma_x</span></code>
+and <code class="docutils literal notranslate"><span class="pre">sigma_y</span></code> will decrease with increasing frequency. This value is
+ignored if <code class="docutils literal notranslate"><span class="pre">sigma_x</span></code> and <code class="docutils literal notranslate"><span class="pre">sigma_y</span></code> are set by the user.</p>
 </dd>
 <dt><strong>sigma_x, sigma_y</strong><span class="classifier">float, optional</span></dt><dd><p>Standard deviation in x- and y-directions. These directions apply to
 the kernel <em>before</em> rotation. If <cite>theta = pi/2</cite>, then the kernel is
-rotated 90 degrees so that <cite>sigma_x</cite> controls the <em>vertical</em> direction.</p>
+rotated 90 degrees so that <code class="docutils literal notranslate"><span class="pre">sigma_x</span></code> controls the <em>vertical</em>
+direction.</p>
 </dd>
 <dt><strong>n_stds</strong><span class="classifier">scalar, optional</span></dt><dd><p>The linear size of the kernel is n_stds (3 by default) standard
 deviations.</p>
@@ -1377,7 +1379,7 @@ deviations.</p>
 </dd>
 <dt><strong>mode</strong><span class="classifier">{‘constant’, ‘nearest’, ‘reflect’, ‘mirror’, ‘wrap’}, optional</span></dt><dd><p>Mode used to convolve image with a kernel, passed to <cite>ndi.convolve</cite></p>
 </dd>
-<dt><strong>cval</strong><span class="classifier">scalar, optional</span></dt><dd><p>Value to fill past edges of input if <cite>mode</cite> of convolution is
+<dt><strong>cval</strong><span class="classifier">scalar, optional</span></dt><dd><p>Value to fill past edges of input if <code class="docutils literal notranslate"><span class="pre">mode</span></code> of convolution is
 ‘constant’. The parameter is passed to <cite>ndi.convolve</cite>.</p>
 </dd>
 </dl>
@@ -1780,7 +1782,7 @@ this value are assumed to be foreground.</p>
 </dd>
 <dt class="field-odd">Raises</dt>
 <dd class="field-odd"><dl class="simple">
-<dt>ValueError</dt><dd><p>If <cite>image</cite> only contains a single grayscale value.</p>
+<dt>ValueError</dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">image</span></code> only contains a single grayscale value.</p>
 </dd>
 </dl>
 </dd>
@@ -2042,8 +2044,8 @@ threshold value (e.g. 3, 5, 7, …, 21, …).</p>
 <dt><strong>method</strong><span class="classifier">{‘generic’, ‘gaussian’, ‘mean’, ‘median’}, optional</span></dt><dd><p>Method used to determine adaptive threshold for local neighbourhood in
 weighted mean image.</p>
 <ul class="simple">
-<li><p>‘generic’: use custom function (see <cite>param</cite> parameter)</p></li>
-<li><p>‘gaussian’: apply gaussian filter (see <cite>param</cite> parameter for custom                      sigma value)</p></li>
+<li><p>‘generic’: use custom function (see <code class="docutils literal notranslate"><span class="pre">param</span></code> parameter)</p></li>
+<li><p>‘gaussian’: apply gaussian filter (see <code class="docutils literal notranslate"><span class="pre">param</span></code> parameter for custom                      sigma value)</p></li>
 <li><p>‘mean’: apply arithmetic mean filter</p></li>
 <li><p>‘median’: apply median rank filter</p></li>
 </ul>
@@ -2104,8 +2106,9 @@ corresponding pixel in the threshold image are considered foreground.</p>
 <dt id="skimage.filters.threshold_minimum">
 <code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">threshold_minimum</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">nbins=256</em>, <em class="sig-param">max_iter=10000</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L647"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_minimum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return threshold value based on minimum method.</p>
-<p>The histogram of the input <cite>image</cite> is computed and smoothed until there are
-only two maxima. Then the minimum in between is the threshold value.</p>
+<p>The histogram of the input <code class="docutils literal notranslate"><span class="pre">image</span></code> is computed and smoothed until
+there are only two maxima. Then the minimum in between is the threshold
+value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -2167,7 +2170,7 @@ images”, Annals of the New York Academy of Sciences 128: 1035-1053
 <h2>threshold_mean<a class="headerlink" href="#threshold-mean" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.threshold_mean">
-<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">threshold_mean</code><span class="sig-paren">(</span><em class="sig-param">image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L731"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_mean" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">threshold_mean</code><span class="sig-paren">(</span><em class="sig-param">image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L732"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_mean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return threshold value based on the mean of grayscale values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2214,7 +2217,7 @@ vol. 55, pp. 532-537, 1993.
 <h2>threshold_niblack<a class="headerlink" href="#threshold-niblack" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.threshold_niblack">
-<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">threshold_niblack</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">window_size=15</em>, <em class="sig-param">k=0.2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L916"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_niblack" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">threshold_niblack</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">window_size=15</em>, <em class="sig-param">k=0.2</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L917"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_niblack" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies Niblack local threshold to an array.</p>
 <p>A threshold T is calculated for every pixel in the image using the
 following formula:</p>
@@ -2289,7 +2292,7 @@ Image”, Journal of Graphics Tools 12(2), pp. 13-21, 2007.
 <h2>threshold_sauvola<a class="headerlink" href="#threshold-sauvola" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.threshold_sauvola">
-<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">threshold_sauvola</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">window_size=15</em>, <em class="sig-param">k=0.2</em>, <em class="sig-param">r=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L979"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_sauvola" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">threshold_sauvola</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">window_size=15</em>, <em class="sig-param">k=0.2</em>, <em class="sig-param">r=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L980"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_sauvola" title="Permalink to this definition">¶</a></dt>
 <dd><p>Applies Sauvola local threshold to an array. Sauvola is a
 modification of Niblack technique.</p>
 <p>In the original method a threshold T is calculated for every pixel
@@ -2358,7 +2361,7 @@ pp. 225-236, 2000.
 <h2>threshold_triangle<a class="headerlink" href="#threshold-triangle" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.threshold_triangle">
-<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">threshold_triangle</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">nbins=256</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L762"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_triangle" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">threshold_triangle</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">nbins=256</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L763"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_triangle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return threshold value based on the triangle algorithm.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2405,7 +2408,7 @@ Journal of Histochemistry and Cytochemistry 25 (7), pp. 741-753
 <h2>threshold_multiotsu<a class="headerlink" href="#threshold-multiotsu" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.threshold_multiotsu">
-<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">threshold_multiotsu</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">classes=3</em>, <em class="sig-param">nbins=256</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L1086"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_multiotsu" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">threshold_multiotsu</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">classes=3</em>, <em class="sig-param">nbins=256</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L1087"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.threshold_multiotsu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates multiple thresholds for an input image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2472,25 +2475,25 @@ Available at:
 <h2>apply_hysteresis_threshold<a class="headerlink" href="#apply-hysteresis-threshold" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.apply_hysteresis_threshold">
-<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">apply_hysteresis_threshold</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">low</em>, <em class="sig-param">high</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L1039"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.apply_hysteresis_threshold" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply hysteresis thresholding to <cite>image</cite>.</p>
-<p>This algorithm finds regions where <cite>image</cite> is greater than <cite>high</cite>
-OR <cite>image</cite> is greater than <cite>low</cite> <em>and</em> that region is connected to
-a region greater than <cite>high</cite>.</p>
+<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">apply_hysteresis_threshold</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">low</em>, <em class="sig-param">high</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/thresholding.py#L1040"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.apply_hysteresis_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply hysteresis thresholding to <code class="docutils literal notranslate"><span class="pre">image</span></code>.</p>
+<p>This algorithm finds regions where <code class="docutils literal notranslate"><span class="pre">image</span></code> is greater than <code class="docutils literal notranslate"><span class="pre">high</span></code>
+OR <code class="docutils literal notranslate"><span class="pre">image</span></code> is greater than <code class="docutils literal notranslate"><span class="pre">low</span></code> <em>and</em> that region is connected to
+a region greater than <code class="docutils literal notranslate"><span class="pre">high</span></code>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
 <dt><strong>image</strong><span class="classifier">array, shape (M,[ N, …, P])</span></dt><dd><p>Grayscale input image.</p>
 </dd>
-<dt><strong>low</strong><span class="classifier">float, or array of same shape as <cite>image</cite></span></dt><dd><p>Lower threshold.</p>
+<dt><strong>low</strong><span class="classifier">float, or array of same shape as <code class="docutils literal notranslate"><span class="pre">image</span></code></span></dt><dd><p>Lower threshold.</p>
 </dd>
-<dt><strong>high</strong><span class="classifier">float, or array of same shape as <cite>image</cite></span></dt><dd><p>Higher threshold.</p>
+<dt><strong>high</strong><span class="classifier">float, or array of same shape as <code class="docutils literal notranslate"><span class="pre">image</span></code></span></dt><dd><p>Higher threshold.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl>
-<dt><strong>thresholded</strong><span class="classifier">array of bool, same shape as <cite>image</cite></span></dt><dd><p>Array in which <cite>True</cite> indicates the locations where <cite>image</cite>
+<dt><strong>thresholded</strong><span class="classifier">array of bool, same shape as <code class="docutils literal notranslate"><span class="pre">image</span></code></span></dt><dd><p>Array in which <code class="docutils literal notranslate"><span class="pre">True</span></code> indicates the locations where <code class="docutils literal notranslate"><span class="pre">image</span></code>
 was above the hysteresis threshold.</p>
 </dd>
 </dl>
@@ -2544,11 +2547,11 @@ not allowed.</p>
 <dt><strong>amount</strong><span class="classifier">scalar, optional</span></dt><dd><p>The details will be amplified with this factor. The factor could be 0
 or negative. Typically, it is a small positive number, e.g. 1.0.</p>
 </dd>
-<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the last <cite>image</cite> dimension is considered as a color channel,
+<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the last <code class="docutils literal notranslate"><span class="pre">image</span></code> dimension is considered as a color channel,
 otherwise as spatial. Color channels are processed individually.</p>
 </dd>
 <dt><strong>preserve_range: bool, optional</strong></dt><dd><p>Whether to keep the original range of values. Otherwise, the input
-image is converted according to the conventions of <cite>img_as_float</cite>.
+image is converted according to the conventions of <code class="docutils literal notranslate"><span class="pre">img_as_float</span></code>.
 Also see <a class="reference external" href="https://scikit-image.org/docs/dev/user_guide/data_types.html">https://scikit-image.org/docs/dev/user_guide/data_types.html</a></p>
 </dd>
 </dl>
@@ -2647,11 +2650,11 @@ ISBN 13: 9781119994398  <a class="reference external" href="https://doi.org/10.1
 <dd><dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>impulse_response</strong><span class="classifier">callable <cite>f(r, c, **filter_params)</cite></span></dt><dd><p>Function that yields the impulse response.  <cite>r</cite> and <cite>c</cite> are
+<dt><strong>impulse_response</strong><span class="classifier">callable <cite>f(r, c, **filter_params)</cite></span></dt><dd><p>Function that yields the impulse response.  <code class="docutils literal notranslate"><span class="pre">r</span></code> and <code class="docutils literal notranslate"><span class="pre">c</span></code> are
 1-dimensional vectors that represent row and column positions, in
 other words coordinates are (r[0],c[0]),(r[0],c[1]) etc.
 <cite>**filter_params</cite> are passed through.</p>
-<p>In other words, <cite>impulse_response</cite> would be called like this:</p>
+<p>In other words, <code class="docutils literal notranslate"><span class="pre">impulse_response</span></code> would be called like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">impulse_response</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="o">**</span><span class="n">filter_params</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="k">pass</span>
 <span class="go">&gt;&gt;&gt;</span>
