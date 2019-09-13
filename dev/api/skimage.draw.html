@@ -326,7 +326,7 @@ May be used to directly index into an array, e.g.
 <h2>bezier_curve<a class="headerlink" href="#bezier-curve" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.draw.bezier_curve">
-<code class="sig-prename descclassname">skimage.draw.</code><code class="sig-name descname">bezier_curve</code><span class="sig-paren">(</span><em class="sig-param">r0</em>, <em class="sig-param">c0</em>, <em class="sig-param">r1</em>, <em class="sig-param">c1</em>, <em class="sig-param">r2</em>, <em class="sig-param">c2</em>, <em class="sig-param">weight</em>, <em class="sig-param">shape=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/draw/draw.py#L650"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.draw.bezier_curve" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.draw.</code><code class="sig-name descname">bezier_curve</code><span class="sig-paren">(</span><em class="sig-param">r0</em>, <em class="sig-param">c0</em>, <em class="sig-param">r1</em>, <em class="sig-param">c1</em>, <em class="sig-param">r2</em>, <em class="sig-param">c2</em>, <em class="sig-param">weight</em>, <em class="sig-param">shape=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/draw/draw.py#L658"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.draw.bezier_curve" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate Bezier curve coordinates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -612,7 +612,7 @@ on the other side of image, because <code class="docutils literal notranslate"><
 <h2>ellipse_perimeter<a class="headerlink" href="#ellipse-perimeter" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.draw.ellipse_perimeter">
-<code class="sig-prename descclassname">skimage.draw.</code><code class="sig-name descname">ellipse_perimeter</code><span class="sig-paren">(</span><em class="sig-param">r</em>, <em class="sig-param">c</em>, <em class="sig-param">r_radius</em>, <em class="sig-param">c_radius</em>, <em class="sig-param">orientation=0</em>, <em class="sig-param">shape=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/draw/draw.py#L579"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.draw.ellipse_perimeter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.draw.</code><code class="sig-name descname">ellipse_perimeter</code><span class="sig-paren">(</span><em class="sig-param">r</em>, <em class="sig-param">c</em>, <em class="sig-param">r_radius</em>, <em class="sig-param">c_radius</em>, <em class="sig-param">orientation=0</em>, <em class="sig-param">shape=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/draw/draw.py#L587"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.draw.ellipse_perimeter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate ellipse perimeter coordinates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -948,6 +948,8 @@ the input image.</p>
 <p class="rubric">Notes</p>
 <p>Wu’s method draws anti-aliased circle. This implementation doesn’t use
 lookup table optimization.</p>
+<p>Use the function <code class="docutils literal notranslate"><span class="pre">draw.set_color</span></code> to apply <code class="docutils literal notranslate"><span class="pre">circle_perimeter_aa</span></code>
+results to color images.</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="ra3f820ec31b4-1"><span class="brackets">1</span></dt>
@@ -971,6 +973,12 @@ Computer Graphics, 25 (1991) 143-152.</p>
 <span class="go">       [  0,   0,  60, 211, 255, 211,  60,   0,   0,   0],</span>
 <span class="go">       [  0,   0,   0,   0,   0,   0,   0,   0,   0,   0],</span>
 <span class="go">       [  0,   0,   0,   0,   0,   0,   0,   0,   0,   0]], dtype=uint8)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">draw</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">chelsea</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">val</span> <span class="o">=</span> <span class="n">draw</span><span class="o">.</span><span class="n">circle_perimeter_aa</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">draw</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="n">val</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1121,7 +1129,7 @@ bounding box coordinates of the shape.</p>
 <h2>rectangle<a class="headerlink" href="#rectangle" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.draw.rectangle">
-<code class="sig-prename descclassname">skimage.draw.</code><code class="sig-name descname">rectangle</code><span class="sig-paren">(</span><em class="sig-param">start</em>, <em class="sig-param">end=None</em>, <em class="sig-param">extent=None</em>, <em class="sig-param">shape=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/draw/draw.py#L707"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.draw.rectangle" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.draw.</code><code class="sig-name descname">rectangle</code><span class="sig-paren">(</span><em class="sig-param">start</em>, <em class="sig-param">end=None</em>, <em class="sig-param">extent=None</em>, <em class="sig-param">shape=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/draw/draw.py#L715"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.draw.rectangle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate coordinates of pixels within a rectangle.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1214,7 +1222,7 @@ the image size. By default, no clipping is done.</p>
 <h2>rectangle_perimeter<a class="headerlink" href="#rectangle-perimeter" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.draw.rectangle_perimeter">
-<code class="sig-prename descclassname">skimage.draw.</code><code class="sig-name descname">rectangle_perimeter</code><span class="sig-paren">(</span><em class="sig-param">start</em>, <em class="sig-param">end=None</em>, <em class="sig-param">extent=None</em>, <em class="sig-param">shape=None</em>, <em class="sig-param">clip=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/draw/draw.py#L803"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.draw.rectangle_perimeter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.draw.</code><code class="sig-name descname">rectangle_perimeter</code><span class="sig-paren">(</span><em class="sig-param">start</em>, <em class="sig-param">end=None</em>, <em class="sig-param">extent=None</em>, <em class="sig-param">shape=None</em>, <em class="sig-param">clip=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/draw/draw.py#L811"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.draw.rectangle_perimeter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate coordinates of pixels that are exactly around a rectangle.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
