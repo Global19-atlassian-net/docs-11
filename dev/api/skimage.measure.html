@@ -258,7 +258,7 @@
 <h2>find_contours<a class="headerlink" href="#find-contours" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.find_contours">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">find_contours</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">level</em>, <em class="sig-param">fully_connected='low'</em>, <em class="sig-param">positive_orientation='low'</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_find_contours.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.find_contours" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">find_contours</code><span class="sig-paren">(</span><em class="sig-param">array</em>, <em class="sig-param">level</em>, <em class="sig-param">fully_connected='low'</em>, <em class="sig-param">positive_orientation='low'</em>, <em class="sig-param">*</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_find_contours.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.find_contours" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find iso-valued contours in a 2D array for a given level value.</p>
 <p>Uses the “marching squares” method to compute a the iso-valued contours of
 the input 2D array for a particular level value. Array values are linearly
@@ -281,8 +281,8 @@ iso-value. Alternately, this means that low-valued elements are always
 on the left of the contour. (See below for details.)</p>
 </dd>
 <dt><strong>mask</strong><span class="classifier">2D ndarray of bool, or None</span></dt><dd><p>A boolean mask, True where we want to draw contours.
-Note that NaN values are always excluded from the considered region (
-i.e. mask=False is forced where where array is NaN).</p>
+Note that NaN values are always excluded from the considered region
+(<code class="docutils literal notranslate"><span class="pre">mask</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code> wherever <code class="docutils literal notranslate"><span class="pre">array</span></code> is <code class="docutils literal notranslate"><span class="pre">NaN</span></code>).</p>
 </dd>
 </dl>
 </dd>
@@ -1022,7 +1022,7 @@ we also show how to use a proportion of the total samples, rather than an absolu
 <h2>block_reduce<a class="headerlink" href="#block-reduce" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.block_reduce">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7fc6cea07488&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7f6acbb54488&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Down-sample image by applying function to local blocks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
