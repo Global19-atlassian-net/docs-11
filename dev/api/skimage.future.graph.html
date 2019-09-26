@@ -167,21 +167,21 @@
 <dd><p>Compute the Region Adjacency Graph using mean colors.</p>
 <p>Given an image and its initial segmentation, this method constructs the
 corresponding Region Adjacency Graph (RAG). Each node in the RAG
-represents a set of pixels within <cite>image</cite> with the same label in <cite>labels</cite>.
+represents a set of pixels within <em class="xref py py-obj">image</em> with the same label in <em class="xref py py-obj">labels</em>.
 The weight between two adjacent regions represents how similar or
-dissimilar two regions are depending on the <cite>mode</cite> parameter.</p>
+dissimilar two regions are depending on the <em class="xref py py-obj">mode</em> parameter.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
 <dt><strong>image</strong><span class="classifier">ndarray, shape(M, N, […, P,] 3)</span></dt><dd><p>Input image.</p>
 </dd>
 <dt><strong>labels</strong><span class="classifier">ndarray, shape(M, N, […, P])</span></dt><dd><p>The labelled image. This should have one dimension less than
-<cite>image</cite>. If <cite>image</cite> has dimensions <cite>(M, N, 3)</cite> <cite>labels</cite> should have
-dimensions <cite>(M, N)</cite>.</p>
+<em class="xref py py-obj">image</em>. If <em class="xref py py-obj">image</em> has dimensions <em class="xref py py-obj">(M, N, 3)</em> <em class="xref py py-obj">labels</em> should have
+dimensions <em class="xref py py-obj">(M, N)</em>.</p>
 </dd>
-<dt><strong>connectivity</strong><span class="classifier">int, optional</span></dt><dd><p>Pixels with a squared distance less than <cite>connectivity</cite> from each other
-are considered adjacent. It can range from 1 to <cite>labels.ndim</cite>. Its
-behavior is the same as <cite>connectivity</cite> parameter in
+<dt><strong>connectivity</strong><span class="classifier">int, optional</span></dt><dd><p>Pixels with a squared distance less than <em class="xref py py-obj">connectivity</em> from each other
+are considered adjacent. It can range from 1 to <em class="xref py py-obj">labels.ndim</em>. Its
+behavior is the same as <em class="xref py py-obj">connectivity</em> parameter in
 <code class="docutils literal notranslate"><span class="pre">scipy.ndimage.generate_binary_structure</span></code>.</p>
 </dd>
 <dt><strong>mode</strong><span class="classifier">{‘distance’, ‘similarity’}, optional</span></dt><dd><p>The strategy to assign edge weights.</p>
@@ -196,9 +196,9 @@ their average color.</p>
 It represents how similar two regions are.</p>
 </div></blockquote>
 </dd>
-<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Used for computation when <cite>mode</cite> is “similarity”. It governs how
+<dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Used for computation when <em class="xref py py-obj">mode</em> is “similarity”. It governs how
 close to each other two colors should be, for their corresponding edge
-weight to be significant. A very large value of <cite>sigma</cite> could make
+weight to be significant. A very large value of <em class="xref py py-obj">sigma</em> could make
 any two colors behave as though they were similar.</p>
 </dd>
 </dl>
@@ -267,9 +267,9 @@ than the given threshold.</p>
 <dt><strong>thresh</strong><span class="classifier">float</span></dt><dd><p>The threshold. Regions connected by edges with smaller weights are
 combined.</p>
 </dd>
-<dt><strong>in_place</strong><span class="classifier">bool</span></dt><dd><p>If set, modifies <cite>rag</cite> in place. The function will remove the edges
-with weights less that <cite>thresh</cite>. If set to <cite>False</cite> the function
-makes a copy of <cite>rag</cite> before proceeding.</p>
+<dt><strong>in_place</strong><span class="classifier">bool</span></dt><dd><p>If set, modifies <code class="xref py py-obj docutils literal notranslate"><span class="pre">rag</span></code> in place. The function will remove the edges
+with weights less that <em class="xref py py-obj">thresh</em>. If set to <em class="xref py py-obj">False</em> the function
+makes a copy of <code class="xref py py-obj docutils literal notranslate"><span class="pre">rag</span></code> before proceeding.</p>
 </dd>
 </dl>
 </dd>
@@ -325,11 +325,11 @@ output.</p>
 <dt><strong>rag</strong><span class="classifier">RAG</span></dt><dd><p>The region adjacency graph.</p>
 </dd>
 <dt><strong>thresh</strong><span class="classifier">float</span></dt><dd><p>The threshold. A subgraph won’t be further subdivided if the
-value of the N-cut exceeds <cite>thresh</cite>.</p>
+value of the N-cut exceeds <em class="xref py py-obj">thresh</em>.</p>
 </dd>
 <dt><strong>num_cuts</strong><span class="classifier">int</span></dt><dd><p>The number or N-cuts to perform before determining the optimal one.</p>
 </dd>
-<dt><strong>in_place</strong><span class="classifier">bool</span></dt><dd><p>If set, modifies <cite>rag</cite> in place. For each node <cite>n</cite> the function will
+<dt><strong>in_place</strong><span class="classifier">bool</span></dt><dd><p>If set, modifies <code class="xref py py-obj docutils literal notranslate"><span class="pre">rag</span></code> in place. For each node <em class="xref py py-obj">n</em> the function will
 set a new attribute <code class="docutils literal notranslate"><span class="pre">rag.node[n]['ncut</span> <span class="pre">label']</span></code>.</p>
 </dd>
 <dt><strong>max_edge</strong><span class="classifier">float, optional</span></dt><dd><p>The maximum possible value of an edge in the RAG. This corresponds to
@@ -390,11 +390,11 @@ output.</p>
 <dt><strong>rag</strong><span class="classifier">RAG</span></dt><dd><p>The region adjacency graph.</p>
 </dd>
 <dt><strong>thresh</strong><span class="classifier">float</span></dt><dd><p>The threshold. A subgraph won’t be further subdivided if the
-value of the N-cut exceeds <cite>thresh</cite>.</p>
+value of the N-cut exceeds <em class="xref py py-obj">thresh</em>.</p>
 </dd>
 <dt><strong>num_cuts</strong><span class="classifier">int</span></dt><dd><p>The number or N-cuts to perform before determining the optimal one.</p>
 </dd>
-<dt><strong>in_place</strong><span class="classifier">bool</span></dt><dd><p>If set, modifies <cite>rag</cite> in place. For each node <cite>n</cite> the function will
+<dt><strong>in_place</strong><span class="classifier">bool</span></dt><dd><p>If set, modifies <code class="xref py py-obj docutils literal notranslate"><span class="pre">rag</span></code> in place. For each node <em class="xref py py-obj">n</em> the function will
 set a new attribute <code class="docutils literal notranslate"><span class="pre">rag.node[n]['ncut</span> <span class="pre">label']</span></code>.</p>
 </dd>
 <dt><strong>max_edge</strong><span class="classifier">float, optional</span></dt><dd><p>The maximum possible value of an edge in the RAG. This corresponds to
@@ -446,7 +446,7 @@ the centroid of the 2 adjacent regions in the image.</p>
 </dd>
 <dt><strong>rag</strong><span class="classifier">RAG</span></dt><dd><p>The Region Adjacency Graph.</p>
 </dd>
-<dt><strong>image</strong><span class="classifier">ndarray, shape (M, N[, 3])</span></dt><dd><p>Input image. If <cite>colormap</cite> is <cite>None</cite>, the image should be in RGB
+<dt><strong>image</strong><span class="classifier">ndarray, shape (M, N[, 3])</span></dt><dd><p>Input image. If <em class="xref py py-obj">colormap</em> is <em class="xref py py-obj">None</em>, the image should be in RGB
 format.</p>
 </dd>
 <dt><strong>border_color</strong><span class="classifier">color spec, optional</span></dt><dd><p>Color with which the borders between regions are drawn.</p>
@@ -455,10 +455,10 @@ format.</p>
 </dd>
 <dt><strong>edge_cmap</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v3.1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.colors.Colormap</span></code></a>, optional</span></dt><dd><p>Any matplotlib colormap with which the edges are drawn.</p>
 </dd>
-<dt><strong>img_cmap</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v3.1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.colors.Colormap</span></code></a>, optional</span></dt><dd><p>Any matplotlib colormap with which the image is draw. If set to <cite>None</cite>
+<dt><strong>img_cmap</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.colors.Colormap.html#matplotlib.colors.Colormap" title="(in Matplotlib v3.1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.colors.Colormap</span></code></a>, optional</span></dt><dd><p>Any matplotlib colormap with which the image is draw. If set to <em class="xref py py-obj">None</em>
 the image is drawn as it is.</p>
 </dd>
-<dt><strong>in_place</strong><span class="classifier">bool, optional</span></dt><dd><p>If set, the RAG is modified in place. For each node <cite>n</cite> the function
+<dt><strong>in_place</strong><span class="classifier">bool, optional</span></dt><dd><p>If set, the RAG is modified in place. For each node <em class="xref py py-obj">n</em> the function
 will set a new attribute <code class="docutils literal notranslate"><span class="pre">rag.node[n]['centroid']</span></code>.</p>
 </dd>
 <dt><strong>ax</strong><span class="classifier"><a class="reference external" href="https://matplotlib.org/api/axes_api.html#matplotlib.axes.Axes" title="(in Matplotlib v3.1.1)"><code class="xref py py-class docutils literal notranslate"><span class="pre">matplotlib.axes.Axes</span></code></a>, optional</span></dt><dd><p>The axes to draw on. If not specified, new axes are created and drawn
@@ -511,7 +511,7 @@ passed to the <a class="reference external" href="https://matplotlib.org/api/_as
 <code class="sig-prename descclassname">skimage.future.graph.</code><code class="sig-name descname">merge_hierarchical</code><span class="sig-paren">(</span><em class="sig-param">labels</em>, <em class="sig-param">rag</em>, <em class="sig-param">thresh</em>, <em class="sig-param">rag_copy</em>, <em class="sig-param">in_place_merge</em>, <em class="sig-param">merge_func</em>, <em class="sig-param">weight_func</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_merge.py#L59"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.merge_hierarchical" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform hierarchical merging of a RAG.</p>
 <p>Greedily merges the most similar pair of nodes until no edges lower than
-<cite>thresh</cite> remain.</p>
+<em class="xref py py-obj">thresh</em> remain.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -519,7 +519,7 @@ passed to the <a class="reference external" href="https://matplotlib.org/api/_as
 </dd>
 <dt><strong>rag</strong><span class="classifier">RAG</span></dt><dd><p>The Region Adjacency Graph.</p>
 </dd>
-<dt><strong>thresh</strong><span class="classifier">float</span></dt><dd><p>Regions connected by an edge with weight smaller than <cite>thresh</cite> are
+<dt><strong>thresh</strong><span class="classifier">float</span></dt><dd><p>Regions connected by an edge with weight smaller than <em class="xref py py-obj">thresh</em> are
 merged.</p>
 </dd>
 <dt><strong>rag_copy</strong><span class="classifier">bool</span></dt><dd><p>If set, the RAG copied before modifying.</p>
@@ -527,13 +527,13 @@ merged.</p>
 <dt><strong>in_place_merge</strong><span class="classifier">bool</span></dt><dd><p>If set, the nodes are merged in place. Otherwise, a new node is
 created for each merge..</p>
 </dd>
-<dt><strong>merge_func</strong><span class="classifier">callable</span></dt><dd><p>This function is called before merging two nodes. For the RAG <cite>graph</cite>
-while merging <cite>src</cite> and <cite>dst</cite>, it is called as follows
+<dt><strong>merge_func</strong><span class="classifier">callable</span></dt><dd><p>This function is called before merging two nodes. For the RAG <em class="xref py py-obj">graph</em>
+while merging <em class="xref py py-obj">src</em> and <em class="xref py py-obj">dst</em>, it is called as follows
 <code class="docutils literal notranslate"><span class="pre">merge_func(graph,</span> <span class="pre">src,</span> <span class="pre">dst)</span></code>.</p>
 </dd>
 <dt><strong>weight_func</strong><span class="classifier">callable</span></dt><dd><p>The function to compute the new weights of the nodes adjacent to the
-merged node. This is directly supplied as the argument <cite>weight_func</cite>
-to <cite>merge_nodes</cite>.</p>
+merged node. This is directly supplied as the argument <em class="xref py py-obj">weight_func</em>
+to <em class="xref py py-obj">merge_nodes</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -567,19 +567,19 @@ to <cite>merge_nodes</cite>.</p>
 <p>Given an image’s initial segmentation and its edge map this method
 constructs the corresponding Region Adjacency Graph (RAG). Each node in the
 RAG represents a set of pixels within the image with the same label in
-<cite>labels</cite>. The weight between two adjacent regions is the average value
-in <cite>edge_map</cite> along their boundary.</p>
+<em class="xref py py-obj">labels</em>. The weight between two adjacent regions is the average value
+in <em class="xref py py-obj">edge_map</em> along their boundary.</p>
 <dl class="simple">
 <dt>labels<span class="classifier">ndarray</span></dt><dd><p>The labelled image.</p>
 </dd>
-<dt>edge_map<span class="classifier">ndarray</span></dt><dd><p>This should have the same shape as that of <cite>labels</cite>. For all pixels
+<dt>edge_map<span class="classifier">ndarray</span></dt><dd><p>This should have the same shape as that of <em class="xref py py-obj">labels</em>. For all pixels
 along the boundary between 2 adjacent regions, the average value of the
-corresponding pixels in <cite>edge_map</cite> is the edge weight between them.</p>
+corresponding pixels in <em class="xref py py-obj">edge_map</em> is the edge weight between them.</p>
 </dd>
-<dt>connectivity<span class="classifier">int, optional</span></dt><dd><p>Pixels with a squared distance less than <cite>connectivity</cite> from each other
-are considered adjacent. It can range from 1 to <cite>labels.ndim</cite>. Its
-behavior is the same as <cite>connectivity</cite> parameter in
-<cite>scipy.ndimage.filters.generate_binary_structure</cite>.</p>
+<dt>connectivity<span class="classifier">int, optional</span></dt><dd><p>Pixels with a squared distance less than <em class="xref py py-obj">connectivity</em> from each other
+are considered adjacent. It can range from 1 to <em class="xref py py-obj">labels.ndim</em>. Its
+behavior is the same as <em class="xref py py-obj">connectivity</em> parameter in
+<em class="xref py py-obj">scipy.ndimage.filters.generate_binary_structure</em>.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -623,10 +623,10 @@ a node in the graph.</p>
 <dt><strong>connectivity</strong><span class="classifier">int in {1, …, <code class="docutils literal notranslate"><span class="pre">label_image.ndim</span></code>}, optional</span></dt><dd><p>The connectivity between pixels in <code class="docutils literal notranslate"><span class="pre">label_image</span></code>. For a 2D image,
 a connectivity of 1 corresponds to immediate neighbors up, down,
 left, and right, while a connectivity of 2 also includes diagonal
-neighbors. See <cite>scipy.ndimage.generate_binary_structure</cite>.</p>
+neighbors. See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.generate_binary_structure.html#scipy.ndimage.generate_binary_structure" title="(in SciPy v1.3.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.ndimage.generate_binary_structure</span></code></a>.</p>
 </dd>
 <dt><strong>data</strong><span class="classifier">networkx Graph specification, optional</span></dt><dd><p>Initial or additional edges to pass to the NetworkX Graph
-constructor. See <cite>networkx.Graph</cite>. Valid edge specifications
+constructor. See <code class="xref py py-obj docutils literal notranslate"><span class="pre">networkx.Graph</span></code>. Valid edge specifications
 include edge list (list of tuples), NumPy arrays, and SciPy
 sparse matrices.</p>
 </dd>
@@ -677,7 +677,7 @@ or 2d ndarray, a SciPy sparse matrix, or a PyGraphviz graph.</p>
 <dl class="method">
 <dt id="skimage.future.graph.RAG.add_edge">
 <code class="sig-name descname">add_edge</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">u</em>, <em class="sig-param">v</em>, <em class="sig-param">attr_dict=None</em>, <em class="sig-param">**attr</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L233"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.add_edge" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add an edge between <cite>u</cite> and <cite>v</cite> while updating max node id.</p>
+<dd><p>Add an edge between <em class="xref py py-obj">u</em> and <em class="xref py py-obj">v</em> while updating max node id.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><code class="xref py py-func docutils literal notranslate"><span class="pre">networkx.Graph.add_edge()</span></code>.</p>
@@ -687,7 +687,7 @@ or 2d ndarray, a SciPy sparse matrix, or a PyGraphviz graph.</p>
 <dl class="method">
 <dt id="skimage.future.graph.RAG.add_node">
 <code class="sig-name descname">add_node</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n</em>, <em class="sig-param">attr_dict=None</em>, <em class="sig-param">**attr</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L222"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.add_node" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add node <cite>n</cite> while updating the maximum node id.</p>
+<dd><p>Add node <em class="xref py py-obj">n</em> while updating the maximum node id.</p>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><code class="xref py py-func docutils literal notranslate"><span class="pre">networkx.Graph.add_node()</span></code>.</p>
@@ -727,10 +727,10 @@ the correct type---ready to fill with nodes and edges.
 
 <dl class="method">
 <dt id="skimage.future.graph.RAG.merge_nodes">
-<code class="sig-name descname">merge_nodes</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em>, <em class="sig-param">weight_func=&lt;function min_weight at 0x7f0fa2e1d840&gt;</em>, <em class="sig-param">in_place=True</em>, <em class="sig-param">extra_arguments=[]</em>, <em class="sig-param">extra_keywords={}</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L160"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.merge_nodes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Merge node <cite>src</cite> and <cite>dst</cite>.</p>
-<p>The new combined node is adjacent to all the neighbors of <cite>src</cite>
-and <cite>dst</cite>. <cite>weight_func</cite> is called to decide the weight of edges
+<code class="sig-name descname">merge_nodes</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em>, <em class="sig-param">weight_func=&lt;function min_weight at 0x7ffaaab457b8&gt;</em>, <em class="sig-param">in_place=True</em>, <em class="sig-param">extra_arguments=[]</em>, <em class="sig-param">extra_keywords={}</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L160"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.merge_nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge node <em class="xref py py-obj">src</em> and <em class="xref py py-obj">dst</em>.</p>
+<p>The new combined node is adjacent to all the neighbors of <em class="xref py py-obj">src</em>
+and <em class="xref py py-obj">dst</em>. <em class="xref py py-obj">weight_func</em> is called to decide the weight of edges
 incident on the new node.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -738,19 +738,19 @@ incident on the new node.</p>
 <dt><strong>src, dst</strong><span class="classifier">int</span></dt><dd><p>Nodes to be merged.</p>
 </dd>
 <dt><strong>weight_func</strong><span class="classifier">callable, optional</span></dt><dd><p>Function to decide the attributes of edges incident on the new
-node. For each neighbor <cite>n</cite> for <cite>src and `dst</cite>, <cite>weight_func</cite> will
-be called as follows: <cite>weight_func(src, dst, n, *extra_arguments,
-**extra_keywords)</cite>. <cite>src</cite>, <cite>dst</cite> and <cite>n</cite> are IDs of vertices in the
-RAG object which is in turn a subclass of <cite>networkx.Graph</cite>. It is
+node. For each neighbor <em class="xref py py-obj">n</em> for <em class="xref py py-obj">src and `dst</em>, <em class="xref py py-obj">weight_func</em> will
+be called as follows: <em class="xref py py-obj">weight_func(src, dst, n, *extra_arguments,
+**extra_keywords)</em>. <em class="xref py py-obj">src</em>, <em class="xref py py-obj">dst</em> and <em class="xref py py-obj">n</em> are IDs of vertices in the
+RAG object which is in turn a subclass of <code class="xref py py-obj docutils literal notranslate"><span class="pre">networkx.Graph</span></code>. It is
 expected to return a dict of attributes of the resulting edge.</p>
 </dd>
-<dt><strong>in_place</strong><span class="classifier">bool, optional</span></dt><dd><p>If set to <cite>True</cite>, the merged node has the id <cite>dst</cite>, else merged
+<dt><strong>in_place</strong><span class="classifier">bool, optional</span></dt><dd><p>If set to <em class="xref py py-obj">True</em>, the merged node has the id <em class="xref py py-obj">dst</em>, else merged
 node has a new id which is returned.</p>
 </dd>
 <dt><strong>extra_arguments</strong><span class="classifier">sequence, optional</span></dt><dd><p>The sequence of extra positional arguments passed to
-<cite>weight_func</cite>.</p>
+<em class="xref py py-obj">weight_func</em>.</p>
 </dd>
-<dt><strong>extra_keywords</strong><span class="classifier">dictionary, optional</span></dt><dd><p>The dict of keyword arguments passed to the <cite>weight_func</cite>.</p>
+<dt><strong>extra_keywords</strong><span class="classifier">dictionary, optional</span></dt><dd><p>The dict of keyword arguments passed to the <em class="xref py py-obj">weight_func</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -762,19 +762,19 @@ node has a new id which is returned.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>If <cite>in_place</cite> is <cite>False</cite> the resulting node has a new id, rather than
-<cite>dst</cite>.</p>
+<p>If <em class="xref py py-obj">in_place</em> is <em class="xref py py-obj">False</em> the resulting node has a new id, rather than
+<em class="xref py py-obj">dst</em>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.future.graph.RAG.next_id">
 <code class="sig-name descname">next_id</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L274"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.next_id" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the <cite>id</cite> for the new node to be inserted.</p>
-<p>The current implementation returns one more than the maximum <cite>id</cite>.</p>
+<dd><p>Returns the <em class="xref py py-obj">id</em> for the new node to be inserted.</p>
+<p>The current implementation returns one more than the maximum <em class="xref py py-obj">id</em>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>id</strong><span class="classifier">int</span></dt><dd><p>The <cite>id</cite> of the new node to be inserted.</p>
+<dt><strong>id</strong><span class="classifier">int</span></dt><dd><p>The <em class="xref py py-obj">id</em> of the new node to be inserted.</p>
 </dd>
 </dl>
 </dd>

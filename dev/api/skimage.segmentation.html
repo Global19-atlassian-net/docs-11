@@ -206,10 +206,10 @@
 <td><p><strong>Deprecated function</strong>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skimage.segmentation.relabel_sequential" title="skimage.segmentation.relabel_sequential"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.relabel_sequential</span></code></a>(…)</p></td>
-<td><p>Relabel arbitrary labels to {<cite>offset</cite>, …</p></td>
+<td><p>Relabel arbitrary labels to {<em class="xref py py-obj">offset</em>, …</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.segmentation.watershed" title="skimage.segmentation.watershed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.watershed</span></code></a>(image[, …])</p></td>
-<td><p>Find watershed basins in <cite>image</cite> flooded from given <cite>markers</cite>.</p></td>
+<td><p>Find watershed basins in <em class="xref py py-obj">image</em> flooded from given <em class="xref py py-obj">markers</em>.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skimage.segmentation.chan_vese" title="skimage.segmentation.chan_vese"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.chan_vese</span></code></a>(image[, mu, …])</p></td>
 <td><p>Chan-Vese segmentation algorithm.</p></td>
@@ -248,23 +248,23 @@ images.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>data</strong><span class="classifier">array_like</span></dt><dd><p>Image to be segmented in phases. Gray-level <cite>data</cite> can be two- or
+<dt><strong>data</strong><span class="classifier">array_like</span></dt><dd><p>Image to be segmented in phases. Gray-level <em class="xref py py-obj">data</em> can be two- or
 three-dimensional; multichannel data can be three- or four-
 dimensional (multichannel=True) with the highest dimension denoting
-channels. Data spacing is assumed isotropic unless the <cite>spacing</cite>
+channels. Data spacing is assumed isotropic unless the <em class="xref py py-obj">spacing</em>
 keyword argument is used.</p>
 </dd>
-<dt><strong>labels</strong><span class="classifier">array of ints, of same shape as <cite>data</cite> without channels dimension</span></dt><dd><p>Array of seed markers labeled with different positive integers
+<dt><strong>labels</strong><span class="classifier">array of ints, of same shape as <em class="xref py py-obj">data</em> without channels dimension</span></dt><dd><p>Array of seed markers labeled with different positive integers
 for different phases. Zero-labeled pixels are unlabeled pixels.
 Negative labels correspond to inactive pixels that are not taken
 into account (they are removed from the graph). If labels are not
 consecutive integers, the labels array will be transformed so that
-labels are consecutive. In the multichannel case, <cite>labels</cite> should have
-the same shape as a single channel of <cite>data</cite>, i.e. without the final
+labels are consecutive. In the multichannel case, <em class="xref py py-obj">labels</em> should have
+the same shape as a single channel of <em class="xref py py-obj">data</em>, i.e. without the final
 dimension denoting channels.</p>
 </dd>
 <dt><strong>beta</strong><span class="classifier">float, optional</span></dt><dd><p>Penalization coefficient for the random walker motion
-(the greater <cite>beta</cite>, the more difficult the diffusion).</p>
+(the greater <em class="xref py py-obj">beta</em>, the more difficult the diffusion).</p>
 </dd>
 <dt><strong>mode</strong><span class="classifier">string, available options {‘cg_mg’, ‘cg’, ‘bf’}</span></dt><dd><p>Mode for solving the linear system in the random walker algorithm.
 If no preference given, automatically attempt to use the fastest
@@ -288,7 +288,7 @@ installed. For images of size &gt; 512x512, this is the recommended
 <dt><strong>tol</strong><span class="classifier">float, optional</span></dt><dd><p>tolerance to achieve when solving the linear system, in
 cg’ and ‘cg_mg’ modes.</p>
 </dd>
-<dt><strong>copy</strong><span class="classifier">bool, optional</span></dt><dd><p>If copy is False, the <cite>labels</cite> array will be overwritten with
+<dt><strong>copy</strong><span class="classifier">bool, optional</span></dt><dd><p>If copy is False, the <em class="xref py py-obj">labels</em> array will be overwritten with
 the result of the segmentation. Use copy=False if you want to
 save on memory.</p>
 </dd>
@@ -298,7 +298,7 @@ for proper input format in this case).</p>
 <dt><strong>return_full_prob</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the probability that a pixel belongs to each of the labels
 will be returned, instead of only the most likely label.</p>
 </dd>
-<dt><strong>spacing</strong><span class="classifier">iterable of floats, optional</span></dt><dd><p>Spacing between voxels in each spatial dimension. If <cite>None</cite>, then
+<dt><strong>spacing</strong><span class="classifier">iterable of floats, optional</span></dt><dd><p>Spacing between voxels in each spatial dimension. If <em class="xref py py-obj">None</em>, then
 the spacing between pixels/voxels in each dimension is assumed 1.</p>
 </dd>
 </dl>
@@ -306,12 +306,12 @@ the spacing between pixels/voxels in each dimension is assumed 1.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>output</strong><span class="classifier">ndarray</span></dt><dd><ul class="simple">
-<li><p>If <cite>return_full_prob</cite> is False, array of ints of same shape as
-<cite>data</cite>, in which each pixel has been labeled according to the marker
+<li><p>If <em class="xref py py-obj">return_full_prob</em> is False, array of ints of same shape as
+<em class="xref py py-obj">data</em>, in which each pixel has been labeled according to the marker
 that reached the pixel first by anisotropic diffusion.</p></li>
-<li><p>If <cite>return_full_prob</cite> is True, array of floats of shape
-<cite>(nlabels, data.shape)</cite>. <cite>output[label_nb, i, j]</cite> is the probability
-that label <cite>label_nb</cite> reaches the pixel <cite>(i, j)</cite> first.</p></li>
+<li><p>If <em class="xref py py-obj">return_full_prob</em> is True, array of floats of shape
+<em class="xref py py-obj">(nlabels, data.shape)</em>. <em class="xref py py-obj">output[label_nb, i, j]</em> is the probability
+that label <em class="xref py py-obj">label_nb</em> reaches the pixel <em class="xref py py-obj">(i, j)</em> first.</p></li>
 </ul>
 </dd>
 </dl>
@@ -327,7 +327,7 @@ that label <cite>label_nb</cite> reaches the pixel <cite>(i, j)</cite> first.</p
 <p class="rubric">Notes</p>
 <p>Multichannel inputs are scaled with all channel data combined. Ensure all
 channels are separately normalized prior to running this algorithm.</p>
-<p>The <cite>spacing</cite> argument is specifically for anisotropic datasets, where
+<p>The <em class="xref py py-obj">spacing</em> argument is specifically for anisotropic datasets, where
 data points are spaced differently in one or more spatial dimensions.
 Anisotropic data is commonly encountered in medical imaging.</p>
 <p>The algorithm was first proposed in <a class="reference internal" href="#raf7f6bdcab09-1" id="id1">[1]</a>.</p>
@@ -544,7 +544,7 @@ channels. A value of False, for a 3D image, is not currently supported.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The <cite>k</cite> parameter used in the original paper renamed to <cite>scale</cite> here.</p>
+<p>The <em class="xref py py-obj">k</em> parameter used in the original paper renamed to <em class="xref py py-obj">scale</em> here.</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="r89864356f083-1"><span class="brackets">1</span></dt>
@@ -579,7 +579,7 @@ Huttenlocher, D.P.  International Journal of Computer Vision, 2004</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>image</strong><span class="classifier">2D, 3D or 4D ndarray</span></dt><dd><p>Input image, which can be 2D or 3D, and grayscale or multichannel
-(see <cite>multichannel</cite> parameter).</p>
+(see <em class="xref py py-obj">multichannel</em> parameter).</p>
 </dd>
 <dt><strong>n_segments</strong><span class="classifier">int, optional</span></dt><dd><p>The (approximate) number of labels in the segmented output image.</p>
 </dd>
@@ -596,10 +596,10 @@ refining around a chosen value.</p>
 <dt><strong>sigma</strong><span class="classifier">float or (3,) array-like of floats, optional</span></dt><dd><p>Width of Gaussian smoothing kernel for pre-processing for each
 dimension of the image. The same sigma is applied to each dimension in
 case of a scalar value. Zero means no smoothing.
-Note, that <cite>sigma</cite> is automatically scaled if it is scalar and a
+Note, that <em class="xref py py-obj">sigma</em> is automatically scaled if it is scalar and a
 manual voxel spacing is provided (see Notes section).</p>
 </dd>
-<dt><strong>spacing</strong><span class="classifier">(3,) array-like of floats, optional</span></dt><dd><p>The voxel spacing along each image dimension. By default, <cite>slic</cite>
+<dt><strong>spacing</strong><span class="classifier">(3,) array-like of floats, optional</span></dt><dd><p>The voxel spacing along each image dimension. By default, <a class="reference internal" href="#skimage.segmentation.slic" title="skimage.segmentation.slic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">slic</span></code></a>
 assumes uniform spacing (same voxel resolution along z, y and x).
 This parameter controls the weights of the distances along z, y,
 and x during k-means clustering.</p>
@@ -640,16 +640,16 @@ dimension is not of length 3.</p>
 </dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
-<li><p>If <cite>sigma &gt; 0</cite>, the image is smoothed using a Gaussian kernel prior to
+<li><p>If <em class="xref py py-obj">sigma &gt; 0</em>, the image is smoothed using a Gaussian kernel prior to
 segmentation.</p></li>
-<li><p>If <cite>sigma</cite> is scalar and <cite>spacing</cite> is provided, the kernel width is
+<li><p>If <em class="xref py py-obj">sigma</em> is scalar and <em class="xref py py-obj">spacing</em> is provided, the kernel width is
 divided along each dimension by the spacing. For example, if <code class="docutils literal notranslate"><span class="pre">sigma=1</span></code>
-and <code class="docutils literal notranslate"><span class="pre">spacing=[5,</span> <span class="pre">1,</span> <span class="pre">1]</span></code>, the effective <cite>sigma</cite> is <code class="docutils literal notranslate"><span class="pre">[0.2,</span> <span class="pre">1,</span> <span class="pre">1]</span></code>. This
+and <code class="docutils literal notranslate"><span class="pre">spacing=[5,</span> <span class="pre">1,</span> <span class="pre">1]</span></code>, the effective <em class="xref py py-obj">sigma</em> is <code class="docutils literal notranslate"><span class="pre">[0.2,</span> <span class="pre">1,</span> <span class="pre">1]</span></code>. This
 ensures sensible smoothing for anisotropic images.</p></li>
 <li><p>The image is rescaled to be in [0, 1] prior to processing.</p></li>
 <li><p>Images of shape (M, N, 3) are interpreted as 2D RGB images by default. To
 interpret them as 3D with the last dimension having length 3, use
-<cite>multichannel=False</cite>.</p></li>
+<em class="xref py py-obj">multichannel=False</em>.</p></li>
 </ul>
 <p class="rubric">References</p>
 <dl class="citation">
@@ -786,16 +786,16 @@ European Conference on Computer Vision, 2008</p>
 integers or boolean values.</p>
 </dd>
 <dt><strong>connectivity: int in {1, …, `label_img.ndim`}, optional</strong></dt><dd><p>A pixel is considered a boundary pixel if any of its neighbors
-has a different label. <cite>connectivity</cite> controls which pixels are
+has a different label. <em class="xref py py-obj">connectivity</em> controls which pixels are
 considered neighbors. A connectivity of 1 (default) means
 pixels sharing an edge (in 2D) or a face (in 3D) will be
-considered neighbors. A connectivity of <cite>label_img.ndim</cite> means
+considered neighbors. A connectivity of <em class="xref py py-obj">label_img.ndim</em> means
 pixels sharing a corner will be considered neighbors.</p>
 </dd>
 <dt><strong>mode: string in {‘thick’, ‘inner’, ‘outer’, ‘subpixel’}</strong></dt><dd><p>How to mark the boundaries:</p>
 <ul class="simple">
 <li><p>thick: any pixel not completely surrounded by pixels of the
-same label (defined by <cite>connectivity</cite>) is marked as a boundary.
+same label (defined by <em class="xref py py-obj">connectivity</em>) is marked as a boundary.
 This results in boundaries that are 2 pixels thick.</p></li>
 <li><p>inner: outline the pixels <em>just inside</em> of objects, leaving
 background pixels untouched.</p></li>
@@ -807,14 +807,14 @@ original pixels marked as boundary where appropriate.</p></li>
 </ul>
 </dd>
 <dt><strong>background: int, optional</strong></dt><dd><p>For modes ‘inner’ and ‘outer’, a definition of a background
-label is required. See <cite>mode</cite> for descriptions of these two.</p>
+label is required. See <em class="xref py py-obj">mode</em> for descriptions of these two.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl>
-<dt><strong>boundaries</strong><span class="classifier">array of bool, same shape as <cite>label_img</cite></span></dt><dd><p>A bool image where <code class="docutils literal notranslate"><span class="pre">True</span></code> represents a boundary pixel. For
-<cite>mode</cite> equal to ‘subpixel’, <code class="docutils literal notranslate"><span class="pre">boundaries.shape[i]</span></code> is equal
+<dt><strong>boundaries</strong><span class="classifier">array of bool, same shape as <em class="xref py py-obj">label_img</em></span></dt><dd><p>A bool image where <code class="docutils literal notranslate"><span class="pre">True</span></code> represents a boundary pixel. For
+<em class="xref py py-obj">mode</em> equal to ‘subpixel’, <code class="docutils literal notranslate"><span class="pre">boundaries.shape[i]</span></code> is equal
 to <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">label_img.shape[i]</span> <span class="pre">-</span> <span class="pre">1</span></code> for all <code class="docutils literal notranslate"><span class="pre">i</span></code> (a pixel is
 inserted in between all other pairs of pixels).</p>
 </dd>
@@ -969,7 +969,7 @@ that touch the outside of the image are removed.</p>
 </dd>
 <dt><strong>in_place</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether or not to manipulate the labels array in-place.</p>
 </dd>
-<dt><strong>mask</strong><span class="classifier">ndarray of bool, same shape as <cite>image</cite>, optional.</span></dt><dd><p>Image data mask. Objects in labels image overlapping with
+<dt><strong>mask</strong><span class="classifier">ndarray of bool, same shape as <em class="xref py py-obj">image</em>, optional.</span></dt><dd><p>Image data mask. Objects in labels image overlapping with
 False pixels of mask will be removed. If defined, the 
 argument buffer_size will be ignored.</p>
 </dd>
@@ -1084,7 +1084,7 @@ segment in <em>both</em> S1 and S2.</p>
 <dl class="function">
 <dt id="skimage.segmentation.relabel_sequential">
 <code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">relabel_sequential</code><span class="sig-paren">(</span><em class="sig-param">label_field</em>, <em class="sig-param">offset=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/_join.py#L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.relabel_sequential" title="Permalink to this definition">¶</a></dt>
-<dd><p>Relabel arbitrary labels to {<cite>offset</cite>, … <cite>offset</cite> + number_of_labels}.</p>
+<dd><p>Relabel arbitrary labels to {<em class="xref py py-obj">offset</em>, … <em class="xref py py-obj">offset</em> + number_of_labels}.</p>
 <p>This function also returns the forward map (mapping the original labels to
 the reduced labels) and the inverse map (mapping the reduced labels back
 to the original ones).</p>
@@ -1093,25 +1093,25 @@ to the original ones).</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>label_field</strong><span class="classifier">numpy array of int, arbitrary shape</span></dt><dd><p>An array of labels, which must be non-negative integers.</p>
 </dd>
-<dt><strong>offset</strong><span class="classifier">int, optional</span></dt><dd><p>The return labels will start at <cite>offset</cite>, which should be
+<dt><strong>offset</strong><span class="classifier">int, optional</span></dt><dd><p>The return labels will start at <em class="xref py py-obj">offset</em>, which should be
 strictly positive.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl>
-<dt><strong>relabeled</strong><span class="classifier">numpy array of int, same shape as <cite>label_field</cite></span></dt><dd><p>The input label field with labels mapped to
+<dt><strong>relabeled</strong><span class="classifier">numpy array of int, same shape as <em class="xref py py-obj">label_field</em></span></dt><dd><p>The input label field with labels mapped to
 {offset, …, number_of_labels + offset - 1}.
-The data type will be the same as <cite>label_field</cite>, except when
+The data type will be the same as <em class="xref py py-obj">label_field</em>, except when
 offset + number_of_labels causes overflow of the current data type.</p>
 </dd>
 <dt><strong>forward_map</strong><span class="classifier">numpy array of int, shape <code class="docutils literal notranslate"><span class="pre">(label_field.max()</span> <span class="pre">+</span> <span class="pre">1,)</span></code></span></dt><dd><p>The map from the original label space to the returned label
 space. Can be used to re-apply the same mapping. See examples
-for usage. The data type will be the same as <cite>relabeled</cite>.</p>
+for usage. The data type will be the same as <em class="xref py py-obj">relabeled</em>.</p>
 </dd>
 <dt><strong>inverse_map</strong><span class="classifier">1D numpy array of int, of length offset + number of labels</span></dt><dd><p>The map from the new label space to the original space. This
 can be used to reconstruct the original label field from the
-relabeled one. The data type will be the same as <cite>relabeled</cite>.</p>
+relabeled one. The data type will be the same as <em class="xref py py-obj">relabeled</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -1154,7 +1154,7 @@ guaranteed to be smaller than either the input or output images.</p>
 <dl class="function">
 <dt id="skimage.segmentation.watershed">
 <code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">watershed</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">markers=None</em>, <em class="sig-param">connectivity=1</em>, <em class="sig-param">offset=None</em>, <em class="sig-param">mask=None</em>, <em class="sig-param">compactness=0</em>, <em class="sig-param">watershed_line=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/watershed.py#L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.watershed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find watershed basins in <cite>image</cite> flooded from given <cite>markers</cite>.</p>
+<dd><p>Find watershed basins in <em class="xref py py-obj">image</em> flooded from given <em class="xref py py-obj">markers</em>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -1165,14 +1165,14 @@ values to be assigned in the label matrix. Zero means not a marker. If
 <code class="docutils literal notranslate"><span class="pre">None</span></code> (no markers given), the local minima of the image are used as
 markers.</p>
 </dd>
-<dt><strong>connectivity: ndarray, optional</strong></dt><dd><p>An array with the same number of dimensions as <cite>image</cite> whose
+<dt><strong>connectivity: ndarray, optional</strong></dt><dd><p>An array with the same number of dimensions as <em class="xref py py-obj">image</em> whose
 non-zero elements indicate neighbors for connection.
 Following the scipy convention, default is a one-connected array of
 the dimension of the image.</p>
 </dd>
 <dt><strong>offset: array_like of shape image.ndim, optional</strong></dt><dd><p>offset of the connectivity (one offset per dimension)</p>
 </dd>
-<dt><strong>mask: ndarray of bools or 0s and 1s, optional</strong></dt><dd><p>Array of same shape as <cite>image</cite>. Only points at which mask == True
+<dt><strong>mask: ndarray of bools or 0s and 1s, optional</strong></dt><dd><p>Array of same shape as <em class="xref py py-obj">image</em>. Only points at which mask == True
 will be labeled.</p>
 </dd>
 <dt><strong>compactness</strong><span class="classifier">float, optional</span></dt><dd><p>Use compact watershed <a class="reference internal" href="#rc8002e235889-3" id="id9">[3]</a> with given compactness parameter.
@@ -1286,16 +1286,16 @@ segment objects without clearly defined boundaries.</p>
 <dd class="field-odd"><dl>
 <dt><strong>image</strong><span class="classifier">(M, N) ndarray</span></dt><dd><p>Grayscale image to be segmented.</p>
 </dd>
-<dt><strong>mu</strong><span class="classifier">float, optional</span></dt><dd><p>‘edge length’ weight parameter. Higher <cite>mu</cite> values will
+<dt><strong>mu</strong><span class="classifier">float, optional</span></dt><dd><p>‘edge length’ weight parameter. Higher <em class="xref py py-obj">mu</em> values will
 produce a ‘round’ edge, while values closer to zero will
 detect smaller objects.</p>
 </dd>
 <dt><strong>lambda1</strong><span class="classifier">float, optional</span></dt><dd><p>‘difference from average’ weight parameter for the output
-region with value ‘True’. If it is lower than <cite>lambda2</cite>, this
+region with value ‘True’. If it is lower than <em class="xref py py-obj">lambda2</em>, this
 region will have a larger range of values than the other.</p>
 </dd>
 <dt><strong>lambda2</strong><span class="classifier">float, optional</span></dt><dd><p>‘difference from average’ weight parameter for the output
-region with value ‘False’. If it is lower than <cite>lambda1</cite>, this
+region with value ‘False’. If it is lower than <em class="xref py py-obj">lambda1</em>, this
 region will have a larger range of values than the other.</p>
 </dd>
 <dt><strong>tol</strong><span class="classifier">float, positive, optional</span></dt><dd><p>Level set variation tolerance between iterations. If the
@@ -1372,7 +1372,7 @@ in a publication entitled “An Active Contour Model Without Edges”
 <p>This implementation of the algorithm is somewhat simplified in the
 sense that the area factor ‘nu’ described in the original paper is
 not implemented, and is only suitable for grayscale images.</p>
-<p>Typical values for <cite>lambda1</cite> and <cite>lambda2</cite> are 1. If the
+<p>Typical values for <em class="xref py py-obj">lambda1</em> and <em class="xref py py-obj">lambda2</em> are 1. If the
 ‘background’ is very different from the segmented object in terms
 of distribution (for example, a uniform black image with figures
 of varying intensity), then these values should be different from
@@ -1417,7 +1417,7 @@ Line, 2 (2012), pp. 214-224,
 <h2>morphological_geodesic_active_contour<a class="headerlink" href="#morphological-geodesic-active-contour" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.morphological_geodesic_active_contour">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em class="sig-param">gimage</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='circle'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">threshold='auto'</em>, <em class="sig-param">balloon=0</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f0fadbc0d08&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em class="sig-param">gimage</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='circle'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">threshold='auto'</em>, <em class="sig-param">balloon=0</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7ffab56bef28&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Geodesic Active Contours (MorphGAC).</p>
 <p>Geodesic active contours implemented with morphological operators. It can
 be used to segment objects with visible but noisy, cluttered, broken
@@ -1429,11 +1429,11 @@ borders.</p>
 original image. Instead, this is usually a preprocessed version of the
 original image that enhances and highlights the borders (or other
 structures) of the object to segment.
-<cite>morphological_geodesic_active_contour</cite> will try to stop the contour
-evolution in areas where <cite>gimage</cite> is small. See
-<cite>morphsnakes.inverse_gaussian_gradient</cite> as an example function to
+<a class="reference internal" href="#skimage.segmentation.morphological_geodesic_active_contour" title="skimage.segmentation.morphological_geodesic_active_contour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">morphological_geodesic_active_contour</span></code></a> will try to stop the contour
+evolution in areas where <em class="xref py py-obj">gimage</em> is small. See
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">morphsnakes.inverse_gaussian_gradient</span></code> as an example function to
 perform this preprocessing. Note that the quality of
-<cite>morphological_geodesic_active_contour</cite> might greatly depend on this
+<a class="reference internal" href="#skimage.segmentation.morphological_geodesic_active_contour" title="skimage.segmentation.morphological_geodesic_active_contour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">morphological_geodesic_active_contour</span></code></a> might greatly depend on this
 preprocessing.</p>
 </dd>
 <dt><strong>iterations</strong><span class="classifier">uint</span></dt><dd><p>Number of iterations to run.</p>
@@ -1441,8 +1441,8 @@ preprocessing.</p>
 <dt><strong>init_level_set</strong><span class="classifier">str, (M, N) array, or (L, M, N) array</span></dt><dd><p>Initial level set. If an array is given, it will be binarized and used
 as the initial level set. If a string is given, it defines the method
 to generate a reasonable initial level set with the shape of the
-<cite>image</cite>. Accepted values are ‘checkerboard’ and ‘circle’. See the
-documentation of <cite>checkerboard_level_set</cite> and <cite>circle_level_set</cite>
+<em class="xref py py-obj">image</em>. Accepted values are ‘checkerboard’ and ‘circle’. See the
+documentation of <a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">checkerboard_level_set</span></code></a> and <a class="reference internal" href="#skimage.segmentation.circle_level_set" title="skimage.segmentation.circle_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circle_level_set</span></code></a>
 respectively for details about how these level sets are created.</p>
 </dd>
 <dt><strong>smoothing</strong><span class="classifier">uint, optional</span></dt><dd><p>Number of times the smoothing operator is applied per iteration.
@@ -1515,7 +1515,7 @@ Transactions on Pattern Analysis and Machine Intelligence (PAMI),
 <h2>morphological_chan_vese<a class="headerlink" href="#morphological-chan-vese" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.morphological_chan_vese">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_chan_vese</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='checkerboard'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">lambda1=1</em>, <em class="sig-param">lambda2=1</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f0fadbc0bf8&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_chan_vese</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='checkerboard'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">lambda1=1</em>, <em class="sig-param">lambda2=1</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7ffab56bee18&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Active Contours without Edges (MorphACWE)</p>
 <p>Active contours without edges implemented with morphological operators. It
 can be used to segment objects in images and volumes without well defined
@@ -1532,20 +1532,20 @@ darker or lighter than the outer area on average).</p>
 <dt><strong>init_level_set</strong><span class="classifier">str, (M, N) array, or (L, M, N) array</span></dt><dd><p>Initial level set. If an array is given, it will be binarized and used
 as the initial level set. If a string is given, it defines the method
 to generate a reasonable initial level set with the shape of the
-<cite>image</cite>. Accepted values are ‘checkerboard’ and ‘circle’. See the
-documentation of <cite>checkerboard_level_set</cite> and <cite>circle_level_set</cite>
+<em class="xref py py-obj">image</em>. Accepted values are ‘checkerboard’ and ‘circle’. See the
+documentation of <a class="reference internal" href="#skimage.segmentation.checkerboard_level_set" title="skimage.segmentation.checkerboard_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">checkerboard_level_set</span></code></a> and <a class="reference internal" href="#skimage.segmentation.circle_level_set" title="skimage.segmentation.circle_level_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">circle_level_set</span></code></a>
 respectively for details about how these level sets are created.</p>
 </dd>
 <dt><strong>smoothing</strong><span class="classifier">uint, optional</span></dt><dd><p>Number of times the smoothing operator is applied per iteration.
 Reasonable values are around 1-4. Larger values lead to smoother
 segmentations.</p>
 </dd>
-<dt><strong>lambda1</strong><span class="classifier">float, optional</span></dt><dd><p>Weight parameter for the outer region. If <cite>lambda1</cite> is larger than
-<cite>lambda2</cite>, the outer region will contain a larger range of values than
+<dt><strong>lambda1</strong><span class="classifier">float, optional</span></dt><dd><p>Weight parameter for the outer region. If <em class="xref py py-obj">lambda1</em> is larger than
+<em class="xref py py-obj">lambda2</em>, the outer region will contain a larger range of values than
 the inner region.</p>
 </dd>
-<dt><strong>lambda2</strong><span class="classifier">float, optional</span></dt><dd><p>Weight parameter for the inner region. If <cite>lambda2</cite> is larger than
-<cite>lambda1</cite>, the inner region will contain a larger range of values than
+<dt><strong>lambda2</strong><span class="classifier">float, optional</span></dt><dd><p>Weight parameter for the inner region. If <em class="xref py py-obj">lambda2</em> is larger than
+<em class="xref py py-obj">lambda1</em>, the inner region will contain a larger range of values than
 the outer region.</p>
 </dd>
 <dt><strong>iter_callback</strong><span class="classifier">function, optional</span></dt><dd><p>If given, this function is called once per iteration with the current
@@ -1607,7 +1607,7 @@ result in the range [0, 1]. Flat areas are assigned values close to 1,
 while areas close to borders are assigned values close to 0.</p>
 <p>This function or a similar one defined by the user should be applied over
 the image as a preprocessing step before calling
-<cite>morphological_geodesic_active_contour</cite>.</p>
+<a class="reference internal" href="#skimage.segmentation.morphological_geodesic_active_contour" title="skimage.segmentation.morphological_geodesic_active_contour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">morphological_geodesic_active_contour</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -1624,7 +1624,7 @@ resulting array.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>gimage</strong><span class="classifier">(M, N) or (L, M, N) array</span></dt><dd><p>Preprocessed image (or volume) suitable for
-<cite>morphological_geodesic_active_contour</cite>.</p>
+<a class="reference internal" href="#skimage.segmentation.morphological_geodesic_active_contour" title="skimage.segmentation.morphological_geodesic_active_contour"><code class="xref py py-obj docutils literal notranslate"><span class="pre">morphological_geodesic_active_contour</span></code></a>.</p>
 </dd>
 </dl>
 </dd>
@@ -1664,7 +1664,7 @@ smallest image dimension.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl>
-<dt><strong>out</strong><span class="classifier">array with shape <cite>image_shape</cite></span></dt><dd><p>Binary level set of the circle with the given <cite>radius</cite> and <cite>center</cite>.</p>
+<dt><strong>out</strong><span class="classifier">array with shape <em class="xref py py-obj">image_shape</em></span></dt><dd><p>Binary level set of the circle with the given <em class="xref py py-obj">radius</em> and <em class="xref py py-obj">center</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -1695,7 +1695,7 @@ smallest image dimension.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl>
-<dt><strong>out</strong><span class="classifier">array with shape <cite>image_shape</cite></span></dt><dd><p>Binary level set of the checkerboard.</p>
+<dt><strong>out</strong><span class="classifier">array with shape <em class="xref py py-obj">image_shape</em></span></dt><dd><p>Binary level set of the checkerboard.</p>
 </dd>
 </dl>
 </dd>
@@ -1722,28 +1722,28 @@ smallest image dimension.</p>
 <dt id="skimage.segmentation.flood">
 <code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">flood</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">seed_point</em>, <em class="sig-param">*</em>, <em class="sig-param">selem=None</em>, <em class="sig-param">connectivity=None</em>, <em class="sig-param">tolerance=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/_flood_fill.py#L113"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.flood" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mask corresponding to a flood fill.</p>
-<p>Starting at a specific <cite>seed_point</cite>, connected points equal or within
-<cite>tolerance</cite> of the seed value are found.</p>
+<p>Starting at a specific <em class="xref py py-obj">seed_point</em>, connected points equal or within
+<em class="xref py py-obj">tolerance</em> of the seed value are found.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>An n-dimensional array.</p>
 </dd>
-<dt><strong>seed_point</strong><span class="classifier">tuple or int</span></dt><dd><p>The point in <cite>image</cite> used as the starting point for the flood fill.  If
+<dt><strong>seed_point</strong><span class="classifier">tuple or int</span></dt><dd><p>The point in <em class="xref py py-obj">image</em> used as the starting point for the flood fill.  If
 the image is 1D, this point may be given as an integer.</p>
 </dd>
 <dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>A structuring element used to determine the neighborhood of each
 evaluated pixel. It must contain only 1’s and 0’s, have the same number
-of dimensions as <cite>image</cite>. If not given, all adjacent pixels are
+of dimensions as <em class="xref py py-obj">image</em>. If not given, all adjacent pixels are
 considered as part of the neighborhood (fully connected).</p>
 </dd>
 <dt><strong>connectivity</strong><span class="classifier">int, optional</span></dt><dd><p>A number used to determine the neighborhood of each evaluated pixel.
 Adjacent pixels whose squared distance from the center is larger or
-equal to <cite>connectivity</cite> are considered neighbors. Ignored if
-<cite>selem</cite> is not None.</p>
+equal to <em class="xref py py-obj">connectivity</em> are considered neighbors. Ignored if
+<em class="xref py py-obj">selem</em> is not None.</p>
 </dd>
 <dt><strong>tolerance</strong><span class="classifier">float or int, optional</span></dt><dd><p>If None (default), adjacent values must be strictly equal to the
-initial value of <cite>image</cite> at <cite>seed_point</cite>.  This is fastest.  If a value
+initial value of <em class="xref py py-obj">image</em> at <em class="xref py py-obj">seed_point</em>.  This is fastest.  If a value
 is given, a comparison will be done at every point and if within
 tolerance of the initial value will also be filled (inclusive).</p>
 </dd>
@@ -1751,7 +1751,7 @@ tolerance of the initial value will also be filled (inclusive).</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>mask</strong><span class="classifier">ndarray</span></dt><dd><p>A Boolean array with the same shape as <cite>image</cite> is returned, with True
+<dt><strong>mask</strong><span class="classifier">ndarray</span></dt><dd><p>A Boolean array with the same shape as <em class="xref py py-obj">image</em> is returned, with True
 values for areas connected to and equal (or within tolerance of) the
 seed point.  All other values are False.</p>
 </dd>
@@ -1763,7 +1763,7 @@ seed point.  All other values are False.</p>
 raster graphics programs.  This function returns just the mask
 representing the fill.</p>
 <p>If indices are desired rather than masks for memory reasons, the user can
-simply run <cite>numpy.nonzero</cite> on the result, save the indices, and discard
+simply run <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.nonzero.html#numpy.nonzero" title="(in NumPy v1.17)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.nonzero</span></code></a> on the result, save the indices, and discard
 this mask.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <span class="n">flood</span>
@@ -1828,45 +1828,45 @@ this mask.</p>
 <dt id="skimage.segmentation.flood_fill">
 <code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">flood_fill</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">seed_point</em>, <em class="sig-param">new_value</em>, <em class="sig-param">*</em>, <em class="sig-param">selem=None</em>, <em class="sig-param">connectivity=None</em>, <em class="sig-param">tolerance=None</em>, <em class="sig-param">inplace=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/_flood_fill.py#L16"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.flood_fill" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform flood filling on an image.</p>
-<p>Starting at a specific <cite>seed_point</cite>, connected points equal or within
-<cite>tolerance</cite> of the seed value are found, then set to <cite>new_value</cite>.</p>
+<p>Starting at a specific <em class="xref py py-obj">seed_point</em>, connected points equal or within
+<em class="xref py py-obj">tolerance</em> of the seed value are found, then set to <em class="xref py py-obj">new_value</em>.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
 <dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>An n-dimensional array.</p>
 </dd>
-<dt><strong>seed_point</strong><span class="classifier">tuple or int</span></dt><dd><p>The point in <cite>image</cite> used as the starting point for the flood fill.  If
+<dt><strong>seed_point</strong><span class="classifier">tuple or int</span></dt><dd><p>The point in <em class="xref py py-obj">image</em> used as the starting point for the flood fill.  If
 the image is 1D, this point may be given as an integer.</p>
 </dd>
-<dt><strong>new_value</strong><span class="classifier"><cite>image</cite> type</span></dt><dd><p>New value to set the entire fill.  This must be chosen in agreement
-with the dtype of <cite>image</cite>.</p>
+<dt><strong>new_value</strong><span class="classifier"><em class="xref py py-obj">image</em> type</span></dt><dd><p>New value to set the entire fill.  This must be chosen in agreement
+with the dtype of <em class="xref py py-obj">image</em>.</p>
 </dd>
 <dt><strong>selem</strong><span class="classifier">ndarray, optional</span></dt><dd><p>A structuring element used to determine the neighborhood of each
 evaluated pixel. It must contain only 1’s and 0’s, have the same number
-of dimensions as <cite>image</cite>. If not given, all adjacent pixels are
+of dimensions as <em class="xref py py-obj">image</em>. If not given, all adjacent pixels are
 considered as part of the neighborhood (fully connected).</p>
 </dd>
 <dt><strong>connectivity</strong><span class="classifier">int, optional</span></dt><dd><p>A number used to determine the neighborhood of each evaluated pixel.
 Adjacent pixels whose squared distance from the center is less than or
-equal to <cite>connectivity</cite> are considered neighbors. Ignored if <cite>selem</cite> is
+equal to <em class="xref py py-obj">connectivity</em> are considered neighbors. Ignored if <em class="xref py py-obj">selem</em> is
 not None.</p>
 </dd>
 <dt><strong>tolerance</strong><span class="classifier">float or int, optional</span></dt><dd><p>If None (default), adjacent values must be strictly equal to the
-value of <cite>image</cite> at <cite>seed_point</cite> to be filled.  This is fastest.
+value of <em class="xref py py-obj">image</em> at <em class="xref py py-obj">seed_point</em> to be filled.  This is fastest.
 If a tolerance is provided, adjacent points with values within plus or
 minus tolerance from the seed point are filled (inclusive).</p>
 </dd>
-<dt><strong>inplace</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, flood filling is applied to <cite>image</cite> inplace.  If False, the
-flood filled result is returned without modifying the input <cite>image</cite>
+<dt><strong>inplace</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, flood filling is applied to <em class="xref py py-obj">image</em> inplace.  If False, the
+flood filled result is returned without modifying the input <em class="xref py py-obj">image</em>
 (default).</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>filled</strong><span class="classifier">ndarray</span></dt><dd><p>An array with the same shape as <cite>image</cite> is returned, with values in
+<dt><strong>filled</strong><span class="classifier">ndarray</span></dt><dd><p>An array with the same shape as <em class="xref py py-obj">image</em> is returned, with values in
 areas connected to and equal (or within tolerance of) the seed point
-replaced with <cite>new_value</cite>.</p>
+replaced with <em class="xref py py-obj">new_value</em>.</p>
 </dd>
 </dl>
 </dd>

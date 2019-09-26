@@ -205,9 +205,9 @@ Fourier diagonalisation).</p>
 response (input image space) if the data-type is real, or the
 transfer function (Fourier space) if the data-type is
 complex. There is no constraints on the shape of the impulse
-response. The transfer function must be of shape <cite>(M, N)</cite> if
-<cite>is_real is True</cite>, <cite>(M, N // 2 + 1)</cite> otherwise (see
-<cite>np.fft.rfftn</cite>).</p>
+response. The transfer function must be of shape <em class="xref py py-obj">(M, N)</em> if
+<em class="xref py py-obj">is_real is True</em>, <em class="xref py py-obj">(M, N // 2 + 1)</em> otherwise (see
+<em class="xref py py-obj">np.fft.rfftn</em>).</p>
 </dd>
 <dt><strong>balance</strong><span class="classifier">float</span></dt><dd><p>The regularisation parameter value that tunes the balance
 between the data adequacy that improve frequency restoration
@@ -216,7 +216,7 @@ avoid noise artifacts).</p>
 </dd>
 <dt><strong>reg</strong><span class="classifier">ndarray, optional</span></dt><dd><p>The regularisation operator. The Laplacian by default. It can
 be an impulse response or a transfer function, as for the
-psf. Shape constraint is the same as for the <cite>psf</cite> parameter.</p>
+psf. Shape constraint is the same as for the <em class="xref py py-obj">psf</em> parameter.</p>
 </dd>
 <dt><strong>is_real</strong><span class="classifier">boolean, optional</span></dt><dd><p>True by default. Specify if <code class="docutils literal notranslate"><span class="pre">psf</span></code> and <code class="docutils literal notranslate"><span class="pre">reg</span></code> are provided
 with hermitian hypothesis, that is only half of the frequency
@@ -468,9 +468,9 @@ original, unwrapped image.</p>
 provided, the masked entries will not be changed, and their values
 will not be used to guide the unwrapping of neighboring, unmasked
 values. Masked 1D arrays are not allowed, and will raise a
-<cite>ValueError</cite>.</p>
+<em class="xref py py-obj">ValueError</em>.</p>
 </dd>
-<dt><strong>wrap_around</strong><span class="classifier">bool or sequence of bool, optional</span></dt><dd><p>When an element of the sequence is  <cite>True</cite>, the unwrapping process
+<dt><strong>wrap_around</strong><span class="classifier">bool or sequence of bool, optional</span></dt><dd><p>When an element of the sequence is  <em class="xref py py-obj">True</em>, the unwrapping process
 will regard the edges along the corresponding axis of the image to be
 connected and use this connectivity to guide the phase unwrapping
 process. If only a single boolean is given, it will apply to all axes.
@@ -483,7 +483,7 @@ seed of the PRNG to achieve deterministic behavior.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>image_unwrapped</strong><span class="classifier">array_like, double</span></dt><dd><p>Unwrapped image of the same shape as the input. If the input <cite>image</cite>
+<dt><strong>image_unwrapped</strong><span class="classifier">array_like, double</span></dt><dd><p>Unwrapped image of the same shape as the input. If the input <em class="xref py py-obj">image</em>
 was a masked array, the mask will be preserved.</p>
 </dd>
 </dl>
@@ -546,9 +546,9 @@ regularization parameter (<a class="reference internal" href="#rc0e3588f2bc3-1" 
 <dd class="field-odd"><dl>
 <dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input data to be denoised (converted using img_as_float`).</p>
 </dd>
-<dt><strong>weight</strong><span class="classifier">float</span></dt><dd><p>Denoising weight. The smaller the <cite>weight</cite>, the more denoising (at
-the expense of less similarity to the <cite>input</cite>). The regularization
-parameter <cite>lambda</cite> is chosen as <cite>2 * weight</cite>.</p>
+<dt><strong>weight</strong><span class="classifier">float</span></dt><dd><p>Denoising weight. The smaller the <em class="xref py py-obj">weight</em>, the more denoising (at
+the expense of less similarity to the <em class="xref py py-obj">input</em>). The regularization
+parameter <em class="xref py py-obj">lambda</em> is chosen as <em class="xref py py-obj">2 * weight</em>.</p>
 </dd>
 <dt><strong>eps</strong><span class="classifier">float, optional</span></dt><dd><p>Relative difference of the value of the cost function that determines
 the stop criterion. The algorithm stops when:</p>
@@ -600,12 +600,12 @@ using Split Bregman” in Image Processing On Line on 2012–05–19,
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>image</strong><span class="classifier">ndarray of ints, uints or floats</span></dt><dd><p>Input data to be denoised. <cite>image</cite> can be of any numeric type,
+<dt><strong>image</strong><span class="classifier">ndarray of ints, uints or floats</span></dt><dd><p>Input data to be denoised. <em class="xref py py-obj">image</em> can be of any numeric type,
 but it is cast into an ndarray of floats for the computation
 of the denoised image.</p>
 </dd>
-<dt><strong>weight</strong><span class="classifier">float, optional</span></dt><dd><p>Denoising weight. The greater <cite>weight</cite>, the more denoising (at
-the expense of fidelity to <cite>input</cite>).</p>
+<dt><strong>weight</strong><span class="classifier">float, optional</span></dt><dd><p>Denoising weight. The greater <em class="xref py py-obj">weight</em>, the more denoising (at
+the expense of fidelity to <em class="xref py py-obj">input</em>).</p>
 </dd>
 <dt><strong>eps</strong><span class="classifier">float, optional</span></dt><dd><p>Relative difference of the value of the cost function that
 determines the stop criterion. The algorithm stops when:</p>
@@ -691,7 +691,7 @@ If win_size is not specified, it is calculated as
 <dt><strong>sigma_color</strong><span class="classifier">float</span></dt><dd><p>Standard deviation for grayvalue/color distance (radiometric
 similarity). A larger value results in averaging of pixels with larger
 radiometric differences. Note, that the image will be converted using
-the <cite>img_as_float</cite> function and thus the standard deviation is in
+the <em class="xref py py-obj">img_as_float</em> function and thus the standard deviation is in
 respect to the range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code>. If the value is <code class="docutils literal notranslate"><span class="pre">None</span></code> the standard
 deviation of the <code class="docutils literal notranslate"><span class="pre">image</span></code> will be used.</p>
 </dd>
@@ -702,7 +702,7 @@ averaging of pixels with larger spatial differences.</p>
 A larger value results in improved accuracy.</p>
 </dd>
 <dt><strong>mode</strong><span class="classifier">{‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}</span></dt><dd><p>How to handle values outside the image borders. See
-<cite>numpy.pad</cite> for detail.</p>
+<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.pad.html#numpy.pad" title="(in NumPy v1.17)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.pad</span></code></a> for detail.</p>
 </dd>
 <dt><strong>cval</strong><span class="classifier">string</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p>
@@ -724,10 +724,10 @@ channels or another spatial dimension.</p>
 their spatial closeness and radiometric similarity <a class="reference internal" href="#rb832e60bc162-1" id="id17">[1]</a>.</p>
 <p>Spatial closeness is measured by the Gaussian function of the Euclidean
 distance between two pixels and a certain standard deviation
-(<cite>sigma_spatial</cite>).</p>
+(<em class="xref py py-obj">sigma_spatial</em>).</p>
 <p>Radiometric similarity is measured by the Gaussian function of the
 Euclidean distance between two color values and a certain standard
-deviation (<cite>sigma_color</cite>).</p>
+deviation (<em class="xref py py-obj">sigma_color</em>).</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="rb832e60bc162-1"><span class="brackets"><a class="fn-backref" href="#id17">1</a></span></dt>
@@ -765,7 +765,7 @@ Images.” IEEE International Conference on Computer Vision (1998)
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray ([M[, N[, …P]][, C]) of ints, uints or floats</span></dt><dd><p>Input data to be denoised. <cite>image</cite> can be of any numeric type,
+<dt><strong>image</strong><span class="classifier">ndarray ([M[, N[, …P]][, C]) of ints, uints or floats</span></dt><dd><p>Input data to be denoised. <em class="xref py py-obj">image</em> can be of any numeric type,
 but it is cast into an ndarray of floats for the computation
 of the denoised image.</p>
 </dd>
@@ -774,7 +774,7 @@ coefficient threshold(s). When None (default), the noise standard
 deviation is estimated via the method in <a class="reference internal" href="#r3b8ec6d23a4e-2" id="id19">[2]</a>.</p>
 </dd>
 <dt><strong>wavelet</strong><span class="classifier">string, optional</span></dt><dd><p>The type of wavelet to perform and can be any of the options
-<code class="docutils literal notranslate"><span class="pre">pywt.wavelist</span></code> outputs. The default is <cite>‘db1’</cite>. For example,
+<code class="docutils literal notranslate"><span class="pre">pywt.wavelist</span></code> outputs. The default is <em class="xref py py-obj">‘db1’</em>. For example,
 <code class="docutils literal notranslate"><span class="pre">wavelet</span></code> can be any of <code class="docutils literal notranslate"><span class="pre">{'db2',</span> <span class="pre">'haar',</span> <span class="pre">'sym9'}</span></code> and many more.</p>
 </dd>
 <dt><strong>mode</strong><span class="classifier">{‘soft’, ‘hard’}, optional</span></dt><dd><p>An optional argument to choose the type of denoising performed. It
@@ -814,7 +814,7 @@ image, but larger thresholds also decrease the detail present in the image.</p>
 plane separately. The output image is clipped between either [-1, 1] and
 [0, 1] depending on the input image range.</p>
 <p>When YCbCr conversion is done, every color channel is scaled between 0
-and 1, and <cite>sigma</cite> values are applied to these scaled color channels.</p>
+and 1, and <em class="xref py py-obj">sigma</em> values are applied to these scaled color channels.</p>
 <p>Many wavelet coefficient thresholding approaches have been proposed. By
 default, <code class="docutils literal notranslate"><span class="pre">denoise_wavelet</span></code> applies BayesShrink, which is an adaptive
 thresholding method that computes separate thresholds for each wavelet
@@ -911,7 +911,7 @@ noise variance into account (see Notes below).</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>result</strong><span class="classifier">ndarray</span></dt><dd><p>Denoised image, of same shape as <cite>image</cite>.</p>
+<dt><strong>result</strong><span class="classifier">ndarray</span></dt><dd><p>Denoised image, of same shape as <em class="xref py py-obj">image</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -949,19 +949,19 @@ of the distance can result in a slightly poorer denoising
 performance. Moreover, for small images (images with a linear size
 that is only a few times the patch size), the classic algorithm can
 be faster due to boundary effects.</p>
-<p>The image is padded using the <cite>reflect</cite> mode of <cite>skimage.util.pad</cite>
+<p>The image is padded using the <em class="xref py py-obj">reflect</em> mode of <a class="reference internal" href="skimage.util.html#skimage.util.pad" title="skimage.util.pad"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.util.pad</span></code></a>
 before denoising.</p>
-<p>If the noise standard deviation, <cite>sigma</cite>, is provided a more robust
+<p>If the noise standard deviation, <em class="xref py py-obj">sigma</em>, is provided a more robust
 computation of patch weights is used.  Subtracting the known noise variance
 from the computed patch distances improves the estimates of patch
 similarity, giving a moderate improvement to denoising performance <a class="reference internal" href="#rc9b3919da938-4" id="id30">[4]</a>.
 It was also mentioned as an option for the fast variant of the algorithm in
 <a class="reference internal" href="#rc9b3919da938-3" id="id31">[3]</a>.</p>
-<p>When <cite>sigma</cite> is provided, a smaller <cite>h</cite> should typically be used to
-avoid oversmoothing.  The optimal value for <cite>h</cite> depends on the image
+<p>When <em class="xref py py-obj">sigma</em> is provided, a smaller <em class="xref py py-obj">h</em> should typically be used to
+avoid oversmoothing.  The optimal value for <em class="xref py py-obj">h</em> depends on the image
 content and noise level, but a reasonable starting point is
-<code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">=</span> <span class="pre">0.8</span> <span class="pre">*</span> <span class="pre">sigma</span></code> when <cite>fast_mode</cite> is <cite>True</cite>, or <code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">=</span> <span class="pre">0.6</span> <span class="pre">*</span> <span class="pre">sigma</span></code> when
-<cite>fast_mode</cite> is <cite>False</cite>.</p>
+<code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">=</span> <span class="pre">0.8</span> <span class="pre">*</span> <span class="pre">sigma</span></code> when <em class="xref py py-obj">fast_mode</em> is <em class="xref py py-obj">True</em>, or <code class="docutils literal notranslate"><span class="pre">h</span> <span class="pre">=</span> <span class="pre">0.6</span> <span class="pre">*</span> <span class="pre">sigma</span></code> when
+<em class="xref py py-obj">fast_mode</em> is <em class="xref py py-obj">False</em>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="rc9b3919da938-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id26">1</a>,<a href="#id28">2</a>)</span></dt>
@@ -1015,7 +1015,7 @@ Image Processing On Line, 2011, vol. 1, pp. 208-212.
 <dd class="field-odd"><dl class="simple">
 <dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Image for which to estimate the noise standard deviation.</p>
 </dd>
-<dt><strong>average_sigmas</strong><span class="classifier">bool, optional</span></dt><dd><p>If true, average the channel estimates of <cite>sigma</cite>.  Otherwise return
+<dt><strong>average_sigmas</strong><span class="classifier">bool, optional</span></dt><dd><p>If true, average the channel estimates of <em class="xref py py-obj">sigma</em>.  Otherwise return
 a list of sigmas corresponding to each channel.</p>
 </dd>
 <dt><strong>multichannel</strong><span class="classifier">bool</span></dt><dd><p>Estimate sigma separately for each channel.</p>
@@ -1024,8 +1024,8 @@ a list of sigmas corresponding to each channel.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>sigma</strong><span class="classifier">float or list</span></dt><dd><p>Estimated noise standard deviation(s).  If <cite>multichannel</cite> is True and
-<cite>average_sigmas</cite> is False, a separate noise estimate for each channel
+<dt><strong>sigma</strong><span class="classifier">float or list</span></dt><dd><p>Estimated noise standard deviation(s).  If <em class="xref py py-obj">multichannel</em> is True and
+<em class="xref py py-obj">average_sigmas</em> is False, a separate noise estimate for each channel
 is returned.  Otherwise, the average of the individual channel
 estimates is returned.</p>
 </dd>
@@ -1086,7 +1086,7 @@ by wavelet shrinkage.” Biometrika 81.3 (1994): 425-455.
 of the ‘image’ channels. Unknown pixels have to be represented with 1,
 known pixels - with 0.</p>
 </dd>
-<dt><strong>multichannel</strong><span class="classifier">boolean, optional</span></dt><dd><p>If True, the last <cite>image</cite> dimension is considered as a color channel,
+<dt><strong>multichannel</strong><span class="classifier">boolean, optional</span></dt><dd><p>If True, the last <em class="xref py py-obj">image</em> dimension is considered as a color channel,
 otherwise as spatial.</p>
 </dd>
 </dl>

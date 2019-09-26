@@ -565,7 +565,7 @@ Transactions on 32.5 (2010): 815-830.</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>(optional) global image normalization</p></li>
-<li><p>computing the gradient image in <cite>row</cite> and <cite>col</cite></p></li>
+<li><p>computing the gradient image in <em class="xref py py-obj">row</em> and <em class="xref py py-obj">col</em></p></li>
 <li><p>computing gradient histograms</p></li>
 <li><p>normalizing across blocks</p></li>
 <li><p>flattening into a feature vector</p></li>
@@ -591,7 +591,7 @@ Transactions on 32.5 (2010): 815-830.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">L2</span></code></dt><dd><p>Normalization using L2-norm.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">L2-Hys</span></code></dt><dd><p>Normalization using L2-norm, followed by limiting the
-maximum values to 0.2 (<cite>Hys</cite> stands for <cite>hysteresis</cite>) and
+maximum values to 0.2 (<em class="xref py py-obj">Hys</em> stands for <em class="xref py py-obj">hysteresis</em>) and
 renormalization using L2-norm. (default)
 For details, see <a class="reference internal" href="#ra159ccd8c91f-3" id="id8">[3]</a>, <a class="reference internal" href="#ra159ccd8c91f-4" id="id9">[4]</a>.</p>
 </dd>
@@ -605,22 +605,22 @@ histogram value.</p>
 </dd>
 <dt><strong>transform_sqrt</strong><span class="classifier">bool, optional</span></dt><dd><p>Apply power law compression to normalize the image before
 processing. DO NOT use this if the image contains negative
-values. Also see <cite>notes</cite> section below.</p>
+values. Also see <em class="xref py py-obj">notes</em> section below.</p>
 </dd>
 <dt><strong>feature_vector</strong><span class="classifier">bool, optional</span></dt><dd><p>Return the data as a feature vector by calling .ravel() on the result
 just before returning.</p>
 </dd>
-<dt><strong>multichannel</strong><span class="classifier">boolean, optional</span></dt><dd><p>If True, the last <cite>image</cite> dimension is considered as a color channel,
+<dt><strong>multichannel</strong><span class="classifier">boolean, optional</span></dt><dd><p>If True, the last <em class="xref py py-obj">image</em> dimension is considered as a color channel,
 otherwise as spatial.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>out</strong><span class="classifier">(n_blocks_row, n_blocks_col, n_cells_row, n_cells_col, n_orient) ndarray</span></dt><dd><p>HOG descriptor for the image. If <cite>feature_vector</cite> is True, a 1D
+<dt><strong>out</strong><span class="classifier">(n_blocks_row, n_blocks_col, n_cells_row, n_cells_col, n_orient) ndarray</span></dt><dd><p>HOG descriptor for the image. If <em class="xref py py-obj">feature_vector</em> is True, a 1D
 (flattened) array is returned.</p>
 </dd>
-<dt><strong>hog_image</strong><span class="classifier">(M, N) ndarray, optional</span></dt><dd><p>A visualisation of the HOG image. Only provided if <cite>visualize</cite> is True.</p>
+<dt><strong>hog_image</strong><span class="classifier">(M, N) ndarray, optional</span></dt><dd><p>A visualisation of the HOG image. Only provided if <em class="xref py py-obj">visualize</em> is True.</p>
 </dd>
 </dl>
 </dd>
@@ -632,7 +632,7 @@ paper; (II) no smoothing within cells (Gaussian spatial window with sigma=8pix
 in the paper); (III) L1 block normalization is used (L2-Hys in the paper).</p>
 <p>Power law compression, also known as Gamma correction, is used to reduce
 the effects of shadowing and illumination variations. The compression makes
-the dark regions lighter. When the kwarg <cite>transform_sqrt</cite> is set to
+the dark regions lighter. When the kwarg <em class="xref py py-obj">transform_sqrt</em> is set to
 <code class="docutils literal notranslate"><span class="pre">True</span></code>, the function computes the square root of each color channel
 and then applies the hog algorithm to the image.</p>
 <p class="rubric">References</p>
@@ -682,26 +682,26 @@ greyscale values at a given offset over an image.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>image</strong><span class="classifier">array_like</span></dt><dd><p>Integer typed input image. Only positive valued images are supported.
-If type is other than uint8, the argument <cite>levels</cite> needs to be set.</p>
+If type is other than uint8, the argument <em class="xref py py-obj">levels</em> needs to be set.</p>
 </dd>
 <dt><strong>distances</strong><span class="classifier">array_like</span></dt><dd><p>List of pixel pair distance offsets.</p>
 </dd>
 <dt><strong>angles</strong><span class="classifier">array_like</span></dt><dd><p>List of pixel pair angles in radians.</p>
 </dd>
-<dt><strong>levels</strong><span class="classifier">int, optional</span></dt><dd><p>The input image should contain integers in [0, <cite>levels</cite>-1],
+<dt><strong>levels</strong><span class="classifier">int, optional</span></dt><dd><p>The input image should contain integers in [0, <em class="xref py py-obj">levels</em>-1],
 where levels indicate the number of grey-levels counted
 (typically 256 for an 8-bit image). This argument is required for
 16-bit images or higher and is typically the maximum of the image.
-As the output matrix is at least <cite>levels</cite> x <cite>levels</cite>, it might
+As the output matrix is at least <em class="xref py py-obj">levels</em> x <em class="xref py py-obj">levels</em>, it might
 be preferable to use binning of the input image rather than
-large values for <cite>levels</cite>.</p>
+large values for <em class="xref py py-obj">levels</em>.</p>
 </dd>
-<dt><strong>symmetric</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the output matrix <cite>P[:, :, d, theta]</cite> is symmetric. This
+<dt><strong>symmetric</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the output matrix <em class="xref py py-obj">P[:, :, d, theta]</em> is symmetric. This
 is accomplished by ignoring the order of value pairs, so both
 (i, j) and (j, i) are accumulated when (i, j) is encountered
 for a given offset. The default is False.</p>
 </dd>
-<dt><strong>normed</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, normalize each matrix <cite>P[:, :, d, theta]</cite> by dividing
+<dt><strong>normed</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, normalize each matrix <em class="xref py py-obj">P[:, :, d, theta]</em> by dividing
 by the total number of accumulated co-occurrences for the given
 offset. The elements of the resulting matrix sum to 1. The
 default is False.</p>
@@ -711,9 +711,9 @@ default is False.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>P</strong><span class="classifier">4-D ndarray</span></dt><dd><p>The grey-level co-occurrence histogram. The value
-<cite>P[i,j,d,theta]</cite> is the number of times that grey-level <cite>j</cite>
-occurs at a distance <cite>d</cite> and at an angle <cite>theta</cite> from
-grey-level <cite>i</cite>. If <cite>normed</cite> is <cite>False</cite>, the output is of
+<em class="xref py py-obj">P[i,j,d,theta]</em> is the number of times that grey-level <em class="xref py py-obj">j</em>
+occurs at a distance <em class="xref py py-obj">d</em> and at an angle <em class="xref py py-obj">theta</em> from
+grey-level <em class="xref py py-obj">i</em>. If <em class="xref py py-obj">normed</em> is <em class="xref py py-obj">False</em>, the output is of
 type uint32, otherwise it is float64. The dimensions are:
 levels x levels x number of distances x number of angles.</p>
 </dd>
@@ -803,9 +803,9 @@ properties.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>P</strong><span class="classifier">ndarray</span></dt><dd><p>Input array. <cite>P</cite> is the grey-level co-occurrence histogram
+<dt><strong>P</strong><span class="classifier">ndarray</span></dt><dd><p>Input array. <em class="xref py py-obj">P</em> is the grey-level co-occurrence histogram
 for which to compute the specified property. The value
-<cite>P[i,j,d,theta]</cite> is the number of times that grey-level j
+<em class="xref py py-obj">P[i,j,d,theta]</em> is the number of times that grey-level j
 occurs at a distance d and at an angle theta from
 grey-level i.</p>
 </dd>
@@ -815,7 +815,7 @@ grey-level i.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>results</strong><span class="classifier">2-D ndarray</span></dt><dd><p>2-dimensional array. <cite>results[d, a]</cite> is the property ‘prop’ for
+<dt><strong>results</strong><span class="classifier">2-D ndarray</span></dt><dd><p>2-dimensional array. <em class="xref py py-obj">results[d, a]</em> is the property ‘prop’ for
 the d’th distance and the a’th angle.</p>
 </dd>
 </dl>
@@ -999,7 +999,7 @@ Stan Z. Li
 <dd><p>Multi-block local binary pattern visualization.</p>
 <p>Blocks with higher sums are colored with alpha-blended white rectangles,
 whereas blocks with lower sums are colored alpha-blended cyan. Colors
-and the <cite>alpha</cite> parameter can be changed.</p>
+and the <em class="xref py py-obj">alpha</em> parameter can be changed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -1064,46 +1064,46 @@ Stan Z. Li
 <dt id="skimage.feature.peak_local_max">
 <code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">peak_local_max</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_distance=1</em>, <em class="sig-param">threshold_abs=None</em>, <em class="sig-param">threshold_rel=None</em>, <em class="sig-param">exclude_border=True</em>, <em class="sig-param">indices=True</em>, <em class="sig-param">num_peaks=inf</em>, <em class="sig-param">footprint=None</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">num_peaks_per_label=inf</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/peak.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.peak_local_max" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find peaks in an image as coordinate list or boolean mask.</p>
-<p>Peaks are the local maxima in a region of <cite>2 * min_distance + 1</cite>
-(i.e. peaks are separated by at least <cite>min_distance</cite>).</p>
+<p>Peaks are the local maxima in a region of <em class="xref py py-obj">2 * min_distance + 1</em>
+(i.e. peaks are separated by at least <em class="xref py py-obj">min_distance</em>).</p>
 <p>If there are multiple local maxima with identical pixel intensities
-inside the region defined with <cite>min_distance</cite>,
+inside the region defined with <em class="xref py py-obj">min_distance</em>,
 the coordinates of all such pixels are returned.</p>
-<p>If both <cite>threshold_abs</cite> and <cite>threshold_rel</cite> are provided, the maximum
+<p>If both <em class="xref py py-obj">threshold_abs</em> and <em class="xref py py-obj">threshold_rel</em> are provided, the maximum
 of the two is chosen as the minimum intensity threshold of peaks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
 </dd>
-<dt><strong>min_distance</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum number of pixels separating peaks in a region of <cite>2 *
-min_distance + 1</cite> (i.e. peaks are separated by at least
-<cite>min_distance</cite>).
-To find the maximum number of peaks, use <cite>min_distance=1</cite>.</p>
+<dt><strong>min_distance</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum number of pixels separating peaks in a region of <em class="xref py py-obj">2 *
+min_distance + 1</em> (i.e. peaks are separated by at least
+<em class="xref py py-obj">min_distance</em>).
+To find the maximum number of peaks, use <em class="xref py py-obj">min_distance=1</em>.</p>
 </dd>
 <dt><strong>threshold_abs</strong><span class="classifier">float, optional</span></dt><dd><p>Minimum intensity of peaks. By default, the absolute threshold is
 the minimum intensity of the image.</p>
 </dd>
-<dt><strong>threshold_rel</strong><span class="classifier">float, optional</span></dt><dd><p>Minimum intensity of peaks, calculated as <cite>max(image) * threshold_rel</cite>.</p>
+<dt><strong>threshold_rel</strong><span class="classifier">float, optional</span></dt><dd><p>Minimum intensity of peaks, calculated as <em class="xref py py-obj">max(image) * threshold_rel</em>.</p>
 </dd>
-<dt><strong>exclude_border</strong><span class="classifier">int or bool, optional</span></dt><dd><p>If nonzero int, <cite>exclude_border</cite> excludes peaks from
-within <cite>exclude_border</cite>-pixels of the border of the image.
-If True, takes the <cite>min_distance</cite> parameter as value.
+<dt><strong>exclude_border</strong><span class="classifier">int or bool, optional</span></dt><dd><p>If nonzero int, <em class="xref py py-obj">exclude_border</em> excludes peaks from
+within <em class="xref py py-obj">exclude_border</em>-pixels of the border of the image.
+If True, takes the <em class="xref py py-obj">min_distance</em> parameter as value.
 If zero or False, peaks are identified regardless of their
 distance from the border.</p>
 </dd>
 <dt><strong>indices</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the output will be an array representing peak
 coordinates.  If False, the output will be a boolean array shaped as
-<cite>image.shape</cite> with peaks present at True elements.</p>
+<em class="xref py py-obj">image.shape</em> with peaks present at True elements.</p>
 </dd>
-<dt><strong>num_peaks</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of peaks. When the number of peaks exceeds <cite>num_peaks</cite>,
-return <cite>num_peaks</cite> peaks based on highest peak intensity.</p>
+<dt><strong>num_peaks</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of peaks. When the number of peaks exceeds <em class="xref py py-obj">num_peaks</em>,
+return <em class="xref py py-obj">num_peaks</em> peaks based on highest peak intensity.</p>
 </dd>
-<dt><strong>footprint</strong><span class="classifier">ndarray of bools, optional</span></dt><dd><p>If provided, <cite>footprint == 1</cite> represents the local region within which
-to search for peaks at every point in <cite>image</cite>.  Overrides
-<cite>min_distance</cite> (also for <cite>exclude_border</cite>).</p>
+<dt><strong>footprint</strong><span class="classifier">ndarray of bools, optional</span></dt><dd><p>If provided, <em class="xref py py-obj">footprint == 1</em> represents the local region within which
+to search for peaks at every point in <em class="xref py py-obj">image</em>.  Overrides
+<em class="xref py py-obj">min_distance</em> (also for <em class="xref py py-obj">exclude_border</em>).</p>
 </dd>
-<dt><strong>labels</strong><span class="classifier">ndarray of ints, optional</span></dt><dd><p>If provided, each unique region <cite>labels == value</cite> represents a unique
+<dt><strong>labels</strong><span class="classifier">ndarray of ints, optional</span></dt><dd><p>If provided, each unique region <em class="xref py py-obj">labels == value</em> represents a unique
 region to search for peaks. Zero is reserved for background.</p>
 </dd>
 <dt><strong>num_peaks_per_label</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of peaks for each label.</p>
@@ -1113,8 +1113,8 @@ region to search for peaks. Zero is reserved for background.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>output</strong><span class="classifier">ndarray or ndarray of bools</span></dt><dd><ul class="simple">
-<li><p>If <cite>indices = True</cite>  : (row, column, …) coordinates of peaks.</p></li>
-<li><p>If <cite>indices = False</cite> : Boolean array shaped like <cite>image</cite>, with peaks
+<li><p>If <em class="xref py py-obj">indices = True</em>  : (row, column, …) coordinates of peaks.</p></li>
+<li><p>If <em class="xref py py-obj">indices = False</em> : Boolean array shaped like <em class="xref py py-obj">image</em>, with peaks
 represented by True values.</p></li>
 </ul>
 </dd>
@@ -1363,8 +1363,8 @@ computation. This argument has no effect on 3D and higher images.</p>
 </dl>
 <p class="rubric">Notes</p>
 <p>For 2D images when <code class="docutils literal notranslate"><span class="pre">approximate=True</span></code>, the running time of this method
-only depends on size of the image. It is independent of <cite>sigma</cite> as one
-would expect. The downside is that the result for <cite>sigma</cite> less than <cite>3</cite>
+only depends on size of the image. It is independent of <em class="xref py py-obj">sigma</em> as one
+would expect. The downside is that the result for <em class="xref py py-obj">sigma</em> less than <em class="xref py py-obj">3</em>
 is not accurate, i.e., not similar to the result obtained if someone
 computed the Hessian and took its determinant.</p>
 <p class="rubric">References</p>
@@ -1388,7 +1388,7 @@ computed the Hessian and took its determinant.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>H_elems</strong><span class="classifier">list of ndarray</span></dt><dd><p>The upper-diagonal elements of the Hessian matrix, as returned
-by <cite>hessian_matrix</cite>.</p>
+by <a class="reference internal" href="#skimage.feature.hessian_matrix" title="skimage.feature.hessian_matrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">hessian_matrix</span></code></a>.</p>
 </dd>
 </dl>
 </dd>
@@ -1595,7 +1595,7 @@ The corner measure is then defined as:</p>
 <dt><strong>method</strong><span class="classifier">{‘k’, ‘eps’}, optional</span></dt><dd><p>Method to compute the response image from the auto-correlation matrix.</p>
 </dd>
 <dt><strong>k</strong><span class="classifier">float, optional</span></dt><dd><p>Sensitivity factor to separate corners from edges, typically in range
-<cite>[0, 0.2]</cite>. Small values of k result in detection of sharp corners.</p>
+<em class="xref py py-obj">[0, 0.2]</em>. Small values of k result in detection of sharp corners.</p>
 </dd>
 <dt><strong>eps</strong><span class="classifier">float, optional</span></dt><dd><p>Normalisation factor (Noble’s corner measure).</p>
 </dd>
@@ -1816,7 +1816,7 @@ the output subpixel position is set to NaN.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
 </dd>
-<dt><strong>corners</strong><span class="classifier">(N, 2) ndarray</span></dt><dd><p>Corner coordinates <cite>(row, col)</cite>.</p>
+<dt><strong>corners</strong><span class="classifier">(N, 2) ndarray</span></dt><dd><p>Corner coordinates <em class="xref py py-obj">(row, col)</em>.</p>
 </dd>
 <dt><strong>window_size</strong><span class="classifier">int, optional</span></dt><dd><p>Search window size for subpixel estimation.</p>
 </dd>
@@ -1886,7 +1886,7 @@ photogrammetric data (pp. 281-305).
 <dt id="skimage.feature.corner_peaks">
 <code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">corner_peaks</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_distance=1</em>, <em class="sig-param">threshold_abs=None</em>, <em class="sig-param">threshold_rel=0.1</em>, <em class="sig-param">exclude_border=True</em>, <em class="sig-param">indices=True</em>, <em class="sig-param">num_peaks=inf</em>, <em class="sig-param">footprint=None</em>, <em class="sig-param">labels=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L916"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_peaks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find corners in corner measure response image.</p>
-<p>This differs from <cite>skimage.feature.peak_local_max</cite> in that it suppresses
+<p>This differs from <a class="reference internal" href="#skimage.feature.peak_local_max" title="skimage.feature.peak_local_max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.feature.peak_local_max</span></code></a> in that it suppresses
 multiple connected peaks with the same accumulator value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2008,8 +2008,8 @@ has several limitations (e.g. not rotation invariant).</p>
 <dt><strong>n</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum number of consecutive pixels out of 16 pixels on the circle
 that should all be either brighter or darker w.r.t testpixel.
 A point c on the circle is darker w.r.t test pixel p if
-<cite>Ic &lt; Ip - threshold</cite> and brighter if <cite>Ic &gt; Ip + threshold</cite>. Also
-stands for the n in <cite>FAST-n</cite> corner detector.</p>
+<em class="xref py py-obj">Ic &lt; Ip - threshold</em> and brighter if <em class="xref py py-obj">Ic &gt; Ip + threshold</em>. Also
+stands for the n in <em class="xref py py-obj">FAST-n</em> corner detector.</p>
 </dd>
 <dt><strong>threshold</strong><span class="classifier">float, optional</span></dt><dd><p>Threshold used in deciding whether the pixels on the circle are
 brighter, darker or similar w.r.t. the test pixel. Decrease the
@@ -2149,7 +2149,7 @@ calculation of the central moment.</p>
 <p>The output is an array with values between -1.0 and 1.0. The value at a
 given position corresponds to the correlation coefficient between the image
 and the template.</p>
-<p>For <cite>pad_input=True</cite> matches correspond to the center and otherwise to the
+<p>For <em class="xref py py-obj">pad_input=True</em> matches correspond to the center and otherwise to the
 top-left corner of the template. To find the best match you must search for
 peaks in the response (output) image.</p>
 <dl class="field-list">
@@ -2157,17 +2157,17 @@ peaks in the response (output) image.</p>
 <dd class="field-odd"><dl>
 <dt><strong>image</strong><span class="classifier">(M, N[, D]) array</span></dt><dd><p>2-D or 3-D input image.</p>
 </dd>
-<dt><strong>template</strong><span class="classifier">(m, n[, d]) array</span></dt><dd><p>Template to locate. It must be <cite>(m &lt;= M, n &lt;= N[, d &lt;= D])</cite>.</p>
+<dt><strong>template</strong><span class="classifier">(m, n[, d]) array</span></dt><dd><p>Template to locate. It must be <em class="xref py py-obj">(m &lt;= M, n &lt;= N[, d &lt;= D])</em>.</p>
 </dd>
-<dt><strong>pad_input</strong><span class="classifier">bool</span></dt><dd><p>If True, pad <cite>image</cite> so that output is the same size as the image, and
+<dt><strong>pad_input</strong><span class="classifier">bool</span></dt><dd><p>If True, pad <em class="xref py py-obj">image</em> so that output is the same size as the image, and
 output values correspond to the template center. Otherwise, the output
-is an array with shape <cite>(M - m + 1, N - n + 1)</cite> for an <cite>(M, N)</cite> image
-and an <cite>(m, n)</cite> template, and matches correspond to origin
+is an array with shape <em class="xref py py-obj">(M - m + 1, N - n + 1)</em> for an <em class="xref py py-obj">(M, N)</em> image
+and an <em class="xref py py-obj">(m, n)</em> template, and matches correspond to origin
 (top-left corner) of the template.</p>
 </dd>
-<dt><strong>mode</strong><span class="classifier">see <cite>numpy.pad</cite>, optional</span></dt><dd><p>Padding mode.</p>
+<dt><strong>mode</strong><span class="classifier">see <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.pad.html#numpy.pad" title="(in NumPy v1.17)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.pad</span></code></a>, optional</span></dt><dd><p>Padding mode.</p>
 </dd>
-<dt><strong>constant_values</strong><span class="classifier">see <cite>numpy.pad</cite>, optional</span></dt><dd><p>Constant values used in conjunction with <code class="docutils literal notranslate"><span class="pre">mode='constant'</span></code>.</p>
+<dt><strong>constant_values</strong><span class="classifier">see <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.pad.html#numpy.pad" title="(in NumPy v1.17)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.pad</span></code></a>, optional</span></dt><dd><p>Constant values used in conjunction with <code class="docutils literal notranslate"><span class="pre">mode='constant'</span></code>.</p>
 </dd>
 </dl>
 </dd>
@@ -2335,8 +2335,8 @@ as <code class="docutils literal notranslate"><span class="pre">target_image</sp
 </dd>
 <dt><strong>overlap_ratio</strong><span class="classifier">float, optional</span></dt><dd><p>Minimum allowed overlap ratio between images. The correlation for
 translations corresponding with an overlap ratio lower than this
-threshold will be ignored. A lower <cite>overlap_ratio</cite> leads to smaller
-maximum translation, while a higher <cite>overlap_ratio</cite> leads to greater
+threshold will be ignored. A lower <em class="xref py py-obj">overlap_ratio</em> leads to smaller
+maximum translation, while a higher <em class="xref py py-obj">overlap_ratio</em> leads to greater
 robustness against spurious matches due to small overlap between
 masked images.</p>
 </dd>
@@ -2390,7 +2390,7 @@ cross-checking).</p>
 <dt><strong>descriptors2</strong><span class="classifier">(N, P) array</span></dt><dd><p>Binary descriptors of size P about N keypoints in the second image.</p>
 </dd>
 <dt><strong>metric</strong><span class="classifier">{‘euclidean’, ‘cityblock’, ‘minkowski’, ‘hamming’, …} , optional</span></dt><dd><p>The metric to compute the distance between two descriptors. See
-<cite>scipy.spatial.distance.cdist</cite> for all possible types. The hamming
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cdist.html#scipy.spatial.distance.cdist" title="(in SciPy v1.3.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.spatial.distance.cdist</span></code></a> for all possible types. The hamming
 distance should be used for binary descriptors. By default the L2-norm
 is used for all descriptors of dtype float or double and the Hamming
 distance is used for binary descriptors automatically.</p>
@@ -2533,10 +2533,10 @@ than thresh are ignored. Reduce this to detect blobs with less
 intensities.</p>
 </dd>
 <dt><strong>overlap</strong><span class="classifier">float, optional</span></dt><dd><p>A value between 0 and 1. If the area of two blobs overlaps by a
-fraction greater than <cite>threshold</cite>, the smaller blob is eliminated.</p>
+fraction greater than <em class="xref py py-obj">threshold</em>, the smaller blob is eliminated.</p>
 </dd>
-<dt><strong>exclude_border</strong><span class="classifier">int or bool, optional</span></dt><dd><p>If nonzero int, <cite>exclude_border</cite> excludes blobs from
-within <cite>exclude_border</cite>-pixels of the border of the image.</p>
+<dt><strong>exclude_border</strong><span class="classifier">int or bool, optional</span></dt><dd><p>If nonzero int, <em class="xref py py-obj">exclude_border</em> excludes blobs from
+within <em class="xref py py-obj">exclude_border</em>-pixels of the border of the image.</p>
 </dd>
 </dl>
 </dd>
@@ -2624,16 +2624,16 @@ Hessian matrix. Keep this low to detect smaller blobs.</p>
 Hessian matrix. Keep this high to detect larger blobs.</p>
 </dd>
 <dt><strong>num_sigma</strong><span class="classifier">int, optional</span></dt><dd><p>The number of intermediate values of standard deviations to consider
-between <cite>min_sigma</cite> and <cite>max_sigma</cite>.</p>
+between <em class="xref py py-obj">min_sigma</em> and <em class="xref py py-obj">max_sigma</em>.</p>
 </dd>
 <dt><strong>threshold</strong><span class="classifier">float, optional.</span></dt><dd><p>The absolute lower bound for scale space maxima. Local maxima smaller
 than thresh are ignored. Reduce this to detect less prominent blobs.</p>
 </dd>
 <dt><strong>overlap</strong><span class="classifier">float, optional</span></dt><dd><p>A value between 0 and 1. If the area of two blobs overlaps by a
-fraction greater than <cite>threshold</cite>, the smaller blob is eliminated.</p>
+fraction greater than <em class="xref py py-obj">threshold</em>, the smaller blob is eliminated.</p>
 </dd>
 <dt><strong>log_scale</strong><span class="classifier">bool, optional</span></dt><dd><p>If set intermediate values of standard deviations are interpolated
-using a logarithmic scale to the base <cite>10</cite>. If not, linear
+using a logarithmic scale to the base <em class="xref py py-obj">10</em>. If not, linear
 interpolation is used.</p>
 </dd>
 </dl>
@@ -2649,12 +2649,12 @@ determinant detected the blob.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The radius of each blob is approximately <cite>sigma</cite>.
+<p>The radius of each blob is approximately <em class="xref py py-obj">sigma</em>.
 Computation of Determinant of Hessians is independent of the standard
 deviation. Therefore detecting larger blobs won’t take more time. In
 methods line <a class="reference internal" href="#skimage.feature.blob_dog" title="skimage.feature.blob_dog"><code class="xref py py-meth docutils literal notranslate"><span class="pre">blob_dog()</span></code></a> and <a class="reference internal" href="#skimage.feature.blob_log" title="skimage.feature.blob_log"><code class="xref py py-meth docutils literal notranslate"><span class="pre">blob_log()</span></code></a> the computation
-of Gaussians for larger <cite>sigma</cite> takes more time. The downside is that
-this method can’t be used for detecting blobs of radius less than <cite>3px</cite>
+of Gaussians for larger <em class="xref py py-obj">sigma</em> takes more time. The downside is that
+this method can’t be used for detecting blobs of radius less than <em class="xref py py-obj">3px</em>
 due to the box filters used in the approximation of Hessian Determinant.</p>
 <p class="rubric">References</p>
 <dl class="citation">
@@ -2726,21 +2726,21 @@ are given for each axis as a sequence, or as a single number, in
 which case it is equal for all axes.</p>
 </dd>
 <dt><strong>num_sigma</strong><span class="classifier">int, optional</span></dt><dd><p>The number of intermediate values of standard deviations to consider
-between <cite>min_sigma</cite> and <cite>max_sigma</cite>.</p>
+between <em class="xref py py-obj">min_sigma</em> and <em class="xref py py-obj">max_sigma</em>.</p>
 </dd>
 <dt><strong>threshold</strong><span class="classifier">float, optional.</span></dt><dd><p>The absolute lower bound for scale space maxima. Local maxima smaller
 than thresh are ignored. Reduce this to detect blobs with less
 intensities.</p>
 </dd>
 <dt><strong>overlap</strong><span class="classifier">float, optional</span></dt><dd><p>A value between 0 and 1. If the area of two blobs overlaps by a
-fraction greater than <cite>threshold</cite>, the smaller blob is eliminated.</p>
+fraction greater than <em class="xref py py-obj">threshold</em>, the smaller blob is eliminated.</p>
 </dd>
 <dt><strong>log_scale</strong><span class="classifier">bool, optional</span></dt><dd><p>If set intermediate values of standard deviations are interpolated
-using a logarithmic scale to the base <cite>10</cite>. If not, linear
+using a logarithmic scale to the base <em class="xref py py-obj">10</em>. If not, linear
 interpolation is used.</p>
 </dd>
-<dt><strong>exclude_border</strong><span class="classifier">int or bool, optional</span></dt><dd><p>If nonzero int, <cite>exclude_border</cite> excludes blobs from
-within <cite>exclude_border</cite>-pixels of the border of the image.</p>
+<dt><strong>exclude_border</strong><span class="classifier">int or bool, optional</span></dt><dd><p>If nonzero int, <em class="xref py py-obj">exclude_border</em> excludes blobs from
+within <em class="xref py py-obj">exclude_border</em>-pixels of the border of the image.</p>
 </dd>
 </dl>
 </dd>
@@ -2833,11 +2833,11 @@ algorithm proposed in <a class="reference internal" href="#rbcb83f52fce4-2" id="
 <li><p>‘type-4’: 4 rectangles varying along x and y axis.</p></li>
 </ul>
 <p>By default all features are extracted.</p>
-<p>If using with <cite>feature_coord</cite>, it should correspond to the feature
+<p>If using with <em class="xref py py-obj">feature_coord</em>, it should correspond to the feature
 type of each associated coordinate feature.</p>
 </dd>
 <dt><strong>feature_coord</strong><span class="classifier">ndarray of list of tuples or None, optional</span></dt><dd><p>The array of coordinates to be extracted. This is useful when you want
-to recompute only a subset of features. In this case <cite>feature_type</cite>
+to recompute only a subset of features. In this case <em class="xref py py-obj">feature_type</em>
 needs to be an array containing the type of each feature, as returned
 by <a class="reference internal" href="#skimage.feature.haar_like_feature_coord" title="skimage.feature.haar_like_feature_coord"><code class="xref py py-func docutils literal notranslate"><span class="pre">haar_like_feature_coord()</span></code></a>. By default, all coordinates are
 computed.</p>
@@ -2848,9 +2848,9 @@ computed.</p>
 <dd class="field-even"><dl class="simple">
 <dt><strong>haar_features</strong><span class="classifier">(n_features,) ndarray of int or float</span></dt><dd><p>Resulting Haar-like features. Each value is equal to the subtraction of
 sums of the positive and negative rectangles. The data type depends of
-the data type of <cite>int_image</cite>: <cite>int</cite> when the data type of <cite>int_image</cite>
-is <cite>uint</cite> or <cite>int</cite> and <cite>float</cite> when the data type of <cite>int_image</cite> is
-<cite>float</cite>.</p>
+the data type of <em class="xref py py-obj">int_image</em>: <em class="xref py py-obj">int</em> when the data type of <em class="xref py py-obj">int_image</em>
+is <em class="xref py py-obj">uint</em> or <em class="xref py py-obj">int</em> and <em class="xref py py-obj">float</em> when the data type of <em class="xref py py-obj">int_image</em> is
+<em class="xref py py-obj">float</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -3007,7 +3007,7 @@ computed.</p>
 <dt><strong>height</strong><span class="classifier">int</span></dt><dd><p>Height of the detection window.</p>
 </dd>
 <dt><strong>feature_coord</strong><span class="classifier">ndarray of list of tuples or None, optional</span></dt><dd><p>The array of coordinates to be extracted. This is useful when you want
-to recompute only a subset of features. In this case <cite>feature_type</cite>
+to recompute only a subset of features. In this case <em class="xref py py-obj">feature_type</em>
 needs to be an array containing the type of each feature, as returned
 by <a class="reference internal" href="#skimage.feature.haar_like_feature_coord" title="skimage.feature.haar_like_feature_coord"><code class="xref py py-func docutils literal notranslate"><span class="pre">haar_like_feature_coord()</span></code></a>. By default, all coordinates are
 computed.</p>
@@ -3027,7 +3027,7 @@ By default, all features are returned.</p>
 <dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional</span></dt><dd><p>If int, random_state is the seed used by the random number generator;
 If RandomState instance, random_state is the random number generator;
 If None, the random number generator is the RandomState instance used
-by <cite>np.random</cite>. The random state is used when generating a set of
+by <em class="xref py py-obj">np.random</em>. The random state is used when generating a set of
 features smaller than the total number of available features.</p>
 </dd>
 </dl>
@@ -3240,9 +3240,9 @@ the keypoints. Default is 49.</p>
 around keypoints.</p>
 </dd>
 <dt><strong>sample_seed</strong><span class="classifier">int, optional</span></dt><dd><p>Seed for the random sampling of the decision pixel-pairs. From a square
-window with length <cite>patch_size</cite>, pixel pairs are sampled using the
-<cite>mode</cite> parameter to build the descriptors using intensity comparison.
-The value of <cite>sample_seed</cite> must be the same for the images to be
+window with length <em class="xref py py-obj">patch_size</em>, pixel pairs are sampled using the
+<em class="xref py py-obj">mode</em> parameter to build the descriptors using intensity comparison.
+The value of <em class="xref py py-obj">sample_seed</em> must be the same for the images to be
 matched while building the descriptors.</p>
 </dd>
 <dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>Standard deviation of the Gaussian low-pass filter applied to the image
@@ -3307,14 +3307,14 @@ discriminative and good descriptors.</p>
 <dl class="field-list">
 <dt class="field-odd">Attributes</dt>
 <dd class="field-odd"><dl>
-<dt><strong>descriptors</strong><span class="classifier">(Q, <cite>descriptor_size</cite>) array of dtype bool</span></dt><dd><p>2D ndarray of binary descriptors of size <cite>descriptor_size</cite> for Q
+<dt><strong>descriptors</strong><span class="classifier">(Q, <em class="xref py py-obj">descriptor_size</em>) array of dtype bool</span></dt><dd><p>2D ndarray of binary descriptors of size <em class="xref py py-obj">descriptor_size</em> for Q
 keypoints after filtering out border keypoints with value at an
 index <code class="docutils literal notranslate"><span class="pre">(i,</span> <span class="pre">j)</span></code> either being <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> representing
 the outcome of the intensity comparison for i-th keypoint on j-th
 decision pixel-pair. It is <code class="docutils literal notranslate"><span class="pre">Q</span> <span class="pre">==</span> <span class="pre">np.sum(mask)</span></code>.</p>
 </dd>
 <dt><strong>mask</strong><span class="classifier">(N, ) array of dtype bool</span></dt><dd><p>Mask indicating whether a keypoint has been filtered out
-(<code class="docutils literal notranslate"><span class="pre">False</span></code>) or is described in the <cite>descriptors</cite> array (<code class="docutils literal notranslate"><span class="pre">True</span></code>).</p>
+(<code class="docutils literal notranslate"><span class="pre">False</span></code>) or is described in the <em class="xref py py-obj">descriptors</em> array (<code class="docutils literal notranslate"><span class="pre">True</span></code>).</p>
 </dd>
 </dl>
 </dd>
@@ -3473,11 +3473,11 @@ extractor.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>n_keypoints</strong><span class="classifier">int, optional</span></dt><dd><p>Number of keypoints to be returned. The function will return the best
-<cite>n_keypoints</cite> according to the Harris corner response if more than
-<cite>n_keypoints</cite> are detected. If not, then all the detected keypoints
+<em class="xref py py-obj">n_keypoints</em> according to the Harris corner response if more than
+<em class="xref py py-obj">n_keypoints</em> are detected. If not, then all the detected keypoints
 are returned.</p>
 </dd>
-<dt><strong>fast_n</strong><span class="classifier">int, optional</span></dt><dd><p>The <cite>n</cite> parameter in <cite>skimage.feature.corner_fast</cite>. Minimum number of
+<dt><strong>fast_n</strong><span class="classifier">int, optional</span></dt><dd><p>The <em class="xref py py-obj">n</em> parameter in <a class="reference internal" href="#skimage.feature.corner_fast" title="skimage.feature.corner_fast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.feature.corner_fast</span></code></a>. Minimum number of
 consecutive pixels out of 16 pixels on the circle that should all be
 either brighter or darker w.r.t test-pixel. A point c on the circle is
 darker w.r.t test pixel p if <code class="docutils literal notranslate"><span class="pre">Ic</span> <span class="pre">&lt;</span> <span class="pre">Ip</span> <span class="pre">-</span> <span class="pre">threshold</span></code> and brighter if
@@ -3489,9 +3489,9 @@ to decide whether the pixels on the circle are brighter, darker or
 similar w.r.t. the test pixel. Decrease the threshold when more
 corners are desired and vice-versa.</p>
 </dd>
-<dt><strong>harris_k</strong><span class="classifier">float, optional</span></dt><dd><p>The <cite>k</cite> parameter in <cite>skimage.feature.corner_harris</cite>. Sensitivity
+<dt><strong>harris_k</strong><span class="classifier">float, optional</span></dt><dd><p>The <em class="xref py py-obj">k</em> parameter in <a class="reference internal" href="#skimage.feature.corner_harris" title="skimage.feature.corner_harris"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.feature.corner_harris</span></code></a>. Sensitivity
 factor to separate corners from edges, typically in range <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">0.2]</span></code>.
-Small values of <cite>k</cite> result in detection of sharp corners.</p>
+Small values of <em class="xref py py-obj">k</em> result in detection of sharp corners.</p>
 </dd>
 <dt><strong>downscale</strong><span class="classifier">float, optional</span></dt><dd><p>Downscale factor for the image pyramid. Default value 1.2 is chosen so
 that there are more dense scales which enable robust scale invariance
@@ -3556,7 +3556,7 @@ extract the features from.</p>
 </dd>
 <dt><strong>responses</strong><span class="classifier">(N, ) array</span></dt><dd><p>Corresponding Harris corner responses.</p>
 </dd>
-<dt><strong>descriptors</strong><span class="classifier">(Q, <cite>descriptor_size</cite>) array of dtype bool</span></dt><dd><p>2D array of binary descriptors of size <cite>descriptor_size</cite> for Q
+<dt><strong>descriptors</strong><span class="classifier">(Q, <em class="xref py py-obj">descriptor_size</em>) array of dtype bool</span></dt><dd><p>2D array of binary descriptors of size <em class="xref py py-obj">descriptor_size</em> for Q
 keypoints after filtering out border keypoints with value at an
 index <code class="docutils literal notranslate"><span class="pre">(i,</span> <span class="pre">j)</span></code> either being <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code> representing
 the outcome of the intensity comparison for i-th keypoint on j-th
@@ -3589,8 +3589,8 @@ decision pixel-pair. It is <code class="docutils literal notranslate"><span clas
 <dt id="skimage.feature.ORB.detect_and_extract">
 <code class="sig-name descname">detect_and_extract</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.detect_and_extract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Detect oriented FAST keypoints and extract rBRIEF descriptors.</p>
-<p>Note that this is faster than first calling <cite>detect</cite> and then
-<cite>extract</cite>.</p>
+<p>Note that this is faster than first calling <a class="reference internal" href="#skimage.feature.ORB.detect" title="skimage.feature.ORB.detect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detect</span></code></a> and then
+<a class="reference internal" href="#skimage.feature.ORB.extract" title="skimage.feature.ORB.extract"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -3605,10 +3605,10 @@ decision pixel-pair. It is <code class="docutils literal notranslate"><span clas
 <dt id="skimage.feature.ORB.extract">
 <code class="sig-name descname">extract</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em>, <em class="sig-param">keypoints</em>, <em class="sig-param">scales</em>, <em class="sig-param">orientations</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.extract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract rBRIEF binary descriptors for given keypoints in image.</p>
-<p>Note that the keypoints must be extracted using the same <cite>downscale</cite>
-and <cite>n_scales</cite> parameters. Additionally, if you want to extract both
+<p>Note that the keypoints must be extracted using the same <em class="xref py py-obj">downscale</em>
+and <em class="xref py py-obj">n_scales</em> parameters. Additionally, if you want to extract both
 keypoints and descriptors you should use the faster
-<cite>detect_and_extract</cite>.</p>
+<a class="reference internal" href="#skimage.feature.ORB.detect_and_extract" title="skimage.feature.ORB.detect_and_extract"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detect_and_extract</span></code></a>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">

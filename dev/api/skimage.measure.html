@@ -497,14 +497,14 @@ normalized second central moments as the region.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m_ij</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="o">*</span> <span class="n">row</span><span class="o">^</span><span class="n">i</span> <span class="o">*</span> <span class="n">col</span><span class="o">^</span><span class="n">j</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>where the sum is over the <cite>row</cite>, <cite>col</cite> coordinates of the region.</p>
+<p>where the sum is over the <em class="xref py py-obj">row</em>, <em class="xref py py-obj">col</em> coordinates of the region.</p>
 </dd>
 <dt><strong>moments_central</strong><span class="classifier">(3, 3) ndarray</span></dt><dd><p>Central moments (translation invariant) up to 3rd order:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mu_ij</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">row</span> <span class="o">-</span> <span class="n">row_c</span><span class="p">)</span><span class="o">^</span><span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">col</span> <span class="o">-</span> <span class="n">col_c</span><span class="p">)</span><span class="o">^</span><span class="n">j</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>where the sum is over the <cite>row</cite>, <cite>col</cite> coordinates of the region,
-and <cite>row_c</cite> and <cite>col_c</cite> are the coordinates of the region’s centroid.</p>
+<p>where the sum is over the <em class="xref py py-obj">row</em>, <em class="xref py py-obj">col</em> coordinates of the region,
+and <em class="xref py py-obj">row_c</em> and <em class="xref py py-obj">col_c</em> are the coordinates of the region’s centroid.</p>
 </dd>
 <dt><strong>moments_hu</strong><span class="classifier">tuple</span></dt><dd><p>Hu moments (translation, scale and rotation invariant).</p>
 </dd>
@@ -512,11 +512,11 @@ and <cite>row_c</cite> and <cite>col_c</cite> are the coordinates of the region�
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nu_ij</span> <span class="o">=</span> <span class="n">mu_ij</span> <span class="o">/</span> <span class="n">m_00</span><span class="o">^</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>where <cite>m_00</cite> is the zeroth spatial moment.</p>
+<p>where <em class="xref py py-obj">m_00</em> is the zeroth spatial moment.</p>
 </dd>
 <dt><strong>orientation</strong><span class="classifier">float</span></dt><dd><p>Angle between the 0th axis (rows) and the major
 axis of the ellipse that has the same second moments as the region,
-ranging from <cite>-pi/2</cite> to <cite>pi/2</cite> counter-clockwise.</p>
+ranging from <em class="xref py py-obj">-pi/2</em> to <em class="xref py py-obj">pi/2</em> counter-clockwise.</p>
 </dd>
 <dt><strong>perimeter</strong><span class="classifier">float</span></dt><dd><p>Perimeter of object which approximates the contour as a line
 through the centers of border pixels using a 4-connectivity.</p>
@@ -535,15 +535,15 @@ box, weighted with intensity image.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wm_ij</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="o">*</span> <span class="n">row</span><span class="o">^</span><span class="n">i</span> <span class="o">*</span> <span class="n">col</span><span class="o">^</span><span class="n">j</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>where the sum is over the <cite>row</cite>, <cite>col</cite> coordinates of the region.</p>
+<p>where the sum is over the <em class="xref py py-obj">row</em>, <em class="xref py py-obj">col</em> coordinates of the region.</p>
 </dd>
 <dt><strong>weighted_moments_central</strong><span class="classifier">(3, 3) ndarray</span></dt><dd><p>Central moments (translation invariant) of intensity image up to
 3rd order:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wmu_ij</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">{</span> <span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">row</span> <span class="o">-</span> <span class="n">row_c</span><span class="p">)</span><span class="o">^</span><span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">col</span> <span class="o">-</span> <span class="n">col_c</span><span class="p">)</span><span class="o">^</span><span class="n">j</span> <span class="p">}</span>
 </pre></div>
 </div>
-<p>where the sum is over the <cite>row</cite>, <cite>col</cite> coordinates of the region,
-and <cite>row_c</cite> and <cite>col_c</cite> are the coordinates of the region’s weighted
+<p>where the sum is over the <em class="xref py py-obj">row</em>, <em class="xref py py-obj">col</em> coordinates of the region,
+and <em class="xref py py-obj">row_c</em> and <em class="xref py py-obj">col_c</em> are the coordinates of the region’s weighted
 centroid.</p>
 </dd>
 <dt><strong>weighted_moments_hu</strong><span class="classifier">tuple</span></dt><dd><p>Hu moments (translation, scale and rotation invariant) of intensity
@@ -843,14 +843,14 @@ False.</p>
 from a subset of inliers from the complete data set. Each iteration
 performs the following tasks:</p>
 <ol class="arabic simple">
-<li><p>Select <cite>min_samples</cite> random samples from the original data and check
-whether the set of data is valid (see <cite>is_data_valid</cite>).</p></li>
+<li><p>Select <em class="xref py py-obj">min_samples</em> random samples from the original data and check
+whether the set of data is valid (see <em class="xref py py-obj">is_data_valid</em>).</p></li>
 <li><p>Estimate a model to the random subset
-(<cite>model_cls.estimate(*data[random_subset]</cite>) and check whether the
-estimated model is valid (see <cite>is_model_valid</cite>).</p></li>
+(<em class="xref py py-obj">model_cls.estimate(*data[random_subset]</em>) and check whether the
+estimated model is valid (see <em class="xref py py-obj">is_model_valid</em>).</p></li>
 <li><p>Classify all data as inliers or outliers by calculating the residuals
-to the estimated model (<cite>model_cls.residuals(*data)</cite>) - all data samples
-with residuals smaller than the <cite>residual_threshold</cite> are considered as
+to the estimated model (<em class="xref py py-obj">model_cls.residuals(*data)</em>) - all data samples
+with residuals smaller than the <em class="xref py py-obj">residual_threshold</em> are considered as
 inliers.</p></li>
 <li><p>Save estimated model as best model if number of inlier samples is
 maximal. In case the current estimated model has the same number of
@@ -880,18 +880,18 @@ separate arguments.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">residuals(*data)</span></code></p></li>
 </ul>
 </div></blockquote>
-<p>where <cite>success</cite> indicates whether the model estimation succeeded
-(<cite>True</cite> or <cite>None</cite> for success, <cite>False</cite> for failure).</p>
+<p>where <em class="xref py py-obj">success</em> indicates whether the model estimation succeeded
+(<em class="xref py py-obj">True</em> or <em class="xref py py-obj">None</em> for success, <em class="xref py py-obj">False</em> for failure).</p>
 </dd>
 <dt><strong>min_samples</strong><span class="classifier">int in range (0, N)</span></dt><dd><p>The minimum number of data points to fit a model to.</p>
 </dd>
 <dt><strong>residual_threshold</strong><span class="classifier">float larger than 0</span></dt><dd><p>Maximum distance for a data point to be classified as an inlier.</p>
 </dd>
 <dt><strong>is_data_valid</strong><span class="classifier">function, optional</span></dt><dd><p>This function is called with the randomly selected data before the
-model is fitted to it: <cite>is_data_valid(*random_data)</cite>.</p>
+model is fitted to it: <em class="xref py py-obj">is_data_valid(*random_data)</em>.</p>
 </dd>
 <dt><strong>is_model_valid</strong><span class="classifier">function, optional</span></dt><dd><p>This function is called with the estimated model and the randomly
-selected data: <cite>is_model_valid(model, *random_data)</cite>, .</p>
+selected data: <em class="xref py py-obj">is_model_valid(model, *random_data)</em>, .</p>
 </dd>
 <dt><strong>max_trials</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of iterations for random sample selection.</p>
 </dd>
@@ -914,7 +914,7 @@ total number of samples.</p>
 <dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional</span></dt><dd><p>If int, random_state is the seed used by the random number generator;
 If RandomState instance, random_state is the random number generator;
 If None, the random number generator is the RandomState instance used
-by <cite>np.random</cite>.</p>
+by <em class="xref py py-obj">np.random</em>.</p>
 </dd>
 <dt><strong>initial_inliers</strong><span class="classifier">array-like of bool, shape (N,), optional</span></dt><dd><p>Initial samples selection for model estimation</p>
 </dd>
@@ -1022,7 +1022,7 @@ we also show how to use a proportion of the total samples, rather than an absolu
 <h2>block_reduce<a class="headerlink" href="#block-reduce" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.block_reduce">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7f0fc2190488&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7ffaca5c6488&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Down-sample image by applying function to local blocks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1452,7 +1452,7 @@ Berlin, 1993.</p>
 <dt><strong>mu</strong><span class="classifier">array, optional</span></dt><dd><p>The pre-computed central moments of <code class="docutils literal notranslate"><span class="pre">image</span></code>. The inertia tensor
 computation requires the central moments of the image. If an
 application requires both the central moments and the inertia tensor
-(for example, <cite>skimage.measure.regionprops</cite>), then it is more
+(for example, <a class="reference internal" href="#skimage.measure.regionprops" title="skimage.measure.regionprops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.regionprops</span></code></a>), then it is more
 efficient to pre-compute them and pass them to the inertia tensor
 call.</p>
 </dd>
@@ -1486,7 +1486,7 @@ Scientific Applications. (Chapter 8: Tensor Methods) Springer, 1993.</p>
 <code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">inertia_tensor_eigvals</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">mu=None</em>, <em class="sig-param">T=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L414"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.inertia_tensor_eigvals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the eigenvalues of the inertia tensor of the image.</p>
 <p>The inertia tensor measures covariance of the image intensity along
-the image axes. (See <cite>inertia_tensor</cite>.) The relative magnitude of the
+the image axes. (See <a class="reference internal" href="#skimage.measure.inertia_tensor" title="skimage.measure.inertia_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inertia_tensor</span></code></a>.) The relative magnitude of the
 eigenvalues of the tensor is thus a measure of the elongation of a
 (bright) object in the image.</p>
 <dl class="field-list">
@@ -1532,11 +1532,11 @@ is a specific need for the classic algorithm.</p>
 <dt><strong>volume</strong><span class="classifier">(M, N, P) array</span></dt><dd><p>Input data volume to find isosurfaces. Will internally be
 converted to float32 if necessary.</p>
 </dd>
-<dt><strong>level</strong><span class="classifier">float</span></dt><dd><p>Contour value to search for isosurfaces in <cite>volume</cite>. If not
+<dt><strong>level</strong><span class="classifier">float</span></dt><dd><p>Contour value to search for isosurfaces in <em class="xref py py-obj">volume</em>. If not
 given or None, the average of the min and max of vol is used.</p>
 </dd>
 <dt><strong>spacing</strong><span class="classifier">length-3 tuple of floats</span></dt><dd><p>Voxel spacing in spatial dimensions corresponding to numpy array
-indexing dimensions (M, N, P) as in <cite>volume</cite>.</p>
+indexing dimensions (M, N, P) as in <em class="xref py py-obj">volume</em>.</p>
 </dd>
 <dt><strong>gradient_direction</strong><span class="classifier">string</span></dt><dd><p>Controls if the mesh was generated from an isosurface with gradient
 descent toward objects of interest (the default), or the opposite,
@@ -1565,7 +1565,7 @@ this option are <em>not</em> generally the same as the
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>verts</strong><span class="classifier">(V, 3) array</span></dt><dd><p>Spatial coordinates for V unique mesh vertices. Coordinate order
-matches input <cite>volume</cite> (M, N, P).</p>
+matches input <em class="xref py py-obj">volume</em> (M, N, P).</p>
 </dd>
 <dt><strong>faces</strong><span class="classifier">(F, 3) array</span></dt><dd><p>Define triangular faces via referencing vertex indices from <code class="docutils literal notranslate"><span class="pre">verts</span></code>.
 This algorithm specifically outputs triangles, so each face has
@@ -1595,9 +1595,9 @@ heavy use of lookup tables to handle the many different cases,
 keeping the algorithm relatively easy. This implementation is
 written in Cython, ported from Lewiner’s C++ implementation.</p>
 <p>To quantify the area of an isosurface generated by this algorithm, pass
-verts and faces to <cite>skimage.measure.mesh_surface_area</cite>.</p>
+verts and faces to <a class="reference internal" href="#skimage.measure.mesh_surface_area" title="skimage.measure.mesh_surface_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.mesh_surface_area</span></code></a>.</p>
 <p>Regarding visualization of algorithm output, to contour a volume
-named <cite>myvolume</cite> about the level 0.0, using the <code class="docutils literal notranslate"><span class="pre">mayavi</span></code> package:</p>
+named <em class="xref py py-obj">myvolume</em> about the level 0.0, using the <code class="docutils literal notranslate"><span class="pre">mayavi</span></code> package:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mayavi</span> <span class="k">import</span> <span class="n">mlab</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">verts</span><span class="p">,</span> <span class="n">faces</span><span class="p">,</span> <span class="n">normals</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="n">marching_cubes_lewiner</span><span class="p">(</span><span class="n">myvolume</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mlab</span><span class="o">.</span><span class="n">triangular_mesh</span><span class="p">([</span><span class="n">vert</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">vert</span> <span class="ow">in</span> <span class="n">verts</span><span class="p">],</span>
@@ -1645,13 +1645,13 @@ this algorithm, because it’s faster and produces better results.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>volume</strong><span class="classifier">(M, N, P) array of doubles</span></dt><dd><p>Input data volume to find isosurfaces. Will be cast to <cite>np.float64</cite>.</p>
+<dt><strong>volume</strong><span class="classifier">(M, N, P) array of doubles</span></dt><dd><p>Input data volume to find isosurfaces. Will be cast to <em class="xref py py-obj">np.float64</em>.</p>
 </dd>
-<dt><strong>level</strong><span class="classifier">float</span></dt><dd><p>Contour value to search for isosurfaces in <cite>volume</cite>. If not
+<dt><strong>level</strong><span class="classifier">float</span></dt><dd><p>Contour value to search for isosurfaces in <em class="xref py py-obj">volume</em>. If not
 given or None, the average of the min and max of vol is used.</p>
 </dd>
 <dt><strong>spacing</strong><span class="classifier">length-3 tuple of floats</span></dt><dd><p>Voxel spacing in spatial dimensions corresponding to numpy array
-indexing dimensions (M, N, P) as in <cite>volume</cite>.</p>
+indexing dimensions (M, N, P) as in <em class="xref py py-obj">volume</em>.</p>
 </dd>
 <dt><strong>gradient_direction</strong><span class="classifier">string</span></dt><dd><p>Controls if the mesh was generated from an isosurface with gradient
 descent toward objects of interest (the default), or the opposite.
@@ -1664,7 +1664,7 @@ The two options are:
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>verts</strong><span class="classifier">(V, 3) array</span></dt><dd><p>Spatial coordinates for V unique mesh vertices. Coordinate order
-matches input <cite>volume</cite> (M, N, P).</p>
+matches input <em class="xref py py-obj">volume</em> (M, N, P).</p>
 </dd>
 <dt><strong>faces</strong><span class="classifier">(F, 3) array</span></dt><dd><p>Define triangular faces via referencing vertex indices from <code class="docutils literal notranslate"><span class="pre">verts</span></code>.
 This algorithm specifically outputs triangles, so each face has
@@ -1698,7 +1698,7 @@ v4 ------ v3   |        | /
 v1 ------ v2
 </pre></div>
 </div>
-<p>Most notably, if v4, v8, v2, and v6 are all &gt;= <cite>level</cite> (or any
+<p>Most notably, if v4, v8, v2, and v6 are all &gt;= <em class="xref py py-obj">level</em> (or any
 generalization of this case) two parallel planes are generated by this
 algorithm, separating v4 and v8 from v2 and v6. An equally valid
 interpretation would be a single connected thin surface enclosing all
@@ -1711,7 +1711,7 @@ Marching Cubes, Cubic Marching Squares, etc.).</p>
 generated by this algorithm are NOT guaranteed to be closed, particularly
 for complicated contours. Furthermore, this algorithm does not guarantee
 a single contour will be returned. Indeed, ALL isosurfaces which cross
-<cite>level</cite> will be found, regardless of connectivity.</p>
+<em class="xref py py-obj">level</em> will be found, regardless of connectivity.</p>
 <p>The output is a triangular mesh consisting of a set of unique vertices and
 connecting triangles. The order of these vertices and triangles in the
 output list is determined by the position of the smallest <code class="docutils literal notranslate"><span class="pre">x,y,z</span></code> (in
@@ -1719,7 +1719,7 @@ lexicographical order) coordinate in the contour.  This is a side-effect
 of how the input array is traversed, but can be relied upon.</p>
 <p>The generated mesh guarantees coherent orientation as of version 0.12.</p>
 <p>To quantify the area of an isosurface generated by this algorithm, pass
-outputs directly into <cite>skimage.measure.mesh_surface_area</cite>.</p>
+outputs directly into <a class="reference internal" href="#skimage.measure.mesh_surface_area" title="skimage.measure.mesh_surface_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.mesh_surface_area</span></code></a>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="r1e43a330a523-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id33">1</a>,<a href="#id34">2</a>,<a href="#id35">3</a>)</span></dt>
@@ -1744,7 +1744,7 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 <dt><strong>verts</strong><span class="classifier">(V, 3) array of floats</span></dt><dd><p>Array containing (x, y, z) coordinates for V unique mesh vertices.</p>
 </dd>
 <dt><strong>faces</strong><span class="classifier">(F, 3) array of ints</span></dt><dd><p>List of length-3 lists of integers, referencing vertex coordinates as
-provided in <cite>verts</cite></p>
+provided in <em class="xref py py-obj">verts</em></p>
 </dd>
 </dl>
 </dd>
@@ -1764,8 +1764,8 @@ provided in <cite>verts</cite></p>
 </div>
 <p class="rubric">Notes</p>
 <p>The arguments expected by this function are the first two outputs from
-<cite>skimage.measure.marching_cubes</cite>. For unit correct output, ensure correct
-<cite>spacing</cite> was passed to <cite>skimage.measure.marching_cubes</cite>.</p>
+<em class="xref py py-obj">skimage.measure.marching_cubes</em>. For unit correct output, ensure correct
+<em class="xref py py-obj">spacing</em> was passed to <em class="xref py py-obj">skimage.measure.marching_cubes</em>.</p>
 <p>This algorithm works properly only if the <code class="docutils literal notranslate"><span class="pre">faces</span></code> provided are all
 triangles.</p>
 </dd></dl>
@@ -1796,7 +1796,7 @@ non-integer coordinates. 0 means nearest-neighbor interpolation.</p>
 </dd>
 <dt><strong>mode</strong><span class="classifier">{‘constant’, ‘nearest’, ‘reflect’, ‘mirror’, ‘wrap’}, optional</span></dt><dd><p>How to compute any values falling outside of the image.</p>
 </dd>
-<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>If <cite>mode</cite> is ‘constant’, what constant value to use outside the image.</p>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>If <em class="xref py py-obj">mode</em> is ‘constant’, what constant value to use outside the image.</p>
 </dd>
 </dl>
 </dd>
@@ -1883,7 +1883,7 @@ connectivity of <code class="docutils literal notranslate"><span class="pre">inp
 same integer value.</p>
 </dd>
 <dt><strong>num</strong><span class="classifier">int, optional</span></dt><dd><p>Number of labels, which equals the maximum label index and is only
-returned if return_num is <cite>True</cite>.</p>
+returned if return_num is <em class="xref py py-obj">True</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -2041,8 +2041,8 @@ duplicated.</p>
 <dt><strong>im1, im2</strong><span class="classifier">ndarray</span></dt><dd><p>Images. Any dimensionality with same shape.</p>
 </dd>
 <dt><strong>win_size</strong><span class="classifier">int or None, optional</span></dt><dd><p>The side-length of the sliding window used in comparison. Must be an
-odd value. If <cite>gaussian_weights</cite> is True, this is ignored and the
-window size will depend on <cite>sigma</cite>.</p>
+odd value. If <em class="xref py py-obj">gaussian_weights</em> is True, this is ignored and the
+window size will depend on <em class="xref py py-obj">sigma</em>.</p>
 </dd>
 <dt><strong>gradient</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, also return the gradient with respect to im2.</p>
 </dd>
@@ -2065,9 +2065,9 @@ normalized Gaussian kernel of width sigma=1.5.</p>
 <dt><strong>mssim</strong><span class="classifier">float</span></dt><dd><p>The mean structural similarity index over the image.</p>
 </dd>
 <dt><strong>grad</strong><span class="classifier">ndarray</span></dt><dd><p>The gradient of the structural similarity between im1 and im2 <a class="reference internal" href="#rccea9a164d3e-2" id="id39">[2]</a>.
-This is only returned if <cite>gradient</cite> is set to True.</p>
+This is only returned if <em class="xref py py-obj">gradient</em> is set to True.</p>
 </dd>
-<dt><strong>S</strong><span class="classifier">ndarray</span></dt><dd><p>The full SSIM image.  This is only returned if <cite>full</cite> is set to True.</p>
+<dt><strong>S</strong><span class="classifier">ndarray</span></dt><dd><p>The full SSIM image.  This is only returned if <em class="xref py py-obj">full</em> is set to True.</p>
 </dd>
 </dl>
 </dd>
@@ -2080,7 +2080,7 @@ number of pixels within the sliding window.</p>
 </dd>
 <dt><strong>K2</strong><span class="classifier">float</span></dt><dd><p>Algorithm parameter, K2 (small constant, see <a class="reference internal" href="#rccea9a164d3e-1" id="id41">[1]</a>).</p>
 </dd>
-<dt><strong>sigma</strong><span class="classifier">float</span></dt><dd><p>Standard deviation for the Gaussian when <cite>gaussian_weights</cite> is True.</p>
+<dt><strong>sigma</strong><span class="classifier">float</span></dt><dd><p>Standard deviation for the Gaussian when <em class="xref py py-obj">gaussian_weights</em> is True.</p>
 </dd>
 </dl>
 </dd>
@@ -2103,8 +2103,8 @@ removed in scikit-image 0.18. Please use the function named
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>To match the implementation of Wang et. al. <a class="reference internal" href="#rccea9a164d3e-1" id="id42">[1]</a>, set <cite>gaussian_weights</cite>
-to True, <cite>sigma</cite> to 1.5, and <cite>use_sample_covariance</cite> to False.</p>
+<p>To match the implementation of Wang et. al. <a class="reference internal" href="#rccea9a164d3e-1" id="id42">[1]</a>, set <em class="xref py py-obj">gaussian_weights</em>
+to True, <em class="xref py py-obj">sigma</em> to 1.5, and <em class="xref py py-obj">use_sample_covariance</em> to False.</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 0.16: </span>This function was renamed from <code class="docutils literal notranslate"><span class="pre">skimage.measure.compare_ssim</span></code> to
 <code class="docutils literal notranslate"><span class="pre">skimage.metrics.structural_similarity</span></code>.</p>
@@ -2383,7 +2383,7 @@ according to the following vector equation:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">tuple</span></dt><dd><p>Line model parameters in the following order <cite>origin</cite>, <cite>direction</cite>.</p>
+<dt><strong>params</strong><span class="classifier">tuple</span></dt><dd><p>Line model parameters in the following order <em class="xref py py-obj">origin</em>, <em class="xref py py-obj">direction</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -2428,7 +2428,7 @@ orthogonal to a given axis.</p>
 </dd>
 <dt><strong>axis</strong><span class="classifier">int</span></dt><dd><p>Axis orthogonal to the hyperplane intersecting the line.</p>
 </dd>
-<dt><strong>params</strong><span class="classifier">(2, ) array, optional</span></dt><dd><p>Optional custom parameter set in the form (<cite>origin</cite>, <cite>direction</cite>).</p>
+<dt><strong>params</strong><span class="classifier">(2, ) array, optional</span></dt><dd><p>Optional custom parameter set in the form (<em class="xref py py-obj">origin</em>, <em class="xref py py-obj">direction</em>).</p>
 </dd>
 </dl>
 </dd>
@@ -2460,7 +2460,7 @@ orthogonal to a given axis.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>y</strong><span class="classifier">array</span></dt><dd><p>y-coordinates.</p>
 </dd>
-<dt><strong>params</strong><span class="classifier">(2, ) array, optional</span></dt><dd><p>Optional custom parameter set in the form (<cite>origin</cite>, <cite>direction</cite>).</p>
+<dt><strong>params</strong><span class="classifier">(2, ) array, optional</span></dt><dd><p>Optional custom parameter set in the form (<em class="xref py py-obj">origin</em>, <em class="xref py py-obj">direction</em>).</p>
 </dd>
 </dl>
 </dd>
@@ -2486,7 +2486,7 @@ orthogonal to a given axis.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>x</strong><span class="classifier">array</span></dt><dd><p>x-coordinates.</p>
 </dd>
-<dt><strong>params</strong><span class="classifier">(2, ) array, optional</span></dt><dd><p>Optional custom parameter set in the form (<cite>origin</cite>, <cite>direction</cite>).</p>
+<dt><strong>params</strong><span class="classifier">(2, ) array, optional</span></dt><dd><p>Optional custom parameter set in the form (<em class="xref py py-obj">origin</em>, <em class="xref py py-obj">direction</em>).</p>
 </dd>
 </dl>
 </dd>
@@ -2510,7 +2510,7 @@ returned. It is obtained by projecting the data onto the line.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>data</strong><span class="classifier">(N, dim) array</span></dt><dd><p>N points in a space of dimension dim.</p>
 </dd>
-<dt><strong>params</strong><span class="classifier">(2, ) array, optional</span></dt><dd><p>Optional custom parameter set in the form (<cite>origin</cite>, <cite>direction</cite>).</p>
+<dt><strong>params</strong><span class="classifier">(2, ) array, optional</span></dt><dd><p>Optional custom parameter set in the form (<em class="xref py py-obj">origin</em>, <em class="xref py py-obj">direction</em>).</p>
 </dd>
 </dl>
 </dd>
@@ -2560,7 +2560,7 @@ circle:</p>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">tuple</span></dt><dd><p>Circle model parameters in the following order <cite>xc</cite>, <cite>yc</cite>, <cite>r</cite>.</p>
+<dt><strong>params</strong><span class="classifier">tuple</span></dt><dd><p>Circle model parameters in the following order <em class="xref py py-obj">xc</em>, <em class="xref py py-obj">yc</em>, <em class="xref py py-obj">r</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -2676,8 +2676,8 @@ to a simple, stable and robust fitting method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>params</strong><span class="classifier">tuple</span></dt><dd><p>Ellipse model parameters in the following order <cite>xc</cite>, <cite>yc</cite>, <cite>a</cite>, <cite>b</cite>,
-<cite>theta</cite>.</p>
+<dt><strong>params</strong><span class="classifier">tuple</span></dt><dd><p>Ellipse model parameters in the following order <em class="xref py py-obj">xc</em>, <em class="xref py py-obj">yc</em>, <em class="xref py py-obj">a</em>, <em class="xref py py-obj">b</em>,
+<em class="xref py py-obj">theta</em>.</p>
 </dd>
 </dl>
 </dd>

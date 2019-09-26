@@ -179,7 +179,7 @@
 <dt id="skimage.exposure.histogram">
 <code class="sig-prename descclassname">skimage.exposure.</code><code class="sig-name descname">histogram</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">nbins=256</em>, <em class="sig-param">source_range='image'</em>, <em class="sig-param">normalize=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/exposure/exposure.py#L77"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.exposure.histogram" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return histogram of image.</p>
-<p>Unlike <cite>numpy.histogram</cite>, this function returns the centers of bins and
+<p>Unlike <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.histogram.html#numpy.histogram" title="(in NumPy v1.17)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.histogram</span></code></a>, this function returns the centers of bins and
 does not rebin integer arrays. For integer arrays, each integer value has
 its own bin, which improves speed and intensity-resolution.</p>
 <p>The histogram is computed on the flattened image: for color images, the
@@ -258,7 +258,7 @@ of that data type.</p>
 ignored for integer images, for which each integer is its own
 bin.</p>
 </dd>
-<dt><strong>mask: ndarray of bools or 0s and 1s, optional</strong></dt><dd><p>Array of same shape as <cite>image</cite>. Only points at which mask == True
+<dt><strong>mask: ndarray of bools or 0s and 1s, optional</strong></dt><dd><p>Array of same shape as <em class="xref py py-obj">image</em>. Only points at which mask == True
 are used for the equalization, which is applied to the whole image.</p>
 </dd>
 </dl>
@@ -320,7 +320,7 @@ enhanced even in regions that are darker or lighter than most of the image.</p>
 <dt><strong>kernel_size: integer or list-like, optional</strong></dt><dd><p>Defines the shape of contextual regions used in the algorithm. If
 iterable is passed, it must have the same number of elements as
 <code class="docutils literal notranslate"><span class="pre">image.ndim</span></code> (without color channel). If integer, it is broadcasted
-to each <cite>image</cite> dimension. By default, <code class="docutils literal notranslate"><span class="pre">kernel_size</span></code> is 1/8 of
+to each <em class="xref py py-obj">image</em> dimension. By default, <code class="docutils literal notranslate"><span class="pre">kernel_size</span></code> is 1/8 of
 <code class="docutils literal notranslate"><span class="pre">image</span></code> height by 1/8 of its width.</p>
 </dd>
 <dt><strong>clip_limit</strong><span class="classifier">float, optional</span></dt><dd><p>Clipping limit, normalized between 0 and 1 (higher values give more
@@ -381,8 +381,8 @@ contrast).</p>
 <dt id="skimage.exposure.rescale_intensity">
 <code class="sig-prename descclassname">skimage.exposure.</code><code class="sig-name descname">rescale_intensity</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">in_range='image'</em>, <em class="sig-param">out_range='dtype'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/exposure/exposure.py#L269"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.exposure.rescale_intensity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return image after stretching or shrinking its intensity levels.</p>
-<p>The desired intensity range of the input and output, <cite>in_range</cite> and
-<cite>out_range</cite> respectively, are used to stretch or shrink the intensity range
+<p>The desired intensity range of the input and output, <em class="xref py py-obj">in_range</em> and
+<em class="xref py py-obj">out_range</em> respectively, are used to stretch or shrink the intensity range
 of the input image. See examples below.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -396,10 +396,10 @@ The possible values for this parameter are enumerated below.</p>
 </dd>
 <dt>‘dtype’</dt><dd><p>Use min/max of the image’s dtype as the intensity range.</p>
 </dd>
-<dt>dtype-name</dt><dd><p>Use intensity range based on desired <cite>dtype</cite>. Must be valid key
-in <cite>DTYPE_RANGE</cite>.</p>
+<dt>dtype-name</dt><dd><p>Use intensity range based on desired <em class="xref py py-obj">dtype</em>. Must be valid key
+in <em class="xref py py-obj">DTYPE_RANGE</em>.</p>
 </dd>
-<dt>2-tuple</dt><dd><p>Use <cite>range_values</cite> as explicit min/max intensities.</p>
+<dt>2-tuple</dt><dd><p>Use <em class="xref py py-obj">range_values</em> as explicit min/max intensities.</p>
 </dd>
 </dl>
 </dd>
@@ -421,8 +421,8 @@ as the input image.</p>
 </div>
 <p class="rubric">Examples</p>
 <p>By default, the min/max intensities of the input image are stretched to
-the limits allowed by the image’s dtype, since <cite>in_range</cite> defaults to
-‘image’ and <cite>out_range</cite> defaults to ‘dtype’:</p>
+the limits allowed by the image’s dtype, since <em class="xref py py-obj">in_range</em> defaults to
+‘image’ and <em class="xref py py-obj">out_range</em> defaults to ‘dtype’:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">51</span><span class="p">,</span> <span class="mi">102</span><span class="p">,</span> <span class="mi">153</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="go">array([  0, 127, 255], dtype=uint8)</span>
@@ -433,25 +433,25 @@ the limits allowed by the image’s dtype, since <cite>in_range</cite> defaults 
 <span class="go">array([  51.,  102.,  153.])</span>
 </pre></div>
 </div>
-<p>Use <cite>rescale_intensity</cite> to rescale to the proper range for float dtypes:</p>
+<p>Use <a class="reference internal" href="#skimage.exposure.rescale_intensity" title="skimage.exposure.rescale_intensity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescale_intensity</span></code></a> to rescale to the proper range for float dtypes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image_float</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">image</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">image_float</span><span class="p">)</span>
 <span class="go">array([ 0. ,  0.5,  1. ])</span>
 </pre></div>
 </div>
-<p>To maintain the low contrast of the original, use the <cite>in_range</cite> parameter:</p>
+<p>To maintain the low contrast of the original, use the <em class="xref py py-obj">in_range</em> parameter:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">image_float</span><span class="p">,</span> <span class="n">in_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
 <span class="go">array([ 0.2,  0.4,  0.6])</span>
 </pre></div>
 </div>
-<p>If the min/max value of <cite>in_range</cite> is more/less than the min/max image
+<p>If the min/max value of <em class="xref py py-obj">in_range</em> is more/less than the min/max image
 intensity, then the intensity levels are clipped:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">image_float</span><span class="p">,</span> <span class="n">in_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">102</span><span class="p">))</span>
 <span class="go">array([ 0.5,  1. ,  1. ])</span>
 </pre></div>
 </div>
 <p>If you have an image with signed integers but want to rescale the image to
-just the positive range, use the <cite>out_range</cite> parameter:</p>
+just the positive range, use the <em class="xref py py-obj">out_range</em> parameter:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">out_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">127</span><span class="p">))</span>
 <span class="go">array([  0,  63, 127], dtype=int8)</span>
