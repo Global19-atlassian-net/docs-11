@@ -276,18 +276,18 @@ matching plugin is used.</p>
 <h2>concatenate_images<a class="headerlink" href="#concatenate-images" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.concatenate_images">
-<code class="sig-prename descclassname">skimage.io.</code><code class="sig-name descname">concatenate_images</code><span class="sig-paren">(</span><em class="sig-param">ic</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L19"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.concatenate_images" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.io.</code><code class="sig-name descname">concatenate_images</code><span class="sig-paren">(</span><em class="sig-param">ic</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L20"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.concatenate_images" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate all images in the image collection into an array.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>ic: an iterable of images (including ImageCollection and MultiImage)</strong></dt><dd><p>The images to be concatenated.</p>
+<dt><strong>ic</strong><span class="classifier">an iterable of images</span></dt><dd><p>The images to be concatenated.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>ar</strong><span class="classifier">np.ndarray</span></dt><dd><p>An array having one more dimension than the images in <em class="xref py py-obj">ic</em>.</p>
+<dt><strong>array_cat</strong><span class="classifier">ndarray</span></dt><dd><p>An array having one more dimension than the images in <em class="xref py py-obj">ic</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -304,6 +304,9 @@ matching plugin is used.</p>
 <dt><a class="reference internal" href="#skimage.io.ImageCollection.concatenate" title="skimage.io.ImageCollection.concatenate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImageCollection.concatenate</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">MultiImage.concatenate</span></code></dt><dd></dd>
 </dl>
 </div>
+<p class="rubric">Notes</p>
+<p><code class="docutils literal notranslate"><span class="pre">concatenate_images</span></code> receives any iterable object containing images,
+including ImageCollection and MultiImage, and returns a NumPy array.</p>
 </dd></dl>
 
 </div>
@@ -409,7 +412,7 @@ time.  Otherwise, images will be cached once they are loaded.</p>
 <h2>imread_collection_wrapper<a class="headerlink" href="#imread-collection-wrapper" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.io.imread_collection_wrapper">
-<code class="sig-prename descclassname">skimage.io.</code><code class="sig-name descname">imread_collection_wrapper</code><span class="sig-paren">(</span><em class="sig-param">imread</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L350"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imread_collection_wrapper" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.io.</code><code class="sig-name descname">imread_collection_wrapper</code><span class="sig-paren">(</span><em class="sig-param">imread</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L369"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.imread_collection_wrapper" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -787,32 +790,30 @@ if your system does not have the required libraries installed.</p>
 <h2><a class="reference internal" href="#skimage.io.ImageCollection" title="skimage.io.ImageCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageCollection</span></code></a><a class="headerlink" href="#imagecollection" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.io.ImageCollection">
-<em class="property">class </em><code class="sig-prename descclassname">skimage.io.</code><code class="sig-name descname">ImageCollection</code><span class="sig-paren">(</span><em class="sig-param">load_pattern</em>, <em class="sig-param">conserve_memory=True</em>, <em class="sig-param">load_func=None</em>, <em class="sig-param">**load_func_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L75"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.ImageCollection" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skimage.io.</code><code class="sig-name descname">ImageCollection</code><span class="sig-paren">(</span><em class="sig-param">load_pattern</em>, <em class="sig-param">conserve_memory=True</em>, <em class="sig-param">load_func=None</em>, <em class="sig-param">**load_func_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L98"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.ImageCollection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.7/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Load and manage a collection of image files.</p>
-<p>Note that files are always stored in alphabetical order. Also note that
-slicing returns a new ImageCollection, <em>not</em> a view into the data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>load_pattern</strong><span class="classifier">str or list</span></dt><dd><p>Pattern glob or filenames to load. The path can be absolute or
-relative.  Multiple patterns should be separated by os.pathsep,
-e.g. ‘/tmp/work/<em>.png:/tmp/other/</em>.jpg’.  Also see
-implementation notes below.</p>
+<dt><strong>load_pattern</strong><span class="classifier">str or list of str</span></dt><dd><p>Pattern string or list of strings to load. The filename path can be
+absolute or relative.</p>
 </dd>
-<dt><strong>conserve_memory</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, never keep more than one in memory at a specific
-time.  Otherwise, images will be cached once they are loaded.</p>
+<dt><strong>conserve_memory</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, <a class="reference internal" href="#skimage.io.ImageCollection" title="skimage.io.ImageCollection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ImageCollection</span></code></a> does not keep more than one in memory at a
+specific time. Otherwise, images will be cached once they are loaded.</p>
 </dd>
 </dl>
 </dd>
 <dt class="field-even">Other Parameters</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>load_func</strong><span class="classifier">callable</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">imread</span></code> by default.  See notes below.</p>
+<dt><strong>load_func</strong><span class="classifier">callable</span></dt><dd><p><code class="docutils literal notranslate"><span class="pre">imread</span></code> by default. See notes below.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
+<p>Note that files are always returned in alphanumerical order. Also note
+that slicing returns a new ImageCollection, <em>not</em> a view into the data.</p>
 <p>ImageCollection can be modified to load images from an arbitrary
 source by specifying a combination of <em class="xref py py-obj">load_pattern</em> and
 <em class="xref py py-obj">load_func</em>.  For an ImageCollection <code class="docutils literal notranslate"><span class="pre">ic</span></code>, <code class="docutils literal notranslate"><span class="pre">ic[5]</span></code> uses
@@ -855,28 +856,28 @@ should accept the keyword argument <code class="docutils literal notranslate"><s
 <span class="go">(200, 200)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ic</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s1">&#39;/tmp/work/*.png:/tmp/other/*.jpg&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ic</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">([</span><span class="s1">&#39;/tmp/work/*.png&#39;</span><span class="p">,</span> <span class="s1">&#39;/tmp/other/*.jpg&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Attributes</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>files</strong><span class="classifier">list of str</span></dt><dd><p>If a glob string is given for <em class="xref py py-obj">load_pattern</em>, this attribute
-stores the expanded file list.  Otherwise, this is simply
-equal to <em class="xref py py-obj">load_pattern</em>.</p>
+<dt><strong>files</strong><span class="classifier">list of str</span></dt><dd><p>If a pattern string is given for <em class="xref py py-obj">load_pattern</em>, this attribute
+stores the expanded file list. Otherwise, this is equal to
+<em class="xref py py-obj">load_pattern</em>.</p>
 </dd>
 </dl>
 </dd>
 </dl>
 <dl class="method">
 <dt id="skimage.io.ImageCollection.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">load_pattern</em>, <em class="sig-param">conserve_memory=True</em>, <em class="sig-param">load_func=None</em>, <em class="sig-param">**load_func_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L154"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.ImageCollection.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">load_pattern</em>, <em class="sig-param">conserve_memory=True</em>, <em class="sig-param">load_func=None</em>, <em class="sig-param">**load_func_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L172"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.ImageCollection.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load and manage a collection of images.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.io.ImageCollection.concatenate">
-<code class="sig-name descname">concatenate</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L330"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.ImageCollection.concatenate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">concatenate</code><span class="sig-paren">(</span><em class="sig-param">self</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L349"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.ImageCollection.concatenate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenate all images in the collection into an array.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -912,7 +913,7 @@ equal to <em class="xref py py-obj">load_pattern</em>.</p>
 
 <dl class="method">
 <dt id="skimage.io.ImageCollection.reload">
-<code class="sig-name descname">reload</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L318"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.ImageCollection.reload" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">reload</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">n=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L337"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.ImageCollection.reload" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clear the image cache.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -932,7 +933,7 @@ entire cache is erased.</p>
 <h2><a class="reference internal" href="#skimage.io.MultiImage" title="skimage.io.MultiImage"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiImage</span></code></a><a class="headerlink" href="#multiimage" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.io.MultiImage">
-<em class="property">class </em><code class="sig-prename descclassname">skimage.io.</code><code class="sig-name descname">MultiImage</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">conserve_memory=True</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">**imread_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L376"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.MultiImage" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skimage.io.</code><code class="sig-name descname">MultiImage</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">conserve_memory=True</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">**imread_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L395"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.MultiImage" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">skimage.io.collection.ImageCollection</span></code></p>
 <p>A class containing a single multi-frame image.</p>
 <dl class="field-list simple">
@@ -969,7 +970,7 @@ PIL otherwise.</p>
 </div>
 <dl class="method">
 <dt id="skimage.io.MultiImage.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filename</em>, <em class="sig-param">conserve_memory=True</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">**imread_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L414"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.MultiImage.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">filename</em>, <em class="sig-param">conserve_memory=True</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">**imread_kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/io/collection.py#L432"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.io.MultiImage.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load a multi-img.</p>
 </dd></dl>
 
