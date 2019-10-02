@@ -1022,7 +1022,7 @@ we also show how to use a proportion of the total samples, rather than an absolu
 <h2>block_reduce<a class="headerlink" href="#block-reduce" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.block_reduce">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7f4daba10510&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7f341db81488&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Down-sample image by applying function to local blocks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1081,7 +1081,7 @@ block size.</p>
 <h2>moments<a class="headerlink" href="#moments" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.moments">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">moments</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">order=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">moments</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">order=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L149"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate all raw image moments up to a certain order.</p>
 <dl class="simple">
 <dt>The following properties can be calculated from raw image moments:</dt><dd><ul class="simple">
@@ -1143,7 +1143,7 @@ Berlin, 1993.</p>
 <h2>moments_central<a class="headerlink" href="#moments-central" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.moments_central">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">moments_central</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">center=None</em>, <em class="sig-param">order=3</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L193"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_central" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">moments_central</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">center=None</em>, <em class="sig-param">order=3</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_central" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate all central image moments up to a certain order.</p>
 <p>The center coordinates (cr, cc) can be calculated from the raw moments as:
 {<code class="docutils literal notranslate"><span class="pre">M[1,</span> <span class="pre">0]</span> <span class="pre">/</span> <span class="pre">M[0,</span> <span class="pre">0]</span></code>, <code class="docutils literal notranslate"><span class="pre">M[0,</span> <span class="pre">1]</span> <span class="pre">/</span> <span class="pre">M[0,</span> <span class="pre">0]</span></code>}.</p>
@@ -1313,7 +1313,8 @@ rows 1 and 3) are zero when centered on the centroid, or center of mass,
 of the object (the default). If we break the symmetry by adding a new
 point, this no longer holds:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coords2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">coords</span><span class="p">,</span> <span class="p">[[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">17</span><span class="p">]]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">moments_coords_central</span><span class="p">(</span><span class="n">coords2</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">moments_coords_central</span><span class="p">(</span><span class="n">coords2</span><span class="p">),</span>
+<span class="gp">... </span>         <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  
 <span class="go">array([[ 17.  ,   0.  ,  22.12,  -2.49],</span>
 <span class="go">       [  0.  ,   3.53,   1.73,   7.4 ],</span>
 <span class="go">       [ 25.88,   6.02,  36.63,   8.83],</span>
@@ -1334,7 +1335,7 @@ when the center is (0, 0):</p>
 <h2>moments_normalized<a class="headerlink" href="#moments-normalized" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.moments_normalized">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">moments_normalized</code><span class="sig-paren">(</span><em class="sig-param">mu</em>, <em class="sig-param">order=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L252"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_normalized" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">moments_normalized</code><span class="sig-paren">(</span><em class="sig-param">mu</em>, <em class="sig-param">order=3</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L253"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_normalized" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate all normalized central image moments up to a certain order.</p>
 <p>Note that normalized central moments are translation and scale invariant
 but not rotation invariant.</p>
@@ -1394,7 +1395,7 @@ Berlin, 1993.</p>
 <h2>moments_hu<a class="headerlink" href="#moments-hu" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.moments_hu">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">moments_hu</code><span class="sig-paren">(</span><em class="sig-param">nu</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L308"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_hu" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">moments_hu</code><span class="sig-paren">(</span><em class="sig-param">nu</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L309"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.moments_hu" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate Hu’s set of image moments (2D-only).</p>
 <p>Note that this set of moments is proofed to be translation, scale and
 rotation invariant.</p>
@@ -1442,7 +1443,7 @@ Berlin, 1993.</p>
 <h2>inertia_tensor<a class="headerlink" href="#inertia-tensor" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.inertia_tensor">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">inertia_tensor</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">mu=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L362"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.inertia_tensor" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">inertia_tensor</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">mu=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L363"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.inertia_tensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the inertia tensor of the input image.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1483,7 +1484,7 @@ Scientific Applications. (Chapter 8: Tensor Methods) Springer, 1993.</p>
 <h2>inertia_tensor_eigvals<a class="headerlink" href="#inertia-tensor-eigvals" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.inertia_tensor_eigvals">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">inertia_tensor_eigvals</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">mu=None</em>, <em class="sig-param">T=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L414"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.inertia_tensor_eigvals" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">inertia_tensor_eigvals</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">mu=None</em>, <em class="sig-param">T=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_moments.py#L415"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.inertia_tensor_eigvals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the eigenvalues of the inertia tensor of the image.</p>
 <p>The inertia tensor measures covariance of the image intensity along
 the image axes. (See <a class="reference internal" href="#skimage.measure.inertia_tensor" title="skimage.measure.inertia_tensor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inertia_tensor</span></code></a>.) The relative magnitude of the
