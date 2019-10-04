@@ -272,7 +272,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.morphology.skeletonize" title="skimage.morphology.skeletonize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.skeletonize</span></code></a>(image, \*[, …])</p></td>
 <td><p>Compute the skeleton of a binary image.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.morphology.skeletonize_3d" title="skimage.morphology.skeletonize_3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.skeletonize_3d</span></code></a>(img)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.morphology.skeletonize_3d" title="skimage.morphology.skeletonize_3d"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.skeletonize_3d</span></code></a>(image, \*)</p></td>
 <td><p>Compute the skeleton of a binary image.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.morphology.thin" title="skimage.morphology.thin"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.thin</span></code></a>(image[, max_iter])</p></td>
@@ -1516,14 +1516,14 @@ March 1984, Volume 27, Number 3.</p>
 <h2>skeletonize_3d<a class="headerlink" href="#skeletonize-3d" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.skeletonize_3d">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">skeletonize_3d</code><span class="sig-paren">(</span><em class="sig-param">img</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/_skeletonize.py#L579"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.skeletonize_3d" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">skeletonize_3d</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">*</em>, <em class="sig-param">img=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/_skeletonize.py#L579"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.skeletonize_3d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the skeleton of a binary image.</p>
 <p>Thinning is used to reduce each connected component in a binary image
 to a single-pixel wide skeleton.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>img</strong><span class="classifier">ndarray, 2D or 3D</span></dt><dd><p>A binary image containing the objects to be skeletonized. Zeros
+<dt><strong>image</strong><span class="classifier">ndarray, 2D or 3D</span></dt><dd><p>A binary image containing the objects to be skeletonized. Zeros
 represent background, nonzero values are foreground.</p>
 </dd>
 </dl>
@@ -1531,6 +1531,15 @@ represent background, nonzero values are foreground.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>skeleton</strong><span class="classifier">ndarray</span></dt><dd><p>The thinned image.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Other Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>img</strong><span class="classifier">DEPRECATED</span></dt><dd><p>Synonym for <em class="xref py py-obj">image</em>.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.16: </span>Will be removed in 0.17.</p>
+</div>
 </dd>
 </dl>
 </dd>

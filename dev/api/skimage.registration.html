@@ -117,7 +117,7 @@
 <h2>optical_flow_tvl1<a class="headerlink" href="#optical-flow-tvl1" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.registration.optical_flow_tvl1">
-<code class="sig-prename descclassname">skimage.registration.</code><code class="sig-name descname">optical_flow_tvl1</code><span class="sig-paren">(</span><em class="sig-param">image0</em>, <em class="sig-param">image1</em>, <em class="sig-param">*</em>, <em class="sig-param">attachment=15</em>, <em class="sig-param">tightness=0.3</em>, <em class="sig-param">nwarp=5</em>, <em class="sig-param">niter=10</em>, <em class="sig-param">tol=0.0001</em>, <em class="sig-param">prefilter=False</em>, <em class="sig-param">dtype='float32'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/registration/_optical_flow.py#L138"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.registration.optical_flow_tvl1" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.registration.</code><code class="sig-name descname">optical_flow_tvl1</code><span class="sig-paren">(</span><em class="sig-param">reference_image</em>, <em class="sig-param">moving_image</em>, <em class="sig-param">*</em>, <em class="sig-param">attachment=15</em>, <em class="sig-param">tightness=0.3</em>, <em class="sig-param">num_warp=5</em>, <em class="sig-param">num_iter=10</em>, <em class="sig-param">tol=0.0001</em>, <em class="sig-param">prefilter=False</em>, <em class="sig-param">dtype=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/registration/_optical_flow.py#L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.registration.optical_flow_tvl1" title="Permalink to this definition">¶</a></dt>
 <dd><p>Coarse to fine optical flow estimator.</p>
 <p>The TV-L1 solver is applied at each level of the image
 pyramid. TV-L1 is a popular algorithm for optical flow estimation
@@ -125,9 +125,9 @@ introduced by Zack et al. <a class="reference internal" href="#rda1bf5cbeff5-1" 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>image0</strong><span class="classifier">ndarray, shape (M, N[, P[, …]])</span></dt><dd><p>The first gray scale image of the sequence.</p>
+<dt><strong>reference_image</strong><span class="classifier">ndarray, shape (M, N[, P[, …]])</span></dt><dd><p>The first gray scale image of the sequence.</p>
 </dd>
-<dt><strong>image1</strong><span class="classifier">ndarray, shape (M, N[, P[, …]])</span></dt><dd><p>The second gray scale image of the sequence.</p>
+<dt><strong>moving_image</strong><span class="classifier">ndarray, shape (M, N[, P[, …]])</span></dt><dd><p>The second gray scale image of the sequence.</p>
 </dd>
 <dt><strong>attachment</strong><span class="classifier">float</span></dt><dd><p>Attachment parameter (<span class="math notranslate nohighlight">\(\lambda\)</span> in <a class="reference internal" href="#rda1bf5cbeff5-1" id="id4">[1]</a>). The smaller
 this parameter is, the smoother the returned result will be.</p>
@@ -136,9 +136,9 @@ this parameter is, the smoother the returned result will be.</p>
 a small value in order to maintain attachement and
 regularization parts in correspondence.</p>
 </dd>
-<dt><strong>nwarp</strong><span class="classifier">int</span></dt><dd><p>Number of times image1 is warped.</p>
+<dt><strong>num_warp</strong><span class="classifier">int</span></dt><dd><p>Number of times image1 is warped.</p>
 </dd>
-<dt><strong>niter</strong><span class="classifier">int</span></dt><dd><p>Number of fixed point iteration.</p>
+<dt><strong>num_iter</strong><span class="classifier">int</span></dt><dd><p>Number of fixed point iteration.</p>
 </dd>
 <dt><strong>tol</strong><span class="classifier">float</span></dt><dd><p>Tolerance used as stopping criterion based on the L² distance
 between two consecutive values of (u, v).</p>
