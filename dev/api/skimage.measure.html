@@ -166,7 +166,7 @@
 <td><p>Measure properties of labeled image regions.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skimage.measure.regionprops_table" title="skimage.measure.regionprops_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.regionprops_table</span></code></a>(label_image)</p></td>
-<td><p>Find image properties and convert them into a dictionary</p></td>
+<td><p>Compute image properties and return them as a pandas-compatible table.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.measure.perimeter" title="skimage.measure.perimeter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.perimeter</span></code></a>(image[, neighbourhood])</p></td>
 <td><p>Calculate total perimeter of all objects in binary image.</p></td>
@@ -379,7 +379,7 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 <h2>regionprops<a class="headerlink" href="#regionprops" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.regionprops">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">regionprops</code><span class="sig-paren">(</span><em class="sig-param">label_image</em>, <em class="sig-param">intensity_image=None</em>, <em class="sig-param">cache=True</em>, <em class="sig-param">coordinates=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L625"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">regionprops</code><span class="sig-paren">(</span><em class="sig-param">label_image</em>, <em class="sig-param">intensity_image=None</em>, <em class="sig-param">cache=True</em>, <em class="sig-param">coordinates=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L628"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
 <dd><p>Measure properties of labeled image regions.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -614,7 +614,9 @@ Berlin, 1993.</p>
 <dl class="function">
 <dt id="skimage.measure.regionprops_table">
 <code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">regionprops_table</code><span class="sig-paren">(</span><em class="sig-param">label_image</em>, <em class="sig-param">intensity_image=None</em>, <em class="sig-param">properties=('label'</em>, <em class="sig-param">'bbox')</em>, <em class="sig-param">*</em>, <em class="sig-param">cache=True</em>, <em class="sig-param">separator='-'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L528"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops_table" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find image properties and convert them into a dictionary</p>
+<dd><p>Compute image properties and return them as a pandas-compatible table.</p>
+<p>The table is a dictionary mapping column names to value arrays. See Notes
+section below for details.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
@@ -704,7 +706,7 @@ obtain a clean DataFrame:</p>
 <h2>perimeter<a class="headerlink" href="#perimeter" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.perimeter">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">perimeter</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L872"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">perimeter</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L875"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate total perimeter of all objects in binary image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1022,7 +1024,7 @@ we also show how to use a proportion of the total samples, rather than an absolu
 <h2>block_reduce<a class="headerlink" href="#block-reduce" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.block_reduce">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7f6816fbb488&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7fc777379488&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Down-sample image by applying function to local blocks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
