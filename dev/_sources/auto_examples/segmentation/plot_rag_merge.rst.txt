@@ -54,7 +54,7 @@ until no highly similar region pairs remain.
             difference of the mean color between node `dst` and `n`.
         """
 
-        diff = graph.node[dst]['mean color'] - graph.node[n]['mean color']
+        diff = graph.nodes[dst]['mean color'] - graph.nodes[n]['mean color']
         diff = np.linalg.norm(diff)
         return {'weight': diff}
 
@@ -71,10 +71,10 @@ until no highly similar region pairs remain.
         src, dst : int
             The vertices in `graph` to be merged.
         """
-        graph.node[dst]['total color'] += graph.node[src]['total color']
-        graph.node[dst]['pixel count'] += graph.node[src]['pixel count']
-        graph.node[dst]['mean color'] = (graph.node[dst]['total color'] /
-                                         graph.node[dst]['pixel count'])
+        graph.nodes[dst]['total color'] += graph.nodes[src]['total color']
+        graph.nodes[dst]['pixel count'] += graph.nodes[src]['pixel count']
+        graph.nodes[dst]['mean color'] = (graph.nodes[dst]['total color'] /
+                                          graph.nodes[dst]['pixel count'])
 
 
     img = data.coffee()
@@ -94,7 +94,7 @@ until no highly similar region pairs remain.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.922 seconds)
+   **Total running time of the script:** ( 0 minutes  2.996 seconds)
 
 
 .. _sphx_glr_download_auto_examples_segmentation_plot_rag_merge.py:
