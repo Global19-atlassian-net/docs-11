@@ -220,9 +220,9 @@ of that data type.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span><span class="p">,</span> <span class="n">exposure</span><span class="p">,</span> <span class="n">img_as_float</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">img_as_float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">())</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="go">(array([107432, 154712]), array([ 0. ,  0.5,  1. ]))</span>
+<span class="go">(array([107432, 154712]), array([0. , 0.5, 1. ]))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">exposure</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">nbins</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="go">(array([107432, 154712]), array([ 0.25,  0.75]))</span>
+<span class="go">(array([107432, 154712]), array([0.25, 0.75]))</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -430,24 +430,24 @@ the limits allowed by the image’s dtype, since <em class="xref py py-obj">in_r
 </div>
 <p>It’s easy to accidentally convert an image dtype from uint8 to float:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">image</span>
-<span class="go">array([  51.,  102.,  153.])</span>
+<span class="go">array([ 51., 102., 153.])</span>
 </pre></div>
 </div>
 <p>Use <a class="reference internal" href="#skimage.exposure.rescale_intensity" title="skimage.exposure.rescale_intensity"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rescale_intensity</span></code></a> to rescale to the proper range for float dtypes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image_float</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">image</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">image_float</span><span class="p">)</span>
-<span class="go">array([ 0. ,  0.5,  1. ])</span>
+<span class="go">array([0. , 0.5, 1. ])</span>
 </pre></div>
 </div>
 <p>To maintain the low contrast of the original, use the <em class="xref py py-obj">in_range</em> parameter:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">image_float</span><span class="p">,</span> <span class="n">in_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
-<span class="go">array([ 0.2,  0.4,  0.6])</span>
+<span class="go">array([0.2, 0.4, 0.6])</span>
 </pre></div>
 </div>
 <p>If the min/max value of <em class="xref py py-obj">in_range</em> is more/less than the min/max image
 intensity, then the intensity levels are clipped:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">rescale_intensity</span><span class="p">(</span><span class="n">image_float</span><span class="p">,</span> <span class="n">in_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">102</span><span class="p">))</span>
-<span class="go">array([ 0.5,  1. ,  1. ])</span>
+<span class="go">array([0.5, 1. , 1. ])</span>
 </pre></div>
 </div>
 <p>If you have an image with signed integers but want to rescale the image to

@@ -353,12 +353,12 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
-<span class="go">array([[ 1.,  0.,  0.],</span>
-<span class="go">       [ 0.,  0.,  0.],</span>
-<span class="go">       [ 0.,  0.,  0.]])</span>
+<span class="go">array([[1., 0., 0.],</span>
+<span class="go">       [0., 0., 0.],</span>
+<span class="go">       [0., 0., 0.]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">find_contours</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-<span class="go">[array([[ 0. ,  0.5],</span>
-<span class="go">       [ 0.5,  0. ]])]</span>
+<span class="go">[array([[0. , 0.5],</span>
+<span class="go">       [0.5, 0. ]])]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -589,10 +589,10 @@ Berlin, 1993.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">props</span> <span class="o">=</span> <span class="n">regionprops</span><span class="p">(</span><span class="n">label_img</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># centroid of first labeled object</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">props</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">centroid</span>
-<span class="go">(22.729879860483141, 81.912285234465827)</span>
+<span class="go">(22.72987986048314, 81.91228523446583)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># centroid of first labeled object</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">props</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;centroid&#39;</span><span class="p">]</span>
-<span class="go">(22.729879860483141, 81.912285234465827)</span>
+<span class="go">(22.72987986048314, 81.91228523446583)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -839,7 +839,7 @@ False.</p>
 <h2>ransac<a class="headerlink" href="#ransac" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.ransac">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">ransac</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">model_class</em>, <em class="sig-param">min_samples</em>, <em class="sig-param">residual_threshold</em>, <em class="sig-param">is_data_valid=None</em>, <em class="sig-param">is_model_valid=None</em>, <em class="sig-param">max_trials=100</em>, <em class="sig-param">stop_sample_num=inf</em>, <em class="sig-param">stop_residuals_sum=0</em>, <em class="sig-param">stop_probability=1</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">initial_inliers=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L621"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.ransac" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">ransac</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">model_class</em>, <em class="sig-param">min_samples</em>, <em class="sig-param">residual_threshold</em>, <em class="sig-param">is_data_valid=None</em>, <em class="sig-param">is_model_valid=None</em>, <em class="sig-param">max_trials=100</em>, <em class="sig-param">stop_sample_num=inf</em>, <em class="sig-param">stop_residuals_sum=0</em>, <em class="sig-param">stop_probability=1</em>, <em class="sig-param">random_state=None</em>, <em class="sig-param">initial_inliers=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L620"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.ransac" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit a model to data with the RANSAC (random sample consensus) algorithm.</p>
 <p>RANSAC is an iterative algorithm for the robust estimation of parameters
 from a subset of inliers from the complete data set. Each iteration
@@ -967,7 +967,7 @@ by <em class="xref py py-obj">np.random</em>.</p>
 <p>Estimate ellipse model using RANSAC:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ransac_model</span><span class="p">,</span> <span class="n">inliers</span> <span class="o">=</span> <span class="n">ransac</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">EllipseModel</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">max_trials</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ransac_model</span><span class="o">.</span><span class="n">params</span><span class="p">))</span>
-<span class="go">array([ 20.,  30.,   5.,  10.,   0.])</span>
+<span class="go">array([20., 30.,  5., 10.,  0.])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">inliers</span> 
 <span class="go">array([False, False, False, False,  True,  True,  True,  True,  True,</span>
 <span class="go">        True,  True,  True,  True,  True,  True,  True,  True,  True,</span>
@@ -999,7 +999,7 @@ we also show how to use a proportion of the total samples, rather than an absolu
 <span class="go">        True,  True,  True,  True,  True,  True,  True,  True,  True,</span>
 <span class="go">        True,  True,  True,  True,  True,  True,  True,  True,  True,</span>
 <span class="go">        True,  True,  True,  True,  True,  True,  True,  True,  True,</span>
-<span class="go">        True,  True,  True,  True,  True], dtype=bool)</span>
+<span class="go">        True,  True,  True,  True,  True])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1024,7 +1024,7 @@ we also show how to use a proportion of the total samples, rather than an absolu
 <h2>block_reduce<a class="headerlink" href="#block-reduce" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.block_reduce">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7f212ebab488&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7f201bcfc488&gt;</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Down-sample image by applying function to local blocks.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1063,7 +1063,7 @@ block size.</p>
 <span class="go">        [28, 29, 30, 31],</span>
 <span class="go">        [32, 33, 34, 35]]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">block_reduce</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
-<span class="go">array([[[ 16.,  17.,  18.,  19.]]])</span>
+<span class="go">array([[[16., 17., 18., 19.]]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_max1</span> <span class="o">=</span> <span class="n">block_reduce</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">block_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_max1</span> 
 <span class="go">array([[[11]],</span>
@@ -1195,10 +1195,10 @@ Berlin, 1993.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">M</span> <span class="o">=</span> <span class="n">moments</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">centroid</span> <span class="o">=</span> <span class="p">(</span><span class="n">M</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">moments_central</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">centroid</span><span class="p">)</span>
-<span class="go">array([[ 16.,   0.,  20.,   0.],</span>
-<span class="go">       [  0.,   0.,   0.,   0.],</span>
-<span class="go">       [ 20.,   0.,  25.,   0.],</span>
-<span class="go">       [  0.,   0.,   0.,   0.]])</span>
+<span class="go">array([[16.,  0., 20.,  0.],</span>
+<span class="go">       [ 0.,  0.,  0.,  0.],</span>
+<span class="go">       [20.,  0., 25.,  0.],</span>
+<span class="go">       [ 0.,  0.,  0.,  0.]])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1304,10 +1304,10 @@ University, version 0.2, Durham, 2001.</p>
 <span class="gp">... </span>                   <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">)</span>
 <span class="gp">... </span>                   <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">)])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">moments_coords_central</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
-<span class="go">array([[ 16.,   0.,  20.,   0.],</span>
-<span class="go">       [  0.,   0.,   0.,   0.],</span>
-<span class="go">       [ 20.,   0.,  25.,   0.],</span>
-<span class="go">       [  0.,   0.,   0.,   0.]])</span>
+<span class="go">array([[16.,  0., 20.,  0.],</span>
+<span class="go">       [ 0.,  0.,  0.,  0.],</span>
+<span class="go">       [20.,  0., 25.,  0.],</span>
+<span class="go">       [ 0.,  0.,  0.,  0.]])</span>
 </pre></div>
 </div>
 <p>As seen above, for symmetric objects, odd-order moments (columns 1 and 3,
@@ -1317,10 +1317,10 @@ point, this no longer holds:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coords2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">coords</span><span class="p">,</span> <span class="p">[[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">17</span><span class="p">]]),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">moments_coords_central</span><span class="p">(</span><span class="n">coords2</span><span class="p">),</span>
 <span class="gp">... </span>         <span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  
-<span class="go">array([[ 17.  ,   0.  ,  22.12,  -2.49],</span>
-<span class="go">       [  0.  ,   3.53,   1.73,   7.4 ],</span>
-<span class="go">       [ 25.88,   6.02,  36.63,   8.83],</span>
-<span class="go">       [  4.15,  19.17,  14.8 ,  39.6 ]])</span>
+<span class="go">array([[17.  ,  0.  , 22.12, -2.49],</span>
+<span class="go">       [ 0.  ,  3.53,  1.73,  7.4 ],</span>
+<span class="go">       [25.88,  6.02, 36.63,  8.83],</span>
+<span class="go">       [ 4.15, 19.17, 14.8 , 39.6 ]])</span>
 </pre></div>
 </div>
 <p>Image moments and central image moments are equivalent (by definition)
@@ -1384,10 +1384,10 @@ Berlin, 1993.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">centroid</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mu</span> <span class="o">=</span> <span class="n">moments_central</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">centroid</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">moments_normalized</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span>
-<span class="go">array([[        nan,         nan,  0.078125  ,  0.        ],</span>
-<span class="go">       [        nan,  0.        ,  0.        ,  0.        ],</span>
-<span class="go">       [ 0.078125  ,  0.        ,  0.00610352,  0.        ],</span>
-<span class="go">       [ 0.        ,  0.        ,  0.        ,  0.        ]])</span>
+<span class="go">array([[       nan,        nan, 0.078125  , 0.        ],</span>
+<span class="go">       [       nan, 0.        , 0.        , 0.        ],</span>
+<span class="go">       [0.078125  , 0.        , 0.00610352, 0.        ],</span>
+<span class="go">       [0.        , 0.        , 0.        , 0.        ]])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1821,18 +1821,18 @@ is the ceil of the computed length of the scan line.</p>
 <span class="go">       [1, 1, 1, 2, 2, 2],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">profile_line</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="go">array([ 1.,  1.,  2.,  2.])</span>
+<span class="go">array([1., 1., 2., 2.])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">profile_line</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">cval</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="go">array([ 1.,  1.,  1.,  2.,  2.,  2.,  4.])</span>
+<span class="go">array([1., 1., 1., 2., 2., 2., 4.])</span>
 </pre></div>
 </div>
 <p>The destination point is included in the profile, in contrast to
 standard numpy indexing.
 For example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">profile_line</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># The final point is out of bounds</span>
-<span class="go">array([ 1.,  1.,  1.,  2.,  2.,  2.,  0.])</span>
+<span class="go">array([1., 1., 1., 2., 2., 2., 0.])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">profile_line</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># This accesses the full first row</span>
-<span class="go">array([ 1.,  1.,  1.,  2.,  2.,  2.])</span>
+<span class="go">array([1., 1., 1., 2., 2., 2.])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2345,7 +2345,7 @@ unit (nat) for base=np.e and hartley (Hart) for base=10.</p>
 <p class="rubric">Examples</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">shannon_entropy</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">())</span>
-<span class="go">7.0479552324230861</span>
+<span class="go">7.047955232423086</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -2372,15 +2372,15 @@ according to the following vector equation:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">lm</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">lm</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="go">(array([ 1.5 ,  5.25]), array([ 0.5547 ,  0.83205]))</span>
+<span class="go">(array([1.5 , 5.25]), array([0.5547 , 0.83205]))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">lm</span><span class="o">.</span><span class="n">residuals</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="go">array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,</span>
-<span class="go">        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])</span>
+<span class="go">array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,</span>
+<span class="go">       0., 0., 0., 0., 0., 0., 0., 0.])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">lm</span><span class="o">.</span><span class="n">predict_y</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="mi">5</span><span class="p">]),</span> <span class="mi">3</span><span class="p">)</span>
-<span class="go">array([ 4.5  ,  4.562,  4.625,  4.688,  4.75 ])</span>
+<span class="go">array([4.5  , 4.562, 4.625, 4.688, 4.75 ])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">lm</span><span class="o">.</span><span class="n">predict_x</span><span class="p">(</span><span class="n">y</span><span class="p">[:</span><span class="mi">5</span><span class="p">]),</span> <span class="mi">3</span><span class="p">)</span>
-<span class="go">array([ 1.   ,  1.042,  1.083,  1.125,  1.167])</span>
+<span class="go">array([1.   , 1.042, 1.083, 1.125, 1.167])</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -2556,8 +2556,8 @@ circle:</p>
 <span class="go">(2.0, 3.0, 4.0)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">residuals</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
-<span class="go">array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,</span>
-<span class="go">        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])</span>
+<span class="go">array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,</span>
+<span class="go">       0., 0., 0., 0., 0., 0., 0., 0.])</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -2576,7 +2576,7 @@ circle:</p>
 
 <dl class="method">
 <dt id="skimage.measure.CircleModel.estimate">
-<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L256"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L255"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate circle model from data using total least squares.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2596,7 +2596,7 @@ circle:</p>
 
 <dl class="method">
 <dt id="skimage.measure.CircleModel.predict_xy">
-<code class="sig-name descname">predict_xy</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">t</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L323"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.predict_xy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict_xy</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">t</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L322"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.predict_xy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict x- and y-coordinates using the estimated model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2619,7 +2619,7 @@ x-axis to positive y-axis in a right-handed system.</p>
 
 <dl class="method">
 <dt id="skimage.measure.CircleModel.residuals">
-<code class="sig-name descname">residuals</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L297"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.residuals" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">residuals</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L296"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.CircleModel.residuals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine residuals of data to model.</p>
 <p>For each point the shortest distance to the circle is returned.</p>
 <dl class="field-list simple">
@@ -2645,7 +2645,7 @@ x-axis to positive y-axis in a right-handed system.</p>
 <h2><a class="reference internal" href="#skimage.measure.EllipseModel" title="skimage.measure.EllipseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">EllipseModel</span></code></a><a class="headerlink" href="#ellipsemodel" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="skimage.measure.EllipseModel">
-<em class="property">class </em><code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">EllipseModel</code><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L350"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">EllipseModel</code><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L349"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">skimage.measure.fit.BaseModel</span></code></p>
 <p>Total least squares estimator for 2D ellipses.</p>
 <p>The functional model of the ellipse is:</p>
@@ -2670,10 +2670,10 @@ to a simple, stable and robust fitting method.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ellipse</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">xy</span><span class="p">)</span>
 <span class="go">True</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ellipse</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="go">array([ 10.  ,  15.  ,   4.  ,   8.  ,   0.52])</span>
+<span class="go">array([10.  , 15.  ,  4.  ,  8.  ,  0.52])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">ellipse</span><span class="o">.</span><span class="n">residuals</span><span class="p">(</span><span class="n">xy</span><span class="p">)),</span> <span class="mi">5</span><span class="p">)</span>
-<span class="go">array([ 0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,</span>
-<span class="go">        0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.,  0.])</span>
+<span class="go">array([0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,</span>
+<span class="go">       0., 0., 0., 0., 0., 0., 0., 0.])</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -2693,7 +2693,7 @@ to a simple, stable and robust fitting method.</p>
 
 <dl class="method">
 <dt id="skimage.measure.EllipseModel.estimate">
-<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L391"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.estimate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L390"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.estimate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate circle model from data using total least squares.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2722,7 +2722,7 @@ WSCG (Vol. 98, pp. 125-132).</p>
 
 <dl class="method">
 <dt id="skimage.measure.EllipseModel.predict_xy">
-<code class="sig-name descname">predict_xy</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">t</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L547"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.predict_xy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">predict_xy</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">t</em>, <em class="sig-param">params=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L546"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.predict_xy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Predict x- and y-coordinates using the estimated model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2745,7 +2745,7 @@ x-axis to positive y-axis in a right-handed system.</p>
 
 <dl class="method">
 <dt id="skimage.measure.EllipseModel.residuals">
-<code class="sig-name descname">residuals</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L485"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.residuals" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">residuals</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/fit.py#L484"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.EllipseModel.residuals" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine residuals of data to model.</p>
 <p>For each point the shortest distance to the ellipse is returned.</p>
 <dl class="field-list simple">
