@@ -252,7 +252,7 @@ any two colors behave as though they were similar.</p>
 <h2>cut_threshold<a class="headerlink" href="#cut-threshold" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.future.graph.cut_threshold">
-<code class="sig-prename descclassname">skimage.future.graph.</code><code class="sig-name descname">cut_threshold</code><span class="sig-paren">(</span><em class="sig-param">labels</em>, <em class="sig-param">rag</em>, <em class="sig-param">thresh</em>, <em class="sig-param">in_place=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_cut.py#L12"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.cut_threshold" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.future.graph.</code><code class="sig-name descname">cut_threshold</code><span class="sig-paren">(</span><em class="sig-param">labels</em>, <em class="sig-param">rag</em>, <em class="sig-param">thresh</em>, <em class="sig-param">in_place=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_cut.py#L13"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.cut_threshold" title="Permalink to this definition">¶</a></dt>
 <dd><p>Combine regions separated by weight less than threshold.</p>
 <p>Given an image’s labels and its RAG, output new labels by
 combining regions whose nodes are separated by a weight less
@@ -311,7 +311,7 @@ makes a copy of <code class="xref py py-obj docutils literal notranslate"><span 
 <h2>cut_normalized<a class="headerlink" href="#cut-normalized" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.future.graph.cut_normalized">
-<code class="sig-prename descclassname">skimage.future.graph.</code><code class="sig-name descname">cut_normalized</code><span class="sig-paren">(</span><em class="sig-param">labels</em>, <em class="sig-param">rag</em>, <em class="sig-param">thresh=0.001</em>, <em class="sig-param">num_cuts=10</em>, <em class="sig-param">in_place=True</em>, <em class="sig-param">max_edge=1.0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_cut.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.cut_normalized" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.future.graph.</code><code class="sig-name descname">cut_normalized</code><span class="sig-paren">(</span><em class="sig-param">labels</em>, <em class="sig-param">rag</em>, <em class="sig-param">thresh=0.001</em>, <em class="sig-param">num_cuts=10</em>, <em class="sig-param">in_place=True</em>, <em class="sig-param">max_edge=1.0</em>, <em class="sig-param">*</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_cut.py#L77"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.cut_normalized" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform Normalized Graph cut on the Region Adjacency Graph.</p>
 <p>Given an image’s labels and its similarity RAG, recursively perform
 a 2-way normalized cut on it. All nodes belonging to a subgraph
@@ -335,6 +335,12 @@ set a new attribute <code class="docutils literal notranslate"><span class="pre"
 <dt><strong>max_edge</strong><span class="classifier">float, optional</span></dt><dd><p>The maximum possible value of an edge in the RAG. This corresponds to
 an edge between identical regions. This is used to put self
 edges in the RAG.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional</span></dt><dd><p>If int, random_state is the seed used by the random number generator;
+If RandomState instance, random_state is the random number generator;
+If None, the random number generator is the RandomState instance used
+by <em class="xref py py-obj">np.random</em>. The random state is used for the starting point
+of <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.linalg.eigsh.html#scipy.sparse.linalg.eigsh" title="(in SciPy v1.3.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.sparse.linalg.eigsh</span></code></a>.</p>
 </dd>
 </dl>
 </dd>
@@ -376,7 +382,7 @@ IEEE Transactions on, vol. 22, no. 8, pp. 888-905, August 2000.</p>
 <h2>ncut<a class="headerlink" href="#ncut" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.future.graph.ncut">
-<code class="sig-prename descclassname">skimage.future.graph.</code><code class="sig-name descname">ncut</code><span class="sig-paren">(</span><em class="sig-param">labels</em>, <em class="sig-param">rag</em>, <em class="sig-param">thresh=0.001</em>, <em class="sig-param">num_cuts=10</em>, <em class="sig-param">in_place=True</em>, <em class="sig-param">max_edge=1.0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_cut.py#L76"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.ncut" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.future.graph.</code><code class="sig-name descname">ncut</code><span class="sig-paren">(</span><em class="sig-param">labels</em>, <em class="sig-param">rag</em>, <em class="sig-param">thresh=0.001</em>, <em class="sig-param">num_cuts=10</em>, <em class="sig-param">in_place=True</em>, <em class="sig-param">max_edge=1.0</em>, <em class="sig-param">*</em>, <em class="sig-param">random_state=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/graph_cut.py#L77"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.ncut" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform Normalized Graph cut on the Region Adjacency Graph.</p>
 <p>Given an image’s labels and its similarity RAG, recursively perform
 a 2-way normalized cut on it. All nodes belonging to a subgraph
@@ -400,6 +406,12 @@ set a new attribute <code class="docutils literal notranslate"><span class="pre"
 <dt><strong>max_edge</strong><span class="classifier">float, optional</span></dt><dd><p>The maximum possible value of an edge in the RAG. This corresponds to
 an edge between identical regions. This is used to put self
 edges in the RAG.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int, RandomState instance or None, optional</span></dt><dd><p>If int, random_state is the seed used by the random number generator;
+If RandomState instance, random_state is the random number generator;
+If None, the random number generator is the RandomState instance used
+by <em class="xref py py-obj">np.random</em>. The random state is used for the starting point
+of <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.sparse.linalg.eigsh.html#scipy.sparse.linalg.eigsh" title="(in SciPy v1.3.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.sparse.linalg.eigsh</span></code></a>.</p>
 </dd>
 </dl>
 </dd>
@@ -727,7 +739,7 @@ the correct type---ready to fill with nodes and edges.
 
 <dl class="method">
 <dt id="skimage.future.graph.RAG.merge_nodes">
-<code class="sig-name descname">merge_nodes</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em>, <em class="sig-param">weight_func=&lt;function min_weight at 0x7fe225f93488&gt;</em>, <em class="sig-param">in_place=True</em>, <em class="sig-param">extra_arguments=[]</em>, <em class="sig-param">extra_keywords={}</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L160"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.merge_nodes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">merge_nodes</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em>, <em class="sig-param">weight_func=&lt;function min_weight at 0x7eff854a4158&gt;</em>, <em class="sig-param">in_place=True</em>, <em class="sig-param">extra_arguments=[]</em>, <em class="sig-param">extra_keywords={}</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/future/graph/rag.py#L160"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.future.graph.RAG.merge_nodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Merge node <em class="xref py py-obj">src</em> and <em class="xref py py-obj">dst</em>.</p>
 <p>The new combined node is adjacent to all the neighbors of <em class="xref py py-obj">src</em>
 and <em class="xref py py-obj">dst</em>. <em class="xref py py-obj">weight_func</em> is called to decide the weight of edges
