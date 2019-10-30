@@ -70,12 +70,12 @@
         <div class="well sidebar-box toc">
             <ul class="nav nav-list">
 <li><a class="reference internal" href="#">Module: <code class="xref py py-mod docutils literal notranslate"><span class="pre">graph</span></code></a><ul class="nav nav-list">
-<li><a class="reference internal" href="#shortest-path">shortest_path</a></li>
 <li><a class="reference internal" href="#route-through-array">route_through_array</a></li>
+<li><a class="reference internal" href="#shortest-path">shortest_path</a></li>
 <li><a class="reference internal" href="#mcp"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCP</span></code></a></li>
-<li><a class="reference internal" href="#mcp-geometric"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCP_Geometric</span></code></a></li>
 <li><a class="reference internal" href="#mcp-connect"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCP_Connect</span></code></a></li>
 <li><a class="reference internal" href="#mcp-flexible"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCP_Flexible</span></code></a></li>
+<li><a class="reference internal" href="#mcp-geometric"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCP_Geometric</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -113,68 +113,26 @@
 <col style="width: 90%" />
 </colgroup>
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.graph.shortest_path" title="skimage.graph.shortest_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.graph.shortest_path</span></code></a>(arr[, reach, …])</p></td>
-<td><p>Find the shortest path through an n-d array from one side to another.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.graph.route_through_array" title="skimage.graph.route_through_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.graph.route_through_array</span></code></a>(array, …)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.graph.route_through_array" title="skimage.graph.route_through_array"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.graph.route_through_array</span></code></a>(array, …)</p></td>
 <td><p>Simple example of how to use the MCP and MCP_Geometric classes.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.graph.shortest_path" title="skimage.graph.shortest_path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.graph.shortest_path</span></code></a>(arr[, reach, …])</p></td>
+<td><p>Find the shortest path through an n-d array from one side to another.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skimage.graph.MCP" title="skimage.graph.MCP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.graph.MCP</span></code></a>(costs[, offsets, …])</p></td>
 <td><p>A class for finding the minimum cost path through a given n-d costs array.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.graph.MCP_Connect" title="skimage.graph.MCP_Connect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.graph.MCP_Connect</span></code></a>(costs[, offsets, …])</p></td>
+<td><p>Connect source points using the distance-weighted minimum cost function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.graph.MCP_Flexible" title="skimage.graph.MCP_Flexible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.graph.MCP_Flexible</span></code></a>(costs[, offsets, …])</p></td>
+<td><p>Find minimum cost paths through an N-d costs array.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.graph.MCP_Geometric" title="skimage.graph.MCP_Geometric"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.graph.MCP_Geometric</span></code></a>(costs[, …])</p></td>
 <td><p>Find distance-weighted minimum cost paths through an n-d costs array.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.graph.MCP_Connect" title="skimage.graph.MCP_Connect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.graph.MCP_Connect</span></code></a>(costs[, offsets, …])</p></td>
-<td><p>Connect source points using the distance-weighted minimum cost function.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.graph.MCP_Flexible" title="skimage.graph.MCP_Flexible"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.graph.MCP_Flexible</span></code></a>(costs[, offsets, …])</p></td>
-<td><p>Find minimum cost paths through an N-d costs array.</p></td>
-</tr>
 </tbody>
 </table>
-<div class="section" id="shortest-path">
-<h2>shortest_path<a class="headerlink" href="#shortest-path" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="skimage.graph.shortest_path">
-<code class="sig-prename descclassname">skimage.graph.</code><code class="sig-name descname">shortest_path</code><span class="sig-paren">(</span><em class="sig-param">arr</em>, <em class="sig-param">reach=1</em>, <em class="sig-param">axis=-1</em>, <em class="sig-param">output_indexlist=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/graph/spath.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.graph.shortest_path" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find the shortest path through an n-d array from one side to another.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>arr</strong><span class="classifier">ndarray of float64</span></dt><dd></dd>
-<dt><strong>reach</strong><span class="classifier">int, optional</span></dt><dd><p>By default (<code class="docutils literal notranslate"><span class="pre">reach</span> <span class="pre">=</span> <span class="pre">1</span></code>), the shortest path can only move
-one row up or down for every step it moves forward (i.e.,
-the path gradient is limited to 1). <em class="xref py py-obj">reach</em> defines the
-number of elements that can be skipped along each non-axis
-dimension at each step.</p>
-</dd>
-<dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>The axis along which the path must always move forward (default -1)</p>
-</dd>
-<dt><strong>output_indexlist: bool, optional</strong></dt><dd><p>See return value <em class="xref py py-obj">p</em> for explanation.</p>
-</dd>
-</dl>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><dl class="simple">
-<dt><strong>p</strong><span class="classifier">iterable of int</span></dt><dd><p>For each step along <em class="xref py py-obj">axis</em>, the coordinate of the shortest path.
-If <em class="xref py py-obj">output_indexlist</em> is True, then the path is returned as a list of
-n-d tuples that index into <em class="xref py py-obj">arr</em>. If False, then the path is returned
-as an array listing the coordinates of the path along the non-axis
-dimensions for each step along the axis dimension. That is,
-<em class="xref py py-obj">p.shape == (arr.shape[axis], arr.ndim-1)</em> except that p is squeezed
-before returning so if <em class="xref py py-obj">arr.ndim == 2</em>, then
-<em class="xref py py-obj">p.shape == (arr.shape[axis],)</em></p>
-</dd>
-<dt><strong>cost</strong><span class="classifier">float</span></dt><dd><p>Cost of path.  This is the absolute sum of all the
-differences along the path.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
 <div class="section" id="route-through-array">
 <h2>route_through_array<a class="headerlink" href="#route-through-array" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
@@ -259,6 +217,48 @@ MCP_Geometric class).</p>
 <span class="go">       [0, 0, 0, 0, 0, 1]])</span>
 </pre></div>
 </div>
+</dd></dl>
+
+</div>
+<div class="section" id="shortest-path">
+<h2>shortest_path<a class="headerlink" href="#shortest-path" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="skimage.graph.shortest_path">
+<code class="sig-prename descclassname">skimage.graph.</code><code class="sig-name descname">shortest_path</code><span class="sig-paren">(</span><em class="sig-param">arr</em>, <em class="sig-param">reach=1</em>, <em class="sig-param">axis=-1</em>, <em class="sig-param">output_indexlist=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/graph/spath.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.graph.shortest_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the shortest path through an n-d array from one side to another.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>arr</strong><span class="classifier">ndarray of float64</span></dt><dd></dd>
+<dt><strong>reach</strong><span class="classifier">int, optional</span></dt><dd><p>By default (<code class="docutils literal notranslate"><span class="pre">reach</span> <span class="pre">=</span> <span class="pre">1</span></code>), the shortest path can only move
+one row up or down for every step it moves forward (i.e.,
+the path gradient is limited to 1). <em class="xref py py-obj">reach</em> defines the
+number of elements that can be skipped along each non-axis
+dimension at each step.</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">int, optional</span></dt><dd><p>The axis along which the path must always move forward (default -1)</p>
+</dd>
+<dt><strong>output_indexlist: bool, optional</strong></dt><dd><p>See return value <em class="xref py py-obj">p</em> for explanation.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>p</strong><span class="classifier">iterable of int</span></dt><dd><p>For each step along <em class="xref py py-obj">axis</em>, the coordinate of the shortest path.
+If <em class="xref py py-obj">output_indexlist</em> is True, then the path is returned as a list of
+n-d tuples that index into <em class="xref py py-obj">arr</em>. If False, then the path is returned
+as an array listing the coordinates of the path along the non-axis
+dimensions for each step along the axis dimension. That is,
+<em class="xref py py-obj">p.shape == (arr.shape[axis], arr.ndim-1)</em> except that p is squeezed
+before returning so if <em class="xref py py-obj">arr.ndim == 2</em>, then
+<em class="xref py py-obj">p.shape == (arr.shape[axis],)</em></p>
+</dd>
+<dt><strong>cost</strong><span class="classifier">float</span></dt><dd><p>Cost of path.  This is the absolute sum of all the
+differences along the path.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -413,38 +413,6 @@ returned by find_costs().)</p>
 </dd></dl>
 
 </div>
-<div class="section" id="mcp-geometric">
-<h2><a class="reference internal" href="#skimage.graph.MCP_Geometric" title="skimage.graph.MCP_Geometric"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCP_Geometric</span></code></a><a class="headerlink" href="#mcp-geometric" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="skimage.graph.MCP_Geometric">
-<em class="property">class </em><code class="sig-prename descclassname">skimage.graph.</code><code class="sig-name descname">MCP_Geometric</code><span class="sig-paren">(</span><em class="sig-param">costs</em>, <em class="sig-param">offsets=None</em>, <em class="sig-param">fully_connected=True</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.graph.MCP_Geometric" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">skimage.graph._mcp.MCP</span></code></p>
-<p>Find distance-weighted minimum cost paths through an n-d costs array.</p>
-<p>See the documentation for MCP for full details. This class differs from
-MCP in that the cost of a path is not simply the sum of the costs along
-that path.</p>
-<p>This class instead assumes that the costs array contains at each position
-the “cost” of a unit distance of travel through that position. For
-example, a move (in 2-d) from (1, 1) to (1, 2) is assumed to originate in
-the center of the pixel (1, 1) and terminate in the center of (1, 2). The
-entire move is of distance 1, half through (1, 1) and half through (1, 2);
-thus the cost of that move is <em class="xref py py-obj">(1/2)*costs[1,1] + (1/2)*costs[1,2]</em>.</p>
-<p>On the other hand, a move from (1, 1) to (2, 2) is along the diagonal and
-is sqrt(2) in length. Half of this move is within the pixel (1, 1) and the
-other half in (2, 2), so the cost of this move is calculated as
-<em class="xref py py-obj">(sqrt(2)/2)*costs[1,1] + (sqrt(2)/2)*costs[2,2]</em>.</p>
-<p>These calculations don’t make a lot of sense with offsets of magnitude
-greater than 1. Use the <em class="xref py py-obj">sampling</em> argument in order to deal with
-anisotropic data.</p>
-<dl class="method">
-<dt id="skimage.graph.MCP_Geometric.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">costs</em>, <em class="sig-param">offsets=None</em>, <em class="sig-param">fully_connected=True</em>, <em class="sig-param">sampling=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.graph.MCP_Geometric.__init__" title="Permalink to this definition">¶</a></dt>
-<dd><p>See class documentation.</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
 <div class="section" id="mcp-connect">
 <h2><a class="reference internal" href="#skimage.graph.MCP_Connect" title="skimage.graph.MCP_Connect"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCP_Connect</span></code></a><a class="headerlink" href="#mcp-connect" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
@@ -543,6 +511,38 @@ updated.</p>
 <p>This method can be overloaded to keep track of other arrays
 that are used by a specific implementation of the algorithm.
 For instance the MCP_Connect class uses it to update an id map.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="mcp-geometric">
+<h2><a class="reference internal" href="#skimage.graph.MCP_Geometric" title="skimage.graph.MCP_Geometric"><code class="xref py py-class docutils literal notranslate"><span class="pre">MCP_Geometric</span></code></a><a class="headerlink" href="#mcp-geometric" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="skimage.graph.MCP_Geometric">
+<em class="property">class </em><code class="sig-prename descclassname">skimage.graph.</code><code class="sig-name descname">MCP_Geometric</code><span class="sig-paren">(</span><em class="sig-param">costs</em>, <em class="sig-param">offsets=None</em>, <em class="sig-param">fully_connected=True</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.graph.MCP_Geometric" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">skimage.graph._mcp.MCP</span></code></p>
+<p>Find distance-weighted minimum cost paths through an n-d costs array.</p>
+<p>See the documentation for MCP for full details. This class differs from
+MCP in that the cost of a path is not simply the sum of the costs along
+that path.</p>
+<p>This class instead assumes that the costs array contains at each position
+the “cost” of a unit distance of travel through that position. For
+example, a move (in 2-d) from (1, 1) to (1, 2) is assumed to originate in
+the center of the pixel (1, 1) and terminate in the center of (1, 2). The
+entire move is of distance 1, half through (1, 1) and half through (1, 2);
+thus the cost of that move is <em class="xref py py-obj">(1/2)*costs[1,1] + (1/2)*costs[1,2]</em>.</p>
+<p>On the other hand, a move from (1, 1) to (2, 2) is along the diagonal and
+is sqrt(2) in length. Half of this move is within the pixel (1, 1) and the
+other half in (2, 2), so the cost of this move is calculated as
+<em class="xref py py-obj">(sqrt(2)/2)*costs[1,1] + (sqrt(2)/2)*costs[2,2]</em>.</p>
+<p>These calculations don’t make a lot of sense with offsets of magnitude
+greater than 1. Use the <em class="xref py py-obj">sampling</em> argument in order to deal with
+anisotropic data.</p>
+<dl class="method">
+<dt id="skimage.graph.MCP_Geometric.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">costs</em>, <em class="sig-param">offsets=None</em>, <em class="sig-param">fully_connected=True</em>, <em class="sig-param">sampling=None</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.graph.MCP_Geometric.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>See class documentation.</p>
 </dd></dl>
 
 </dd></dl>
