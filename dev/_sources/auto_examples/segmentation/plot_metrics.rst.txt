@@ -50,6 +50,7 @@ affect the different scores.
 
 
 
+
 First, we generate the true segmentation. For this simple image, we know
 exact functions and parameters that will produce a perfect segmentation. In
 a real scenario, typically you would generate ground truth by manual
@@ -65,6 +66,7 @@ annotation or "painting" of a segmentation.
     markers[image > 150] = 2
     im_true = watershed(elevation_map, markers)
     im_true = ndi.label(ndi.binary_fill_holes(im_true - 1))[0]
+
 
 
 
@@ -91,6 +93,7 @@ shoot up.
 
 
 
+
 The next approach uses the Canny edge filter, :func:`skimage.filters.canny`.
 This is a very good edge finder, and gives balanced results.
 
@@ -101,6 +104,7 @@ This is a very good edge finder, and gives balanced results.
     edges = canny(image)
     fill_coins = ndi.binary_fill_holes(edges)
     im_test2 = ndi.label(remove_small_objects(fill_coins, 21))[0]
+
 
 
 
@@ -228,9 +232,10 @@ segmentation metrics.
 
 
 
+
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.273 seconds)
+   **Total running time of the script:** ( 0 minutes  2.148 seconds)
 
 
 .. _sphx_glr_download_auto_examples_segmentation_plot_metrics.py:

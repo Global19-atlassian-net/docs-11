@@ -1340,7 +1340,7 @@ Conference on Computer Vision and Pattern Recognition, 1999.</p>
 <h2>pyramid_expand<a class="headerlink" href="#pyramid-expand" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.pyramid_expand">
-<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">pyramid_expand</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">upscale=2</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/pyramids.py#L80"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.pyramid_expand" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">pyramid_expand</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">upscale=2</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/pyramids.py#L85"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.pyramid_expand" title="Permalink to this definition">¶</a></dt>
 <dd><p>Upsample and then smooth image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1364,6 +1364,10 @@ cval is the value when mode is equal to ‘constant’.</p>
 <dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
 channels or another spatial dimension.</p>
 </dd>
+<dt><strong>preserve_range</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to keep the original range of values. Otherwise, the input
+image is converted according to the conventions of <em class="xref py py-obj">img_as_float</em>.
+Also see <a class="reference external" href="https://scikit-image.org/docs/dev/user_guide/data_types.html">https://scikit-image.org/docs/dev/user_guide/data_types.html</a></p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1386,7 +1390,7 @@ channels or another spatial dimension.</p>
 <h2>pyramid_gaussian<a class="headerlink" href="#pyramid-gaussian" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.pyramid_gaussian">
-<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">pyramid_gaussian</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">max_layer=-1</em>, <em class="sig-param">downscale=2</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/pyramids.py#L135"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.pyramid_gaussian" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">pyramid_gaussian</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">max_layer=-1</em>, <em class="sig-param">downscale=2</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/pyramids.py#L145"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.pyramid_gaussian" title="Permalink to this definition">¶</a></dt>
 <dd><p>Yield images of the Gaussian pyramid formed by the input image.</p>
 <p>Recursively applies the <a class="reference internal" href="#skimage.transform.pyramid_reduce" title="skimage.transform.pyramid_reduce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pyramid_reduce</span></code></a> function to the image, and yields
 the downscaled images.</p>
@@ -1419,6 +1423,10 @@ cval is the value when mode is equal to ‘constant’.</p>
 <dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
 channels or another spatial dimension.</p>
 </dd>
+<dt><strong>preserve_range</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to keep the original range of values. Otherwise, the input
+image is converted according to the conventions of <em class="xref py py-obj">img_as_float</em>.
+Also see <a class="reference external" href="https://scikit-image.org/docs/dev/user_guide/data_types.html">https://scikit-image.org/docs/dev/user_guide/data_types.html</a></p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1448,7 +1456,7 @@ channels or another spatial dimension.</p>
 <h2>pyramid_laplacian<a class="headerlink" href="#pyramid-laplacian" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.pyramid_laplacian">
-<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">pyramid_laplacian</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">max_layer=-1</em>, <em class="sig-param">downscale=2</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/pyramids.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.pyramid_laplacian" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">pyramid_laplacian</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">max_layer=-1</em>, <em class="sig-param">downscale=2</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/pyramids.py#L227"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.pyramid_laplacian" title="Permalink to this definition">¶</a></dt>
 <dd><p>Yield images of the laplacian pyramid formed by the input image.</p>
 <p>Each layer contains the difference between the downsampled and the
 downsampled, smoothed image:</p>
@@ -1485,6 +1493,10 @@ cval is the value when mode is equal to ‘constant’.</p>
 <dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
 channels or another spatial dimension.</p>
 </dd>
+<dt><strong>preserve_range</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to keep the original range of values. Otherwise, the input
+image is converted according to the conventions of <em class="xref py py-obj">img_as_float</em>.
+Also see <a class="reference external" href="https://scikit-image.org/docs/dev/user_guide/data_types.html">https://scikit-image.org/docs/dev/user_guide/data_types.html</a></p>
+</dd>
 </dl>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1510,7 +1522,7 @@ channels or another spatial dimension.</p>
 <h2>pyramid_reduce<a class="headerlink" href="#pyramid-reduce" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.transform.pyramid_reduce">
-<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">pyramid_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">downscale=2</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">multichannel=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/pyramids.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.pyramid_reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">pyramid_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">downscale=2</em>, <em class="sig-param">sigma=None</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">preserve_range=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/pyramids.py#L25"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.pyramid_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Smooth and then downsample image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1533,6 +1545,10 @@ cval is the value when mode is equal to ‘constant’.</p>
 </dd>
 <dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
 channels or another spatial dimension.</p>
+</dd>
+<dt><strong>preserve_range</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to keep the original range of values. Otherwise, the input
+image is converted according to the conventions of <em class="xref py py-obj">img_as_float</em>.
+Also see <a class="reference external" href="https://scikit-image.org/docs/dev/user_guide/data_types.html">https://scikit-image.org/docs/dev/user_guide/data_types.html</a></p>
 </dd>
 </dl>
 </dd>
