@@ -109,9 +109,9 @@ multiplying the green and blue channels by 0 leaves only the red channel and
 produces a bright red image. Similarly, zeroing-out the blue channel leaves
 only the red and green channels, which combine to form yellow.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">color</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.img_as_float"><span class="n">img_as_float</span></a>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">color</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.img_as_float"><span class="n">img_as_float</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">grayscale_image</span></a> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_float" title="View documentation for skimage.img_as_float"><span class="n">img_as_float</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">()[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">])</span>
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">image</span></a> <span class="o">=</span> <a href="../../api/skimage.color.html#skimage.color.gray2rgb" title="View documentation for skimage.color.gray2rgb"><span class="n">color</span><span class="o">.</span><span class="n">gray2rgb</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">grayscale_image</span></a><span class="p">)</span>
@@ -127,7 +127,7 @@ only the red and green channels, which combine to form yellow.</p>
 </div>
 <img alt="../../_images/sphx_glr_plot_tinting_grayscale_images_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_tinting_grayscale_images_001.png" />
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7f3dd6dfbc88&gt;
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage object at 0x7ff4e85fb5f8&gt;
 </pre></div>
 </div>
 <p>In many cases, dealing with RGB values may not be ideal. Because of that,
@@ -196,7 +196,7 @@ to selectively tint your images. In the example below, we set the hue of
 some rectangles using slicing and scale the RGB values of some pixels found
 by thresholding. In practice, you might want to define a region for tinting
 based on segmentation results or blob detection methods.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="k">import</span> <span class="n">rank</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <span class="n">rank</span>
 
 <span class="c1"># Square regions defined as slices over the first two dimensions.</span>
 <a href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="View documentation for builtins.tuple"><span class="n">top_left</span></a> <span class="o">=</span> <span class="p">(</span><span class="nb">slice</span><span class="p">(</span><span class="mi">100</span><span class="p">),)</span> <span class="o">*</span> <span class="mi">2</span>
@@ -231,7 +231,7 @@ based on segmentation results or blob detection methods.</p>
 </div>
 <p>For coloring multiple regions, you may also be interested in
 <a class="reference external" href="http://scikit-image.org/docs/0.9.x/api/skimage.color.html#label2rgb">skimage.color.label2rgb</a>.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.232 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.222 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-color-exposure-plot-tinting-grayscale-images-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/e845a134a05feaad67498f1f74aec273/plot_tinting_grayscale_images.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_tinting_grayscale_images.py</span></code></a></p>

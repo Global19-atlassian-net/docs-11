@@ -113,8 +113,8 @@ the coins cannot be done directly from the histogram of grey values,
 because the background shares enough grey levels with the coins that a
 thresholding segmentation is not sufficient.</p>
 <a class="reference external image-reference" href="../auto_examples/applications/plot_coins_segmentation.html"><img alt="../_images/sphx_glr_plot_coins_segmentation_001.png" class="align-center" src="../_images/sphx_glr_plot_coins_segmentation_001.png" /></a>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="k">import</span> <span class="n">histogram</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="kn">import</span> <span class="n">histogram</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coins</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">coins</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hist</span><span class="p">,</span> <span class="n">hist_centers</span> <span class="o">=</span> <span class="n">histogram</span><span class="p">(</span><span class="n">coins</span><span class="p">)</span>
 </pre></div>
@@ -129,13 +129,13 @@ use the gradients rather than the grey values.</p>
 <h2>Edge-based segmentation<a class="headerlink" href="#edge-based-segmentation" title="Permalink to this headline">¶</a></h2>
 <p>Let us first try to detect edges that enclose the coins. For edge
 detection, we use the <a class="reference external" href="https://en.wikipedia.org/wiki/Canny_edge_detector">Canny detector</a> of <code class="docutils literal notranslate"><span class="pre">skimage.feature.canny</span></code></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <span class="n">canny</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">canny</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">edges</span> <span class="o">=</span> <span class="n">canny</span><span class="p">(</span><span class="n">coins</span><span class="o">/</span><span class="mf">255.</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>As the background is very smooth, almost all edges are found at the
 boundary of the coins, or inside the coins.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">fill_coins</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">binary_fill_holes</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -184,7 +184,7 @@ and correspond to the desired segmentation.</p>
 <p>The choice of the elevation map is critical for good segmentation.
 Here, the amplitude of the gradient provides a good elevation map. We
 use the Sobel operator for computing the amplitude of the gradient:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="k">import</span> <span class="n">sobel</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <span class="n">sobel</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">elevation_map</span> <span class="o">=</span> <span class="n">sobel</span><span class="p">(</span><span class="n">coins</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -202,7 +202,7 @@ extreme parts of the histogram of grey values:</p>
 </div>
 <a class="reference external image-reference" href="../auto_examples/applications/plot_coins_segmentation.html"><img alt="../_images/sphx_glr_plot_coins_segmentation_007.png" class="align-center" src="../_images/sphx_glr_plot_coins_segmentation_007.png" /></a>
 <p>Let us now compute the watershed transform:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <span class="n">watershed</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">watershed</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">segmentation</span> <span class="o">=</span> <span class="n">watershed</span><span class="p">(</span><span class="n">elevation_map</span><span class="p">,</span> <span class="n">markers</span><span class="p">)</span>
 </pre></div>
 </div>

@@ -370,7 +370,7 @@ you get no response to your pull request.
 <li><p>Use the following import conventions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
 
 <span class="n">cimport</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">cnp</span>  <span class="c1"># in Cython code</span>
 </pre></div>
@@ -572,23 +572,23 @@ different result after the change. This includes:</p>
 <p>For the sake of illustration, we consider the modification of a default value in
 a function signature. In version N (therefore, next release will be N+1), we
 have</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">do_something</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="n">rescale</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">out</span>
 </pre></div>
 </div>
 <p>that has to be changed to</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">rescale</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">rescale</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">warn</span><span class="p">(</span><span class="s1">&#39;The default value of rescale will change &#39;</span>
              <span class="s1">&#39;to `False` in version N+3.&#39;</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">rescale</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="n">rescale</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">do_something</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="n">rescale</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">out</span>
 </pre></div>
 </div>
 <p>and in version N+3</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">do_something</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">rescale</span><span class="o">=</span><span class="n">rescale</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">out</span>
 </pre></div>
@@ -665,7 +665,7 @@ Therefore it is useful to move everything that prepares the benchmark scenario
 into the <code class="docutils literal notranslate"><span class="pre">setup</span></code> method. This function is called before calling a <code class="docutils literal notranslate"><span class="pre">time_</span></code>
 method and its execution time is not factored into the benchmarks.</p>
 <p>Take for example the <code class="docutils literal notranslate"><span class="pre">TransformSuite</span></code> benchmark:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span>
 
 <span class="k">class</span> <span class="nc">TransformSuite</span><span class="p">:</span>

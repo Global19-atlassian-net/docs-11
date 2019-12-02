@@ -143,9 +143,9 @@ Recognition 35 (2002) 527-535, <a class="reference external" href="https://doi.o
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">skimage.util</span> <span class="k">import</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="k">import</span> <a href="../../api/skimage.exposure.html#skimage.exposure.histogram" title="View documentation for skimage.exposure.histogram"><span class="n">histogram</span></a>
+<span class="kn">from</span> <span class="nn">skimage.util</span> <span class="kn">import</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="kn">import</span> <a href="../../api/skimage.exposure.html#skimage.exposure.histogram" title="View documentation for skimage.exposure.histogram"><span class="n">histogram</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">noisy_image</span></a> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">())</span>
 <a href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="View documentation for builtins.tuple"><span class="n">hist</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">hist_centers</span></a> <span class="o">=</span> <a href="../../api/skimage.exposure.html#skimage.exposure.histogram" title="View documentation for skimage.exposure.histogram"><span class="n">histogram</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">noisy_image</span></a><span class="p">)</span>
@@ -167,8 +167,8 @@ Recognition 35 (2002) 527-535, <a class="reference external" href="https://doi.o
 <p>Some noise is added to the image, 1% of pixels are randomly set to 255, 1%
 are randomly set to 0. The <strong>median</strong> filter is applied to remove the
 noise.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.median" title="View documentation for skimage.filters.rank.median"><span class="n">median</span></a>
-<span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <a href="../../api/skimage.morphology.html#skimage.morphology.disk" title="View documentation for skimage.morphology.disk"><span class="n">disk</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.median" title="View documentation for skimage.filters.rank.median"><span class="n">median</span></a>
+<span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <a href="../../api/skimage.morphology.html#skimage.morphology.disk" title="View documentation for skimage.morphology.disk"><span class="n">disk</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">noise</span></a> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.shape.html#numpy.ndarray.shape" title="View documentation for numpy.ndarray.shape"><span class="n">noisy_image</span><span class="o">.</span><span class="n">shape</span></a><span class="p">)</span>
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">noisy_image</span></a> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">())</span>
@@ -208,7 +208,7 @@ distort the gray-level.</p>
 <h2>Image smoothing<a class="headerlink" href="#image-smoothing" title="Permalink to this headline">¶</a></h2>
 <p>The example hereunder shows how a local <strong>mean</strong> filter smooths the camera
 man image.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.mean" title="View documentation for skimage.filters.rank.mean"><span class="n">mean</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.mean" title="View documentation for skimage.filters.rank.mean"><span class="n">mean</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">loc_mean</span></a> <span class="o">=</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.mean" title="View documentation for skimage.filters.rank.mean"><span class="n">mean</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">noisy_image</span></a><span class="p">,</span> <a href="../../api/skimage.morphology.html#skimage.morphology.disk" title="View documentation for skimage.morphology.disk"><span class="n">disk</span></a><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 
@@ -236,7 +236,7 @@ a gray-level similar to the central one.</p>
 <p>A different implementation is available for color images in
 <code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.filters.denoise_bilateral()</span></code>.</p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.mean_bilateral" title="View documentation for skimage.filters.rank.mean_bilateral"><span class="n">mean_bilateral</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.mean_bilateral" title="View documentation for skimage.filters.rank.mean_bilateral"><span class="n">mean_bilateral</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">noisy_image</span></a> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">())</span>
 
@@ -280,8 +280,8 @@ histogram equalization emphasizes every local gray-level variations.</p>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Adaptive_histogram_equalization">https://en.wikipedia.org/wiki/Adaptive_histogram_equalization</a></p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">exposure</span>
-<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="k">import</span> <span class="n">rank</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">exposure</span>
+<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <span class="n">rank</span>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">noisy_image</span></a> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">())</span>
 
@@ -324,7 +324,7 @@ apply a local auto-leveling, i.e. the gray-value of a pixel is
 proportionally remapped between local minimum and local maximum.</p>
 <p>The following example shows how local auto-level enhances the camara man
 picture.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.autolevel" title="View documentation for skimage.filters.rank.autolevel"><span class="n">autolevel</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.autolevel" title="View documentation for skimage.filters.rank.autolevel"><span class="n">autolevel</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">noisy_image</span></a> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">())</span>
 
@@ -352,7 +352,7 @@ the percentile version of the auto-level filter which uses given
 percentiles (one inferior, one superior) in place of local minimum and
 maximum. The example below illustrates how the percentile parameters
 influence the local auto-level result.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.autolevel_percentile" title="View documentation for skimage.filters.rank.autolevel_percentile"><span class="n">autolevel_percentile</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.autolevel_percentile" title="View documentation for skimage.filters.rank.autolevel_percentile"><span class="n">autolevel_percentile</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">image</span></a> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">()</span>
 
@@ -392,7 +392,7 @@ influence the local auto-level result.</p>
 <p>The morphological contrast enhancement filter replaces the central pixel by
 the local maximum if the original pixel value is closest to local maximum,
 otherwise by the minimum local.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.enhance_contrast" title="View documentation for skimage.filters.rank.enhance_contrast"><span class="n">enhance_contrast</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.enhance_contrast" title="View documentation for skimage.filters.rank.enhance_contrast"><span class="n">enhance_contrast</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">noisy_image</span></a> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">())</span>
 
@@ -421,7 +421,7 @@ otherwise by the minimum local.</p>
 <img alt="../../_images/sphx_glr_plot_rank_filters_008.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rank_filters_008.png" />
 <p>The percentile version of the local morphological contrast enhancement uses
 percentile <em>p0</em> and <em>p1</em> instead of the local minimum and maximum.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.enhance_contrast_percentile" title="View documentation for skimage.filters.rank.enhance_contrast_percentile"><span class="n">enhance_contrast_percentile</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.enhance_contrast_percentile" title="View documentation for skimage.filters.rank.enhance_contrast_percentile"><span class="n">enhance_contrast_percentile</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">noisy_image</span></a> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">())</span>
 
@@ -468,8 +468,8 @@ Otsu thresholding can be found in :
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Otsu's_method">https://en.wikipedia.org/wiki/Otsu’s_method</a></p>
 </dd>
 </dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.otsu" title="View documentation for skimage.filters.rank.otsu"><span class="n">otsu</span></a>
-<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="k">import</span> <a href="../../api/skimage.filters.html#skimage.filters.threshold_otsu" title="View documentation for skimage.filters.threshold_otsu"><span class="n">threshold_otsu</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.otsu" title="View documentation for skimage.filters.rank.otsu"><span class="n">otsu</span></a>
+<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <a href="../../api/skimage.filters.html#skimage.filters.threshold_otsu" title="View documentation for skimage.filters.threshold_otsu"><span class="n">threshold_otsu</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">p8</span></a> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.page" title="View documentation for skimage.data.page"><span class="n">data</span><span class="o">.</span><span class="n">page</span></a><span class="p">()</span>
 
@@ -540,7 +540,7 @@ level shift applied to a synthetic image.</p>
 morphology.</p>
 <p>Here is an example of the classical morphological gray-level filters:
 opening, closing and morphological gradient.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.maximum" title="View documentation for skimage.filters.rank.maximum"><span class="n">maximum</span></a><span class="p">,</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.minimum" title="View documentation for skimage.filters.rank.minimum"><span class="n">minimum</span></a><span class="p">,</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.gradient" title="View documentation for skimage.filters.rank.gradient"><span class="n">gradient</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.maximum" title="View documentation for skimage.filters.rank.maximum"><span class="n">maximum</span></a><span class="p">,</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.minimum" title="View documentation for skimage.filters.rank.minimum"><span class="n">minimum</span></a><span class="p">,</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.gradient" title="View documentation for skimage.filters.rank.gradient"><span class="n">gradient</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">noisy_image</span></a> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_ubyte" title="View documentation for skimage.img_as_ubyte"><span class="n">img_as_ubyte</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.camera" title="View documentation for skimage.data.camera"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">())</span>
 
@@ -587,9 +587,9 @@ on 8- and 16-bit images.</p>
 <p>to better use the available image bit, the function returns 10x entropy
 for 8-bit images and 1000x entropy for 16-bit images.</p>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.entropy" title="View documentation for skimage.filters.rank.entropy"><span class="n">entropy</span></a>
-<span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <a href="../../api/skimage.morphology.html#skimage.morphology.disk" title="View documentation for skimage.morphology.disk"><span class="n">disk</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.entropy" title="View documentation for skimage.filters.rank.entropy"><span class="n">entropy</span></a>
+<span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <a href="../../api/skimage.morphology.html#skimage.morphology.disk" title="View documentation for skimage.morphology.disk"><span class="n">disk</span></a>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -619,11 +619,11 @@ algorithm complexity to O(n) where n is the number of image pixels. The
 complexity is also limited with respect to the structuring element size.</p>
 <p>In the following we compare the performance of different implementations
 available in <code class="docutils literal notranslate"><span class="pre">skimage</span></code>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="k">import</span> <a href="https://docs.python.org/3.7/library/time.html#time.time" title="View documentation for time.time"><span class="n">time</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <a href="https://docs.python.org/3.7/library/time.html#time.time" title="View documentation for time.time"><span class="n">time</span></a>
 
-<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="k">import</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.percentile_filter.html#scipy.ndimage.percentile_filter" title="View documentation for scipy.ndimage.percentile_filter"><span class="n">percentile_filter</span></a>
-<span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="k">import</span> <a href="../../api/skimage.morphology.html#skimage.morphology.dilation" title="View documentation for skimage.morphology.dilation"><span class="n">dilation</span></a>
-<span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="k">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.median" title="View documentation for skimage.filters.rank.median"><span class="n">median</span></a><span class="p">,</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.maximum" title="View documentation for skimage.filters.rank.maximum"><span class="n">maximum</span></a>
+<span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.percentile_filter.html#scipy.ndimage.percentile_filter" title="View documentation for scipy.ndimage.percentile_filter"><span class="n">percentile_filter</span></a>
+<span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <a href="../../api/skimage.morphology.html#skimage.morphology.dilation" title="View documentation for skimage.morphology.dilation"><span class="n">dilation</span></a>
+<span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.median" title="View documentation for skimage.filters.rank.median"><span class="n">median</span></a><span class="p">,</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.maximum" title="View documentation for skimage.filters.rank.maximum"><span class="n">maximum</span></a>
 
 
 <span class="k">def</span> <span class="nf">exec_and_timeit</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
@@ -785,7 +785,7 @@ available in <code class="docutils literal notranslate"><span class="pre">skimag
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_rank_filters_018.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rank_filters_018.png" />
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  42.746 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  42.500 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-rank-filters-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/134a04f70e8e1a83c358004d30ab959c/plot_rank_filters.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_rank_filters.py</span></code></a></p>

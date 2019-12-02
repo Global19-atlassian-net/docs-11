@@ -115,8 +115,8 @@ against a darker background.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="k">import</span> <a href="../../api/skimage.exposure.html#skimage.exposure.histogram" title="View documentation for skimage.exposure.histogram"><span class="n">histogram</span></a>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<span class="kn">from</span> <span class="nn">skimage.exposure</span> <span class="kn">import</span> <a href="../../api/skimage.exposure.html#skimage.exposure.histogram" title="View documentation for skimage.exposure.histogram"><span class="n">histogram</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">coins</span></a> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.coins" title="View documentation for skimage.data.coins"><span class="n">data</span><span class="o">.</span><span class="n">coins</span></a><span class="p">()</span>
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">hist</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">hist_centers</span></a> <span class="o">=</span> <a href="../../api/skimage.exposure.html#skimage.exposure.histogram" title="View documentation for skimage.exposure.histogram"><span class="n">histogram</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">coins</span></a><span class="p">)</span>
@@ -160,7 +160,7 @@ parts of the background with the coins:</p>
 <p>Next, we try to delineate the contours of the coins using edge-based
 segmentation. To do this, we first get the edges of features using the
 Canny edge-detector.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="k">import</span> <a href="../../api/skimage.feature.html#skimage.feature.canny" title="View documentation for skimage.feature.canny"><span class="n">canny</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <a href="../../api/skimage.feature.html#skimage.feature.canny" title="View documentation for skimage.feature.canny"><span class="n">canny</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">edges</span></a> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.canny" title="View documentation for skimage.feature.canny"><span class="n">canny</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">coins</span></a><span class="p">)</span>
 
@@ -176,7 +176,7 @@ Canny edge-detector.</p>
 </pre></div>
 </div>
 <p>These contours are then filled using mathematical morphology.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">fill_coins</span></a> <span class="o">=</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.binary_fill_holes.html#scipy.ndimage.binary_fill_holes" title="View documentation for scipy.ndimage.binary_fill_holes"><span class="n">ndi</span><span class="o">.</span><span class="n">binary_fill_holes</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">edges</span></a><span class="p">)</span>
 
@@ -193,7 +193,7 @@ Canny edge-detector.</p>
 </div>
 <p>Small spurious objects are easily removed by setting a minimum size for
 valid objects.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">morphology</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">morphology</span>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">coins_cleaned</span></a> <span class="o">=</span> <a href="../../api/skimage.morphology.html#skimage.morphology.remove_small_objects" title="View documentation for skimage.morphology.remove_small_objects"><span class="n">morphology</span><span class="o">.</span><span class="n">remove_small_objects</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">fill_coins</span></a><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
 
@@ -216,7 +216,7 @@ coin above.</p>
 <h2>Region-based segmentation<a class="headerlink" href="#region-based-segmentation" title="Permalink to this headline">¶</a></h2>
 <p>We therefore try a region-based method using the watershed transform.
 First, we find an elevation map using the Sobel gradient of the image.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="k">import</span> <a href="../../api/skimage.filters.html#skimage.filters.sobel" title="View documentation for skimage.filters.sobel"><span class="n">sobel</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <a href="../../api/skimage.filters.html#skimage.filters.sobel" title="View documentation for skimage.filters.sobel"><span class="n">sobel</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">elevation_map</span></a> <span class="o">=</span> <a href="../../api/skimage.filters.html#skimage.filters.sobel" title="View documentation for skimage.filters.sobel"><span class="n">sobel</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">coins</span></a><span class="p">)</span>
 
@@ -265,7 +265,7 @@ map starting from the markers determined above:</p>
 </div>
 <p>This last method works even better, and the coins can be segmented and
 labeled individually.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="k">import</span> <a href="../../api/skimage.color.html#skimage.color.label2rgb" title="View documentation for skimage.color.label2rgb"><span class="n">label2rgb</span></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <a href="../../api/skimage.color.html#skimage.color.label2rgb" title="View documentation for skimage.color.label2rgb"><span class="n">label2rgb</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">segmentation</span></a> <span class="o">=</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.binary_fill_holes.html#scipy.ndimage.binary_fill_holes" title="View documentation for scipy.ndimage.binary_fill_holes"><span class="n">ndi</span><span class="o">.</span><span class="n">binary_fill_holes</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">segmentation</span></a> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">labeled_coins</span></a><span class="p">,</span> <a href="https://docs.python.org/3.7/library/functions.html#int" title="View documentation for builtins.int"><span class="n">_</span></a> <span class="o">=</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.label.html#scipy.ndimage.label" title="View documentation for scipy.ndimage.label"><span class="n">ndi</span><span class="o">.</span><span class="n">label</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">segmentation</span></a><span class="p">)</span>
@@ -285,7 +285,7 @@ labeled individually.</p>
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_coins_segmentation_0091.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_coins_segmentation_0091.png" />
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.844 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.845 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-coins-segmentation-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/ff2709759d5c9625f5da8110571ee819/plot_coins_segmentation.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_coins_segmentation.py</span></code></a></p>
