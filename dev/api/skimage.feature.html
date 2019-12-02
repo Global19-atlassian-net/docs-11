@@ -2628,7 +2628,7 @@ Stan Z. Li
 <h2>peak_local_max<a class="headerlink" href="#peak-local-max" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.peak_local_max">
-<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">peak_local_max</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_distance=1</em>, <em class="sig-param">threshold_abs=None</em>, <em class="sig-param">threshold_rel=None</em>, <em class="sig-param">exclude_border=True</em>, <em class="sig-param">indices=True</em>, <em class="sig-param">num_peaks=inf</em>, <em class="sig-param">footprint=None</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">num_peaks_per_label=inf</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/peak.py#L58"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.peak_local_max" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">peak_local_max</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_distance=1</em>, <em class="sig-param">threshold_abs=None</em>, <em class="sig-param">threshold_rel=None</em>, <em class="sig-param">exclude_border=True</em>, <em class="sig-param">indices=True</em>, <em class="sig-param">num_peaks=inf</em>, <em class="sig-param">footprint=None</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">num_peaks_per_label=inf</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/peak.py#L57"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.peak_local_max" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find peaks in an image as coordinate list or boolean mask.</p>
 <p>Peaks are the local maxima in a region of <em class="xref py py-obj">2 * min_distance + 1</em>
 (i.e. peaks are separated by at least <em class="xref py py-obj">min_distance</em>).</p>
@@ -2652,11 +2652,15 @@ the minimum intensity of the image.</p>
 </dd>
 <dt><strong>threshold_rel</strong><span class="classifier">float, optional</span></dt><dd><p>Minimum intensity of peaks, calculated as <em class="xref py py-obj">max(image) * threshold_rel</em>.</p>
 </dd>
-<dt><strong>exclude_border</strong><span class="classifier">int or bool, optional</span></dt><dd><p>If nonzero int, <em class="xref py py-obj">exclude_border</em> excludes peaks from
-within <em class="xref py py-obj">exclude_border</em>-pixels of the border of the image.
+<dt><strong>exclude_border</strong><span class="classifier">int, tuple of ints, or bool, optional</span></dt><dd><p>If positive integer, <em class="xref py py-obj">exclude_border</em> excludes peaks from within
+<em class="xref py py-obj">exclude_border</em>-pixels of the border of the image.
+If tuple of non-negative ints, the length of the tuple must match the
+input array’s dimensionality.  Each element of the tuple will exclude
+peaks from within <em class="xref py py-obj">exclude_border</em>-pixels of the border of the image
+along that dimension.
 If True, takes the <em class="xref py py-obj">min_distance</em> parameter as value.
-If zero or False, peaks are identified regardless of their
-distance from the border.</p>
+If zero or False, peaks are identified regardless of their distance
+from the border.</p>
 </dd>
 <dt><strong>indices</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, the output will be an array representing peak
 coordinates.  If False, the output will be a boolean array shaped as
@@ -2667,7 +2671,7 @@ return <em class="xref py py-obj">num_peaks</em> peaks based on highest peak int
 </dd>
 <dt><strong>footprint</strong><span class="classifier">ndarray of bools, optional</span></dt><dd><p>If provided, <em class="xref py py-obj">footprint == 1</em> represents the local region within which
 to search for peaks at every point in <em class="xref py py-obj">image</em>.  Overrides
-<em class="xref py py-obj">min_distance</em> (also for <em class="xref py py-obj">exclude_border</em>).</p>
+<em class="xref py py-obj">min_distance</em>.</p>
 </dd>
 <dt><strong>labels</strong><span class="classifier">ndarray of ints, optional</span></dt><dd><p>If provided, each unique region <em class="xref py py-obj">labels == value</em> represents a unique
 region to search for peaks. Zero is reserved for background.</p>
