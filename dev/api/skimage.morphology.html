@@ -1415,7 +1415,7 @@ function more efficient for larger images and structuring elements.</p>
 <h2>flood<a class="headerlink" href="#flood" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.flood">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">flood</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">seed_point</em>, <em class="sig-param">*</em>, <em class="sig-param">selem=None</em>, <em class="sig-param">connectivity=None</em>, <em class="sig-param">tolerance=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/_flood_fill.py#L113"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.flood" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">flood</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">seed_point</em>, <em class="sig-param">*</em>, <em class="sig-param">selem=None</em>, <em class="sig-param">connectivity=None</em>, <em class="sig-param">tolerance=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/_flood_fill.py#L125"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.flood" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mask corresponding to a flood fill.</p>
 <p>Starting at a specific <em class="xref py py-obj">seed_point</em>, connected points equal or within
 <em class="xref py py-obj">tolerance</em> of the seed value are found.</p>
@@ -1514,7 +1514,7 @@ this mask.</p>
 <h2>flood_fill<a class="headerlink" href="#flood-fill" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.flood_fill">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">flood_fill</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">seed_point</em>, <em class="sig-param">new_value</em>, <em class="sig-param">*</em>, <em class="sig-param">selem=None</em>, <em class="sig-param">connectivity=None</em>, <em class="sig-param">tolerance=None</em>, <em class="sig-param">inplace=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/_flood_fill.py#L16"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.flood_fill" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">flood_fill</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">seed_point</em>, <em class="sig-param">new_value</em>, <em class="sig-param">*</em>, <em class="sig-param">selem=None</em>, <em class="sig-param">connectivity=None</em>, <em class="sig-param">tolerance=None</em>, <em class="sig-param">in_place=False</em>, <em class="sig-param">inplace=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/_flood_fill.py#L16"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.flood_fill" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform flood filling on an image.</p>
 <p>Starting at a specific <em class="xref py py-obj">seed_point</em>, connected points equal or within
 <em class="xref py py-obj">tolerance</em> of the seed value are found, then set to <em class="xref py py-obj">new_value</em>.</p>
@@ -1544,9 +1544,14 @@ value of <em class="xref py py-obj">image</em> at <em class="xref py py-obj">see
 If a tolerance is provided, adjacent points with values within plus or
 minus tolerance from the seed point are filled (inclusive).</p>
 </dd>
-<dt><strong>inplace</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, flood filling is applied to <em class="xref py py-obj">image</em> inplace.  If False, the
+<dt><strong>in_place</strong><span class="classifier">bool, optional</span></dt><dd><p>If True, flood filling is applied to <em class="xref py py-obj">image</em> in place.  If False, the
 flood filled result is returned without modifying the input <em class="xref py py-obj">image</em>
 (default).</p>
+</dd>
+<dt><strong>inplace</strong><span class="classifier">bool, optional</span></dt><dd><p>This parameter is deprecated and will be removed in version 0.19.0
+in favor of in_place. If True, flood filling is applied to <em class="xref py py-obj">image</em>
+inplace. If False, the flood filled result is returned without
+modifying the input <em class="xref py py-obj">image</em> (default).</p>
 </dd>
 </dl>
 </dd>
