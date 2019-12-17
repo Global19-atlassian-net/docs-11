@@ -728,10 +728,10 @@ pending images, queued via <a class="reference internal" href="#skimage.io.imsho
 <p>A call to <a class="reference internal" href="#skimage.io.show" title="skimage.io.show"><code class="xref py py-obj docutils literal notranslate"><span class="pre">show</span></code></a> will block execution of code until all windows
 have been closed.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="k">as</span> <span class="nn">io</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="k">as</span> <span class="nn">io</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">ax_im</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
 </pre></div>
@@ -777,7 +777,7 @@ the plugin is set for all functions.</p>
 </div>
 <p class="rubric">Examples</p>
 <p>To use Matplotlib as the default image reader, you would write:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">io</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">io</span><span class="o">.</span><span class="n">use_plugin</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;imread&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -846,18 +846,18 @@ frame from a video file:</p>
 and added to the list of available images.  In this case, <code class="docutils literal notranslate"><span class="pre">load_func</span></code>
 should accept the keyword argument <code class="docutils literal notranslate"><span class="pre">img_num</span></code>.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="k">as</span> <span class="nn">io</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">skimage.io</span> <span class="k">as</span> <span class="nn">io</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data_dir</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coll</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;/chess*.png&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coll</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;/chess*.png&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">coll</span><span class="p">)</span>
 <span class="go">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coll</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
 <span class="go">(200, 200)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ic</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">([</span><span class="s1">&#39;/tmp/work/*.png&#39;</span><span class="p">,</span> <span class="s1">&#39;/tmp/other/*.jpg&#39;</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ic</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">([</span><span class="s1">&#39;/tmp/work/*.png&#39;</span><span class="p">,</span> <span class="s1">&#39;/tmp/other/*.jpg&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 <dl class="field-list simple">
@@ -957,10 +957,10 @@ from file.</p>
 <p>The current implementation makes use of <code class="docutils literal notranslate"><span class="pre">tifffile</span></code> for Tiff files and
 PIL otherwise.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data_dir</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data_dir</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">MultiImage</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;/multipage.tif&#39;</span><span class="p">)</span> 
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">MultiImage</span><span class="p">(</span><span class="n">data_dir</span> <span class="o">+</span> <span class="s1">&#39;/multipage.tif&#39;</span><span class="p">)</span> 
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">img</span><span class="p">)</span> 
 <span class="go">2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">img</span><span class="p">:</span> 

@@ -308,24 +308,24 @@ models”. International Journal of Computer Vision 1 (4): 321
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <span class="n">circle_perimeter</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <span class="n">circle_perimeter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <span class="n">gaussian</span>
 </pre></div>
 </div>
 <p>Create and smooth image:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">circle_perimeter</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">gaussian</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Initialize spline:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">init</span> <span class="o">=</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">s</span><span class="p">)])</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="mi">50</span>
 </pre></div>
 </div>
 <p>Fit spline to image:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">snake</span> <span class="o">=</span> <span class="n">active_contour</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">w_edge</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">w_line</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="s1">&#39;rc&#39;</span><span class="p">)</span>  
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">snake</span> <span class="o">=</span> <span class="n">active_contour</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">init</span><span class="p">,</span> <span class="n">w_edge</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">w_line</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">coordinates</span><span class="o">=</span><span class="s1">&#39;rc&#39;</span><span class="p">)</span>  
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mi">45</span><span class="o">-</span><span class="n">snake</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="mi">35</span><span class="o">-</span><span class="n">snake</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dist</span><span class="p">))</span>  
 <span class="go">25</span>
@@ -584,7 +584,7 @@ argument buffer_size will be ignored.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <span class="n">clear_border</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
 <span class="gp">... </span>                   <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -673,7 +673,7 @@ Huttenlocher, D.P.  International Journal of Computer Vision, 2004</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <span class="n">felzenszwalb</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <span class="n">felzenszwalb</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <span class="n">coffee</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">coffee</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">segments</span> <span class="o">=</span> <span class="n">felzenszwalb</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
@@ -738,7 +738,7 @@ inserted in between all other pairs of pixels).</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
 <span class="gp">... </span>                   <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
 <span class="gp">... </span>                   <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
 <span class="gp">... </span>                   <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -860,7 +860,7 @@ representing the fill.</p>
 simply run <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.nonzero.html#numpy.nonzero" title="(in NumPy v1.17)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.nonzero</span></code></a> on the result, save the indices, and discard
 this mask.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">flood</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">flood</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -874,7 +874,7 @@ this mask.</p>
 </pre></div>
 </div>
 <p>Fill connected ones with 5, with full connectivity (diagonals included):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span>
@@ -885,7 +885,7 @@ this mask.</p>
 </pre></div>
 </div>
 <p>Fill connected ones with 5, excluding diagonal points (connectivity 1):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span>
@@ -896,7 +896,7 @@ this mask.</p>
 </pre></div>
 </div>
 <p>Fill with a tolerance:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">flood</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image_flooded</span>
@@ -974,7 +974,7 @@ replaced with <em class="xref py py-obj">new_value</em>.</p>
 <p>The conceptual analogy of this operation is the ‘paint bucket’ tool in many
 raster graphics programs.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">flood_fill</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">flood_fill</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -988,7 +988,7 @@ raster graphics programs.</p>
 </pre></div>
 </div>
 <p>Fill connected ones with 5, with full connectivity (diagonals included):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flood_fill</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flood_fill</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">5</span><span class="p">)</span>
 <span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
 <span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
 <span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
@@ -996,7 +996,7 @@ raster graphics programs.</p>
 </pre></div>
 </div>
 <p>Fill connected ones with 5, excluding diagonal points (connectivity 1):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flood_fill</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">5</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flood_fill</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">5</span><span class="p">,</span> <span class="n">connectivity</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="go">array([[0, 0, 0, 0, 0, 0, 0],</span>
 <span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
 <span class="go">       [0, 5, 5, 0, 2, 2, 0],</span>
@@ -1004,7 +1004,7 @@ raster graphics programs.</p>
 </pre></div>
 </div>
 <p>Fill with a tolerance:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flood_fill</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">5</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">flood_fill</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">5</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="go">array([[5, 5, 5, 5, 5, 5, 5],</span>
 <span class="go">       [5, 5, 5, 5, 2, 2, 5],</span>
 <span class="go">       [5, 5, 5, 5, 2, 2, 5],</span>
@@ -1092,7 +1092,7 @@ segment in <em>both</em> S1 and S2.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <span class="n">join_segmentations</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <span class="n">join_segmentations</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">s1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
 <span class="gp">... </span>               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
 <span class="gp">... </span>               <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
@@ -1176,7 +1176,7 @@ superimposed on the original image.</p>
 <h2>morphological_chan_vese<a class="headerlink" href="#morphological-chan-vese" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.morphological_chan_vese">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_chan_vese</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='checkerboard'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">lambda1=1</em>, <em class="sig-param">lambda2=1</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7fcdec774d08&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_chan_vese</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='checkerboard'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">lambda1=1</em>, <em class="sig-param">lambda2=1</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f653a489158&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Active Contours without Edges (MorphACWE)</p>
 <p>Active contours without edges implemented with morphological operators. It
 can be used to segment objects in images and volumes without well defined
@@ -1261,7 +1261,7 @@ Transactions on Pattern Analysis and Machine Intelligence (PAMI),
 <h2>morphological_geodesic_active_contour<a class="headerlink" href="#morphological-geodesic-active-contour" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.morphological_geodesic_active_contour">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em class="sig-param">gimage</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='circle'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">threshold='auto'</em>, <em class="sig-param">balloon=0</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7fcdec774e18&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em class="sig-param">gimage</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='circle'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">threshold='auto'</em>, <em class="sig-param">balloon=0</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f653a489268&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L316"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Geodesic Active Contours (MorphGAC).</p>
 <p>Geodesic active contours implemented with morphological operators. It can
 be used to segment objects with visible but noisy, cluttered, broken
@@ -1552,7 +1552,7 @@ Anal Mach Intell. 2006 Nov;28(11):1768-83.
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -1637,7 +1637,7 @@ situations, <code class="docutils literal notranslate"><span class="pre">label_f
 <code class="docutils literal notranslate"><span class="pre">label_field.size</span></code>, and in these cases the forward map is
 guaranteed to be smaller than either the input or output images.</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <span class="n">relabel_sequential</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <span class="n">relabel_sequential</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">label_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">42</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">relab</span><span class="p">,</span> <span class="n">fw</span><span class="p">,</span> <span class="n">inv</span> <span class="o">=</span> <span class="n">relabel_sequential</span><span class="p">(</span><span class="n">label_field</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">relab</span>
@@ -1756,14 +1756,14 @@ State-of-the-art Superpixel Methods, TPAMI, May 2012.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <span class="n">slic</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <span class="n">slic</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <span class="n">astronaut</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">astronaut</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">segments</span> <span class="o">=</span> <span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">n_segments</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">compactness</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Increasing the compactness parameter yields more square regions:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">segments</span> <span class="o">=</span> <span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">n_segments</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">compactness</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">segments</span> <span class="o">=</span> <span class="n">slic</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">n_segments</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">compactness</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1889,7 +1889,7 @@ Algorithms. ICPR 2014, pp 996-1001. <a class="reference external" href="https://
 <p class="rubric">Examples</p>
 <p>The watershed algorithm is useful to separate overlapping objects.</p>
 <p>We first generate an initial image with two overlapping circles:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">((</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">((</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">52</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">20</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mask_circle1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="n">r1</span><span class="o">**</span><span class="mi">2</span>
@@ -1899,7 +1899,7 @@ Algorithms. ICPR 2014, pp 996-1001. <a class="reference external" href="https://
 </div>
 <p>Next, we want to separate the two circles. We generate markers at the
 maxima of the distance to the background:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">distance</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">distance_transform_edt</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.feature</span> <span class="kn">import</span> <span class="n">peak_local_max</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">local_maxi</span> <span class="o">=</span> <span class="n">peak_local_max</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">image</span><span class="p">,</span>
@@ -1909,7 +1909,7 @@ maxima of the distance to the background:</p>
 </pre></div>
 </div>
 <p>Finally, we run the watershed on the image and markers:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">watershed</span><span class="p">(</span><span class="o">-</span><span class="n">distance</span><span class="p">,</span> <span class="n">markers</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">labels</span> <span class="o">=</span> <span class="n">watershed</span><span class="p">(</span><span class="o">-</span><span class="n">distance</span><span class="p">,</span> <span class="n">markers</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">image</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The algorithm works also for 3-D images, and can be used for example to

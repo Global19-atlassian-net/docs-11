@@ -350,7 +350,7 @@ See <a class="reference external" href="https://docs.scipy.org/doc/numpy/referen
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <span class="go">array([[ 0,  1,  2,  3,  4],</span>
 <span class="go">       [ 5,  6,  7,  8,  9],</span>
@@ -408,36 +408,36 @@ access to forward and inverse transformation functions.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span> <span class="k">as</span> <span class="n">tf</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># estimate transformation parameters</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># estimate transformation parameters</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">src</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dst</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tform</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimate_transform</span><span class="p">(</span><span class="s1">&#39;similarity&#39;</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tform</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimate_transform</span><span class="p">(</span><span class="s1">&#39;similarity&#39;</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">tform</span><span class="p">(</span><span class="n">src</span><span class="p">)),</span> <span class="n">src</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">tform</span><span class="p">(</span><span class="n">src</span><span class="p">)),</span> <span class="n">src</span><span class="p">)</span>
 <span class="go">True</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># warp image using the estimated transformation</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># warp image using the estimated transformation</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">inverse_map</span><span class="o">=</span><span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">)</span> 
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">inverse_map</span><span class="o">=</span><span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">)</span> 
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create transformation with explicit parameters</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create transformation with explicit parameters</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tform2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">SimilarityTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># unite transformations, applied in order from left to right</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># unite transformations, applied in order from left to right</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tform3</span> <span class="o">=</span> <span class="n">tform</span> <span class="o">+</span> <span class="n">tform2</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">tform3</span><span class="p">(</span><span class="n">src</span><span class="p">),</span> <span class="n">tform2</span><span class="p">(</span><span class="n">tform</span><span class="p">(</span><span class="n">src</span><span class="p">)))</span>
 <span class="go">True</span>
@@ -488,12 +488,12 @@ and Electron Physics, 139 (2006)</p>
 <p class="rubric">Examples</p>
 <p>Generate a test image:
 Use a prime number for the array dimensions</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SIZE</span> <span class="o">=</span> <span class="mi">59</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SIZE</span> <span class="o">=</span> <span class="mi">59</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tri</span><span class="p">(</span><span class="n">SIZE</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Apply the Finite Radon Transform:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">frt2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">frt2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -532,7 +532,7 @@ Otherwise, R = 0.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_circle</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_circle</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <span class="n">circle_perimeter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">circle_perimeter</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">23</span><span class="p">)</span>
@@ -599,7 +599,7 @@ peaks.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span><span class="p">,</span> <span class="n">draw</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span><span class="p">,</span> <span class="n">draw</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">120</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">radius</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">y_0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">draw</span><span class="o">.</span><span class="n">circle_perimeter</span><span class="p">(</span><span class="n">y_0</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">radius</span><span class="p">)</span>
@@ -663,7 +663,7 @@ Conference on. Vol. 2. IEEE, 2002</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_ellipse</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_ellipse</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <span class="n">ellipse_perimeter</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">ellipse_perimeter</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
@@ -719,7 +719,7 @@ The angle accuracy can be improved by decreasing the step size in
 the <em class="xref py py-obj">theta</em> array.</p>
 <p class="rubric">Examples</p>
 <p>Generate a test image:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[:,</span> <span class="mi">65</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span><span class="p">[</span><span class="mi">35</span><span class="p">:</span><span class="mi">45</span><span class="p">,</span> <span class="mi">35</span><span class="p">:</span><span class="mi">50</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -729,7 +729,7 @@ the <em class="xref py py-obj">theta</em> array.</p>
 </pre></div>
 </div>
 <p>Apply the Hough transform:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">hough_line</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">out</span><span class="p">,</span> <span class="n">angles</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">hough_line</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -819,7 +819,7 @@ return <em class="xref py py-obj">num_peaks</em> coordinates based on peak inten
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_line</span><span class="p">,</span> <span class="n">hough_line_peaks</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">hough_line</span><span class="p">,</span> <span class="n">hough_line_peaks</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.draw</span> <span class="kn">import</span> <span class="n">line</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rr</span><span class="p">,</span> <span class="n">cc</span> <span class="o">=</span> <span class="n">line</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>
@@ -883,20 +883,20 @@ and Electron Physics, 139 (2006)</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SIZE</span> <span class="o">=</span> <span class="mi">59</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">SIZE</span> <span class="o">=</span> <span class="mi">59</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tri</span><span class="p">(</span><span class="n">SIZE</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Apply the Finite Radon Transform:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">frt2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="n">frt2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Apply the Inverse Finite Radon Transform to recover the input</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fi</span> <span class="o">=</span> <span class="n">ifrt2</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fi</span> <span class="o">=</span> <span class="n">ifrt2</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Check that it’s identical to the original</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">img</span><span class="o">-</span><span class="n">fi</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">img</span><span class="o">-</span><span class="n">fi</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -976,7 +976,7 @@ Each tuple in the list containing the end row, col, … index i.e
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">ii</span> <span class="o">=</span> <span class="n">integral_image</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">integrate</span><span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># sum from (1, 0) to (1, 2)</span>
 <span class="go">array([3.])</span>
@@ -1695,7 +1695,7 @@ has values [0, 1, 2] and was padded to the right by four values using
 symmetric, the result would be [0, 1, 2, 2, 1, 0, 0], while for reflect it
 would be [0, 1, 2, 1, 0, 1, 2].</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">rescale</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rescale</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
@@ -1792,7 +1792,7 @@ has values [0, 1, 2] and was padded to the right by four values using
 symmetric, the result would be [0, 1, 2, 2, 1, 0, 0], while for reflect it
 would be [0, 1, 2, 1, 0, 1, 2].</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">resize</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">resize</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span><span class="o">.</span><span class="n">shape</span>
@@ -1873,7 +1873,7 @@ has values [0, 1, 2] and was padded to the right by four values using
 symmetric, the result would be [0, 1, 2, 2, 1, 0, 0], while for reflect it
 would be [0, 1, 2, 1, 0, 1, 2].</p>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">rotate</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rotate</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span>
@@ -2018,7 +2018,7 @@ output image. E.g. in case of 2-D images, you need to pass an array
 of shape <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">rows,</span> <span class="pre">cols)</span></code>, where <em class="xref py py-obj">rows</em> and <em class="xref py py-obj">cols</em> determine the
 shape of the output image, and the first dimension contains the
 <code class="docutils literal notranslate"><span class="pre">(row,</span> <span class="pre">col)</span></code> coordinate in the input image.
-See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.map_coordinates.html#scipy.ndimage.map_coordinates" title="(in SciPy v1.3.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.ndimage.map_coordinates</span></code></a> for further documentation.</p></li>
+See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.map_coordinates.html#scipy.ndimage.map_coordinates" title="(in SciPy v1.4.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.ndimage.map_coordinates</span></code></a> for further documentation.</p></li>
 </ul>
 </div></blockquote>
 <p>Note, that a <code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">3)</span></code> matrix is interpreted as a homogeneous
@@ -2077,7 +2077,7 @@ underlying transformation matrix to warp the image with a much faster
 routine.</p></li>
 </ul>
 <p class="rubric">Examples</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">warp</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">warp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 </pre></div>
@@ -2085,38 +2085,38 @@ routine.</p></li>
 <p>The following image warps are all equal but differ substantially in
 execution time. The image is shifted to the bottom.</p>
 <p>Use a geometric transform to warp an image (fast):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">SimilarityTransform</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">SimilarityTransform</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">tform</span> <span class="o">=</span> <span class="n">SimilarityTransform</span><span class="p">(</span><span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">tform</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Use a callable (slow):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">shift_down</span><span class="p">(</span><span class="n">xy</span><span class="p">):</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">shift_down</span><span class="p">(</span><span class="n">xy</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">xy</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">10</span>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">xy</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">shift_down</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Use a transformation matrix to warp an image (fast):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">matrix</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">ProjectiveTransform</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">ProjectiveTransform</span><span class="p">(</span><span class="n">matrix</span><span class="o">=</span><span class="n">matrix</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>You can also use the inverse of a geometric transformation (fast):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>For N-D images you can pass a coordinate array, that specifies the
 coordinates in the input image for every element in the output image. E.g.
 if you want to rescale a 3-D cube, you can do:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cube_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cube_shape</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cube</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">cube_shape</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Setup the coordinate array, that defines the scaling:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.1</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">output_shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">scale</span> <span class="o">*</span> <span class="n">cube_shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coords0</span><span class="p">,</span> <span class="n">coords1</span><span class="p">,</span> <span class="n">coords2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[:</span><span class="n">output_shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
 <span class="gp">... </span>                   <span class="p">:</span><span class="n">output_shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">:</span><span class="n">output_shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
@@ -2126,7 +2126,7 @@ if you want to rescale a 3-D cube, you can do:</p>
 <p>Assume that the cube contains spatial data, where the first array element
 center is at coordinate (0.5, 0.5, 0.5) in real space, i.e. we have to
 account for this extra offset when scaling the image:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span> <span class="o">=</span> <span class="p">(</span><span class="n">coords</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">scale</span> <span class="o">-</span> <span class="mf">0.5</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span> <span class="o">=</span> <span class="p">(</span><span class="n">coords</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="n">scale</span> <span class="o">-</span> <span class="mf">0.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2189,7 +2189,7 @@ of coordinates and each element is a <code class="docutils literal notranslate">
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl>
-<dt><strong>coords</strong><span class="classifier">(ndim, rows, cols[, bands]) array of dtype <em class="xref py py-obj">dtype</em></span></dt><dd><p>Coordinates for <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.map_coordinates.html#scipy.ndimage.map_coordinates" title="(in SciPy v1.3.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.ndimage.map_coordinates</span></code></a>, that will yield
+<dt><strong>coords</strong><span class="classifier">(ndim, rows, cols[, bands]) array of dtype <em class="xref py py-obj">dtype</em></span></dt><dd><p>Coordinates for <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.map_coordinates.html#scipy.ndimage.map_coordinates" title="(in SciPy v1.4.0)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.ndimage.map_coordinates</span></code></a>, that will yield
 an image of shape (orows, ocols, bands) by drawing from source
 points according to the <em class="xref py py-obj">coord_transform_fn</em>.</p>
 </dd>
@@ -2206,7 +2206,7 @@ image-warping process, or to implement different post-processing logic
 than <a class="reference internal" href="#skimage.transform.warp" title="skimage.transform.warp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">warp</span></code></a> performs after the call to <em class="xref py py-obj">ndi.map_coordinates</em>.</p>
 <p class="rubric">Examples</p>
 <p>Produce a coordinate map that shifts an image up and to the right:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <span class="n">map_coordinates</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">shift_up10_left20</span><span class="p">(</span><span class="n">xy</span><span class="p">):</span>
@@ -2261,24 +2261,24 @@ arrays are accepted.</p>
 </dl>
 <p class="rubric">Examples</p>
 <p>Perform a basic polar warp on a grayscale image:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.transform</span> <span class="kn">import</span> <span class="n">warp_polar</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">checkerboard</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp_polar</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Perform a log-polar warp on a grayscale image:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp_polar</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp_polar</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Perform a log-polar warp on a grayscale image while specifying center,
 radius, and output shape:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp_polar</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp_polar</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
 <span class="gp">... </span>                    <span class="n">output_shape</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Perform a log-polar warp on a color image:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">warped</span> <span class="o">=</span> <span class="n">warp_polar</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="n">multichannel</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
