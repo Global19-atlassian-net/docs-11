@@ -68,6 +68,16 @@
     <input type="hidden" name="area" value="default" >
   </form>
 </div><!-- 
+        <h4 class="sidebar-box-heading">Contents</h4>
+        <div class="well sidebar-box toc">
+            <ul class="nav nav-list">
+<li><a class="reference internal" href="#">GLCM Texture Features</a><ul class="nav nav-list">
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
 
 
  --><div class="well">
@@ -99,16 +109,27 @@
 <div class="sphx-glr-example-title section" id="glcm-texture-features">
 <span id="sphx-glr-auto-examples-features-detection-plot-glcm-py"></span><h1>GLCM Texture Features<a class="headerlink" href="#glcm-texture-features" title="Permalink to this headline">¶</a></h1>
 <p>This example illustrates texture classification using grey level
-co-occurrence matrices (GLCMs). A GLCM is a histogram of co-occurring
+co-occurrence matrices (GLCMs) <a class="footnote-reference brackets" href="#id2" id="id1">1</a>. A GLCM is a histogram of co-occurring
 greyscale values at a given offset over an image.</p>
 <p>In this example, samples of two different textures are extracted from
 an image: grassy areas and sky areas. For each patch, a GLCM with
-a horizontal offset of 5 is computed. Next, two features of the
-GLCM matrices are computed: dissimilarity and correlation. These are
-plotted to illustrate that the classes form clusters in feature space.</p>
-<p>In a typical classification problem, the final step (not included in
+a horizontal offset of 5 (<em class="xref py py-obj">distance=[5]</em> and <em class="xref py py-obj">angles=[0]</em>) is computed.
+Next, two features of the GLCM matrices are computed: dissimilarity and
+correlation. These are plotted to illustrate that the classes form
+clusters in feature space.
+In a typical classification problem, the final step (not included in
 this example) would be to train a classifier, such as logistic
 regression, to label image patches from new images.</p>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Haralick, RM.; Shanmugam, K.,
+“Textural features for image classification”
+IEEE Transactions on systems, man, and cybernetics 6 (1973): 610-621.
+<a class="reference external" href="https://doi.org/10.1109/TSMC.1973.4309314">DOI:10.1109/TSMC.1973.4309314</a></p>
+</dd>
+</dl>
 <img alt="../../_images/sphx_glr_plot_glcm_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_glcm_001.png" />
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -139,7 +160,8 @@ regression, to label image patches from new images.</p>
 <a href="https://docs.python.org/3.7/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">xs</span></a> <span class="o">=</span> <span class="p">[]</span>
 <a href="https://docs.python.org/3.7/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">ys</span></a> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">patch</span></a> <span class="ow">in</span> <span class="p">(</span><a href="https://docs.python.org/3.7/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">grass_patches</span></a> <span class="o">+</span> <a href="https://docs.python.org/3.7/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">sky_patches</span></a><span class="p">):</span>
-    <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">glcm</span></a> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.greycomatrix" title="View documentation for skimage.feature.greycomatrix"><span class="n">greycomatrix</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">patch</span></a><span class="p">,</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">256</span><span class="p">,</span> <span class="n">symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">glcm</span></a> <span class="o">=</span> <a href="../../api/skimage.feature.html#skimage.feature.greycomatrix" title="View documentation for skimage.feature.greycomatrix"><span class="n">greycomatrix</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">patch</span></a><span class="p">,</span> <span class="n">distances</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">levels</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span>
+                        <span class="n">symmetric</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <a href="https://docs.python.org/3.7/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">xs</span></a><span class="o">.</span><span class="n">append</span><span class="p">(</span><a href="../../api/skimage.feature.html#skimage.feature.greycoprops" title="View documentation for skimage.feature.greycoprops"><span class="n">greycoprops</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">glcm</span></a><span class="p">,</span> <span class="s1">&#39;dissimilarity&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
     <a href="https://docs.python.org/3.7/library/stdtypes.html#list" title="View documentation for builtins.list"><span class="n">ys</span></a><span class="o">.</span><span class="n">append</span><span class="p">(</span><a href="../../api/skimage.feature.html#skimage.feature.greycoprops" title="View documentation for skimage.feature.greycoprops"><span class="n">greycoprops</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="View documentation for numpy.ndarray"><span class="n">glcm</span></a><span class="p">,</span> <span class="s1">&#39;correlation&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
 
@@ -189,7 +211,7 @@ regression, to label image patches from new images.</p>
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="View documentation for matplotlib.pyplot.show"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.583 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.564 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-features-detection-plot-glcm-py">
 <div class="sphx-glr-download docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/80ed0e00d01d24932b05eef2bf511ced/plot_glcm.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_glcm.py</span></code></a></p>
@@ -199,6 +221,7 @@ regression, to label image patches from new images.</p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
 </div>
 
 
