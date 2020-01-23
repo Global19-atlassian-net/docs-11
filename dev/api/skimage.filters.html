@@ -415,7 +415,7 @@ IEEE Transactions on Pattern Analysis and Machine Intelligence.
 <h2>frangi<a class="headerlink" href="#frangi" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.frangi">
-<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">frangi</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">sigmas=range(1</em>, <em class="sig-param">10</em>, <em class="sig-param">2)</em>, <em class="sig-param">scale_range=None</em>, <em class="sig-param">scale_step=None</em>, <em class="sig-param">beta1=None</em>, <em class="sig-param">beta2=None</em>, <em class="sig-param">alpha=0.5</em>, <em class="sig-param">beta=0.5</em>, <em class="sig-param">gamma=15</em>, <em class="sig-param">black_ridges=True</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/ridges.py#L315"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.frangi" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">frangi</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">sigmas=range(1</em>, <em class="sig-param">10</em>, <em class="sig-param">2)</em>, <em class="sig-param">scale_range=None</em>, <em class="sig-param">scale_step=None</em>, <em class="sig-param">beta1=None</em>, <em class="sig-param">beta2=None</em>, <em class="sig-param">alpha=0.5</em>, <em class="sig-param">beta=0.5</em>, <em class="sig-param">gamma=15</em>, <em class="sig-param">black_ridges=True</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/ridges.py#L357"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.frangi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter an image with the Frangi vesselness filter.</p>
 <p>This filter can be used to detect continuous ridges, e.g. vessels,
 wrinkles, rivers. It can be used to calculate the fraction of the
@@ -765,7 +765,7 @@ precision.</p>
 <h2>hessian<a class="headerlink" href="#hessian" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.hessian">
-<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">hessian</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">sigmas=range(1</em>, <em class="sig-param">10</em>, <em class="sig-param">2)</em>, <em class="sig-param">scale_range=None</em>, <em class="sig-param">scale_step=None</em>, <em class="sig-param">beta1=None</em>, <em class="sig-param">beta2=None</em>, <em class="sig-param">alpha=0.5</em>, <em class="sig-param">beta=0.5</em>, <em class="sig-param">gamma=15</em>, <em class="sig-param">black_ridges=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/ridges.py#L466"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.hessian" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">hessian</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">sigmas=range(1</em>, <em class="sig-param">10</em>, <em class="sig-param">2)</em>, <em class="sig-param">scale_range=None</em>, <em class="sig-param">scale_step=None</em>, <em class="sig-param">beta1=None</em>, <em class="sig-param">beta2=None</em>, <em class="sig-param">alpha=0.5</em>, <em class="sig-param">beta=0.5</em>, <em class="sig-param">gamma=15</em>, <em class="sig-param">black_ridges=True</em>, <em class="sig-param">mode=None</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/ridges.py#L506"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.hessian" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter an image with the Hybrid Hessian filter.</p>
 <p>This filter can be used to detect continuous edges, e.g. vessels,
 wrinkles, rivers. It can be used to calculate the fraction of the whole
@@ -793,6 +793,11 @@ sensitivity to areas of high variance/texture/structure.</p>
 </dd>
 <dt><strong>black_ridges</strong><span class="classifier">boolean, optional</span></dt><dd><p>When True (the default), the filter detects black ridges; when
 False, it detects white ridges.</p>
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘reflect’, ‘wrap’, ‘nearest’, ‘mirror’}, optional</span></dt><dd><p>How to handle values outside the image borders.</p>
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
+the image boundaries.</p>
 </dd>
 </dl>
 </dd>
@@ -949,7 +954,7 @@ Default is ‘nearest’.</p>
 </dd>
 <dt><strong>behavior</strong><span class="classifier">{‘ndimage’, ‘rank’}, optional</span></dt><dd><p>Either to use the old behavior (i.e., &lt; 0.15) or the new behavior.
 The old behavior will call the <a class="reference internal" href="skimage.filters.rank.html#skimage.filters.rank.median" title="skimage.filters.rank.median"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.filters.rank.median()</span></code></a>.
-The new behavior will call the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.median_filter.html#scipy.ndimage.median_filter" title="(in SciPy v1.2.3)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.ndimage.median_filter()</span></code></a>.
+The new behavior will call the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.median_filter.html#scipy.ndimage.median_filter" title="(in SciPy v1.4.1)"><code class="xref py py-func docutils literal notranslate"><span class="pre">scipy.ndimage.median_filter()</span></code></a>.
 Default is ‘rank’.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 0.15: </span><code class="docutils literal notranslate"><span class="pre">behavior</span></code> is introduced in 0.15</p>
@@ -989,7 +994,7 @@ Default is ‘rank’.</p>
 <h2>meijering<a class="headerlink" href="#meijering" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.meijering">
-<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">meijering</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">sigmas=range(1</em>, <em class="sig-param">10</em>, <em class="sig-param">2)</em>, <em class="sig-param">alpha=None</em>, <em class="sig-param">black_ridges=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/ridges.py#L142"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.meijering" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">meijering</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">sigmas=range(1</em>, <em class="sig-param">10</em>, <em class="sig-param">2)</em>, <em class="sig-param">alpha=None</em>, <em class="sig-param">black_ridges=True</em>, <em class="sig-param">mode='reflect'</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/ridges.py#L167"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.meijering" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter an image with the Meijering neuriteness filter.</p>
 <p>This filter can be used to detect continuous ridges, e.g. neurites,
 wrinkles, rivers. It can be used to calculate the fraction of the
@@ -1008,6 +1013,11 @@ sensitivity to deviation from a plate-like structure.</p>
 </dd>
 <dt><strong>black_ridges</strong><span class="classifier">boolean, optional</span></dt><dd><p>When True (the default), the filter detects black ridges; when
 False, it detects white ridges.</p>
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘reflect’, ‘wrap’, ‘nearest’, ‘mirror’}, optional</span></dt><dd><p>How to handle values outside the image borders.</p>
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
+the image boundaries.</p>
 </dd>
 </dl>
 </dd>
@@ -1068,7 +1078,7 @@ magnitude is computed. This is defined as:</p>
 </div>
 <p>The magnitude is also computed if axis is a sequence.</p>
 </dd>
-<dt><strong>mode</strong><span class="classifier">str or sequence of str, optional</span></dt><dd><p>The boundary mode for the convolution. See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.convolve.html#scipy.ndimage.convolve" title="(in SciPy v1.2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code></a>
+<dt><strong>mode</strong><span class="classifier">str or sequence of str, optional</span></dt><dd><p>The boundary mode for the convolution. See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.convolve.html#scipy.ndimage.convolve" title="(in SciPy v1.4.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code></a>
 for a description of the modes. This can be either a single boundary
 mode or one boundary mode per axis.</p>
 </dd>
@@ -1361,7 +1371,7 @@ prevent masked regions from affecting the result.</p>
 <h2>sato<a class="headerlink" href="#sato" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.filters.sato">
-<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">sato</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">sigmas=range(1</em>, <em class="sig-param">10</em>, <em class="sig-param">2)</em>, <em class="sig-param">black_ridges=True</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/ridges.py#L239"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.sato" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.filters.</code><code class="sig-name descname">sato</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">sigmas=range(1</em>, <em class="sig-param">10</em>, <em class="sig-param">2)</em>, <em class="sig-param">black_ridges=True</em>, <em class="sig-param">mode=None</em>, <em class="sig-param">cval=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/filters/ridges.py#L268"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.filters.sato" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter an image with the Sato tubeness filter.</p>
 <p>This filter can be used to detect continuous ridges, e.g. tubes,
 wrinkles, rivers. It can be used to calculate the fraction of the
@@ -1378,6 +1388,11 @@ the method described in <a class="reference internal" href="#r7b0e4f38c6a4-1" id
 </dd>
 <dt><strong>black_ridges</strong><span class="classifier">boolean, optional</span></dt><dd><p>When True (the default), the filter detects black ridges; when
 False, it detects white ridges.</p>
+</dd>
+<dt><strong>mode</strong><span class="classifier">{‘constant’, ‘reflect’, ‘wrap’, ‘nearest’, ‘mirror’}, optional</span></dt><dd><p>How to handle values outside the image borders.</p>
+</dd>
+<dt><strong>cval</strong><span class="classifier">float, optional</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
+the image boundaries.</p>
 </dd>
 </dl>
 </dd>
@@ -1438,7 +1453,7 @@ magnitude is computed. This is defined as:</p>
 </div>
 <p>The magnitude is also computed if axis is a sequence.</p>
 </dd>
-<dt><strong>mode</strong><span class="classifier">str or sequence of str, optional</span></dt><dd><p>The boundary mode for the convolution. See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.convolve.html#scipy.ndimage.convolve" title="(in SciPy v1.2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code></a>
+<dt><strong>mode</strong><span class="classifier">str or sequence of str, optional</span></dt><dd><p>The boundary mode for the convolution. See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.convolve.html#scipy.ndimage.convolve" title="(in SciPy v1.4.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code></a>
 for a description of the modes. This can be either a single boundary
 mode or one boundary mode per axis.</p>
 </dd>
@@ -1608,7 +1623,7 @@ magnitude is computed. This is defined as:</p>
 </div>
 <p>The magnitude is also computed if axis is a sequence.</p>
 </dd>
-<dt><strong>mode</strong><span class="classifier">str or sequence of str, optional</span></dt><dd><p>The boundary mode for the convolution. See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.convolve.html#scipy.ndimage.convolve" title="(in SciPy v1.2.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code></a>
+<dt><strong>mode</strong><span class="classifier">str or sequence of str, optional</span></dt><dd><p>The boundary mode for the convolution. See <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.convolve.html#scipy.ndimage.convolve" title="(in SciPy v1.4.1)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.ndimage.convolve</span></code></a>
 for a description of the modes. This can be either a single boundary
 mode or one boundary mode per axis.</p>
 </dd>
