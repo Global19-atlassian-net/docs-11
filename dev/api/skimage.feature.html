@@ -355,7 +355,7 @@
 <h2>blob_dog<a class="headerlink" href="#blob-dog" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.blob_dog">
-<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">blob_dog</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_sigma=1</em>, <em class="sig-param">max_sigma=50</em>, <em class="sig-param">sigma_ratio=1.6</em>, <em class="sig-param">threshold=2.0</em>, <em class="sig-param">overlap=0.5</em>, <em class="sig-param">*</em>, <em class="sig-param">exclude_border=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L188"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_dog" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">blob_dog</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_sigma=1</em>, <em class="sig-param">max_sigma=50</em>, <em class="sig-param">sigma_ratio=1.6</em>, <em class="sig-param">threshold=2.0</em>, <em class="sig-param">overlap=0.5</em>, <em class="sig-param">*</em>, <em class="sig-param">exclude_border=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L215"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_dog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds blobs in the given grayscale image.</p>
 <p>Blobs are found using the Difference of Gaussian (DoG) method <a class="reference internal" href="#rf5218630e229-1" id="id1">[1]</a>.
 For each blob found, the method returns its coordinates and the standard
@@ -386,8 +386,14 @@ intensities.</p>
 <dt><strong>overlap</strong><span class="classifier">float, optional</span></dt><dd><p>A value between 0 and 1. If the area of two blobs overlaps by a
 fraction greater than <em class="xref py py-obj">threshold</em>, the smaller blob is eliminated.</p>
 </dd>
-<dt><strong>exclude_border</strong><span class="classifier">int or bool, optional</span></dt><dd><p>If nonzero int, <em class="xref py py-obj">exclude_border</em> excludes blobs from
-within <em class="xref py py-obj">exclude_border</em>-pixels of the border of the image.</p>
+<dt><strong>exclude_border</strong><span class="classifier">tuple of ints, int, or False, optional</span></dt><dd><p>If tuple of ints, the length of the tuple must match the input array’s
+dimensionality.  Each element of the tuple will exclude peaks from
+within <em class="xref py py-obj">exclude_border</em>-pixels of the border of the image along that
+dimension.
+If nonzero int, <em class="xref py py-obj">exclude_border</em> excludes peaks from within
+<em class="xref py py-obj">exclude_border</em>-pixels of the border of the image.
+If zero or False, peaks are identified regardless of their
+distance from the border.</p>
 </dd>
 </dl>
 </dd>
@@ -457,7 +463,7 @@ a 2-D image and <span class="math notranslate nohighlight">\(\sqrt{3}\sigma\)</s
 <h2>blob_doh<a class="headerlink" href="#blob-doh" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.blob_doh">
-<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">blob_doh</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_sigma=1</em>, <em class="sig-param">max_sigma=30</em>, <em class="sig-param">num_sigma=10</em>, <em class="sig-param">threshold=0.01</em>, <em class="sig-param">overlap=0.5</em>, <em class="sig-param">log_scale=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L485"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_doh" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">blob_doh</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_sigma=1</em>, <em class="sig-param">max_sigma=30</em>, <em class="sig-param">num_sigma=10</em>, <em class="sig-param">threshold=0.01</em>, <em class="sig-param">overlap=0.5</em>, <em class="sig-param">log_scale=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L532"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_doh" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds blobs in the given grayscale image.</p>
 <p>Blobs are found using the Determinant of Hessian method <a class="reference internal" href="#ra19a7aed16ca-1" id="id3">[1]</a>. For each blob
 found, the method returns its coordinates and the standard deviation
@@ -555,7 +561,7 @@ due to the box filters used in the approximation of Hessian Determinant.</p>
 <h2>blob_log<a class="headerlink" href="#blob-log" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.blob_log">
-<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">blob_log</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_sigma=1</em>, <em class="sig-param">max_sigma=50</em>, <em class="sig-param">num_sigma=10</em>, <em class="sig-param">threshold=0.2</em>, <em class="sig-param">overlap=0.5</em>, <em class="sig-param">log_scale=False</em>, <em class="sig-param">*</em>, <em class="sig-param">exclude_border=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L335"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_log" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">blob_log</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_sigma=1</em>, <em class="sig-param">max_sigma=50</em>, <em class="sig-param">num_sigma=10</em>, <em class="sig-param">threshold=0.2</em>, <em class="sig-param">overlap=0.5</em>, <em class="sig-param">log_scale=False</em>, <em class="sig-param">*</em>, <em class="sig-param">exclude_border=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/blob.py#L372"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.blob_log" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds blobs in the given grayscale image.</p>
 <p>Blobs are found using the Laplacian of Gaussian (LoG) method <a class="reference internal" href="#r520e53dd5fa2-1" id="id7">[1]</a>.
 For each blob found, the method returns its coordinates and the standard
@@ -590,8 +596,14 @@ fraction greater than <em class="xref py py-obj">threshold</em>, the smaller blo
 using a logarithmic scale to the base <em class="xref py py-obj">10</em>. If not, linear
 interpolation is used.</p>
 </dd>
-<dt><strong>exclude_border</strong><span class="classifier">int or bool, optional</span></dt><dd><p>If nonzero int, <em class="xref py py-obj">exclude_border</em> excludes blobs from
-within <em class="xref py py-obj">exclude_border</em>-pixels of the border of the image.</p>
+<dt><strong>exclude_border</strong><span class="classifier">tuple of ints, int, or False, optional</span></dt><dd><p>If tuple of ints, the length of the tuple must match the input array’s
+dimensionality.  Each element of the tuple will exclude peaks from
+within <em class="xref py py-obj">exclude_border</em>-pixels of the border of the image along that
+dimension.
+If nonzero int, <em class="xref py py-obj">exclude_border</em> excludes peaks from within
+<em class="xref py py-obj">exclude_border</em>-pixels of the border of the image.
+If zero or False, peaks are identified regardless of their
+distance from the border.</p>
 </dd>
 </dl>
 </dd>
