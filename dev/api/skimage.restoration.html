@@ -297,7 +297,7 @@ averaging of pixels with larger spatial differences.</p>
 A larger value results in improved accuracy.</p>
 </dd>
 <dt><strong>mode</strong><span class="classifier">{‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}</span></dt><dd><p>How to handle values outside the image borders. See
-<a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.pad.html#numpy.pad" title="(in NumPy v1.17)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.pad</span></code></a> for detail.</p>
+<a class="reference external" href="https://numpy.org/doc/1.18/reference/generated/numpy.pad.html#numpy.pad" title="(in NumPy v1.18)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.pad</span></code></a> for detail.</p>
 </dd>
 <dt><strong>cval</strong><span class="classifier">string</span></dt><dd><p>Used in conjunction with mode ‘constant’, the value outside
 the image boundaries.</p>
@@ -355,7 +355,7 @@ Images.” IEEE International Conference on Computer Vision (1998)
 <h2>denoise_nl_means<a class="headerlink" href="#denoise-nl-means" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.restoration.denoise_nl_means">
-<code class="sig-prename descclassname">skimage.restoration.</code><code class="sig-name descname">denoise_nl_means</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">patch_size=7</em>, <em class="sig-param">patch_distance=11</em>, <em class="sig-param">h=0.1</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">fast_mode=True</em>, <em class="sig-param">sigma=0.0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/non_local_means.py#L9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_nl_means" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.restoration.</code><code class="sig-name descname">denoise_nl_means</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">patch_size=7</em>, <em class="sig-param">patch_distance=11</em>, <em class="sig-param">h=0.1</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">fast_mode=True</em>, <em class="sig-param">sigma=0.0</em>, <em class="sig-param">*</em>, <em class="sig-param">preserve_range=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/restoration/non_local_means.py#L11"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.restoration.denoise_nl_means" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform non-local means denoising on 2-D or 3-D grayscale images, and
 2-D RGB images.</p>
 <dl class="field-list simple">
@@ -384,6 +384,10 @@ used. See the Notes section for more details about the algorithms.</p>
 <dt><strong>sigma</strong><span class="classifier">float, optional</span></dt><dd><p>The standard deviation of the (Gaussian) noise.  If provided, a more
 robust computation of patch weights is computed that takes the expected
 noise variance into account (see Notes below).</p>
+</dd>
+<dt><strong>preserve_range</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to keep the original range of values. Otherwise, the input
+image is converted according to the conventions of <em class="xref py py-obj">img_as_float</em>.
+Also see <a class="reference external" href="https://scikit-image.org/docs/dev/user_guide/data_types.html">https://scikit-image.org/docs/dev/user_guide/data_types.html</a></p>
 </dd>
 </dl>
 </dd>
