@@ -329,7 +329,7 @@
 <td><p>Perform morphological thinning of a binary image.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#skimage.morphology.watershed" title="skimage.morphology.watershed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.watershed</span></code></a>(image[, …])</p></td>
-<td><p>Find watershed basins in <em class="xref py py-obj">image</em> flooded from given <em class="xref py py-obj">markers</em>.</p></td>
+<td><p><strong>Deprecated function</strong>.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.morphology.white_tophat" title="skimage.morphology.white_tophat"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.white_tophat</span></code></a>(image[, …])</p></td>
 <td><p>Return white top hat of an image.</p></td>
@@ -3128,8 +3128,9 @@ p. 879, 1992. <a class="reference external" href="https://doi.org/10.1109/34.161
 <h2>watershed<a class="headerlink" href="#watershed" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.watershed">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">watershed</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">markers=None</em>, <em class="sig-param">connectivity=1</em>, <em class="sig-param">offset=None</em>, <em class="sig-param">mask=None</em>, <em class="sig-param">compactness=0</em>, <em class="sig-param">watershed_line=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/watershed.py#L93"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.watershed" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find watershed basins in <em class="xref py py-obj">image</em> flooded from given <em class="xref py py-obj">markers</em>.</p>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">watershed</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">markers=None</em>, <em class="sig-param">connectivity=1</em>, <em class="sig-param">offset=None</em>, <em class="sig-param">mask=None</em>, <em class="sig-param">compactness=0</em>, <em class="sig-param">watershed_line=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/_shared/utils.py#L56"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.watershed" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Deprecated function</strong>. Use <code class="docutils literal notranslate"><span class="pre">skimage.segmentation.watershed</span></code> instead.</p>
+<p>Find watershed basins in <em class="xref py py-obj">image</em> flooded from given <em class="xref py py-obj">markers</em>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
@@ -3177,17 +3178,17 @@ obtained by the watershed algorithm. The line has the label 0.</p>
 pixels into marked basins. The algorithm uses a priority queue to hold
 the pixels with the metric for the priority queue being pixel value, then
 the time of entry into the queue - this settles ties in favor of the
-closest marker.</p>
-<p>Some ideas taken from
+closest marker.
+Some ideas taken from
 Soille, “Automated Basin Delineation from Digital Elevation Models Using
-Mathematical Morphology”, Signal Processing 20 (1990) 171-182</p>
-<p>The most important insight in the paper is that entry time onto the queue
+Mathematical Morphology”, Signal Processing 20 (1990) 171-182
+The most important insight in the paper is that entry time onto the queue
 solves two problems: a pixel should be assigned to the neighbor with the
 largest gradient or, if there is no gradient, pixels on a plateau should
-be split between markers on opposite sides.</p>
-<p>This implementation converts all arguments to specific, lowest common
-denominator types, then passes these to a C algorithm.</p>
-<p>Markers can be determined manually, or automatically using for example
+be split between markers on opposite sides.
+This implementation converts all arguments to specific, lowest common
+denominator types, then passes these to a C algorithm.
+Markers can be determined manually, or automatically using for example
 the local minima of the gradient of the image, or the local maxima of the
 distance function to the background for separating overlapping objects
 (see example).</p>
@@ -3209,7 +3210,8 @@ Algorithms. ICPR 2014, pp 996-1001. <a class="reference external" href="https://
 <p class="rubric">Examples</p>
 <p>The watershed algorithm is useful to separate overlapping objects.</p>
 <p>We first generate an initial image with two overlapping circles:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">((</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">indices</span><span class="p">((</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">52</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">20</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">mask_circle1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">&lt;</span> <span class="n">r1</span><span class="o">**</span><span class="mi">2</span>
@@ -3242,21 +3244,9 @@ separate overlapping spheres.</p>
 <img alt="../_images/sphx_glr_plot_compact_watershed_thumb.png" src="../_images/sphx_glr_plot_compact_watershed_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_compact_watershed.html#sphx-glr-auto-examples-segmentation-plot-compact-watershed-py"><span class="std std-ref">Find Regular Segments Using Compact Watershed</span></a></span><a class="headerlink" href="#id86" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The watershed is a classical algorithm used for **segmentation**, that is, for separating diffe..."><div class="figure align-default" id="id87">
-<img alt="../_images/sphx_glr_plot_watershed_thumb.png" src="../_images/sphx_glr_plot_watershed_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_watershed.html#sphx-glr-auto-examples-segmentation-plot-watershed-py"><span class="std std-ref">Watershed segmentation</span></a></span><a class="headerlink" href="#id87" title="Permalink to this image">¶</a></p>
-</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The watershed is a classical algorithm used for **segmentation**, that is, for separating diffe..."><div class="figure align-default" id="id88">
-<img alt="../_images/sphx_glr_plot_marked_watershed_thumb.png" src="../_images/sphx_glr_plot_marked_watershed_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_marked_watershed.html#sphx-glr-auto-examples-segmentation-plot-marked-watershed-py"><span class="std std-ref">Markers for watershed transform</span></a></span><a class="headerlink" href="#id88" title="Permalink to this image">¶</a></p>
-</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="When segmenting an image, you may want to combine multiple alternative segmentations. The :py:f..."><div class="figure align-default" id="id89">
-<img alt="../_images/sphx_glr_plot_join_segmentations_thumb.png" src="../_images/sphx_glr_plot_join_segmentations_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_join_segmentations.html#sphx-glr-auto-examples-segmentation-plot-join-segmentations-py"><span class="std std-ref">Find the intersection of two segmentations</span></a></span><a class="headerlink" href="#id89" title="Permalink to this image">¶</a></p>
-</div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to segment objects from a background. We use the coins image f..."><div class="figure align-default" id="id90">
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to segment objects from a background. We use the coins image f..."><div class="figure align-default" id="id87">
 <img alt="../_images/sphx_glr_plot_coins_segmentation_thumb.png" src="../_images/sphx_glr_plot_coins_segmentation_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/applications/plot_coins_segmentation.html#sphx-glr-auto-examples-applications-plot-coins-segmentation-py"><span class="std std-ref">Comparing edge-based and region-based segmentation</span></a></span><a class="headerlink" href="#id90" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/applications/plot_coins_segmentation.html#sphx-glr-auto-examples-applications-plot-coins-segmentation-py"><span class="std std-ref">Comparing edge-based and region-based segmentation</span></a></span><a class="headerlink" href="#id87" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -3322,13 +3312,13 @@ is passed, a new array will be allocated.</p>
 
 <div class="section" id="examples-using-skimage-morphology-white-tophat">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.morphology.white_tophat</span></code><a class="headerlink" href="#examples-using-skimage-morphology-white-tophat" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to remove small objects from grayscale images. The top-hat transform [1]..."><div class="figure align-default" id="id91">
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to remove small objects from grayscale images. The top-hat transform [1]..."><div class="figure align-default" id="id88">
 <img alt="../_images/sphx_glr_plot_tophat_thumb.png" src="../_images/sphx_glr_plot_tophat_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/filters/plot_tophat.html#sphx-glr-auto-examples-filters-plot-tophat-py"><span class="std std-ref">Removing small objects in grayscale images with a top hat filter</span></a></span><a class="headerlink" href="#id91" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/filters/plot_tophat.html#sphx-glr-auto-examples-filters-plot-tophat-py"><span class="std std-ref">Removing small objects in grayscale images with a top hat filter</span></a></span><a class="headerlink" href="#id88" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Morphological image processing is a collection of non-linear operations related to the shape or..."><div class="figure align-default" id="id92">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Morphological image processing is a collection of non-linear operations related to the shape or..."><div class="figure align-default" id="id89">
 <img alt="../_images/sphx_glr_plot_morphology_thumb.png" src="../_images/sphx_glr_plot_morphology_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/applications/plot_morphology.html#sphx-glr-auto-examples-applications-plot-morphology-py"><span class="std std-ref">Morphological Filtering</span></a></span><a class="headerlink" href="#id92" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/applications/plot_morphology.html#sphx-glr-auto-examples-applications-plot-morphology-py"><span class="std std-ref">Morphological Filtering</span></a></span><a class="headerlink" href="#id89" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
