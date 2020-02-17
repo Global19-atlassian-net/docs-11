@@ -282,7 +282,7 @@ edges.</p>
 </dd>
 <dt><strong>max_iterations</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum iterations to optimize snake shape.</p>
 </dd>
-<dt><strong>convergence: float, optional</strong></dt><dd><p>Convergence criteria.</p>
+<dt><strong>convergence</strong><span class="classifier">float, optional</span></dt><dd><p>Convergence criteria.</p>
 </dd>
 <dt><strong>boundary_condition</strong><span class="classifier">string, optional</span></dt><dd><p>Boundary conditions for the contour. Can be one of ‘periodic’,
 ‘free’, ‘fixed’, ‘free-fixed’, or ‘fixed-free’. ‘periodic’ attaches
@@ -590,8 +590,10 @@ that touch the outside of the image are removed.</p>
 False pixels of mask will be removed. If defined, the 
 argument buffer_size will be ignored.</p>
 </dd>
-<dt><strong>Returns</strong></dt><dd></dd>
-<dt><strong>——-</strong></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
 <dt><strong>out</strong><span class="classifier">(M[, N[, …, P]]) array</span></dt><dd><p>Imaging data labels with cleared borders</p>
 </dd>
 </dl>
@@ -746,18 +748,18 @@ Huttenlocher, D.P.  International Journal of Computer Vision, 2004</p>
 <dd><p>Return bool array where boundaries between labeled regions are True.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>label_img</strong><span class="classifier">array of int or bool</span></dt><dd><p>An array in which different regions are labeled with either different
 integers or boolean values.</p>
 </dd>
-<dt><strong>connectivity: int in {1, …, `label_img.ndim`}, optional</strong></dt><dd><p>A pixel is considered a boundary pixel if any of its neighbors
+<dt><strong>connectivity</strong><span class="classifier">int in {1, …, <em class="xref py py-obj">label_img.ndim</em>}, optional</span></dt><dd><p>A pixel is considered a boundary pixel if any of its neighbors
 has a different label. <em class="xref py py-obj">connectivity</em> controls which pixels are
 considered neighbors. A connectivity of 1 (default) means
 pixels sharing an edge (in 2D) or a face (in 3D) will be
 considered neighbors. A connectivity of <em class="xref py py-obj">label_img.ndim</em> means
 pixels sharing a corner will be considered neighbors.</p>
 </dd>
-<dt><strong>mode: string in {‘thick’, ‘inner’, ‘outer’, ‘subpixel’}</strong></dt><dd><p>How to mark the boundaries:</p>
+<dt><strong>mode</strong><span class="classifier">string in {‘thick’, ‘inner’, ‘outer’, ‘subpixel’}</span></dt><dd><p>How to mark the boundaries:</p>
 <ul class="simple">
 <li><p>thick: any pixel not completely surrounded by pixels of the
 same label (defined by <em class="xref py py-obj">connectivity</em>) is marked as a boundary.
@@ -771,7 +773,7 @@ marked.</p></li>
 original pixels marked as boundary where appropriate.</p></li>
 </ul>
 </dd>
-<dt><strong>background: int, optional</strong></dt><dd><p>For modes ‘inner’ and ‘outer’, a definition of a background
+<dt><strong>background</strong><span class="classifier">int, optional</span></dt><dd><p>For modes ‘inner’ and ‘outer’, a definition of a background
 label is required. See <em class="xref py py-obj">mode</em> for descriptions of these two.</p>
 </dd>
 </dl>
@@ -906,7 +908,7 @@ seed point.  All other values are False.</p>
 raster graphics programs.  This function returns just the mask
 representing the fill.</p>
 <p>If indices are desired rather than masks for memory reasons, the user can
-simply run <a class="reference external" href="https://numpy.org/doc/1.18/reference/generated/numpy.nonzero.html#numpy.nonzero" title="(in NumPy v1.18)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.nonzero</span></code></a> on the result, save the indices, and discard
+simply run <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.nonzero.html#numpy.nonzero" title="(in NumPy v1.17)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.nonzero</span></code></a> on the result, save the indices, and discard
 this mask.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.morphology</span> <span class="kn">import</span> <span class="n">flood</span>
@@ -1225,7 +1227,7 @@ superimposed on the original image.</p>
 <h2>morphological_chan_vese<a class="headerlink" href="#morphological-chan-vese" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.morphological_chan_vese">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_chan_vese</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='checkerboard'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">lambda1=1</em>, <em class="sig-param">lambda2=1</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f94b4c890d0&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L253"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_chan_vese</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='checkerboard'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">lambda1=1</em>, <em class="sig-param">lambda2=1</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f46a869a378&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L253"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Active Contours without Edges (MorphACWE)</p>
 <p>Active contours without edges implemented with morphological operators. It
 can be used to segment objects in images and volumes without well defined
@@ -1310,7 +1312,7 @@ Transactions on Pattern Analysis and Machine Intelligence (PAMI),
 <h2>morphological_geodesic_active_contour<a class="headerlink" href="#morphological-geodesic-active-contour" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.morphological_geodesic_active_contour">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em class="sig-param">gimage</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='circle'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">threshold='auto'</em>, <em class="sig-param">balloon=0</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f94b4c891e0&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L357"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em class="sig-param">gimage</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='circle'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">threshold='auto'</em>, <em class="sig-param">balloon=0</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f46a869a488&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L357"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Geodesic Active Contours (MorphGAC).</p>
 <p>Geodesic active contours implemented with morphological operators. It can
 be used to segment objects with visible but noisy, cluttered, broken
@@ -1757,15 +1759,15 @@ segmentation. The input image <em>must</em> be RGB. Highly recommended.
 This option defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code> when <code class="docutils literal notranslate"><span class="pre">multichannel=True</span></code> <em>and</em>
 <code class="docutils literal notranslate"><span class="pre">image.shape[-1]</span> <span class="pre">==</span> <span class="pre">3</span></code>.</p>
 </dd>
-<dt><strong>enforce_connectivity: bool, optional</strong></dt><dd><p>Whether the generated segments are connected or not</p>
+<dt><strong>enforce_connectivity</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the generated segments are connected or not</p>
 </dd>
-<dt><strong>min_size_factor: float, optional</strong></dt><dd><p>Proportion of the minimum segment size to be removed with respect
+<dt><strong>min_size_factor</strong><span class="classifier">float, optional</span></dt><dd><p>Proportion of the minimum segment size to be removed with respect
 to the supposed segment size <code class="docutils literal notranslate"><span class="pre">`depth*width*height/n_segments`</span></code></p>
 </dd>
-<dt><strong>max_size_factor: float, optional</strong></dt><dd><p>Proportion of the maximum connected segment size. A value of 3 works
+<dt><strong>max_size_factor</strong><span class="classifier">float, optional</span></dt><dd><p>Proportion of the maximum connected segment size. A value of 3 works
 in most of the cases.</p>
 </dd>
-<dt><strong>slic_zero: bool, optional</strong></dt><dd><p>Run SLIC-zero, the zero-parameter mode of SLIC. <a class="reference internal" href="#rbeb231216055-2" id="id16">[2]</a></p>
+<dt><strong>slic_zero</strong><span class="classifier">bool, optional</span></dt><dd><p>Run SLIC-zero, the zero-parameter mode of SLIC. <a class="reference internal" href="#rbeb231216055-2" id="id16">[2]</a></p>
 </dd>
 </dl>
 </dd>
@@ -1862,24 +1864,24 @@ State-of-the-art Superpixel Methods, TPAMI, May 2012.</p>
 <dt id="skimage.segmentation.watershed">
 <code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">watershed</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">markers=None</em>, <em class="sig-param">connectivity=1</em>, <em class="sig-param">offset=None</em>, <em class="sig-param">mask=None</em>, <em class="sig-param">compactness=0</em>, <em class="sig-param">watershed_line=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/_watershed.py#L94"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.watershed" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find watershed basins in <em class="xref py py-obj">image</em> flooded from given <em class="xref py py-obj">markers</em>.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>image: ndarray (2-D, 3-D, …) of integers</strong></dt><dd><p>Data array where the lowest value points are labeled first.</p>
+<dd class="field-odd"><dl>
+<dt><strong>image</strong><span class="classifier">ndarray (2-D, 3-D, …) of integers</span></dt><dd><p>Data array where the lowest value points are labeled first.</p>
 </dd>
-<dt><strong>markers: int, or ndarray of int, same shape as `image`, optional</strong></dt><dd><p>The desired number of markers, or an array marking the basins with the
+<dt><strong>markers</strong><span class="classifier">int, or ndarray of int, same shape as <em class="xref py py-obj">image</em>, optional</span></dt><dd><p>The desired number of markers, or an array marking the basins with the
 values to be assigned in the label matrix. Zero means not a marker. If
 <code class="docutils literal notranslate"><span class="pre">None</span></code> (no markers given), the local minima of the image are used as
 markers.</p>
 </dd>
-<dt><strong>connectivity: ndarray, optional</strong></dt><dd><p>An array with the same number of dimensions as <em class="xref py py-obj">image</em> whose
+<dt><strong>connectivity</strong><span class="classifier">ndarray, optional</span></dt><dd><p>An array with the same number of dimensions as <em class="xref py py-obj">image</em> whose
 non-zero elements indicate neighbors for connection.
 Following the scipy convention, default is a one-connected array of
 the dimension of the image.</p>
 </dd>
-<dt><strong>offset: array_like of shape image.ndim, optional</strong></dt><dd><p>offset of the connectivity (one offset per dimension)</p>
+<dt><strong>offset</strong><span class="classifier">array_like of shape image.ndim, optional</span></dt><dd><p>offset of the connectivity (one offset per dimension)</p>
 </dd>
-<dt><strong>mask: ndarray of bools or 0s and 1s, optional</strong></dt><dd><p>Array of same shape as <em class="xref py py-obj">image</em>. Only points at which mask == True
+<dt><strong>mask</strong><span class="classifier">ndarray of bools or 0s and 1s, optional</span></dt><dd><p>Array of same shape as <em class="xref py py-obj">image</em>. Only points at which mask == True
 will be labeled.</p>
 </dd>
 <dt><strong>compactness</strong><span class="classifier">float, optional</span></dt><dd><p>Use compact watershed <a class="reference internal" href="#rc8002e235889-3" id="id19">[3]</a> with given compactness parameter.
@@ -1892,7 +1894,7 @@ obtained by the watershed algorithm. The line has the label 0.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt>out: ndarray</dt><dd><p>A labeled matrix of the same type and shape as markers</p>
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>A labeled matrix of the same type and shape as markers</p>
 </dd>
 </dl>
 </dd>
