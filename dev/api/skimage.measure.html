@@ -313,7 +313,7 @@ is returned.</p>
 <h2>block_reduce<a class="headerlink" href="#block-reduce" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.block_reduce">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7fed259a4d90&gt;</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">func_kwargs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7f494972dd08&gt;</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">func_kwargs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Downsample image by applying function <em class="xref py py-obj">func</em> to local blocks.</p>
 <p>This function is useful for max and mean pooling, for example.</p>
 <dl class="field-list simple">
@@ -1830,7 +1830,7 @@ The first point may (but does not need to be) duplicated.</p>
 <h2>profile_line<a class="headerlink" href="#profile-line" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.profile_line">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">profile_line</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em>, <em class="sig-param">linewidth=1</em>, <em class="sig-param">order=1</em>, <em class="sig-param">mode='constant'</em>, <em class="sig-param">cval=0.0</em>, <em class="sig-param">*</em>, <em class="sig-param">reduce_func=&lt;function mean at 0x7fed259af378&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/profile.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.profile_line" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">profile_line</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em>, <em class="sig-param">linewidth=1</em>, <em class="sig-param">order=None</em>, <em class="sig-param">mode='constant'</em>, <em class="sig-param">cval=0.0</em>, <em class="sig-param">*</em>, <em class="sig-param">reduce_func=&lt;function mean at 0x7f49497382f0&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/profile.py#L6"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.profile_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the intensity profile of an image measured along a scan line.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1846,8 +1846,9 @@ in the profile, in contrast to standard numpy indexing.</p>
 </dd>
 <dt><strong>linewidth</strong><span class="classifier">int, optional</span></dt><dd><p>Width of the scan, perpendicular to the line</p>
 </dd>
-<dt><strong>order</strong><span class="classifier">int in {0, 1, 2, 3, 4, 5}, optional</span></dt><dd><p>The order of the spline interpolation to compute image values at
-non-integer coordinates. 0 means nearest-neighbor interpolation.</p>
+<dt><strong>order</strong><span class="classifier">int in {0, 1, 2, 3, 4, 5}, optional</span></dt><dd><p>The order of the spline interpolation, default is 0 if
+image.dtype is bool and 1 otherwise. The order has to be in
+the range 0-5. See <a class="reference internal" href="skimage.transform.html#skimage.transform.warp" title="skimage.transform.warp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.warp</span></code></a> for detail.</p>
 </dd>
 <dt><strong>mode</strong><span class="classifier">{‘constant’, ‘nearest’, ‘reflect’, ‘mirror’, ‘wrap’}, optional</span></dt><dd><p>How to compute any values falling outside of the image.</p>
 </dd>
