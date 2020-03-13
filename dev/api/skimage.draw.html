@@ -28,7 +28,6 @@
     <script src="../_static/language_data.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var copybuttonSkipText = '>>> ';</script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../genindex.html" />
         <link rel="search" title="Search" href="../search.html" />
@@ -1136,7 +1135,7 @@ May be used to directly index into an array, e.g.
 <h2>random_shapes<a class="headerlink" href="#random-shapes" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.draw.random_shapes">
-<code class="sig-prename descclassname">skimage.draw.</code><code class="sig-name descname">random_shapes</code><span class="sig-paren">(</span><em class="sig-param">image_shape</em>, <em class="sig-param">max_shapes</em>, <em class="sig-param">min_shapes=1</em>, <em class="sig-param">min_size=2</em>, <em class="sig-param">max_size=None</em>, <em class="sig-param">multichannel=True</em>, <em class="sig-param">num_channels=3</em>, <em class="sig-param">shape=None</em>, <em class="sig-param">intensity_range=None</em>, <em class="sig-param">allow_overlap=False</em>, <em class="sig-param">num_trials=100</em>, <em class="sig-param">random_seed=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/draw/_random_shapes.py#L212"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.draw.random_shapes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.draw.</code><code class="sig-name descname">random_shapes</code><span class="sig-paren">(</span><em class="sig-param">image_shape</em>, <em class="sig-param">max_shapes</em>, <em class="sig-param">min_shapes=1</em>, <em class="sig-param">min_size=2</em>, <em class="sig-param">max_size=None</em>, <em class="sig-param">multichannel=True</em>, <em class="sig-param">num_channels=3</em>, <em class="sig-param">shape=None</em>, <em class="sig-param">intensity_range=None</em>, <em class="sig-param">allow_overlap=False</em>, <em class="sig-param">num_trials=100</em>, <em class="sig-param">random_seed=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/draw/_random_shapes.py#L285"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.draw.random_shapes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate an image with random shapes, labeled with bounding boxes.</p>
 <p>The image is populated with random shapes with random sizes, random
 locations, and random colors, with or without overlap.</p>
@@ -1166,7 +1165,7 @@ otherwise generates grayscale image.</p>
 images, else color images with multiple channels. Ignored if
 <code class="docutils literal notranslate"><span class="pre">multichannel</span></code> is set to False.</p>
 </dd>
-<dt><strong>shape</strong><span class="classifier">{rectangle, circle, triangle, None} str, optional</span></dt><dd><p>The name of the shape to generate or <em class="xref py py-obj">None</em> to pick random ones.</p>
+<dt><strong>shape</strong><span class="classifier">{rectangle, circle, triangle, ellipse, None} str, optional</span></dt><dd><p>The name of the shape to generate or <em class="xref py py-obj">None</em> to pick random ones.</p>
 </dd>
 <dt><strong>intensity_range</strong><span class="classifier">{tuple of tuples of uint8, tuple of uint8}, optional</span></dt><dd><p>The range of values to sample pixel values from. For grayscale images
 the format is (min, max). For multichannel - ((min, max),) if the
@@ -1179,7 +1178,7 @@ channel reserving color of intensity = 255 for background.</p>
 </dd>
 <dt><strong>num_trials</strong><span class="classifier">int, optional</span></dt><dd><p>How often to attempt to fit a shape into the image before skipping it.</p>
 </dd>
-<dt><strong>seed</strong><span class="classifier">int, optional</span></dt><dd><p>Seed to initialize the random number generator.
+<dt><strong>random_seed</strong><span class="classifier">int, optional</span></dt><dd><p>Seed to initialize the random number generator.
 If <em class="xref py py-obj">None</em>, a random seed from the operating system is used.</p>
 </dd>
 </dl>
