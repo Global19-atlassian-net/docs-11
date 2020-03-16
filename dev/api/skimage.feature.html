@@ -781,7 +781,7 @@ Pattern Analysis and Machine Intelligence, 8:679-714, 1986
 <h2>corner_fast<a class="headerlink" href="#corner-fast" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_fast">
-<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">corner_fast</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">n=12</em>, <em class="sig-param">threshold=0.15</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L673"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_fast" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">corner_fast</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">n=12</em>, <em class="sig-param">threshold=0.15</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L674"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_fast" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract FAST corners for a given image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -838,7 +838,7 @@ Springer, Berlin, Heidelberg.
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_fast</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_fast</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">threshold_rel</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">array([[3, 3],</span>
 <span class="go">       [3, 8],</span>
 <span class="go">       [8, 3],</span>
@@ -852,7 +852,7 @@ Springer, Berlin, Heidelberg.
 <h2>corner_foerstner<a class="headerlink" href="#corner-foerstner" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_foerstner">
-<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">corner_foerstner</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">sigma=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L589"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_foerstner" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">corner_foerstner</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">sigma=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L590"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_foerstner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Foerstner corner measure response image.</p>
 <p>This corner detector uses information from the auto-correlation matrix A:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[(</span><span class="n">imx</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>   <span class="p">(</span><span class="n">imx</span><span class="o">*</span><span class="n">imy</span><span class="p">)]</span> <span class="o">=</span> <span class="p">[</span><span class="n">Axx</span> <span class="n">Axy</span><span class="p">]</span>
@@ -916,7 +916,7 @@ photogrammetric data (pp. 281-305).
 <span class="gp">&gt;&gt;&gt; </span><span class="n">accuracy_thresh</span> <span class="o">=</span> <span class="mf">0.5</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">roundness_thresh</span> <span class="o">=</span> <span class="mf">0.3</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">foerstner</span> <span class="o">=</span> <span class="p">(</span><span class="n">q</span> <span class="o">&gt;</span> <span class="n">roundness_thresh</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">w</span> <span class="o">&gt;</span> <span class="n">accuracy_thresh</span><span class="p">)</span> <span class="o">*</span> <span class="n">w</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">foerstner</span><span class="p">,</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">foerstner</span><span class="p">,</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">threshold_rel</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">array([[2, 2],</span>
 <span class="go">       [2, 7],</span>
 <span class="go">       [7, 2],</span>
@@ -991,7 +991,7 @@ weighting function for the auto-correlation matrix.</p>
 <span class="go">       [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_harris</span><span class="p">(</span><span class="n">square</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_harris</span><span class="p">(</span><span class="n">square</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">threshold_rel</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">array([[2, 2],</span>
 <span class="go">       [2, 7],</span>
 <span class="go">       [7, 2],</span>
@@ -1063,7 +1063,7 @@ Pattern recognition letters, 1(2), 95-102.
 <h2>corner_moravec<a class="headerlink" href="#corner-moravec" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_moravec">
-<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">corner_moravec</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">window_size=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L989"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_moravec" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">corner_moravec</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">window_size=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L993"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_moravec" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute Moravec corner measure response image.</p>
 <p>This is one of the simplest corner detectors and is comparatively fast but
 has several limitations (e.g. not rotation invariant).</p>
@@ -1118,7 +1118,7 @@ has several limitations (e.g. not rotation invariant).</p>
 <h2>corner_orientations<a class="headerlink" href="#corner-orientations" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_orientations">
-<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">corner_orientations</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">corners</em>, <em class="sig-param">mask</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L1036"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_orientations" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">corner_orientations</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">corners</em>, <em class="sig-param">mask</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L1040"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_orientations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the orientation of corners.</p>
 <p>The orientation of corners is computed using the first order central moment
 i.e. the center of mass approach. The corner orientation is the angle of
@@ -1175,7 +1175,8 @@ calculation of the central moment.</p>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">corners</span> <span class="o">=</span> <span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_fast</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">corners</span> <span class="o">=</span> <span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_fast</span><span class="p">(</span><span class="n">square</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>                       <span class="n">threshold_rel</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">corners</span>
 <span class="go">array([[3, 3],</span>
 <span class="go">       [3, 8],</span>
@@ -1193,7 +1194,7 @@ calculation of the central moment.</p>
 <h2>corner_peaks<a class="headerlink" href="#corner-peaks" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_peaks">
-<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">corner_peaks</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_distance=1</em>, <em class="sig-param">threshold_abs=None</em>, <em class="sig-param">threshold_rel=None</em>, <em class="sig-param">exclude_border=True</em>, <em class="sig-param">indices=True</em>, <em class="sig-param">num_peaks=inf</em>, <em class="sig-param">footprint=None</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">*</em>, <em class="sig-param">num_peaks_per_label=inf</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L916"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_peaks" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">corner_peaks</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_distance=1</em>, <em class="sig-param">threshold_abs=None</em>, <em class="sig-param">threshold_rel=None</em>, <em class="sig-param">exclude_border=True</em>, <em class="sig-param">indices=True</em>, <em class="sig-param">num_peaks=inf</em>, <em class="sig-param">footprint=None</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">*</em>, <em class="sig-param">num_peaks_per_label=inf</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L918"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_peaks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find corners in corner measure response image.</p>
 <p>This differs from <a class="reference internal" href="#skimage.feature.peak_local_max" title="skimage.feature.peak_local_max"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.feature.peak_local_max</span></code></a> in that it suppresses
 multiple connected peaks with the same accumulator value.</p>
@@ -1231,7 +1232,7 @@ post-process the output of this function.</p>
 <span class="go">       [3, 2],</span>
 <span class="go">       [2, 3],</span>
 <span class="go">       [2, 2]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">threshold_rel</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">array([[2, 2]])</span>
 </pre></div>
 </div>
@@ -1307,7 +1308,8 @@ weighting function for the auto-correlation matrix.</p>
 <span class="go">       [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_shi_tomasi</span><span class="p">(</span><span class="n">square</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_shi_tomasi</span><span class="p">(</span><span class="n">square</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">threshold_rel</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="go">array([[2, 2],</span>
 <span class="go">       [2, 7],</span>
 <span class="go">       [7, 2],</span>
@@ -1321,7 +1323,7 @@ weighting function for the auto-correlation matrix.</p>
 <h2>corner_subpix<a class="headerlink" href="#corner-subpix" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.corner_subpix">
-<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">corner_subpix</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">corners</em>, <em class="sig-param">window_size=11</em>, <em class="sig-param">alpha=0.99</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L738"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_subpix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">corner_subpix</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">corners</em>, <em class="sig-param">window_size=11</em>, <em class="sig-param">alpha=0.99</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/corner.py#L739"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.corner_subpix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determine subpixel position of corners.</p>
 <p>A statistical test decides whether the corner is defined as the
 intersection of two edges or a single peak. Depending on the classification
@@ -1378,7 +1380,8 @@ photogrammetric data (pp. 281-305).
 <span class="go">       [0, 0, 0, 0, 0, 1, 1, 1, 1, 1],</span>
 <span class="go">       [0, 0, 0, 0, 0, 1, 1, 1, 1, 1],</span>
 <span class="go">       [0, 0, 0, 0, 0, 1, 1, 1, 1, 1]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span> <span class="o">=</span> <span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_harris</span><span class="p">(</span><span class="n">img</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">coords</span> <span class="o">=</span> <span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_harris</span><span class="p">(</span><span class="n">img</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>                      <span class="n">threshold_rel</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coords_subpix</span> <span class="o">=</span> <span class="n">corner_subpix</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">coords</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">coords_subpix</span>
 <span class="go">array([[4.5, 4.5]])</span>
@@ -3186,8 +3189,10 @@ discriminative and good descriptors.</p>
 <span class="go">       [0, 0, 1, 1, 1, 1, 1, 0, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0],</span>
 <span class="go">       [0, 0, 0, 0, 0, 0, 0, 0, 0]], dtype=int32)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">keypoints1</span> <span class="o">=</span> <span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_harris</span><span class="p">(</span><span class="n">square1</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">keypoints2</span> <span class="o">=</span> <span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_harris</span><span class="p">(</span><span class="n">square2</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">keypoints1</span> <span class="o">=</span> <span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_harris</span><span class="p">(</span><span class="n">square1</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>                          <span class="n">threshold_rel</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">keypoints2</span> <span class="o">=</span> <span class="n">corner_peaks</span><span class="p">(</span><span class="n">corner_harris</span><span class="p">(</span><span class="n">square2</span><span class="p">),</span> <span class="n">min_distance</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>                          <span class="n">threshold_rel</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">extractor</span> <span class="o">=</span> <span class="n">BRIEF</span><span class="p">(</span><span class="n">patch_size</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">extractor</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">square1</span><span class="p">,</span> <span class="n">keypoints1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">descriptors1</span> <span class="o">=</span> <span class="n">extractor</span><span class="o">.</span><span class="n">descriptors</span>
@@ -3228,13 +3233,13 @@ decision pixel-pair. It is <code class="docutils literal notranslate"><span clas
 </dl>
 <dl class="method">
 <dt id="skimage.feature.BRIEF.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">descriptor_size=256</em>, <em class="sig-param">patch_size=49</em>, <em class="sig-param">mode='normal'</em>, <em class="sig-param">sigma=1</em>, <em class="sig-param">sample_seed=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/brief.py#L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.BRIEF.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">descriptor_size=256</em>, <em class="sig-param">patch_size=49</em>, <em class="sig-param">mode='normal'</em>, <em class="sig-param">sigma=1</em>, <em class="sig-param">sample_seed=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/brief.py#L116"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.BRIEF.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="skimage.feature.BRIEF.extract">
-<code class="sig-name descname">extract</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em>, <em class="sig-param">keypoints</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/brief.py#L130"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.BRIEF.extract" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">extract</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em>, <em class="sig-param">keypoints</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/brief.py#L132"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.BRIEF.extract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract BRIEF binary descriptors for given keypoints in image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -3643,7 +3648,7 @@ decision pixel-pair. It is <code class="docutils literal notranslate"><span clas
 
 <dl class="method">
 <dt id="skimage.feature.ORB.detect">
-<code class="sig-name descname">detect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L162"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.detect" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">detect</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L163"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.detect" title="Permalink to this definition">¶</a></dt>
 <dd><p>Detect oriented FAST keypoints along with the corresponding scale.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -3657,7 +3662,7 @@ decision pixel-pair. It is <code class="docutils literal notranslate"><span clas
 
 <dl class="method">
 <dt id="skimage.feature.ORB.detect_and_extract">
-<code class="sig-name descname">detect_and_extract</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.detect_and_extract" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">detect_and_extract</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L278"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.detect_and_extract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Detect oriented FAST keypoints and extract rBRIEF descriptors.</p>
 <p>Note that this is faster than first calling <a class="reference internal" href="#skimage.feature.ORB.detect" title="skimage.feature.ORB.detect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">detect</span></code></a> and then
 <a class="reference internal" href="#skimage.feature.ORB.extract" title="skimage.feature.ORB.extract"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract</span></code></a>.</p>
@@ -3673,7 +3678,7 @@ decision pixel-pair. It is <code class="docutils literal notranslate"><span clas
 
 <dl class="method">
 <dt id="skimage.feature.ORB.extract">
-<code class="sig-name descname">extract</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em>, <em class="sig-param">keypoints</em>, <em class="sig-param">scales</em>, <em class="sig-param">orientations</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L223"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.extract" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">extract</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">image</em>, <em class="sig-param">keypoints</em>, <em class="sig-param">scales</em>, <em class="sig-param">orientations</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/orb.py#L224"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.ORB.extract" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract rBRIEF binary descriptors for given keypoints in image.</p>
 <p>Note that the keypoints must be extracted using the same <em class="xref py py-obj">downscale</em>
 and <em class="xref py py-obj">n_scales</em> parameters. Additionally, if you want to extract both
