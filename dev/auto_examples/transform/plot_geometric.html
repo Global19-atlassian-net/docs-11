@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../../search.html" />
         <link rel="top" title="skimage v0.17.dev0 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
-        <link rel="next" title="Visual image comparison" href="plot_image_comparison.html" />
-        <link rel="prev" title="Face detection using a cascade classifier" href="plot_face_detection.html" />
+        <link rel="next" title="Structural similarity index" href="plot_ssim.html" />
+        <link rel="prev" title="Piecewise Affine Transformation" href="plot_piecewise_affine.html" />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <link rel="shortcut icon" href="../../_static/favicon.ico">
 </head>
@@ -107,10 +107,10 @@
             
   <div class="sphx-glr-download-link-note admonition note">
 <p class="admonition-title">Note</p>
-<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-applications-plot-geometric-py"><span class="std std-ref">here</span></a>     to download the full example code or to run this example in your browser via Binder</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-transform-plot-geometric-py"><span class="std std-ref">here</span></a>     to download the full example code or to run this example in your browser via Binder</p>
 </div>
 <div class="sphx-glr-example-title section" id="using-geometric-transformations">
-<span id="sphx-glr-auto-examples-applications-plot-geometric-py"></span><h1>Using geometric transformations<a class="headerlink" href="#using-geometric-transformations" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-transform-plot-geometric-py"></span><h1>Using geometric transformations<a class="headerlink" href="#using-geometric-transformations" title="Permalink to this headline">¶</a></h1>
 <p>In this example, we will see how to use geometric transformations in the context
 of image processing.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -124,10 +124,11 @@ of image processing.</p>
 <div class="section" id="basics">
 <h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
 <p>Several different geometric transformation types are supported: similarity,
-affine, projective and polynomial.</p>
+affine, projective and polynomial. For a tutorial on the available types of
+transformations, see <a class="reference internal" href="plot_transform_types.html#sphx-glr-auto-examples-transform-plot-transform-types-py"><span class="std std-ref">Types of homographies</span></a>.</p>
 <p>Geometric transformations can either be created using the explicit
 parameters (e.g. scale, shear, rotation and translation) or the
-transformation matrix:</p>
+transformation matrix.</p>
 <p>First we create a transformation using explicit parameters:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../../api/skimage.transform.html#skimage.transform.SimilarityTransform" title="skimage.transform.SimilarityTransform" class="sphx-glr-backref-module-skimage-transform sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">tform</span></a> <span class="o">=</span> <a href="../../api/skimage.transform.html#skimage.transform.SimilarityTransform" title="skimage.transform.SimilarityTransform" class="sphx-glr-backref-module-skimage-transform sphx-glr-backref-type-py-class"><span class="n">tf</span><span class="o">.</span><span class="n">SimilarityTransform</span></a><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><a href="https://docs.python.org/3.7/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">math</span><span class="o">.</span><span class="n">pi</span></a><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
                                <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
@@ -219,21 +220,26 @@ then apply a matching algorithm:</p>
     <a href="https://matplotlib.org/api/_as_gen/matplotlib.axes.Axes.axis.html#matplotlib.axes.Axes.axis" title="matplotlib.axes.Axes.axis" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-method"><span class="n">a</span><span class="o">.</span><span class="n">axis</span></a><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
-
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../../_images/sphx_glr_plot_geometric_002.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_geometric_002.png" />
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.318 seconds)</p>
-<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-geometric-py">
+<img alt="../../_images/sphx_glr_plot_geometric_0021.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_geometric_0021.png" />
+<p>The above estimation relies on accurate selection of corresponding points.
+An alternative approach called the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Random_sample_consensus">RANSAC algorithm</a>
+is useful when the correspondence points are not perfectly accurate.
+See the <a class="reference internal" href="plot_matching.html#sphx-glr-auto-examples-transform-plot-matching-py"><span class="std std-ref">Robust matching using RANSAC</span></a> tutorial
+for an in-depth description of how to use this approach in scikit-image.</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.314 seconds)</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-transform-plot-geometric-py">
 <div class="binder-badge docutils container">
-<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-image/scikit-image/master?filepath=notebooks/auto_examples/applications/plot_geometric.ipynb"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" width="150px" /></a>
+<a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-image/scikit-image/master?filepath=notebooks/auto_examples/transform/plot_geometric.ipynb"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" width="150px" /></a>
 </div>
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/15c52c0d1eec061cd7c9945f36374e94/plot_geometric.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_geometric.py</span></code></a></p>
+<p><a class="reference download internal" download="" href="../../_downloads/e4bb46c63cf7d60d4b4a5bb35b86602e/plot_geometric.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_geometric.py</span></code></a></p>
 </div>
 <div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
-<p><a class="reference download internal" download="" href="../../_downloads/ec158fb37558278801a483b35031c084/plot_geometric.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_geometric.ipynb</span></code></a></p>
+<p><a class="reference download internal" download="" href="../../_downloads/b45a3034377c6dbac5b92186023a94f3/plot_geometric.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_geometric.ipynb</span></code></a></p>
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
