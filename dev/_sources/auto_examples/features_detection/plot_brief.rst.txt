@@ -50,7 +50,7 @@ extracting features at different scales.
 .. code-block:: default
 
     from skimage import data
-    from skimage import transform as tf
+    from skimage import transform
     from skimage.feature import (match_descriptors, corner_peaks, corner_harris,
                                  plot_matches, BRIEF)
     from skimage.color import rgb2gray
@@ -58,9 +58,9 @@ extracting features at different scales.
 
 
     img1 = rgb2gray(data.astronaut())
-    tform = tf.AffineTransform(scale=(1.2, 1.2), translation=(0, -100))
-    img2 = tf.warp(img1, tform)
-    img3 = tf.rotate(img1, 25)
+    tform = transform.AffineTransform(scale=(1.2, 1.2), translation=(0, -100))
+    img2 = transform.warp(img1, tform)
+    img3 = transform.rotate(img1, 25)
 
     keypoints1 = corner_peaks(corner_harris(img1), min_distance=5)
     keypoints2 = corner_peaks(corner_harris(img2), min_distance=5)
@@ -101,7 +101,7 @@ extracting features at different scales.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.365 seconds)
+   **Total running time of the script:** ( 0 minutes  0.375 seconds)
 
 
 .. _sphx_glr_download_auto_examples_features_detection_plot_brief.py:

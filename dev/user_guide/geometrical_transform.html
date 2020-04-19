@@ -148,10 +148,10 @@ of homographies available in scikit-image are presented in
 <p>Projective transformations can either be created using the explicit
 parameters (e.g. scale, shear, rotation and translation):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">img_as_float</span>
 
-<span class="n">tform</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">EuclideanTransform</span><span class="p">(</span>
+<span class="n">tform</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">EuclideanTransform</span><span class="p">(</span>
    <span class="n">rotation</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mf">12.</span><span class="p">,</span>
    <span class="n">translation</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">)</span>
    <span class="p">)</span>
@@ -159,13 +159,13 @@ parameters (e.g. scale, shear, rotation and translation):</p>
 </div>
 <p>or the full transformation matrix:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span>
 <span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">img_as_float</span>
 
 <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">12</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">12</span><span class="p">),</span> <span class="mi">100</span><span class="p">],</span>
                    <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">12</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">12</span><span class="p">),</span> <span class="o">-</span><span class="mi">20</span><span class="p">],</span>
                    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
-<span class="n">tform</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">EuclideanTransform</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+<span class="n">tform</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">EuclideanTransform</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The transformation matrix of a transform is available as its <code class="docutils literal notranslate"><span class="pre">tform.params</span></code>
@@ -178,7 +178,7 @@ the more general projective geometry. In particular, points at infinity can be
 represented with finite coordinates.</p>
 <p>Transformations can be applied to images using <a class="reference internal" href="../api/skimage.transform.html#skimage.transform.warp" title="skimage.transform.warp"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.transform.warp()</span></code></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">img_as_float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">chelsea</span><span class="p">())</span>
-<span class="n">tf_img</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">warp</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">)</span>
+<span class="n">tf_img</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">warp</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">)</span>
 </pre></div>
 </div>
 <a class="reference external image-reference" href="../auto_examples/transform/plot_transform_types.html"><img alt="../_images/sphx_glr_plot_transform_types_001.png" class="align-center" src="../_images/sphx_glr_plot_transform_types_001.png" style="width: 80%;" /></a>
@@ -191,9 +191,9 @@ of points (the source and the destination), as explained in the
 <span class="n">src</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
 <span class="n">dst</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">155</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">65</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span> <span class="p">[</span><span class="mi">260</span><span class="p">,</span> <span class="mi">130</span><span class="p">],</span> <span class="p">[</span><span class="mi">360</span><span class="p">,</span> <span class="mi">95</span><span class="p">]])</span>
 
-<span class="n">tform3</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">ProjectiveTransform</span><span class="p">()</span>
+<span class="n">tform3</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">ProjectiveTransform</span><span class="p">()</span>
 <span class="n">tform3</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
-<span class="n">warped</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">warp</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">tform3</span><span class="p">,</span> <span class="n">output_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+<span class="n">warped</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">warp</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">tform3</span><span class="p">,</span> <span class="n">output_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
 </pre></div>
 </div>
 <a class="reference external image-reference" href="../auto_examples/transform/plot_geometric.html"><img alt="../_images/sphx_glr_plot_geometric_002.png" class="align-center" src="../_images/sphx_glr_plot_geometric_002.png" style="width: 80%;" /></a>

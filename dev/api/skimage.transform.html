@@ -336,7 +336,7 @@
 <h2>downscale_local_mean<a class="headerlink" href="#downscale-local-mean" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="skimage.transform.downscale_local_mean">
-<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">downscale_local_mean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">factors</span></em>, <em class="sig-param"><span class="n">cval</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L390"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.downscale_local_mean" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">downscale_local_mean</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">factors</span></em>, <em class="sig-param"><span class="n">cval</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L407"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.downscale_local_mean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Down-sample N-dimensional image by local averaging.</p>
 <p>The image is padded with <em class="xref py py-obj">cval</em> if it is not perfectly divisible by the
 integer factors.</p>
@@ -429,7 +429,7 @@ access to forward and inverse transformation functions.</p>
 </dl>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span> <span class="k">as</span> <span class="n">tf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">transform</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># estimate transformation parameters</span>
@@ -437,7 +437,7 @@ access to forward and inverse transformation functions.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">dst</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">20</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tform</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">estimate_transform</span><span class="p">(</span><span class="s1">&#39;similarity&#39;</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tform</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">estimate_transform</span><span class="p">(</span><span class="s1">&#39;similarity&#39;</span><span class="p">,</span> <span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">tform</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">tform</span><span class="p">(</span><span class="n">src</span><span class="p">)),</span> <span class="n">src</span><span class="p">)</span>
@@ -453,7 +453,7 @@ access to forward and inverse transformation functions.</p>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># create transformation with explicit parameters</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tform2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">SimilarityTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tform2</span> <span class="o">=</span> <span class="n">transform</span><span class="o">.</span><span class="n">SimilarityTransform</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">translation</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1662,7 +1662,7 @@ the Fourth IEEE Region 10 International Conference, TENCON ‘89, 1989</p>
 <h2>rescale<a class="headerlink" href="#rescale" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="skimage.transform.rescale">
-<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">rescale</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">scale</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'reflect'</span></em>, <em class="sig-param"><span class="n">cval</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">preserve_range</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">multichannel</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">anti_aliasing</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">anti_aliasing_sigma</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L187"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.rescale" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">rescale</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">scale</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'reflect'</span></em>, <em class="sig-param"><span class="n">cval</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">preserve_range</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">multichannel</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">anti_aliasing</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">anti_aliasing_sigma</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L201"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.rescale" title="Permalink to this definition">¶</a></dt>
 <dd><p>Scale image by a certain factor.</p>
 <p>Performs interpolation to up-scale or down-scale N-dimensional images.
 Note that anti-aliasing should be enabled when down-sizing images to avoid
@@ -1686,8 +1686,9 @@ aliasing artifacts. For down-sampling with an integer factor also see
 </dd>
 <dt class="field-odd">Other Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>The order of the spline interpolation, default is 1. The order has to
-be in the range 0-5. See <a class="reference internal" href="#skimage.transform.warp" title="skimage.transform.warp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.warp</span></code></a> for detail.</p>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>The order of the spline interpolation, default is 0 if
+image.dtype is bool and 1 otherwise. The order has to be in
+the range 0-5. See <a class="reference internal" href="#skimage.transform.warp" title="skimage.transform.warp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.warp</span></code></a> for detail.</p>
 </dd>
 <dt><strong>mode</strong><span class="classifier">{‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</span></dt><dd><p>Points outside the boundaries of the input are filled according
 to the given mode.  Modes match the behaviour of <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.pad.html#numpy.pad" title="(in NumPy v1.17)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.pad</span></code></a>.</p>
@@ -1707,9 +1708,10 @@ Also see
 <dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether the last axis of the image is to be interpreted as multiple
 channels or another spatial dimension.</p>
 </dd>
-<dt><strong>anti_aliasing</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to apply a Gaussian filter to smooth the image prior to
-down-scaling. It is crucial to filter when down-sampling the image to
-avoid aliasing artifacts.</p>
+<dt><strong>anti_aliasing</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to apply a Gaussian filter to smooth the image prior
+to down-scaling. It is crucial to filter when down-sampling
+the image to avoid aliasing artifacts. If input image data
+type is bool, no anti-aliasing is applied.</p>
 </dd>
 <dt><strong>anti_aliasing_sigma</strong><span class="classifier">{float, tuple of floats}, optional</span></dt><dd><p>Standard deviation for Gaussian filtering to avoid aliasing artifacts.
 By default, this value is chosen as (s - 1) / 2 where s is the
@@ -1760,7 +1762,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <h2>resize<a class="headerlink" href="#resize" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="skimage.transform.resize">
-<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">output_shape</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'reflect'</span></em>, <em class="sig-param"><span class="n">cval</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">preserve_range</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">anti_aliasing</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">anti_aliasing_sigma</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L19"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.resize" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">resize</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">output_shape</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'reflect'</span></em>, <em class="sig-param"><span class="n">cval</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">preserve_range</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">anti_aliasing</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">anti_aliasing_sigma</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L19"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.resize" title="Permalink to this definition">¶</a></dt>
 <dd><p>Resize image to match a certain size.</p>
 <p>Performs interpolation to up-size or down-size N-dimensional images. Note
 that anti-aliasing should be enabled when down-sizing images to avoid
@@ -1786,8 +1788,9 @@ n-dimensional interpolation is applied.</p>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>The order of the spline interpolation, default is 1. The order has to
-be in the range 0-5. See <a class="reference internal" href="#skimage.transform.warp" title="skimage.transform.warp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.warp</span></code></a> for detail.</p>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>The order of the spline interpolation, default is 0 if
+image.dtype is bool and 1 otherwise. The order has to be in
+the range 0-5. See <a class="reference internal" href="#skimage.transform.warp" title="skimage.transform.warp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.warp</span></code></a> for detail.</p>
 </dd>
 <dt><strong>mode</strong><span class="classifier">{‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</span></dt><dd><p>Points outside the boundaries of the input are filled according
 to the given mode.  Modes match the behaviour of <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.pad.html#numpy.pad" title="(in NumPy v1.17)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.pad</span></code></a>.</p>
@@ -1803,9 +1806,10 @@ produce values outside the given input range.</p>
 image is converted according to the conventions of <em class="xref py py-obj">img_as_float</em>.
 Also see <a class="reference external" href="https://scikit-image.org/docs/dev/user_guide/data_types.html">https://scikit-image.org/docs/dev/user_guide/data_types.html</a></p>
 </dd>
-<dt><strong>anti_aliasing</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to apply a Gaussian filter to smooth the image prior to
-down-scaling. It is crucial to filter when down-sampling the image to
-avoid aliasing artifacts.</p>
+<dt><strong>anti_aliasing</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to apply a Gaussian filter to smooth the image prior
+to down-scaling. It is crucial to filter when down-sampling
+the image to avoid aliasing artifacts. If input image data
+type is bool, no anti-aliasing is applied.</p>
 </dd>
 <dt><strong>anti_aliasing_sigma</strong><span class="classifier">{float, tuple of floats}, optional</span></dt><dd><p>Standard deviation for Gaussian filtering to avoid aliasing artifacts.
 By default, this value is chosen as (s - 1) / 2 where s is the
@@ -1847,7 +1851,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <h2>rotate<a class="headerlink" href="#rotate" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="skimage.transform.rotate">
-<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">rotate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">angle</span></em>, <em class="sig-param"><span class="n">resize</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">center</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'constant'</span></em>, <em class="sig-param"><span class="n">cval</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">preserve_range</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L280"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.rotate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">rotate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">angle</span></em>, <em class="sig-param"><span class="n">resize</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">center</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'constant'</span></em>, <em class="sig-param"><span class="n">cval</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">preserve_range</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L296"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.rotate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Rotate image by a certain angle around its center.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1875,8 +1879,9 @@ ordering.</p>
 </dd>
 <dt class="field-odd">Other Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>The order of the spline interpolation, default is 1. The order has to
-be in the range 0-5. See <a class="reference internal" href="#skimage.transform.warp" title="skimage.transform.warp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.warp</span></code></a> for detail.</p>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>The order of the spline interpolation, default is 0 if
+image.dtype is bool and 1 otherwise. The order has to be in
+the range 0-5. See <a class="reference internal" href="#skimage.transform.warp" title="skimage.transform.warp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.warp</span></code></a> for detail.</p>
 </dd>
 <dt><strong>mode</strong><span class="classifier">{‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</span></dt><dd><p>Points outside the boundaries of the input are filled according
 to the given mode.  Modes match the behaviour of <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.pad.html#numpy.pad" title="(in NumPy v1.17)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">numpy.pad</span></code></a>.</p>
@@ -1956,7 +1961,7 @@ would be [0, 1, 2, 1, 0, 1, 2].</p>
 <h2>swirl<a class="headerlink" href="#swirl" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="skimage.transform.swirl">
-<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">swirl</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">center</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">strength</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">radius</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">rotation</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">output_shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'reflect'</span></em>, <em class="sig-param"><span class="n">cval</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">preserve_range</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L456"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.swirl" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">swirl</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">center</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">strength</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">radius</span><span class="o">=</span><span class="default_value">100</span></em>, <em class="sig-param"><span class="n">rotation</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">output_shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'reflect'</span></em>, <em class="sig-param"><span class="n">cval</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">preserve_range</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L473"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.swirl" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a swirl transformation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1985,8 +1990,9 @@ rapidly beyond <em class="xref py py-obj">radius</em>.</p>
 <dt><strong>output_shape</strong><span class="classifier">tuple (rows, cols), optional</span></dt><dd><p>Shape of the output image generated. By default the shape of the input
 image is preserved.</p>
 </dd>
-<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>The order of the spline interpolation, default is 1. The order has to
-be in the range 0-5. See <a class="reference internal" href="#skimage.transform.warp" title="skimage.transform.warp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.warp</span></code></a> for detail.</p>
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><p>The order of the spline interpolation, default is 0 if
+image.dtype is bool and 1 otherwise. The order has to be in
+the range 0-5. See <a class="reference internal" href="#skimage.transform.warp" title="skimage.transform.warp"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.transform.warp</span></code></a> for detail.</p>
 </dd>
 <dt><strong>mode</strong><span class="classifier">{‘constant’, ‘edge’, ‘symmetric’, ‘reflect’, ‘wrap’}, optional</span></dt><dd><p>Points outside the boundaries of the input are filled according
 to the given mode, with ‘constant’ used as the default. Modes match
@@ -2021,7 +2027,7 @@ Also see
 <h2>warp<a class="headerlink" href="#warp" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="skimage.transform.warp">
-<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">warp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">inverse_map</span></em>, <em class="sig-param"><span class="n">map_args</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">output_shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'constant'</span></em>, <em class="sig-param"><span class="n">cval</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">preserve_range</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L666"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.warp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">warp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">inverse_map</span></em>, <em class="sig-param"><span class="n">map_args</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">output_shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'constant'</span></em>, <em class="sig-param"><span class="n">cval</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">clip</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">preserve_range</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L684"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.warp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Warp an image according to a given coordinate transformation.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2066,7 +2072,7 @@ input, if the output is of shape <code class="docutils literal notranslate"><spa
 image is preserved.  Note that, even for multi-band images, only rows
 and columns need to be specified.</p>
 </dd>
-<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><dl class="simple">
+<dt><strong>order</strong><span class="classifier">int, optional</span></dt><dd><dl>
 <dt>The order of interpolation. The order has to be in the range 0-5:</dt><dd><ul class="simple">
 <li><p>0: Nearest-neighbor</p></li>
 <li><p>1: Bi-linear (default)</p></li>
@@ -2075,6 +2081,7 @@ and columns need to be specified.</p>
 <li><p>4: Bi-quartic</p></li>
 <li><p>5: Bi-quintic</p></li>
 </ul>
+<p>Default is 0 if image.dtype is bool and 1 otherwise.</p>
 </dd>
 </dl>
 </dd>
@@ -2188,21 +2195,25 @@ account for this extra offset when scaling the image:</p>
 <img alt="../_images/sphx_glr_plot_matching_thumb.png" src="../_images/sphx_glr_plot_matching_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_matching.html#sphx-glr-auto-examples-transform-plot-matching-py"><span class="std std-ref">Robust matching using RANSAC</span></a></span><a class="headerlink" href="#id58" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Detect corner points using the Harris corner detector and determine the subpixel position of co..."><div class="figure align-default" id="id59">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Demonstration of image registration using optical flow."><div class="figure align-default" id="id59">
+<img alt="../_images/sphx_glr_plot_opticalflow_thumb.png" src="../_images/sphx_glr_plot_opticalflow_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/registration/plot_opticalflow.html#sphx-glr-auto-examples-registration-plot-opticalflow-py"><span class="std std-ref">Registration using optical flow</span></a></span><a class="headerlink" href="#id59" title="Permalink to this image">¶</a></p>
+</div>
+</div><div class="sphx-glr-thumbcontainer" tooltip="Detect corner points using the Harris corner detector and determine the subpixel position of co..."><div class="figure align-default" id="id60">
 <img alt="../_images/sphx_glr_plot_corner_thumb.png" src="../_images/sphx_glr_plot_corner_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_corner.html#sphx-glr-auto-examples-features-detection-plot-corner-py"><span class="std std-ref">Corner detection</span></a></span><a class="headerlink" href="#id59" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_corner.html#sphx-glr-auto-examples-features-detection-plot-corner-py"><span class="std std-ref">Corner detection</span></a></span><a class="headerlink" href="#id60" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The CENSURE feature detector is a scale-invariant center-surround detector (CENSURE) that claim..."><div class="figure align-default" id="id60">
+</div><div class="sphx-glr-thumbcontainer" tooltip="The CENSURE feature detector is a scale-invariant center-surround detector (CENSURE) that claim..."><div class="figure align-default" id="id61">
 <img alt="../_images/sphx_glr_plot_censure_thumb.png" src="../_images/sphx_glr_plot_censure_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_censure.html#sphx-glr-auto-examples-features-detection-plot-censure-py"><span class="std std-ref">CENSURE feature detector</span></a></span><a class="headerlink" href="#id60" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_censure.html#sphx-glr-auto-examples-features-detection-plot-censure-py"><span class="std std-ref">CENSURE feature detector</span></a></span><a class="headerlink" href="#id61" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the ORB feature detection and binary description algorithm. It uses a..."><div class="figure align-default" id="id61">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the ORB feature detection and binary description algorithm. It uses a..."><div class="figure align-default" id="id62">
 <img alt="../_images/sphx_glr_plot_orb_thumb.png" src="../_images/sphx_glr_plot_orb_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_orb.html#sphx-glr-auto-examples-features-detection-plot-orb-py"><span class="std std-ref">ORB feature detector and binary descriptor</span></a></span><a class="headerlink" href="#id61" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_orb.html#sphx-glr-auto-examples-features-detection-plot-orb-py"><span class="std std-ref">ORB feature detector and binary descriptor</span></a></span><a class="headerlink" href="#id62" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the BRIEF binary description algorithm. The descriptor consists of re..."><div class="figure align-default" id="id62">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the BRIEF binary description algorithm. The descriptor consists of re..."><div class="figure align-default" id="id63">
 <img alt="../_images/sphx_glr_plot_brief_thumb.png" src="../_images/sphx_glr_plot_brief_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_brief.html#sphx-glr-auto-examples-features-detection-plot-brief-py"><span class="std std-ref">BRIEF binary descriptor</span></a></span><a class="headerlink" href="#id62" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_brief.html#sphx-glr-auto-examples-features-detection-plot-brief-py"><span class="std std-ref">BRIEF binary descriptor</span></a></span><a class="headerlink" href="#id63" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -2210,7 +2221,7 @@ account for this extra offset when scaling the image:</p>
 <h2>warp_coords<a class="headerlink" href="#warp-coords" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="skimage.transform.warp_coords">
-<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">warp_coords</code><span class="sig-paren">(</span><em class="sig-param">coord_map</em>, <em class="sig-param">shape</em>, <em class="sig-param">dtype=&lt;class 'numpy.float64'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L542"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.warp_coords" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">warp_coords</code><span class="sig-paren">(</span><em class="sig-param">coord_map</em>, <em class="sig-param">shape</em>, <em class="sig-param">dtype=&lt;class 'numpy.float64'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L560"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.warp_coords" title="Permalink to this definition">¶</a></dt>
 <dd><p>Build the source coordinates for the output of a 2-D image warp.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2262,7 +2273,7 @@ than <a class="reference internal" href="#skimage.transform.warp" title="skimage
 <h2>warp_polar<a class="headerlink" href="#warp-polar" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="skimage.transform.warp_polar">
-<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">warp_polar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">center</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">radius</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">output_shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">scaling</span><span class="o">=</span><span class="default_value">'linear'</span></em>, <em class="sig-param"><span class="n">multichannel</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L974"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.warp_polar" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.transform.</code><code class="sig-name descname">warp_polar</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">center</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">radius</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">output_shape</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">scaling</span><span class="o">=</span><span class="default_value">'linear'</span></em>, <em class="sig-param"><span class="n">multichannel</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/transform/_warps.py#L997"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.transform.warp_polar" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remap image to polar or log-polar coordinates space.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2324,9 +2335,9 @@ radius, and output shape:</p>
 
 <div class="section" id="examples-using-skimage-transform-warp-polar">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.warp_polar</span></code><a class="headerlink" href="#examples-using-skimage-transform-warp-polar" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="Rotation differences between two images can be converted to translation differences along the a..."><div class="figure align-default" id="id63">
+<div class="sphx-glr-thumbcontainer" tooltip="Rotation differences between two images can be converted to translation differences along the a..."><div class="figure align-default" id="id64">
 <img alt="../_images/sphx_glr_plot_register_rotation_thumb.png" src="../_images/sphx_glr_plot_register_rotation_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_register_rotation.html#sphx-glr-auto-examples-transform-plot-register-rotation-py"><span class="std std-ref">Polar and Log-Polar Transformations</span></a></span><a class="headerlink" href="#id63" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_register_rotation.html#sphx-glr-auto-examples-transform-plot-register-rotation-py"><span class="std std-ref">Polar and Log-Polar Transformations</span></a></span><a class="headerlink" href="#id64" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -2404,29 +2415,29 @@ and the homogeneous transformation matrix is:</p>
 
 <div class="section" id="examples-using-skimage-transform-affinetransform">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.AffineTransform</span></code><a class="headerlink" href="#examples-using-skimage-transform-affinetransform" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="`Homographies &lt;https://en.wikipedia.org/wiki/Homography&gt;`_ are transformations of a Euclidean s..."><div class="figure align-default" id="id64">
+<div class="sphx-glr-thumbcontainer" tooltip="`Homographies &lt;https://en.wikipedia.org/wiki/Homography&gt;`_ are transformations of a Euclidean s..."><div class="figure align-default" id="id65">
 <img alt="../_images/sphx_glr_plot_transform_types_thumb.png" src="../_images/sphx_glr_plot_transform_types_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_transform_types.html#sphx-glr-auto-examples-transform-plot-transform-types-py"><span class="std std-ref">Types of homographies</span></a></span><a class="headerlink" href="#id64" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_transform_types.html#sphx-glr-auto-examples-transform-plot-transform-types-py"><span class="std std-ref">Types of homographies</span></a></span><a class="headerlink" href="#id65" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this simplified example we first generate two synthetic images as if they were taken from di..."><div class="figure align-default" id="id65">
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this simplified example we first generate two synthetic images as if they were taken from di..."><div class="figure align-default" id="id66">
 <img alt="../_images/sphx_glr_plot_matching_thumb.png" src="../_images/sphx_glr_plot_matching_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_matching.html#sphx-glr-auto-examples-transform-plot-matching-py"><span class="std std-ref">Robust matching using RANSAC</span></a></span><a class="headerlink" href="#id65" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_matching.html#sphx-glr-auto-examples-transform-plot-matching-py"><span class="std std-ref">Robust matching using RANSAC</span></a></span><a class="headerlink" href="#id66" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Detect corner points using the Harris corner detector and determine the subpixel position of co..."><div class="figure align-default" id="id66">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Detect corner points using the Harris corner detector and determine the subpixel position of co..."><div class="figure align-default" id="id67">
 <img alt="../_images/sphx_glr_plot_corner_thumb.png" src="../_images/sphx_glr_plot_corner_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_corner.html#sphx-glr-auto-examples-features-detection-plot-corner-py"><span class="std std-ref">Corner detection</span></a></span><a class="headerlink" href="#id66" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_corner.html#sphx-glr-auto-examples-features-detection-plot-corner-py"><span class="std std-ref">Corner detection</span></a></span><a class="headerlink" href="#id67" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The CENSURE feature detector is a scale-invariant center-surround detector (CENSURE) that claim..."><div class="figure align-default" id="id67">
+</div><div class="sphx-glr-thumbcontainer" tooltip="The CENSURE feature detector is a scale-invariant center-surround detector (CENSURE) that claim..."><div class="figure align-default" id="id68">
 <img alt="../_images/sphx_glr_plot_censure_thumb.png" src="../_images/sphx_glr_plot_censure_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_censure.html#sphx-glr-auto-examples-features-detection-plot-censure-py"><span class="std std-ref">CENSURE feature detector</span></a></span><a class="headerlink" href="#id67" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_censure.html#sphx-glr-auto-examples-features-detection-plot-censure-py"><span class="std std-ref">CENSURE feature detector</span></a></span><a class="headerlink" href="#id68" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the ORB feature detection and binary description algorithm. It uses a..."><div class="figure align-default" id="id68">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the ORB feature detection and binary description algorithm. It uses a..."><div class="figure align-default" id="id69">
 <img alt="../_images/sphx_glr_plot_orb_thumb.png" src="../_images/sphx_glr_plot_orb_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_orb.html#sphx-glr-auto-examples-features-detection-plot-orb-py"><span class="std std-ref">ORB feature detector and binary descriptor</span></a></span><a class="headerlink" href="#id68" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_orb.html#sphx-glr-auto-examples-features-detection-plot-orb-py"><span class="std std-ref">ORB feature detector and binary descriptor</span></a></span><a class="headerlink" href="#id69" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the BRIEF binary description algorithm. The descriptor consists of re..."><div class="figure align-default" id="id69">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the BRIEF binary description algorithm. The descriptor consists of re..."><div class="figure align-default" id="id70">
 <img alt="../_images/sphx_glr_plot_brief_thumb.png" src="../_images/sphx_glr_plot_brief_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_brief.html#sphx-glr-auto-examples-features-detection-plot-brief-py"><span class="std std-ref">BRIEF binary descriptor</span></a></span><a class="headerlink" href="#id69" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_brief.html#sphx-glr-auto-examples-features-detection-plot-brief-py"><span class="std std-ref">BRIEF binary descriptor</span></a></span><a class="headerlink" href="#id70" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -2595,13 +2606,13 @@ with the total least-squares method.</p>
 
 <div class="section" id="examples-using-skimage-transform-euclideantransform">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.EuclideanTransform</span></code><a class="headerlink" href="#examples-using-skimage-transform-euclideantransform" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to use geometric transformations in the context of image proce..."><div class="figure align-default" id="id70">
+<div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to use geometric transformations in the context of image proce..."><div class="figure align-default" id="id71">
 <img alt="../_images/sphx_glr_plot_geometric_thumb.png" src="../_images/sphx_glr_plot_geometric_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_geometric.html#sphx-glr-auto-examples-transform-plot-geometric-py"><span class="std std-ref">Using geometric transformations</span></a></span><a class="headerlink" href="#id70" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_geometric.html#sphx-glr-auto-examples-transform-plot-geometric-py"><span class="std std-ref">Using geometric transformations</span></a></span><a class="headerlink" href="#id71" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="`Homographies &lt;https://en.wikipedia.org/wiki/Homography&gt;`_ are transformations of a Euclidean s..."><div class="figure align-default" id="id71">
+</div><div class="sphx-glr-thumbcontainer" tooltip="`Homographies &lt;https://en.wikipedia.org/wiki/Homography&gt;`_ are transformations of a Euclidean s..."><div class="figure align-default" id="id72">
 <img alt="../_images/sphx_glr_plot_transform_types_thumb.png" src="../_images/sphx_glr_plot_transform_types_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_transform_types.html#sphx-glr-auto-examples-transform-plot-transform-types-py"><span class="std std-ref">Types of homographies</span></a></span><a class="headerlink" href="#id71" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_transform_types.html#sphx-glr-auto-examples-transform-plot-transform-types-py"><span class="std std-ref">Types of homographies</span></a></span><a class="headerlink" href="#id72" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -2721,9 +2732,9 @@ estimated.</p>
 
 <div class="section" id="examples-using-skimage-transform-fundamentalmatrixtransform">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.FundamentalMatrixTransform</span></code><a class="headerlink" href="#examples-using-skimage-transform-fundamentalmatrixtransform" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to robustly estimate  epipolar geometry &lt;https://en.wikipedia.org..."><div class="figure align-default" id="id72">
+<div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to robustly estimate  epipolar geometry &lt;https://en.wikipedia.org..."><div class="figure align-default" id="id73">
 <img alt="../_images/sphx_glr_plot_fundamental_matrix_thumb.png" src="../_images/sphx_glr_plot_fundamental_matrix_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_fundamental_matrix.html#sphx-glr-auto-examples-transform-plot-fundamental-matrix-py"><span class="std std-ref">Fundamental matrix estimation</span></a></span><a class="headerlink" href="#id72" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_fundamental_matrix.html#sphx-glr-auto-examples-transform-plot-fundamental-matrix-py"><span class="std std-ref">Fundamental matrix estimation</span></a></span><a class="headerlink" href="#id73" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -2801,9 +2812,9 @@ used to find a local affine transform.</p>
 
 <div class="section" id="examples-using-skimage-transform-piecewiseaffinetransform">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.PiecewiseAffineTransform</span></code><a class="headerlink" href="#examples-using-skimage-transform-piecewiseaffinetransform" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use the Piecewise Affine Transformation."><div class="figure align-default" id="id73">
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to use the Piecewise Affine Transformation."><div class="figure align-default" id="id74">
 <img alt="../_images/sphx_glr_plot_piecewise_affine_thumb.png" src="../_images/sphx_glr_plot_piecewise_affine_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_piecewise_affine.html#sphx-glr-auto-examples-transform-plot-piecewise-affine-py"><span class="std std-ref">Piecewise Affine Transformation</span></a></span><a class="headerlink" href="#id73" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_piecewise_affine.html#sphx-glr-auto-examples-transform-plot-piecewise-affine-py"><span class="std std-ref">Piecewise Affine Transformation</span></a></span><a class="headerlink" href="#id74" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -3047,33 +3058,33 @@ Thus the system of equations is:</p>
 
 <div class="section" id="examples-using-skimage-transform-projectivetransform">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.ProjectiveTransform</span></code><a class="headerlink" href="#examples-using-skimage-transform-projectivetransform" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to use geometric transformations in the context of image proce..."><div class="figure align-default" id="id74">
+<div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to use geometric transformations in the context of image proce..."><div class="figure align-default" id="id75">
 <img alt="../_images/sphx_glr_plot_geometric_thumb.png" src="../_images/sphx_glr_plot_geometric_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_geometric.html#sphx-glr-auto-examples-transform-plot-geometric-py"><span class="std std-ref">Using geometric transformations</span></a></span><a class="headerlink" href="#id74" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_geometric.html#sphx-glr-auto-examples-transform-plot-geometric-py"><span class="std std-ref">Using geometric transformations</span></a></span><a class="headerlink" href="#id75" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="`Homographies &lt;https://en.wikipedia.org/wiki/Homography&gt;`_ are transformations of a Euclidean s..."><div class="figure align-default" id="id75">
+</div><div class="sphx-glr-thumbcontainer" tooltip="`Homographies &lt;https://en.wikipedia.org/wiki/Homography&gt;`_ are transformations of a Euclidean s..."><div class="figure align-default" id="id76">
 <img alt="../_images/sphx_glr_plot_transform_types_thumb.png" src="../_images/sphx_glr_plot_transform_types_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_transform_types.html#sphx-glr-auto-examples-transform-plot-transform-types-py"><span class="std std-ref">Types of homographies</span></a></span><a class="headerlink" href="#id75" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_transform_types.html#sphx-glr-auto-examples-transform-plot-transform-types-py"><span class="std std-ref">Types of homographies</span></a></span><a class="headerlink" href="#id76" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this simplified example we first generate two synthetic images as if they were taken from di..."><div class="figure align-default" id="id76">
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this simplified example we first generate two synthetic images as if they were taken from di..."><div class="figure align-default" id="id77">
 <img alt="../_images/sphx_glr_plot_matching_thumb.png" src="../_images/sphx_glr_plot_matching_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_matching.html#sphx-glr-auto-examples-transform-plot-matching-py"><span class="std std-ref">Robust matching using RANSAC</span></a></span><a class="headerlink" href="#id76" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_matching.html#sphx-glr-auto-examples-transform-plot-matching-py"><span class="std std-ref">Robust matching using RANSAC</span></a></span><a class="headerlink" href="#id77" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="Detect corner points using the Harris corner detector and determine the subpixel position of co..."><div class="figure align-default" id="id77">
+</div><div class="sphx-glr-thumbcontainer" tooltip="Detect corner points using the Harris corner detector and determine the subpixel position of co..."><div class="figure align-default" id="id78">
 <img alt="../_images/sphx_glr_plot_corner_thumb.png" src="../_images/sphx_glr_plot_corner_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_corner.html#sphx-glr-auto-examples-features-detection-plot-corner-py"><span class="std std-ref">Corner detection</span></a></span><a class="headerlink" href="#id77" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_corner.html#sphx-glr-auto-examples-features-detection-plot-corner-py"><span class="std std-ref">Corner detection</span></a></span><a class="headerlink" href="#id78" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="The CENSURE feature detector is a scale-invariant center-surround detector (CENSURE) that claim..."><div class="figure align-default" id="id78">
+</div><div class="sphx-glr-thumbcontainer" tooltip="The CENSURE feature detector is a scale-invariant center-surround detector (CENSURE) that claim..."><div class="figure align-default" id="id79">
 <img alt="../_images/sphx_glr_plot_censure_thumb.png" src="../_images/sphx_glr_plot_censure_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_censure.html#sphx-glr-auto-examples-features-detection-plot-censure-py"><span class="std std-ref">CENSURE feature detector</span></a></span><a class="headerlink" href="#id78" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_censure.html#sphx-glr-auto-examples-features-detection-plot-censure-py"><span class="std std-ref">CENSURE feature detector</span></a></span><a class="headerlink" href="#id79" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the ORB feature detection and binary description algorithm. It uses a..."><div class="figure align-default" id="id79">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the ORB feature detection and binary description algorithm. It uses a..."><div class="figure align-default" id="id80">
 <img alt="../_images/sphx_glr_plot_orb_thumb.png" src="../_images/sphx_glr_plot_orb_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_orb.html#sphx-glr-auto-examples-features-detection-plot-orb-py"><span class="std std-ref">ORB feature detector and binary descriptor</span></a></span><a class="headerlink" href="#id79" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_orb.html#sphx-glr-auto-examples-features-detection-plot-orb-py"><span class="std std-ref">ORB feature detector and binary descriptor</span></a></span><a class="headerlink" href="#id80" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the BRIEF binary description algorithm. The descriptor consists of re..."><div class="figure align-default" id="id80">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates the BRIEF binary description algorithm. The descriptor consists of re..."><div class="figure align-default" id="id81">
 <img alt="../_images/sphx_glr_plot_brief_thumb.png" src="../_images/sphx_glr_plot_brief_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_brief.html#sphx-glr-auto-examples-features-detection-plot-brief-py"><span class="std std-ref">BRIEF binary descriptor</span></a></span><a class="headerlink" href="#id80" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/features_detection/plot_brief.html#sphx-glr-auto-examples-features-detection-plot-brief-py"><span class="std std-ref">BRIEF binary descriptor</span></a></span><a class="headerlink" href="#id81" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -3161,13 +3172,13 @@ with the total least-squares method.</p>
 
 <div class="section" id="examples-using-skimage-transform-similaritytransform">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.transform.SimilarityTransform</span></code><a class="headerlink" href="#examples-using-skimage-transform-similaritytransform" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to use geometric transformations in the context of image proce..."><div class="figure align-default" id="id81">
+<div class="sphx-glr-thumbcontainer" tooltip="In this example, we will see how to use geometric transformations in the context of image proce..."><div class="figure align-default" id="id82">
 <img alt="../_images/sphx_glr_plot_geometric_thumb.png" src="../_images/sphx_glr_plot_geometric_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_geometric.html#sphx-glr-auto-examples-transform-plot-geometric-py"><span class="std std-ref">Using geometric transformations</span></a></span><a class="headerlink" href="#id81" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_geometric.html#sphx-glr-auto-examples-transform-plot-geometric-py"><span class="std std-ref">Using geometric transformations</span></a></span><a class="headerlink" href="#id82" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="`Homographies &lt;https://en.wikipedia.org/wiki/Homography&gt;`_ are transformations of a Euclidean s..."><div class="figure align-default" id="id82">
+</div><div class="sphx-glr-thumbcontainer" tooltip="`Homographies &lt;https://en.wikipedia.org/wiki/Homography&gt;`_ are transformations of a Euclidean s..."><div class="figure align-default" id="id83">
 <img alt="../_images/sphx_glr_plot_transform_types_thumb.png" src="../_images/sphx_glr_plot_transform_types_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_transform_types.html#sphx-glr-auto-examples-transform-plot-transform-types-py"><span class="std std-ref">Types of homographies</span></a></span><a class="headerlink" href="#id82" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_transform_types.html#sphx-glr-auto-examples-transform-plot-transform-types-py"><span class="std std-ref">Types of homographies</span></a></span><a class="headerlink" href="#id83" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
