@@ -127,7 +127,7 @@ practical guide.</p>
 collection of sequentially-numbered image files, often called an image
 sequence. Then the images files can be read into an <em class="xref py py-obj">ImageCollection</em> by
 <a class="reference internal" href="../api/skimage.io.html#skimage.io.imread_collection" title="skimage.io.imread_collection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.io.imread_collection</span></code></a>. Converting the video to frames can be done
-easily in <a class="reference external" href="http://imagej.nih.gov/ij/">ImageJ</a>, a cross-platform, GUI-based
+easily in <a class="reference external" href="https://imagej.nih.gov/ij/">ImageJ</a>, a cross-platform, GUI-based
 program from the bio-imaging community, or <a class="reference external" href="https://www.ffmpeg.org/">FFmpeg</a>, a
 powerful command-line utility for manipulating video files.</p>
 <p>In FFmpeg, the following command generates an image file from each frame in a
@@ -135,7 +135,7 @@ video. The files are numbered with five digits, padded on the left with zeros.</
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ffmpeg -i <span class="s2">&quot;video.mov&quot;</span> -f image2 <span class="s2">&quot;video-frame%05d.png&quot;</span>
 </pre></div>
 </div>
-<p>More information is available in an <a class="reference external" href="http://en.wikibooks.org/wiki/FFMPEG_An_Intermediate_Guide/image_sequence#Making_an_Image_Sequence_from_a_video">FFmpeg tutorial on image sequences</a>.</p>
+<p>More information is available in an <a class="reference external" href="https://en.wikibooks.org/wiki/FFMPEG_An_Intermediate_Guide/image_sequence#Making_an_Image_Sequence_from_a_video">FFmpeg tutorial on image sequences</a>.</p>
 <p>Generating an image sequence has disadvantages: they can be large and unwieldy,
 and generating them can take some time. It is generally preferable to work
 directly with the original video file. For a more direct solution, we need to
@@ -147,7 +147,7 @@ has some disadvantages.</p>
 </div>
 <div class="section" id="pyav">
 <h2>PyAV<a class="headerlink" href="#pyav" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://mikeboers.github.io/PyAV/">PyAV</a> uses FFmpeg’s (or LibAV’s) libraries
+<p><a class="reference external" href="http://docs.mikeboers.com/pyav/develop/">PyAV</a> uses FFmpeg’s (or LibAV’s) libraries
 to read image data directly from the video file. It invokes them using Cython
 bindings, so it is very fast.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">av</span>
@@ -183,7 +183,7 @@ frame.</p>
 </div>
 <div class="section" id="moviepy">
 <h2>MoviePy<a class="headerlink" href="#moviepy" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://zulko.github.io/moviepy">Moviepy</a> invokes FFmpeg through a
+<p><a class="reference external" href="https://zulko.github.io/moviepy">Moviepy</a> invokes FFmpeg through a
 subprocess, pipes the decoded video from FFmpeg
 into RAM, and reads it out. This approach is straightforward, but it can be
 brittle, and it’s not workable for large videos that exceed available RAM.
@@ -212,7 +212,7 @@ supports a wide range of other image file formats as well.</p>
 </div>
 <div class="section" id="opencv">
 <h2>OpenCV<a class="headerlink" href="#opencv" title="Permalink to this headline">¶</a></h2>
-<p>Finally, another solution is the <a class="reference external" href="https://docs.opencv.org/modules/highgui/doc/reading_and_writing_images_and_video.html#videocapture-open">VideoReader</a>
+<p>Finally, another solution is the <a class="reference external" href="https://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html#videocapture-open">VideoReader</a>
 class in OpenCV, which has bindings to FFmpeg. If you need OpenCV for other reasons,
 then this may be the best approach.</p>
 </div>
