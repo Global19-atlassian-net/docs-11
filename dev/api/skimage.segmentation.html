@@ -132,7 +132,6 @@
 <li><a class="reference internal" href="#examples-using-skimage-segmentation-random-walker">Examples using <code class="docutils literal notranslate"><span class="pre">skimage.segmentation.random_walker</span></code></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#relabel-from-one">relabel_from_one</a></li>
 <li><a class="reference internal" href="#relabel-sequential">relabel_sequential</a></li>
 <li><a class="reference internal" href="#slic">slic</a><ul class="nav nav-list">
 <li><a class="reference internal" href="#examples-using-skimage-segmentation-slic">Examples using <code class="docutils literal notranslate"><span class="pre">skimage.segmentation.slic</span></code></a></li>
@@ -230,16 +229,13 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#skimage.segmentation.random_walker" title="skimage.segmentation.random_walker"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.random_walker</span></code></a>(data, labels)</p></td>
 <td><p>Random walker algorithm for segmentation from markers.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.segmentation.relabel_from_one" title="skimage.segmentation.relabel_from_one"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.relabel_from_one</span></code></a>(…)</p></td>
-<td><p><strong>Deprecated function</strong>.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.segmentation.relabel_sequential" title="skimage.segmentation.relabel_sequential"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.relabel_sequential</span></code></a>(…)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.segmentation.relabel_sequential" title="skimage.segmentation.relabel_sequential"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.relabel_sequential</span></code></a>(…)</p></td>
 <td><p>Relabel arbitrary labels to {<em class="xref py py-obj">offset</em>, …</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#skimage.segmentation.slic" title="skimage.segmentation.slic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.slic</span></code></a>(image[, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.segmentation.slic" title="skimage.segmentation.slic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.slic</span></code></a>(image[, …])</p></td>
 <td><p>Segments image using k-means clustering in Color-(x,y,z) space.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.segmentation.watershed" title="skimage.segmentation.watershed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.watershed</span></code></a>(image[, …])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#skimage.segmentation.watershed" title="skimage.segmentation.watershed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.segmentation.watershed</span></code></a>(image[, …])</p></td>
 <td><p>Find watershed basins in <em class="xref py py-obj">image</em> flooded from given <em class="xref py py-obj">markers</em>.</p></td>
 </tr>
 </tbody>
@@ -1124,7 +1120,7 @@ resulting array.</p>
 <h2>join_segmentations<a class="headerlink" href="#join-segmentations" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="skimage.segmentation.join_segmentations">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">join_segmentations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s1</span></em>, <em class="sig-param"><span class="n">s2</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/_join.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.join_segmentations" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">join_segmentations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">s1</span></em>, <em class="sig-param"><span class="n">s2</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/_join.py#L6"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.join_segmentations" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the join of the two input segmentations.</p>
 <p>The join J of S1 and S2 is defined as the segmentation in which two
 voxels are in the same segment if and only if they are in the same
@@ -1228,7 +1224,7 @@ superimposed on the original image.</p>
 <h2>morphological_chan_vese<a class="headerlink" href="#morphological-chan-vese" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="skimage.segmentation.morphological_chan_vese">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_chan_vese</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='checkerboard'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">lambda1=1</em>, <em class="sig-param">lambda2=1</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7fc79463fea0&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L256"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_chan_vese</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='checkerboard'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">lambda1=1</em>, <em class="sig-param">lambda2=1</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f6010d27ea0&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L256"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Active Contours without Edges (MorphACWE)</p>
 <p>Active contours without edges implemented with morphological operators. It
 can be used to segment objects in images and volumes without well defined
@@ -1313,7 +1309,7 @@ Transactions on Pattern Analysis and Machine Intelligence (PAMI),
 <h2>morphological_geodesic_active_contour<a class="headerlink" href="#morphological-geodesic-active-contour" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="skimage.segmentation.morphological_geodesic_active_contour">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em class="sig-param">gimage</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='circle'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">threshold='auto'</em>, <em class="sig-param">balloon=0</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7fc794644048&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L360"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em class="sig-param">gimage</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='circle'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">threshold='auto'</em>, <em class="sig-param">balloon=0</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f6010d2c048&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L360"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Geodesic Active Contours (MorphGAC).</p>
 <p>Geodesic active contours implemented with morphological operators. It can
 be used to segment objects with visible but noisy, cluttered, broken
@@ -1473,7 +1469,7 @@ European Conference on Computer Vision, 2008</p>
 <h2>random_walker<a class="headerlink" href="#random-walker" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="skimage.segmentation.random_walker">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">random_walker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">labels</span></em>, <em class="sig-param"><span class="n">beta</span><span class="o">=</span><span class="default_value">130</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'cg_j'</span></em>, <em class="sig-param"><span class="n">tol</span><span class="o">=</span><span class="default_value">0.001</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">multichannel</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">return_full_prob</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">spacing</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/random_walker_segmentation.py#L265"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.random_walker" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">random_walker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">labels</span></em>, <em class="sig-param"><span class="n">beta</span><span class="o">=</span><span class="default_value">130</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">'cg_j'</span></em>, <em class="sig-param"><span class="n">tol</span><span class="o">=</span><span class="default_value">0.001</span></em>, <em class="sig-param"><span class="n">copy</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">multichannel</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">return_full_prob</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">spacing</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/random_walker_segmentation.py#L266"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.random_walker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Random walker algorithm for segmentation from markers.</p>
 <p>Random walker algorithm is implemented for gray-level or multichannel
 images.</p>
@@ -1636,22 +1632,11 @@ Anal Mach Intell. 2006 Nov;28(11):1768-83.
 </div>
 </div></div>
 </div>
-<div class="section" id="relabel-from-one">
-<h2>relabel_from_one<a class="headerlink" href="#relabel-from-one" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt id="skimage.segmentation.relabel_from_one">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">relabel_from_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label_field</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/_shared/utils.py#L103"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.relabel_from_one" title="Permalink to this definition">¶</a></dt>
-<dd><p><strong>Deprecated function</strong>. Use <code class="docutils literal notranslate"><span class="pre">relabel_sequential</span></code> instead.</p>
-<p>Convert labels in an arbitrary label field to {1, … number_of_labels}.</p>
-<p>This function is deprecated, see <code class="docutils literal notranslate"><span class="pre">relabel_sequential</span></code> for more.</p>
-</dd></dl>
-
-</div>
 <div class="section" id="relabel-sequential">
 <h2>relabel_sequential<a class="headerlink" href="#relabel-sequential" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="skimage.segmentation.relabel_sequential">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">relabel_sequential</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label_field</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/_join.py#L55"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.relabel_sequential" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">relabel_sequential</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">label_field</span></em>, <em class="sig-param"><span class="n">offset</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/_join.py#L47"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.relabel_sequential" title="Permalink to this definition">¶</a></dt>
 <dd><p>Relabel arbitrary labels to {<em class="xref py py-obj">offset</em>, … <em class="xref py py-obj">offset</em> + number_of_labels}.</p>
 <p>This function also returns the forward map (mapping the original labels to
 the reduced labels) and the inverse map (mapping the reduced labels back
@@ -1673,13 +1658,13 @@ strictly positive.</p>
 The data type will be the same as <em class="xref py py-obj">label_field</em>, except when
 offset + number_of_labels causes overflow of the current data type.</p>
 </dd>
-<dt><strong>forward_map</strong><span class="classifier">numpy array of int, shape <code class="docutils literal notranslate"><span class="pre">(label_field.max()</span> <span class="pre">+</span> <span class="pre">1,)</span></code></span></dt><dd><p>The map from the original label space to the returned label
+<dt><strong>forward_map</strong><span class="classifier">ArrayMap</span></dt><dd><p>The map from the original label space to the returned label
 space. Can be used to re-apply the same mapping. See examples
-for usage. The data type will be the same as <em class="xref py py-obj">relabeled</em>.</p>
+for usage. The output data type will be the same as <em class="xref py py-obj">relabeled</em>.</p>
 </dd>
-<dt><strong>inverse_map</strong><span class="classifier">1D numpy array of int, of length offset + number of labels</span></dt><dd><p>The map from the new label space to the original space. This
+<dt><strong>inverse_map</strong><span class="classifier">ArrayMap</span></dt><dd><p>The map from the new label space to the original space. This
 can be used to reconstruct the original label field from the
-relabeled one. The data type will be the same as <em class="xref py py-obj">relabeled</em>.</p>
+relabeled one. The output data type will be the same as <em class="xref py py-obj">label_field</em>.</p>
 </dd>
 </dl>
 </dd>
@@ -1697,13 +1682,20 @@ guaranteed to be smaller than either the input or output images.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">relab</span><span class="p">,</span> <span class="n">fw</span><span class="p">,</span> <span class="n">inv</span> <span class="o">=</span> <span class="n">relabel_sequential</span><span class="p">(</span><span class="n">label_field</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">relab</span>
 <span class="go">array([1, 1, 2, 2, 3, 5, 4])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">fw</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fw</span><span class="p">)</span>
+<span class="go">ArrayMap:</span>
+<span class="go">  1 → 1</span>
+<span class="go">  5 → 2</span>
+<span class="go">  8 → 3</span>
+<span class="go">  42 → 4</span>
+<span class="go">  99 → 5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">fw</span><span class="p">)</span>
 <span class="go">array([0, 1, 0, 0, 0, 2, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span>
 <span class="go">       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0,</span>
 <span class="go">       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span>
 <span class="go">       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,</span>
 <span class="go">       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">inv</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">inv</span><span class="p">)</span>
 <span class="go">array([ 0,  1,  5,  8, 42, 99])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">fw</span><span class="p">[</span><span class="n">label_field</span><span class="p">]</span> <span class="o">==</span> <span class="n">relab</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
 <span class="go">True</span>
