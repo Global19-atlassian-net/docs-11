@@ -1,0 +1,270 @@
+.. only:: html
+
+    .. note::
+        :class: sphx-glr-download-link-note
+
+        Click :ref:`here <sphx_glr_download_auto_examples_segmentation_plot_libraries.py>`     to download the full example code or to run this example in your browser via Binder
+    .. rst-class:: sphx-glr-example-title
+
+    .. _sphx_glr_auto_examples_segmentation_plot_libraries.py:
+
+
+===============================
+Libraries
+===============================
+
+bla
+
+
+.. code-block:: default
+
+
+
+    from skimage import data
+    from skimage.filters import threshold_otsu
+    from skimage.segmentation import clear_border
+    from skimage.measure import label, regionprops
+    from skimage.morphology import closing, square
+    from skimage.color import label2rgb
+
+    import plotly
+    import plotly.express as px
+    import plotly.graph_objects as go
+    import matplotlib.pyplot as plt
+
+    import numpy as np
+
+    image = data.coins()[50:-50, 50:-50]
+
+    plt.imshow(image)
+
+
+
+
+
+.. image:: /auto_examples/segmentation/images/sphx_glr_plot_libraries_001.png
+    :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+
+    <matplotlib.image.AxesImage object at 0x7ffae8a4d278>
+
+
+
+Advanced example
+----------------
+
+
+.. code-block:: default
+
+
+
+    # apply threshold
+    thresh = threshold_otsu(image)
+    bw = closing(image > thresh, square(3))
+
+    # remove artifacts connected to image border and remove small objects
+    cleared = clear_border(bw)
+
+    # label image regions
+    label_image = label(cleared)
+    image_label_overlay = label2rgb(label_image, image=image)
+
+    fig = px.imshow(image_label_overlay)
+    #fig.update_traces(hoverinfo='skip')
+
+    for i, region in enumerate(regionprops(label_image)):
+        # take regions with large enough areas
+        if region.area >= 100:
+            # draw rectangle around segmented coins
+            minr, minc, maxr, maxc = region.bbox
+            fig.add_trace(go.Scatter(
+                x=[minc, maxc, maxc, minc, minc], 
+                y=[maxr, maxr, minr, minr, maxr], 
+                fill='toself', hoveron='fills',
+                text='<b>Area:</b> %.0f <br><b>Eccentricity:</b> %.2f'\
+                        %(region.area, region.eccentricity),
+                name='', showlegend=False))
+
+    fig
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    /home/emma/code/scikit-image/doc/examples/segmentation/plot_libraries.py:43: FutureWarning:
+
+    The new recommended value for bg_label is 0. Until version 0.19, the default bg_label value is -1. From version 0.19, the bg_label default value will be 0. To avoid this warning, please explicitly set bg_label value.
+
+
+    Figure({
+        'data': [{'hovertemplate': 'x: %{x}<br>y: %{y}<br>color: %{z}<extra></extra>',
+                  'type': 'image',
+                  'z': array([[[110.9, 110.6, 110.6],
+                               [ 99. ,  98.7,  98.7],
+                               [112.3, 112. , 112. ],
+                               ...,
+                               [ 99.7,  99.4,  99.4],
+                               [139.6, 139.3, 139.3],
+                               [127.7, 127.4, 127.4]],
+                   
+                              [[113.7, 113.4, 113.4],
+                               [107.4, 107.1, 107.1],
+                               [117.9, 117.6, 117.6],
+                               ...,
+                               [135.4, 135.1, 135.1],
+                               [142.4, 142.1, 142.1],
+                               [ 95.5,  95.2,  95.2]],
+                   
+                              [[124.9, 124.6, 124.6],
+                               [121.4, 121.1, 121.1],
+                               [121.4, 121.1, 121.1],
+                               ...,
+                               [100.4, 100.1, 100.1],
+                               [125.6, 125.3, 125.3],
+                               [ 84.3,  84. ,  84. ]],
+                   
+                              ...,
+                   
+                              [[ 68.9,  68.6,  68.6],
+                               [ 82.2,  81.9,  81.9],
+                               [100.4, 100.1, 100.1],
+                               ...,
+                               [ 45.1,  44.8,  44.8],
+                               [ 45.8,  45.5,  45.5],
+                               [ 46.5,  46.2,  46.2]],
+                   
+                              [[ 89.9,  89.6,  89.6],
+                               [ 87.8,  87.5,  87.5],
+                               [107.4, 107.1, 107.1],
+                               ...,
+                               [ 44.4,  44.1,  44.1],
+                               [ 45.1,  44.8,  44.8],
+                               [ 44.4,  44.1,  44.1]],
+                   
+                              [[ 69.6,  69.3,  69.3],
+                               [ 71.7,  71.4,  71.4],
+                               [ 92.7,  92.4,  92.4],
+                               ...,
+                               [ 46.5,  46.2,  46.2],
+                               [ 43.7,  43.4,  43.4],
+                               [ 41.6,  41.3,  41.3]]]),
+                  'zmax': [255, 255, 255, 1]},
+                 {'fill': 'toself',
+                  'hoveron': 'fills',
+                  'name': '',
+                  'showlegend': False,
+                  'text': '<b>Area:</b> 1895 <br><b>Eccentricity:</b> 0.35',
+                  'type': 'scatter',
+                  'x': [195, 246, 246, 195, 195],
+                  'y': [94, 94, 46, 46, 94]},
+                 {'fill': 'toself',
+                  'hoveron': 'fills',
+                  'name': '',
+                  'showlegend': False,
+                  'text': '<b>Area:</b> 1212 <br><b>Eccentricity:</b> 0.38',
+                  'type': 'scatter',
+                  'x': [136, 177, 177, 136, 136],
+                  'y': [94, 94, 55, 55, 94]},
+                 {'fill': 'toself',
+                  'hoveron': 'fills',
+                  'name': '',
+                  'showlegend': False,
+                  'text': '<b>Area:</b> 1124 <br><b>Eccentricity:</b> 0.35',
+                  'type': 'scatter',
+                  'x': [34, 72, 72, 34, 34],
+                  'y': [95, 95, 57, 57, 95]},
+                 {'fill': 'toself',
+                  'hoveron': 'fills',
+                  'name': '',
+                  'showlegend': False,
+                  'text': '<b>Area:</b> 1102 <br><b>Eccentricity:</b> 0.45',
+                  'type': 'scatter',
+                  'x': [84, 124, 124, 84, 84],
+                  'y': [95, 95, 60, 60, 95]},
+                 {'fill': 'toself',
+                  'hoveron': 'fills',
+                  'name': '',
+                  'showlegend': False,
+                  'text': '<b>Area:</b> 1720 <br><b>Eccentricity:</b> 0.25',
+                  'type': 'scatter',
+                  'x': [139, 187, 187, 139, 139],
+                  'y': [166, 166, 120, 120, 166]},
+                 {'fill': 'toself',
+                  'hoveron': 'fills',
+                  'name': '',
+                  'showlegend': False,
+                  'text': '<b>Area:</b> 1481 <br><b>Eccentricity:</b> 0.47',
+                  'type': 'scatter',
+                  'x': [201, 247, 247, 201, 201],
+                  'y': [166, 166, 122, 122, 166]},
+                 {'fill': 'toself',
+                  'hoveron': 'fills',
+                  'name': '',
+                  'showlegend': False,
+                  'text': '<b>Area:</b> 1475 <br><b>Eccentricity:</b> 0.26',
+                  'type': 'scatter',
+                  'x': [30, 74, 74, 30, 30],
+                  'y': [167, 167, 125, 125, 167]},
+                 {'fill': 'toself',
+                  'hoveron': 'fills',
+                  'name': '',
+                  'showlegend': False,
+                  'text': '<b>Area:</b> 1155 <br><b>Eccentricity:</b> 0.25',
+                  'type': 'scatter',
+                  'x': [85, 124, 124, 85, 85],
+                  'y': [167, 167, 129, 129, 167]}],
+        'layout': {'margin': {'t': 60}, 'template': '...'}
+    })
+
+
+
+
+.. rst-class:: sphx-glr-timing
+
+   **Total running time of the script:** ( 0 minutes  0.373 seconds)
+
+
+.. _sphx_glr_download_auto_examples_segmentation_plot_libraries.py:
+
+
+.. only :: html
+
+ .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
+
+  .. container:: binder-badge
+
+    .. image:: https://mybinder.org/badge_logo.svg
+      :target: https://mybinder.org/v2/gh/scikit-image/scikit-image/v0.17.x?filepath=notebooks/auto_examples/segmentation/plot_libraries.ipynb
+      :width: 150 px
+
+
+  .. container:: sphx-glr-download sphx-glr-download-python
+
+     :download:`Download Python source code: plot_libraries.py <plot_libraries.py>`
+
+
+
+  .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+     :download:`Download Jupyter notebook: plot_libraries.ipynb <plot_libraries.ipynb>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_
