@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Image adjustment: transforming image content &mdash; skimage v0.17.0 docs</title>
+        <title>Image adjustment: transforming image content &mdash; skimage v0.17.1 docs</title>
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link href="../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../_static/css/custom.css" rel="stylesheet" type="text/css">
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '0.17.0',
+        VERSION:     '0.17.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../genindex.html" />
         <link rel="search" title="Search" href="../search.html" />
-        <link rel="top" title="skimage v0.17.0 docs" href="../index.html" />
+        <link rel="top" title="skimage v0.17.1 docs" href="../index.html" />
         <link rel="up" title="User Guide" href="../user_guide.html" />
         <link rel="next" title="Geometrical transformations of images" href="geometrical_transform.html" />
         <link rel="prev" title="Data visualization" href="visualization.html" />
@@ -90,7 +90,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.17.0<br></strong>
+    <strong>Docs for 0.17.1<br></strong>
 
     <a id="other">All versions</a>
 
@@ -146,8 +146,8 @@ transformed to floating-point type by the conversion operation:</p>
 <h3>Conversion from RGBA to RGB - Removing alpha channel through alpha blending<a class="headerlink" href="#conversion-from-rgba-to-rgb-removing-alpha-channel-through-alpha-blending" title="Permalink to this headline">¶</a></h3>
 <p>Converting an RGBA image to an RGB image by alpha blending it with a
 background is realized with <a class="reference internal" href="../api/skimage.color.html#skimage.color.rgba2rgb" title="skimage.color.rgba2rgb"><code class="xref py py-func docutils literal notranslate"><span class="pre">rgba2rgb()</span></code></a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="k">import</span> <span class="n">rgba2rgb</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgba2rgb</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img_rgba</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">logo</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img_rgb</span> <span class="o">=</span> <span class="n">rgba2rgb</span><span class="p">(</span><span class="n">img_rgba</span><span class="p">)</span>
 </pre></div>
@@ -157,8 +157,8 @@ background is realized with <a class="reference internal" href="../api/skimage.c
 <h3>Conversion between color and gray values<a class="headerlink" href="#conversion-between-color-and-gray-values" title="Permalink to this headline">¶</a></h3>
 <p>Converting an RGB image to a grayscale image is realized with
 <a class="reference internal" href="../api/skimage.color.html#skimage.color.rgb2gray" title="skimage.color.rgb2gray"><code class="xref py py-func docutils literal notranslate"><span class="pre">rgb2gray()</span></code></a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="k">import</span> <span class="n">rgb2gray</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">data</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <span class="n">rgb2gray</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">astronaut</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img_gray</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
@@ -185,7 +185,7 @@ become False and conversely. For grayscale images, pixel values are replaced by 
 difference of the maximum value of the data type and the actual value. For RGB
 images, the same operation is done for each channel. This operation can be achieved
 with <a class="reference internal" href="../api/skimage.util.html#skimage.util.invert" title="skimage.util.invert"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.util.invert()</span></code></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">util</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">util</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">camera</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">inverted_img</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 </pre></div>
@@ -232,12 +232,12 @@ the image. The histogram of pixel values is computed with
 </div>
 <p><a class="reference internal" href="../api/skimage.exposure.html#skimage.exposure.histogram" title="skimage.exposure.histogram"><code class="xref py py-func docutils literal notranslate"><span class="pre">histogram()</span></code></a> returns the number of pixels for each value bin, and
 the centers of the bins. The behavior of <a class="reference internal" href="../api/skimage.exposure.html#skimage.exposure.histogram" title="skimage.exposure.histogram"><code class="xref py py-func docutils literal notranslate"><span class="pre">histogram()</span></code></a> is therefore
-slightly different from the one of <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.histogram.html#numpy.histogram" title="(in NumPy v1.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.histogram()</span></code></a>, which returns
+slightly different from the one of <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.histogram.html#numpy.histogram" title="(in NumPy v1.17)"><code class="xref py py-func docutils literal notranslate"><span class="pre">numpy.histogram()</span></code></a>, which returns
 the boundaries of the bins.</p>
 <p>The simplest contrast enhancement <a class="reference internal" href="../api/skimage.exposure.html#skimage.exposure.rescale_intensity" title="skimage.exposure.rescale_intensity"><code class="xref py py-func docutils literal notranslate"><span class="pre">rescale_intensity()</span></code></a> consists in
 stretching pixel values to the whole allowed range, using a linear
 transformation:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="k">import</span> <span class="n">exposure</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">exposure</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">text</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">text</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">text</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 <span class="go">(10, 197)</span>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <title>Comparison of segmentation and superpixel algorithms &mdash; skimage v0.17.0 docs</title>
+        <title>Comparison of segmentation and superpixel algorithms &mdash; skimage v0.17.1 docs</title>
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link href="../../_static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="../../_static/css/custom.css" rel="stylesheet" type="text/css">
@@ -18,7 +18,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.17.0',
+        VERSION:     '0.17.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
@@ -33,7 +33,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
         <link rel="index" title="Index" href="../../genindex.html" />
         <link rel="search" title="Search" href="../../search.html" />
-        <link rel="top" title="skimage v0.17.0 docs" href="../../index.html" />
+        <link rel="top" title="skimage v0.17.1 docs" href="../../index.html" />
         <link rel="up" title="General examples" href="../index.html" />
         <link rel="next" title="Find the intersection of two segmentations" href="plot_join_segmentations.html" />
         <link rel="prev" title="Markers for watershed transform" href="plot_marked_watershed.html" />
@@ -85,7 +85,7 @@
 
 
  --><div class="well">
-    <strong>Docs for 0.17.0<br></strong>
+    <strong>Docs for 0.17.1<br></strong>
 
     <a id="other">All versions</a>
 
@@ -194,10 +194,8 @@ Algorithms. ICPR 2014, pp 996-1001. <a class="reference external" href="https://
 </dl>
 <img alt="../../_images/sphx_glr_plot_segmentations_001.png" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_segmentations_001.png" />
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/emma/code/scikit-image/doc/examples/segmentation/plot_segmentations.py:99: FutureWarning:
-
-skimage.measure.label&#39;s indexing starts from 0. In future version it will start from 1. To disable this warning, explicitely set the `start_label` parameter to 1.
-
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/emma/code/scikit-image/doc/examples/segmentation/plot_segmentations.py:99: FutureWarning: skimage.measure.label&#39;s indexing starts from 0. In future version it will start from 1. To disable this warning, explicitely set the `start_label` parameter to 1.
+  segments_slic = slic(img, n_segments=250, compactness=10, sigma=1)
 Felzenszwalb number of segments: 194
 SLIC number of segments: 196
 Quickshift number of segments: 695
@@ -209,12 +207,12 @@ Quickshift number of segments: 695
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">skimage.data</span> <span class="k">import</span> <a href="../../api/skimage.data.html#skimage.data.astronaut" title="skimage.data.astronaut" class="sphx-glr-backref-module-skimage-data sphx-glr-backref-type-py-function"><span class="n">astronaut</span></a>
-<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="k">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="skimage.color.rgb2gray" class="sphx-glr-backref-module-skimage-color sphx-glr-backref-type-py-function"><span class="n">rgb2gray</span></a>
-<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="k">import</span> <a href="../../api/skimage.filters.html#skimage.filters.sobel" title="skimage.filters.sobel" class="sphx-glr-backref-module-skimage-filters sphx-glr-backref-type-py-function"><span class="n">sobel</span></a>
-<span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="k">import</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.felzenszwalb" title="skimage.segmentation.felzenszwalb" class="sphx-glr-backref-module-skimage-segmentation sphx-glr-backref-type-py-function"><span class="n">felzenszwalb</span></a><span class="p">,</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.slic" title="skimage.segmentation.slic" class="sphx-glr-backref-module-skimage-segmentation sphx-glr-backref-type-py-function"><span class="n">slic</span></a><span class="p">,</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.quickshift" title="skimage.segmentation.quickshift" class="sphx-glr-backref-module-skimage-segmentation sphx-glr-backref-type-py-function"><span class="n">quickshift</span></a><span class="p">,</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.watershed" title="skimage.segmentation.watershed" class="sphx-glr-backref-module-skimage-segmentation sphx-glr-backref-type-py-function"><span class="n">watershed</span></a>
-<span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="k">import</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.mark_boundaries" title="skimage.segmentation.mark_boundaries" class="sphx-glr-backref-module-skimage-segmentation sphx-glr-backref-type-py-function"><span class="n">mark_boundaries</span></a>
-<span class="kn">from</span> <span class="nn">skimage.util</span> <span class="k">import</span> <a href="../../api/skimage.html#skimage.img_as_float" title="skimage.img_as_float" class="sphx-glr-backref-module-skimage sphx-glr-backref-type-py-function"><span class="n">img_as_float</span></a>
+<span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <a href="../../api/skimage.data.html#skimage.data.astronaut" title="skimage.data.astronaut" class="sphx-glr-backref-module-skimage-data sphx-glr-backref-type-py-function"><span class="n">astronaut</span></a>
+<span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="skimage.color.rgb2gray" class="sphx-glr-backref-module-skimage-color sphx-glr-backref-type-py-function"><span class="n">rgb2gray</span></a>
+<span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <a href="../../api/skimage.filters.html#skimage.filters.sobel" title="skimage.filters.sobel" class="sphx-glr-backref-module-skimage-filters sphx-glr-backref-type-py-function"><span class="n">sobel</span></a>
+<span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.felzenszwalb" title="skimage.segmentation.felzenszwalb" class="sphx-glr-backref-module-skimage-segmentation sphx-glr-backref-type-py-function"><span class="n">felzenszwalb</span></a><span class="p">,</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.slic" title="skimage.segmentation.slic" class="sphx-glr-backref-module-skimage-segmentation sphx-glr-backref-type-py-function"><span class="n">slic</span></a><span class="p">,</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.quickshift" title="skimage.segmentation.quickshift" class="sphx-glr-backref-module-skimage-segmentation sphx-glr-backref-type-py-function"><span class="n">quickshift</span></a><span class="p">,</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.watershed" title="skimage.segmentation.watershed" class="sphx-glr-backref-module-skimage-segmentation sphx-glr-backref-type-py-function"><span class="n">watershed</span></a>
+<span class="kn">from</span> <span class="nn">skimage.segmentation</span> <span class="kn">import</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.mark_boundaries" title="skimage.segmentation.mark_boundaries" class="sphx-glr-backref-module-skimage-segmentation sphx-glr-backref-type-py-function"><span class="n">mark_boundaries</span></a>
+<span class="kn">from</span> <span class="nn">skimage.util</span> <span class="kn">import</span> <a href="../../api/skimage.html#skimage.img_as_float" title="skimage.img_as_float" class="sphx-glr-backref-module-skimage sphx-glr-backref-type-py-function"><span class="n">img_as_float</span></a>
 
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">img</span></a> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_float" title="skimage.img_as_float" class="sphx-glr-backref-module-skimage sphx-glr-backref-type-py-function"><span class="n">img_as_float</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.astronaut" title="skimage.data.astronaut" class="sphx-glr-backref-module-skimage-data sphx-glr-backref-type-py-function"><span class="n">astronaut</span></a><span class="p">()[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">])</span>
 
@@ -224,9 +222,9 @@ Quickshift number of segments: 695
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">gradient</span></a> <span class="o">=</span> <a href="../../api/skimage.filters.html#skimage.filters.sobel" title="skimage.filters.sobel" class="sphx-glr-backref-module-skimage-filters sphx-glr-backref-type-py-function"><span class="n">sobel</span></a><span class="p">(</span><a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="skimage.color.rgb2gray" class="sphx-glr-backref-module-skimage-color sphx-glr-backref-type-py-function"><span class="n">rgb2gray</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">img</span></a><span class="p">))</span>
 <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">segments_watershed</span></a> <span class="o">=</span> <a href="../../api/skimage.segmentation.html#skimage.segmentation.watershed" title="skimage.segmentation.watershed" class="sphx-glr-backref-module-skimage-segmentation sphx-glr-backref-type-py-function"><span class="n">watershed</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">gradient</span></a><span class="p">,</span> <span class="n">markers</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">compactness</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Felzenszwalb number of segments: {len(np.unique(segments_fz))}&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;SLIC number of segments: {len(np.unique(segments_slic))}&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Quickshift number of segments: {len(np.unique(segments_quick))}&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Felzenszwalb number of segments: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.unique.html#numpy.unique" title="numpy.unique" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">unique</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">segments_fz</span></a><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SLIC number of segments: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.unique.html#numpy.unique" title="numpy.unique" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">unique</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">segments_slic</span></a><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Quickshift number of segments: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.unique.html#numpy.unique" title="numpy.unique" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-function"><span class="n">np</span><span class="o">.</span><span class="n">unique</span></a><span class="p">(</span><a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">segments_quick</span></a><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax</span></a> <span class="o">=</span> <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -246,7 +244,7 @@ Quickshift number of segments: 695
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.963 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.966 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-segmentation-plot-segmentations-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-image/scikit-image/v0.17.x?filepath=notebooks/auto_examples/segmentation/plot_segmentations.ipynb"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" width="150px" /></a>
