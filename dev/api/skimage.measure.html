@@ -304,9 +304,9 @@ is returned.</p>
 
 <div class="section" id="examples-using-skimage-measure-approximate-polygon">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.measure.approximate_polygon</span></code><a class="headerlink" href="#examples-using-skimage-measure-approximate-polygon" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to approximate (Douglas-Peucker algorithm) and subdivide (B-Splines) pol..."><div class="figure align-default" id="id53">
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to approximate (Douglas-Peucker algorithm) and subdivide (B-Splines) pol..."><div class="figure align-default" id="id55">
 <img alt="../_images/sphx_glr_plot_polygon_thumb.png" src="../_images/sphx_glr_plot_polygon_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_polygon.html#sphx-glr-auto-examples-edges-plot-polygon-py"><span class="std std-ref">Approximate and subdivide polygons</span></a></span><a class="headerlink" href="#id53" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_polygon.html#sphx-glr-auto-examples-edges-plot-polygon-py"><span class="std std-ref">Approximate and subdivide polygons</span></a></span><a class="headerlink" href="#id55" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -314,7 +314,7 @@ is returned.</p>
 <h2>block_reduce<a class="headerlink" href="#block-reduce" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.block_reduce">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7ffbd6ba3f28&gt;</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">func_kwargs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">block_reduce</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">block_size</em>, <em class="sig-param">func=&lt;function sum at 0x7f30c5f1ef28&gt;</em>, <em class="sig-param">cval=0</em>, <em class="sig-param">func_kwargs=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/block.py#L5"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.block_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Downsample image by applying function <em class="xref py py-obj">func</em> to local blocks.</p>
 <p>This function is useful for max and mean pooling, for example.</p>
 <dl class="field-list simple">
@@ -670,7 +670,7 @@ interpolated to provide better precision for the output contours.</p>
 considered fully-connected (and hence elements above the value will
 only be face connected), or vice-versa. (See notes below for details.)</p>
 </dd>
-<dt><strong>positive_orientation</strong><span class="classifier">either ‘low’ or ‘high’</span></dt><dd><p>Indicates whether the output contours will produce positively-oriented
+<dt><strong>positive_orientation</strong><span class="classifier">str, {‘low’, ‘high’}</span></dt><dd><p>Indicates whether the output contours will produce positively-oriented
 polygons around islands of low- or high-valued elements. If ‘low’ then
 contours will wind counter- clockwise around elements below the
 iso-value. Alternately, this means that low-valued elements are always
@@ -690,12 +690,16 @@ consisting of n <code class="docutils literal notranslate"><span class="pre">(ro
 </dl>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#skimage.measure.marching_cubes" title="skimage.measure.marching_cubes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.marching_cubes</span></code></a></dt><dd></dd>
+</dl>
+</div>
 <p class="rubric">Notes</p>
 <p>The marching squares algorithm is a special case of the marching cubes
 algorithm <a class="reference internal" href="#r8ed60f468bf9-1" id="id11">[1]</a>.  A simple explanation is available here:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">users</span><span class="o">.</span><span class="n">polytech</span><span class="o">.</span><span class="n">unice</span><span class="o">.</span><span class="n">fr</span><span class="o">/~</span><span class="n">lingrand</span><span class="o">/</span><span class="n">MarchingCubes</span><span class="o">/</span><span class="n">algo</span><span class="o">.</span><span class="n">html</span>
-</pre></div>
-</div>
+<p><a class="reference external" href="http://users.polytech.unice.fr/~lingrand/MarchingCubes/algo.html">http://users.polytech.unice.fr/~lingrand/MarchingCubes/algo.html</a></p>
 <p>There is a single ambiguous case in the marching squares algorithm: when
 a given <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">x</span> <span class="pre">2</span></code>-element square has two high-valued and two low-valued
 elements, each pair diagonally adjacent. (Where high- and low-valued is
@@ -742,7 +746,8 @@ choose a middle value, as above.</p>
 <dt class="label" id="r8ed60f468bf9-1"><span class="brackets"><a class="fn-backref" href="#id11">1</a></span></dt>
 <dd><p>Lorensen, William and Harvey E. Cline. Marching Cubes: A High
 Resolution 3D Surface Construction Algorithm. Computer Graphics
-(SIGGRAPH 87 Proceedings) 21(4) July 1987, p. 163-170).</p>
+(SIGGRAPH 87 Proceedings) 21(4) July 1987, p. 163-170).
+<a class="reference external" href="https://doi.org/10.1145/37401.37422">DOI:10.1145/37401.37422</a></p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -761,13 +766,13 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 
 <div class="section" id="examples-using-skimage-measure-find-contours">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.measure.find_contours</span></code><a class="headerlink" href="#examples-using-skimage-measure-find-contours" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="We use a marching squares method to find constant valued contours in an image. In skimage.measu..."><div class="figure align-default" id="id54">
+<div class="sphx-glr-thumbcontainer" tooltip="We use a marching squares method to find constant valued contours in an image. In skimage.measu..."><div class="figure align-default" id="id56">
 <img alt="../_images/sphx_glr_plot_contours_thumb.png" src="../_images/sphx_glr_plot_contours_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_contours.html#sphx-glr-auto-examples-edges-plot-contours-py"><span class="std std-ref">Contour finding</span></a></span><a class="headerlink" href="#id54" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_contours.html#sphx-glr-auto-examples-edges-plot-contours-py"><span class="std std-ref">Contour finding</span></a></span><a class="headerlink" href="#id56" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to approximate (Douglas-Peucker algorithm) and subdivide (B-Splines) pol..."><div class="figure align-default" id="id55">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to approximate (Douglas-Peucker algorithm) and subdivide (B-Splines) pol..."><div class="figure align-default" id="id57">
 <img alt="../_images/sphx_glr_plot_polygon_thumb.png" src="../_images/sphx_glr_plot_polygon_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_polygon.html#sphx-glr-auto-examples-edges-plot-polygon-py"><span class="std std-ref">Approximate and subdivide polygons</span></a></span><a class="headerlink" href="#id55" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_polygon.html#sphx-glr-auto-examples-edges-plot-polygon-py"><span class="std std-ref">Approximate and subdivide polygons</span></a></span><a class="headerlink" href="#id57" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -989,29 +994,29 @@ Lawrence Berkeley National Laboratory (University of California),
 
 <div class="section" id="examples-using-skimage-measure-label">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.measure.label</span></code><a class="headerlink" href="#examples-using-skimage-measure-label" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to segment an image with image labelling. The following steps are applie..."><div class="figure align-default" id="id56">
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to segment an image with image labelling. The following steps are applie..."><div class="figure align-default" id="id58">
 <img alt="../_images/sphx_glr_plot_label_thumb.png" src="../_images/sphx_glr_plot_label_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_label.html#sphx-glr-auto-examples-segmentation-plot-label-py"><span class="std std-ref">Label image regions</span></a></span><a class="headerlink" href="#id56" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_label.html#sphx-glr-auto-examples-segmentation-plot-label-py"><span class="std std-ref">Label image regions</span></a></span><a class="headerlink" href="#id58" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="When segmenting an image, you may want to combine multiple alternative segmentations. The :py:f..."><div class="figure align-default" id="id57">
+</div><div class="sphx-glr-thumbcontainer" tooltip="When segmenting an image, you may want to combine multiple alternative segmentations. The :py:f..."><div class="figure align-default" id="id59">
 <img alt="../_images/sphx_glr_plot_join_segmentations_thumb.png" src="../_images/sphx_glr_plot_join_segmentations_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_join_segmentations.html#sphx-glr-auto-examples-segmentation-plot-join-segmentations-py"><span class="std std-ref">Find the intersection of two segmentations</span></a></span><a class="headerlink" href="#id57" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_join_segmentations.html#sphx-glr-auto-examples-segmentation-plot-join-segmentations-py"><span class="std std-ref">Find the intersection of two segmentations</span></a></span><a class="headerlink" href="#id59" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to measure properties of labelled image regions. We analyze an image wit..."><div class="figure align-default" id="id58">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to measure properties of labelled image regions. We analyze an image wit..."><div class="figure align-default" id="id60">
 <img alt="../_images/sphx_glr_plot_regionprops_thumb.png" src="../_images/sphx_glr_plot_regionprops_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_regionprops.html#sphx-glr-auto-examples-segmentation-plot-regionprops-py"><span class="std std-ref">Measure region properties</span></a></span><a class="headerlink" href="#id58" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_regionprops.html#sphx-glr-auto-examples-segmentation-plot-regionprops-py"><span class="std std-ref">Measure region properties</span></a></span><a class="headerlink" href="#id60" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="We detect local maxima in a galaxy image. The image is corrupted by noise, generating many loca..."><div class="figure align-default" id="id59">
+</div><div class="sphx-glr-thumbcontainer" tooltip="We detect local maxima in a galaxy image. The image is corrupted by noise, generating many loca..."><div class="figure align-default" id="id61">
 <img alt="../_images/sphx_glr_plot_extrema_thumb.png" src="../_images/sphx_glr_plot_extrema_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_extrema.html#sphx-glr-auto-examples-segmentation-plot-extrema-py"><span class="std std-ref">Extrema</span></a></span><a class="headerlink" href="#id59" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_extrema.html#sphx-glr-auto-examples-segmentation-plot-extrema-py"><span class="std std-ref">Extrema</span></a></span><a class="headerlink" href="#id61" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This toy example shows how to compute the size of every labelled region in a series of 10 image..."><div class="figure align-default" id="id60">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This toy example shows how to compute the size of every labelled region in a series of 10 image..."><div class="figure align-default" id="id62">
 <img alt="../_images/sphx_glr_plot_regionprops_table_thumb.png" src="../_images/sphx_glr_plot_regionprops_table_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_regionprops_table.html#sphx-glr-auto-examples-segmentation-plot-regionprops-table-py"><span class="std std-ref">Explore and visualize region properties with pandas</span></a></span><a class="headerlink" href="#id60" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_regionprops_table.html#sphx-glr-auto-examples-segmentation-plot-regionprops-table-py"><span class="std std-ref">Explore and visualize region properties with pandas</span></a></span><a class="headerlink" href="#id62" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="When trying out different segmentation methods, how do you know which one is best? If you have ..."><div class="figure align-default" id="id61">
+</div><div class="sphx-glr-thumbcontainer" tooltip="When trying out different segmentation methods, how do you know which one is best? If you have ..."><div class="figure align-default" id="id63">
 <img alt="../_images/sphx_glr_plot_metrics_thumb.png" src="../_images/sphx_glr_plot_metrics_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_metrics.html#sphx-glr-auto-examples-segmentation-plot-metrics-py"><span class="std std-ref">Evaluating segmentation metrics</span></a></span><a class="headerlink" href="#id61" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_metrics.html#sphx-glr-auto-examples-segmentation-plot-metrics-py"><span class="std std-ref">Evaluating segmentation metrics</span></a></span><a class="headerlink" href="#id63" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -1021,7 +1026,7 @@ Lawrence Berkeley National Laboratory (University of California),
 <dt id="skimage.measure.marching_cubes">
 <code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">marching_cubes</code><span class="sig-paren">(</span><em class="sig-param">volume</em>, <em class="sig-param">level=None</em>, <em class="sig-param">*</em>, <em class="sig-param">spacing=(1.0</em>, <em class="sig-param">1.0</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">gradient_direction='descent'</em>, <em class="sig-param">step_size=1</em>, <em class="sig-param">allow_degenerate=True</em>, <em class="sig-param">method='lewiner'</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_lewiner.py#L11"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.marching_cubes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Marching cubes algorithm to find surfaces in 3d volumetric data.</p>
-<p>In contrast with Lorensen et al. approach [2], Lewiner et
+<p>In contrast with Lorensen et al. approach <a class="reference internal" href="#rcddcc8f5d58b-2" id="id17">[2]</a>, Lewiner et
 al. algorithm is faster, resolves ambiguities, and guarantees
 topologically correct results. Therefore, this algorithm generally
 a better choice.</p>
@@ -1031,33 +1036,33 @@ a better choice.</p>
 <dt><strong>volume</strong><span class="classifier">(M, N, P) array</span></dt><dd><p>Input data volume to find isosurfaces. Will internally be
 converted to float32 if necessary.</p>
 </dd>
-<dt><strong>level</strong><span class="classifier">float</span></dt><dd><p>Contour value to search for isosurfaces in <em class="xref py py-obj">volume</em>. If not
+<dt><strong>level</strong><span class="classifier">float, optional</span></dt><dd><p>Contour value to search for isosurfaces in <em class="xref py py-obj">volume</em>. If not
 given or None, the average of the min and max of vol is used.</p>
 </dd>
-<dt><strong>spacing</strong><span class="classifier">length-3 tuple of floats</span></dt><dd><p>Voxel spacing in spatial dimensions corresponding to numpy array
+<dt><strong>spacing</strong><span class="classifier">length-3 tuple of floats, optional</span></dt><dd><p>Voxel spacing in spatial dimensions corresponding to numpy array
 indexing dimensions (M, N, P) as in <em class="xref py py-obj">volume</em>.</p>
 </dd>
-<dt><strong>gradient_direction</strong><span class="classifier">string</span></dt><dd><p>Controls if the mesh was generated from an isosurface with gradient
+<dt><strong>gradient_direction</strong><span class="classifier">string, optional</span></dt><dd><p>Controls if the mesh was generated from an isosurface with gradient
 descent toward objects of interest (the default), or the opposite,
 considering the <em>left-hand</em> rule.
 The two options are:
 * descent : Object was greater than exterior
 * ascent : Exterior was greater than object</p>
 </dd>
-<dt><strong>step_size</strong><span class="classifier">int</span></dt><dd><p>Step size in voxels. Default 1. Larger steps yield faster but
+<dt><strong>step_size</strong><span class="classifier">int, optional</span></dt><dd><p>Step size in voxels. Default 1. Larger steps yield faster but
 coarser results. The result will always be topologically correct
 though.</p>
 </dd>
-<dt><strong>allow_degenerate</strong><span class="classifier">bool</span></dt><dd><p>Whether to allow degenerate (i.e. zero-area) triangles in the
+<dt><strong>allow_degenerate</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether to allow degenerate (i.e. zero-area) triangles in the
 end-result. Default True. If False, degenerate triangles are
 removed, at the cost of making the algorithm slower.</p>
 </dd>
-<dt><strong>method: str</strong></dt><dd><p>One of ‘lewiner’, ‘lorensen’ or ‘_lorensen’. Specify witch of
+<dt><strong>method: str, optional</strong></dt><dd><p>One of ‘lewiner’, ‘lorensen’ or ‘_lorensen’. Specify witch of
 Lewiner et al. or Lorensen et al. method will be used. The
 ‘_lorensen’ flag correspond to an old implementation that will
 be deprecated in version 0.19.</p>
 </dd>
-<dt><strong>mask</strong><span class="classifier">(M, N, P) array</span></dt><dd><p>Boolean array. The marching cube algorithm will be computed only on
+<dt><strong>mask</strong><span class="classifier">(M, N, P) array, optional</span></dt><dd><p>Boolean array. The marching cube algorithm will be computed only on
 True elements. This will save computational time when interfaces
 are located within certain region of the volume M, N, P-e.g. the top
 half of the cube-and also allow to compute finite surfaces-i.e. open
@@ -1088,10 +1093,11 @@ a colormap to the mesh.</p>
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="#skimage.measure.mesh_surface_area" title="skimage.measure.mesh_surface_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.mesh_surface_area</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#skimage.measure.find_contours" title="skimage.measure.find_contours"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.find_contours</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The algorithm [1] is an improved version of Chernyaev’s Marching
+<p>The algorithm <a class="reference internal" href="#rcddcc8f5d58b-1" id="id18">[1]</a> is an improved version of Chernyaev’s Marching
 Cubes 33 algorithm. It is an efficient algorithm that relies on
 heavy use of lookup tables to handle the many different cases,
 keeping the algorithm relatively easy. This implementation is
@@ -1120,14 +1126,14 @@ named <em class="xref py py-obj">myvolume</em> about the level 0.0, using the <c
 </div>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="rcddcc8f5d58b-1"><span class="brackets">1</span></dt>
+<dt class="label" id="rcddcc8f5d58b-1"><span class="brackets"><a class="fn-backref" href="#id18">1</a></span></dt>
 <dd><p>Thomas Lewiner, Helio Lopes, Antonio Wilson Vieira and Geovan
 Tavares. Efficient implementation of Marching Cubes’ cases with
 topological guarantees. Journal of Graphics Tools 8(2)
 pp. 1-15 (december 2003).
 <a class="reference external" href="https://doi.org/10.1080/10867651.2003.10487582">DOI:10.1080/10867651.2003.10487582</a></p>
 </dd>
-<dt class="label" id="rcddcc8f5d58b-2"><span class="brackets">2</span></dt>
+<dt class="label" id="rcddcc8f5d58b-2"><span class="brackets"><a class="fn-backref" href="#id17">2</a></span></dt>
 <dd><p>Lorensen, William and Harvey E. Cline. Marching Cubes: A High
 Resolution 3D Surface Construction Algorithm. Computer Graphics
 (SIGGRAPH 87 Proceedings) 21(4) July 1987, p. 163-170).
@@ -1138,9 +1144,9 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 
 <div class="section" id="examples-using-skimage-measure-marching-cubes">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.measure.marching_cubes</span></code><a class="headerlink" href="#examples-using-skimage-measure-marching-cubes" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="Marching cubes is an algorithm to extract a 2D surface mesh from a 3D volume. This can be conce..."><div class="figure align-default" id="id62">
+<div class="sphx-glr-thumbcontainer" tooltip="Marching cubes is an algorithm to extract a 2D surface mesh from a 3D volume. This can be conce..."><div class="figure align-default" id="id64">
 <img alt="../_images/sphx_glr_plot_marching_cubes_thumb.png" src="../_images/sphx_glr_plot_marching_cubes_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_marching_cubes.html#sphx-glr-auto-examples-edges-plot-marching-cubes-py"><span class="std std-ref">Marching Cubes</span></a></span><a class="headerlink" href="#id62" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_marching_cubes.html#sphx-glr-auto-examples-edges-plot-marching-cubes-py"><span class="std std-ref">Marching Cubes</span></a></span><a class="headerlink" href="#id64" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -1191,13 +1197,13 @@ exactly three indices.</p>
 </dl>
 </div>
 <p class="rubric">Notes</p>
-<p>The marching cubes algorithm is implemented as described in <a class="reference internal" href="#r1e43a330a523-1" id="id19">[1]</a>.
+<p>The marching cubes algorithm is implemented as described in <a class="reference internal" href="#r1e43a330a523-1" id="id21">[1]</a>.
 A simple explanation is available here:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">users</span><span class="o">.</span><span class="n">polytech</span><span class="o">.</span><span class="n">unice</span><span class="o">.</span><span class="n">fr</span><span class="o">/~</span><span class="n">lingrand</span><span class="o">/</span><span class="n">MarchingCubes</span><span class="o">/</span><span class="n">algo</span><span class="o">.</span><span class="n">html</span>
 </pre></div>
 </div>
 <p>There are several known ambiguous cases in the marching cubes algorithm.
-Using point labeling as in <a class="reference internal" href="#r1e43a330a523-1" id="id20">[1]</a>, Figure 4, as shown:</p>
+Using point labeling as in <a class="reference internal" href="#r1e43a330a523-1" id="id22">[1]</a>, Figure 4, as shown:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    v8 ------ v7
    / |       / |        y
   /  |      /  |        ^  z
@@ -1214,7 +1220,7 @@ algorithm, separating v4 and v8 from v2 and v6. An equally valid
 interpretation would be a single connected thin surface enclosing all
 four points. This is the best known ambiguity, though there are others.</p>
 <p>This algorithm does not attempt to resolve such ambiguities; it is a naive
-implementation of marching cubes as in <a class="reference internal" href="#r1e43a330a523-1" id="id21">[1]</a>, but may be a good beginning
+implementation of marching cubes as in <a class="reference internal" href="#r1e43a330a523-1" id="id23">[1]</a>, but may be a good beginning
 for work with more recent techniques (Dual Marching Cubes, Extended
 Marching Cubes, Cubic Marching Squares, etc.).</p>
 <p>Because of interactions between neighboring cubes, the isosurface(s)
@@ -1232,7 +1238,7 @@ of how the input array is traversed, but can be relied upon.</p>
 outputs directly into <a class="reference internal" href="#skimage.measure.mesh_surface_area" title="skimage.measure.mesh_surface_area"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.mesh_surface_area</span></code></a>.</p>
 <p class="rubric">References</p>
 <dl class="citation">
-<dt class="label" id="r1e43a330a523-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id19">1</a>,<a href="#id20">2</a>,<a href="#id21">3</a>)</span></dt>
+<dt class="label" id="r1e43a330a523-1"><span class="brackets">1</span><span class="fn-backref">(<a href="#id21">1</a>,<a href="#id22">2</a>,<a href="#id23">3</a>)</span></dt>
 <dd><p>Lorensen, William and Harvey E. Cline. Marching Cubes: A High
 Resolution 3D Surface Construction Algorithm. Computer Graphics
 (SIGGRAPH 87 Proceedings) 21(4) July 1987, p. 163-170).
@@ -1246,7 +1252,7 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 <h2>marching_cubes_lewiner<a class="headerlink" href="#marching-cubes-lewiner" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.marching_cubes_lewiner">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">marching_cubes_lewiner</code><span class="sig-paren">(</span><em class="sig-param">volume</em>, <em class="sig-param">level=None</em>, <em class="sig-param">spacing=(1.0</em>, <em class="sig-param">1.0</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">gradient_direction='descent'</em>, <em class="sig-param">step_size=1</em>, <em class="sig-param">allow_degenerate=True</em>, <em class="sig-param">use_classic=False</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_lewiner.py#L147"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.marching_cubes_lewiner" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">marching_cubes_lewiner</code><span class="sig-paren">(</span><em class="sig-param">volume</em>, <em class="sig-param">level=None</em>, <em class="sig-param">spacing=(1.0</em>, <em class="sig-param">1.0</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">gradient_direction='descent'</em>, <em class="sig-param">step_size=1</em>, <em class="sig-param">allow_degenerate=True</em>, <em class="sig-param">use_classic=False</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_lewiner.py#L149"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.marching_cubes_lewiner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lewiner marching cubes algorithm to find surfaces in 3d volumetric data.</p>
 <p>In contrast to <code class="docutils literal notranslate"><span class="pre">marching_cubes_classic()</span></code>, this algorithm is faster,
 resolves ambiguities, and guarantees topologically correct results.
@@ -1854,7 +1860,7 @@ The first point may (but does not need to be) duplicated.</p>
 <h2>profile_line<a class="headerlink" href="#profile-line" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.profile_line">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">profile_line</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em>, <em class="sig-param">linewidth=1</em>, <em class="sig-param">order=None</em>, <em class="sig-param">mode=None</em>, <em class="sig-param">cval=0.0</em>, <em class="sig-param">*</em>, <em class="sig-param">reduce_func=&lt;function mean at 0x7ffbd6baf510&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/profile.py#L8"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.profile_line" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">profile_line</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">src</em>, <em class="sig-param">dst</em>, <em class="sig-param">linewidth=1</em>, <em class="sig-param">order=None</em>, <em class="sig-param">mode=None</em>, <em class="sig-param">cval=0.0</em>, <em class="sig-param">*</em>, <em class="sig-param">reduce_func=&lt;function mean at 0x7f30c5f25510&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/profile.py#L8"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.profile_line" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the intensity profile of an image measured along a scan line.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2115,17 +2121,17 @@ we also show how to use a proportion of the total samples, rather than an absolu
 
 <div class="section" id="examples-using-skimage-measure-ransac">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.measure.ransac</span></code><a class="headerlink" href="#examples-using-skimage-measure-ransac" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to robustly estimate  epipolar geometry &lt;https://en.wikipedia.org..."><div class="figure align-default" id="id63">
+<div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to robustly estimate  epipolar geometry &lt;https://en.wikipedia.org..."><div class="figure align-default" id="id65">
 <img alt="../_images/sphx_glr_plot_fundamental_matrix_thumb.png" src="../_images/sphx_glr_plot_fundamental_matrix_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_fundamental_matrix.html#sphx-glr-auto-examples-transform-plot-fundamental-matrix-py"><span class="std std-ref">Fundamental matrix estimation</span></a></span><a class="headerlink" href="#id63" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_fundamental_matrix.html#sphx-glr-auto-examples-transform-plot-fundamental-matrix-py"><span class="std std-ref">Fundamental matrix estimation</span></a></span><a class="headerlink" href="#id65" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this example we see how to robustly fit a line model to faulty data using the RANSAC (random..."><div class="figure align-default" id="id64">
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this example we see how to robustly fit a line model to faulty data using the RANSAC (random..."><div class="figure align-default" id="id66">
 <img alt="../_images/sphx_glr_plot_ransac_thumb.png" src="../_images/sphx_glr_plot_ransac_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_ransac.html#sphx-glr-auto-examples-transform-plot-ransac-py"><span class="std std-ref">Robust line model estimation using RANSAC</span></a></span><a class="headerlink" href="#id64" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_ransac.html#sphx-glr-auto-examples-transform-plot-ransac-py"><span class="std std-ref">Robust line model estimation using RANSAC</span></a></span><a class="headerlink" href="#id66" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="In this simplified example we first generate two synthetic images as if they were taken from di..."><div class="figure align-default" id="id65">
+</div><div class="sphx-glr-thumbcontainer" tooltip="In this simplified example we first generate two synthetic images as if they were taken from di..."><div class="figure align-default" id="id67">
 <img alt="../_images/sphx_glr_plot_matching_thumb.png" src="../_images/sphx_glr_plot_matching_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_matching.html#sphx-glr-auto-examples-transform-plot-matching-py"><span class="std std-ref">Robust matching using RANSAC</span></a></span><a class="headerlink" href="#id65" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_matching.html#sphx-glr-auto-examples-transform-plot-matching-py"><span class="std std-ref">Robust matching using RANSAC</span></a></span><a class="headerlink" href="#id67" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -2353,13 +2359,13 @@ Berlin, 1993.</p>
 
 <div class="section" id="examples-using-skimage-measure-regionprops">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.measure.regionprops</span></code><a class="headerlink" href="#examples-using-skimage-measure-regionprops" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to segment an image with image labelling. The following steps are applie..."><div class="figure align-default" id="id66">
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to segment an image with image labelling. The following steps are applie..."><div class="figure align-default" id="id68">
 <img alt="../_images/sphx_glr_plot_label_thumb.png" src="../_images/sphx_glr_plot_label_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_label.html#sphx-glr-auto-examples-segmentation-plot-label-py"><span class="std std-ref">Label image regions</span></a></span><a class="headerlink" href="#id66" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_label.html#sphx-glr-auto-examples-segmentation-plot-label-py"><span class="std std-ref">Label image regions</span></a></span><a class="headerlink" href="#id68" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to measure properties of labelled image regions. We analyze an image wit..."><div class="figure align-default" id="id67">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This example shows how to measure properties of labelled image regions. We analyze an image wit..."><div class="figure align-default" id="id69">
 <img alt="../_images/sphx_glr_plot_regionprops_thumb.png" src="../_images/sphx_glr_plot_regionprops_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_regionprops.html#sphx-glr-auto-examples-segmentation-plot-regionprops-py"><span class="std std-ref">Measure region properties</span></a></span><a class="headerlink" href="#id67" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_regionprops.html#sphx-glr-auto-examples-segmentation-plot-regionprops-py"><span class="std std-ref">Measure region properties</span></a></span><a class="headerlink" href="#id69" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -2458,13 +2464,13 @@ obtain a clean DataFrame:</p>
 
 <div class="section" id="examples-using-skimage-measure-regionprops-table">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.measure.regionprops_table</span></code><a class="headerlink" href="#examples-using-skimage-measure-regionprops-table" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to measure properties of labelled image regions. We analyze an image wit..."><div class="figure align-default" id="id68">
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to measure properties of labelled image regions. We analyze an image wit..."><div class="figure align-default" id="id70">
 <img alt="../_images/sphx_glr_plot_regionprops_thumb.png" src="../_images/sphx_glr_plot_regionprops_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_regionprops.html#sphx-glr-auto-examples-segmentation-plot-regionprops-py"><span class="std std-ref">Measure region properties</span></a></span><a class="headerlink" href="#id68" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_regionprops.html#sphx-glr-auto-examples-segmentation-plot-regionprops-py"><span class="std std-ref">Measure region properties</span></a></span><a class="headerlink" href="#id70" title="Permalink to this image">¶</a></p>
 </div>
-</div><div class="sphx-glr-thumbcontainer" tooltip="This toy example shows how to compute the size of every labelled region in a series of 10 image..."><div class="figure align-default" id="id69">
+</div><div class="sphx-glr-thumbcontainer" tooltip="This toy example shows how to compute the size of every labelled region in a series of 10 image..."><div class="figure align-default" id="id71">
 <img alt="../_images/sphx_glr_plot_regionprops_table_thumb.png" src="../_images/sphx_glr_plot_regionprops_table_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_regionprops_table.html#sphx-glr-auto-examples-segmentation-plot-regionprops-table-py"><span class="std std-ref">Explore and visualize region properties with pandas</span></a></span><a class="headerlink" href="#id69" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_regionprops_table.html#sphx-glr-auto-examples-segmentation-plot-regionprops-table-py"><span class="std std-ref">Explore and visualize region properties with pandas</span></a></span><a class="headerlink" href="#id71" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -2549,9 +2555,9 @@ False.</p>
 
 <div class="section" id="examples-using-skimage-measure-subdivide-polygon">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.measure.subdivide_polygon</span></code><a class="headerlink" href="#examples-using-skimage-measure-subdivide-polygon" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to approximate (Douglas-Peucker algorithm) and subdivide (B-Splines) pol..."><div class="figure align-default" id="id70">
+<div class="sphx-glr-thumbcontainer" tooltip="This example shows how to approximate (Douglas-Peucker algorithm) and subdivide (B-Splines) pol..."><div class="figure align-default" id="id72">
 <img alt="../_images/sphx_glr_plot_polygon_thumb.png" src="../_images/sphx_glr_plot_polygon_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_polygon.html#sphx-glr-auto-examples-edges-plot-polygon-py"><span class="std std-ref">Approximate and subdivide polygons</span></a></span><a class="headerlink" href="#id70" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/edges/plot_polygon.html#sphx-glr-auto-examples-edges-plot-polygon-py"><span class="std std-ref">Approximate and subdivide polygons</span></a></span><a class="headerlink" href="#id72" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
@@ -2972,9 +2978,9 @@ returned. It is obtained by projecting the data onto the line.</p>
 
 <div class="section" id="examples-using-skimage-measure-linemodelnd">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.measure.LineModelND</span></code><a class="headerlink" href="#examples-using-skimage-measure-linemodelnd" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="In this example we see how to robustly fit a line model to faulty data using the RANSAC (random..."><div class="figure align-default" id="id71">
+<div class="sphx-glr-thumbcontainer" tooltip="In this example we see how to robustly fit a line model to faulty data using the RANSAC (random..."><div class="figure align-default" id="id73">
 <img alt="../_images/sphx_glr_plot_ransac_thumb.png" src="../_images/sphx_glr_plot_ransac_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_ransac.html#sphx-glr-auto-examples-transform-plot-ransac-py"><span class="std std-ref">Robust line model estimation using RANSAC</span></a></span><a class="headerlink" href="#id71" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/transform/plot_ransac.html#sphx-glr-auto-examples-transform-plot-ransac-py"><span class="std std-ref">Robust line model estimation using RANSAC</span></a></span><a class="headerlink" href="#id73" title="Permalink to this image">¶</a></p>
 </div>
 </div></div>
 </div>
