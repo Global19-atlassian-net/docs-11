@@ -43,23 +43,8 @@ For an example of how to construct region boundary based RAGs, see
             :class: sphx-glr-multi-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-    /home/emma/code/scikit-image/doc/examples/segmentation/plot_boundary_merge.py:71: FutureWarning: skimage.measure.label's indexing starts from 0. In future version it will start from 1. To disable this warning, explicitely set the `start_label` parameter to 1.
-      labels = segmentation.slic(img, compactness=30, n_segments=400)
-    /home/emma/code/scikit-image/doc/examples/segmentation/plot_boundary_merge.py:86: FutureWarning: The new recommended value for bg_label is 0. Until version 0.19, the default bg_label value is -1. From version 0.19, the bg_label default value will be 0. To avoid this warning, please explicitly set bg_label value.
-      out = color.label2rgb(labels2, img, kind='avg')
 
 
-
-
-
-
-|
 
 
 .. code-block:: default
@@ -119,7 +104,7 @@ For an example of how to construct region boundary based RAGs, see
 
     img = data.coffee()
     edges = filters.sobel(color.rgb2gray(img))
-    labels = segmentation.slic(img, compactness=30, n_segments=400)
+    labels = segmentation.slic(img, compactness=30, n_segments=400, start_label=1)
     g = graph.rag_boundary(labels, edges)
 
     graph.show_rag(labels, g, img)
@@ -134,7 +119,7 @@ For an example of how to construct region boundary based RAGs, see
     plt.title('RAG after hierarchical merging')
 
     plt.figure()
-    out = color.label2rgb(labels2, img, kind='avg')
+    out = color.label2rgb(labels2, img, kind='avg', bg_label=0)
     plt.imshow(out)
     plt.title('Final segmentation')
 
@@ -143,7 +128,7 @@ For an example of how to construct region boundary based RAGs, see
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.892 seconds)
+   **Total running time of the script:** ( 0 minutes  0.851 seconds)
 
 
 .. _sphx_glr_download_auto_examples_segmentation_plot_boundary_merge.py:

@@ -25,25 +25,8 @@ placed in the same segment if and only if it is in the same segment in
     :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-    /home/emma/code/scikit-image/doc/examples/segmentation/plot_join_segmentations.py:39: FutureWarning: skimage.measure.label's indexing starts from 0. In future version it will start from 1. To disable this warning, explicitely set the `start_label` parameter to 1.
-      multichannel=False)
-    /home/emma/code/scikit-image/doc/examples/segmentation/plot_join_segmentations.py:55: FutureWarning: The new recommended value for bg_label is 0. Until version 0.19, the default bg_label value is -1. From version 0.19, the bg_label default value will be 0. To avoid this warning, please explicitly set bg_label value.
-      color2 = label2rgb(seg2, image=coins, image_alpha=0.5)
-    /home/emma/code/scikit-image/doc/examples/segmentation/plot_join_segmentations.py:59: FutureWarning: The new recommended value for bg_label is 0. Until version 0.19, the default bg_label value is -1. From version 0.19, the bg_label default value will be 0. To avoid this warning, please explicitly set bg_label value.
-      color3 = label2rgb(segj, image=coins, image_alpha=0.5)
 
 
-
-
-
-
-|
 
 
 .. code-block:: default
@@ -74,7 +57,7 @@ placed in the same segment if and only if it is in the same segment in
 
     # Make segmentation using SLIC superpixels.
     seg2 = slic(coins, n_segments=117, max_iter=160, sigma=1, compactness=0.75,
-                multichannel=False)
+                multichannel=False, start_label=0)
 
     # Combine the two.
     segj = join_segmentations(seg1, seg2)
@@ -90,11 +73,11 @@ placed in the same segment if and only if it is in the same segment in
     ax[1].imshow(color1)
     ax[1].set_title('Sobel+Watershed')
 
-    color2 = label2rgb(seg2, image=coins, image_alpha=0.5)
+    color2 = label2rgb(seg2, image=coins, image_alpha=0.5, bg_label=-1)
     ax[2].imshow(color2)
     ax[2].set_title('SLIC superpixels')
 
-    color3 = label2rgb(segj, image=coins, image_alpha=0.5)
+    color3 = label2rgb(segj, image=coins, image_alpha=0.5, bg_label=-1)
     ax[3].imshow(color3)
     ax[3].set_title('Join')
 
@@ -106,7 +89,7 @@ placed in the same segment if and only if it is in the same segment in
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.052 seconds)
+   **Total running time of the script:** ( 0 minutes  1.070 seconds)
 
 
 .. _sphx_glr_download_auto_examples_segmentation_plot_join_segmentations.py:

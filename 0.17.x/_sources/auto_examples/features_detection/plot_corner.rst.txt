@@ -25,21 +25,8 @@ subpixel position of corners ([1]_, [2]_).
     :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-    /home/emma/code/scikit-image/doc/examples/features_detection/plot_corner.py:32: FutureWarning: Until version 0.16, threshold_rel was set to 0.1 by default. Starting from version 0.16, the default value is set to None. Until version 0.18, a None value corresponds to a threshold value of 0.1. The default behavior will match skimage.feature.peak_local_max. To avoid this warning, set threshold_rel=0.
-      coords = corner_peaks(corner_harris(image), min_distance=5)
 
 
-
-
-
-
-|
 
 
 .. code-block:: default
@@ -63,7 +50,7 @@ subpixel position of corners ([1]_, [2]_).
     image[30:80, 200:250] = 1
     image[80:130, 250:300] = 1
 
-    coords = corner_peaks(corner_harris(image), min_distance=5)
+    coords = corner_peaks(corner_harris(image), min_distance=5, threshold_rel=0.02)
     coords_subpix = corner_subpix(image, coords, window_size=13)
 
     fig, ax = plt.subplots()
@@ -77,7 +64,7 @@ subpixel position of corners ([1]_, [2]_).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.108 seconds)
+   **Total running time of the script:** ( 0 minutes  0.096 seconds)
 
 
 .. _sphx_glr_download_auto_examples_features_detection_plot_corner.py:

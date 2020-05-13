@@ -42,10 +42,10 @@ mask = morphology.remove_small_holes(
 mask = morphology.opening(mask, morphology.disk(3))
 
 # SLIC result
-slic = segmentation.slic(img, n_segments=200)
+slic = segmentation.slic(img, n_segments=200, start_label=1)
 
 # maskSLIC result
-m_slic = segmentation.slic(img, n_segments=100, mask=mask)
+m_slic = segmentation.slic(img, n_segments=100, mask=mask, start_label=1)
 
 # Display result
 fig, ax_arr = plt.subplots(2, 2, sharex=True, sharey=True, figsize=(10, 10))

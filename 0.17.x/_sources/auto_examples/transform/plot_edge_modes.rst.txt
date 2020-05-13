@@ -23,29 +23,14 @@ and :py:func:`skimage.transform.resize`.
     :class: sphx-glr-single-img
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out:
-
- .. code-block:: none
-
-    /home/emma/code/scikit-image/doc/examples/transform/plot_edge_modes.py:28: FutureWarning: skimage.util.pad is deprecated and will be removed in version 0.19. Please use numpy.pad instead.
-      img_padded = pad(img, pad_width=img.shape[0], mode=mode)
 
 
-
-
-
-
-|
 
 
 .. code-block:: default
 
     import numpy as np
     import matplotlib.pyplot as plt
-
-    from skimage.util import pad
 
 
     img = np.zeros((16, 16))
@@ -60,7 +45,7 @@ and :py:func:`skimage.transform.resize`.
     ax = axes.flatten()
 
     for n, mode in enumerate(modes):
-        img_padded = pad(img, pad_width=img.shape[0], mode=mode)
+        img_padded = np.pad(img, pad_width=img.shape[0], mode=mode)
         ax[n].imshow(img_padded, cmap=plt.cm.gray)
         ax[n].plot([15.5, 15.5, 31.5, 31.5, 15.5],
                    [15.5, 31.5, 31.5, 15.5, 15.5], 'y--', linewidth=0.5)
@@ -76,7 +61,7 @@ and :py:func:`skimage.transform.resize`.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.167 seconds)
+   **Total running time of the script:** ( 0 minutes  0.156 seconds)
 
 
 .. _sphx_glr_download_auto_examples_transform_plot_edge_modes.py:
