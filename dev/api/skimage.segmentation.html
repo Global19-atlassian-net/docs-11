@@ -244,7 +244,7 @@
 <h2>active_contour<a class="headerlink" href="#active-contour" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.active_contour">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">active_contour</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">snake</em>, <em class="sig-param">alpha=0.01</em>, <em class="sig-param">beta=0.1</em>, <em class="sig-param">w_line=0</em>, <em class="sig-param">w_edge=1</em>, <em class="sig-param">gamma=0.01</em>, <em class="sig-param">bc=None</em>, <em class="sig-param">max_px_move=1.0</em>, <em class="sig-param">max_iterations=2500</em>, <em class="sig-param">convergence=0.1</em>, <em class="sig-param">*</em>, <em class="sig-param">boundary_condition='periodic'</em>, <em class="sig-param">coordinates=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/active_contour_model.py#L8"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.active_contour" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">active_contour</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">snake</em>, <em class="sig-param">alpha=0.01</em>, <em class="sig-param">beta=0.1</em>, <em class="sig-param">w_line=0</em>, <em class="sig-param">w_edge=1</em>, <em class="sig-param">gamma=0.01</em>, <em class="sig-param">max_px_move=1.0</em>, <em class="sig-param">max_iterations=2500</em>, <em class="sig-param">convergence=0.1</em>, <em class="sig-param">*</em>, <em class="sig-param">boundary_condition='periodic'</em>, <em class="sig-param">coordinates='rc'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/active_contour_model.py#L7"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.active_contour" title="Permalink to this definition">¶</a></dt>
 <dd><p>Active contour model.</p>
 <p>Active contours by fitting snakes to features of images. Supports single
 and multichannel 2D images. Snakes can be periodic (for segmentation) or
@@ -252,9 +252,9 @@ have fixed and/or free ends.
 The output snake has the same length as the input boundary.
 As the number of points is constant, make sure that the initial snake
 has enough points to capture the details of the final contour.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl>
+<dd class="field-odd"><dl class="simple">
 <dt><strong>image</strong><span class="classifier">(N, M) or (N, M, 3) ndarray</span></dt><dd><p>Input image.</p>
 </dd>
 <dt><strong>snake</strong><span class="classifier">(N, 2) ndarray</span></dt><dd><p>Initial snake coordinates. For periodic boundary conditions, endpoints
@@ -265,15 +265,13 @@ faster.</p>
 </dd>
 <dt><strong>beta</strong><span class="classifier">float, optional</span></dt><dd><p>Snake smoothness shape parameter. Higher values makes snake smoother.</p>
 </dd>
-<dt><strong>w_line</strong><span class="classifier">float, optional</span></dt><dd><p>Controls attraction to brightness. Use negative values to attract toward
-dark regions.</p>
+<dt><strong>w_line</strong><span class="classifier">float, optional</span></dt><dd><p>Controls attraction to brightness. Use negative values to attract
+toward dark regions.</p>
 </dd>
 <dt><strong>w_edge</strong><span class="classifier">float, optional</span></dt><dd><p>Controls attraction to edges. Use negative values to repel snake from
 edges.</p>
 </dd>
 <dt><strong>gamma</strong><span class="classifier">float, optional</span></dt><dd><p>Explicit time stepping parameter.</p>
-</dd>
-<dt><strong>bc</strong><span class="classifier">deprecated; use <code class="docutils literal notranslate"><span class="pre">boundary_condition</span></code></span></dt><dd><p>DEPRECATED. See <code class="docutils literal notranslate"><span class="pre">boundary_condition</span></code> below.</p>
 </dd>
 <dt><strong>max_px_move</strong><span class="classifier">float, optional</span></dt><dd><p>Maximum pixel distance to move per iteration.</p>
 </dd>
@@ -289,8 +287,10 @@ be combined by parsing ‘fixed-free’, ‘free-fixed’. Parsing
 ‘fixed-fixed’ or ‘free-free’ yields same behaviour as ‘fixed’ and
 ‘free’, respectively.</p>
 </dd>
-<dt><strong>coordinates</strong><span class="classifier">{‘rc’ or ‘xy’}, optional</span></dt><dd><p>Whether to use rc or xy coordinates. The ‘xy’ option (current default)
-will be removed in version 0.18.</p>
+<dt><strong>coordinates</strong><span class="classifier">{‘rc’}, optional</span></dt><dd><p>This option remains for compatibility purpose only and has no effect.
+It was introduced in 0.16 with the <code class="docutils literal notranslate"><span class="pre">'xy'</span></code> option, but since 0.18, 
+only the <code class="docutils literal notranslate"><span class="pre">'rc'</span></code> option is valid.
+Coordinates must be set in a row-column format.</p>
 </dd>
 </dl>
 </dd>
@@ -1228,7 +1228,7 @@ superimposed on the original image.</p>
 <h2>morphological_chan_vese<a class="headerlink" href="#morphological-chan-vese" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.morphological_chan_vese">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_chan_vese</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='checkerboard'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">lambda1=1</em>, <em class="sig-param">lambda2=1</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f8f2704e950&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L256"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_chan_vese</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='checkerboard'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">lambda1=1</em>, <em class="sig-param">lambda2=1</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f58ea78fb70&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L256"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Active Contours without Edges (MorphACWE)</p>
 <p>Active contours without edges implemented with morphological operators. It
 can be used to segment objects in images and volumes without well defined
@@ -1313,7 +1313,7 @@ Transactions on Pattern Analysis and Machine Intelligence (PAMI),
 <h2>morphological_geodesic_active_contour<a class="headerlink" href="#morphological-geodesic-active-contour" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.morphological_geodesic_active_contour">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em class="sig-param">gimage</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='circle'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">threshold='auto'</em>, <em class="sig-param">balloon=0</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f8f2704ea60&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L360"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em class="sig-param">gimage</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='circle'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">threshold='auto'</em>, <em class="sig-param">balloon=0</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt; at 0x7f58ea78fc80&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L360"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Geodesic Active Contours (MorphGAC).</p>
 <p>Geodesic active contours implemented with morphological operators. It can
 be used to segment objects with visible but noisy, cluttered, broken
