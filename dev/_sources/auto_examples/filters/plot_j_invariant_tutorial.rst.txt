@@ -49,7 +49,7 @@ Calibrating a wavelet denoiser
     _denoise_wavelet = partial(denoise_wavelet, rescale_sigma=True)
 
     image = img_as_float(chelsea())
-    sigma = 0.3
+    sigma = 0.2
     noisy = random_noise(image, var=sigma ** 2)
 
     # Parameters to test when calibrating the denoising algorithm
@@ -133,7 +133,7 @@ blue line) have the same shape and the same minimizer.
 
     from skimage.restoration.j_invariant import _invariant_denoise
 
-    sigma_range = np.arange(0.12, 0.26, 0.03)
+    sigma_range = np.arange(sigma/2, 1.5*sigma, 0.025)
 
     parameters_tested = [{'sigma': sigma, 'convert2ycbcr': True, 'wavelet': 'db2',
                           'multichannel': True}
@@ -147,7 +147,7 @@ blue line) have the same shape and the same minimizer.
     ground_truth_loss = [mse(img, image) for img in denoised_invariant]
 
     opt_idx = np.argmin(self_supervised_loss)
-    plot_idx = [0, 2, 4]
+    plot_idx = [0, opt_idx, len(sigma_range) - 1]
 
     get_inset = lambda x: x[25:225, 100:300]
 
@@ -432,7 +432,7 @@ loss shows that the TV norm denoiser is the best for this noisy image.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  11.864 seconds)
+   **Total running time of the script:** ( 0 minutes  13.279 seconds)
 
 
 .. _sphx_glr_download_auto_examples_filters_plot_j_invariant_tutorial.py:
