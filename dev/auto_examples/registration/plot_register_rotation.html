@@ -75,7 +75,12 @@
 <li><a class="reference internal" href="#">Using Polar and Log-Polar Transformations for Registration</a><ul class="nav nav-list">
 <li><a class="reference internal" href="#recover-rotation-difference-with-a-polar-transform">Recover rotation difference with a polar transform</a></li>
 <li><a class="reference internal" href="#recover-rotation-and-scaling-differences-with-log-polar-transform">Recover rotation and scaling differences with log-polar transform</a></li>
-<li><a class="reference internal" href="#register-rotation-and-scaling-on-a-translated-image">Register rotation and scaling on a translated image</a></li>
+<li><a class="reference internal" href="#register-rotation-and-scaling-on-a-translated-image-part-1">Register rotation and scaling on a translated image - Part 1</a></li>
+<li><a class="reference internal" href="#register-rotation-and-scaling-on-a-translated-image-part-2">Register rotation and scaling on a translated image - Part 2</a></li>
+<li><a class="reference internal" href="#some-notes-on-this-approach">Some notes on this approach</a><ul class="nav nav-list">
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -232,8 +237,8 @@ Recovered value for scaling difference: 2.1981889915232165
 </pre></div>
 </div>
 </div>
-<div class="section" id="register-rotation-and-scaling-on-a-translated-image">
-<h2>Register rotation and scaling on a translated image<a class="headerlink" href="#register-rotation-and-scaling-on-a-translated-image" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="register-rotation-and-scaling-on-a-translated-image-part-1">
+<h2>Register rotation and scaling on a translated image - Part 1<a class="headerlink" href="#register-rotation-and-scaling-on-a-translated-image-part-1" title="Permalink to this headline">¶</a></h2>
 <p>The above examples only work when the images to be registered share a
 center. However, it is more often the case that there is also a translation
 component to the difference between two images to be registered. One
@@ -242,11 +247,7 @@ for rotation and scaling, then solve for translation. It is possible to
 resolve rotation and scaling differences for translated images by working on
 the magnitude spectra of the Fourier-transformed images.</p>
 <p>In this next example, we first show how the above approaches fail when two
-images differ by rotation, scaling, and translation. We next show how
-rotation and scaling differences, but not translation differences, are
-apparent in the frequency magnitude spectra of the images. These differences
-can be recovered by treating the magnitude spectra as images themselves, and
-applying the same log-polar + phase correlation approach taken above.</p>
+images differ by rotation, scaling, and translation.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.color</span> <span class="kn">import</span> <a href="../../api/skimage.color.html#skimage.color.rgb2gray" title="skimage.color.rgb2gray" class="sphx-glr-backref-module-skimage-color sphx-glr-backref-type-py-function"><span class="n">rgb2gray</span></a>
 <span class="kn">from</span> <span class="nn">skimage.filters</span> <span class="kn">import</span> <a href="../../api/skimage.filters.html#skimage.filters.window" title="skimage.filters.window" class="sphx-glr-backref-module-skimage-filters sphx-glr-backref-type-py-function"><span class="n">window</span></a><span class="p">,</span> <a href="../../api/skimage.filters.html#skimage.filters.difference_of_gaussians" title="skimage.filters.difference_of_gaussians" class="sphx-glr-backref-module-skimage-filters sphx-glr-backref-type-py-function"><span class="n">difference_of_gaussians</span></a>
 <span class="kn">from</span> <span class="nn">scipy.fftpack</span> <span class="kn">import</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.fft2.html#scipy.fftpack.fft2" title="scipy.fftpack.fft2" class="sphx-glr-backref-module-scipy-fftpack sphx-glr-backref-type-py-function"><span class="n">fft2</span></a><span class="p">,</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.fftpack.fftshift.html#scipy.fftpack.fftshift" title="scipy.fftpack.fftshift" class="sphx-glr-backref-module-scipy-fftpack sphx-glr-backref-type-py-function"><span class="n">fftshift</span></a>
@@ -291,9 +292,26 @@ applying the same log-polar + phase correlation approach taken above.</p>
 <span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected value for scaling difference: </span><span class="si">{</span><a href="https://docs.python.org/3.7/library/functions.html#float" title="builtins.float" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">scale</span></a><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recovered value for scaling difference: </span><span class="si">{</span><span class="n">shift_scale</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="log-polar-based registration fails when no shared center, Original Image, Modified Image, Log-Polar-Transformed Original, Log-Polar-Transformed Modified" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_register_rotation_003.png" />
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Expected value for cc rotation in degrees: 24
+Recovered value for cc rotation: -167.65
 
-<span class="c1"># Now try working in frequency domain</span>
-<span class="c1"># First, band-pass filter both images</span>
+Expected value for scaling difference: 1.4
+Recovered value for scaling difference: 25.110458986143573
+</pre></div>
+</div>
+</div>
+<div class="section" id="register-rotation-and-scaling-on-a-translated-image-part-2">
+<h2>Register rotation and scaling on a translated image - Part 2<a class="headerlink" href="#register-rotation-and-scaling-on-a-translated-image-part-2" title="Permalink to this headline">¶</a></h2>
+<p>We next show how rotation and scaling differences, but not translation
+differences, are apparent in the frequency magnitude spectra of the images.
+These differences can be recovered by treating the magnitude spectra as
+images themselves, and applying the same log-polar + phase correlation
+approach taken above.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, band-pass filter both images</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">image</span></a> <span class="o">=</span> <a href="../../api/skimage.filters.html#skimage.filters.difference_of_gaussians" title="skimage.filters.difference_of_gaussians" class="sphx-glr-backref-module-skimage-filters sphx-glr-backref-type-py-function"><span class="n">difference_of_gaussians</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">image</span></a><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rts_image</span></a> <span class="o">=</span> <a href="../../api/skimage.filters.html#skimage.filters.difference_of_gaussians" title="skimage.filters.difference_of_gaussians" class="sphx-glr-backref-module-skimage-filters sphx-glr-backref-type-py-function"><span class="n">difference_of_gaussians</span></a><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">rts_image</span></a><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 
@@ -350,26 +368,53 @@ applying the same log-polar + phase correlation approach taken above.</p>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Recovered value for scaling difference: </span><span class="si">{</span><span class="n">shift_scale</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<ul class="sphx-glr-horizontal">
-<li><img alt="log-polar-based registration fails when no shared center, Original Image, Modified Image, Log-Polar-Transformed Original, Log-Polar-Transformed Modified" class="sphx-glr-multi-img" src="../../_images/sphx_glr_plot_register_rotation_003.png" />
-</li>
-<li><img alt="Working in frequency domain can recover rotation and scaling, Original Image FFT (magnitude; zoomed), Modified Image FFT (magnitude; zoomed), Log-Polar-Transformed Original FFT, Log-Polar-Transformed Modified FFT" class="sphx-glr-multi-img" src="../../_images/sphx_glr_plot_register_rotation_004.png" />
-</li>
-</ul>
+<img alt="Working in frequency domain can recover rotation and scaling, Original Image FFT (magnitude; zoomed), Modified Image FFT (magnitude; zoomed), Log-Polar-Transformed Original FFT, Log-Polar-Transformed Modified FFT" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_register_rotation_004.png" />
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Expected value for cc rotation in degrees: 24
-Recovered value for cc rotation: -167.65
-
-Expected value for scaling difference: 1.4
-Recovered value for scaling difference: 25.110458986143573
-Expected value for cc rotation in degrees: 24
 Recovered value for cc rotation: 23.753366406803682
 
 Expected value for scaling difference: 1.4
 Recovered value for scaling difference: 1.3901762721757436
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  8.853 seconds)</p>
+</div>
+<div class="section" id="some-notes-on-this-approach">
+<h2>Some notes on this approach<a class="headerlink" href="#some-notes-on-this-approach" title="Permalink to this headline">¶</a></h2>
+<p>It should be noted that this approach relies on a couple of parameters
+that have to be chosen ahead of time, and for which there are no clearly
+optimal choices:</p>
+<p>1. The images should have some degree of bandpass filtering
+applied, particularly to remove high frequencies, and different choices here
+may impact outcome. The bandpass filter also complicates matters because,
+since the images to be registered will differ in scale and these scale
+differences are unknown, any bandpass filter will necessarily attenuate
+different features between the images. For example, the log-polar transformed
+magnitude spectra don’t really look “alike” in the last example here. Yet if
+you look closely, there are some common patterns in those spectra, and they
+do end up aligning well by phase correlation as demonstrated.</p>
+<p>2. Images must be windowed using windows with circular symmetry, to remove
+the spectral leakage coming from image borders. There is no clearly optimal
+choice of window.</p>
+<p>Finally, we note that large changes in scale will dramatically alter the
+magnitude spectra, especially since a big change in scale will usually be
+accompanied by some cropping and loss of information content. The literature
+advises staying within 1.8-2x scale change <a class="footnote-reference brackets" href="#id3" id="id1">1</a> <a class="footnote-reference brackets" href="#id4" id="id2">2</a>. This is fine for most
+biological imaging applications.</p>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>B.S. Reddy and B.N. Chatterji. An FFT-based technique for translation,
+rotation and scale- invariant image registration. IEEE Trans. Image
+Processing, 5(8):1266–1271, 1996. <a class="reference external" href="https://doi.org/10.1109/83.506761">DOI:10.1109/83.506761</a></p>
+</dd>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Tzimiropoulos, Georgios, and Tania Stathaki. “Robust FFT-based
+scale-invariant image registration.” In 4th SEAS DTC Technical
+Conference. 2009. <a class="reference external" href="https://doi.org/10.1109/TPAMI.2010.107">DOI:10.1109/TPAMI.2010.107</a></p>
+</dd>
+</dl>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  10.191 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-registration-plot-register-rotation-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-image/scikit-image/master?filepath=notebooks/auto_examples/registration/plot_register_rotation.ipynb"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg" width="150px" /></a>
@@ -382,6 +427,7 @@ Recovered value for scaling difference: 1.3901762721757436
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
 </div>
 </div>
 

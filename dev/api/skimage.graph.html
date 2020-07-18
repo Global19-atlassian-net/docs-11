@@ -208,7 +208,7 @@ MCP_Geometric class).</p>
 <span class="go">       [30, 31, 32, 33, 34, 35]])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="c1"># Find the path with lowest cost</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="n">route_through_array</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">indices</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">path</span>
@@ -430,7 +430,7 @@ deal with the found edges in a way that is appropriate for the
 application.</p>
 <dl class="method">
 <dt id="skimage.graph.MCP_Connect.__init__">
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">self</em>, <em class="sig-param">/</em>, <em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.graph.MCP_Connect.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.graph.MCP_Connect.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
 </dd></dl>
 
@@ -487,7 +487,7 @@ MCP class.</p>
 
 <dl class="method">
 <dt id="skimage.graph.MCP_Flexible.examine_neighbor">
-<code class="sig-name descname">examine_neighbor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skimage.graph.MCP_Flexible.examine_neighbor" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">examine_neighbor</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">new_index</em>, <em class="sig-param">offset_length</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.graph.MCP_Flexible.examine_neighbor" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method is called once for every pair of neighboring nodes,
 as soon as both nodes are frozen.</p>
 <p>This method can be overloaded to obtain information about
@@ -498,7 +498,7 @@ for meeting fronts using this hook.</p>
 
 <dl class="method">
 <dt id="skimage.graph.MCP_Flexible.travel_cost">
-<code class="sig-name descname">travel_cost</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skimage.graph.MCP_Flexible.travel_cost" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">travel_cost</code><span class="sig-paren">(</span><em class="sig-param">old_cost</em>, <em class="sig-param">new_cost</em>, <em class="sig-param">offset_length</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.graph.MCP_Flexible.travel_cost" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method calculates the travel cost for going from the
 current node to the next. The default implementation returns
 new_cost. Overload this method to adapt the behaviour of the
@@ -507,7 +507,7 @@ algorithm.</p>
 
 <dl class="method">
 <dt id="skimage.graph.MCP_Flexible.update_node">
-<code class="sig-name descname">update_node</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#skimage.graph.MCP_Flexible.update_node" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">update_node</code><span class="sig-paren">(</span><em class="sig-param">index</em>, <em class="sig-param">new_index</em>, <em class="sig-param">offset_length</em><span class="sig-paren">)</span><a class="headerlink" href="#skimage.graph.MCP_Flexible.update_node" title="Permalink to this definition">¶</a></dt>
 <dd><p>This method is called when a node is updated, right after
 new_index is pushed onto the heap and the traceback map is
 updated.</p>
