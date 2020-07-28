@@ -147,13 +147,13 @@ Refer to the <a class="reference internal" href="gitwash/index.html"><span class
 </ul>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#development-process" id="id2">Development process</a></p></li>
-<li><p><a class="reference internal" href="#divergence-between-upstream-master-and-your-feature-branch" id="id3">Divergence between <code class="docutils literal notranslate"><span class="pre">upstream</span> <span class="pre">master</span></code> and your feature branch</a></p></li>
-<li><p><a class="reference internal" href="#build-environment-setup" id="id4">Build environment setup</a></p></li>
+<li><p><a class="reference internal" href="#development-process" id="id4">Development process</a></p></li>
+<li><p><a class="reference internal" href="#divergence-between-upstream-master-and-your-feature-branch" id="id5">Divergence between <code class="docutils literal notranslate"><span class="pre">upstream</span> <span class="pre">master</span></code> and your feature branch</a></p></li>
+<li><p><a class="reference internal" href="#build-environment-setup" id="id6">Build environment setup</a></p></li>
 </ul>
 </div>
 <div class="section" id="development-process">
-<h2><a class="toc-backref" href="#id2">Development process</a><a class="headerlink" href="#development-process" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Development process</a><a class="headerlink" href="#development-process" title="Permalink to this headline">¶</a></h2>
 <p>Here’s the long and short of it:</p>
 <ol class="arabic">
 <li><p>If you are a first-time contributor:</p>
@@ -217,8 +217,7 @@ to ask for review.</p></li>
 </ul>
 </li>
 </ol>
-<p>For a more detailed discussion, read these <a class="reference internal" href="gitwash/index.html"><span class="doc">detailed documents</span></a> on how to use Git with <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code>
-(<a class="reference external" href="https://scikit-image.org/docs/dev/gitwash/index.html">https://scikit-image.org/docs/dev/gitwash/index.html</a>).</p>
+<p>For a more detailed discussion, read these <a class="reference internal" href="gitwash/index.html"><span class="doc">detailed documents</span></a> on how to use Git with <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code> (<a class="reference internal" href="gitwash/index.html#using-git"><span class="std std-ref">Working with scikit-image source code</span></a>).</p>
 <ol class="arabic" start="4">
 <li><p>Review process:</p>
 <ul class="simple">
@@ -258,7 +257,7 @@ bug, also add “Closes #123” where 123 is the issue number.</p>
 </div>
 </div>
 <div class="section" id="divergence-between-upstream-master-and-your-feature-branch">
-<h2><a class="toc-backref" href="#id3">Divergence between <code class="docutils literal notranslate"><span class="pre">upstream</span> <span class="pre">master</span></code> and your feature branch</a><a class="headerlink" href="#divergence-between-upstream-master-and-your-feature-branch" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Divergence between <code class="docutils literal notranslate"><span class="pre">upstream</span> <span class="pre">master</span></code> and your feature branch</a><a class="headerlink" href="#divergence-between-upstream-master-and-your-feature-branch" title="Permalink to this headline">¶</a></h2>
 <p>If GitHub indicates that the branch of your Pull Request can no longer
 be merged automatically, merge the master branch into yours:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">fetch</span> <span class="n">upstream</span> <span class="n">master</span>
@@ -305,7 +304,7 @@ but we squash and merge most PRs either way.</p>
 </div>
 </div>
 <div class="section" id="build-environment-setup">
-<h2><a class="toc-backref" href="#id4">Build environment setup</a><a class="headerlink" href="#build-environment-setup" title="Permalink to this headline">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">Build environment setup</a><a class="headerlink" href="#build-environment-setup" title="Permalink to this headline">¶</a></h2>
 <p>Once you’ve cloned your fork of the scikit-image repository,
 you should set up a Python development environment tailored for scikit-image.
 You may choose the environment manager of your choice.
@@ -355,13 +354,13 @@ pytest skimage
 <li><p>All code should have tests (see <a class="reference internal" href="#test-coverage">test coverage</a> below for more details).</p></li>
 <li><p>All code should be documented, to the same
 <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard">standard</a> as NumPy and SciPy.</p></li>
-<li><p>For new functionality, always add an example to the gallery.</p></li>
+<li><p>For new functionality, always add an example to the gallery (see
+<a class="reference internal" href="#id2"><span class="std std-ref">Sphinx-Gallery</span></a> below for more details).</p></li>
 <li><p>No changes are ever committed without review and approval by two core
 team members.  Ask on the
 <a class="reference external" href="https://mail.python.org/mailman3/lists/scikit-image.python.org/">mailing list</a> if
 you get no response to your pull request.
 <strong>Never merge your own pull request.</strong></p></li>
-<li><p>Examples in the gallery should have a maximum figure width of 8 inches.</p></li>
 </ul>
 </div>
 <div class="section" id="stylistic-guidelines">
@@ -494,14 +493,30 @@ make html
 </div>
 <div class="section" id="requirements">
 <h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> and LaTeX are needed to build
-the documentation.</p>
+<p><a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx</a>,
+<a class="reference external" href="https://sphinx-gallery.github.io">Sphinx-Gallery</a>,
+and LaTeX are needed to build the documentation.</p>
 <p><strong>Sphinx:</strong></p>
 <p>Sphinx and other python packages needed to build the documentation
 can be installed using: <code class="docutils literal notranslate"><span class="pre">scikit-image/requirements/docs.txt</span></code> file.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip install -r requirements/docs.txt
 </pre></div>
 </div>
+<p id="id2"><strong>Sphinx-Gallery:</strong></p>
+<p>The above install command includes the installation of
+<a class="reference external" href="https://sphinx-gallery.github.io">Sphinx-Gallery</a>, which we use to create
+the <a class="reference internal" href="auto_examples/index.html#examples-gallery"><span class="std std-ref">General examples</span></a>.
+Refer to the Sphinx-Gallery documentation for complete instructions on syntax and usage.</p>
+<p>If you are contributing an example to the gallery or editing an existing one,
+build the docs (see above) and open a web browser to check how your edits
+render at <code class="docutils literal notranslate"><span class="pre">scikit-image/doc/build/html/auto_examples/</span></code>: navigate to the file
+you have added or changed.</p>
+<p>When adding an example, visit also
+<code class="docutils literal notranslate"><span class="pre">scikit-image/doc/build/html/auto_examples/index.html</span></code> to check how the new
+thumbnail renders on the gallery’s homepage. To change the thumbnail image,
+please refer to <a class="reference external" href="https://sphinx-gallery.github.io/stable/configuration.html#choosing-thumbnail">this section</a>
+of the Sphinx-Gallery docs.</p>
+<p>Note that gallery examples should have a maximum figure width of 8 inches.</p>
 <p><strong>LaTeX Ubuntu:</strong></p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo apt-get install -qq texlive texlive-latex-extra dvipng
 </pre></div>
