@@ -295,7 +295,7 @@ be combined by parsing ‘fixed-free’, ‘free-fixed’. Parsing
 ‘free’, respectively.</p>
 </dd>
 <dt><strong>coordinates</strong><span class="classifier">{‘rc’}, optional</span></dt><dd><p>This option remains for compatibility purpose only and has no effect.
-It was introduced in 0.16 with the <code class="docutils literal notranslate"><span class="pre">'xy'</span></code> option, but since 0.18, 
+It was introduced in 0.16 with the <code class="docutils literal notranslate"><span class="pre">'xy'</span></code> option, but since 0.18,
 only the <code class="docutils literal notranslate"><span class="pre">'rc'</span></code> option is valid.
 Coordinates must be set in a row-column format.</p>
 </dd>
@@ -591,7 +591,7 @@ that touch the outside of the image are removed.</p>
 <dt><strong>in_place</strong><span class="classifier">bool, optional</span></dt><dd><p>Whether or not to manipulate the labels array in-place.</p>
 </dd>
 <dt><strong>mask</strong><span class="classifier">ndarray of bool, same shape as <em class="xref py py-obj">image</em>, optional.</span></dt><dd><p>Image data mask. Objects in labels image overlapping with
-False pixels of mask will be removed. If defined, the 
+False pixels of mask will be removed. If defined, the
 argument buffer_size will be ignored.</p>
 </dd>
 </dl>
@@ -685,13 +685,13 @@ smallest image dimension.</p>
 <dt id="skimage.segmentation.expand_labels">
 <code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">expand_labels</code><span class="sig-paren">(</span><em class="sig-param">label_image</em>, <em class="sig-param">distance=1</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/_expand_labels.py#L16-L106"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.expand_labels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Expand labels in label image by <code class="docutils literal notranslate"><span class="pre">distance</span></code> pixels without overlapping.</p>
-<p>Given a label image, <code class="docutils literal notranslate"><span class="pre">expand_labels</span></code> grows label regions (connected components) 
+<p>Given a label image, <code class="docutils literal notranslate"><span class="pre">expand_labels</span></code> grows label regions (connected components)
 outwards by up to <code class="docutils literal notranslate"><span class="pre">distance</span></code> pixels without overflowing into neighboring regions.
 More specifically, each background pixel that is within Euclidean distance
 of &lt;= <code class="docutils literal notranslate"><span class="pre">distance</span></code> pixels of a connected component is assigned the label of that
 connected component.
-Where multiple connected components are within <code class="docutils literal notranslate"><span class="pre">distance</span></code> pixels of a background 
-pixel, the label value of the closest connected component will be assigned (see 
+Where multiple connected components are within <code class="docutils literal notranslate"><span class="pre">distance</span></code> pixels of a background
+pixel, the label value of the closest connected component will be assigned (see
 Notes for the case of multiple labels at equal distance).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1328,7 +1328,7 @@ superimposed on the original image.</p>
 <h2>morphological_chan_vese<a class="headerlink" href="#morphological-chan-vese" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.morphological_chan_vese">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_chan_vese</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='checkerboard'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">lambda1=1</em>, <em class="sig-param">lambda2=1</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L256-L357"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_chan_vese</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='checkerboard'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">lambda1=1</em>, <em class="sig-param">lambda2=1</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L256-L356"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_chan_vese" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Active Contours without Edges (MorphACWE)</p>
 <p>Active contours without edges implemented with morphological operators. It
 can be used to segment objects in images and volumes without well defined
@@ -1413,7 +1413,7 @@ Transactions on Pattern Analysis and Machine Intelligence (PAMI),
 <h2>morphological_geodesic_active_contour<a class="headerlink" href="#morphological-geodesic-active-contour" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.morphological_geodesic_active_contour">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em class="sig-param">gimage</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='circle'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">threshold='auto'</em>, <em class="sig-param">balloon=0</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L360-L484"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">morphological_geodesic_active_contour</code><span class="sig-paren">(</span><em class="sig-param">gimage</em>, <em class="sig-param">iterations</em>, <em class="sig-param">init_level_set='circle'</em>, <em class="sig-param">smoothing=1</em>, <em class="sig-param">threshold='auto'</em>, <em class="sig-param">balloon=0</em>, <em class="sig-param">iter_callback=&lt;function &lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/morphsnakes.py#L359-L482"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.morphological_geodesic_active_contour" title="Permalink to this definition">¶</a></dt>
 <dd><p>Morphological Geodesic Active Contours (MorphGAC).</p>
 <p>Geodesic active contours implemented with morphological operators. It can
 be used to segment objects with visible but noisy, cluttered, broken
@@ -1573,7 +1573,7 @@ European Conference on Computer Vision, 2008</p>
 <h2>random_walker<a class="headerlink" href="#random-walker" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.segmentation.random_walker">
-<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">random_walker</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">labels</em>, <em class="sig-param">beta=130</em>, <em class="sig-param">mode='cg_j'</em>, <em class="sig-param">tol=0.001</em>, <em class="sig-param">copy=True</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">return_full_prob=False</em>, <em class="sig-param">spacing=None</em>, <em class="sig-param">*</em>, <em class="sig-param">prob_tol=0.001</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/random_walker_segmentation.py#L266-L515"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.random_walker" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.segmentation.</code><code class="sig-name descname">random_walker</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">labels</em>, <em class="sig-param">beta=130</em>, <em class="sig-param">mode='cg_j'</em>, <em class="sig-param">tol=0.001</em>, <em class="sig-param">copy=True</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">return_full_prob=False</em>, <em class="sig-param">spacing=None</em>, <em class="sig-param">*</em>, <em class="sig-param">prob_tol=0.001</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/segmentation/random_walker_segmentation.py#L266-L514"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.segmentation.random_walker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Random walker algorithm for segmentation from markers.</p>
 <p>Random walker algorithm is implemented for gray-level or multichannel
 images.</p>
@@ -2149,21 +2149,18 @@ separate overlapping spheres.</p>
 </body>
 </html>
 
-
 <!-- Matomo -->
 <script type="text/javascript">
-  var _paq = window._paq || [];
+  var _paq = window._paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-  _paq.push(["setCookieDomain", "*.scikit-image.org"]);
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
   (function() {
-    var u="https://scikit-image.matomo.cloud/";
+    var u="https://scikitimage.matomo.cloud/";
     _paq.push(['setTrackerUrl', u+'matomo.php']);
     _paq.push(['setSiteId', '1']);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src='//cdn.matomo.cloud/scikit-image.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+    g.type='text/javascript'; g.async=true; g.src='//cdn.matomo.cloud/scikitimage.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
 <!-- End Matomo Code -->

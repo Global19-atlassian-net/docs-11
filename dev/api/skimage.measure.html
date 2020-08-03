@@ -741,7 +741,7 @@ Lawrence Berkeley National Laboratory (University of California),
 <h2>marching_cubes<a class="headerlink" href="#marching-cubes" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.marching_cubes">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">marching_cubes</code><span class="sig-paren">(</span><em class="sig-param">volume</em>, <em class="sig-param">level=None</em>, <em class="sig-param">*</em>, <em class="sig-param">spacing=(1.0</em>, <em class="sig-param">1.0</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">gradient_direction='descent'</em>, <em class="sig-param">step_size=1</em>, <em class="sig-param">allow_degenerate=True</em>, <em class="sig-param">method='lewiner'</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_lewiner.py#L11-L146"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.marching_cubes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">marching_cubes</code><span class="sig-paren">(</span><em class="sig-param">volume</em>, <em class="sig-param">level=None</em>, <em class="sig-param">*</em>, <em class="sig-param">spacing=(1.0</em>, <em class="sig-param">1.0</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">gradient_direction='descent'</em>, <em class="sig-param">step_size=1</em>, <em class="sig-param">allow_degenerate=True</em>, <em class="sig-param">method='lewiner'</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_lewiner.py#L11-L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.marching_cubes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Marching cubes algorithm to find surfaces in 3d volumetric data.</p>
 <p>In contrast with Lorensen et al. approach <a class="reference internal" href="#rcddcc8f5d58b-2" id="id8">[2]</a>, Lewiner et
 al. algorithm is faster, resolves ambiguities, and guarantees
@@ -841,6 +841,9 @@ named <em class="xref py py-obj">myvolume</em> about the level 0.0, using the <c
 <span class="go">&gt;&gt; vv.use().Run()</span>
 </pre></div>
 </div>
+<p>To reduce the number of triangles in the mesh for better performance,
+see this <a class="reference external" href="https://docs.enthought.com/mayavi/mayavi/auto/example_julia_set_decimation.html#example-julia-set-decimation">example</a>
+using the <code class="docutils literal notranslate"><span class="pre">mayavi</span></code> package.</p>
 <p class="rubric">References</p>
 <dl class="citation">
 <dt class="label" id="rcddcc8f5d58b-1"><span class="brackets"><a class="fn-backref" href="#id9">1</a></span></dt>
@@ -969,7 +972,7 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 <h2>marching_cubes_lewiner<a class="headerlink" href="#marching-cubes-lewiner" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.marching_cubes_lewiner">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">marching_cubes_lewiner</code><span class="sig-paren">(</span><em class="sig-param">volume</em>, <em class="sig-param">level=None</em>, <em class="sig-param">spacing=(1.0</em>, <em class="sig-param">1.0</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">gradient_direction='descent'</em>, <em class="sig-param">step_size=1</em>, <em class="sig-param">allow_degenerate=True</em>, <em class="sig-param">use_classic=False</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_lewiner.py#L149-L268"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.marching_cubes_lewiner" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">marching_cubes_lewiner</code><span class="sig-paren">(</span><em class="sig-param">volume</em>, <em class="sig-param">level=None</em>, <em class="sig-param">spacing=(1.0</em>, <em class="sig-param">1.0</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">gradient_direction='descent'</em>, <em class="sig-param">step_size=1</em>, <em class="sig-param">allow_degenerate=True</em>, <em class="sig-param">use_classic=False</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_lewiner.py#L154-L273"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.marching_cubes_lewiner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lewiner marching cubes algorithm to find surfaces in 3d volumetric data.</p>
 <p>In contrast to <code class="docutils literal notranslate"><span class="pre">marching_cubes_classic()</span></code>, this algorithm is faster,
 resolves ambiguities, and guarantees topologically correct results.
@@ -1948,7 +1951,7 @@ subtracted by number of holes (8-connectivity).</p>
 <dt><strong>extent</strong><span class="classifier">float</span></dt><dd><p>Ratio of pixels in the region to pixels in the total bounding box.
 Computed as <code class="docutils literal notranslate"><span class="pre">area</span> <span class="pre">/</span> <span class="pre">(rows</span> <span class="pre">*</span> <span class="pre">cols)</span></code></p>
 </dd>
-<dt><strong>feret_diameter</strong><span class="classifier">float</span></dt><dd><p>Maximum Feret’s diameter computed as the longest distance between
+<dt><strong>feret_diameter_max</strong><span class="classifier">float</span></dt><dd><p>Maximum Feret’s diameter computed as the longest distance between
 points around a region’s convex hull contour as determined by
 <code class="docutils literal notranslate"><span class="pre">find_contours</span></code>. <a class="reference internal" href="#r4a29d8446b4f-5" id="id38">[5]</a></p>
 </dd>
@@ -2779,21 +2782,18 @@ returned. It is obtained by projecting the data onto the line.</p>
 </body>
 </html>
 
-
 <!-- Matomo -->
 <script type="text/javascript">
-  var _paq = window._paq || [];
+  var _paq = window._paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
-  _paq.push(["setCookieDomain", "*.scikit-image.org"]);
   _paq.push(['trackPageView']);
   _paq.push(['enableLinkTracking']);
   (function() {
-    var u="https://scikit-image.matomo.cloud/";
+    var u="https://scikitimage.matomo.cloud/";
     _paq.push(['setTrackerUrl', u+'matomo.php']);
     _paq.push(['setSiteId', '1']);
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.type='text/javascript'; g.async=true; g.defer=true; g.src='//cdn.matomo.cloud/scikit-image.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+    g.type='text/javascript'; g.async=true; g.src='//cdn.matomo.cloud/scikitimage.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
 <!-- End Matomo Code -->
