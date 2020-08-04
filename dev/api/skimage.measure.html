@@ -741,7 +741,7 @@ Lawrence Berkeley National Laboratory (University of California),
 <h2>marching_cubes<a class="headerlink" href="#marching-cubes" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.marching_cubes">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">marching_cubes</code><span class="sig-paren">(</span><em class="sig-param">volume</em>, <em class="sig-param">level=None</em>, <em class="sig-param">*</em>, <em class="sig-param">spacing=(1.0</em>, <em class="sig-param">1.0</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">gradient_direction='descent'</em>, <em class="sig-param">step_size=1</em>, <em class="sig-param">allow_degenerate=True</em>, <em class="sig-param">method='lewiner'</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_lewiner.py#L11-L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.marching_cubes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">marching_cubes</code><span class="sig-paren">(</span><em class="sig-param">volume</em>, <em class="sig-param">level=None</em>, <em class="sig-param">*</em>, <em class="sig-param">spacing=(1.0</em>, <em class="sig-param">1.0</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">gradient_direction='descent'</em>, <em class="sig-param">step_size=1</em>, <em class="sig-param">allow_degenerate=True</em>, <em class="sig-param">method='lewiner'</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_lewiner.py#L11-L153"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.marching_cubes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Marching cubes algorithm to find surfaces in 3d volumetric data.</p>
 <p>In contrast with Lorensen et al. approach <a class="reference internal" href="#rcddcc8f5d58b-2" id="id8">[2]</a>, Lewiner et
 al. algorithm is faster, resolves ambiguities, and guarantees
@@ -790,7 +790,9 @@ surfaces that do not end at the border of the cube.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>verts</strong><span class="classifier">(V, 3) array</span></dt><dd><p>Spatial coordinates for V unique mesh vertices. Coordinate order
-matches input <em class="xref py py-obj">volume</em> (M, N, P).</p>
+matches input <em class="xref py py-obj">volume</em> (M, N, P). If <code class="docutils literal notranslate"><span class="pre">allow_degenerate</span></code> is set to
+True, then the presence of degenerate triangles in the mesh can make
+this array have duplicate vertices.</p>
 </dd>
 <dt><strong>faces</strong><span class="classifier">(F, 3) array</span></dt><dd><p>Define triangular faces via referencing vertex indices from <code class="docutils literal notranslate"><span class="pre">verts</span></code>.
 This algorithm specifically outputs triangles, so each face has
@@ -874,7 +876,7 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 <h2>marching_cubes_classic<a class="headerlink" href="#marching-cubes-classic" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.marching_cubes_classic">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">marching_cubes_classic</code><span class="sig-paren">(</span><em class="sig-param">volume</em>, <em class="sig-param">level=None</em>, <em class="sig-param">spacing=(1.0</em>, <em class="sig-param">1.0</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">gradient_direction='descent'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_classic.py#L7-L109"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.marching_cubes_classic" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">marching_cubes_classic</code><span class="sig-paren">(</span><em class="sig-param">volume</em>, <em class="sig-param">level=None</em>, <em class="sig-param">spacing=(1.0</em>, <em class="sig-param">1.0</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">gradient_direction='descent'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_classic.py#L7-L111"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.marching_cubes_classic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Classic marching cubes algorithm to find surfaces in 3d volumetric data.</p>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">marching_cubes()</span></code> algorithm is recommended over
 this algorithm, because it’s faster and produces better results.</p>
@@ -900,7 +902,9 @@ The two options are:
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>verts</strong><span class="classifier">(V, 3) array</span></dt><dd><p>Spatial coordinates for V unique mesh vertices. Coordinate order
-matches input <em class="xref py py-obj">volume</em> (M, N, P).</p>
+matches input <em class="xref py py-obj">volume</em> (M, N, P). If <code class="docutils literal notranslate"><span class="pre">allow_degenerate</span></code> is set to
+True, then the presence of degenerate triangles in the mesh can make
+this array have duplicate vertices.</p>
 </dd>
 <dt><strong>faces</strong><span class="classifier">(F, 3) array</span></dt><dd><p>Define triangular faces via referencing vertex indices from <code class="docutils literal notranslate"><span class="pre">verts</span></code>.
 This algorithm specifically outputs triangles, so each face has
@@ -972,7 +976,7 @@ Resolution 3D Surface Construction Algorithm. Computer Graphics
 <h2>marching_cubes_lewiner<a class="headerlink" href="#marching-cubes-lewiner" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.marching_cubes_lewiner">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">marching_cubes_lewiner</code><span class="sig-paren">(</span><em class="sig-param">volume</em>, <em class="sig-param">level=None</em>, <em class="sig-param">spacing=(1.0</em>, <em class="sig-param">1.0</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">gradient_direction='descent'</em>, <em class="sig-param">step_size=1</em>, <em class="sig-param">allow_degenerate=True</em>, <em class="sig-param">use_classic=False</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_lewiner.py#L154-L273"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.marching_cubes_lewiner" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">marching_cubes_lewiner</code><span class="sig-paren">(</span><em class="sig-param">volume</em>, <em class="sig-param">level=None</em>, <em class="sig-param">spacing=(1.0</em>, <em class="sig-param">1.0</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">gradient_direction='descent'</em>, <em class="sig-param">step_size=1</em>, <em class="sig-param">allow_degenerate=True</em>, <em class="sig-param">use_classic=False</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_lewiner.py#L156-L277"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.marching_cubes_lewiner" title="Permalink to this definition">¶</a></dt>
 <dd><p>Lewiner marching cubes algorithm to find surfaces in 3d volumetric data.</p>
 <p>In contrast to <code class="docutils literal notranslate"><span class="pre">marching_cubes_classic()</span></code>, this algorithm is faster,
 resolves ambiguities, and guarantees topologically correct results.
@@ -1023,7 +1027,9 @@ surfaces that do not end at the border of the cube.</p>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
 <dt><strong>verts</strong><span class="classifier">(V, 3) array</span></dt><dd><p>Spatial coordinates for V unique mesh vertices. Coordinate order
-matches input <em class="xref py py-obj">volume</em> (M, N, P).</p>
+matches input <em class="xref py py-obj">volume</em> (M, N, P). If <code class="docutils literal notranslate"><span class="pre">allow_degenerate</span></code> is set to
+True, then the presence of degenerate triangles in the mesh can make
+this array have duplicate vertices.</p>
 </dd>
 <dt><strong>faces</strong><span class="classifier">(F, 3) array</span></dt><dd><p>Define triangular faces via referencing vertex indices from <code class="docutils literal notranslate"><span class="pre">verts</span></code>.
 This algorithm specifically outputs triangles, so each face has
@@ -1089,7 +1095,7 @@ pp. 1-15 (december 2003).
 <h2>mesh_surface_area<a class="headerlink" href="#mesh-surface-area" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.mesh_surface_area">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">mesh_surface_area</code><span class="sig-paren">(</span><em class="sig-param">verts</em>, <em class="sig-param">faces</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_classic.py#L155-L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.mesh_surface_area" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">mesh_surface_area</code><span class="sig-paren">(</span><em class="sig-param">verts</em>, <em class="sig-param">faces</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_marching_cubes_classic.py#L157-L196"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.mesh_surface_area" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute surface area, given vertices &amp; triangular faces</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
