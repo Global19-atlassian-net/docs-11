@@ -171,7 +171,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.measure.block_reduce" title="skimage.measure.block_reduce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.block_reduce</span></code></a>(image, block_size)</p></td>
 <td><p>Downsample image by applying function <em class="xref py py-obj">func</em> to local blocks.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.measure.find_contours" title="skimage.measure.find_contours"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.find_contours</span></code></a>(image, level)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.measure.find_contours" title="skimage.measure.find_contours"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.find_contours</span></code></a>(image[, …])</p></td>
 <td><p>Find iso-valued contours in a 2D array for a given level value.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.measure.grid_points_in_poly" title="skimage.measure.grid_points_in_poly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.grid_points_in_poly</span></code></a>(shape, verts)</p></td>
@@ -363,7 +363,7 @@ argument to <code class="docutils literal notranslate"><span class="pre">np.mean
 <h2>find_contours<a class="headerlink" href="#find-contours" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.find_contours">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">find_contours</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">level</em>, <em class="sig-param">fully_connected='low'</em>, <em class="sig-param">positive_orientation='low'</em>, <em class="sig-param">*</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_find_contours.py#L11-L148"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.find_contours" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">find_contours</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">level=None</em>, <em class="sig-param">fully_connected='low'</em>, <em class="sig-param">positive_orientation='low'</em>, <em class="sig-param">*</em>, <em class="sig-param">mask=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_find_contours.py#L11-L151"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.find_contours" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find iso-valued contours in a 2D array for a given level value.</p>
 <p>Uses the “marching squares” method to compute a the iso-valued contours of
 the input 2D array for a particular level value. Array values are linearly
@@ -373,7 +373,8 @@ interpolated to provide better precision for the output contours.</p>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>image</strong><span class="classifier">2D ndarray of double</span></dt><dd><p>Input image in which to find contours.</p>
 </dd>
-<dt><strong>level</strong><span class="classifier">float</span></dt><dd><p>Value along which to find contours in the array.</p>
+<dt><strong>level</strong><span class="classifier">float, optional</span></dt><dd><p>Value along which to find contours in the array. By default, the level
+is set to (max(image) - min(image)) / 2</p>
 </dd>
 <dt><strong>fully_connected</strong><span class="classifier">str, {‘low’, ‘high’}</span></dt><dd><p>Indicates whether array elements below the given level value are to be
 considered fully-connected (and hence elements above the value will
