@@ -338,7 +338,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.morphology.reconstruction" title="skimage.morphology.reconstruction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.reconstruction</span></code></a>(seed, mask)</p></td>
 <td><p>Perform a morphological reconstruction of an image.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.morphology.rectangle" title="skimage.morphology.rectangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.rectangle</span></code></a>(width, height)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.morphology.rectangle" title="skimage.morphology.rectangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.rectangle</span></code></a>(nrows, ncols[, …])</p></td>
 <td><p>Generates a flat, rectangular-shaped structuring element.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.morphology.remove_small_holes" title="skimage.morphology.remove_small_holes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.remove_small_holes</span></code></a>(ar[, …])</p></td>
@@ -603,7 +603,7 @@ Processing, 23(9), 3885-3895.
 <h2>ball<a class="headerlink" href="#ball" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.ball">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">ball</code><span class="sig-paren">(</span><em class="sig-param">radius</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L221-L249"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.ball" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">ball</code><span class="sig-paren">(</span><em class="sig-param">radius</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L231-L259"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.ball" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates a ball-shaped structuring element.</p>
 <p>This is the 3D equivalent of a disk.
 A pixel is within the neighborhood if the Euclidean distance between
@@ -1024,7 +1024,7 @@ convex_hull_image separately on each object or adjust <code class="docutils lite
 <h2>cube<a class="headerlink" href="#cube" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.cube">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">cube</code><span class="sig-paren">(</span><em class="sig-param">width</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L160-L184"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.cube" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">cube</code><span class="sig-paren">(</span><em class="sig-param">width</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L170-L194"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.cube" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates a cube-shaped structuring element.</p>
 <p>This is the 3D equivalent of a square.
 Every pixel along the perimeter has a chessboard distance
@@ -1257,7 +1257,7 @@ The remaining peaks have all a maximal extension of at least 3.</p>
 <h2>diamond<a class="headerlink" href="#diamond" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.diamond">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">diamond</code><span class="sig-paren">(</span><em class="sig-param">radius</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L60-L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.diamond" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">diamond</code><span class="sig-paren">(</span><em class="sig-param">radius</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L70-L97"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.diamond" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates a flat, diamond-shaped structuring element.</p>
 <p>A pixel is part of the neighborhood (i.e. labeled 1) if
 the city block/Manhattan distance between it and the center of
@@ -1368,7 +1368,7 @@ efficient for larger images and structuring elements.</p>
 <h2>disk<a class="headerlink" href="#disk" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.disk">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">disk</code><span class="sig-paren">(</span><em class="sig-param">radius</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L90-L114"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.disk" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">disk</code><span class="sig-paren">(</span><em class="sig-param">radius</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L100-L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.disk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates a flat, disk-shaped structuring element.</p>
 <p>A pixel is within the neighborhood if the Euclidean distance between
 it and the origin is no greater than radius.</p>
@@ -2473,7 +2473,7 @@ pass.</p></li>
 <h2>octagon<a class="headerlink" href="#octagon" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.octagon">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">octagon</code><span class="sig-paren">(</span><em class="sig-param">m</em>, <em class="sig-param">n</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L252-L290"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.octagon" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">octagon</code><span class="sig-paren">(</span><em class="sig-param">m</em>, <em class="sig-param">n</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L262-L300"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.octagon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates an octagon shaped structuring element.</p>
 <p>For a given size of (m) horizontal and vertical sides
 and a given (n) height or width of slanted sides octagon is generated.
@@ -2516,7 +2516,7 @@ are 1 and 0 otherwise.</p>
 <h2>octahedron<a class="headerlink" href="#octahedron" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.octahedron">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">octahedron</code><span class="sig-paren">(</span><em class="sig-param">radius</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L187-L218"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.octahedron" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">octahedron</code><span class="sig-paren">(</span><em class="sig-param">radius</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L197-L228"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.octahedron" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates a octahedron-shaped structuring element.</p>
 <p>This is the 3D equivalent of a diamond.
 A pixel is part of the neighborhood (i.e. labeled 1) if
@@ -2748,16 +2748,16 @@ of height <em class="xref py py-obj">h</em> in the subtracted image.</p>
 <h2>rectangle<a class="headerlink" href="#rectangle" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.rectangle">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">rectangle</code><span class="sig-paren">(</span><em class="sig-param">width</em>, <em class="sig-param">height</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L32-L57"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.rectangle" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">rectangle</code><span class="sig-paren">(</span><em class="sig-param">nrows</em>, <em class="sig-param">ncols</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L34-L67"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.rectangle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates a flat, rectangular-shaped structuring element.</p>
 <p>Every pixel in the rectangle generated for a given width and given height
 belongs to the neighborhood.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>width</strong><span class="classifier">int</span></dt><dd><p>The width of the rectangle.</p>
+<dt><strong>nrows</strong><span class="classifier">int</span></dt><dd><p>The number of rows of the rectangle.</p>
 </dd>
-<dt><strong>height</strong><span class="classifier">int</span></dt><dd><p>The height of the rectangle.</p>
+<dt><strong>ncols</strong><span class="classifier">int</span></dt><dd><p>The number of columns of the rectangle.</p>
 </dd>
 </dl>
 </dd>
@@ -2775,6 +2775,11 @@ pixel belongs to the neighborhood.</p>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The use of <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> has been deprecated in
+version 0.18.0. Use <code class="docutils literal notranslate"><span class="pre">nrows</span></code> and <code class="docutils literal notranslate"><span class="pre">ncols</span></code> instead.</p></li>
+</ul>
 </dd></dl>
 
 <div class="section" id="examples-using-skimage-morphology-rectangle">
@@ -3078,7 +3083,7 @@ Computer Vision, Graphics, and Image Processing, 56(6):462-478, 1994.</p>
 <h2>square<a class="headerlink" href="#square" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.square">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">square</code><span class="sig-paren">(</span><em class="sig-param">width</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L6-L29"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.square" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">square</code><span class="sig-paren">(</span><em class="sig-param">width</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L8-L31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.square" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates a flat, square-shaped structuring element.</p>
 <p>Every pixel along the perimeter has a chessboard distance
 no greater than radius (radius=floor(width/2)) pixels.</p>
@@ -3125,7 +3130,7 @@ pixel belongs to the neighborhood.</p>
 <h2>star<a class="headerlink" href="#star" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.star">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">star</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L293-L339"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.star" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">star</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">dtype=&lt;class 'numpy.uint8'&gt;</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/selem.py#L303-L349"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.star" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates a star shaped structuring element.</p>
 <p>Start has 8 vertices and is an overlap of square of size <em class="xref py py-obj">2*a + 1</em>
 with its 45 degree rotated version.
