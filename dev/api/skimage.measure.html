@@ -186,7 +186,7 @@
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.measure.inertia_tensor_eigvals" title="skimage.measure.inertia_tensor_eigvals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.inertia_tensor_eigvals</span></code></a>(image)</p></td>
 <td><p>Compute the eigenvalues of the inertia tensor of the image.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.measure.label" title="skimage.measure.label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.label</span></code></a>(input[, neighbors, …])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#skimage.measure.label" title="skimage.measure.label"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.label</span></code></a>(input[, background, …])</p></td>
 <td><p>Label connected regions of an integer array.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#skimage.measure.marching_cubes" title="skimage.measure.marching_cubes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.measure.marching_cubes</span></code></a>(volume[, …])</p></td>
@@ -609,7 +609,7 @@ alternatively, one can provide the inertia tensor (<code class="docutils literal
 <h2>label<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.label">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">label</code><span class="sig-paren">(</span><em class="sig-param">input</em>, <em class="sig-param">neighbors=None</em>, <em class="sig-param">background=None</em>, <em class="sig-param">return_num=False</em>, <em class="sig-param">connectivity=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_label.py#L3-L92"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.label" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">label</code><span class="sig-paren">(</span><em class="sig-param">input</em>, <em class="sig-param">background=None</em>, <em class="sig-param">return_num=False</em>, <em class="sig-param">connectivity=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_label.py#L4-L87"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.label" title="Permalink to this definition">¶</a></dt>
 <dd><p>Label connected regions of an integer array.</p>
 <p>Two pixels are connected when they are neighbors and have the same value.
 In 2D, they can be neighbors either in a 1- or 2-connected sense.
@@ -628,11 +628,6 @@ pixel/voxel a neighbor:</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>input</strong><span class="classifier">ndarray of dtype int</span></dt><dd><p>Image to label.</p>
-</dd>
-<dt><strong>neighbors</strong><span class="classifier">{4, 8}, int, optional</span></dt><dd><p>Whether to use 4- or 8-“connectivity”.
-In 3D, 4-“connectivity” means connected pixels have to share face,
-whereas with 8-“connectivity”, they have to share only edge or vertex.
-<strong>Deprecated, use</strong> <code class="docutils literal notranslate"><span class="pre">connectivity</span></code> <strong>instead.</strong></p>
 </dd>
 <dt><strong>background</strong><span class="classifier">int, optional</span></dt><dd><p>Consider all pixels with this value as background pixels, and label
 them as 0. By default, 0-valued pixels are considered as background
