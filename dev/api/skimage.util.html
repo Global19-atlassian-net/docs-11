@@ -224,14 +224,14 @@
 <h2>apply_parallel<a class="headerlink" href="#apply-parallel" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.util.apply_parallel">
-<code class="sig-prename descclassname">skimage.util.</code><code class="sig-name descname">apply_parallel</code><span class="sig-paren">(</span><em class="sig-param">function</em>, <em class="sig-param">array</em>, <em class="sig-param">chunks=None</em>, <em class="sig-param">depth=0</em>, <em class="sig-param">mode=None</em>, <em class="sig-param">extra_arguments=()</em>, <em class="sig-param">extra_keywords={}</em>, <em class="sig-param">*</em>, <em class="sig-param">compute=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/util/apply_parallel.py#L55-L147"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.apply_parallel" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.util.</code><code class="sig-name descname">apply_parallel</code><span class="sig-paren">(</span><em class="sig-param">function</em>, <em class="sig-param">array</em>, <em class="sig-param">chunks=None</em>, <em class="sig-param">depth=0</em>, <em class="sig-param">mode=None</em>, <em class="sig-param">extra_arguments=()</em>, <em class="sig-param">extra_keywords={}</em>, <em class="sig-param">*</em>, <em class="sig-param">dtype=None</em>, <em class="sig-param">multichannel=False</em>, <em class="sig-param">compute=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/util/apply_parallel.py#L58-L177"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.util.apply_parallel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Map a function in parallel across an array.</p>
 <p>Split an array into possibly overlapping chunks of a given depth and
 boundary type, call the given function in parallel on the chunks, combine
 the chunks and return the resulting array.</p>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>function</strong><span class="classifier">function</span></dt><dd><p>Function to be mapped which takes an array as an argument.</p>
 </dd>
 <dt><strong>array</strong><span class="classifier">numpy array or dask array</span></dt><dd><p>Array which the function will be applied to.</p>
@@ -253,6 +253,25 @@ zero.</p>
 <dt><strong>extra_arguments</strong><span class="classifier">tuple, optional</span></dt><dd><p>Tuple of arguments to be passed to the function.</p>
 </dd>
 <dt><strong>extra_keywords</strong><span class="classifier">dictionary, optional</span></dt><dd><p>Dictionary of keyword arguments to be passed to the function.</p>
+</dd>
+<dt><strong>dtype</strong><span class="classifier">data-type or None, optional</span></dt><dd><p>The data-type of the <em class="xref py py-obj">function</em> output. If None, Dask will attempt to
+infer this by calling the function on data of shape <code class="docutils literal notranslate"><span class="pre">(1,)</span> <span class="pre">*</span> <span class="pre">ndim</span></code>.
+For functions expecting RGB or multichannel data this may be
+problematic. In such cases, the user should manually specify this dtype
+argument instead.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.18: </span><code class="docutils literal notranslate"><span class="pre">dtype</span></code> was added in 0.18.</p>
+</div>
+</dd>
+<dt><strong>multichannel</strong><span class="classifier">bool, optional</span></dt><dd><p>If <em class="xref py py-obj">chunks</em> is None and <em class="xref py py-obj">multichannel</em> is True, this function will keep
+only a single chunk along the channels axis. When <em class="xref py py-obj">depth</em> is specified
+as a scalar value, that depth will be applied only to the non-channels
+axes (a depth of 0 will be used along the channels axis). If the user
+manually specified both <em class="xref py py-obj">chunks</em> and a <em class="xref py py-obj">depth</em> tuple, then this
+argument will have no effect.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.18: </span><code class="docutils literal notranslate"><span class="pre">multichannel</span></code> was added in 0.18.</p>
+</div>
 </dd>
 <dt><strong>compute</strong><span class="classifier">bool, optional</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, compute eagerly returning a NumPy Array.
 If <code class="docutils literal notranslate"><span class="pre">False</span></code>, compute lazily returning a Dask Array.
