@@ -609,7 +609,7 @@ alternatively, one can provide the inertia tensor (<code class="docutils literal
 <h2>label<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.label">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">label</code><span class="sig-paren">(</span><em class="sig-param">input</em>, <em class="sig-param">background=None</em>, <em class="sig-param">return_num=False</em>, <em class="sig-param">connectivity=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_label.py#L32-L119"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.label" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">label</code><span class="sig-paren">(</span><em class="sig-param">input</em>, <em class="sig-param">background=None</em>, <em class="sig-param">return_num=False</em>, <em class="sig-param">connectivity=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_label.py#L32-L120"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.label" title="Permalink to this definition">¶</a></dt>
 <dd><p>Label connected regions of an integer array.</p>
 <p>Two pixels are connected when they are neighbors and have the same value.
 In 2D, they can be neighbors either in a 1- or 2-connected sense.
@@ -657,6 +657,7 @@ returned if return_num is <em class="xref py py-obj">True</em>.</p>
 <p class="admonition-title">See also</p>
 <dl class="simple">
 <dt><a class="reference internal" href="#skimage.measure.regionprops" title="skimage.measure.regionprops"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regionprops</span></code></a></dt><dd></dd>
+<dt><a class="reference internal" href="#skimage.measure.regionprops_table" title="skimage.measure.regionprops_table"><code class="xref py py-obj docutils literal notranslate"><span class="pre">regionprops_table</span></code></a></dt><dd></dd>
 </dl>
 </div>
 <p class="rubric">References</p>
@@ -1509,7 +1510,7 @@ Berlin, 1993.</p>
 <h2>perimeter<a class="headerlink" href="#perimeter" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.perimeter">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">perimeter</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L1092-L1155"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">perimeter</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">neighbourhood=4</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L1094-L1157"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.perimeter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate total perimeter of all objects in binary image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1867,7 +1868,7 @@ we also show how to use a proportion of the total samples, rather than an absolu
 <h2>regionprops<a class="headerlink" href="#regionprops" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.regionprops">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">regionprops</code><span class="sig-paren">(</span><em class="sig-param">label_image</em>, <em class="sig-param">intensity_image=None</em>, <em class="sig-param">cache=True</em>, <em class="sig-param">coordinates=None</em>, <em class="sig-param">*</em>, <em class="sig-param">extra_properties=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L806-L1089"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">regionprops</code><span class="sig-paren">(</span><em class="sig-param">label_image</em>, <em class="sig-param">intensity_image=None</em>, <em class="sig-param">cache=True</em>, <em class="sig-param">coordinates=None</em>, <em class="sig-param">*</em>, <em class="sig-param">extra_properties=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L808-L1091"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
 <dd><p>Measure properties of labeled image regions.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2134,10 +2135,13 @@ systems, pp. 27-28. ICT Prague, 2007.
 <h2>regionprops_table<a class="headerlink" href="#regionprops-table" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.regionprops_table">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">regionprops_table</code><span class="sig-paren">(</span><em class="sig-param">label_image</em>, <em class="sig-param">intensity_image=None</em>, <em class="sig-param">properties=('label'</em>, <em class="sig-param">'bbox')</em>, <em class="sig-param">*</em>, <em class="sig-param">cache=True</em>, <em class="sig-param">separator='-'</em>, <em class="sig-param">extra_properties=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L653-L803"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops_table" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">regionprops_table</code><span class="sig-paren">(</span><em class="sig-param">label_image</em>, <em class="sig-param">intensity_image=None</em>, <em class="sig-param">properties=('label'</em>, <em class="sig-param">'bbox')</em>, <em class="sig-param">*</em>, <em class="sig-param">cache=True</em>, <em class="sig-param">separator='-'</em>, <em class="sig-param">extra_properties=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L653-L805"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops_table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute image properties and return them as a pandas-compatible table.</p>
 <p>The table is a dictionary mapping column names to value arrays. See Notes
 section below for details.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 0.16.</span></p>
+</div>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
