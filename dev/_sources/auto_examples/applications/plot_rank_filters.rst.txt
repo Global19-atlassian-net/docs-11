@@ -90,7 +90,7 @@ noise.
 
 
     from skimage.filters.rank import median
-    from skimage.morphology import disk
+    from skimage.morphology import disk, ball
 
     noise = np.random.random(noisy_image.shape)
     noisy_image = img_as_ubyte(data.camera())
@@ -484,6 +484,8 @@ level distribution. In the example below, for each pixel, an "optimal"
 threshold is determined by maximizing the variance between two classes of
 pixels of the local neighborhood defined by a structuring element.
 
+These algorithms can be used on both 2D and 3D images.
+
 The example compares the local threshold with the global threshold
 :py:func:`skimage.filters.threshold_otsu`.
 
@@ -501,6 +503,7 @@ The example compares the local threshold with the global threshold
 
     from skimage.filters.rank import otsu
     from skimage.filters import threshold_otsu
+    from skimage import exposure
 
     p8 = data.page()
 
@@ -547,6 +550,68 @@ The example compares the local threshold with the global threshold
 
 
 
+The example compares the local threshold with the global threshold in 3D
+
+
+.. code-block:: default
+
+
+    brain = exposure.rescale_intensity(data.brain().astype(float))
+
+    radius = 5
+    neighborhood = ball(radius)
+
+    # t_loc_otsu is an image
+    t_loc_otsu = rank.otsu(brain, neighborhood)
+    loc_otsu = brain >= t_loc_otsu
+
+    # t_glob_otsu is a scalar
+    t_glob_otsu = threshold_otsu(brain)
+    glob_otsu = brain >= t_glob_otsu
+
+    fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(12, 12),
+                             sharex=True, sharey=True)
+    ax = axes.ravel()
+
+    slice_index = 3
+
+    fig.colorbar(ax[0].imshow(brain[slice_index], cmap=plt.cm.gray), ax=ax[0])
+    ax[0].set_title('Original')
+
+    fig.colorbar(ax[1].imshow(t_loc_otsu[slice_index], cmap=plt.cm.gray), ax=ax[1])
+    ax[1].set_title('Local Otsu ($r=%d$)' % radius)
+
+    ax[2].imshow(brain[slice_index] >= t_loc_otsu[slice_index], cmap=plt.cm.gray)
+    ax[2].set_title('Original >= local Otsu' % t_glob_otsu)
+
+    ax[3].imshow(glob_otsu[slice_index], cmap=plt.cm.gray)
+    ax[3].set_title('Global Otsu ($t=%d$)' % t_glob_otsu)
+
+    for a in ax:
+        a.axis('off')
+
+    fig.tight_layout()
+
+
+
+
+.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_011.png
+    :alt: Original, Local Otsu ($r=5$), Original >= local Otsu, Global Otsu ($t=0$)
+    :class: sphx-glr-single-img
+
+
+.. rst-class:: sphx-glr-script-out
+
+ Out:
+
+ .. code-block:: none
+
+    /opt/hostedtoolcache/Python/3.7.9/x64/lib/python3.7/site-packages/skimage/filters/rank/generic.py:280: UserWarning: Possible precision loss converting image of type float64 to uint8 as required by rank filters. Convert manually using skimage.util.img_as_ubyte to silence this warning.
+      out_dtype)
+
+
+
+
 The following example shows how local Otsu thresholding handles a global
 level shift applied to a synthetic image.
 
@@ -579,7 +644,7 @@ level shift applied to a synthetic image.
 
 
 
-.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_011.png
+.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_012.png
     :alt: Original, Local Otsu ($r=10$)
     :class: sphx-glr-single-img
 
@@ -633,7 +698,7 @@ opening, closing and morphological gradient.
 
 
 
-.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_012.png
+.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_013.png
     :alt: Original, Gray-level closing, Gray-level opening, Morphological gradient
     :class: sphx-glr-single-img
 
@@ -686,7 +751,7 @@ on 8- and 16-bit images.
 
 
 
-.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_013.png
+.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_014.png
     :alt: Image, Entropy
     :class: sphx-glr-single-img
 
@@ -788,7 +853,7 @@ on increasing structuring element size:
 
 
 
-.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_014.png
+.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_015.png
     :alt: Performance with respect to element size
     :class: sphx-glr-single-img
 
@@ -827,7 +892,7 @@ and increasing image size:
 
 
 
-.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_015.png
+.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_016.png
     :alt: Performance with respect to image size
     :class: sphx-glr-single-img
 
@@ -868,7 +933,7 @@ on increasing structuring element size:
 
 
 
-.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_016.png
+.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_017.png
     :alt: Performance with respect to element size
     :class: sphx-glr-single-img
 
@@ -906,7 +971,7 @@ Comparison of outcome of the three methods:
 
 
 
-.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_017.png
+.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_018.png
     :alt: filters.rank.median, scipy.ndimage.percentile
     :class: sphx-glr-single-img
 
@@ -946,7 +1011,7 @@ and increasing image size:
 
 
 
-.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_018.png
+.. image:: /auto_examples/applications/images/sphx_glr_plot_rank_filters_019.png
     :alt: Performance with respect to image size
     :class: sphx-glr-single-img
 
@@ -957,7 +1022,7 @@ and increasing image size:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  53.371 seconds)
+   **Total running time of the script:** ( 0 minutes  55.557 seconds)
 
 
 .. _sphx_glr_download_auto_examples_applications_plot_rank_filters.py:
