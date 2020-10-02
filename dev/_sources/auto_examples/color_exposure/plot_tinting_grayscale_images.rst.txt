@@ -61,7 +61,7 @@ only the red and green channels, which combine to form yellow.
  .. code-block:: none
 
 
-    <matplotlib.image.AxesImage object at 0x7f5fa2175390>
+    <matplotlib.image.AxesImage object at 0x7fe480df32d0>
 
 
 
@@ -189,8 +189,8 @@ based on segmentation results or blob detection methods.
     from skimage.filters import rank
 
     # Square regions defined as slices over the first two dimensions.
-    top_left = (slice(100),) * 2
-    bottom_right = (slice(-100, None),) * 2
+    top_left = (slice(25),) * 2
+    bottom_right = (slice(-25, None),) * 2
 
     sliced_image = image.copy()
     sliced_image[top_left] = colorize(image[top_left], 0.82, saturation=0.5)
@@ -198,7 +198,7 @@ based on segmentation results or blob detection methods.
 
     # Create a mask selecting regions with interesting texture.
     noisy = rank.entropy(grayscale_image, np.ones((9, 9)))
-    textured_regions = noisy > 4
+    textured_regions = noisy > 4.25
     # Note that using `colorize` here is a bit more difficult, since `rgb2hsv`
     # expects an RGB image (height x width x channel), but fancy-indexing returns
     # a set of RGB pixels (# pixels x channel).
@@ -239,7 +239,7 @@ image.org/docs/0.9.x/api/skimage.color.html#label2rgb>`_.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.005 seconds)
+   **Total running time of the script:** ( 0 minutes  2.592 seconds)
 
 
 .. _sphx_glr_download_auto_examples_color_exposure_plot_tinting_grayscale_images.py:
