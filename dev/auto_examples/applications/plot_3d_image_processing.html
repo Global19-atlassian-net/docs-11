@@ -162,19 +162,14 @@ information was reported by the microscope used to image the cells.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d.art3d</span> <span class="kn">import</span> <a href="https://matplotlib.org/api/collections_api.html#matplotlib.collections.PolyCollection" title="matplotlib.collections.PolyCollection" class="sphx-glr-backref-module-matplotlib-collections sphx-glr-backref-type-py-class"><span class="n">Poly3DCollection</span></a>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">ndimage</span> <span class="k">as</span> <span class="n">ndi</span>
 
-<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="p">(</span>
-    <span class="n">exposure</span><span class="p">,</span> <span class="n">io</span>
-<span class="p">)</span>
-<span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <span class="n">image_fetcher</span>
+<span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">exposure</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">util</span>
+<span class="kn">from</span> <span class="nn">skimage.data</span> <span class="kn">import</span> <a href="../../api/skimage.data.html#skimage.data.cells3d" title="skimage.data.cells3d" class="sphx-glr-backref-module-skimage-data sphx-glr-backref-type-py-function"><span class="n">cells3d</span></a>
 </pre></div>
 </div>
 <div class="section" id="load-and-display-3d-images">
 <h2>Load and display 3D images<a class="headerlink" href="#load-and-display-3d-images" title="Permalink to this headline">¶</a></h2>
-<p>Three-dimensional data can be loaded with <em class="xref py py-obj">io.imread</em>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3.7/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">path</span></a> <span class="o">=</span> <span class="n">image_fetcher</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;data/cells.tif&#39;</span><span class="p">)</span>
-<a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a> <span class="o">=</span> <a href="../../api/skimage.io.html#skimage.io.imread" title="skimage.io.imread" class="sphx-glr-backref-module-skimage-io sphx-glr-backref-type-py-function"><span class="n">io</span><span class="o">.</span><span class="n">imread</span></a><span class="p">(</span><a href="https://docs.python.org/3.7/library/stdtypes.html#str" title="builtins.str" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">path</span></a><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span></a> <span class="o">=</span> <a href="../../api/skimage.html#skimage.img_as_float" title="skimage.img_as_float" class="sphx-glr-backref-module-skimage sphx-glr-backref-type-py-function"><span class="n">util</span><span class="o">.</span><span class="n">img_as_float</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.cells3d" title="skimage.data.cells3d" class="sphx-glr-backref-module-skimage-data sphx-glr-backref-type-py-function"><span class="n">cells3d</span></a><span class="p">()[:,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:])</span>  <span class="c1"># grab just the nuclei</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;shape: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><a href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span><span class="o">.</span><span class="n">shape</span></a><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dtype: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="numpy.dtype" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">data</span><span class="o">.</span><span class="n">dtype</span></a><span class="p">))</span>
@@ -352,7 +347,7 @@ and run it on your computer, or open it directly in Binder.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>interactive(children=(IntSlider(value=34, description=&#39;plane&#39;, max=59), Output()), _dom_classes=(&#39;widget-interact&#39;,))
 
-&lt;function explore_slices.&lt;locals&gt;.display_slice at 0x7fc6f09c4050&gt;
+&lt;function explore_slices.&lt;locals&gt;.display_slice at 0x7f0f2267e290&gt;
 </pre></div>
 </div>
 </div>
@@ -415,7 +410,7 @@ slices interactively.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>interactive(children=(IntSlider(value=34, description=&#39;plane&#39;, max=59), Output()), _dom_classes=(&#39;widget-interact&#39;,))
 
-&lt;function explore_slices.&lt;locals&gt;.display_slice at 0x7fc6d6fd7b90&gt;
+&lt;function explore_slices.&lt;locals&gt;.display_slice at 0x7f0f21effdd0&gt;
 </pre></div>
 </div>
 <p>Let us now plot the image histogram before and after histogram equalization.
@@ -456,7 +451,7 @@ increase the overall contrast of the image.</p>
 </pre></div>
 </div>
 <img alt="plot 3d image processing" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_3d_image_processing_007.png" />
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  10.763 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  11.519 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-3d-image-processing-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-image/scikit-image/master?filepath=notebooks/auto_examples/applications/plot_3d_image_processing.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo.svg" width="150px" /></a>
