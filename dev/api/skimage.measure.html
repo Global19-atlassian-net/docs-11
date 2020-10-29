@@ -2065,7 +2065,7 @@ we also show how to use a proportion of the total samples, rather than an absolu
 <h2>regionprops<a class="headerlink" href="#regionprops" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.regionprops">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">regionprops</code><span class="sig-paren">(</span><em class="sig-param">label_image</em>, <em class="sig-param">intensity_image=None</em>, <em class="sig-param">cache=True</em>, <em class="sig-param">coordinates=None</em>, <em class="sig-param">*</em>, <em class="sig-param">extra_properties=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L809-L1097"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">regionprops</code><span class="sig-paren">(</span><em class="sig-param">label_image</em>, <em class="sig-param">intensity_image=None</em>, <em class="sig-param">cache=True</em>, <em class="sig-param">coordinates=None</em>, <em class="sig-param">*</em>, <em class="sig-param">extra_properties=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L867-L1159"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops" title="Permalink to this definition">¶</a></dt>
 <dd><p>Measure properties of labeled image regions.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2079,8 +2079,12 @@ recover the old behaviour, use
 <code class="docutils literal notranslate"><span class="pre">regionprops(np.squeeze(label_image),</span> <span class="pre">...)</span></code>.</p>
 </div>
 </dd>
-<dt><strong>intensity_image</strong><span class="classifier">(M, N[, P]) ndarray, optional</span></dt><dd><p>Intensity (i.e., input) image with same size as labeled image.
+<dt><strong>intensity_image</strong><span class="classifier">(M, N[, P][, C]) ndarray, optional</span></dt><dd><p>Intensity (i.e., input) image with same size as labeled image, plus
+optionally an extra dimension for multichannel data.
 Default is None.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.18.0: </span>The ability to provide an extra dimension for channels was added.</p>
+</div>
 </dd>
 <dt><strong>cache</strong><span class="classifier">bool, optional</span></dt><dd><p>Determine whether to cache calculated properties. The computation is
 much faster for cached properties, whereas the memory consumption
@@ -2337,7 +2341,7 @@ systems, pp. 27-28. ICT Prague, 2007.
 <h2>regionprops_table<a class="headerlink" href="#regionprops-table" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.measure.regionprops_table">
-<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">regionprops_table</code><span class="sig-paren">(</span><em class="sig-param">label_image</em>, <em class="sig-param">intensity_image=None</em>, <em class="sig-param">properties=('label'</em>, <em class="sig-param">'bbox')</em>, <em class="sig-param">*</em>, <em class="sig-param">cache=True</em>, <em class="sig-param">separator='-'</em>, <em class="sig-param">extra_properties=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L654-L806"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops_table" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.measure.</code><code class="sig-name descname">regionprops_table</code><span class="sig-paren">(</span><em class="sig-param">label_image</em>, <em class="sig-param">intensity_image=None</em>, <em class="sig-param">properties=('label'</em>, <em class="sig-param">'bbox')</em>, <em class="sig-param">*</em>, <em class="sig-param">cache=True</em>, <em class="sig-param">separator='-'</em>, <em class="sig-param">extra_properties=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/measure/_regionprops.py#L705-L864"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.measure.regionprops_table" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute image properties and return them as a pandas-compatible table.</p>
 <p>The table is a dictionary mapping column names to value arrays. See Notes
 section below for details.</p>
@@ -2347,10 +2351,14 @@ section below for details.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>label_image</strong><span class="classifier">(N, M) ndarray</span></dt><dd><p>Labeled input image. Labels with value 0 are ignored.</p>
+<dt><strong>label_image</strong><span class="classifier">(N, M[, P]) ndarray</span></dt><dd><p>Labeled input image. Labels with value 0 are ignored.</p>
 </dd>
-<dt><strong>intensity_image</strong><span class="classifier">(N, M) ndarray, optional</span></dt><dd><p>Intensity (i.e., input) image with same size as labeled image.
+<dt><strong>intensity_image</strong><span class="classifier">(M, N[, P][, C]) ndarray, optional</span></dt><dd><p>Intensity (i.e., input) image with same size as labeled image, plus
+optionally an extra dimension for multichannel data.
 Default is None.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.18.0: </span>The ability to provide an extra dimension for channels was added.</p>
+</div>
 </dd>
 <dt><strong>properties</strong><span class="classifier">tuple or list of str, optional</span></dt><dd><p>Properties that will be included in the resulting dictionary
 For a list of available properties, please see <a class="reference internal" href="#skimage.measure.regionprops" title="skimage.measure.regionprops"><code class="xref py py-func docutils literal notranslate"><span class="pre">regionprops()</span></code></a>.
