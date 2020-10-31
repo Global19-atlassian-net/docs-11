@@ -28,10 +28,9 @@ in the constructed RGB image.
 .. code-block:: default
 
     import numpy as np
-    import imageio
     from matplotlib import pyplot as plt
     from skimage.color import rgb2gray
-    from skimage.data import stereo_motorcycle
+    from skimage.data import stereo_motorcycle, vortex
     from skimage.transform import warp
     from skimage.registration import optical_flow_tvl1, optical_flow_ilk
 
@@ -114,8 +113,7 @@ velocimetry (PIV). The sequence is the Case B from the
 .. code-block:: default
 
 
-    image0 = imageio.imread("http://www.pivchallenge.org/pub/B/B001_1.tif")
-    image1 = imageio.imread("http://www.pivchallenge.org/pub/B/B001_2.tif")
+    image0, image1 = vortex()
 
     # --- Compute the optical flow
     v, u = optical_flow_ilk(image0, image1, radius=15)
@@ -164,7 +162,7 @@ velocimetry (PIV). The sequence is the Case B from the
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  13.137 seconds)
+   **Total running time of the script:** ( 0 minutes  9.547 seconds)
 
 
 .. _sphx_glr_download_auto_examples_registration_plot_opticalflow.py:
