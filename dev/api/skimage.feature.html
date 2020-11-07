@@ -2432,7 +2432,7 @@ cross-checking).</p>
 <dt><strong>descriptors2</strong><span class="classifier">(N, P) array</span></dt><dd><p>Descriptors of size P about N keypoints in the second image.</p>
 </dd>
 <dt><strong>metric</strong><span class="classifier">{‘euclidean’, ‘cityblock’, ‘minkowski’, ‘hamming’, …} , optional</span></dt><dd><p>The metric to compute the distance between two descriptors. See
-<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cdist.html#scipy.spatial.distance.cdist" title="(in SciPy v1.5.3)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.spatial.distance.cdist</span></code></a> for all possible types. The hamming
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.distance.cdist.html#scipy.spatial.distance.cdist" title="(in SciPy v1.5.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.spatial.distance.cdist</span></code></a> for all possible types. The hamming
 distance should be used for binary descriptors. By default the L2-norm
 is used for all descriptors of dtype float or double and the Hamming
 distance is used for binary descriptors automatically.</p>
@@ -2698,24 +2698,25 @@ set of available cores are used.</p>
 <h2>peak_local_max<a class="headerlink" href="#peak-local-max" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.peak_local_max">
-<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">peak_local_max</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_distance=1</em>, <em class="sig-param">threshold_abs=None</em>, <em class="sig-param">threshold_rel=None</em>, <em class="sig-param">exclude_border=True</em>, <em class="sig-param">indices=True</em>, <em class="sig-param">num_peaks=inf</em>, <em class="sig-param">footprint=None</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">num_peaks_per_label=inf</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/peak.py#L58-L276"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.peak_local_max" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">peak_local_max</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_distance=1</em>, <em class="sig-param">threshold_abs=None</em>, <em class="sig-param">threshold_rel=None</em>, <em class="sig-param">exclude_border=True</em>, <em class="sig-param">indices=True</em>, <em class="sig-param">num_peaks=inf</em>, <em class="sig-param">footprint=None</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">num_peaks_per_label=inf</em>, <em class="sig-param">p_norm=inf</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/peak.py#L113-L314"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.peak_local_max" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find peaks in an image as coordinate list or boolean mask.</p>
 <p>Peaks are the local maxima in a region of <em class="xref py py-obj">2 * min_distance + 1</em>
 (i.e. peaks are separated by at least <em class="xref py py-obj">min_distance</em>).</p>
-<p>If there are multiple local maxima with identical pixel intensities
-inside the region defined with <em class="xref py py-obj">min_distance</em>,
-the coordinates of all such pixels are returned.</p>
 <p>If both <em class="xref py py-obj">threshold_abs</em> and <em class="xref py py-obj">threshold_rel</em> are provided, the maximum
 of the two is chosen as the minimum intensity threshold of peaks.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 0.18: </span>Prior to version 0.18, peaks of the same height within a radius of
+<em class="xref py py-obj">min_distance</em> were all returned, but this could cause unexpected
+behaviour. From 0.18 onwards, an arbitrary peak within the region is
+returned. See issue gh-2592.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
 </dd>
-<dt><strong>min_distance</strong><span class="classifier">int, optional</span></dt><dd><p>Minimum number of pixels separating peaks in a region of <em class="xref py py-obj">2 *
-min_distance + 1</em> (i.e. peaks are separated by at least
-<em class="xref py py-obj">min_distance</em>).
-To find the maximum number of peaks, use <em class="xref py py-obj">min_distance=1</em>.</p>
+<dt><strong>min_distance</strong><span class="classifier">int, optional</span></dt><dd><p>The minimal allowed distance separating peaks. To find the
+maximum number of peaks, use <em class="xref py py-obj">min_distance=1</em>.</p>
 </dd>
 <dt><strong>threshold_abs</strong><span class="classifier">float, optional</span></dt><dd><p>Minimum intensity of peaks. By default, the absolute threshold is
 the minimum intensity of the image.</p>
@@ -2745,13 +2746,17 @@ below.</p>
 return <em class="xref py py-obj">num_peaks</em> peaks based on highest peak intensity.</p>
 </dd>
 <dt><strong>footprint</strong><span class="classifier">ndarray of bools, optional</span></dt><dd><p>If provided, <em class="xref py py-obj">footprint == 1</em> represents the local region within which
-to search for peaks at every point in <em class="xref py py-obj">image</em>.  Overrides
-<em class="xref py py-obj">min_distance</em>.</p>
+to search for peaks at every point in <em class="xref py py-obj">image</em>.</p>
 </dd>
 <dt><strong>labels</strong><span class="classifier">ndarray of ints, optional</span></dt><dd><p>If provided, each unique region <em class="xref py py-obj">labels == value</em> represents a unique
 region to search for peaks. Zero is reserved for background.</p>
 </dd>
 <dt><strong>num_peaks_per_label</strong><span class="classifier">int, optional</span></dt><dd><p>Maximum number of peaks for each label.</p>
+</dd>
+<dt><strong>p_norm</strong><span class="classifier">float</span></dt><dd><p>Which Minkowski p-norm to use. Should be in the range [1, inf].
+A finite large p may cause a ValueError if overflow can occur.
+<code class="docutils literal notranslate"><span class="pre">inf</span></code> corresponds to the Chebyshev distance and 2 to the
+Euclidean distance.</p>
 </dd>
 </dl>
 </dd>
