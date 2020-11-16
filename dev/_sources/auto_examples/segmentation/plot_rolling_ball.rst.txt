@@ -195,7 +195,7 @@ pass them into the function in the same way.
 .. code-block:: default
 
 
-    image = data.coins().astype(np.uint16)
+    image = data.coins()[:200, :200].astype(np.uint16)
 
     background = restoration.rolling_ball(image, radius=70.5)
     plot_result(image, background)
@@ -221,7 +221,7 @@ unexpected results.
 .. code-block:: default
 
 
-    image = util.img_as_float(data.coins())
+    image = util.img_as_float(data.coins()[:200, :200])
 
     background = restoration.rolling_ball(image, radius=70.5)
     plot_result(image, background)
@@ -409,7 +409,7 @@ time by specifying a value other than 1.
     background = restoration.rolling_ball(
         image,
         kernel=restoration.ellipsoid_kernel(
-            (10, 21, 21),
+            (5, 21, 21),
             0.1
         )
     )
@@ -439,7 +439,7 @@ planar axis (z-stack axis).
     background = restoration.rolling_ball(
         image,
         kernel=restoration.ellipsoid_kernel(
-            (120, 1, 1),
+            (100, 1, 1),
             0.1
         )
     )
@@ -460,7 +460,7 @@ planar axis (z-stack axis).
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  44.636 seconds)
+   **Total running time of the script:** ( 1 minutes  25.371 seconds)
 
 
 .. _sphx_glr_download_auto_examples_segmentation_plot_rolling_ball.py:
