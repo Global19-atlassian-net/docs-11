@@ -2698,7 +2698,7 @@ set of available cores are used.</p>
 <h2>peak_local_max<a class="headerlink" href="#peak-local-max" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.feature.peak_local_max">
-<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">peak_local_max</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_distance=1</em>, <em class="sig-param">threshold_abs=None</em>, <em class="sig-param">threshold_rel=None</em>, <em class="sig-param">exclude_border=True</em>, <em class="sig-param">indices=True</em>, <em class="sig-param">num_peaks=inf</em>, <em class="sig-param">footprint=None</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">num_peaks_per_label=inf</em>, <em class="sig-param">p_norm=inf</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/peak.py#L113-L314"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.peak_local_max" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.feature.</code><code class="sig-name descname">peak_local_max</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">min_distance=1</em>, <em class="sig-param">threshold_abs=None</em>, <em class="sig-param">threshold_rel=None</em>, <em class="sig-param">exclude_border=True</em>, <em class="sig-param">indices=True</em>, <em class="sig-param">num_peaks=inf</em>, <em class="sig-param">footprint=None</em>, <em class="sig-param">labels=None</em>, <em class="sig-param">num_peaks_per_label=inf</em>, <em class="sig-param">p_norm=inf</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/feature/peak.py#L113-L319"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.feature.peak_local_max" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find peaks in an image as coordinate list or boolean mask.</p>
 <p>Peaks are the local maxima in a region of <em class="xref py py-obj">2 * min_distance + 1</em>
 (i.e. peaks are separated by at least <em class="xref py py-obj">min_distance</em>).</p>
@@ -2779,10 +2779,10 @@ represented by True values.</p></li>
 </div>
 <p class="rubric">Notes</p>
 <p>The peak local maximum function returns the coordinates of local peaks
-(maxima) in an image. A maximum filter is used for finding local maxima.
-This operation dilates the original image. After comparison of the dilated
-and original image, this function returns the coordinates or a mask of the
-peaks where the dilated image equals the original image.</p>
+(maxima) in an image. Internally, a maximum filter is used for finding local
+maxima. This operation dilates the original image. After comparison of the
+dilated and original image, this function returns the coordinates or a mask
+of the peaks where the dilated image equals the original image.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img1</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
@@ -2808,20 +2808,25 @@ peaks where the dilated image equals the original image.</p>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">img2</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">peak_idx</span> <span class="o">=</span> <span class="n">peak_local_max</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="n">exclude_border</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">peak_idx</span>
-<span class="go">array([[10, 10, 10]])</span>
+<span class="go">array([[10, 10, 10],</span>
+<span class="go">       [15, 15, 15]])</span>
 </pre></div>
 </div>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">peak_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">peak_mask</span><span class="p">[</span><span class="n">peak_idx</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">peak_mask</span><span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">peak_idx</span><span class="o">.</span><span class="n">T</span><span class="p">)]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">peak_mask</span><span class="p">)</span>
+<span class="go">array([[10, 10, 10],</span>
+<span class="go">       [15, 15, 15]])</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <div class="section" id="examples-using-skimage-feature-peak-local-max">
 <h3>Examples using <code class="docutils literal notranslate"><span class="pre">skimage.feature.peak_local_max</span></code><a class="headerlink" href="#examples-using-skimage-feature-peak-local-max" title="Permalink to this headline">¶</a></h3>
-<div class="sphx-glr-thumbcontainer" tooltip="The peak_local_max function returns the coordinates of local peaks (maxima) in an image. A maxi..."><div class="figure align-default" id="id96">
+<div class="sphx-glr-thumbcontainer" tooltip="The peak_local_max function returns the coordinates of local peaks (maxima) in an image. Intern..."><div class="figure align-default" id="id96">
 <img alt="Finding local maxima" src="../_images/sphx_glr_plot_peak_local_max_thumb.png" />
 <p class="caption"><span class="caption-text"><a class="reference internal" href="../auto_examples/segmentation/plot_peak_local_max.html#sphx-glr-auto-examples-segmentation-plot-peak-local-max-py"><span class="std std-ref">Finding local maxima</span></a></span><a class="headerlink" href="#id96" title="Permalink to this image">¶</a></p>
 </div>
