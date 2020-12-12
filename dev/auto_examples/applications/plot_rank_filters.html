@@ -118,29 +118,29 @@
 </div>
 <div class="sphx-glr-example-title section" id="rank-filters">
 <span id="sphx-glr-auto-examples-applications-plot-rank-filters-py"></span><h1>Rank filters<a class="headerlink" href="#rank-filters" title="Permalink to this headline">¶</a></h1>
-<p>Rank filters are non-linear filters using the local gray-level ordering to
-compute the filtered value <a class="footnote-reference brackets" href="#id3" id="id1">1</a>. This ensemble of filters share a common base:
+<p>Rank filters are non-linear filters using local gray-level ordering to
+compute the filtered value. This ensemble of filters share a common base:
 the local gray-level histogram is computed on the neighborhood of a pixel
-(defined by a 2-D structuring element). If the filtered value is taken as the
+(defined by a 2D structuring element). If the filtered value is taken as the
 middle value of the histogram, we get the classical median filter.</p>
-<p>Rank filters can be used for several purposes such as:</p>
+<p>Rank filters can be used for several purposes, such as:</p>
 <ul class="simple">
-<li><p>image quality enhancement
-e.g. image smoothing, sharpening</p></li>
-<li><p>image pre-processing
-e.g. noise reduction, contrast enhancement</p></li>
-<li><p>feature extraction
-e.g. border detection, isolated point detection</p></li>
-<li><p>post-processing
-e.g. small object removal, object grouping, contour smoothing</p></li>
+<li><p>image quality enhancement,
+e.g., image smoothing, sharpening</p></li>
+<li><p>image pre-processing,
+e.g., noise reduction, contrast enhancement</p></li>
+<li><p>feature extraction,
+e.g., border detection, isolated point detection</p></li>
+<li><p>image post-processing,
+e.g., small object removal, object grouping, contour smoothing</p></li>
 </ul>
-<p>Some well known filters are specific cases of rank filters <a class="footnote-reference brackets" href="#id3" id="id2">1</a> e.g.
-morphological dilation, morphological erosion, median filters.</p>
+<p>Some well-known filters (e.g., morphological dilation and morphological
+erosion) are specific cases of rank filters <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
 <p>In this example, we will see how to filter a gray-level image using some of the
 linear and non-linear filters available in skimage. We use the <code class="docutils literal notranslate"><span class="pre">camera</span></code> image
-from <code class="docutils literal notranslate"><span class="pre">skimage.data</span></code> for all comparisons.</p>
+from <a class="reference internal" href="../../api/skimage.data.html#module-skimage.data" title="skimage.data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.data</span></code></a> for all comparisons.</p>
 <dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Pierre Soille, On morphological operators based on rank filters, Pattern
 Recognition 35 (2002) 527-535, <a class="reference external" href="https://doi.org/10.1016/S0031-3203(01)00047-4">DOI:10.1016/S0031-3203(01)00047-4</a></p>
 </dd>
@@ -161,15 +161,15 @@ Recognition 35 (2002) 527-535, <a class="reference external" href="https://doi.o
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">hist_centers</span></a><span class="p">,</span> <a href="https://docs.python.org/3.7/library/stdtypes.html#tuple" title="builtins.tuple" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">hist</span></a><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of grey values&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Gray-level histogram&#39;</span><span class="p">)</span>
 
 <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.tight_layout.html#matplotlib.pyplot.tight_layout" title="matplotlib.pyplot.tight_layout" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="Histogram of grey values" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rank_filters_001.png" />
+<img alt="Gray-level histogram" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rank_filters_001.png" />
 <div class="section" id="noise-removal">
 <h2>Noise removal<a class="headerlink" href="#noise-removal" title="Permalink to this headline">¶</a></h2>
-<p>Some noise is added to the image, 1% of pixels are randomly set to 255, 1%
+<p>Some noise is added to the image: 1% of pixels are randomly set to 255, 1%
 are randomly set to 0. The <strong>median</strong> filter is applied to remove the
 noise.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.median" title="skimage.filters.rank.median" class="sphx-glr-backref-module-skimage-filters-rank sphx-glr-backref-type-py-function"><span class="n">median</span></a>
@@ -202,12 +202,19 @@ noise.</p>
 </pre></div>
 </div>
 <img alt="Noisy image, Median $r=1$, Median $r=5$, Median $r=20$" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rank_filters_002.png" />
-<p>The added noise is efficiently removed, as the image defaults are small (1
-pixel wide), a small filter radius is sufficient. As the radius is
-increasing, objects with bigger sizes are filtered as well, such as the
-camera tripod. The median filter is often used for noise removal because
-borders are preserved and e.g. salt and pepper noise typically does not
-distort the gray-level.</p>
+<p>The added noise is efficiently removed, as the image defaults are small (1-pixel wide), a small filter radius is sufficient. As the radius
+increases, objects with bigger sizes get filtered as well, such as the
+camera tripod. The median filter is often used for noise removal because it
+preserves borders. For example, consider noise which is located only on a
+few pixels in the entire image, as is the case with salt-and-pepper noise
+<a class="footnote-reference brackets" href="#id4" id="id3">2</a>: the median filter will ignore the noisy pixels, for they will appear
+as outliers; thus, it will not change significantly the median of a group of
+local pixels, in contrast to what a moving average filter would do.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id3">2</a></span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Salt-and-pepper_noise">https://en.wikipedia.org/wiki/Salt-and-pepper_noise</a></p>
+</dd>
+</dl>
 </div>
 <div class="section" id="image-smoothing">
 <h2>Image smoothing<a class="headerlink" href="#image-smoothing" title="Permalink to this headline">¶</a></h2>
@@ -233,13 +240,13 @@ man image.</p>
 </div>
 <img alt="Original, Local mean $r=10$" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rank_filters_003.png" />
 <p>One may be interested in smoothing an image while preserving important
-borders (median filters already achieved this), here we use the
-<strong>bilateral</strong> filter that restricts the local neighborhood to pixel having
-a gray-level similar to the central one.</p>
+borders (median filters already achieved this). Here, we use the
+<strong>bilateral</strong> filter that restricts the local neighborhood to pixels with
+gray levels similar to the central one.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>A different implementation is available for color images in
-<code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.filters.denoise_bilateral()</span></code>.</p>
+<a class="reference internal" href="../../api/skimage.restoration.html#skimage.restoration.denoise_bilateral" title="skimage.restoration.denoise_bilateral"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.restoration.denoise_bilateral()</span></code></a>.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage.filters.rank</span> <span class="kn">import</span> <a href="../../api/skimage.filters.rank.html#skimage.filters.rank.mean_bilateral" title="skimage.filters.rank.mean_bilateral" class="sphx-glr-backref-module-skimage-filters-rank sphx-glr-backref-type-py-function"><span class="n">mean_bilateral</span></a>
 
@@ -274,14 +281,14 @@ smoothed whereas other details are preserved.</p>
 <div class="section" id="contrast-enhancement">
 <h2>Contrast enhancement<a class="headerlink" href="#contrast-enhancement" title="Permalink to this headline">¶</a></h2>
 <p>We compare here how the global histogram equalization is applied locally.</p>
-<p>The equalized image <a class="footnote-reference brackets" href="#id6" id="id4">2</a> has a roughly linear cumulative distribution
-function for each pixel neighborhood. The local version <a class="footnote-reference brackets" href="#id7" id="id5">3</a> of the
-histogram equalization emphasizes every local gray-level variations.</p>
+<p>The equalized image <a class="footnote-reference brackets" href="#id7" id="id5">3</a> has a roughly linear cumulative distribution
+function for each pixel neighborhood. The local version <a class="footnote-reference brackets" href="#id8" id="id6">4</a> of
+histogram equalization emphasizes every local gray-level variation.</p>
 <dl class="footnote brackets">
-<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
+<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Histogram_equalization">https://en.wikipedia.org/wiki/Histogram_equalization</a></p>
 </dd>
-<dt class="label" id="id7"><span class="brackets"><a class="fn-backref" href="#id5">3</a></span></dt>
+<dt class="label" id="id8"><span class="brackets"><a class="fn-backref" href="#id6">4</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Adaptive_histogram_equalization">https://en.wikipedia.org/wiki/Adaptive_histogram_equalization</a></p>
 </dd>
 </dl>
@@ -454,21 +461,15 @@ percentile <em>p0</em> and <em>p1</em> instead of the local minimum and maximum.
 </div>
 <div class="section" id="image-threshold">
 <h2>Image threshold<a class="headerlink" href="#image-threshold" title="Permalink to this headline">¶</a></h2>
-<p>The Otsu threshold <a class="footnote-reference brackets" href="#id9" id="id8">4</a> method can be applied locally using the local gray-
-level distribution. In the example below, for each pixel, an “optimal”
+<p>The Otsu threshold method <a class="footnote-reference brackets" href="#id10" id="id9">5</a> can be applied locally using the local gray-level distribution. In the example below, for each pixel, an “optimal”
 threshold is determined by maximizing the variance between two classes of
 pixels of the local neighborhood defined by a structuring element.</p>
 <p>These algorithms can be used on both 2D and 3D images.</p>
-<p>The example compares the local threshold with the global threshold
-<a class="reference internal" href="../../api/skimage.filters.html#skimage.filters.threshold_otsu" title="skimage.filters.threshold_otsu"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.filters.threshold_otsu()</span></code></a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Local is much slower than global thresholding. A function for global
-Otsu thresholding can be found in :
-<a class="reference internal" href="../../api/skimage.filters.html#skimage.filters.threshold_otsu" title="skimage.filters.threshold_otsu"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.filters.threshold_otsu()</span></code></a>.</p>
-</div>
+<p>The example compares local thresholding with global thresholding, which is
+provided by <a class="reference internal" href="../../api/skimage.filters.html#skimage.filters.threshold_otsu" title="skimage.filters.threshold_otsu"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.filters.threshold_otsu()</span></code></a>. Note that the former is
+much slower than the latter.</p>
 <dl class="footnote brackets">
-<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id8">4</a></span></dt>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id9">5</a></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Otsu's_method">https://en.wikipedia.org/wiki/Otsu’s_method</a></p>
 </dd>
 </dl>
@@ -512,7 +513,7 @@ Otsu thresholding can be found in :
 </pre></div>
 </div>
 <img alt="Original, Local Otsu ($r=10$), Original &gt;= local Otsu, Global Otsu ($t=157$)" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rank_filters_010.png" />
-<p>The example compares the local threshold with the global threshold in 3D</p>
+<p>The example below performs the same comparison, using a 3D image this time.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">brain</span></a> <span class="o">=</span> <a href="../../api/skimage.exposure.html#skimage.exposure.rescale_intensity" title="skimage.exposure.rescale_intensity" class="sphx-glr-backref-module-skimage-exposure sphx-glr-backref-type-py-function"><span class="n">exposure</span><span class="o">.</span><span class="n">rescale_intensity</span></a><span class="p">(</span><a href="../../api/skimage.data.html#skimage.data.brain" title="skimage.data.brain" class="sphx-glr-backref-module-skimage-data sphx-glr-backref-type-py-function"><span class="n">data</span><span class="o">.</span><span class="n">brain</span></a><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">))</span>
 
 <a href="https://docs.python.org/3.7/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">radius</span></a> <span class="o">=</span> <span class="mi">5</span>
@@ -627,14 +628,14 @@ opening, closing and morphological gradient.</p>
 <h2>Feature extraction<a class="headerlink" href="#feature-extraction" title="Permalink to this headline">¶</a></h2>
 <p>Local histograms can be exploited to compute local entropy, which is
 related to the local image complexity. Entropy is computed using base 2
-logarithm i.e. the filter returns the minimum number of bits needed to
+logarithm, i.e., the filter returns the minimum number of bits needed to
 encode local gray-level distribution.</p>
-<p><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.rank.entropy()</span></code> returns the local entropy on a given
-structuring element. The following example shows applies this filter
+<p><a class="reference internal" href="../../api/skimage.filters.rank.html#skimage.filters.rank.entropy" title="skimage.filters.rank.entropy"><code class="xref py py-func docutils literal notranslate"><span class="pre">skimage.filters.rank.entropy()</span></code></a> returns the local entropy on a given
+structuring element. The following example applies this filter
 on 8- and 16-bit images.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>to better use the available image bit, the function returns 10x entropy
+<p>To better use the available image bit, the function returns 10x entropy
 for 8-bit images and 1000x entropy for 16-bit images.</p>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">skimage</span> <span class="kn">import</span> <span class="n">data</span>
@@ -663,12 +664,12 @@ for 8-bit images and 1000x entropy for 16-bit images.</p>
 </div>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
-<p>The central part of the <code class="docutils literal notranslate"><span class="pre">skimage.rank</span></code> filters is build on a sliding window
-that updates the local gray-level histogram. This approach limits the
+<p>The central part of the <a class="reference internal" href="../../api/skimage.filters.rank.html#module-skimage.filters.rank" title="skimage.filters.rank"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.rank</span></code></a> filters is built on a sliding
+window that updates the local gray-level histogram. This approach limits the
 algorithm complexity to O(n) where n is the number of image pixels. The
 complexity is also limited with respect to the structuring element size.</p>
-<p>In the following we compare the performance of different implementations
-available in <code class="docutils literal notranslate"><span class="pre">skimage</span></code>.</p>
+<p>In the following, we compare the performance of different implementations
+available in <a class="reference internal" href="../../api/skimage.html#module-skimage" title="skimage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage</span></code></a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <a href="https://docs.python.org/3.7/library/time.html#time.time" title="time.time" class="sphx-glr-backref-module-time sphx-glr-backref-type-py-function"><span class="n">time</span></a>
 
 <span class="kn">from</span> <span class="nn">scipy.ndimage</span> <span class="kn">import</span> <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.percentile_filter.html#scipy.ndimage.percentile_filter" title="scipy.ndimage.percentile_filter" class="sphx-glr-backref-module-scipy-ndimage sphx-glr-backref-type-py-function"><span class="n">percentile_filter</span></a>
@@ -709,8 +710,8 @@ available in <code class="docutils literal notranslate"><span class="pre">skimag
 </div>
 <p>Comparison between</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">filters.rank.maximum</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">morphology.dilate</span></code></p></li>
+<li><p><a class="reference internal" href="../../api/skimage.filters.rank.html#skimage.filters.rank.maximum" title="skimage.filters.rank.maximum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.rank.maximum</span></code></a></p></li>
+<li><p><a class="reference internal" href="../../api/skimage.morphology.html#skimage.morphology.dilation" title="skimage.morphology.dilation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.morphology.dilation</span></code></a></p></li>
 </ul>
 <p>on increasing structuring element size:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">a</span></a> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.camera" title="skimage.data.camera" class="sphx-glr-backref-module-skimage-data sphx-glr-backref-type-py-function"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">()</span>
@@ -763,8 +764,8 @@ available in <code class="docutils literal notranslate"><span class="pre">skimag
 <img alt="Performance with respect to image size" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rank_filters_016.png" />
 <p>Comparison between:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">filters.rank.median</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">scipy.ndimage.percentile</span></code></p></li>
+<li><p><a class="reference internal" href="../../api/skimage.filters.rank.html#skimage.filters.rank.median" title="skimage.filters.rank.median"><code class="xref py py-obj docutils literal notranslate"><span class="pre">skimage.filters.rank.median</span></code></a></p></li>
+<li><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.ndimage.percentile_filter.html#scipy.ndimage.percentile_filter" title="(in SciPy v1.5.4)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scipy.ndimage.percentile_filter</span></code></a></p></li>
 </ul>
 <p>on increasing structuring element size:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">a</span></a> <span class="o">=</span> <a href="../../api/skimage.data.html#skimage.data.camera" title="skimage.data.camera" class="sphx-glr-backref-module-skimage-data sphx-glr-backref-type-py-function"><span class="n">data</span><span class="o">.</span><span class="n">camera</span></a><span class="p">()</span>
@@ -792,7 +793,7 @@ available in <code class="docutils literal notranslate"><span class="pre">skimag
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0.5, 23.52222222222222, &#39;Element radius&#39;)
 </pre></div>
 </div>
-<p>Comparison of outcome of the three methods:</p>
+<p>Comparison of outcome of the two methods:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <a href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;filters.rank.median&#39;</span><span class="p">)</span>
@@ -808,7 +809,7 @@ available in <code class="docutils literal notranslate"><span class="pre">skimag
 </pre></div>
 </div>
 <img alt="filters.rank.median, scipy.ndimage.percentile" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rank_filters_018.png" />
-<p>and increasing image size:</p>
+<p>on increasing image size:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3.7/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">r</span></a> <span class="o">=</span> <span class="mi">9</span>
 <a href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="numpy.ndarray" class="sphx-glr-backref-module-numpy sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">elem</span></a> <span class="o">=</span> <a href="../../api/skimage.morphology.html#skimage.morphology.disk" title="skimage.morphology.disk" class="sphx-glr-backref-module-skimage-morphology sphx-glr-backref-type-py-function"><span class="n">disk</span></a><span class="p">(</span><a href="https://docs.python.org/3.7/library/functions.html#int" title="builtins.int" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">r</span></a> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
@@ -835,7 +836,7 @@ available in <code class="docutils literal notranslate"><span class="pre">skimag
 </pre></div>
 </div>
 <img alt="Performance with respect to image size" class="sphx-glr-single-img" src="../../_images/sphx_glr_plot_rank_filters_019.png" />
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  54.333 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  54.638 seconds)</p>
 <div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-applications-plot-rank-filters-py">
 <div class="binder-badge docutils container">
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/scikit-image/scikit-image/master?filepath=notebooks/auto_examples/applications/plot_rank_filters.ipynb"><img alt="Launch binder" src="../../_images/binder_badge_logo.svg" width="150px" /></a>
