@@ -139,6 +139,9 @@
 <p>scikit-image is an image processing toolbox for SciPy that includes algorithms
 for segmentation, geometric transformations, color space manipulation,
 analysis, filtering, morphology, feature detection, and more.</p>
+<p>This release of scikit-image drops support for Python 3.6 in accordance with
+the <a class="reference external" href="https://numpy.org/neps/nep-0029-deprecation_policy.html">NEP-29 Python and Numpy version support community standard</a>: Python 3.7 or
+newer is required to run this version.</p>
 <p>For more information, examples, and documentation, please visit our website:</p>
 <p><a class="reference external" href="https://scikit-image.org">https://scikit-image.org</a></p>
 <div class="section" id="new-features">
@@ -205,6 +208,10 @@ guide has been updated to mention how to host new datasets in a gitlab
 repository (#4892).</p></li>
 <li><p>The <a class="reference external" href="https://scikit-image.org/docs/dev/contribute.html#benchmarks">benchmarking section of the developer documentation</a>
 has been expanded (#4905).</p></li>
+<li><p>Added links to the image.sc forum in example pages (#5094, #5096)</p></li>
+<li><p>Added missing datasets to gallery examples (#5116, #5118)</p></li>
+<li><p>Add farid filters in __all__, to populate the documentation (#5128, #5129)</p></li>
+<li><p>Proofread gallery example for rank filters. (#5126, #5136)</p></li>
 </ul>
 </div>
 <div class="section" id="improvements">
@@ -234,6 +241,11 @@ functions (#4912)</p></li>
 inequalities in sequence (#5020)</p></li>
 <li><p>Polygon rasterization is more precise and will no longer potentially exclude
 input vertices. (#5029)</p></li>
+<li><p>Add data optional requirements to allow pip install scikit-image[data]
+(#5105, #5111)</p></li>
+<li><p>OpenMP support in MSVC (#4924, #5111)</p></li>
+<li><p>Restandardize handling of Multi-Image files (#2815, #5132)</p></li>
+<li><p>Consistent zoom boundary behavior across SciPy versions (#5131, #5133)</p></li>
 </ul>
 </div>
 <div class="section" id="api-changes">
@@ -241,19 +253,15 @@ input vertices. (#5029)</p></li>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">skimage.restoration.richardson_lucy</span></code> returns a single-precision output
 when the input is single-precision. Prior to this release, double-precision
-was always used.</p></li>
+was always used. (#4880)</p></li>
 <li><p>The default value of <code class="docutils literal notranslate"><span class="pre">threshold_rel</span></code> in <code class="docutils literal notranslate"><span class="pre">skimage.feature.corner</span></code> has
 changed from 0.1 to None, which corresponds to letting
 <code class="docutils literal notranslate"><span class="pre">skimage.feature.peak_local_max</span></code> decide on the default. This is currently
 equivalent to <code class="docutils literal notranslate"><span class="pre">threshold_rel=0</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">data.cat</span></code> has been introduced as an alias of <code class="docutils literal notranslate"><span class="pre">data.chelsea</span></code> for a more
-descriptive name.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">level</span></code> parameter of <code class="docutils literal notranslate"><span class="pre">measure.find_contours</span></code> is now a keyword
-argument, with a default value set to (max(image) - min(image)) / 2.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">p_norm</span></code> argument was added to <code class="docutils literal notranslate"><span class="pre">skimage.feature.peak_local_max</span></code>
-to add support for Minkowski distances.</p></li>
 <li><p>In <code class="docutils literal notranslate"><span class="pre">measure.label</span></code>, the deprecated <code class="docutils literal notranslate"><span class="pre">neighbors</span></code> parameter has been
 removed. (#4942)</p></li>
+<li><p>The image returned by <code class="docutils literal notranslate"><span class="pre">data.camera</span></code> has changed because of copyright
+issues (#4913).</p></li>
 </ul>
 </div>
 <div class="section" id="bug-fixes">
@@ -290,6 +298,8 @@ NaNs are found in the computation (as a result of NaNs in input images).
 Before this fix, an incorrect value could be returned where the input images
 had NaNs (#4886).</p></li>
 <li><p>Fix edge filters not respecting padding mode (#4907)</p></li>
+<li><p>Use v{} for version tags with pooch (#5104, #5110)</p></li>
+<li><p>Fix compilation error in XCode 12 (#5107, #5111)</p></li>
 </ul>
 </div>
 <div class="section" id="deprecations">
@@ -344,6 +354,8 @@ ReST, thanks to <code class="docutils literal notranslate"><span class="pre">mys
 <li><p>We now build our wheels on GitHub Actions on the main repo using
 cibuildwheel. Many thanks to the matplotlib and scikit-learn developers for
 paving the way for us! (#5080)</p></li>
+<li><p>Disable Travis-CI builds (#5099, #5111)</p></li>
+<li><p>Improvements to CircleCI build: no parallelization and caching) (#5097, #5119)</p></li>
 </ul>
 </div>
 <div class="section" id="other-pull-requests">
@@ -449,6 +461,10 @@ paving the way for us! (#5080)</p></li>
 <li><p>Some minor tweaks to CI (#5079)</p></li>
 <li><p>removed usage of numpy’s private functions from util.arraycrop (#5081)</p></li>
 <li><p>peak_local_max: remove deprecated <em class="xref py py-obj">indices</em> argument from examples (#5082)</p></li>
+<li><p>Replace np.bool, np.float, and np.int with bool, float, and int (#5103, #5108)</p></li>
+<li><p>change plausible script to track outbound links (#5115, #5123)</p></li>
+<li><p>Remove Python 3.6 support (#5117, #5125)</p></li>
+<li><p>Optimize ensure_spacing (#5062, #5135)</p></li>
 </ul>
 </div>
 <div class="section" id="authors-added-to-this-release-alphabetical-by-first-name-or-login">
