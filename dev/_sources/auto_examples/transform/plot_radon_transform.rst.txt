@@ -76,7 +76,7 @@ reconstruction process and compare this to the number of measurements
 provided by the projections), and we follow that rule here. Below is the
 original image and its Radon transform, often known as its *sinogram*:
 
-.. GENERATED FROM PYTHON SOURCE LINES 60-87
+.. GENERATED FROM PYTHON SOURCE LINES 60-89
 
 .. code-block:: default
 
@@ -98,11 +98,13 @@ original image and its Radon transform, often known as its *sinogram*:
 
     theta = np.linspace(0., 180., max(image.shape), endpoint=False)
     sinogram = radon(image, theta=theta, circle=True)
+    dx, dy = 0.5 * 180.0 / max(image.shape), 0.5 / sinogram.shape[0]
     ax2.set_title("Radon transform\n(Sinogram)")
     ax2.set_xlabel("Projection angle (deg)")
     ax2.set_ylabel("Projection position (pixels)")
     ax2.imshow(sinogram, cmap=plt.cm.Greys_r,
-               extent=(0, 180, 0, sinogram.shape[0]), aspect='auto')
+               extent=(-dx, 180.0 + dx, -dy, sinogram.shape[0] + dy),
+               aspect='auto')
 
     fig.tight_layout()
     plt.show()
@@ -118,7 +120,7 @@ original image and its Radon transform, often known as its *sinogram*:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-100
+.. GENERATED FROM PYTHON SOURCE LINES 90-102
 
 Reconstruction with the Filtered Back Projection (FBP)
 ======================================================
@@ -133,7 +135,7 @@ which is applied to the Fourier transformed projections. It may be used to
 suppress high frequency noise in the reconstruction. ``skimage`` provides a
 few different options for the filter.
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-117
+.. GENERATED FROM PYTHON SOURCE LINES 103-119
 
 .. code-block:: default
 
@@ -172,7 +174,7 @@ few different options for the filter.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 118-149
+.. GENERATED FROM PYTHON SOURCE LINES 120-151
 
 Reconstruction with the Simultaneous Algebraic Reconstruction Technique
 =======================================================================
@@ -206,7 +208,7 @@ of iterations is best suited to the problem at hand. The implementation in
 ``skimage`` allows prior information of the form of a lower and upper
 threshold on the reconstructed values to be supplied to the reconstruction.
 
-.. GENERATED FROM PYTHON SOURCE LINES 150-181
+.. GENERATED FROM PYTHON SOURCE LINES 152-183
 
 .. code-block:: default
 
@@ -264,7 +266,7 @@ threshold on the reconstructed values to be supplied to the reconstruction.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.615 seconds)
+   **Total running time of the script:** ( 0 minutes  2.626 seconds)
 
 
 .. _sphx_glr_download_auto_examples_transform_plot_radon_transform.py:
