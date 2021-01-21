@@ -974,7 +974,7 @@ a list of supported illuminants.</p>
 <h2>label2rgb<a class="headerlink" href="#label2rgb" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.color.label2rgb">
-<code class="sig-prename descclassname">skimage.color.</code><code class="sig-name descname">label2rgb</code><span class="sig-paren">(</span><em class="sig-param">label</em>, <em class="sig-param">image=None</em>, <em class="sig-param">colors=None</em>, <em class="sig-param">alpha=0.3</em>, <em class="sig-param">bg_label=-1</em>, <em class="sig-param">bg_color=(0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">image_alpha=1</em>, <em class="sig-param">kind='overlay'</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/color/colorlabel.py#L74-L118"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.color.label2rgb" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.color.</code><code class="sig-name descname">label2rgb</code><span class="sig-paren">(</span><em class="sig-param">label</em>, <em class="sig-param">image=None</em>, <em class="sig-param">colors=None</em>, <em class="sig-param">alpha=0.3</em>, <em class="sig-param">bg_label=-1</em>, <em class="sig-param">bg_color=(0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">image_alpha=1</em>, <em class="sig-param">kind='overlay'</em>, <em class="sig-param">*</em>, <em class="sig-param">saturation=0</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/color/colorlabel.py#L74-L124"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.color.label2rgb" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return an RGB image where color-coded labels are painted over the image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1002,6 +1002,11 @@ between [0, 1].</p>
 and overlays the colored labels over the original image. ‘avg’ replaces
 each labeled segment with its average color, for a stained-class or
 pastel painting appearance.</p>
+</dd>
+<dt><strong>saturation</strong><span class="classifier">float [0, 1], optional</span></dt><dd><p>Parameter to control the saturation applied to the original image
+between fully saturated (original RGB, <em class="xref py py-obj">saturation=1</em>) and fully
+unsaturated (grayscale, <em class="xref py py-obj">saturation=0</em>). Only applies when
+<em class="xref py py-obj">kind=’overlay’</em>.</p>
 </dd>
 </dl>
 </dd>
