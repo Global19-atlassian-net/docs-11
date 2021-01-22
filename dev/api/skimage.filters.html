@@ -2139,7 +2139,7 @@ histogram of the image is ignored.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(N, M) ndarray, optional</span></dt><dd><p>Input image.</p>
+<dt><strong>image</strong><span class="classifier">(N, M[, …, P]) ndarray</span></dt><dd><p>Grayscale input image.</p>
 </dd>
 <dt><strong>nbins</strong><span class="classifier">int, optional</span></dt><dd><p>Number of bins used to calculate histogram. This value is ignored for
 integer arrays.</p>
@@ -2199,7 +2199,7 @@ Electronic Imaging, 13(1): 146-165,
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
+<dt><strong>image</strong><span class="classifier">(N, M[, …, P]) ndarray</span></dt><dd><p>Grayscale input image.</p>
 </dd>
 <dt><strong>tolerance</strong><span class="classifier">float, optional</span></dt><dd><p>Finish the computation when the change in the threshold in an iteration
 is less than this value. By default, this is half the smallest
@@ -2280,9 +2280,9 @@ given function, using the ‘generic’ method.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl>
-<dt><strong>image</strong><span class="classifier">(N, M) ndarray</span></dt><dd><p>Input image.</p>
+<dt><strong>image</strong><span class="classifier">(N, M[, …, P]) ndarray</span></dt><dd><p>Grayscale input image.</p>
 </dd>
-<dt><strong>block_size</strong><span class="classifier">int</span></dt><dd><p>Odd size of pixel neighborhood which is used to calculate the
+<dt><strong>block_size</strong><span class="classifier">int or sequence of int</span></dt><dd><p>Odd size of pixel neighborhood which is used to calculate the
 threshold value (e.g. 3, 5, 7, …, 21, …).</p>
 </dd>
 <dt><strong>method</strong><span class="classifier">{‘generic’, ‘gaussian’, ‘mean’, ‘median’}, optional</span></dt><dd><p>Method used to determine adaptive threshold for local neighbourhood in
@@ -2313,7 +2313,7 @@ threshold for the centre pixel.</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><dl class="simple">
-<dt><strong>threshold</strong><span class="classifier">(N, M) ndarray</span></dt><dd><p>Threshold image. All pixels in the input image higher than the
+<dt><strong>threshold</strong><span class="classifier">(N, M[, …, P]) ndarray</span></dt><dd><p>Threshold image. All pixels in the input image higher than the
 corresponding pixel in the threshold image are considered foreground.</p>
 </dd>
 </dl>
@@ -2407,7 +2407,7 @@ histogram of the image is ignored.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(M, N) ndarray, optional</span></dt><dd><p>Input image.</p>
+<dt><strong>image</strong><span class="classifier">(N, M[, …, P]) ndarray, optional</span></dt><dd><p>Grayscale input image.</p>
 </dd>
 <dt><strong>nbins</strong><span class="classifier">int, optional</span></dt><dd><p>Number of bins used to calculate histogram. This value is ignored for
 integer arrays.</p>
@@ -2477,7 +2477,7 @@ for more details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(N, M) ndarray</span></dt><dd><p>Grayscale input image.</p>
+<dt><strong>image</strong><span class="classifier">(N, M[, …, P]) ndarray</span></dt><dd><p>Grayscale input image.</p>
 </dd>
 <dt><strong>classes</strong><span class="classifier">int, optional</span></dt><dd><p>Number of classes to be thresholded, i.e. the number of resulting
 regions.</p>
@@ -2563,7 +2563,7 @@ that weights the effect of standard deviation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
+<dt><strong>image</strong><span class="classifier">(N, M[, …, P]) ndarray</span></dt><dd><p>Grayscale input image.</p>
 </dd>
 <dt><strong>window_size</strong><span class="classifier">int, or iterable of int, optional</span></dt><dd><p>Window size specified as a single odd integer (3, 5, 7, …),
 or an iterable of length <code class="docutils literal notranslate"><span class="pre">image.ndim</span></code> containing only odd
@@ -2631,7 +2631,7 @@ histogram of the image is ignored.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(N, M) ndarray, optional</span></dt><dd><p>Grayscale input image.</p>
+<dt><strong>image</strong><span class="classifier">(N, M[, …, P]) ndarray</span></dt><dd><p>Grayscale input image.</p>
 </dd>
 <dt><strong>nbins</strong><span class="classifier">int, optional</span></dt><dd><p>Number of bins used to calculate histogram. This value is ignored for
 integer arrays.</p>
@@ -2715,7 +2715,7 @@ R is the maximum standard deviation of a greyscale image.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">ndarray</span></dt><dd><p>Input image.</p>
+<dt><strong>image</strong><span class="classifier">(N, M[, …, P]) ndarray</span></dt><dd><p>Grayscale input image.</p>
 </dd>
 <dt><strong>window_size</strong><span class="classifier">int, or iterable of int, optional</span></dt><dd><p>Window size specified as a single odd integer (3, 5, 7, …),
 or an iterable of length <code class="docutils literal notranslate"><span class="pre">image.ndim</span></code> containing only odd
@@ -2822,7 +2822,7 @@ histogram of the image is ignored.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>image</strong><span class="classifier">(N, M) ndarray, optional</span></dt><dd><p>Input image.</p>
+<dt><strong>image</strong><span class="classifier">(N, M[, …, P]) ndarray</span></dt><dd><p>Grayscale input image.</p>
 </dd>
 <dt><strong>nbins</strong><span class="classifier">int, optional</span></dt><dd><p>Number of bins used to calculate histogram. This value is ignored for
 integer arrays.</p>
