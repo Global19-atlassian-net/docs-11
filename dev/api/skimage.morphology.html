@@ -2803,7 +2803,7 @@ version 0.18.0. Use <code class="docutils literal notranslate"><span class="pre"
 <h2>remove_small_holes<a class="headerlink" href="#remove-small-holes" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.remove_small_holes">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">remove_small_holes</code><span class="sig-paren">(</span><em class="sig-param">ar</em>, <em class="sig-param">area_threshold=64</em>, <em class="sig-param">connectivity=1</em>, <em class="sig-param">in_place=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/misc.py#L142-L227"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.remove_small_holes" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">remove_small_holes</code><span class="sig-paren">(</span><em class="sig-param">ar</em>, <em class="sig-param">area_threshold=64</em>, <em class="sig-param">connectivity=1</em>, <em class="sig-param">in_place=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/misc.py#L152-L237"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.remove_small_holes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove contiguous holes smaller than the specified size.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -2881,7 +2881,7 @@ using this function.</p>
 <h2>remove_small_objects<a class="headerlink" href="#remove-small-objects" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="skimage.morphology.remove_small_objects">
-<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">remove_small_objects</code><span class="sig-paren">(</span><em class="sig-param">ar</em>, <em class="sig-param">min_size=64</em>, <em class="sig-param">connectivity=1</em>, <em class="sig-param">in_place=False</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/misc.py#L51-L139"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.remove_small_objects" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">skimage.morphology.</code><code class="sig-name descname">remove_small_objects</code><span class="sig-paren">(</span><em class="sig-param">ar</em>, <em class="sig-param">min_size=64</em>, <em class="sig-param">connectivity=1</em>, <em class="sig-param">in_place=False</em>, <em class="sig-param">*</em>, <em class="sig-param">out=None</em><span class="sig-paren">)</span><a class="reference external" href="https://github.com/scikit-image/scikit-image/blob/master/skimage/morphology/misc.py#L51-L149"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#skimage.morphology.remove_small_objects" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove objects smaller than the specified size.</p>
 <p>Expects ar to be an array with labeled objects, and removes objects
 smaller than min_size. If <em class="xref py py-obj">ar</em> is bool, the image is first labeled.
@@ -2899,7 +2899,11 @@ int, the ints must be non-negative.</p>
 labelling if <em class="xref py py-obj">ar</em> is bool.</p>
 </dd>
 <dt><strong>in_place</strong><span class="classifier">bool, optional (default: False)</span></dt><dd><p>If <code class="docutils literal notranslate"><span class="pre">True</span></code>, remove the objects in the input array itself.
-Otherwise, make a copy.</p>
+Otherwise, make a copy. Deprecated since version 0.19. Please
+use <em class="xref py py-obj">out</em> instead.</p>
+</dd>
+<dt><strong>out</strong><span class="classifier">ndarray</span></dt><dd><p>Array of the same shape as <em class="xref py py-obj">ar</em>, into which the output is
+placed. By default, a new array is created.</p>
 </dd>
 </dl>
 </dd>
@@ -2933,7 +2937,7 @@ Otherwise, make a copy.</p>
 <span class="go">array([[False, False, False,  True, False],</span>
 <span class="go">       [ True,  True,  True, False, False],</span>
 <span class="go">       [ True,  True,  True, False, False]])</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">remove_small_objects</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">in_place</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">remove_small_objects</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">a</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="ow">is</span> <span class="n">a</span>
 <span class="go">True</span>
 </pre></div>
