@@ -19,11 +19,16 @@
 
 
 ======================
-maskSLIC Demonstration
+Apply maskSLIC vs SLIC
 ======================
 
 This example is about comparing the segmentations obtained using the
 plain SLIC method [1]_ and its masked version maskSLIC [2]_.
+
+To illustrate these segmentation methods, we use an image of biological tissue
+with immunohistochemical (IHC) staining. The same biomedical image is used in
+the example on how to
+:ref:`sphx_glr_auto_examples_color_exposure_plot_ihc_color_separation.py`.
 
 The maskSLIC method is an extension of the SLIC method for the
 generation of superpixels in a region of interest. maskSLIC is able to
@@ -31,20 +36,20 @@ overcome border problems that affects SLIC method, particularely in
 case of irregular mask.
 
 .. [1] Radhakrishna Achanta, Appu Shaji, Kevin Smith, Aurelien Lucchi,
-    Pascal Fua, and Sabine Suesstrunk, SLIC Superpixels Compared to
-    State-of-the-art Superpixel Methods, TPAMI, May 2012.
+    Pascal Fua, and Sabine Süsstrunk, "SLIC Superpixels Compared to
+    State-of-the-Art Superpixel Methods," IEEE TPAMI, 2012,
     :DOI:`10.1109/TPAMI.2012.120`
 
 .. [2] Irving, Benjamin. "maskSLIC: regional superpixel generation
     with application to local pathology characterisation in medical
-    images.", 2016, , :arXiv:`1606.09518`
+    images," 2016, :arXiv:`1606.09518`
 
-.. GENERATED FROM PYTHON SOURCE LINES 24-73
+.. GENERATED FROM PYTHON SOURCE LINES 29-78
 
 
 
 .. image:: /auto_examples/segmentation/images/sphx_glr_plot_mask_slic_001.png
-    :alt: Origin image, Mask, SLIC, maskSLIC
+    :alt: Original image, Mask, SLIC, maskSLIC
     :class: sphx-glr-single-img
 
 
@@ -84,18 +89,18 @@ case of irregular mask.
     ax1, ax2, ax3, ax4 = ax_arr.ravel()
 
     ax1.imshow(img)
-    ax1.set_title("Origin image")
+    ax1.set_title('Original image')
 
-    ax2.imshow(mask, cmap="gray")
-    ax2.set_title("Mask")
+    ax2.imshow(mask, cmap='gray')
+    ax2.set_title('Mask')
 
     ax3.imshow(segmentation.mark_boundaries(img, slic))
     ax3.contour(mask, colors='red', linewidths=1)
-    ax3.set_title("SLIC")
+    ax3.set_title('SLIC')
 
     ax4.imshow(segmentation.mark_boundaries(img, m_slic))
     ax4.contour(mask, colors='red', linewidths=1)
-    ax4.set_title("maskSLIC")
+    ax4.set_title('maskSLIC')
 
     for ax in ax_arr.ravel():
         ax.set_axis_off()
@@ -106,7 +111,7 @@ case of irregular mask.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.516 seconds)
+   **Total running time of the script:** ( 0 minutes  2.241 seconds)
 
 
 .. _sphx_glr_download_auto_examples_segmentation_plot_mask_slic.py:
